@@ -534,6 +534,15 @@
 
 
     uType.addEventListener('click', () => {
+      orgNameInput.classList.remove('vis')
+      orgAddInput.classList.remove('vis');
+      collegeIdInput.classList.remove('vis');
+      professionInput.classList.remove('vis');
+      employeeIdInput.classList.remove('vis');
+      rollInput.classList.remove('vis');
+      courseInput.classList.remove('vis');
+
+
       if (uType.value == 'student') {
         orgNameInput.classList.toggle('vis');
         orgAddInput.classList.toggle('vis');
@@ -556,6 +565,8 @@
         employeeIdInput.classList.toggle('vis');
         r.removeAttribute('required');
       }
+
+
 
     })
 
