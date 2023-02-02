@@ -1,6 +1,5 @@
-
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
 
   * {
     margin: 0%;
@@ -13,7 +12,7 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    letter-spacing:15px;
+    letter-spacing: 15px;
     text-align: center;
   }
 
@@ -112,6 +111,7 @@
     margin: auto;
     border-radius: 15px;
   }
+
   #sbt {
     width: 100%;
     background-color: #0d6efd;
@@ -120,6 +120,20 @@
   h2 {
     text-align: center;
   }
+
+  #about {}
+
+
+
+
+
+
+
+
+
+
+
+
 
   .f-container {
     display: flex;
@@ -132,13 +146,13 @@
     transform: rotateY(360deg);
   }
 
-  .left-child { 
+  .left-child {
     border: 0px;
     padding-left: 1%;
     width: 33%;
   }
 
-  .middle-child { 
+  .middle-child {
     display: flex;
     align-items: center;
     width: 33%;
@@ -146,7 +160,8 @@
     border: 0px;
   }
 
-  .right-child {    display: flex;
+  .right-child {
+    display: flex;
     flex-direction: column;
     width: 33%;
     align-items: end;
@@ -240,7 +255,7 @@
   }
 
   /* this class will get toggles to make questions appear or disappear in form*/
-  .vis{
+  .vis {
     display: none;
   }
 </style>
@@ -272,7 +287,7 @@
             <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item coolBeans spacing ">
-            <a class="nav-link" href="#">NITK Website</a>
+            <a class="nav-link" href="https://www.nitk.ac.in/">NITK Website</a>
           </li>
           <li class="nav-item coolBeans spacing ">
             <a class="nav-link" href="#links">Contact Us</a>
@@ -297,116 +312,251 @@
     </ul>
   </div>
   <div id="login">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <h2>Registration</h2>
-        <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <h2>Registration</h2>
+      <%= render "devise/shared/error_messages" , resource: resource %>
 
-    <% if notice %>
-    <%=render 'layoutalerts'%>
-    <% end %>
+        <% if notice %>
+          <%=render 'layoutalerts' %>
+            <% end %>
 
-    <%# <label for="u-type">Please select the type of user</label> %>
-    <select name="user-type" id="u-type" class="form-select" aria-label="Default select example" required>
-      <option value="" selected>Type Of User</option>
-      <option value="stu">Student</option>
-      <option value="fac">Faculty</option>
-      <option value="ext">External</option>
-    </select>
-    
-    <div class="mb-3 field" id="email-input">
-     <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control", id:"exampleInputEmail1"  ,placeholder:"Enter Your Email Address"%>
-      <%# <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required placeholder="Enter Your Email Address"> %>
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3 field">
-      <%= f.label :password ,for:"exampleInputPassword1" ,class:"form-label"%>
-      
-      <%# <label for="exampleInputPassword1" class="form-label">Password</label> %>
-      <%= f.password_field :password, autocomplete: "new-password" , class:"form-control" ,id:"exampleInputPassword1", placeholder:"Create Password (6 characters minimum)"%>
-      <%# <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Create Password"> %>
-    </div>
-    <div class="mb-3 field">
-       <%= f.label :password_confirmation , for:"exampleInputPassword1", class:"form-label"%>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class:"form-control" ,id:"exampleInputPassword1", placeholder:"Confirm Password"%>
-    <%# <label for="exampleInputPassword1" class="form-label">Confirm Password</label> %>
-      <%# <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password"> %>
-    </div>
+              <%# <label for="u-type">Please select the type of user</label> %>
 
-     <div class="actions">
-     <%= f.submit "SignUp" ,class:"btn btn-primary" ,id:"sbt"%>
-     </div>
-    <%# <button type="submit" class="btn btn-primary" id="sbt">Submit</button> %>
-    <%end%>
+                <%# <select name="user-type" id="u-type" class="form-select" >
+                  <option value="" selected>Type Of User</option>
+                  <option value="stu">Student</option>
+                  <option value="fac">Faculty</option>
+                  <option value="ext">External</option>
+                </select> %>
+
+                 <!-- a new style of select tab -->
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="inputGroupSelect01">Type Of User</label>
+                  <select class="form-select" id="u-type" aria-label="Default select example" required>
+                    <option value="" selected >Choose...</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="external">External</option>
+                  </select>
+                </div>
+
+
+                <div class="mb-3 field" id="email-input">
+                  <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control",
+                  id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
+                  <%# <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  required placeholder="Enter Your Email Address"> %>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3 field" id="in-pass">
+                  <%= f.label :password ,for:"exampleInputPassword1" ,class:"form-label"%>
+
+                    <%# <label for="exampleInputPassword1" class="form-label">Password</label> %>
+                      <%= f.password_field :password, autocomplete: "new-password" , class:"form-control",
+                        id:"exampleInputPassword1", placeholder:"Create Password (6 characters minimum)"%>
+                        <%# <input type="password" class="form-control" id="exampleInputPassword1"
+                          placeholder="Create Password"> %>
+                </div>
+
+                <div class="mb-3 field" id="conf-pass">
+                  <%= f.label :password_confirmation , for:"exampleInputPassword1", class:"form-label"%>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class:"form-control",
+                      id:"exampleInputPassword2", placeholder:"Confirm Password"%>
+                      <%# <label for="exampleInputPassword1" class="form-label">Confirm Password</label> %>
+                        <%# <input type="password" class="form-control" id="exampleInputPassword1"
+                          placeholder="Confirm Password"> %>
+                </div>
+
+                <div class="input-group mb-3" id="name-input">
+                  <span class="input-group-text">First and last name</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                  <input type="text" aria-label="Last name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="contact-input">
+                  <span class="input-group-text">Contact Number</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="department-input">
+                  <label class="input-group-text" for="inputGroupSelect01">Department</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Choose</option>
+                    <option value="chem-engg">Chemical Engineering</option>
+                    <option value="chem">Chemistry</option>
+                    <option value="civ">Civil</option>
+                    <!-- <option value="cse">Computer Science & Engineering</option> -->
+                    <!-- <option value="eee">Electrical & Electronics Engineering</option> -->
+                    <!-- <option value="it">Information Technology</option> -->
+                    <!-- <option value="macs">Mathematical & Computational Sciences</option> -->
+                    <option value="mech">Mechanical Engineering </option>
+                    <option value="meta">Metallurgical & Materials Engineering</option>
+                    <option value="mine">Mining Engineering</option>
+                    <option value="phy">Physics</option>
+                    <option value="wo">Water Reources & Ocean Engineering</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3" id="course-input">
+                  <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Choose</option>
+                    <option value="chem-engg">Chemical Engineering</option>
+                    <option value="chem-engg">Chemical Engineering</option>
+                    <option value="chem-engg">Chemical Engineering</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3" id="collegeid-input">
+                  <span class="input-group-text">College ID</span>
+                  <input type="file" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="roll-input">
+                  <span class="input-group-text">Roll Number</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="employeeid-input">
+                  <span class="input-group-text">Employee ID</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="org-name-input">
+                  <span class="input-group-text">Organization Name</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="org-add-input">
+                  <span class="input-group-text">Organization Address</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3" id="profession-input">
+                  <span class="input-group-text">Profession</span>
+                  <input type="text" aria-label="First name" class="form-control">
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "SignUp" ,class:"btn btn-primary" ,id:"sbt"%>
+                </div>
+                <%# <button type="submit" class="btn btn-primary" id="sbt">Submit</button> %>
+                  <%end%>
   </div>
 </div>
 
-<%# div#about %>
+<div id="about" class="container">
+
+</div>
+
 <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+
 <script src="" async defer></script>
-<img src="C:\Users\Sanjay\OneDrive\Pictures\social media" alt="">
-<footer id="links">
-  <div class="f-container">
-    <div class="left-child">
-      <h1 id="f-heading">CRF NITK</h1>
-      <div class="f-text">
-        NH 66, Srinivasnagar
-        <br> Surathkal, Mangalore
-        <br> Karnataka 575025
+<%#check the functionality of this script %>
+
+  <img src="C:\Users\Sanjay\OneDrive\Pictures\social media" alt="">
+  <footer id="links">
+    <div class="f-container">
+      <div class="left-child">
+        <h1 id="f-heading">CRF NITK</h1>
+        <div class="f-text">
+          NH 66, Srinivasnagar
+          <br> Surathkal, Mangalore
+          <br> Karnataka 575025
+        </div>
+
       </div>
+      <div class="middle-child">
 
-    </div>
-    <div class="middle-child">
-
-      <div class="footer-wrapper">
-        <div class="icons">
-          <ul>
-            <li>
-              <a title="linkedin" target="_blank" href="https://www.linkedin.com/in/sauravmukherjee44/"><i
-                  class="fa fa-linkedin icon" ></i></a>
-            </li>
-            <li>
-              <a title="github" target="_blank" href="https://github.com/SauravMukherjee44/"> <i
-                  class="fa fa-github icon"></i> </a>
-            </li>
-            <li>
-              <a title="twitter" target="_blank" href="https://twitter.com/mesourav44/"><i
-                  class="fa fa-twitter icon"></i></a>
-            </li>
-            <li>
-              <a title="youtube" target="_blank" href="https://bit.ly/CodeINYouTube"><i
-                  class="fa fa-facebook icon"></i></a>
-            </li>
-          </ul>
+        <div class="footer-wrapper">
+          <div class="icons">
+            <ul>
+              <li>
+                <a title="linkedin" target="_blank" href="https://www.linkedin.com/in/sauravmukherjee44/"><i
+                    class="fa fa-linkedin icon"></i></a>
+              </li>
+              <li>
+                <a title="github" target="_blank" href="https://github.com/SauravMukherjee44/"> <i
+                    class="fa fa-github icon"></i> </a>
+              </li>
+              <li>
+                <a title="twitter" target="_blank" href="https://twitter.com/mesourav44/"><i
+                    class="fa fa-twitter icon"></i></a>
+              </li>
+              <li>
+                <a title="youtube" target="_blank" href="https://bit.ly/CodeINYouTube"><i
+                    class="fa fa-facebook icon"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="right-child">
+        <h3>Designed By</h3>
+        <div>
+          <h4>Preetham G</h4>
         </div>
       </div>
     </div>
-    <div class="right-child">
-      <h3>Designed By</h3>
-      <br>
-      <h4>Preetham G</h4>
-    </div>
-  </div>
-</footer>
-</body>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 
   <!-- JS to toggle elememts in the form as per the type of the user -->
-<script>
-  let p = document.getElementById("u-type");
-  let q = document.getElementById("email-input");
-  let r = document.getElementById('exampleInputEmail1');
-  p.addEventListener('click', ()=>{
-    if(p.value == 'stu'){
-    q.classList.toggle('vis')
-    r.removeAttribute('required');
-    }
-  })
+  <script>
+    let uType = document.getElementById("u-type");
+    let emailInput = document.getElementById("email-input");
+    let r = document.getElementById('exampleInputEmail1');
+    let inPass = document.getElementById('in-pass');
+    let confPass = document.getElementById('conf-pass');
+    let nameInput = document.getElementById('name-input');
+    let contactInput = document.getElementById('contact-input');
+    let departmentInput = document.getElementById('department-input');
+    let courseInput = document.getElementById('course-input');
+    let collegeIdInput = document.getElementById('collegeid-input');
+    let rollInput = document.getElementById('roll-input');
+    let employeeIdInput = document.getElementById('employeeid-input');
+    let orgNameInput = document.getElementById('org-name-input');
+    let orgAddInput = document.getElementById('org-add-input');
+    let professionInput = document.getElementById('profession-input');
 
-</script>
+
+    uType.addEventListener('click', () => {
+      if (uType.value == 'student') {
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'faculty') {
+        courseInput.classList.toggle('vis');
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        rollInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'external') {
+        rollInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+
+    })
+
+  </script>
