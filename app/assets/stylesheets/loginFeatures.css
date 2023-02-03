@@ -15,6 +15,7 @@
     letter-spacing: 5px;
     text-align: center;
     font-family: 'Unbounded', cursive;
+    color:darkslategrey
   }
 
   .navlist {
@@ -49,7 +50,7 @@
     font-size: 1rem;
     font-weight: 100;
     overflow: hidden;
-    padding: 0.6em 1.5em;
+    padding: 0.6em 0.5em;
     position: relative;
     text-decoration: none;
     transition: .2s transform ease-in-out;
@@ -63,7 +64,7 @@
     content: '';
     display: block;
     height: 100%;
-    width: 100%;
+    width: 50%;
     position: absolute;
     left: 0;
     top: 0;
@@ -102,8 +103,21 @@
     font-family: "Quicksand", "sans-serif";
   }
 
+  #guide-wrap{
+    width: 45%;
+}
+#guide-wrap-fgt{
+    width: 45%;
+    display: grid;
+  }
+
+  #guide-wrap-login-page{
+    width: 45%;
+    display: grid;
+  }
+
   #instruction {
-    width: 30%;
+    /* width: 30%; */
     margin: auto 10%;
     background-color: #3F5AC9;
     color: aliceblue;
@@ -113,8 +127,15 @@
   #login {
     background-color: #f9fdff;
     padding: 20px 40px;
-    width: 45%;
-    margin: auto;
+    width: 50%;
+    margin: auto auto 4em auto;
+    border-radius: 15px;
+  }
+  #login-fgt {
+    background-color: #f9fdff;
+    padding: 20px 40px;
+    width: 50%;
+    margin: auto auto 6em auto;
     border-radius: 15px;
   }
 
@@ -127,18 +148,9 @@
     text-align: center;
   }
 
-  #about {}
-
-
-
-
-
-
-
-
-
-
-
+  #link-space-top{
+    margin: 1.5em 0em 0em 0em;
+  }
 
 
   .f-container {
@@ -282,4 +294,8 @@
   /* this class will get toggles to make questions appear or disappear in form*/
   .vis {
     display: none;
+  }
+
+  @media only screen and (max-width: 992px) {
+
   }
