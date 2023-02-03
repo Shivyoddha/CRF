@@ -1,0 +1,285 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    <!-- font-family: "Quicksand", "sans-serif"; -->
+  }
+  body{
+      background-color: #ddf1fb;;
+  }
+
+  #heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    letter-spacing: 5px;
+    text-align: center;
+    font-family: 'Unbounded', cursive;
+  }
+
+  .navlist {
+    list-style: none;
+    text-decoration: none;
+    display: flex;
+    font-family: "Quicksand", "sans-serif";
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .spacing {
+    margin: 1rem 4rem;
+  }
+
+  #navigation{
+    font-family: "Quicksand", "sans-serif";
+  }
+
+  .nav-item {
+    color: black;
+    transition-duration: 0.5;
+  }
+
+  .coolBeans {
+    border-radius: 20px;
+    color: rgb(249, 249, 249);
+    font-family: "Quicksand", "sans-serif";
+    font-size: 1rem;
+    font-weight: 100;
+    overflow: hidden;
+    padding: 0.6em 1.5em;
+    position: relative;
+    text-decoration: none;
+    transition: .2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+  }
+
+  .coolBeans::after {
+    background-color:#f9fdff;
+    border-radius: 20px;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(0, -100%) rotate(-45deg);
+    transform-origin: top left;
+    transition: .5s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  .coolBeans:hover::after {
+
+    transform: translate(0, 0);
+  }
+
+  .coolBeans:hover {
+    will-change: transform;
+  }
+
+  #logo {
+    display: none;
+  }
+
+  #togle {
+    margin-right: 1em;
+  }
+
+  .nav-link:hover {
+  }
+
+  #container {
+    display: flex;
+    margin: auto;
+    max-width: 100%;
+    min-height: 69vh;
+    font-family: "Quicksand", "sans-serif";
+  }
+
+  #instruction {
+    width: 30%;
+    margin: auto 10%;
+    background-color: #3F5AC9;
+    color: aliceblue;
+
+  }
+
+  #login {
+    background-color: #f9fdff;
+    padding: 20px 40px;
+    width: 45%;
+    margin: auto;
+    border-radius: 15px;
+  }
+
+  #sbt {
+    width: 100%;
+    background-color: #3F5AC9;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  #about {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .f-container {
+    display: flex;
+    background-color: #343A40;
+    justify-content: space-around;
+    color: white;
+    font-family: "Quicksand", "sans-serif";
+  }
+
+  .f-container:hover {
+    transform: rotateY(360deg);
+  }
+
+  .left-child {
+    border: 0px;
+    padding-left: 1%;
+    width: 33%;
+  }
+
+  .middle-child {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    justify-content: center;
+    border: 0px;
+  }
+
+  .right-child {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    align-items: end;
+    margin: 1em 1em 0 1em;
+  }
+
+  .icons ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    scale: 1.5;
+  }
+
+  .icons ul li {
+    list-style: none;
+  }
+
+  .icons ul li a {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 20px;
+    font-size: 15px;
+    margin: 0 0 0 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+    border: 3px solid #fff;
+  }
+
+  .icons ul li a .icon {
+    position: relative;
+    color: #262626;
+    transition: 0.5s;
+    z-index: 3;
+  }
+
+  .icons ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+
+  .icons ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #55acee;
+    transition: 0.5s;
+    z-index: 2;
+  }
+
+  .icons ul li a:hover:before {
+    top: 0;
+  }
+
+  .icons ul li:nth-child(2) a:before {
+    background: black;
+  }
+
+  .icons ul li:nth-child(3) a:before {
+    background: rgb(252, 4, 124);
+  }
+
+  .icons ul li:nth-child(4) a:before {
+    background: darkblue;
+  }
+
+  .f-heading {
+    font-size: 2rem;
+  }
+
+  #footer-img{
+    height: 40px;
+  }
+
+  #footer-left-child{
+    display: flex;
+    margin: 1em 1em 0 1em;
+  }
+
+  .f-text {
+    padding: 0 0 6% 4%;
+  }
+
+  #design{
+    margin-right: 4em;
+    display: contents;
+  }
+
+  @media only screen and (max-width: 992px) {
+    #heading img {
+      display: none;
+    }
+
+    #logo {
+      display: block;
+      margin-left: 5%;
+    }
+
+    .coolBeans {
+      width: 100%;
+    }
+  }
+
+  /* this class will get toggles to make questions appear or disappear in form*/
+  .vis {
+    display: none;
+  }
