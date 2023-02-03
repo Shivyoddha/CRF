@@ -1,16 +1,62 @@
-<h2>Forgot your password?</h2>
 
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%=render "loginHeading"%>
+<!-- HTML code for container of instruction  and form card -->
+<div id="container" class='container'>
+  <div id="instruction" class="card">
+    <h2>Instructions</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is the Registration Page for users</li>
+      <li class="list-group-item">Select Your User Type Before Filling the form</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+  </div>
+  <div id="login">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <h2>Forgot your password?</h2>
+      <%= render "devise/shared/error_messages" , resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <% if notice %>
+          <%=render 'layoutalerts' %>
+            <% end %>
+                <div class="mb-3 field" id="email-input">
+                  <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control",
+                  id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
+                  <%# <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  required placeholder="Enter Your Email Address"> %>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="actions">
+
+                  <%= f.submit "Send me reset password instructions" ,class:"btn btn-primary" ,id:"sbt"%>
+                </div>
+                <%= render "devise/shared/links" , resource: resource %>
+                <%# <button type="submit" class="btn btn-primary" id="sbt">Submit</button> %>
+                  <%end%>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+<div id="about" class="container">
 
-<%= render "devise/shared/links" %>
+</div>
+
+<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+<script src="" async defer></script>
+<%#check the functionality of this script %>
+
+  <img src="C:\Users\Sanjay\OneDrive\Pictures\social media" alt="">
+   <%=render "footer" %>
+
+
+  </body>
