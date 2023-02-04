@@ -2,17 +2,21 @@
 <%=render "loginHeading"%>
 <!-- HTML code for container of instruction  and form card -->
 <div id="container" class='container'>
-  <div id="instruction" class="card">
-    <h2>Instructions</h2>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">This is the Registration Page for users</li>
-      <li class="list-group-item">Select Your User Type Before Filling the form</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A third item</li>
-      <li class="list-group-item">A third item</li>
-    </ul>
-  </div>
+
+    <div id="guide-wrap">
+      <div id="instruction" class="card">
+        <h2>Instructions</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">This is the Registration Page for users</li>
+          <li class="list-group-item">Select Your User Type Before Filling the form</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+      </div>
+    </div>
+
   <div id="login">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
@@ -136,8 +140,6 @@
                   <%end%>
   </div>
 </div>
-
-<div id="about" class="container">
 
 </div>
 
