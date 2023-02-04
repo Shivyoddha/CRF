@@ -15,21 +15,13 @@
   </div>
   <div id="login">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
       <h2>Registration</h2>
       <%= render "devise/shared/error_messages" , resource: resource %>
 
         <% if notice %>
           <%=render 'layoutalerts' %>
             <% end %>
-
-              <%# <label for="u-type">Please select the type of user</label> %>
-
-                <%# <select name="user-type" id="u-type" class="form-select" >
-                  <option value="" selected>Type Of User</option>
-                  <option value="stu">Student</option>
-                  <option value="fac">Faculty</option>
-                  <option value="ext">External</option>
-                </select> %>
 
                  <!-- a new style of select tab -->
 
@@ -123,9 +115,12 @@
                   <input type="text" aria-label="First name" class="form-control">
                 </div>
 
-                <div class="input-group mb-3" id="employeeid-input">
-                  <span class="input-group-text">Employee ID</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                <div class=" input-group mb-3" id="employeeid-input">
+                  <%= f.label :rollno ,"EmployeeId" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :rollno , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
+                  <!-- <span class="input-group-text">Employee ID</span>
+                  <input type="text" aria-label="First name" class="form-control"> -->
                 </div>
 
                 <div class="input-group mb-3" id="org-name-input">
