@@ -26,13 +26,8 @@
                  <!-- a new style of select tab -->
 
                 <div class="input-group mb-3">
-                  <label class="input-group-text" for="inputGroupSelect01">Type Of User</label>
-                  <select class="form-select" id="u-type" aria-label="Default select example" required>
-                    <option value="" selected >Choose...</option>
-                    <option value="student">Student</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="external">External</option>
-                  </select>
+                  <%= f.label :role,'Type of user',for:"inputGroupSelect01", class:"input-group-text"%>
+                  <%= f.select(:role, ['student', 'faculty','external'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
                 </div>
 
 
@@ -40,106 +35,101 @@
                   <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
                   <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control",
                   id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
-                  <%# <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                  required placeholder="Enter Your Email Address"> %>
+
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
 
                 <div class="mb-3 field" id="in-pass">
                   <%= f.label :password ,for:"exampleInputPassword1" ,class:"form-label"%>
 
-                    <%# <label for="exampleInputPassword1" class="form-label">Password</label> %>
+
                       <%= f.password_field :password, autocomplete: "new-password" , class:"form-control",
                         id:"exampleInputPassword1", placeholder:"Create Password (6 characters minimum)"%>
-                        <%# <input type="password" class="form-control" id="exampleInputPassword1"
-                          placeholder="Create Password"> %>
+
                 </div>
 
                 <div class="mb-3 field" id="conf-pass">
                   <%= f.label :password_confirmation , for:"exampleInputPassword1", class:"form-label"%>
                     <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class:"form-control",
                       id:"exampleInputPassword2", placeholder:"Confirm Password"%>
-                      <%# <label for="exampleInputPassword1" class="form-label">Confirm Password</label> %>
-                        <%# <input type="password" class="form-control" id="exampleInputPassword1"
-                          placeholder="Confirm Password"> %>
+
                 </div>
 
                 <div class="input-group mb-3" id="name-input">
-                  <span class="input-group-text">First and last name</span>
-                  <input type="text" aria-label="First name" class="form-control">
-                  <input type="text" aria-label="Last name" class="form-control">
+                  <%= f.label :firstname ,"First Name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :firstname , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
+                  <%= f.label :lastname ,"Last Name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :lastname , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
+
+
                 </div>
 
                 <div class="input-group mb-3" id="contact-input">
-                  <span class="input-group-text">Contact Number</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <%= f.label :contact ,"Contact Number" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :contact , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
                 </div>
 
                 <div class="input-group mb-3" id="department-input">
-                  <label class="input-group-text" for="inputGroupSelect01">Department</label>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Choose</option>
-                    <option value="chem-engg">Chemical Engineering</option>
-                    <option value="chem">Chemistry</option>
-                    <option value="civ">Civil</option>
-                    <!-- <option value="cse">Computer Science & Engineering</option> -->
-                    <!-- <option value="eee">Electrical & Electronics Engineering</option> -->
-                    <!-- <option value="it">Information Technology</option> -->
-                    <!-- <option value="macs">Mathematical & Computational Sciences</option> -->
-                    <option value="mech">Mechanical Engineering </option>
-                    <option value="meta">Metallurgical & Materials Engineering</option>
-                    <option value="mine">Mining Engineering</option>
-                    <option value="phy">Physics</option>
-                    <option value="wo">Water Reources & Ocean Engineering</option>
-                  </select>
+                  <%= f.label :department ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                   <%= f.select(:department, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanial Engineering', 'Mining Engineering', 'Metalaurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => true }) %>
+
+
                 </div>
 
                 <div class="input-group mb-3" id="course-input">
-                  <label class="input-group-text" for="inputGroupSelect01">Course</label>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Choose</option>
-                    <option value="chem-engg">Chemical Engineering</option>
-                    <option value="chem-engg">Chemical Engineering</option>
-                    <option value="chem-engg">Chemical Engineering</option>
-                  </select>
+                  <%= f.label :course ,"Course" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => true }) %>
                 </div>
 
                 <div class="input-group mb-3" id="collegeid-input">
-                  <span class="input-group-text">College ID</span>
-                  <input type="file" aria-label="First name" class="form-control">
+                  <%= f.label :collegeid ,"College ID" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.file_field :collegeid ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
+
                 </div>
 
                 <div class="input-group mb-3" id="roll-input">
-                  <span class="input-group-text">Roll Number</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <%= f.label :rollno ,"Roll Number" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :rollno , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1"%>
                 </div>
 
                 <div class=" input-group mb-3" id="employeeid-input">
                   <%= f.label :rollno ,"EmployeeId" ,for:"exampleInputEmail1", class:"input-group-text "%>
                   <%= f.text_field :rollno , autofocus: true ,class:"form-control ",
-                  id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
-                  <!-- <span class="input-group-text">Employee ID</span>
-                  <input type="text" aria-label="First name" class="form-control"> -->
+                  id:"exampleInputEmail1"%>
                 </div>
 
                 <div class="input-group mb-3" id="org-name-input">
-                  <span class="input-group-text">Organization Name</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <%= f.label :orgname ,"Organization name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :orgname , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
+
                 </div>
 
                 <div class="input-group mb-3" id="org-add-input">
-                  <span class="input-group-text">Organization Address</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <%= f.label :orgaddress ,"Organization address" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :orgaddress, autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
+                  <!-- <span class="input-group-text">Organization Address</span>
+                  <input type="text" aria-label="First name" class="form-control"> -->
                 </div>
 
                 <div class="input-group mb-3" id="profession-input">
-                  <span class="input-group-text">Profession</span>
-                  <input type="text" aria-label="First name" class="form-control">
+                  <%= f.label :profession ,"Profession" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.text_field :profession , autofocus: true ,class:"form-control ",
+                  id:"exampleInputEmail1" %>
                 </div>
+
+
                 <div class="actions">
                   <%= f.submit "SignUp" ,class:"btn btn-primary" ,id:"sbt"%>
                 </div>
+
+
                 <span>Already have an account?</span>
                 <%= render "devise/shared/links" , resource: resource %>
                 <%# <button type="submit" class="btn btn-primary" id="sbt">Submit</button> %>
@@ -151,9 +141,7 @@
 
 </div>
 
-<!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+
 
 
 <script src="" async defer></script>
