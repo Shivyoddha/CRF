@@ -4,20 +4,18 @@
 <%=render "loginHeading"%>
 <!-- HTML code for container of instruction  and form card -->
 <div id="container" class='container'>
-  <div id="guide-wrap-fgt">
-    <div id="instruction" class="card">
-      <h2>Instructions</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">This is the Registration Page for users</li>
-        <li class="list-group-item">Select Your User Type Before Filling the form</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
-    </div>
+  <div id="instruction" class="card">
+    <h2>Instructions</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is the Registration Page for users</li>
+      <li class="list-group-item">Select Your User Type Before Filling the form</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
   </div>
-  <div id="login-fgt">
+  <div id="login">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <h2>Forgot your password?</h2>
       <%= render "devise/shared/error_messages" , resource: resource %>
