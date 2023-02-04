@@ -1,25 +1,49 @@
-<h2>Change your password</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%=render "loginHeading"%>
 
+
+<div id="container" class='container'>
+  <div id="instruction" class="card">
+    <h2>Instructions</h2>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is the Registration Page for users</li>
+      <li class="list-group-item">Select Your User Type Before Filling the form</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+  </div>
+  <div id="login">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+      <h2>Change your password</h2>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+                <div class="mb-3 field">
+                <%= f.label :password, "New password" %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+                <% end %>
+                  <%= f.password_field :password, autofocus: true, autocomplete: "new-password",class:"form-control",
+                 placeholder:"Enter Your Password" %>
+                </div>
+
+                <div class="mb-3 field">
+                  <%= f.label :password_confirmation, "Confirm new password" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class:"form-control" ,placeholder:"Enter Your Password" %>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "Change my password" ,class:"btn btn-primary" ,id:"sbt"%>
+                </div>
+                <%= render "devise/shared/links" , resource: resource %>
+
+                  <%end%>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<div id="about" class="container">
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+ <%=render "footer" %>
