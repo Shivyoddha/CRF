@@ -129,7 +129,7 @@
   h2 {
     text-align: center;
   }
-  
+
   .f-container {
     display: flex;
     background-color: #343A40;
@@ -272,4 +272,37 @@
   /* this class will get toggles to make questions appear or disappear in form*/
   .vis {
     display: none;
+  }
+
+  @media only screen and (max-width: 990px){
+
+    .container{
+      flex-direction: column;
+    }
+
+    #guide-wrap{
+      width: auto;
+      margin-bottom: 2%;
+    }
+
+    #login{
+      /* margin: 5%; */
+      width: auto;
+    }
+
+    .f-container{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .middle-child{
+      width: 40%;
+      align-items: start;
+      /* padding-left: 5%; */
+    }
+
+    .right-child{
+      text-align: left;
+      align-items: start;
+    }
   }
