@@ -3,6 +3,7 @@
 
 
 <div id="container" class='container'>
+  <div id="guide-wrap">
   <div id="instruction" class="card">
     <h2>Instructions</h2>
     <ul class="list-group list-group-flush">
@@ -13,6 +14,7 @@
       <li class="list-group-item">A third item</li>
       <li class="list-group-item">A third item</li>
     </ul>
+  </div>
   </div>
   <div id="login">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -41,6 +43,7 @@
 
                   <%end%>
   </div>
+
 </div>
 
 <div id="about" class="container">
