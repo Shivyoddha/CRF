@@ -5,15 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
-  before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: :index
-  
+
   def configure_permitted_parameters
     attributes = [:firstname, :lastname, :rollno, :orgname, :orgaddress, :contact, :profession,
-                  :collegeid, :department, :role,:course, :admin_role, :chairman_role, :user_role]
+                  :collegeid, :department, :role,:course]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
-
-
   end
 end

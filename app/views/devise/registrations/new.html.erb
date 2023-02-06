@@ -78,14 +78,14 @@
 
                 <div class="input-group mb-3" id="department-input">
                   <%= f.label :department ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
-                   <%= f.select(:department, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanial Engineering', 'Mining Engineering', 'Metalaurgical Engineering','Physics','Water Resources & Ocean Engineering', 'Compurter Science And Engineering', 'Information Technology','Artificial Intelligence', 'Electronics And Communication Engineering','Electronics And Electrical Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
+                   <%= f.select(:department, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanial Engineering', 'Mining Engineering', 'Metalaurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => true }) %>
 
 
                 </div>
 
                 <div class="input-group mb-3" id="course-input">
                   <%= f.label :course ,"Course" ,for:"exampleInputEmail1", class:"input-group-text "%>
-                  <%= f.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
+                  <%= f.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => true }) %>
                 </div>
 
                 <div class="input-group mb-3" id="collegeid-input">
