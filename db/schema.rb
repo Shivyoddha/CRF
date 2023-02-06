@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_104855) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_06_094204) do
+  create_table "equipment", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "status"
+    t.text "feature"
+    t.text "resolution"
+    t.text "location"
+    t.text "application"
+    t.text "facilities"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+    t.string "type"
+    t.integer "equipment_id"
+    t.index ["equipment_id"], name: "index_questions_on_equipment_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -34,4 +55,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_104855) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "questions", "equipment"
 end
