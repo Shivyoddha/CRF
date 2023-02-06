@@ -74,3 +74,5 @@ group :test do
   gem "webdrivers"
 end
 gem "sassc-rails"
+
+gem 'cancancan'
