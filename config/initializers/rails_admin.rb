@@ -1,6 +1,7 @@
 RailsAdmin.config do |config|
   config.asset_source = :sprockets
-
+  config.authorize_with :cancancan
+  config.main_app_name = ["CRF Admin", ""]
   ### Popular gems integration
 
   ## == Devise ==
@@ -38,5 +39,10 @@ RailsAdmin.config do |config|
     ## With an audit adapter, you can add:
     # history_index
     # history_show
-  end
+
+    config.authenticate_with do
+     warden.authenticate! scope: :user
+      end
+    config.current_user_method(&:current_user)
+    end
 end

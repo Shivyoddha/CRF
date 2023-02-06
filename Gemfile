@@ -14,6 +14,8 @@ gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
+#cancacan gem for authorization
+gem 'cancancan'
 
 # devise gem for login features
 gem 'devise', '~> 4.8', '>= 4.8.1'
