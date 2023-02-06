@@ -2,22 +2,22 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%=render "loginHeading"%>
 <!-- HTML code for container of instruction  and form card -->
-<div id="container" class='container'>
-  <div id="guide-wrap">
-    <div id="instruction" class="card">
-      <h2>Instructions</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">This is the Registration Page for users</li>
-        <li class="list-group-item">Select Your User Type Before Filling the form</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A third item</li>
-      </ul>
+<div id="container" class='container mt-4'>
+    <div id="guide-wrap">
+      <div id="instruction" class="card">
+        <h2>Instructions</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">This is the Registration Page for users</li>
+          <li class="list-group-item">Select Your User Type Before Filling the form</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div id="login">
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div id="login">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h2>Login</h2>
         <% if notice %>
           <%=render 'layoutalerts' %>
@@ -31,7 +31,7 @@
                   <%# <label for="exampleInputEmail1" class="form-label">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                   required placeholder="Enter Your Email Address"> %>
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  <div id="emailHelp" class="form-text">We never share your email with anyone else.</div>
                 </div>
 
                 <div class="mb-3 field" id="in-pass">
@@ -47,7 +47,10 @@
                 <div class="actions">
                   <%= f.submit "Login" ,class:"btn btn-primary" ,id:"sbt"%>
                   <%= render "devise/shared/error_messages" , resource: resource %>
-                  <span>Don't Have an Account?</span> <%= link_to "Sign up", new_registration_path(resource_name) %>
+                </div>
+                <div class='mt-3'>
+                  <span>Don't Have an Account?</span>
+                  <%= link_to "Sign up", new_registration_path(resource_name) %>
                 </div>
                   <%end%>
   </div>
