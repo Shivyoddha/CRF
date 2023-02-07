@@ -33,14 +33,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_191852) do
     t.text "facilities"
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "context"
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id"
-  end
-
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,6 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_06_191852) do
 
   add_foreign_key "answers", "equipment"
   add_foreign_key "answers", "questions"
-  add_foreign_key "feedbacks", "users"
   add_foreign_key "questions", "equipment"
 end

@@ -1,7 +1,7 @@
 
 
 <%= stylesheet_link_tag "loginFeatures"%>
-<%=render "loginHeading"%>
+<%=render "partials/loginHeading"%>
 <!-- HTML code for container of instruction  and form card -->
 <div id="container" class='container mt-4'>
 
@@ -24,7 +24,7 @@
       <%= render "devise/shared/error_messages" , resource: resource %>
 
         <% if notice %>
-          <%=render 'layoutalerts' %>
+          <%=render 'partials/layoutalerts' %>
             <% end %>
                 <div class="mb-3 field" id="email-input">
                   <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
@@ -54,7 +54,7 @@
 </div>
 
 </div>
-   <%=render "footer" %>
+   <%=render "partials/footer" %>
 
 
   </body>
