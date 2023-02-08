@@ -1,15 +1,14 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%=render "partials/loginHeading"%>
-<%= link_to 'LogOut',destroy_user_session_path,method: :delete %>
 
 <div class="equipments-container container">
+  <% @equipments = Equipment.all.map do |equipment| %>
         <div class="equipments">
             <div class="card" style="width: 25rem;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
+                      <%= equipment.name %>
                     </div>
                     <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <span class="badge rounded-pill text-bg-warning">Status</span>
@@ -21,95 +20,9 @@
                 </div>
               </div>
         </div>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
-                    </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
-        </div>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
-                    </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
-        </div>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
-                    </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
-        </div>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
-                    </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
-        </div>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-
-                      <h5 class="card-title">X-ray Diffraction</h5>
-                    </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
-        </div>
+        <% end %>
 </div>
+
+<%= link_to 'LogOut',destroy_user_session_path,method: :delete %>
+
 <%=render "partials/footer" %>
