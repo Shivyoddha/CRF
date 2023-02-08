@@ -1,28 +1,73 @@
 <%= stylesheet_link_tag "loginFeatures"%>
+<div>
 <%=render "partials/loginHeading"%>
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div class="btn-group btn-profile">
+  <button type="button" class="btn btn-outline-primary">Action</button>
+  <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><%= link_to 'LogOut',destroy_user_session_path,method: :delete %></a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+    </div>
+  </nav>
+</div>
 
-<div class="equipments-container container">
+<div class="equipments-container container mt-3">
   <% @equipments = Equipment.all.map do |equipment| %>
-        <div class="equipments">
-            <div class="card" style="width: 25rem;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <div class="heading-status">
-                      <%= equipment.name %>
+        <div class="equipment">
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold"><%= equipment.name %></h5>
+                    <span class="badge rounded-pill status-active" id="status"><%= equipment.status %></span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+                
+                <span class="fw-bold">Features</span>
+                <p class="card-text text-muted"> <%= equipment.feature %></p>
+
+                <div class="wrap-action">
+                    <a href="#" class="btn btn-primary know-more" >Know More</a>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Regular Slot</a></li>
+                            <li><a class="dropdown-item" href="#">Express Slot</a></li>
+                        </ul>
                     </div>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="badge rounded-pill text-bg-warning">Status</span>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">12 samples tested till date</small>
-                </div>
-              </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>    
+            </div>
         </div>
+    </div>
         <% end %>
 </div>
 
-<%= link_to 'LogOut',destroy_user_session_path,method: :delete %>
+
 
 <%=render "partials/footer" %>
