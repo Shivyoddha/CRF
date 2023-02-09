@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_151332) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_09_170307) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -21,12 +21,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_151332) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "booking", force: :cascade do |t|
+  create_table "briefs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "equipment_id"
+    t.integer "title_id"
+    t.integer "content_id"
     t.string "name"
-    t.string "date"
-    t.string "time"
+    t.index ["content_id"], name: "index_briefs_on_content_id"
+    t.index ["equipment_id"], name: "index_briefs_on_equipment_id"
+    t.index ["title_id"], name: "index_briefs_on_title_id"
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "equipment_id"
+    t.integer "title_id"
+    t.string "name"
+    t.index ["equipment_id"], name: "index_contents_on_equipment_id"
+    t.index ["title_id"], name: "index_contents_on_title_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -41,22 +55,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_151332) do
     t.text "facilities"
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "context"
-    t.integer "user_id"
-    t.integer "users_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id"
-    t.index ["users_id"], name: "index_feedbacks_on_users_id"
-  end
-
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content"
     t.integer "equipment_id"
     t.string "name"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
+  end
+
+  create_table "titles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "equipment_id"
+    t.index ["equipment_id"], name: "index_titles_on_equipment_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,18 +89,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_151332) do
     t.string "rollno"
     t.string "contact"
     t.string "lastname"
+    t.string "firstname"
     t.string "role"
     t.boolean "admin_role"
     t.boolean "chairman_role"
     t.boolean "user_role"
-    t.string "Name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "answers", "equipment"
   add_foreign_key "answers", "questions"
-  add_foreign_key "feedbacks", "users"
-  add_foreign_key "feedbacks", "users", column: "users_id"
+  add_foreign_key "briefs", "contents"
+  add_foreign_key "briefs", "equipment"
+  add_foreign_key "briefs", "titles"
+  add_foreign_key "contents", "equipment"
+  add_foreign_key "contents", "titles"
   add_foreign_key "questions", "equipment"
+  add_foreign_key "titles", "equipment"
 end
