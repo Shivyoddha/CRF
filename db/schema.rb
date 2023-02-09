@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_170307) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_09_173202) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -64,6 +64,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_170307) do
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
   end
 
+  create_table "slots", force: :cascade do |t|
+    t.string "slot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_slots_on_user_id"
+  end
+
   create_table "titles", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -106,5 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_170307) do
   add_foreign_key "contents", "equipment"
   add_foreign_key "contents", "titles"
   add_foreign_key "questions", "equipment"
+  add_foreign_key "slots", "users"
   add_foreign_key "titles", "equipment"
 end
