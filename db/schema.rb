@@ -57,21 +57,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_063752) do
     t.text "facilities"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "context"
+    t.integer "user_id"
+    t.integer "users_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+    t.index ["users_id"], name: "index_feedbacks_on_users_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
     t.integer "equipment_id"
     t.string "name"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
   end
 
   create_table "slots", force: :cascade do |t|
-    t.string "slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "slotdate"
+    t.time "slottime"
+    t.integer "users_id"
     t.integer "user_id"
     t.index ["user_id"], name: "index_slots_on_user_id"
+    t.index ["users_id"], name: "index_slots_on_users_id"
   end
 
   create_table "titles", force: :cascade do |t|
@@ -99,13 +111,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_063752) do
     t.string "rollno"
     t.string "contact"
     t.string "lastname"
-    t.string "firstname"
     t.string "role"
     t.boolean "admin_role"
     t.boolean "chairman_role"
     t.boolean "user_role"
+    t.string "Name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "feedbacks", "users", column: "users_id"
+  add_foreign_key "slots", "users", column: "users_id"
 end

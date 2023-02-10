@@ -38,7 +38,7 @@
                                                   status-undermaintainance is for maintainance state
                                                   status-unavailable for unavailable state -->
                 </div>
-                
+
                 <span class="fw-bold">Features</span>
                 <p class="card-text text-muted"> <%= equipment.feature %></p>
 
@@ -49,8 +49,8 @@
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"> <%= link_to "Regular Slot", home_equipmentQuestion_path %> </a></li>
-                            <li><a class="dropdown-item" href="#"> <%= link_to "Express Slot", home_equipmentQuestion_path %> </a></li>
+                            <li><a class="dropdown-item" href="#"> <%= link_to "Regular Slot", forms_equipmentQuestion_path %> </a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <div class="badge badge-success badge-outlined">Available</div>
                     <div class="badge badge-warning badge-outlined">Not Available</div>
-                </div>    
+                </div>
             </div>
         </div>
     </div>

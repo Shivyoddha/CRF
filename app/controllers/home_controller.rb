@@ -4,10 +4,7 @@ class HomeController < ApplicationController
     if @user.chairman_role|@user.admin_role == true
     redirect_to rails_admin_path
    else
+   end
 
-   end
-    def equipmentQuestion
-    @equipment=Equipment.find(current_equipment.id)
-   end
   end
 end
