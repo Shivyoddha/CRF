@@ -1,1 +1,23 @@
-<h1><%= @equipment.name%></h1>
+<strong><% @title=@equipment.titles.all.map do |title| %></strong>
+<h2><%= title.title %></h2>
+<ul>
+
+
+  <%@content=title.contents.all.map do  |content| %>
+  <li>
+  <strong><%= content.name %>:</strong>
+  <ul>
+
+
+     <%@brief=content.briefs.all.map do  |brief| %>
+      <li><%= brief.name %> </li>
+     <%end%>
+
+
+    </ul>
+  </li>
+  <%end%>
+
+
+</ul>
+<%end%>
