@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_170307) do
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "content"
+    t.text "content"
     t.integer "equipment_id"
     t.string "name"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"

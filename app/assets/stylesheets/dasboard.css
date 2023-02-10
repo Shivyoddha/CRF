@@ -10,17 +10,18 @@
     /* font-family: "Unbounded", 'cursive'; */
     font-family: "Quicksand", "sans-serif";
 }
-.equipment{
-    /* background: #1c87c9; */
-}
+/* .equipment{
+    background: #1c87c9;
+} */
 .card{
     --bs-border-radius: 0.85em;
     background-color: #f9fdff;
     width: 25rem;
 }
 
-.heading-status{
-}
+/* .heading-status{
+} */
+
 #more{
     display: flex;
 }

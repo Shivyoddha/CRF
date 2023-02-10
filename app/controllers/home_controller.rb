@@ -6,5 +6,8 @@ class HomeController < ApplicationController
    else
 
    end
+    def equipmentQuestion
+    @equipment=Equipment.find(current_equipment.id)
+   end
   end
 end
