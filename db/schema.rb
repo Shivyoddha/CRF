@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_09_173202) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_10_063752) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "question_id"
     t.integer "equipment_id"
     t.string "name"
+    t.integer "user_id"
     t.index ["equipment_id"], name: "index_answers_on_equipment_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "briefs", force: :cascade do |t|
@@ -106,14 +108,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_173202) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "equipment"
-  add_foreign_key "answers", "questions"
-  add_foreign_key "briefs", "contents"
-  add_foreign_key "briefs", "equipment"
-  add_foreign_key "briefs", "titles"
-  add_foreign_key "contents", "equipment"
-  add_foreign_key "contents", "titles"
-  add_foreign_key "questions", "equipment"
-  add_foreign_key "slots", "users"
-  add_foreign_key "titles", "equipment"
 end
