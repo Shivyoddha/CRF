@@ -43,14 +43,15 @@
                 <p class="card-text text-muted"> <%= equipment.feature %></p>
 
                 <div class="wrap-action">
-                    <a href="#" class="btn btn-primary know-more" >Know More</a>
+                    <%= link_to "Know More", forms_know_path(id:equipment.id) ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"> <%= link_to "Regular Slot", forms_equipmentQuestion_path %> </a></li>
 
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"> <%= link_to "Regular Slot", forms_equipmentQuestion_path(id:equipment.id) %> </a></li>
+                              <li><a class="dropdown-item" href="#"> <%= link_to "Express Slot", forms_equipmentQuestion_path(id:equipment.id) %> </a></li>
                         </ul>
                     </div>
                 </div>
