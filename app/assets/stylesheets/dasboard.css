@@ -1,11 +1,17 @@
 .equipments-container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: 1em;
+    grid-template-columns: repeat(auto-fill, minmax(24em, 2fr));
+    /* grid-template-rows: repeat(1fr); */
+    grid-column-gap: 2em;
     grid-row-gap: 2em;
+    margin: auto;
+    max-width: 95%;
+    place-items:center;
+    /* font-family: "Unbounded", 'cursive'; */
+    font-family: "Quicksand", "sans-serif";
 }
 .equipment{
+    /* background: #1c87c9; */
 }
 .card{
     --bs-border-radius: 0.85em;
@@ -136,6 +142,8 @@ h5{
     --bs-btn-hover-bg: #3f5ac9;
     --bs-btn-hover-border-color: #3f5ac9;
 }
+
+
 
 .btn-profile{
     margin: 0 5em 0 0;;
