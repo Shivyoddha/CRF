@@ -3,10 +3,14 @@
 <div id='login'>
     <h1><%= @equipment.name%></h1>
 <% @question = @equipment.questions.all.map do |q| %>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label"><%= q.name%></label>
+   <!-- <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"></label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-  </div>
+  </div> -->
+  <div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <label for="floatingInput"><%= q.name%></label>
+</div>
 <%end%>
 <div class="actions">
     <button type="submit" class="btn btn-primary">Submit</button>
