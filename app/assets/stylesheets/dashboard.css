@@ -15,12 +15,23 @@
 
 .profile-dropdown{
   text-decoration: none;
-  color: #212529;
-  padding: 4px 16px;
 }
 
 #profile-dropdown-info{
-  font-size:smaller;
+  text-align:start;
+  padding: 0 1em 0 1em;
+}
+
+hr {
+  margin: 0.5rem 0;
+}
+
+#signed-in-as {
+  font-size: smaller;
+}
+
+#signed-in-name {
+ 
 }
 
 #log-out {
@@ -194,6 +205,10 @@ border-radius: 99999px
 }
 
 @media only screen and (max-width: 660px) {
+  h5 {
+    width: 84%;
+  }
+
   #search{
       margin: 0 0 0 0;
   }
