@@ -1,0 +1,73 @@
+#edit-page-heading {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    font-family: "Unbounded", "sans-serif";
+    background-color: #f9fdff;
+    margin: 0 auto 0.3em auto;
+    border-radius: 1em 1em 0 0;
+}
+
+.hero {
+    background-color: #f9fdff;
+    padding: 1em 7em;
+    width: 65%;
+    margin: 0 auto auto auto;
+    border-radius: 0 0 15px 15px;
+}
+
+#account-delete {
+
+}
+
+#account-delete-heading {
+    display: flex;
+    justify-content: center;
+    font-family: "Unbounded", "sans-serif";
+    font-size: 2em;
+    
+}
+
+.edit-page-notices{
+    font-size:14px;
+}
+
+.back-btn {
+    width: 100%;
+    text-decoration: none;
+  }
+
+#account-delete{
+    margin: 4em 0 0 0;
+}
+#delete-account-alert{
+    font-size:15px;
+}
+
+.red-text{
+    color: #fa3b3b;
+}
+#dlt{
+    width: 100%;
+    background-color: #ffffff;
+    color: #fa3b3b;
+    border: 1px solid #ff6e6e;
+    transition-duration: 0.5s;
+}
+#dlt:hover{
+    background-color: #ff6e6e;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 912px) {
+    #edit-page-heading {
+        width: 98%;
+    }
+    
+    .hero {
+        width: 98%;
+        padding: 1em 1em;
+    }
+
+
+}
