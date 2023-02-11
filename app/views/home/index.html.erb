@@ -1,25 +1,30 @@
 <%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "dashboard"%>
 <%=render "partials/loginHeading"%>
 
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-      <div class="btn-group btn-profile">
-  <button type="button" class="btn btn-outline-primary">My Profile</button>
-  <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#"><%= link_to 'LogOut',destroy_user_session_path,method: :delete %></a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item" href="#">Separated link</a></li>
-  </ul>
-</div>
+      <div id="search-div">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+
+      <div id="profile-div">
+        <div class="btn-group btn-profile">
+          <button type="button" class="btn btn-outline-warning">My Profile</button>
+          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">My Slots</a></li>
+            <li><a class="dropdown-item" href="#">Records</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown" %></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -39,8 +44,8 @@
                                                   status-unavailable for unavailable state -->
                 </div>
 
-                <span class="fw-bold">Features</span>
-                <p class="card-text text-muted"> <%= equipment.feature %></p>
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> <%= equipment.location %></p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", forms_know_path(id:equipment.id) ,class:"btn btn-primary know-more"%>
@@ -50,8 +55,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"> <%= link_to "Regular Slot", forms_equipmentQuestion_path(id:equipment.id) %> </a></li>
-                              <li><a class="dropdown-item" href="#"> <%= link_to "Express Slot", forms_equipmentQuestion_path(id:equipment.id) %> </a></li>
+                            <li> <%= link_to "Regular Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
