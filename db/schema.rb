@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_10_113928) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,11 +60,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_113928) do
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
     t.integer "equipment_id"
     t.string "name"
-    t.string "type"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
+  end
+
+  create_table "questions_users", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "question_id", null: false
+    t.index ["question_id", "user_id"], name: "index_questions_users_on_question_id_and_user_id"
+    t.index ["user_id", "question_id"], name: "index_questions_users_on_user_id_and_question_id"
   end
 
   create_table "titles", force: :cascade do |t|
@@ -92,11 +97,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_10_113928) do
     t.string "rollno"
     t.string "contact"
     t.string "lastname"
-    t.string "firstname"
     t.string "role"
     t.boolean "admin_role"
     t.boolean "chairman_role"
     t.boolean "user_role"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
