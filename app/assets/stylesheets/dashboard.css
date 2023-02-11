@@ -6,7 +6,9 @@
 #search-profile:hover {
     --bs-tertiary-bg-rgb: #554242;
 } */
-
+.font-quicksand {
+  font-family: "Quicksand", "sans-serif";
+}
 #search{
   margin: 0 0 0 3em;
 }
@@ -16,6 +18,23 @@
   color: #212529;
   padding: 4px 16px;
 }
+
+#profile-dropdown-info{
+  font-size:smaller;
+}
+
+#log-out {
+  color: #fa3b3b;
+  transition-duration: 0.2s;
+}
+#log-out:hover {
+  color: #fe0a0a;
+}
+
+.btn {
+  font-family: "Quicksand", "sans-serif";
+}
+
 
 .equipments-container{
   display: grid;
