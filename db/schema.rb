@@ -60,16 +60,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
     t.integer "equipment_id"
     t.string "name"
+    t.string "type"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
-  end
-
-  create_table "questions_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
-    t.index ["question_id", "user_id"], name: "index_questions_users_on_question_id_and_user_id"
-    t.index ["user_id", "question_id"], name: "index_questions_users_on_user_id_and_question_id"
   end
 
   create_table "titles", force: :cascade do |t|
