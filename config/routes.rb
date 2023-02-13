@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home/index'
  get 'forms/equipmentQuestion'
  get 'forms/know'
+ get 'forms/records'
   devise_scope :user do
   root to: "devise/sessions#new"
 end
