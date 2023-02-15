@@ -91,7 +91,7 @@
 
 #content {
     background-color: rgb(98, 98, 197);
-    height: 100vh;
+    height: auto;
     font-family: "quicksand", sans-serif;
 }
 
@@ -113,4 +113,9 @@
 .mini-card-icon {
     width: 5em;
     padding: 1.3em 0 0 0;
+}
+
+#chart {
+    display: flex;
+    justify-content: center;
 }

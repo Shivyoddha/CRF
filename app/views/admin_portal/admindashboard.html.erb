@@ -56,56 +56,98 @@
         <div id="current-tab">
             <h2 class="fw-bold" id="tab-name">Dashboard</h2>
         </div>
+        <%# the mini-cards coded here %>
         <div id="mini-cards">
-        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-success mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
-        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title fw-bold">Primary card title</h5>
-                <%=image_tag 'approval', class:"mini-card-icon" %>
+            <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
             </div>
-        </div>
 
+        </div>
+        <div id="chart">
+            <canvas id="myChart" style="width:100%;max-width:700px">  </canvas>
+
+            <script>
+                function myFunction() {
+                    var array=[]
+                    for(let i=1; i<2; i++){
+                        "<%@equipment=Equipment.all.each do |equip|%> "
+                        array.push("<%=equip.name%>")
+                        "<%end%>"
+                    }
+                return array;
+                } 
+                var xValues = myFunction();
+                var yValues = [55, 49, 44, 24, 15];
+                var barColors = [
+                "#b91d47",
+                "#00aba9",
+                "#2b5797",
+                "#e8c3b9",
+                "#1e7145"
+                ];
+
+                new Chart("myChart", {
+                type: "pie",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                    display: true,
+                    text: "World Wide Wine Production 2018"
+                    }
+                }
+                });
+        </script>
         </div>
 
     </div>

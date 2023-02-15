@@ -53,15 +53,20 @@
                 <p class="card-text text-muted"> <%= equipment.location %></p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", forms_know_path(id:equipment.id) ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path(id:equipment.id) ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
                         <ul class="dropdown-menu">
+<<<<<<< HEAD
                           <li> <%= link_to "Regular Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
                             <li> <%= link_to "Express Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+=======
+                            <li> <%= link_to "Regular Slot", forms_xrd_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", forms_xrd_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+>>>>>>> 982db643172e8de01e68e345d59d6b665ccfb3d7
                         </ul>
                     </div>
                 </div>

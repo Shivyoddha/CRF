@@ -1,10 +1,18 @@
 class FormsController < ApplicationController
-  def equipmentQuestion
-@equipment=Equipment.find(params[:id])
- end
- def know
-@equipment=Equipment.find(params[:id])
+ def xrd
+
 end
-def records
+def lcms
+
+end
+def raman
+
+end
+def three
+
+end
+
+def tga
+
 end
 end
