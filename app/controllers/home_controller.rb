@@ -5,6 +5,5 @@ class HomeController < ApplicationController
     redirect_to admin_portal_admindashboard_path
    else
    end
-
   end
 end
