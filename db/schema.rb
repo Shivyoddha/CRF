@@ -57,14 +57,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
     t.text "facilities"
   end
 
+  create_table "options", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "question_id"
+    t.string "name"
+    t.index ["question_id"], name: "index_options_on_question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
+    t.string "content"
     t.integer "equipment_id"
     t.string "name"
-    t.string "type"
+    t.string "types"
     t.index ["equipment_id"], name: "index_questions_on_equipment_id"
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.string "slot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_slots_on_user_id"
   end
 
   create_table "titles", force: :cascade do |t|
