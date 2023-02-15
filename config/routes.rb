@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'home/index'
-  get 'forms/equipmentQuestion'
-  get 'forms/know'
-  get 'forms/records'
+  get 'forms/xrd'
+  get 'know/xrd'
+  get 'records/record'
   get 'admin_portal/admindashboard'
-  
+
   devise_scope :user do
   root to: "devise/sessions#new"
 end
