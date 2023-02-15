@@ -1,5 +1,18 @@
 class FormsController < ApplicationController
  def xrd
-@equipment=Equipment.find(params[:id])
+
+end
+def lcms
+
+end
+def raman
+
+end
+def three
+
+end
+
+def tga
+
 end
 end
