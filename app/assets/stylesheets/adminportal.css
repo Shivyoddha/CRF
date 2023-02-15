@@ -1,22 +1,32 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
 }
 
+#title {
+    padding: 0 0 0 1em;
+    font-family: "unbounded", "sans-serif";
+}
+
+#tab-name {
+    cursor: default;
+    text-align: center;
+}
+
 /* Heading section */
-.navbar{
+.navbar {
     font-family: quicksand;
 }
 
-.navbar-nav{
+.navbar-nav {
     align-items: end;
 }
 
-#admin-mail{
+#admin-mail {
     padding-right: 1%;
 }
 
-#logout{
+#logout {
     margin-right: 9px;
 }
 
@@ -34,11 +44,10 @@
 #navigation {
     display: flex;
     flex-direction: column;
-    background-color: #a9aaad;
+    /* background-color: #a9aaad; */
     min-width: 270px;
     font-family: "quicksand", sans-serif;
     padding: 15px;
-    border-radius: 0 1em 1em 0;
 }
 
 /* logo picture styled */
@@ -46,10 +55,10 @@
     display: flex;
     justify-content: center;
 }
-#logopic{
+
+#logopic {
     height: 6.5em;
-    background-color: #3f5bc920;
-    border-color:#3f5ac9;
+    background-color: #3f5ac966;
 }
 
 .sidelinks {
@@ -60,19 +69,51 @@
 
 .sidelinks-list {
     list-style: none;
-    padding: 2em 0 0 0;
+    padding: 2em 0 2em 0;
+    margin: 1em 0 0 0;
+    border-radius: 1em;
+    transition-duration: 0.3s;
+}
+
+.sidelinks-list:hover {
+    background-color: #fff5e8;
+}
+
+.sidelinks-model-list {
+    padding: 2em 0;
 }
 
 .sidelink-wrap {
     display: flex;
     align-items: center;
+    padding: 0 0 0 1.5em;
+    border-radius: 1em;
 }
-.sidelink-wrap:hover{
-    background-color: #b1b4be;
-    color: #8221d1;
+
+.sidelink-wrap-model {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border-radius: 1em;
+}
+
+.sidelink-wrap:hover {
+    background-color: #4b49ac59;
     transition-duration: 0.2s;
-    transform: scale(1.05);
+    transform: scale(1.02);
     text-decoration: none;
+}
+
+.sidelink-wrap-model:hover {
+    background-color: #4b49ac59;
+    transition-duration: 0.2s;
+    transform: scale(1.02);
+    text-decoration: none;
+}
+
+ol,
+ul {
+    padding-left: 0rem;
 }
 
 /* icons of the navigation pane elements resized accordingly */
@@ -82,26 +123,36 @@
 
 .sidelinks a {
     text-decoration: none;
-    color: #3f5ac9;
+    color: #1d40d2;
     margin: 10px;
     padding: 5px;
-    border-radius: 10px;
-    transition: 0.3s;
+    font-size: 1.15em;
 }
 
+.sidelinks-model-list {
+    list-style: none;
+    border-radius: 1em;
+}
+
+.sidelinks-model-list:hover {
+    background-color: #fff5e8;
+}
+
+.sidelinks-model-list>ul>li {
+    padding-left: 0%;
+}
+
+
 #content {
-    background-color: rgb(98, 98, 197);
     height: auto;
     font-family: "quicksand", sans-serif;
+    background-color: #eae8ff;
 }
 
 #current-tab {
     padding: 1em 0 0 1em;
 }
 
-#tab-name {
-    cursor: default;
-}
 
 #mini-cards {
     display: grid;
@@ -112,10 +163,87 @@
 
 .mini-card-icon {
     width: 5em;
-    padding: 1.3em 0 0 0;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #ffffff4d;
+    border-radius: 1em;
+    transition: 0.5s;
+}
+
+.card {
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.mini-card-icon:hover {
+    transform: scale(1.02);
+}
+
+#stats {
+    text-align: center;
 }
 
 #chart {
     display: flex;
     justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #eae8ff;
+    flex-direction: column;
+}
+
+#myChart {
+    width: 100%;
+    max-width: 70em;
+    display: block;
+    background-color: #f9fdff;
+    padding: 2em;
+    border-radius: 2em;
+}
+
+@media only screen and (max-width: 1430px) {
+    #myChart {
+        max-width: 55em;
+    }
+}
+
+@media only screen and (max-width: 1110px) {
+    #myChart {
+        max-width: 40em;
+    }
+}
+
+@media only screen and (max-width: 1110px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidelink-wrap {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .sidelink-wrap-model {
+        justify-content: center;
+    }
+
+    #myChart {
+        max-width: 35em;
+    }
+}
+
+@media only screen and (max-width: 626px) {
+    #mini-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18em, 0fr));
+        justify-content: center;
+        padding: 0%;
+    }
+
+    #myChart {
+        max-width: 20em;
+        padding: 0%;
+    }
 }
