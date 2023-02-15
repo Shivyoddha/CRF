@@ -61,7 +61,9 @@
             <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title fw-bold">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                    <div id="icon-content">
+                        <%=image_tag 'approval', class:"mini-card-icon" %>
+                    </div>
                 </div>
             </div>
             <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
@@ -109,7 +111,7 @@
 
         </div>
         <div id="chart">
-            <canvas id="myChart" style="width:100%;max-width:700px">  </canvas>
+            <canvas id="myChart" class="">  </canvas>
 
             <script>
                 function myFunction() {
@@ -120,7 +122,7 @@
                         "<%end%>"
                     }
                 return array;
-                } 
+                }
                 var xValues = myFunction();
                 var yValues = [55, 49, 44, 24, 15];
                 var barColors = [
@@ -147,7 +149,7 @@
                     }
                 }
                 });
-        </script>
+            </script>
         </div>
 
     </div>
