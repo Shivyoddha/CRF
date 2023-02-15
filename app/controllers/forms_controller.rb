@@ -1,10 +1,5 @@
 class FormsController < ApplicationController
-  def equipmentQuestion
+ def xrd
 @equipment=Equipment.find(params[:id])
- end
- def know
-@equipment=Equipment.find(params[:id])
-end
-def records
 end
 end
