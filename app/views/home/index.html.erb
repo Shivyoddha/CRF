@@ -18,26 +18,13 @@
             <span class="visually-hidden">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu font-quicksand">
-            <div id="profile-dropdown-info">
-              <p class="text-muted" id="signed-in-as">Signed in as<p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 49eb731b773c3f393bf7465652892628e407b5b7
-              <strong id="signed-in-name"><%= current_user.name %> <%= current_user.lastname %></strong>
+            <div>
+              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+              <a class="dropdown-item" href="#">UserName</a>
             </div>
-            <hr>
-            <li><%= link_to "Edit Profile", edit_user_registration_path,class:"dropdown-item" %></li>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
             <li><a class="dropdown-item" href="#">My Slots</a></li>
             <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
-=======
-              <strong id="signed-in-name"><%= current_user.name%><%= current_user.lastname%></strong>
-            </div>
-            <hr>
-            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-            <li><%= link_to 'My Slots',forms_records_path, class:"dropdown-item"%></li>
-            <!-- <li><a class="dropdown-item" href="#">Records</a></li> -->
->>>>>>> f7e09bea5486b96f1cb022b6d041274a4a771d31
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
           </ul>
@@ -73,8 +60,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_equipmentQuestion_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_answer_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_answer_path(id:equipment.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
