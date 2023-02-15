@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'know/xrd'
   get 'records/record'
   get 'admin_portal/admindashboard'
+  get 'forms/three'
+  get 'forms/lcms'
+  get 'forms/raman'
+  get 'forms/tga'
 
   devise_scope :user do
   root to: "devise/sessions#new"
