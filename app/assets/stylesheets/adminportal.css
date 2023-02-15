@@ -1,0 +1,116 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Heading section */
+.navbar{
+    font-family: quicksand;
+}
+
+.navbar-nav{
+    align-items: end;
+}
+
+#admin-mail{
+    padding-right: 1%;
+}
+
+#logout{
+    margin-right: 9px;
+}
+
+.container {
+    max-width: 100%;
+    margin: auto;
+    padding: 0%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+/* NAvigation pane organized and styled */
+#navigation {
+    display: flex;
+    flex-direction: column;
+    background-color: #a9aaad;
+    min-width: 270px;
+    font-family: "quicksand", sans-serif;
+    padding: 15px;
+    border-radius: 0 1em 1em 0;
+}
+
+/* logo picture styled */
+#navigation-logo {
+    display: flex;
+    justify-content: center;
+}
+#logopic{
+    height: 6.5em;
+    background-color: #3f5bc920;
+    border-color:#3f5ac9;
+}
+
+.sidelinks {
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+}
+
+.sidelinks-list {
+    list-style: none;
+    padding: 2em 0 0 0;
+}
+
+.sidelink-wrap {
+    display: flex;
+    align-items: center;
+}
+.sidelink-wrap:hover{
+    background-color: #b1b4be;
+    color: #8221d1;
+    transition-duration: 0.2s;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+/* icons of the navigation pane elements resized accordingly */
+.sidelink-logo {
+    width: 2em;
+}
+
+.sidelinks a {
+    text-decoration: none;
+    color: #3f5ac9;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+#content {
+    background-color: rgb(98, 98, 197);
+    height: 100vh;
+    font-family: "quicksand", sans-serif;
+}
+
+#current-tab {
+    padding: 1em 0 0 1em;
+}
+
+#tab-name {
+    cursor: default;
+}
+
+#mini-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18em, 2fr));
+    padding: 2em 0 0 2em;
+}
+
+
+.mini-card-icon {
+    width: 5em;
+    padding: 1.3em 0 0 0;
+}

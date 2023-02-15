@@ -1,0 +1,116 @@
+<%= stylesheet_link_tag "adminportal" %> 
+
+<div id="header">
+<nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+<a class="navbar-brand" href="">CRF ADMIN</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="btn-head">
+<ul class="navbar-nav ms-auto">
+    <li class="nav-item" id="admin-mail">
+        <a class="nav-link" href="#">admin@mail</a>
+    </li>
+    <li class="nav-item" id="logout">
+        <a class="btn btn-danger" href="#" role="button">Logout</a>
+    </li>
+</ul>
+</div>
+</nav>
+</div>
+<div class="container">
+
+    <div id="navigation">
+        <!--below is the button of Nitk CRF logo-->
+        <div id="navigation-logo">
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+        </div>
+
+        <div class="sidelinks">
+            <ul class="sidelinks-list">
+                <%# below are code to get items on the navigation pane %>
+                <li class="nav-item">
+                    <div class="sidelink-wrap">
+                         <%=image_tag 'dashboard', class:"sidelink-logo" %> <%# This is the icon of the navigation element %>
+                        <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="sidelink-wrap">
+                        <%=image_tag 'statistics', class:"sidelink-logo" %> <%# This is the icon of the navigation element %>
+                        <a class="nav-link active" aria-current="page" href="#">Statistics</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="sidelink-wrap">
+                        <%=image_tag 'logout', class:"sidelink-logo" %> <%# This is the icon of the navigation element %>
+                        <a class="nav-link active" id="logout" aria-current="page" href="#">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<%# the content section is coded here %>
+    <div id="content">
+        <div id="current-tab">
+            <h2 class="fw-bold" id="tab-name">Dashboard</h2>
+        </div>
+        <div id="mini-cards">
+        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Primary card title</h5>
+                <%=image_tag 'approval', class:"mini-card-icon" %>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+
+    
+</div>
+
+    
