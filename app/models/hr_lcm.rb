@@ -1,0 +1,2 @@
+class HrLcm < ApplicationRecord
+end

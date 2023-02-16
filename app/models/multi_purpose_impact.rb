@@ -1,0 +1,2 @@
+class MultiPurposeImpact < ApplicationRecord
+end

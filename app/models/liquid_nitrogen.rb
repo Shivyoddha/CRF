@@ -1,0 +1,2 @@
+class LiquidNitrogen < ApplicationRecord
+end

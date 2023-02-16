@@ -1,0 +1,2 @@
+class Tgaftir < ApplicationRecord
+end

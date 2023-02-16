@@ -1,0 +1,2 @@
+class IcpM < ApplicationRecord
+end

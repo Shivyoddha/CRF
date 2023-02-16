@@ -1,0 +1,2 @@
+class FtNmr < ApplicationRecord
+end

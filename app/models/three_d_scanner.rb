@@ -1,0 +1,2 @@
+class ThreeDScanner < ApplicationRecord
+end

@@ -3,6 +3,8 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+
+
     if user.admin_role?
       can :manage, :all
       can :access, :rails_admin  # only admin can access Rails Admin
@@ -12,6 +14,7 @@ class Ability
 
     if user.chairman_role?
      can :access, :rails_admin
+
       can :read, :all
     end
   end

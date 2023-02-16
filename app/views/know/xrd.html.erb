@@ -33,21 +33,20 @@
                 </div>
             </div>
         </div>
-        <% @titles = @equipment.titles.all.map do |title| %>
-        <p class="fw-bold hero-element mb-2"><%= title.title%></p>
+
+        <p class="fw-bold hero-element mb-2">title</p>
         <ul>
-        <% @contents = title.contents.all.map do |content| %>
-        <section class="hero-element-text mb-4"><%= content.name%></section>
+
+        <section class="hero-element-text mb-4">content</section>
 
          <!-- <li> -->
-            <% @briefs = content.briefs.all.map do |brief| %>
-            <section><%= brief.name%></section>
-            <% end %>
+
+            <section>brief</section>
+
         <!-- </li> -->
 
-        <% end %>
+
         </ul>
-        <% end %>
 
     </div>
 </div>

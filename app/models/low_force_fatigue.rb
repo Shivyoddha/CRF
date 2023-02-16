@@ -1,0 +1,2 @@
+class LowForceFatigue < ApplicationRecord
+end

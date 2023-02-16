@@ -1,0 +1,2 @@
+class IntergratedMultiRole < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class HrFeseJeol < ApplicationRecord
+end
