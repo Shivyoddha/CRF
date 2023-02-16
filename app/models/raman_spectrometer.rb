@@ -1,0 +1,2 @@
+class RamanSpectrometer < ApplicationRecord
+end

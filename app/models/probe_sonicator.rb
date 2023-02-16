@@ -1,0 +1,2 @@
+class ProbeSonicator < ApplicationRecord
+end

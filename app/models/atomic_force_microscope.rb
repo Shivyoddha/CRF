@@ -1,0 +1,2 @@
+class AtomicForceMicroscope < ApplicationRecord
+end

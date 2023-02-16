@@ -1,0 +1,2 @@
+class LaserFlashAnalyser < ApplicationRecord
+end

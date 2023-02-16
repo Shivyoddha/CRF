@@ -1,0 +1,2 @@
+class UvVisNir < ApplicationRecord
+end

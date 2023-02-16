@@ -1,0 +1,2 @@
+class HighTempVacuum < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class AnsysSystemLab < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Tribometer < ApplicationRecord
+end

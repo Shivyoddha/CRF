@@ -1,0 +1,2 @@
+class ScratchTester < ApplicationRecord
+end

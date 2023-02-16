@@ -1,0 +1,2 @@
+class BetSurface < ApplicationRecord
+end

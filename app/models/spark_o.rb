@@ -1,0 +1,2 @@
+class SparkO < ApplicationRecord
+end

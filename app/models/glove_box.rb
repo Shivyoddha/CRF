@@ -1,0 +1,2 @@
+class GloveBox < ApplicationRecord
+end

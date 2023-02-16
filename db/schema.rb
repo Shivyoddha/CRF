@@ -10,39 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
-  create_table "answers", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
+  create_table "advance_modular_rheometers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "question_id"
-    t.integer "equipment_id"
-    t.string "name"
-    t.integer "user_id"
-    t.index ["equipment_id"], name: "index_answers_on_equipment_id"
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "briefs", force: :cascade do |t|
+  create_table "ansys_system_labs", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "equipment_id"
-    t.integer "title_id"
-    t.integer "content_id"
-    t.string "name"
-    t.index ["content_id"], name: "index_briefs_on_content_id"
-    t.index ["equipment_id"], name: "index_briefs_on_equipment_id"
-    t.index ["title_id"], name: "index_briefs_on_title_id"
   end
 
-  create_table "contents", force: :cascade do |t|
+  create_table "atomic_force_microscopes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "equipment_id"
-    t.integer "title_id"
+  end
+
+  create_table "automatic_multi_specimen_polishers", force: :cascade do |t|
     t.string "name"
-    t.index ["equipment_id"], name: "index_contents_on_equipment_id"
-    t.index ["title_id"], name: "index_contents_on_title_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ball_milling_units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bet_surfaces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cell_imagings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "electro_chemical_polishings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -57,6 +71,132 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
     t.text "facilities"
   end
 
+  create_table "five_axes_cncs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friction_stir_weldings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ft_nmrs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gait_analyses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gas_sensings", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "glove_boxes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "glow_discharges_os", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "high_temp_vacuums", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hr_fese_jeols", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hr_fesm_cars", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hr_lcms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "icp_ms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "impedance_analyzers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "intergrated_multi_roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ion_chromatographies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "laser_flash_analysers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "liquid_nitrogens", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "low_force_fatigues", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "micro_edms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "milli_q_waters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "multi_purpose_impacts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "options", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,30 +205,88 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "content"
-    t.integer "equipment_id"
+  create_table "probe_sonicators", force: :cascade do |t|
     t.string "name"
-    t.string "types"
-    t.index ["equipment_id"], name: "index_questions_on_equipment_id"
-  end
-
-  create_table "slots", force: :cascade do |t|
-    t.string "slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_slots_on_user_id"
   end
 
-  create_table "titles", force: :cascade do |t|
-    t.string "title"
+  create_table "raman_spectrometer", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "equipment_id"
-    t.index ["equipment_id"], name: "index_titles_on_equipment_id"
+    t.string "sample"
+    t.string "measurement"
+    t.string "stype"
+    t.string "description"
+    t.string "toxicity"
+    t.string "carcinogenic"
+    t.string "compatability"
+    t.string "more"
+  end
+
+  create_table "raman_spectrometers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scratch_testers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spark_os", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spectro_radiometers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tgaftirs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sample"
+    t.string "stype"
+    t.string "measurement"
+    t.string "nature"
+    t.string "mintemp"
+    t.string "maxtemp"
+    t.string "scanrate"
+    t.string "atmosphere"
+    t.string "hazard"
+    t.string "compatability"
+    t.string "explosive"
+    t.string "more"
+  end
+
+  create_table "three_d_scanners", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sample"
+    t.string "size"
+    t.string "texture"
+    t.string "format"
+    t.string "more"
+  end
+
+  create_table "tribometers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ultra_centrifuges", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -115,6 +313,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_193653) do
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "uv_vis_nirs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "x_ray_diffractions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sample"
+    t.string "measurement"
+    t.string "minD"
+    t.string "stype"
+    t.string "maxD"
+    t.string "reference"
+    t.string "more"
+  end
+
+  create_table "zeta_potential_sizers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

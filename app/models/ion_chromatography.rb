@@ -1,0 +1,2 @@
+class IonChromatography < ApplicationRecord
+end
