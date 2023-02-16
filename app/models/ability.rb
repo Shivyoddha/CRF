@@ -6,10 +6,10 @@ class Ability
 
 
     if user.admin_role?
-
       can :manage, :all
       can :access, :rails_admin  # only admin can access Rails Admin
-      can :manage, :dashboard    # allow access to dashboard
+      can :manage, :dashboard
+ # allow access to dashboard
     end
 
     if user.chairman_role?
