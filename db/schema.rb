@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_114215) do
   create_table "advance_modular_rheometers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -45,6 +45,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sample"
+    t.string "measurement"
+    t.string "stype"
+    t.string "description"
+    t.string "toxicity"
+    t.string "carcinogenic"
+    t.string "compatability"
+    t.string "more"
   end
 
   create_table "cell_imagings", force: :cascade do |t|
@@ -135,6 +143,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sample"
+    t.string "nsample"
+    t.string "category"
+    t.string "solvent"
+    t.string "analysis"
+    t.string "sampleph"
+    t.string "samplevol"
+    t.string "sanpleconc"
+    t.string "samplesalts"
+    t.string "samplecontain"
+    t.string "storage"
+    t.string "testing"
+    t.string "incompitable"
+    t.string "toxicity"
+    t.string "disposal"
+    t.string "health"
+    t.string "more"
   end
 
   create_table "icp_ms", force: :cascade do |t|
@@ -197,14 +222,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "options", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "question_id"
-    t.string "name"
-    t.index ["question_id"], name: "index_options_on_question_id"
-  end
-
   create_table "probe_sonicators", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -223,11 +240,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_101905) do
     t.string "carcinogenic"
     t.string "compatability"
     t.string "more"
-  end
-
-  create_table "raman_spectrometers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "scratch_testers", force: :cascade do |t|
