@@ -1,0 +1,2 @@
+class HrFesmCar < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class ImpedanceAnalyzer < ApplicationRecord
+end

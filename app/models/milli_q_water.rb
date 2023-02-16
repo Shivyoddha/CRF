@@ -1,0 +1,2 @@
+class MilliQWater < ApplicationRecord
+end

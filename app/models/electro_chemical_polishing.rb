@@ -1,0 +1,2 @@
+class ElectroChemicalPolishing < ApplicationRecord
+end

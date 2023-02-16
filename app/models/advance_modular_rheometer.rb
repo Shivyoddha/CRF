@@ -1,0 +1,2 @@
+class AdvanceModularRheometer < ApplicationRecord
+end

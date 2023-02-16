@@ -1,0 +1,2 @@
+class CellImaging < ApplicationRecord
+end
