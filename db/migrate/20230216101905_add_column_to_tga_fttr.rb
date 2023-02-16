@@ -13,8 +13,5 @@ class AddColumnToTgaFttr < ActiveRecord::Migration[7.0]
     add_column :tgaftirs, :explosive, :string
     add_column :tgaftirs, :more, :string
 
-
-
-
   end
 end
