@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'forms/lcms'
   get 'forms/raman'
   get 'forms/tga'
-
+  get 'admin_portal/slotdashboard'
   devise_scope :user do
   root to: "devise/sessions#new"
 end

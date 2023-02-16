@@ -80,7 +80,9 @@
 }
 
 .sidelinks-model-list {
-    padding: 2em 0;
+    padding: 1em 0;
+    list-style: none;
+    border-radius: 1em;
 }
 
 .sidelink-wrap {
@@ -88,6 +90,7 @@
     align-items: center;
     padding: 0 0 0 1.5em;
     border-radius: 1em;
+    font-size: smaller;
 }
 
 .sidelink-wrap-model {
@@ -95,6 +98,7 @@
     align-items: center;
     padding: 0;
     border-radius: 1em;
+    font-size: smaller;
 }
 
 .sidelink-wrap:hover {
@@ -129,10 +133,6 @@ ul {
     font-size: 1.15em;
 }
 
-.sidelinks-model-list {
-    list-style: none;
-    border-radius: 1em;
-}
 
 .sidelinks-model-list:hover {
     background-color: #fff5e8;
@@ -202,6 +202,12 @@ ul {
     padding: 2em;
     border-radius: 2em;
 }
+
+/* the slots page element stylings are done below */
+#slots {
+    background-color: aquamarine;
+}
+
 
 @media only screen and (max-width: 1430px) {
     #myChart {
