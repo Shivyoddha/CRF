@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Xrds</h1>
+
+<div id="xrds">
+  <% @xrds.each do |xrd| %>
+    <%= render xrd %>
+    <p>
+      <%= link_to "Show this xrd", xrd %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New xrd", new_xrd_path %>

@@ -1,2 +1,0 @@
-class GlowDischargesO < ApplicationRecord
-end

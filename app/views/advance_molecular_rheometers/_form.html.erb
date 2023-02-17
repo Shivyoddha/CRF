@@ -1,0 +1,77 @@
+<%= form_with(model: advance_molecular_rheometer) do |form| %>
+  <% if advance_molecular_rheometer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(advance_molecular_rheometer.errors.count, "error") %> prohibited this advance_molecular_rheometer from being saved:</h2>
+
+      <ul>
+        <% advance_molecular_rheometer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :type, style: "display: block" %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div>
+    <%= form.label :size, style: "display: block" %>
+    <%= form.text_field :size %>
+  </div>
+
+  <div>
+    <%= form.label :nature, style: "display: block" %>
+    <%= form.text_field :nature %>
+  </div>
+
+  <div>
+    <%= form.label :temperature, style: "display: block" %>
+    <%= form.text_field :temperature %>
+  </div>
+
+  <div>
+    <%= form.label :current, style: "display: block" %>
+    <%= form.text_field :current %>
+  </div>
+
+  <div>
+    <%= form.label :shear_type, style: "display: block" %>
+    <%= form.text_field :shear_type %>
+  </div>
+
+  <div>
+    <%= form.label :shear_rate, style: "display: block" %>
+    <%= form.text_field :shear_rate %>
+  </div>
+
+  <div>
+    <%= form.label :sweeps, style: "display: block" %>
+    <%= form.text_field :sweeps %>
+  </div>
+
+  <div>
+    <%= form.label :analysis, style: "display: block" %>
+    <%= form.text_field :analysis %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

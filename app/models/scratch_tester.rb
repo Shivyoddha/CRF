@@ -1,2 +1,0 @@
-class ScratchTester < ApplicationRecord
-end

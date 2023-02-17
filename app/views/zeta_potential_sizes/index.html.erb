@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Zeta potential sizes</h1>
+
+<div id="zeta_potential_sizes">
+  <% @zeta_potential_sizes.each do |zeta_potential_size| %>
+    <%= render zeta_potential_size %>
+    <p>
+      <%= link_to "Show this zeta potential size", zeta_potential_size %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New zeta potential size", new_zeta_potential_size_path %>

@@ -1,0 +1,2 @@
+module RamanMicroscopesHelper
+end

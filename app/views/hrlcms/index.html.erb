@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Hrlcms</h1>
+
+<div id="hrlcms">
+  <% @hrlcms.each do |hrlcm| %>
+    <%= render hrlcm %>
+    <p>
+      <%= link_to "Show this hrlcm", hrlcm %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New hrlcm", new_hrlcm_path %>

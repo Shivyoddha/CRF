@@ -1,0 +1,77 @@
+<%= form_with(model: cell_imaging) do |form| %>
+  <% if cell_imaging.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cell_imaging.errors.count, "error") %> prohibited this cell_imaging from being saved:</h2>
+
+      <ul>
+        <% cell_imaging.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :stype, style: "display: block" %>
+    <%= form.text_field :stype %>
+  </div>
+
+  <div>
+    <%= form.label :plate, style: "display: block" %>
+    <%= form.text_field :plate %>
+  </div>
+
+  <div>
+    <%= form.label :expected_wavelenght, style: "display: block" %>
+    <%= form.text_field :expected_wavelenght %>
+  </div>
+
+  <div>
+    <%= form.label :assay_type, style: "display: block" %>
+    <%= form.text_field :assay_type %>
+  </div>
+
+  <div>
+    <%= form.label :detection, style: "display: block" %>
+    <%= form.text_field :detection %>
+  </div>
+
+  <div>
+    <%= form.label :image_filter, style: "display: block" %>
+    <%= form.text_field :image_filter %>
+  </div>
+
+  <div>
+    <%= form.label :image_mode, style: "display: block" %>
+    <%= form.text_field :image_mode %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :compatibility, style: "display: block" %>
+    <%= form.text_field :compatibility %>
+  </div>
+
+  <div>
+    <%= form.label :hazard, style: "display: block" %>
+    <%= form.text_field :hazard %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

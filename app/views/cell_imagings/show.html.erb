@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cell_imaging %>
+
+<div>
+  <%= link_to "Edit this cell imaging", edit_cell_imaging_path(@cell_imaging) %> |
+  <%= link_to "Back to cell imagings", cell_imagings_path %>
+
+  <%= button_to "Destroy this cell imaging", @cell_imaging, method: :delete %>
+</div>

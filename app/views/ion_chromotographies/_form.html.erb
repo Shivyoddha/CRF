@@ -1,0 +1,97 @@
+<%= form_with(model: ion_chromotography) do |form| %>
+  <% if ion_chromotography.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ion_chromotography.errors.count, "error") %> prohibited this ion_chromotography from being saved:</h2>
+
+      <ul>
+        <% ion_chromotography.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :nature, style: "display: block" %>
+    <%= form.text_field :nature %>
+  </div>
+
+  <div>
+    <%= form.label :solvent, style: "display: block" %>
+    <%= form.text_field :solvent %>
+  </div>
+
+  <div>
+    <%= form.label :volume, style: "display: block" %>
+    <%= form.text_field :volume %>
+  </div>
+
+  <div>
+    <%= form.label :concentration, style: "display: block" %>
+    <%= form.text_field :concentration %>
+  </div>
+
+  <div>
+    <%= form.label :eluent, style: "display: block" %>
+    <%= form.text_field :eluent %>
+  </div>
+
+  <div>
+    <%= form.label :analysis, style: "display: block" %>
+    <%= form.text_field :analysis %>
+  </div>
+
+  <div>
+    <%= form.label :elements, style: "display: block" %>
+    <%= form.text_field :elements %>
+  </div>
+
+  <div>
+    <%= form.label :column, style: "display: block" %>
+    <%= form.text_field :column %>
+  </div>
+
+  <div>
+    <%= form.label :flow_rate, style: "display: block" %>
+    <%= form.text_field :flow_rate %>
+  </div>
+
+  <div>
+    <%= form.label :temperature, style: "display: block" %>
+    <%= form.text_field :temperature %>
+  </div>
+
+  <div>
+    <%= form.label :detector, style: "display: block" %>
+    <%= form.text_field :detector %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :hazards, style: "display: block" %>
+    <%= form.text_field :hazards %>
+  </div>
+
+  <div>
+    <%= form.label :disposal, style: "display: block" %>
+    <%= form.text_field :disposal %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

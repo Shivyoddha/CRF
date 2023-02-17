@@ -1,0 +1,2 @@
+module CellImagingsHelper
+end

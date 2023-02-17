@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  type: 
+  toxicity: MyString
+  element: MyString
+  solvent: MyString
+  refractive_index: MyString
+  viscosity: MyString
+  solute: MyString
+  angle: MyString
+  analysis_type: MyString
+  analysis_temperature: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  type: 
+  toxicity: MyString
+  element: MyString
+  solvent: MyString
+  refractive_index: MyString
+  viscosity: MyString
+  solute: MyString
+  angle: MyString
+  analysis_type: MyString
+  analysis_temperature: MyString
+  more: MyString

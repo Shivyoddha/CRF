@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @hrlcm %>
+
+<div>
+  <%= link_to "Edit this hrlcm", edit_hrlcm_path(@hrlcm) %> |
+  <%= link_to "Back to hrlcms", hrlcms_path %>
+
+  <%= button_to "Destroy this hrlcm", @hrlcm, method: :delete %>
+</div>

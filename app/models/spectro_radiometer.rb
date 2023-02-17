@@ -1,2 +1,0 @@
-class SpectroRadiometer < ApplicationRecord
-end

@@ -1,0 +1,87 @@
+<%= form_with(model: tga_fttr) do |form| %>
+  <% if tga_fttr.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(tga_fttr.errors.count, "error") %> prohibited this tga_fttr from being saved:</h2>
+
+      <ul>
+        <% tga_fttr.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :measurement, style: "display: block" %>
+    <%= form.text_field :measurement %>
+  </div>
+
+  <div>
+    <%= form.label :stype, style: "display: block" %>
+    <%= form.text_field :stype %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :nature, style: "display: block" %>
+    <%= form.text_field :nature %>
+  </div>
+
+  <div>
+    <%= form.label :min_temp, style: "display: block" %>
+    <%= form.text_field :min_temp %>
+  </div>
+
+  <div>
+    <%= form.label :max_temp, style: "display: block" %>
+    <%= form.text_field :max_temp %>
+  </div>
+
+  <div>
+    <%= form.label :scan_rate, style: "display: block" %>
+    <%= form.text_field :scan_rate %>
+  </div>
+
+  <div>
+    <%= form.label :atmosphere, style: "display: block" %>
+    <%= form.text_field :atmosphere %>
+  </div>
+
+  <div>
+    <%= form.label :hazard, style: "display: block" %>
+    <%= form.text_field :hazard %>
+  </div>
+
+  <div>
+    <%= form.label :compatability, style: "display: block" %>
+    <%= form.text_field :compatability %>
+  </div>
+
+  <div>
+    <%= form.label :carcinogenic, style: "display: block" %>
+    <%= form.text_field :carcinogenic %>
+  </div>
+
+  <div>
+    <%= form.label :explosive, style: "display: block" %>
+    <%= form.text_field :explosive %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

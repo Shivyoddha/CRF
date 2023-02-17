@@ -1,2 +1,0 @@
-class ZetaPotentialSizer < ApplicationRecord
-end

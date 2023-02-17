@@ -1,2 +1,0 @@
-class UltraCentrifuge < ApplicationRecord
-end

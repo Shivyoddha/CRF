@@ -1,7 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  sample: MyString
+  stype: MyString
+  plate: MyString
+  expected_wavelenght: MyString
+  assay_type: MyString
+  detection: MyString
+  image_filter: MyString
+  image_mode: MyString
+  toxicity: MyString
+  compatibility: MyString
+  hazard: MyString
+  more: MyString
 
 two:
-  name: MyString
+  sample: MyString
+  stype: MyString
+  plate: MyString
+  expected_wavelenght: MyString
+  assay_type: MyString
+  detection: MyString
+  image_filter: MyString
+  image_mode: MyString
+  toxicity: MyString
+  compatibility: MyString
+  hazard: MyString
+  more: MyString

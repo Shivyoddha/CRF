@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Uv vis nirs</h1>
+
+<div id="uv_vis_nirs">
+  <% @uv_vis_nirs.each do |uv_vis_nir| %>
+    <%= render uv_vis_nir %>
+    <p>
+      <%= link_to "Show this uv vis nir", uv_vis_nir %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New uv vis nir", new_uv_vis_nir_path %>

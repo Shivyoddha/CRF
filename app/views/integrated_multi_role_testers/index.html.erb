@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Integrated multi role testers</h1>
+
+<div id="integrated_multi_role_testers">
+  <% @integrated_multi_role_testers.each do |integrated_multi_role_tester| %>
+    <%= render integrated_multi_role_tester %>
+    <p>
+      <%= link_to "Show this integrated multi role tester", integrated_multi_role_tester %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New integrated multi role tester", new_integrated_multi_role_tester_path %>

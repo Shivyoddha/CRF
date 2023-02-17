@@ -1,2 +1,0 @@
-class BallMillingUnit < ApplicationRecord
-end

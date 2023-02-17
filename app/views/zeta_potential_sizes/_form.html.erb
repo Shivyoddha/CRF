@@ -1,0 +1,77 @@
+<%= form_with(model: zeta_potential_size) do |form| %>
+  <% if zeta_potential_size.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(zeta_potential_size.errors.count, "error") %> prohibited this zeta_potential_size from being saved:</h2>
+
+      <ul>
+        <% zeta_potential_size.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :type, style: "display: block" %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :element, style: "display: block" %>
+    <%= form.text_field :element %>
+  </div>
+
+  <div>
+    <%= form.label :solvent, style: "display: block" %>
+    <%= form.text_field :solvent %>
+  </div>
+
+  <div>
+    <%= form.label :refractive_index, style: "display: block" %>
+    <%= form.text_field :refractive_index %>
+  </div>
+
+  <div>
+    <%= form.label :viscosity, style: "display: block" %>
+    <%= form.text_field :viscosity %>
+  </div>
+
+  <div>
+    <%= form.label :solute, style: "display: block" %>
+    <%= form.text_field :solute %>
+  </div>
+
+  <div>
+    <%= form.label :angle, style: "display: block" %>
+    <%= form.text_field :angle %>
+  </div>
+
+  <div>
+    <%= form.label :analysis_type, style: "display: block" %>
+    <%= form.text_field :analysis_type %>
+  </div>
+
+  <div>
+    <%= form.label :analysis_temperature, style: "display: block" %>
+    <%= form.text_field :analysis_temperature %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

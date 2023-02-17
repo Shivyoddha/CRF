@@ -1,2 +1,0 @@
-class AutomaticMultiSpecimenPolisher < ApplicationRecord
-end

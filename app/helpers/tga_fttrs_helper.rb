@@ -1,0 +1,2 @@
+module TgaFttrsHelper
+end

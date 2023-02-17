@@ -1,2 +1,0 @@
-class LaserFlashAnalyser < ApplicationRecord
-end

@@ -1,0 +1,2 @@
+class IntegratedMultiRoleTester < ApplicationRecord
+end

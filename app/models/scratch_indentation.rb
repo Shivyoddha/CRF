@@ -1,0 +1,2 @@
+class ScratchIndentation < ApplicationRecord
+end

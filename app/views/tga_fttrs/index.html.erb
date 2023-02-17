@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tga fttrs</h1>
+
+<div id="tga_fttrs">
+  <% @tga_fttrs.each do |tga_fttr| %>
+    <%= render tga_fttr %>
+    <p>
+      <%= link_to "Show this tga fttr", tga_fttr %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New tga fttr", new_tga_fttr_path %>

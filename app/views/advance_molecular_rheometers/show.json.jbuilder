@@ -1,0 +1,1 @@
+json.partial! "advance_molecular_rheometers/advance_molecular_rheometer", advance_molecular_rheometer: @advance_molecular_rheometer

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Atomic force microscopes</h1>
+
+<div id="atomic_force_microscopes">
+  <% @atomic_force_microscopes.each do |atomic_force_microscope| %>
+    <%= render atomic_force_microscope %>
+    <p>
+      <%= link_to "Show this atomic force microscope", atomic_force_microscope %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New atomic force microscope", new_atomic_force_microscope_path %>

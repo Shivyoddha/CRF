@@ -1,2 +1,0 @@
-class MicroEdm < ApplicationRecord
-end

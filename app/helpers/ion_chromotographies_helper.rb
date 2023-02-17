@@ -1,0 +1,2 @@
+module IonChromotographiesHelper
+end

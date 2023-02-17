@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Hr fesem cs</h1>
+
+<div id="hr_fesem_cs">
+  <% @hr_fesem_cs.each do |hr_fesem_c| %>
+    <%= render hr_fesem_c %>
+    <p>
+      <%= link_to "Show this hr fesem c", hr_fesem_c %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New hr fesem c", new_hr_fesem_c_path %>

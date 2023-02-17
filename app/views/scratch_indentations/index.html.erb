@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Scratch indentations</h1>
+
+<div id="scratch_indentations">
+  <% @scratch_indentations.each do |scratch_indentation| %>
+    <%= render scratch_indentation %>
+    <p>
+      <%= link_to "Show this scratch indentation", scratch_indentation %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New scratch indentation", new_scratch_indentation_path %>

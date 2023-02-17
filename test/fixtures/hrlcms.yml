@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  nature_sample: MyString
+  category: MyString
+  sample_type: MyString
+  solvent: MyString
+  analysis: MyString
+  sample_volume: MyString
+  sample_concentration: MyString
+  sample_salts: MyString
+  sample_contains: MyString
+  storage: MyString
+  testing_required: MyString
+  incompatible: MyString
+  toxicity: MyString
+  disposal: MyString
+  health: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  nature_sample: MyString
+  category: MyString
+  sample_type: MyString
+  solvent: MyString
+  analysis: MyString
+  sample_volume: MyString
+  sample_concentration: MyString
+  sample_salts: MyString
+  sample_contains: MyString
+  storage: MyString
+  testing_required: MyString
+  incompatible: MyString
+  toxicity: MyString
+  disposal: MyString
+  health: MyString
+  more: MyString

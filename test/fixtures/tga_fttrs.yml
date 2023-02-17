@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  measurement: MyString
+  stype: MyString
+  description: MyString
+  nature: MyString
+  min_temp: MyString
+  max_temp: MyString
+  scan_rate: MyString
+  atmosphere: MyString
+  hazard: MyString
+  compatability: MyString
+  carcinogenic: MyString
+  explosive: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  measurement: MyString
+  stype: MyString
+  description: MyString
+  nature: MyString
+  min_temp: MyString
+  max_temp: MyString
+  scan_rate: MyString
+  atmosphere: MyString
+  hazard: MyString
+  compatability: MyString
+  carcinogenic: MyString
+  explosive: MyString
+  more: MyString

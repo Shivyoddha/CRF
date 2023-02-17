@@ -1,0 +1,52 @@
+<%= form_with(model: three_d_non_contact) do |form| %>
+  <% if three_d_non_contact.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(three_d_non_contact.errors.count, "error") %> prohibited this three_d_non_contact from being saved:</h2>
+
+      <ul>
+        <% three_d_non_contact.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :scant, style: "display: block" %>
+    <%= form.text_field :scant %>
+  </div>
+
+  <div>
+    <%= form.label :range, style: "display: block" %>
+    <%= form.text_field :range %>
+  </div>
+
+  <div>
+    <%= form.label :stepinterval, style: "display: block" %>
+    <%= form.text_field :stepinterval %>
+  </div>
+
+  <div>
+    <%= form.label :incompatible, style: "display: block" %>
+    <%= form.text_field :incompatible %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module ScratchIndentationsHelper
+end

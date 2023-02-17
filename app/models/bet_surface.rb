@@ -1,2 +1,0 @@
-class BetSurface < ApplicationRecord
-end

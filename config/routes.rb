@@ -1,53 +1,30 @@
 Rails.application.routes.draw do
+  resources :zeta_potential_sizes
+  resources :scratch_indentations
+  resources :integrated_multi_role_testers
+  resources :ion_chromotographies
+  resources :advance_molecular_rheometers
+  resources :icp_ms
+  resources :ft_nmrs
+  resources :atomic_force_microscopes
+  resources :cell_imagings
+  resources :uv_vis_nirs
+  resources :hrlcms
+  resources :bets
+  resources :tga_fttrs
+  resources :raman_microscopes
+  resources :three_d_non_contacts
+  resources :hr_fesem_js
+  resources :hr_fesem_cs
+  resources :xrds
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   devise_for :users
   get 'home/index'
-  get 'forms/xrd'
   get 'know/xrd'
   get 'records/record'
   get 'admin_portal/admindashboard'
-  get 'forms/three'
-  get 'forms/lcms'
-  get 'forms/raman'
-  get 'forms/tga'
   get 'admin_portal/slotdashboard'
-  get 'forms/bet'
-  get 'forms/hr_lcms'
-  get 'forms/uv_vis_nir'
-  get 'forms/laser_flash'
-  get 'forms/cell_imaging'
-  get 'forms/atomic_force'
-  get 'forms/ft_nmr'
-  get 'forms/icp_ms'
-  get 'forms/mod_rheometer'
-  get 'forms/ion_chromatography'
-  get 'forms/integ_multirole'
-  get 'forms/indentation_tester'
-  get 'forms/zeta_potential'
-  get 'forms/high_temp_vacc_furnace'
-  get 'forms/impedance_analyse'
-  get 'forms/tribometer'
-  get 'forms/scanner_3d'
-  get 'forms/gait_analysis'
-  get 'forms/spectro_radiometer'
-  get 'forms/spark_oes'
-  get 'forms/glow_discharges_oes'
-  get 'forms/ball_milling'
-  get 'forms/low_force_fatigue'
-  get 'forms/micro_edm'
-  get 'forms/axes_5_cnc'
-  get 'forms/multi_impact_test'
-  get 'forms/friction_stir_weld'
-  get 'forms/electro_chem_polish'
-  get 'forms/milli_q_water'
-  get 'forms/glove_box'
-  get 'forms/probe_sonicator'
-  get 'forms/ultra_centrifuge'
-  get 'forms/gas_sensing'
-  get 'forms/liq_nitrogen'
-  get 'forms/ansys_sys_lab'
-  get 'forms/multi_speci_polish'
   devise_scope :user do
   root to: "devise/sessions#new"
 end

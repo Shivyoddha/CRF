@@ -1,0 +1,2 @@
+class Xrd < ApplicationRecord
+end

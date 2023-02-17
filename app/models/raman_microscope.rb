@@ -1,0 +1,2 @@
+class RamanMicroscope < ApplicationRecord
+end

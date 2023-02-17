@@ -1,2 +1,0 @@
-class MilliQWater < ApplicationRecord
-end

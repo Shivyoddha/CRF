@@ -1,7 +1,27 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  sample: MyString
+  composition: MyString
+  sample_phase: MyString
+  nature: MyString
+  concentration: MyString
+  testing: MyString
+  storage: MyString
+  toxicity: MyString
+  compatibility: MyString
+  hazard: MyString
+  more: MyString
 
 two:
-  name: MyString
+  sample: MyString
+  composition: MyString
+  sample_phase: MyString
+  nature: MyString
+  concentration: MyString
+  testing: MyString
+  storage: MyString
+  toxicity: MyString
+  compatibility: MyString
+  hazard: MyString
+  more: MyString

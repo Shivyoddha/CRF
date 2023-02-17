@@ -1,2 +1,0 @@
-class GaitAnalysis < ApplicationRecord
-end
