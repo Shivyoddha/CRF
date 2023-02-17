@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
+ActiveRecord::Schema.define(version: 2023_02_17_091410) do
+
   create_table "advance_molecular_rheometers", force: :cascade do |t|
     t.string "sample"
     t.string "type"
@@ -24,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "analysis"
     t.string "toxicity"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "atomic_force_microscopes", force: :cascade do |t|
@@ -40,8 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "compatability"
     t.string "carcinogenic"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "bets", force: :cascade do |t|
@@ -52,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "toxicity"
     t.string "disposal"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cell_imagings", force: :cascade do |t|
@@ -69,13 +70,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "compatibility"
     t.string "hazard"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "equipment", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "status"
     t.text "feature"
@@ -93,8 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "health"
     t.string "storage"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "hr_fesem_cs", force: :cascade do |t|
@@ -107,8 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "toxic"
     t.string "conducting"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
@@ -121,8 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "toxic"
     t.string "conducting"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "hrlcms", force: :cascade do |t|
@@ -143,8 +144,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "disposal"
     t.string "health"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "icp_ms", force: :cascade do |t|
@@ -159,8 +160,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "compatibility"
     t.string "hazard"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "integrated_multi_role_testers", force: :cascade do |t|
@@ -171,8 +172,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "temperature"
     t.string "analysis"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ion_chromotographies", force: :cascade do |t|
@@ -192,8 +193,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "hazards"
     t.string "disposal"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "raman_microscopes", force: :cascade do |t|
@@ -205,8 +206,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "Compatability"
     t.string "carcinogenic"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "scratch_indentations", force: :cascade do |t|
@@ -221,8 +222,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "temperature"
     t.string "analysis"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tga_fttrs", force: :cascade do |t|
@@ -240,8 +241,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "carcinogenic"
     t.string "explosive"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "three_d_non_contacts", force: :cascade do |t|
@@ -252,18 +253,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "incompatible"
     t.string "toxicity"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "department"
     t.string "course"
     t.string "orgname"
@@ -291,8 +292,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "toxicity"
     t.string "sampletype"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "xrds", force: :cascade do |t|
@@ -304,8 +305,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "maxd"
     t.binary "reference"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "zeta_potential_sizes", force: :cascade do |t|
@@ -321,8 +322,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_065903) do
     t.string "analysis_type"
     t.string "analysis_temperature"
     t.string "more"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
