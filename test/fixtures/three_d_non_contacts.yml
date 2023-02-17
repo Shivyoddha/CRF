@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  scant: MyString
+  range: MyString
+  stepinterval: MyString
+  incompatible: MyString
+  toxicity: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  scant: MyString
+  range: MyString
+  stepinterval: MyString
+  incompatible: MyString
+  toxicity: MyString
+  more: MyString

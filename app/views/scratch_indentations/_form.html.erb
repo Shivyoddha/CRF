@@ -1,0 +1,72 @@
+<%= form_with(model: scratch_indentation) do |form| %>
+  <% if scratch_indentation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(scratch_indentation.errors.count, "error") %> prohibited this scratch_indentation from being saved:</h2>
+
+      <ul>
+        <% scratch_indentation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :type, style: "display: block" %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div>
+    <%= form.label :measurement, style: "display: block" %>
+    <%= form.text_field :measurement %>
+  </div>
+
+  <div>
+    <%= form.label :stroke, style: "display: block" %>
+    <%= form.text_field :stroke %>
+  </div>
+
+  <div>
+    <%= form.label :number_indentation, style: "display: block" %>
+    <%= form.text_field :number_indentation %>
+  </div>
+
+  <div>
+    <%= form.label :constant_load, style: "display: block" %>
+    <%= form.text_field :constant_load %>
+  </div>
+
+  <div>
+    <%= form.label :increment_load, style: "display: block" %>
+    <%= form.text_field :increment_load %>
+  </div>
+
+  <div>
+    <%= form.label :progressive_load, style: "display: block" %>
+    <%= form.text_field :progressive_load %>
+  </div>
+
+  <div>
+    <%= form.label :temperature, style: "display: block" %>
+    <%= form.text_field :temperature %>
+  </div>
+
+  <div>
+    <%= form.label :analysis, style: "display: block" %>
+    <%= form.text_field :analysis %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

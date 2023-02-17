@@ -1,0 +1,2 @@
+class ThreeDNonContact < ApplicationRecord
+end

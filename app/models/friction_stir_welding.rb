@@ -1,2 +1,0 @@
-class FrictionStirWelding < ApplicationRecord
-end

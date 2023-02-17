@@ -1,0 +1,72 @@
+<%= form_with(model: atomic_force_microscope) do |form| %>
+  <% if atomic_force_microscope.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(atomic_force_microscope.errors.count, "error") %> prohibited this atomic_force_microscope from being saved:</h2>
+
+      <ul>
+        <% atomic_force_microscope.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :stype, style: "display: block" %>
+    <%= form.text_field :stype %>
+  </div>
+
+  <div>
+    <%= form.label :technique, style: "display: block" %>
+    <%= form.text_field :technique %>
+  </div>
+
+  <div>
+    <%= form.label :scan_rate, style: "display: block" %>
+    <%= form.text_field :scan_rate %>
+  </div>
+
+  <div>
+    <%= form.label :x, style: "display: block" %>
+    <%= form.text_field :x %>
+  </div>
+
+  <div>
+    <%= form.label :y, style: "display: block" %>
+    <%= form.text_field :y %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :compatability, style: "display: block" %>
+    <%= form.text_field :compatability %>
+  </div>
+
+  <div>
+    <%= form.label :carcinogenic, style: "display: block" %>
+    <%= form.text_field :carcinogenic %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

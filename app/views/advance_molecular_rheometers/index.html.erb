@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Advance molecular rheometers</h1>
+
+<div id="advance_molecular_rheometers">
+  <% @advance_molecular_rheometers.each do |advance_molecular_rheometer| %>
+    <%= render advance_molecular_rheometer %>
+    <p>
+      <%= link_to "Show this advance molecular rheometer", advance_molecular_rheometer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New advance molecular rheometer", new_advance_molecular_rheometer_path %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Raman microscopes</h1>
+
+<div id="raman_microscopes">
+  <% @raman_microscopes.each do |raman_microscope| %>
+    <%= render raman_microscope %>
+    <p>
+      <%= link_to "Show this raman microscope", raman_microscope %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New raman microscope", new_raman_microscope_path %>

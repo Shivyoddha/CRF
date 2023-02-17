@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  measurement: MyString
+  type: 
+  loading: MyString
+  temperature: MyString
+  analysis: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  measurement: MyString
+  type: 
+  loading: MyString
+  temperature: MyString
+  analysis: MyString
+  more: MyString

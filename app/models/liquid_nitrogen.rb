@@ -1,2 +1,0 @@
-class LiquidNitrogen < ApplicationRecord
-end

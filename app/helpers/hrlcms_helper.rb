@@ -1,0 +1,2 @@
+module HrlcmsHelper
+end

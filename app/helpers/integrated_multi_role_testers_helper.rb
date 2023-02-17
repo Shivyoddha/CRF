@@ -1,0 +1,2 @@
+module IntegratedMultiRoleTestersHelper
+end

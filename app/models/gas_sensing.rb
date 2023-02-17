@@ -1,2 +1,0 @@
-class GasSensing < ApplicationRecord
-end

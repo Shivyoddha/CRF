@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  type: 
+  measurement: MyString
+  stroke: MyString
+  number_indentation: MyString
+  constant_load: MyString
+  increment_load: MyString
+  progressive_load: MyString
+  temperature: MyString
+  analysis: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  type: 
+  measurement: MyString
+  stroke: MyString
+  number_indentation: MyString
+  constant_load: MyString
+  increment_load: MyString
+  progressive_load: MyString
+  temperature: MyString
+  analysis: MyString
+  more: MyString

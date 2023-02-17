@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @scratch_indentation %>
+
+<div>
+  <%= link_to "Edit this scratch indentation", edit_scratch_indentation_path(@scratch_indentation) %> |
+  <%= link_to "Back to scratch indentations", scratch_indentations_path %>
+
+  <%= button_to "Destroy this scratch indentation", @scratch_indentation, method: :delete %>
+</div>

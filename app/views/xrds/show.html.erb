@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @xrd %>
+
+<div>
+  <%= link_to "Edit this xrd", edit_xrd_path(@xrd) %> |
+  <%= link_to "Back to xrds", xrds_path %>
+
+  <%= button_to "Destroy this xrd", @xrd, method: :delete %>
+</div>

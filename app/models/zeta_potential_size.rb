@@ -1,0 +1,2 @@
+class ZetaPotentialSize < ApplicationRecord
+end

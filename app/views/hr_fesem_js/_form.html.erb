@@ -1,0 +1,62 @@
+<%= form_with(model: hr_fesem_j) do |form| %>
+  <% if hr_fesem_j.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(hr_fesem_j.errors.count, "error") %> prohibited this hr_fesem_j from being saved:</h2>
+
+      <ul>
+        <% hr_fesem_j.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :composition, style: "display: block" %>
+    <%= form.text_field :composition %>
+  </div>
+
+  <div>
+    <%= form.label :stype, style: "display: block" %>
+    <%= form.text_field :stype %>
+  </div>
+
+  <div>
+    <%= form.label :sphase, style: "display: block" %>
+    <%= form.text_field :sphase %>
+  </div>
+
+  <div>
+    <%= form.label :measurement, style: "display: block" %>
+    <%= form.text_field :measurement %>
+  </div>
+
+  <div>
+    <%= form.label :eds_required, style: "display: block" %>
+    <%= form.text_field :eds_required %>
+  </div>
+
+  <div>
+    <%= form.label :toxic, style: "display: block" %>
+    <%= form.text_field :toxic %>
+  </div>
+
+  <div>
+    <%= form.label :conducting, style: "display: block" %>
+    <%= form.text_field :conducting %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

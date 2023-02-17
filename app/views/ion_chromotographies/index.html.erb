@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ion chromotographies</h1>
+
+<div id="ion_chromotographies">
+  <% @ion_chromotographies.each do |ion_chromotography| %>
+    <%= render ion_chromotography %>
+    <p>
+      <%= link_to "Show this ion chromotography", ion_chromotography %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ion chromotography", new_ion_chromotography_path %>

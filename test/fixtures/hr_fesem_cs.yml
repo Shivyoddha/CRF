@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  composition: MyString
+  stype: MyString
+  sphase: MyString
+  measurement: MyString
+  eds_required: MyString
+  toxic: MyString
+  conducting: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  composition: MyString
+  stype: MyString
+  sphase: MyString
+  measurement: MyString
+  eds_required: MyString
+  toxic: MyString
+  conducting: MyString
+  more: MyString

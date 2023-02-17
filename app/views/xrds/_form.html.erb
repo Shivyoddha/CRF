@@ -1,0 +1,108 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+<%=render "partials/loginHeading"%>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div id="search-div">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+
+      <div id="profile-div">
+        <div class="btn-group btn-profile">
+          <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
+          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu font-quicksand">
+            <div>
+              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+              <a class="dropdown-item" href="#">UserName</a>
+            </div>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#">My Slots</a></li>
+            <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>XRD</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: xrd) do |form| %>
+        <% if xrd.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(xrd.errors.count, "error") %> prohibited this xrd from being saved:</h2>
+
+            <ul>
+              <% xrd.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+          <div class="input-group mb-3">
+            <%= form.label :sample, class:"input-group-text", for:"inputGroupSelect01"%>
+            <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          </div>
+
+
+
+          <div class="input-group mb-3">
+          <%= form.label :measurement, class:"input-group-text", for:"inputGroupSelect02" %>
+          <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+          <div class="input-group mb-3">
+          <%= form.label :composition, class:"input-group-text",for:"inputGroupSelect03"%>
+          <%= form.text_field :composition, class:"form-control", id:"inputGroupSelect03", placeholder:"(Ex: ZnO, GO)"%>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect04" %>
+          <%= form.select(:stype, ['Solid', 'Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+          <div class="input-group mb-3">
+          <%= form.label :mind, "Min Degree", class:"input-group-text", for:"exampleInputEmail1" %>
+          <%= form.text_field :mind, class:"form-control", id:"mindegreeInput", placeholder:"Min 2"  %>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :maxd, "Max Degree", class:"input-group-text", for:"exampleInputEmail1" %>
+          <%= form.text_field :maxd, class:"form-control", id:"maxdegreeInput", placeholder:"Max 2"%>
+        </div>
+
+         <div class="input-group mb-3" id="collegeid-input">
+          <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
+          <input type="file" class="form-control " id="exampleInputEmail1" >
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+  </div>
+</div>

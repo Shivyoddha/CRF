@@ -1,3 +1,5 @@
+Index page
+
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "dashboard"%>
 <%=render "partials/loginHeading"%>
@@ -62,8 +64,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_xrd_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -77,13 +79,58 @@
             </div>
         </div>
     </div>
-        <div class="equipment">
 
+
+      <div class="equipment">
+      <%# card-2 HR-FESEM [Carl Zeiss]b%>
+      <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">HR-FESEM [Carl Zeiss]</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path, class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+          <div class="card-footer-express">
+              <small class="text-muted card-footer-express">Express Slot:</small>
+              <div class="badge badge-success badge-outlined">Available</div>
+              <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+         </div>
+        </div>
+      </div>
+
+
+      <div class="equipment">
+        <%# card-3 HR-FESEM [Jeol] %>
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
+                    <h5 class="card-title fw-bold">HR-FESEM [Jeol]</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -103,8 +150,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -117,14 +164,16 @@
                 </div>
             </div>
         </div>
-    </div>
-        <div class="equipment">
+        </div>
 
+
+        <div class="equipment">
+        <%# card-4 3-D Non Contact Profilometer%>
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
+                    <h5 class="card-title fw-bold">3-D Non Contact Profilometer</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -144,8 +193,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -159,13 +208,144 @@
             </div>
         </div>
     </div>
-        <div class="equipment">
 
+
+    <div class="equipment">
+      <%# card-5 Raman Spectrometer with PL %>
+      <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">Raman Spectrometer with PL</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+              <div class="card-footer-express">
+                  <small class="text-muted card-footer-express">Express Slot:</small>
+                  <div class="badge badge-success badge-outlined">Available</div>
+                  <div class="badge badge-warning badge-outlined">Not Available</div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <div class="equipment">
+      <%# card-6 TGA-FTIR %>
+      <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">TGA-FTIR</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+              <div class="card-footer-express">
+                  <small class="text-muted card-footer-express">Express Slot:</small>
+                  <div class="badge badge-success badge-outlined">Available</div>
+                  <div class="badge badge-warning badge-outlined">Not Available</div>
+              </div>
+          </div>
+      </div>
+      </div>
+
+
+      <div class="equipment">
+         <%# card-7 BET Surface Area Analyzer%>
+         <div class="card">
+             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <div id="more">
+                     <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
+                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                   status-active is for avtive state
+                                                   status-undermaintainance is for maintainance state
+                                                   status-unavailable for unavailable state -->
+                 </div>
+
+                 <span class="fw-bold">Located At</span>
+                 <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                 <div class="wrap-action">
+                     <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                     <div class="dropdown book">
+                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             Book Slot
+                         </button>
+
+                         <ul class="dropdown-menu">
+                               <li> <%= link_to "Regular Slot", new_bet_path, class:"book-dropdown dropdown-item" %> </li>
+                               <li> <%= link_to "Express Slot", new_bet_path, class:"book-dropdown dropdown-item" %> </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <div class="card-footer">
+                 <div class="card-footer-express">
+                     <small class="text-muted card-footer-express">Express Slot:</small>
+                     <div class="badge badge-success badge-outlined">Available</div>
+                     <div class="badge badge-warning badge-outlined">Not Available</div>
+                 </div>
+             </div>
+         </div>
+      </div>
+
+
+      <div class="equipment">
+        <%# card-8 HR-LCMS %>
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
+                    <h5 class="card-title fw-bold">HR-LCMS</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -185,8 +365,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_hrlcm_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hrlcm_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -200,13 +380,104 @@
             </div>
         </div>
     </div>
-        <div class="equipment">
 
+
+
+    <div class="equipment">
+       <%# card-9 UV-Vis-NIR%>
+       <div class="card">
+           <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+           <div class="card-body">
+               <div id="more">
+                   <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
+                   <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                   <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                 status-active is for avtive state
+                                                 status-undermaintainance is for maintainance state
+                                                 status-unavailable for unavailable state -->
+               </div>
+
+               <span class="fw-bold">Located At</span>
+               <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+               <div class="wrap-action">
+                   <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                   <div class="dropdown book">
+                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           Book Slot
+                       </button>
+
+                       <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_uv_vis_nir_path, class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Express Slot", new_uv_vis_nir_path, class:"book-dropdown dropdown-item" %> </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+           <div class="card-footer">
+               <div class="card-footer-express">
+                   <small class="text-muted card-footer-express">Express Slot:</small>
+                   <div class="badge badge-success badge-outlined">Available</div>
+                   <div class="badge badge-warning badge-outlined">Not Available</div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+
+
+   <div class="equipment">
+           <%# card-11 Cell-Imaging MultiMode Reader%>
+           <div class="card">
+               <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+               <div class="card-body">
+                   <div id="more">
+                       <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
+                       <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                       <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                     status-active is for avtive state
+                                                     status-undermaintainance is for maintainance state
+                                                     status-unavailable for unavailable state -->
+                   </div>
+
+                   <span class="fw-bold">Located At</span>
+                   <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                   <div class="wrap-action">
+                       <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                       <div class="dropdown book">
+                           <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               Book Slot
+                           </button>
+
+                           <ul class="dropdown-menu">
+                                 <li> <%= link_to "Regular Slot", new_cell_imaging_path, class:"book-dropdown dropdown-item" %> </li>
+                                 <li> <%= link_to "Express Slot", new_cell_imaging_path, class:"book-dropdown dropdown-item" %> </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class="card-footer">
+                   <div class="card-footer-express">
+                       <small class="text-muted card-footer-express">Express Slot:</small>
+                       <div class="badge badge-success badge-outlined">Available</div>
+                       <div class="badge badge-warning badge-outlined">Not Available</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+
+       <div class="equipment">
+        <%# card-12 Atomic Force Microscope%>
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
+                    <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -226,8 +497,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -241,13 +512,14 @@
             </div>
         </div>
     </div>
-        <div class="equipment">
 
+    <div class="equipment">
+        <%# card-13 FT-NMR%>
         <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
+                    <h5 class="card-title fw-bold">FT-NMR</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -267,131 +539,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-footer-express">
-                    <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="equipment">
-
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
-                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
-                </div>
-
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
-
-                <div class="wrap-action">
-                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
-                    <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Slot
-                        </button>
-
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-footer-express">
-                    <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="equipment">
-
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
-                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
-                </div>
-
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
-
-                <div class="wrap-action">
-                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
-                    <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Slot
-                        </button>
-
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-footer-express">
-                    <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="equipment">
-
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
-                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
-                </div>
-
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
-
-                <div class="wrap-action">
-                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
-                    <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Slot
-                        </button>
-
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", forms_xrd_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_ft_nmr_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_ft_nmr_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -406,8 +555,299 @@
         </div>
     </div>
 
+
+    <div class="equipment">
+      <%# card-14 ICP-MS%>
+      <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">ICP-MS</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot", new_icp_m_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_icp_m_path, class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+              <div class="card-footer-express">
+                  <small class="text-muted card-footer-express">Express Slot:</small>
+                  <div class="badge badge-success badge-outlined">Available</div>
+                  <div class="badge badge-warning badge-outlined">Not Available</div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="equipment">
+      <%# card-15 Advance Modular Rheometer%>
+      <div class="card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path, class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+              <div class="card-footer-express">
+                  <small class="text-muted card-footer-express">Express Slot:</small>
+                  <div class="badge badge-success badge-outlined">Available</div>
+                  <div class="badge badge-warning badge-outlined">Not Available</div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="equipment">
+    <%# card-16 Ion Chromatography%>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div id="more">
+                <h5 class="card-title fw-bold">Ion Chromatography</h5>
+                <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                              status-active is for avtive state
+                                              status-undermaintainance is for maintainance state
+                                              status-unavailable for unavailable state -->
+            </div>
+
+            <span class="fw-bold">Located At</span>
+            <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+            <div class="wrap-action">
+                <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                <div class="dropdown book">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Slot
+                    </button>
+
+                    <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_ion_chromotography_path, class:"book-dropdown dropdown-item" %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-express">
+                <small class="text-muted card-footer-express">Express Slot:</small>
+                <div class="badge badge-success badge-outlined">Available</div>
+                <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="equipment">
+    <%# card-17 Intergrated MultiRole Tester%>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div id="more">
+                <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
+                <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                              status-active is for avtive state
+                                              status-undermaintainance is for maintainance state
+                                              status-unavailable for unavailable state -->
+            </div>
+
+            <span class="fw-bold">Located At</span>
+            <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+            <div class="wrap-action">
+                <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                <div class="dropdown book">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Slot
+                    </button>
+
+                    <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_integrated_multi_role_tester_path, class:"book-dropdown dropdown-item" %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-express">
+                <small class="text-muted card-footer-express">Express Slot:</small>
+                <div class="badge badge-success badge-outlined">Available</div>
+                <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+<div class="equipment">
+    <%# card-18 Scratch/Indentation Tester%>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div id="more">
+                <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
+                <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
-<%=render "partials/footer" %>
+                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                              status-active is for avtive state
+                                              status-undermaintainance is for maintainance state
+                                              status-unavailable for unavailable state -->
+            </div>
+
+            <span class="fw-bold">Located At</span>
+            <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+            <div class="wrap-action">
+                <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                <div class="dropdown book">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Slot
+                    </button>
+
+                    <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", forms_indentation_tester_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", forms_indentation_tester_path, class:"book-dropdown dropdown-item" %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-express">
+                <small class="text-muted card-footer-express">Express Slot:</small>
+                <div class="badge badge-success badge-outlined">Available</div>
+                <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="equipment">
+    <%# card-19 Zeta Potential/Particle Sizer%>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div id="more">
+                <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
+                <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                              status-active is for avtive state
+                                              status-undermaintainance is for maintainance state
+                                              status-unavailable for unavailable state -->
+            </div>
+
+            <span class="fw-bold">Located At</span>
+            <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+            <div class="wrap-action">
+                <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                <div class="dropdown book">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Slot
+                    </button>
+
+                    <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_zeta_potential_size_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_zeta_potential_size_path, class:"book-dropdown dropdown-item" %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-express">
+                <small class="text-muted card-footer-express">Express Slot:</small>
+                <div class="badge badge-success badge-outlined">Available</div>
+                <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="equipment">
+    <%# card-20 High Temp Vacuum Furnace%>
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div id="more">
+                <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
+                <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                              status-active is for avtive state
+                                              status-undermaintainance is for maintainance state
+                                              status-unavailable for unavailable state -->
+            </div>
+
+            <span class="fw-bold">Located At</span>
+            <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+            <div class="wrap-action">
+                <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                <div class="dropdown book">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Book Slot
+                    </button>
+
+                    <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", forms_high_temp_vacc_furnace_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", forms_high_temp_vacc_furnace_path, class:"book-dropdown dropdown-item" %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="card-footer-express">
+                <small class="text-muted card-footer-express">Express Slot:</small>
+                <div class="badge badge-success badge-outlined">Available</div>
+                <div class="badge badge-warning badge-outlined">Not Available</div>
+            </div>
+        </div>
+    </div>
+</div>

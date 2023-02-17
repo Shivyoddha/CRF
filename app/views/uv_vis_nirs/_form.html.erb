@@ -1,0 +1,57 @@
+<%= form_with(model: uv_vis_nir) do |form| %>
+  <% if uv_vis_nir.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(uv_vis_nir.errors.count, "error") %> prohibited this uv_vis_nir from being saved:</h2>
+
+      <ul>
+        <% uv_vis_nir.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :srange, style: "display: block" %>
+    <%= form.text_field :srange %>
+  </div>
+
+  <div>
+    <%= form.label :erange, style: "display: block" %>
+    <%= form.text_field :erange %>
+  </div>
+
+  <div>
+    <%= form.label :measurement, style: "display: block" %>
+    <%= form.text_field :measurement %>
+  </div>
+
+  <div>
+    <%= form.label :composition, style: "display: block" %>
+    <%= form.text_field :composition %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :sampletype, style: "display: block" %>
+    <%= form.text_field :sampletype %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

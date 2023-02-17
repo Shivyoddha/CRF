@@ -1,0 +1,2 @@
+class HrFesemJ < ApplicationRecord
+end

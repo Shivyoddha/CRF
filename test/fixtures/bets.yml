@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: MyString
+  degassing: MyString
+  analysis: MyString
+  incompatibe: MyString
+  toxicity: MyString
+  disposal: MyString
+  more: MyString
+
+two:
+  sample: MyString
+  degassing: MyString
+  analysis: MyString
+  incompatibe: MyString
+  toxicity: MyString
+  disposal: MyString
+  more: MyString

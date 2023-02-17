@@ -1,0 +1,72 @@
+<%= form_with(model: icp_m) do |form| %>
+  <% if icp_m.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(icp_m.errors.count, "error") %> prohibited this icp_m from being saved:</h2>
+
+      <ul>
+        <% icp_m.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :composition, style: "display: block" %>
+    <%= form.text_field :composition %>
+  </div>
+
+  <div>
+    <%= form.label :sample_phase, style: "display: block" %>
+    <%= form.text_field :sample_phase %>
+  </div>
+
+  <div>
+    <%= form.label :nature, style: "display: block" %>
+    <%= form.text_field :nature %>
+  </div>
+
+  <div>
+    <%= form.label :concentration, style: "display: block" %>
+    <%= form.text_field :concentration %>
+  </div>
+
+  <div>
+    <%= form.label :testing, style: "display: block" %>
+    <%= form.text_field :testing %>
+  </div>
+
+  <div>
+    <%= form.label :storage, style: "display: block" %>
+    <%= form.text_field :storage %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :compatibility, style: "display: block" %>
+    <%= form.text_field :compatibility %>
+  </div>
+
+  <div>
+    <%= form.label :hazard, style: "display: block" %>
+    <%= form.text_field :hazard %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

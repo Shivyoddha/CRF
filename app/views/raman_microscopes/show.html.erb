@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @raman_microscope %>
+
+<div>
+  <%= link_to "Edit this raman microscope", edit_raman_microscope_path(@raman_microscope) %> |
+  <%= link_to "Back to raman microscopes", raman_microscopes_path %>
+
+  <%= button_to "Destroy this raman microscope", @raman_microscope, method: :delete %>
+</div>

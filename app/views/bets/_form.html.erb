@@ -1,0 +1,52 @@
+<%= form_with(model: bet) do |form| %>
+  <% if bet.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
+
+      <ul>
+        <% bet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :degassing, style: "display: block" %>
+    <%= form.text_field :degassing %>
+  </div>
+
+  <div>
+    <%= form.label :analysis, style: "display: block" %>
+    <%= form.text_field :analysis %>
+  </div>
+
+  <div>
+    <%= form.label :incompatibe, style: "display: block" %>
+    <%= form.text_field :incompatibe %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :disposal, style: "display: block" %>
+    <%= form.text_field :disposal %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

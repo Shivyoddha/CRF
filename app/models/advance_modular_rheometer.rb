@@ -1,2 +1,0 @@
-class AdvanceModularRheometer < ApplicationRecord
-end

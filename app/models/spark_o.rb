@@ -1,2 +1,0 @@
-class SparkO < ApplicationRecord
-end

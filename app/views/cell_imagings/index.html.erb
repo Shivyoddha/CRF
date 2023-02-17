@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cell imagings</h1>
+
+<div id="cell_imagings">
+  <% @cell_imagings.each do |cell_imaging| %>
+    <%= render cell_imaging %>
+    <p>
+      <%= link_to "Show this cell imaging", cell_imaging %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cell imaging", new_cell_imaging_path %>

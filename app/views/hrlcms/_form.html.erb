@@ -1,0 +1,102 @@
+<%= form_with(model: hrlcm) do |form| %>
+  <% if hrlcm.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(hrlcm.errors.count, "error") %> prohibited this hrlcm from being saved:</h2>
+
+      <ul>
+        <% hrlcm.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sample, style: "display: block" %>
+    <%= form.text_field :sample %>
+  </div>
+
+  <div>
+    <%= form.label :nature_sample, style: "display: block" %>
+    <%= form.text_field :nature_sample %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div>
+    <%= form.label :sample_type, style: "display: block" %>
+    <%= form.text_field :sample_type %>
+  </div>
+
+  <div>
+    <%= form.label :solvent, style: "display: block" %>
+    <%= form.text_field :solvent %>
+  </div>
+
+  <div>
+    <%= form.label :analysis, style: "display: block" %>
+    <%= form.text_field :analysis %>
+  </div>
+
+  <div>
+    <%= form.label :sample_volume, style: "display: block" %>
+    <%= form.text_field :sample_volume %>
+  </div>
+
+  <div>
+    <%= form.label :sample_concentration, style: "display: block" %>
+    <%= form.text_field :sample_concentration %>
+  </div>
+
+  <div>
+    <%= form.label :sample_salts, style: "display: block" %>
+    <%= form.text_field :sample_salts %>
+  </div>
+
+  <div>
+    <%= form.label :sample_contains, style: "display: block" %>
+    <%= form.text_field :sample_contains %>
+  </div>
+
+  <div>
+    <%= form.label :storage, style: "display: block" %>
+    <%= form.text_field :storage %>
+  </div>
+
+  <div>
+    <%= form.label :testing_required, style: "display: block" %>
+    <%= form.text_field :testing_required %>
+  </div>
+
+  <div>
+    <%= form.label :incompatible, style: "display: block" %>
+    <%= form.text_field :incompatible %>
+  </div>
+
+  <div>
+    <%= form.label :toxicity, style: "display: block" %>
+    <%= form.text_field :toxicity %>
+  </div>
+
+  <div>
+    <%= form.label :disposal, style: "display: block" %>
+    <%= form.text_field :disposal %>
+  </div>
+
+  <div>
+    <%= form.label :health, style: "display: block" %>
+    <%= form.text_field :health %>
+  </div>
+
+  <div>
+    <%= form.label :more, style: "display: block" %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

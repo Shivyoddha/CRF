@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Icp ms</h1>
+
+<div id="icp_ms">
+  <% @icp_ms.each do |icp_m| %>
+    <%= render icp_m %>
+    <p>
+      <%= link_to "Show this icp m", icp_m %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New icp m", new_icp_m_path %>

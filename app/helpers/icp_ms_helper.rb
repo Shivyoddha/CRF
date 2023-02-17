@@ -1,0 +1,2 @@
+module IcpMsHelper
+end

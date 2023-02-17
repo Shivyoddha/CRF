@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @atomic_force_microscope %>
+
+<div>
+  <%= link_to "Edit this atomic force microscope", edit_atomic_force_microscope_path(@atomic_force_microscope) %> |
+  <%= link_to "Back to atomic force microscopes", atomic_force_microscopes_path %>
+
+  <%= button_to "Destroy this atomic force microscope", @atomic_force_microscope, method: :delete %>
+</div>
