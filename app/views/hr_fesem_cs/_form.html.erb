@@ -1,159 +1,125 @@
-<%= form_with(model: hr_fesem_c) do |form| %>
-  <% if hr_fesem_c.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(hr_fesem_c.errors.count, "error") %> prohibited this hr_fesem_c from being saved:</h2>
-
-      <ul>
-        <% hr_fesem_c.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
-
-  <div>
-    <%= form.label :composition, style: "display: block" %>
-    <%= form.text_field :composition %>
-  </div>
-
-  <div>
-    <%= form.label :stype, style: "display: block" %>
-    <%= form.text_field :stype %>
-  </div>
-
-  <div>
-    <%= form.label :sphase, style: "display: block" %>
-    <%= form.text_field :sphase %>
-  </div>
-
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
-
-  <div>
-    <%= form.label :eds_required, style: "display: block" %>
-    <%= form.text_field :eds_required %>
-  </div>
-
-  <div>
-    <%= form.label :toxic, style: "display: block" %>
-    <%= form.text_field :toxic %>
-  </div>
-
-  <div>
-    <%= form.label :conducting, style: "display: block" %>
-    <%= form.text_field :conducting %>
-  </div>
-
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= stylesheet_link_tag "loginFeatures"%>
+  <%= stylesheet_link_tag "equipmentQuestion"%>
 
 
+  <%=render "partials/loginHeading"%>
+  <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <div id="search-div">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+          </form>
+        </div>
 
-<%= stylesheet_link_tag "loginFeatures"%>
-<%= stylesheet_link_tag "equipmentQuestion"%>
+        <div id="profile-div">
+          <div class="btn-group btn-profile">
+            <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu font-quicksand">
+              <div>
+                <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+                <a class="dropdown-item" href="#">UserName</a>
+              </div>
+              <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="#">My Slots</a></li>
+              <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-<%=render "partials/loginHeading"%>
+  <div class="container">
+      <div id="equipment-name">
+        <h1>HR-FESEM</h1>
+      </div>
+      <div class='hero'>
+        <%= form_with(model: hr_fesem_c) do |form| %>
+          <% if hr_fesem_c.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(hr_fesem_c.errors.count, "error") %> prohibited this hr_fesem_c from being saved:</h2>
 
-<div class="container">
-    <div id="equipment-name">
-      <h1>HR-FESEM</h1>
-    </div>
-    <div class='hero'>
+              <ul>
+                <% hr_fesem_c.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect01">No of Sample</label>
-      <select class="form-select" id="inputGroupSelect01">
-        <option selected>Choose...</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </div>
-
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect03">Sample Composition</label>
-      <input type="text" class="form-control" id="inputGroupSelect03" placeholder="Possible Elements">
-    </div>
 
       <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect03">Sample Phase</label>
-        <input type="text" class="form-control" id="inputGroupSelect03" placeholder="Solid/ Powder/ Fibre/ Film/ etc..">
+          <%= form.label :sample, "No of Samples", class:"input-group-text", for:"inputGroupSelect01"%>
+          <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
       </div>
 
-      <div>
-          <label class="input-group-text" for="inputGroupSelect02">Measurement Required</label>
-          <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-          <label class="form-check-label" for="flexCheckChecked">
-            SEM
-          </label>
+      <div class="input-group mb-3">
+          <%= form.label :composition,"Sample Composition", class:"input-group-text", for:"inputGroupSelect03" %>
+          <%= form.text_field :composition, class:"form-control", id:"inputGroupSelect03", placeholder:"Possible Elements"%>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            EBSD
-          </label>
+
+        <div class="input-group mb-3">
+            <%= form.label :stype,"Sample Type",class:"input-group-text", for:"inputGroupSelect03" %>
+            <%= form.select(:stype, ['Powder', 'Metal','Ceramic','Polymer'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
-              <div><p class="text-warning">Max. 1 Sample</p></div>
+
+        <div class="input-group mb-3">
+          <%= form.label :sphase,"Sample Phase", class:"input-group-text", for:"inputGroupSelect03" %>
+          <%= form.text_field :sphase, class:"form-control", id:"inputGroupSelect03", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
+        </div>
+
+
+        <div>
+          <div>
+            <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+            <div class="form-check">
+            <%= form.radio_button :measurement, 'SEM', class:"form-check-input", type:"checkbox", value:"" ,id:"flexCheckChecked", :checked => true %> SEM
+            </div>
+            <div class="form-check">
+              <%= form.radio_button :measurement, 'EBSD', class:"form-check-input", type:"checkbox", value:"" ,id:"flexCheckChecked"%> EBSD
+            </div>
+            <div><p class="text-warning">Max. 1 Sample</p></div>
+        </div>
+        </div>
+
+       <div class="input-group mb-3">
+           <%= form.label :eds_required, "EDX/EDAX required:",class:"input-group-text text-info", for:"inputGroupSelect04" %>
+            <%= form.select(:eds_required, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+          <div class="input-group mb-3">
+              <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"inputGroupSelect04" %>
+              <%= form.select(:toxic, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            </div>
+
+
+
+            <div class="input-group mb-3">
+              <%= form.label :conducting, "Sample is Conducting?",class:"input-group-text", for:"inputGroupSelect04" %>
+              <%= form.select(:conducting, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            </div>
+
+
+            <div class="input-group mb-3" id="collegeid-input">
+              <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
+              <input type="file" class="form-control " id="exampleInputEmail1" >
+            </div>
+
+          <div class="input-group mb-3">
+              <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+          </div>
+        </div>
       </div>
 
- <div class="input-group mb-3">
-      <label class="input-group-text text-info" for="inputGroupSelect04">EDX/EDAX required: </label>
-      <select class="form-select" id="inputGroupSelect04">
-        <option selected>Choose...</option>
-        <option value="2">Yes</option>
-        <option value="3">No</option>
-      </select>
-    </div>
+    <% end %>
 
-    <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect04">Sample is toxic?</label>
-      <select class="form-select" id="inputGroupSelect04">
-        <option selected>Choose...</option>
-        <option value="2">Yes</option>
-        <option value="3">No</option>
-      </select>
-    </div>
-
-     <div class="input-group mb-3">
-      <label class="input-group-text" for="inputGroupSelect04">Sample is Conducting?</label>
-      <select class="form-select" id="inputGroupSelect04">
-        <option selected>Choose...</option>
-        <option value="2">Yes</option>
-        <option value="3">No</option>
-      </select>
-    </div>
-
-      <div class="input-group mb-3" id="collegeid-input">
-        <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
-        <input type="file" class="form-control " id="exampleInputEmail1" >
-      </div>
-
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" id="maxdegreeInput" placeholder="Tell us more about testing requirement">
-    </div>
-
-  <div class="actions">
-      <button type="submit" class="btn btn-primary" id="sbt">Book Slot</button>
-  </div>
-
-  </div>
-</div>
-
-<%=render "partials/footer" %>
+  <%=render "partials/footer" %>
