@@ -1,57 +1,164 @@
-<%= form_with(model: raman_microscope) do |form| %>
-  <% if raman_microscope.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(raman_microscope.errors.count, "error") %> prohibited this raman_microscope from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% raman_microscope.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%=render "partials/loginHeading"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Raman Microscope</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+      <%= form_with(model: raman_microscope) do |form| %>
+        <% if raman_microscope.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(raman_microscope.errors.count, "error") %> prohibited this raman_microscope from being saved:</h2>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+            <ul>
+              <% raman_microscope.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
 
-  <div>
-    <%= form.label :stype, style: "display: block" %>
-    <%= form.text_field :stype %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
+          <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
+        <div class="input-group mb-3 vis" id="raman-select">
+            <label class="input-group-text text-success" for="inputGroupSelect01">Laser To Be Used</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="visi">Visible-532nm</option>
+                <option value="nearIR">NearIR-785nm</option>
+                <option value="both">Both (400nm-785nm)</option>
+            </select>
+        </div>
+        <div class="input-group mb-3 vis" id="photo-select">
+            <label class="input-group-text text-primary" for="inputGroupSelect01">Laser To Be Used</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="visi-photo">Visible(532nm-1000nm)</option>
+                <option value="NIR-photo">NIR(785nm-1400nm)</option>
+            </select>
+        </div>
+        <div class="input-group mb-3 vis" id="both-select">
+            <label class="input-group-text for="inputGroupSelect01">Laser To Be Used</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                <option value="visi-both">Visible(532nm-1000nm)</option>
+                <option value="NIR-both">NIR(785nm-1400nm)</option>
+            </select>
+        </div>
 
-  <div>
-    <%= form.label :Compatability, style: "display: block" %>
-    <%= form.text_field :Compatability %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
+            <%= form.select(:stype, ['Solid','Powder','Fabric/Polymer','Liquid/Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :carcinogenic, style: "display: block" %>
-    <%= form.text_field :carcinogenic %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :description, "Sample Description", class:"input-group-text", for:"inputGroupSelect03" %>
+          <%= form.text_field :description, type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"..." %>
+        </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+        <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+
+        <div>
+          <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+
+
+        <div>
+          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %>  Corrossive
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Corrossive
+            </div>
+        </div>
+
+        <div>
+          <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :carcinogenic, ' Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Yes
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :carcinogenic, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true  %> No
+            </div>
+        </div>
+
+
+
+        <div class="input-group mt-3 mb-3" id="collegeid-input">
+            <label for="exampleInputEmail1" class="input-group-text ">Attach Reference Files(optional)</label>
+            <input type="file" class="form-control " id="exampleInputEmail1" >
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let measurement = document.getElementById('measurement');
+    let raman = document.getElementById('raman-select');
+    let photo = document.getElementById('photo-select');
+    let both = document.getElementById('both-select');
+
+    measurement.addEventListener('click', () => {
+        raman.classList.add('vis');
+        photo.classList.add('vis');
+        both.classList.add('vis');
+
+
+      if (measurement.value == 'raman') {
+        raman.classList.toggle('vis');
+      }
+      if (measurement.value == 'photoluminescence') {
+        photo.classList.toggle('vis');
+      }
+      if (measurement.value == 'both') {
+        both.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>
+
 <% end %>

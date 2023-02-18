@@ -1,35 +1,96 @@
-<%= form_with(model: three_d_non_contact) do |form| %>
-  <% if three_d_non_contact.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(three_d_non_contact.errors.count, "error") %> prohibited this three_d_non_contact from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% three_d_non_contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>3D Non-Contact Profilometer</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+      <%= form_with(model: three_d_non_contact) do |form| %>
+        <% if three_d_non_contact.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(three_d_non_contact.errors.count, "error") %> prohibited this three_d_non_contact from being saved:</h2>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+            <ul>
+              <% three_d_non_contact.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :scant, style: "display: block" %>
-    <%= form.text_field :scant %>
-  </div>
 
-  <div>
-    <%= form.label :range, style: "display: block" %>
-    <%= form.text_field :range %>
-  </div>
+      <div class="input-group mb-3">
+        <%= form.label :scant, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
+        <%= form.select(:scant, ['Area', 'Profile'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :stepinterval, style: "display: block" %>
-    <%= form.text_field :stepinterval %>
+
+    <div class="input-group mb-3">
+        <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+        <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+        <%= form.label :range,"X Range", class:"input-group-text", for:"x_range"%>
+        <%= form.text_field :range, type:"text", class:"form-control", id:"x_range", placeholder:"Possible Elements" %>
+        <%= form.label :range,"mm", class:"input-group-text", for:"x_range"%>
+    </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :stepinterval,"Step Interval", class:"input-group-text", for:"step_interval" %>
+        <%= form.text_field :stepinterval, type:"text", class:"form-control", id:"step_interval", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
+        <%= form.label :stepinterval,"µm", class:"input-group-text", for:"step_interval" %>
+      </div>
+
+    <div>
+      <div class="text-warning"><p><b>Note:</b>Sample must be flat as possible. (Approx. 180° flatness)</p>
+      </div>
+
+      <h2 class="text-info text-center">SAFETY INFORMATION</h2>
+
+      <div>
+      <div class="fw-bold"><p></p>
+      </div>
+
+ <div class="input-group mb-3">
+       <%= form.label :incompatible, "Whether incompatible with any material ", class:"input-group-text fw-bold", for:"compatibile" %>
+       <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "compatibile",:required => true}) %>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :toxicity,"Toxicity", class:"input-group-text", for:"toxic" %>
+      <%= form.select(:toxicity, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "compatibile",:required => true}) %>
+    </div>
+
+
+      <div class="input-group mb-3" id="collegeid-input">
+   <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
+      <input type="file" class="form-control " id="exampleInputEmail1" >
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Tell us more about testing requirement">
+    </div>
+
+  <div class="actions">
+      <button type="submit" class="btn btn-primary" id="sbt">Book Slot</button>
+
+    </div>
   </div>
+</div>
+</div>
+</div>
+
+<%=render "partials/footer" %>
+
+
+
+
+
 
   <div>
     <%= form.label :incompatible, style: "display: block" %>

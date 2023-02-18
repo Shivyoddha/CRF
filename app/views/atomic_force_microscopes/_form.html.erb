@@ -1,72 +1,136 @@
-<%= form_with(model: atomic_force_microscope) do |form| %>
-  <% if atomic_force_microscope.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(atomic_force_microscope.errors.count, "error") %> prohibited this atomic_force_microscope from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% atomic_force_microscope.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%=render "partials/loginHeading"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Atomic Force Microscope</h1>
     </div>
-  <% end %>
+    <div class='hero'>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+      <%= form_with(model: atomic_force_microscope) do |form| %>
+        <% if atomic_force_microscope.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(atomic_force_microscope.errors.count, "error") %> prohibited this atomic_force_microscope from being saved:</h2>
 
-  <div>
-    <%= form.label :stype, style: "display: block" %>
-    <%= form.text_field :stype %>
-  </div>
+            <ul>
+              <% atomic_force_microscope.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :technique, style: "display: block" %>
-    <%= form.text_field :technique %>
-  </div>
 
-  <div>
-    <%= form.label :scan_rate, style: "display: block" %>
-    <%= form.text_field :scan_rate %>
-  </div>
 
-  <div>
-    <%= form.label :x, style: "display: block" %>
-    <%= form.text_field :x %>
-  </div>
+          <div class="input-group mb-3">
+            <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+            <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          </div>
 
-  <div>
-    <%= form.label :y, style: "display: block" %>
-    <%= form.text_field :y %>
-  </div>
+          <div class="input-group mb-3">
+            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
+              <%= form.select(:stype, ['Solid','Powder','Fabric/Polymer','Liquid/Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
 
-  <div>
-    <%= form.label :compatability, style: "display: block" %>
-    <%= form.text_field :compatability %>
-  </div>
 
-  <div>
-    <%= form.label :carcinogenic, style: "display: block" %>
-    <%= form.text_field :carcinogenic %>
-  </div>
+          <div>
+            <div>
+              <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"inputGroupSelect02" %>
+              <div class="form-check">
+              <%= form.check_box :technique,{:class=>'form-check-input'}, true, false%>
+              <%= form.label "Contact", class:"form-check-label", for:"flexCheckChecked"%>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+              </div>
+              <div class="form-check">
+                <%= form.check_box :technique,{:checked=> true, :class=>'form-check-input'}, true, false%>
+                <%= form.label "Tapping", class:"form-check-label", for:"flexCheckChecked"%>
+              </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+          </div>
+
+
+
+
+        <div class="mt-3">
+          <%= form.label :x,"XY Scan range(max 100 x 100µm)", class:"input-group-text", for:"inputGroupSelect03" %>
+            <div class="input-group">
+              <%= form.text_field :x , type:"text", class:"form-control", id:"inputGroupSelect03er", placeholder:"X=" %>
+              <%= form.label :x , "nm", class:"input-group-text", for:"inputGroupSelect03er" %>
+            </div>
+            <div class="input-group">
+              <%= form.text_field :y , type:"text", class:"form-control", id:"inputGroupSelect03er", placeholder:"Y=" %>
+              <%= form.label :y , "nm", class:"input-group-text", for:"inputGroupSelect03er" %>
+            </div>
+        </div>
+
+
+        <div class="mt-3">
+                <%= form.label :scan_rate,"Scan rate(typical 1-2 Hz)", class:"input-group-text", for:"inputGroupSelect03" %>
+            <div class="input-group">
+                <%= form.text_field :scan_rate , type:"text", class:"form-control", id:"inputGroupSelect03ery" %>
+                <%= form.label :scan_rate,"Hz", class:"input-group-text", for:"inputGroupSelect03ery" %>
+            </div>
+        </div>
+
+         <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+
+        <div>
+          <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2"%> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> Non-Hazardous
+            </div>
+        </div>
+
+        <div>
+          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %>  Corrossive
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> Non-Corrossive
+            </div>
+        </div>
+
+
+        <div>
+          <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :carcinogenic, ' Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %> Yes
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :carcinogenic, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> No
+            </div>
+        </div>
+
+        <div class="input-group mt-3 mb-3" id="ref-paper-input">
+            <label for="exampleInputEmaeil1" class="input-group-text ">Attach reference paper (optional)</label>
+            <input type="file" class="form-control " id="exampleInputEmaeil1" >
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+    </div>
+</div>
+
+
+
+
 <% end %>
+
+<%=render "partials/footer" %>

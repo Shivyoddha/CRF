@@ -1,87 +1,224 @@
-<%= form_with(model: tga_fttr) do |form| %>
-  <% if tga_fttr.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tga_fttr.errors.count, "error") %> prohibited this tga_fttr from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% tga_fttr.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%=render "partials/loginHeading"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>TGA-FTIR</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+      <%= form_with(model: tga_fttr) do |form| %>
+        <% if tga_fttr.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(tga_fttr.errors.count, "error") %> prohibited this tga_fttr from being saved:</h2>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+            <ul>
+              <% tga_fttr.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
 
-  <div>
-    <%= form.label :stype, style: "display: block" %>
-    <%= form.text_field :stype %>
-  </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :nature, style: "display: block" %>
-    <%= form.text_field :nature %>
-  </div>
 
-  <div>
-    <%= form.label :min_temp, style: "display: block" %>
-    <%= form.text_field :min_temp %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
+            <%= form.select(:stype, ['Solid','Powder','Fabric/Polymer','Liquid/Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :max_temp, style: "display: block" %>
-    <%= form.text_field :max_temp %>
-  </div>
 
-  <div>
-    <%= form.label :scan_rate, style: "display: block" %>
-    <%= form.text_field :scan_rate %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
+          <%= form.select(:measurement, ['TGA','FTIR','TGA+FTIR','TG-IR Hyphenation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :atmosphere, style: "display: block" %>
-    <%= form.text_field :atmosphere %>
-  </div>
 
-  <div>
-    <%= form.label :hazard, style: "display: block" %>
-    <%= form.text_field :hazard %>
-  </div>
+          <div class="input-group mb-3">
+            <%= form.label :description, "Sample Description", class:"input-group-text", for:"inputGroupSelect03" %>
+            <%= form.text_field :description, type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"..." %>
+          </div>
 
-  <div>
-    <%= form.label :compatability, style: "display: block" %>
-    <%= form.text_field :compatability %>
-  </div>
 
-  <div>
-    <%= form.label :carcinogenic, style: "display: block" %>
-    <%= form.text_field :carcinogenic %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :nature, "Sample Nature",class:"input-group-text", for:"sample_nature"%>
+          <%= form.select(:nature, ['Hygroscopic','Non-Hygroscopic'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :explosive, style: "display: block" %>
-    <%= form.text_field :explosive %>
-  </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+        <div id="tga-specs" class="vis">
+            <p class="fw-bold text-primary">TGA Specification</p>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+            <div>
+                <p class="fw-bold">Temperature Range (°C)</p>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <%= form.label :min_temp, "Min", class:"input-group-text", for:"temp_min" %>
+                <%= form.text_field :min_temp, type:"text", class:"form-control", id:"temp_min", placeholder:"Min. 23"%>
+            </div>
+            <div class="input-group mb-3" >
+                <%= form.label :max_temp, "Max", class:"input-group-text", for:"temp_max" %>
+                <%= form.text_field :max_temp, type:"text", class:"form-control", id:"temp_max", placeholder:"Max. 900"%>
+            </div>
+
+            <div>
+                <p class="fw-bold">Scan rate(°C/min)</p>
+            </div>
+
+            <div class="input-group mb-3">
+                <%= form.label :scan_rate,"°C/min", class:"input-group-text", for:"scan_rate" %>
+                <%= form.text_field :scan_rate, type:"text", class:"form-control", id:"scan_rate", placeholder:"Max. 900"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :atmosphere,"Atmosphere",class:"input-group-text", for:"atmosphere"%>
+              <%= form.select(:atmosphere, ['Oxygen','Nitrogen','Argon'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere",:required => true}) %>
+            </div>
+        </div>
+
+        <div id="ftir" class="vis">
+            <p class="fw-bold text-success">FTIR-Method</p>
+
+            <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ftr" value="option1">
+                <label class="form-check-label" for="ftr">FTR</label>
+                </div>
+                <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="kbr" value="option2">
+                <label class="form-check-label" for="kbr">KBR</label>
+                </div>
+            </div>
+
+            <div class="y-ordinate">
+                <p class="fw-bold">Y-Ordinate</p>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="absorbance" value="option1">
+                <label class="form-check-label" for="absorbance">Absorbance</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="transmittance" value="option2">
+                <label class="form-check-label" for="transmittance">Transmittance</label>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+
+
+        <div>
+          <%= form.label :hazard, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :hazard, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :hazard, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+
+
+        <div>
+          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %>  Corrossive
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Corrossive
+            </div>
+        </div>
+
+        <div>
+          <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :carcinogenic, ' Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :carcinogenic, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+            </div>
+        </div>
+
+
+        <div>
+          <%= form.label :explosive, "Explosive",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :explosive, ' Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :explosive, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+            </div>
+        </div>
+
+
+        <div class="input-group mt-3 mb-3" id="collegeid-input">
+            <label for="exampleInputEmail1" class="input-group-text ">Attach Ref. paper/ Protocol (optional)</label>
+            <input type="file" class="form-control " id="exampleInputEmail1" >
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+        <div>
+          <%= form.submit %>
+        </div>
+      <% end %>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let measurement = document.getElementById('measurement');
+    let tgaSpecs = document.getElementById('tga-specs');
+    let ftir = document.getElementById('ftir');
+
+    measurement.addEventListener('click', () => {
+        tgaSpecs.classList.add('vis');
+        ftir.classList.add('vis');
+
+
+      if (measurement.value == 'tga') {
+        tgaSpecs.classList.toggle('vis');
+      }
+      if (measurement.value == 'ftir') {
+        ftir.classList.toggle('vis');
+      }
+      if (measurement.value == 'tga+ftir') {
+        tgaSpecs.classList.toggle('vis');
+        ftir.classList.toggle('vis');
+      }
+      if (measurement.value == 'tga+ftir-hyphenation') {
+        tgaSpecs.classList.toggle('vis');
+        ftir.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>

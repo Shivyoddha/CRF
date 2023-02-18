@@ -6,6 +6,9 @@
 #search-profile:hover {
     --bs-tertiary-bg-rgb: #554242;
 } */
+#maithili{
+
+}
 .font-quicksand {
   font-family: "Quicksand", "sans-serif";
 }
@@ -20,6 +23,7 @@
 #profile-dropdown-info{
   text-align:start;
   padding: 0 1em 0 1em;
+  margin-bottom: 0;
 }
 
 hr {

@@ -1,57 +1,145 @@
-<%= form_with(model: uv_vis_nir) do |form| %>
-  <% if uv_vis_nir.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(uv_vis_nir.errors.count, "error") %> prohibited this uv_vis_nir from being saved:</h2>
 
-      <ul>
-        <% uv_vis_nir.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>UV-Vis-NIR Slot</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+      <%= form_with(model: uv_vis_nir) do |form| %>
+        <% if uv_vis_nir.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(uv_vis_nir.errors.count, "error") %> prohibited this uv_vis_nir from being saved:</h2>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+            <ul>
+              <% uv_vis_nir.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :srange, style: "display: block" %>
-    <%= form.text_field :srange %>
-  </div>
+      <div class="input-group mb-3">
+        <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+        <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+      </div>
 
-  <div>
-    <%= form.label :erange, style: "display: block" %>
-    <%= form.text_field :erange %>
-  </div>
+      <div class="input-group mb-3">
+        <%= form.label :srange , "Start Range", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :srange , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Min. 180" %>
+        <%= form.label :srange , "nm", class:"input-group-text", for:"inputGroupSelect03" %>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :erange , "End Range", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :erange , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Max. 3100"%>
+        <%= form.label :erange , "nm", class:"input-group-text", for:"inputGroupSelect03" %>
+      </div>
+
+      <div>
+        <div>
+          <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+          <div class="form-check">
+          <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+          <%= form.label "Transmittance", class:"form-check-label", for:"flexCheckChecked"%>
+
+          </div>
+          <div class="form-check">
+            <%= form.check_box :measurement,{:checked=> true, :class=>'form-check-input'}, true, false%>
+            <%= form.label "Absorbance", class:"form-check-label", for:"flexCheckChecked"%>
+          </div>
+
+          <div class="form-check">
+            <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+            <%= form.label "Reflectance", class:"form-check-label", for:"flexCheckChecked"%>
+          </div>
+      </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :compositiion , "Sample Composition", class:"input-group-text", for:"inputGroupSelect03" %>
+          <%= form.text_field :composition , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Ex: Ag dispersion" %>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :sampletype,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sampletype, ['Solid','Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+        <div>
+          <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+
+
+        <div class="input-group mt-3 mb-3" id="collegeid-input">
+            <label for="exampleInputEmail1" class="input-group-text ">Attach reference paper (optional)</label>
+            <input type="file" class="form-control " id="exampleInputEmail1" >
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+    </div>
+</div>
+
+
 
   <div>
     <%= form.label :measurement, style: "display: block" %>
     <%= form.text_field :measurement %>
   </div>
 
-  <div>
-    <%= form.label :composition, style: "display: block" %>
-    <%= form.text_field :composition %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
-
-  <div>
-    <%= form.label :sampletype, style: "display: block" %>
-    <%= form.text_field :sampletype %>
-  </div>
-
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+
+
+
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let measurement = document.getElementById('measurement');
+    let raman = document.getElementById('raman-select');
+    let photo = document.getElementById('photo-select');
+    let both = document.getElementById('both-select');
+
+    measurement.addEventListener('click', () => {
+        raman.classList.add('vis');
+        photo.classList.add('vis');
+        both.classList.add('vis');
+
+
+      if (measurement.value == 'raman') {
+        raman.classList.toggle('vis');
+      }
+      if (measurement.value == 'photoluminescence') {
+        photo.classList.toggle('vis');
+      }
+      if (measurement.value == 'both') {
+        both.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>
