@@ -12,57 +12,64 @@
 
 ActiveRecord::Schema.define(version: 2023_02_17_091410) do
 
-  create_table "advance_modular_rheometers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ansys_system_labs", force: :cascade do |t|
-    t.string "name"
+  create_table "advance_molecular_rheometers", force: :cascade do |t|
+    t.string "sample"
+    t.string "type"
+    t.string "size"
+    t.string "nature"
+    t.string "temperature"
+    t.string "current"
+    t.string "shear_type"
+    t.string "shear_rate"
+    t.string "sweeps"
+    t.string "analysis"
+    t.string "toxicity"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "atomic_force_microscopes", force: :cascade do |t|
-    t.string "name"
+    t.string "sample"
+    t.string "stype"
+    t.string "technique"
+    t.string "scan_rate"
+    t.string "x"
+    t.string "y"
+    t.string "description"
+    t.string "toxicity"
+    t.string "compatability"
+    t.string "carcinogenic"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "automatic_multi_specimen_polishers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ball_milling_units", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "bet_surfaces", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "bets", force: :cascade do |t|
     t.string "sample"
     t.string "degassing"
     t.string "analysis"
-    t.string "incompatible"
+    t.string "incompatibe"
     t.string "toxicity"
-    t.string "specific"
+    t.string "disposal"
     t.string "more"
-  end
-
-  create_table "cell_imagings", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "electro_chemical_polishings", force: :cascade do |t|
-    t.string "name"
+  create_table "cell_imagings", force: :cascade do |t|
+    t.string "sample"
+    t.string "stype"
+    t.string "plate"
+    t.string "expected_wavelenght"
+    t.string "assay_type"
+    t.string "detection"
+    t.string "image_filter"
+    t.string "image_mode"
+    t.string "toxicity"
+    t.string "compatibility"
+    t.string "hazard"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -79,231 +86,173 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
     t.text "facilities"
   end
 
-  create_table "five_axes_cncs", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "friction_stir_weldings", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "ft_nmrs", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "gait_analyses", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "gas_sensings", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "glove_boxes", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "glow_discharges_os", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "high_temp_vacuums", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "hr_fese_jeols", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "hr_fesm_cars", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "hr_lcms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "sample"
-    t.string "nsample"
+    t.string "sample_nature"
+    t.string "sample_phase"
+    t.string "toxicity"
+    t.string "health"
+    t.string "storage"
+    t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hr_fesem_cs", force: :cascade do |t|
+    t.string "sample"
+    t.string "composition"
+    t.string "stype"
+    t.string "sphase"
+    t.string "measurement"
+    t.string "eds_required"
+    t.string "toxic"
+    t.string "conducting"
+    t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hr_fesem_js", force: :cascade do |t|
+    t.string "sample"
+    t.string "composition"
+    t.string "stype"
+    t.string "sphase"
+    t.string "measurement"
+    t.string "eds_required"
+    t.string "toxic"
+    t.string "conducting"
+    t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hrlcms", force: :cascade do |t|
+    t.string "sample"
+    t.string "nature_sample"
     t.string "category"
+    t.string "sample_type"
     t.string "solvent"
     t.string "analysis"
-    t.string "sampleph"
-    t.string "samplevol"
-    t.string "sanpleconc"
-    t.string "samplesalts"
-    t.string "samplecontain"
+    t.string "sample_volume"
+    t.string "sample_concentration"
+    t.string "sample_salts"
+    t.string "sample_contains"
     t.string "storage"
-    t.string "testing"
-    t.string "incompitable"
+    t.string "testing_required"
+    t.string "incompatible"
     t.string "toxicity"
     t.string "disposal"
     t.string "health"
     t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "icp_ms", force: :cascade do |t|
-    t.string "name"
+    t.string "sample"
+    t.string "composition"
+    t.string "sample_phase"
+    t.string "nature"
+    t.string "concentration"
+    t.string "testing"
+    t.string "storage"
+    t.string "toxicity"
+    t.string "compatibility"
+    t.string "hazard"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "impedance_analyzers", force: :cascade do |t|
-    t.string "name"
+  create_table "integrated_multi_role_testers", force: :cascade do |t|
+    t.string "sample"
+    t.string "measurement"
+    t.string "type"
+    t.string "loading"
+    t.string "temperature"
+    t.string "analysis"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "intergrated_multi_roles", force: :cascade do |t|
-    t.string "name"
+  create_table "ion_chromotographies", force: :cascade do |t|
+    t.string "sample"
+    t.string "nature"
+    t.string "solvent"
+    t.string "volume"
+    t.string "concentration"
+    t.string "eluent"
+    t.string "analysis"
+    t.string "elements"
+    t.string "column"
+    t.string "flow_rate"
+    t.string "temperature"
+    t.string "detector"
+    t.string "toxicity"
+    t.string "hazards"
+    t.string "disposal"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ion_chromatographies", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "laser_flash_analysers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "liquid_nitrogens", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "low_force_fatigues", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "micro_edms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "milli_q_waters", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "multi_purpose_impacts", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "probe_sonicators", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "questions_users", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "question_id", null: false
-    t.index ["question_id", "user_id"], name: "index_questions_users_on_question_id_and_user_id"
-    t.index ["user_id", "question_id"], name: "index_questions_users_on_user_id_and_question_id"
-  end
-
-  create_table "raman_spectrometer", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "raman_microscopes", force: :cascade do |t|
     t.string "sample"
     t.string "measurement"
     t.string "stype"
     t.string "description"
     t.string "toxicity"
+    t.string "Compatability"
     t.string "carcinogenic"
-    t.string "compatability"
     t.string "more"
-  end
-
-  create_table "scratch_testers", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "spark_os", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "spectro_radiometers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tgaftirs", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "scratch_indentations", force: :cascade do |t|
     t.string "sample"
-    t.string "stype"
+    t.string "type"
     t.string "measurement"
+    t.string "stroke"
+    t.string "number_indentation"
+    t.string "constant_load"
+    t.string "increment_load"
+    t.string "progressive_load"
+    t.string "temperature"
+    t.string "analysis"
+    t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tga_fttrs", force: :cascade do |t|
+    t.string "sample"
+    t.string "measurement"
+    t.string "stype"
+    t.string "description"
     t.string "nature"
-    t.string "mintemp"
-    t.string "maxtemp"
-    t.string "scanrate"
+    t.string "min_temp"
+    t.string "max_temp"
+    t.string "scan_rate"
     t.string "atmosphere"
     t.string "hazard"
     t.string "compatability"
+    t.string "carcinogenic"
     t.string "explosive"
     t.string "more"
-  end
-
-  create_table "three_d_scanners", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "three_d_non_contacts", force: :cascade do |t|
     t.string "sample"
-    t.string "size"
-    t.string "texture"
-    t.string "format"
+    t.string "scant"
+    t.string "range"
+    t.string "stepinterval"
+    t.string "incompatible"
+    t.string "toxicity"
     t.string "more"
-  end
-
-  create_table "tribometers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "ultra_centrifuges", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -312,8 +261,8 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -335,26 +284,44 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
   end
 
   create_table "uv_vis_nirs", force: :cascade do |t|
-    t.string "name"
+    t.string "sample"
+    t.string "srange"
+    t.string "erange"
+    t.string "measurement"
+    t.string "composition"
+    t.string "toxicity"
+    t.string "sampletype"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "x_ray_diffractions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "xrds", force: :cascade do |t|
     t.string "sample"
     t.string "measurement"
-    t.string "minD"
+    t.string "composition"
     t.string "stype"
-    t.string "maxD"
-    t.string "reference"
+    t.string "mind"
+    t.string "maxd"
+    t.binary "reference"
     t.string "more"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "zeta_potential_sizers", force: :cascade do |t|
-    t.string "name"
+  create_table "zeta_potential_sizes", force: :cascade do |t|
+    t.string "sample"
+    t.string "type"
+    t.string "toxicity"
+    t.string "element"
+    t.string "solvent"
+    t.string "refractive_index"
+    t.string "viscosity"
+    t.string "solute"
+    t.string "angle"
+    t.string "analysis_type"
+    t.string "analysis_temperature"
+    t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
