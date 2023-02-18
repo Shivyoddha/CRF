@@ -5,33 +5,34 @@
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <div id="search-div">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search">
+        <div class="d-flex" role="search">
+          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search" id="searchInput">
           <button class="btn btn-outline-warning" type="submit">Search</button>
-        </form>
+        </div>
       </div>
 
       <div id="profile-div">
-        <div class="btn-group btn-profile">
-          <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
-          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu font-quicksand">
-            <div>
-              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
-              <a class="dropdown-item" href="#">UserName</a>
-            </div>
-            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-            <li><a class="dropdown-item" href="#">My Slots</a></li>
+          <div class="btn-group btn-profile">
+            <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown" %>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu font-quicksand">
+              <div>
 
-            <li><%= link_to "PDF", home_index_path(format: :pdf) %></li>
-            <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
-            <li><hr class="dropdown-divider"></li>
-            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
-          </ul>
+                <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+                <%= link_to "#{current_user.name} ", edit_user_registration_path ,class:"dropdown-item fw-bold" ,id:"maithili" %>
+              </div>
+
+              <hr>
+              <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
+              <li><a class="dropdown-item" href="#">My Slots</a></li>
+              <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+            </ul>
+          </div>
         </div>
-      </div>
     </div>
   </nav>
 
@@ -294,7 +295,7 @@
           </div>
       </div>
       </div>
-<!--
+
 
       <div class="equipment">
          <%# card-7 BET Surface Area Analyzer%>
@@ -682,3 +683,37 @@
         </div>
     </div>
 </div> -->
+<script>
+const ele1="<%= @user.name %> "
+    const ele = "<%=@user.lastname %> " ;
+var element = document.getElementById("maithili").innerHTML= ele1+ele[0];
+
+const searchInput = document.getElementById("searchInput");
+
+  // store name elements in array-like object
+  const namesFromDOM = document.getElementsByClassName("equipment");
+
+  // listen for user events
+  searchInput.addEventListener("keyup", (event) => {
+      const { value } = event.target;
+
+      // get user search input converted to lowercase
+      const searchQuery = value.toLowerCase();
+
+      for (const nameElement of namesFromDOM) {
+          // store name text and convert to lowercase
+          let name = nameElement.textContent.toLowerCase();
+
+          // compare current name to search input
+          if (name.includes(searchQuery)) {
+              // found name matching search, display it
+              nameElement.style.display = "block";
+          } else {
+              // no match, don't display name
+              nameElement.style.display = "none";
+          }
+      }
+  });
+
+
+</script>

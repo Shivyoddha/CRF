@@ -1,102 +1,208 @@
-<%= form_with(model: hrlcm) do |form| %>
-  <% if hrlcm.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(hrlcm.errors.count, "error") %> prohibited this hrlcm from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% hrlcm.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%=render "partials/loginHeading"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>HR-LCMS</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+      <%= form_with(model: hrlcm) do |form| %>
+        <% if hrlcm.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(hrlcm.errors.count, "error") %> prohibited this hrlcm from being saved:</h2>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+            <ul>
+              <% hrlcm.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :nature_sample, style: "display: block" %>
-    <%= form.text_field :nature_sample %>
-  </div>
 
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
-  </div>
 
-  <div>
-    <%= form.label :sample_type, style: "display: block" %>
-    <%= form.text_field :sample_type %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+      <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :solvent, style: "display: block" %>
-    <%= form.text_field :solvent %>
-  </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
 
-  <div>
-    <%= form.label :sample_volume, style: "display: block" %>
-    <%= form.text_field :sample_volume %>
-  </div>
+      <div class="input-group mb-3">
+        <%= form.label :nature_sample,"Nature of Sample", class:"input-group-text", for:"inputGroupSelect01" %>
+        <%= form.select(:nature_sample, ['Organic','Inorganic','Mixture of both','Peptide / Protein'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+      </div>
 
-  <div>
-    <%= form.label :sample_concentration, style: "display: block" %>
-    <%= form.text_field :sample_concentration %>
-  </div>
 
-  <div>
-    <%= form.label :sample_salts, style: "display: block" %>
-    <%= form.text_field :sample_salts %>
-  </div>
 
-  <div>
-    <%= form.label :sample_contains, style: "display: block" %>
-    <%= form.text_field :sample_contains %>
-  </div>
 
-  <div>
-    <%= form.label :storage, style: "display: block" %>
-    <%= form.text_field :storage %>
+
+      <div>
+        <%= form.label :category, "Category of sample",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <div class="form-check">
+              <%= form.radio_button :category, 'Crude', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %>Crude
+          </div>
+          <div class="form-check">
+                <%= form.radio_button :category, 'Pure', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Pure
+          </div>
+      </div>
+
+
+
+      <div>
+        <%= form.label :sample_type, "Type of sample",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+        <div class="form-check">
+              <%= form.radio_button :sample_type, 'Synthetic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Synthetic
+        </div>
+        <div class="form-check">
+              <%= form.radio_button :sample_type, 'Biological', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Biological
+        </div>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :solvent , "Solvent used to dissolve sample:", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :solvent , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Mention Solvent Name" %>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :analysis,"Analysis required:", class:"input-group-text", for:"inputGroupSelect01" %>
+        <%= form.select(:analysis, ['Qualitative','Quantitative','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :sample_volume  , "Sample volume: (in mL):", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :sample_volume  , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Sample volume" %>
+      </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :sample_concentration  , "Sample concentration: (in ppm)", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :sample_concentration , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Sample Conc." %>
+      </div>
+
+
+
+        <div class="input-group mb-3">
+          <%= form.label :sample_salts,"Sample contain salts", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sample_salts, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :sampleph,"Sample pH", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sampleph, ['1 to 4','4 to 7', '7 to 10','11 to 14','Not Applicable'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :sample_containsh,"Sample contain (detergents/surfactants/proteins)", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sample_contains, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :storage,"Sample contain (detergents/surfactants/proteins)", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:storage, ['Room Temperature','Specific Temperature'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <p class="fw-bold">Testing required</p>
+            <div class="input-group mb-3">
+              <div class="form-check form-check-inline">
+                <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                <%= form.label "UPLC", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                  <%= form.label "MS", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                  <%= form.label "UPLC-MS(+ve)", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+                <div class="form-check form-check-inline">
+                <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                <%= form.label "UPLC-MS(-ve)", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+
+                <div class="form-check form-check-inline">
+                <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                <%= form.label "UPLC-MS-MS (+ve)", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+                <div class="form-check form-check-inline">
+                  <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                  <%= form.label "UPLC-MS-MS (-ve)", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+                  <%= form.label "MS-MS (-ve)", class:"form-check-label", for:"flexCheckChecked"%>
+                </div>
+              </div>
+        </div>
+
+        <div>
+          <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.label :incompatible,"Whether incompatible with any material", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :disposal,"Any specific disposal method?", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:disposal, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+      </div>
+
+
+          <div class="input-group mb-3">
+            <%= form.label :health,"Health hazards", class:"input-group-text", for:"inputGroupSelect01" %>
+            <%= form.select(:health, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+      <div class="input-group mb-3" id="collegeid-input">
+   <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
+      <input type="file" class="form-control " id="exampleInputEmail1" >
+    </div>
+
   </div>
+</div>
+
+<%=render "partials/footer" %>
+
+
+
 
   <div>
     <%= form.label :testing_required, style: "display: block" %>
     <%= form.text_field :testing_required %>
   </div>
 
-  <div>
-    <%= form.label :incompatible, style: "display: block" %>
-    <%= form.text_field :incompatible %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
-
-  <div>
-    <%= form.label :disposal, style: "display: block" %>
-    <%= form.text_field :disposal %>
-  </div>
-
-  <div>
-    <%= form.label :health, style: "display: block" %>
-    <%= form.text_field :health %>
-  </div>
-
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

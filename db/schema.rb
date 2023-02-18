@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_17_091410) do
+ActiveRecord::Schema.define(version: 2023_02_18_184141) do
 
   create_table "advance_molecular_rheometers", force: :cascade do |t|
     t.string "sample"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
     t.text "location"
     t.text "application"
     t.text "facilities"
+  end
+
+  create_table "faculties", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "department"
+    t.string "email"
   end
 
   create_table "ft_nmrs", force: :cascade do |t|
@@ -197,6 +205,12 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "nameps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "raman_microscopes", force: :cascade do |t|
     t.string "sample"
     t.string "measurement"
@@ -261,8 +275,8 @@ ActiveRecord::Schema.define(version: 2023_02_17_091410) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
