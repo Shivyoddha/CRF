@@ -21,7 +21,7 @@ class HomeController < ApplicationController
    #       end
    #     end
 
- MaithiliMailer.anish.deliver_now
+
 
 
   end
