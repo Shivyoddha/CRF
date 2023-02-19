@@ -1,6 +1,6 @@
 class Xrd < ApplicationRecord
 
 
-  has_one_attached :reference
+  has_many_attached :references
 
 end

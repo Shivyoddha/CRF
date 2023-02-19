@@ -137,6 +137,11 @@
             <p>No files found.</p>
         <% end %>
       </div>
+      <div>
+        <%@xrd.references.each do |ref|%>
+        <%=link_to 'Download',  rails_blob_path(ref,disposition: :attachment) %>
+        <% end %>
+      </div>
 
 
         </div>
