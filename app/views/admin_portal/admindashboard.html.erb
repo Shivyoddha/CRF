@@ -42,7 +42,7 @@
                     </div>
                 </li>
             </ul>
-            
+
             <h2 class="fw-bold text-center">Models</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
@@ -128,6 +128,17 @@
                 </div>
             </div>
 
+
+
+      <div>
+        <% if @user.file.attached? %>
+          <%= image_tag  @user.file %>
+          <% else %>
+            <p>No files found.</p>
+        <% end %>
+      </div>
+
+
         </div>
         <div id="chart" class="mt-5 mb-5">
         <div id="stats">
@@ -165,7 +176,7 @@
                     }]
                 },
                     options: {
-                        
+
                         title: {
                         display: true,
                         text: "World Wide Wine Production 2018",
@@ -175,7 +186,7 @@
                                     // This more specific font property overrides the global property
                                     font: {
                                         size: 16
-                                        }  
+                                        }
                                     }
                                 }
                             }

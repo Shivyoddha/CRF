@@ -38,7 +38,7 @@ class XrdsController < ApplicationController
   def update
     respond_to do |format|
       if @xrd.update(xrd_params)
-        format.html { redirect_to xrd_url(@xrd), notice: "Xrd was successfully updated." }
+        format.html { redirect_to xrd_url(@xrd), notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class XrdsController < ApplicationController
     @xrd.destroy
 
     respond_to do |format|
-      format.html { redirect_to xrds_url, notice: "Xrd was successfully destroyed." }
+      format.html { redirect_to xrds_url, notice: "Xrd was successfully destroyed."}
       format.json { head :no_content }
     end
   end
@@ -65,6 +65,6 @@ class XrdsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd, :reference, :more)
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd, :reference, :more ,:reference, :debit )
     end
 end

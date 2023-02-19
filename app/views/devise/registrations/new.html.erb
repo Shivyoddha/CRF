@@ -84,7 +84,7 @@
                 </div>
 
 
-      
+
                 <% options = options_from_collection_for_select(Faculty.all,'id' ,'name')%>
                 <div class="input-group mb-3" id="course-input">
                   <%= f.label :name ,"Faculty" ,for:"exampleInputEmail1", class:"input-group-text "%>
@@ -92,8 +92,8 @@
                 </div>
 
                 <div class="input-group mb-3" id="collegeid-input">
-                  <%= f.label :collegeid ,"College ID" ,for:"exampleInputEmail1", class:"input-group-text "%>
-                  <%= f.file_field :collegeid ,class:"form-control ",
+                  <%= f.label :file ,"College ID" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.file_field :file ,class:"form-control ",
                   id:"exampleInputEmail1" %>
 
                 </div>

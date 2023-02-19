@@ -1,0 +1,30 @@
+<nav class="navbar bg-body-tertiary mb-3" id="form-back-profile">
+    <div class="container-fluid">
+      <div id="back-div">
+        <div>
+          <%= link_to "Back",  :back, class:"btn btn-outline-warning profile-dropdown back-btn-forms" %>
+        </div>
+      </div>
+
+      <div id="profile-div">
+        <div class="btn-group btn-profile">
+          <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
+          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu font-quicksand">
+            <div>
+              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+              <a class="dropdown-item" href="#">UserName</a>
+            </div>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#">My Slots</a></li>
+            <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+
+  </nav>

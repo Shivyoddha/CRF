@@ -3,6 +3,8 @@
 
 
 <%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
 
 <div class="container">
     <div id="equipment-name">
@@ -24,44 +26,72 @@
 
           <div class="input-group mb-3">
             <%= form.label :sample, class:"input-group-text", for:"inputGroupSelect01"%>
-            <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect01",:required => true}) %>
           </div>
 
 
 
           <div class="input-group mb-3">
-          <%= form.label :measurement, class:"input-group-text", for:"inputGroupSelect02" %>
-          <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          <%= form.label :measurement,"measurement", class:"input-group-text", for:"inputGroupSelect02" %>
+          <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect02",:required => true}) %>
         </div>
 
 
           <div class="input-group mb-3">
-          <%= form.label :composition, class:"input-group-text",for:"inputGroupSelect03"%>
+          <%= form.label :composition, "Composition", class:"input-group-text",for:"inputGroupSelect03"%>
           <%= form.text_field :composition, class:"form-control", id:"inputGroupSelect03", placeholder:"(Ex: ZnO, GO)"%>
         </div>
 
 
         <div class="input-group mb-3">
           <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect04" %>
-          <%= form.select(:stype, ['Solid', 'Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          <%= form.select(:stype, ['Solid', 'Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect04",:required => true}) %>
         </div>
 
 
           <div class="input-group mb-3">
-          <%= form.label :mind, "Min Degree", class:"input-group-text", for:"exampleInputEmail1" %>
+          <%= form.label :mind, "Start Angle(2θ°)", class:"input-group-text", for:"mindegreeInput" %>
           <%= form.text_field :mind, class:"form-control", id:"mindegreeInput", placeholder:"Min 2"  %>
+            <%= form.label :mind, "(2θ°)", class:"input-group-text", for:"mindegreeInput" %>
         </div>
 
 
         <div class="input-group mb-3">
-          <%= form.label :maxd, "Max Degree", class:"input-group-text", for:"exampleInputEmail1" %>
-          <%= form.text_field :maxd, class:"form-control", id:"maxdegreeInput", placeholder:"Max 2"%>
+          <%= form.label :maxd, "End Angle(2θ°)", class:"input-group-text", for:"maxdegreeInput" %>
+          <%= form.text_field :maxd, class:"form-control", id:"maxdegreeInput", placeholder:"Max 140"%>
+          <%= form.label :mind, "(2θ°)", class:"input-group-text", for:"maxdegreeInput" %>
         </div>
 
-         <div class="input-group mb-3" id="collegeid-input">
-          <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
-          <input type="file" class="form-control " id="exampleInputEmail1" >
+
+
+        <div class="input-group mb-3" id="collegeid-input">
+          <%= form.label :reference ,"Reference Files" ,for:"exampleInputEmail1", class:"input-group-text "%>
+          <%= form.file_field :reference ,class:"form-control ",  id:"exampleInputEmail1" %>
         </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"inputGroupSelect02" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect02",:required => true}) %>
+      </div>
+
+        <!-- <div class="input-group mb-3">
+          <label class="input-group-text" for="debit-head">Choose Debit Head </label>
+          <select class="form-select" id="debit-head">
+            <option selected>Choose...</option>
+            <option value="Department Operating Cost">Department Operating Cost</option>
+            <option value="Student Contingency">Student Contingency</option>
+            <option value="CPDA Fund">CPDA Fund</option>
+            <option value="Project Fund">Project Fund</option>
+
+          </select>
+    </div> -->
+
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
 
 
         <div class="input-group mb-3">
@@ -76,3 +106,5 @@
 
   </div>
 </div>
+
+<%=render "partials/footer" %>
