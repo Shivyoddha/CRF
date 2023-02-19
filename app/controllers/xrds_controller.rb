@@ -4,6 +4,7 @@ class XrdsController < ApplicationController
   # GET /xrds or /xrds.json
   def index
     @xrds = Xrd.all
+
   end
 
   # GET /xrds/1 or /xrds/1.json
@@ -14,6 +15,7 @@ class XrdsController < ApplicationController
   # GET /xrds/new
   def new
     @xrd = Xrd.new
+    @user=User.find(current_user.id)
   end
 
   # GET /xrds/1/edit
@@ -23,10 +25,9 @@ class XrdsController < ApplicationController
   # POST /xrds or /xrds.json
   def create
     @xrd = Xrd.new(xrd_params)
-
     respond_to do |format|
       if @xrd.save
-        XRayDiffractionMailer.with(id:@xrd.id).Mail.deliver_later
+        XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
       else

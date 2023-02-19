@@ -1,4 +1,155 @@
-<h1>Hi , you have successfully filled the slot form.</h1>
-<p>Please wait till the slot is slotted.</p>
-<p>No of sample is : </p><%= @xrd.sample%>
-<p>measurement is :</p> <%= @xrd.measurement%>
+<div id="margin">
+    <div class="container-11">
+          <div class="logo">
+              <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+          </div>
+          <div class="crf-heading text-center">
+              <h1 class="fw-bold" style="font-family: 'Montserrat', sans-serif;">Central Research Facility</h1>
+              <h3>National Institute of Technology Karnataka, Surathkal </h3>
+              <p><i>www.nitk.ac.in</i></p>
+          </div>
+      </div>
+
+      <!-- equipment name -->
+      <div class="equipment">
+          <h2 class="text-center" id="equip-heading"><u>X-Ray Diffraction Slot Form</u></h2>
+      </div>
+
+      <span id="app-no-tag">Application No : </span><span class="app-no fw-bold element data">CRF/XRD/ <%= @xrd.id %> </span>
+      <div class = "user-info" >
+          <div class="left">
+              <div class="element">
+                  <span>Applicant Name:</span>
+                  <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+              </div>
+              <div class="element">
+                  <span>Applicant Email:</span>
+                  <span class="fw-bold data"> <%= @user.email %></span>
+              </div>
+              <div class="element">
+                  <span>Department:</span>
+                  <span class="fw-bold data"> <%= @user.department %></span>
+              </div>
+          </div>
+          <div class = "right">
+                <div class="element">
+
+                    <span>Contact No:</span>
+                    <span class="fw-bold data"> <%= @user.contact %></span>
+                </div>
+
+            <div class="element">
+                <span>Course:</span>
+                <span class="fw-bold data"> <%= @user.course %></span>
+            </div>
+
+          </div>
+      </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
+        <div id="sample-details">
+            <div class="left">
+                <div id="no-of-sample" class="element">
+                    <span>No. Of Samples:<span><span class="fw-bold data"> <%= @xrd.sample %> <span>
+                </div>
+
+                <div id="composition" class="element">
+                    <span>Composition:<span><span class="fw-bold data"> <%= @xrd.composition %> <span>
+                </div>
+                <div id="measurement" class="element">
+                    <span>Measurment:<span><span class="fw-bold data"> <%= @xrd.measurement %> <span>
+                </div>
+            </div>
+
+            <div class="right">
+                 <div id="sample-phase" class="element">
+                    <span>Sample Phase:<span><span class="fw-bold data"> <%= @xrd.stype %> <span>
+                </div>
+
+                 <div id="angle" class="element">
+                    <div id="range-angle">
+                        <span>Range:<span><span class="fw-bold data"> <%= @xrd.mind %>  to  <%= @xrd.maxd %> <span>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div id="testing-req-div">
+            <div id="testing-req" class="element">
+                <span>Testing Requirement:<span><span class="fw-bold data"> <%= @xrd.more%> <span>
+            </div>
+        </div>
+
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left" class="element">
+                <div>
+                    <span>Supervisor Name:</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div id="debit-head">
+                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                </div>
+
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span>Supervisor Signature</span>
+                </div>
+            </div>
+
+            <div id="signatures-upper-right" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty In-Charge:</span>
+                </div>
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span class="fw-bold">Dr M R Rahman</span>
+                </div>
+                <div>
+                    <span><b>(Dept. Of MME, NITK)</b></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="notes">
+            <p class="fw-bold text-center">Note:</p>
+            <ul>
+                <li>Personal presence is mandatory.</li>
+                <li>Analysis has to be carried out by the user.</li>
+                <li>As Equipment equipped with a high end detector, scan rate less than 7°/min is not allowed.</li>
+                <li>Output data will be only in .txt/.csv/.rd/.xml file formats.</li>
+                <li>Acknowledgement in publication and thesis is compulsory.</li>
+                <li>Copy of Acknowledgement can be mailed to <b>crf_xrd@nitk.edu.in</b> along with publication.</li>
+            </ul>
+
+            <center><i>Declaration: I hereby agree to abide by the rules and regulations of the XRD laboratory.</i></center>
+
+            <div class="signatures">
+                <div class="student-sign">
+                    <input id="student" type="textfield"/>
+                    <p>Student signature after experiment</p>
+                </div>
+                <div class="chairman-sign">
+                    <p>Sd/-<p>
+                    <i>Chairman CRF</i>
+                </div>
+            </div>
+
+            <div class="generated-on">
+                <i>Generated on: December 23,2022/ 1:18PM</i>
+            </div>
+
+        </div>
+
+</div>
