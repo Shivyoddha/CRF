@@ -7,6 +7,7 @@ class XRayDiffractionMailer < ApplicationMailer
   #
   def Mail
     @xrd=Xrd.find(params[:id])
+    @user=User.find(params[:userid])
     attachments["xrdslotbooking.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/xrd.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
@@ -18,7 +19,7 @@ class XRayDiffractionMailer < ApplicationMailer
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "New friend Created",
-            locals:{xrd:@xrd}
+            locals:{xrd:@xrd,user:@user}
           )
 
   end
