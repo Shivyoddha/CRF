@@ -8,6 +8,7 @@ class XrdsController < ApplicationController
 
   # GET /xrds/1 or /xrds/1.json
   def show
+
   end
 
   # GET /xrds/new
@@ -25,7 +26,8 @@ class XrdsController < ApplicationController
 
     respond_to do |format|
       if @xrd.save
-        format.html { redirect_to xrd_url(@xrd), notice: "Xrd was successfully created." }
+        XRayDiffractionMailer.with(id:@xrd.id).Mail.deliver_later
+        format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,8 @@ class XrdsController < ApplicationController
   def update
     respond_to do |format|
       if @xrd.update(xrd_params)
-        format.html { redirect_to xrd_url(@xrd), notice: "Xrd was successfully updated."}
+
+        format.html { redirect_to home_index_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +68,6 @@ class XrdsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd, :reference, :more ,:reference, :debit )
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit  ,references: [])
     end
 end
