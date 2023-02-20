@@ -31,7 +31,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
-          <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
         </div>
 
         <div class="input-group mb-3 vis" id="raman-select">
@@ -146,13 +146,13 @@
         both.classList.add('vis');
 
 
-      if (measurement.value == 'raman') {
+      if (measurement.value == 'Raman') {
         raman.classList.toggle('vis');
       }
-      if (measurement.value == 'photoluminescence') {
+      if (measurement.value == 'Photoluminescence') {
         photo.classList.toggle('vis');
       }
-      if (measurement.value == 'both') {
+      if (measurement.value == 'Both') {
         both.classList.toggle('vis');
       }
     })
