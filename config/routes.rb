@@ -22,12 +22,25 @@ Rails.application.routes.draw do
 
 
     devise_for :users
-    get 'slotbooker/xrdslot'
     get 'home/index'
     get 'know/xrd'
     get 'records/record'
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
+    get 'slotbooker/xrd'
+    get 'slotbooker/atomic'
+    get 'slotbooker/bet'
+    get 'slotbooker/cell'
+    get 'slotbooker/fesemc'
+    get 'slotbooker/icp'
+    get 'slotbooker/laser'
+    get 'slotbooker/lcms'
+    get 'slotbooker/raman'
+    get 'slotbooker/tga'
+    get 'slotbooker/threednon'
+    get 'slotbooker/uv'
+    get 'slotbooker/xrd'
+
     devise_scope :user do
     root to: "devise/sessions#new"
   end
