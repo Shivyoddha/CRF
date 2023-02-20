@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_20_145146) do
+ActiveRecord::Schema.define(version: 2023_02_20_184450) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -233,12 +233,6 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "raman_microscopes", force: :cascade do |t|
     t.string "sample"
     t.string "measurement"
@@ -303,8 +297,8 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -339,12 +333,12 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
   end
 
   create_table "xrds", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "composition"
     t.string "stype"
-    t.string "mind"
-    t.string "maxd"
+    t.float "mind"
+    t.float "maxd"
     t.binary "reference"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
