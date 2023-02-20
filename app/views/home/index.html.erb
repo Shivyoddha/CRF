@@ -21,7 +21,7 @@
               <div>
 
                 <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
-                <%= link_to "#{current_user.firstname} ", edit_user_registration_path ,class:"dropdown-item fw-bold" ,id:"maithili" %>
+                <%= link_to "#{current_user.name} ", edit_user_registration_path ,class:"dropdown-item fw-bold" ,id:"maithili" %>
               </div>
 
               <hr>
@@ -683,7 +683,7 @@
     </div>
 </div>
 <script>
-const ele1="<%= @user.firstname %> "
+const ele1="<%= @user.name %> "
     const ele = "<%=@user.lastname %> " ;
 var element = document.getElementById("maithili").innerHTML= ele1+ele[0];
 
