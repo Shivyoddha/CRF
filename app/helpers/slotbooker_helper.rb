@@ -1,0 +1,2 @@
+module SlotbookerHelper
+end

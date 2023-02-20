@@ -4,10 +4,10 @@ class HomeController < ApplicationController
 
 
     @user=User.find(current_user.id)
-    if @user.chairman_role|@user.admin_role == true
-    redirect_to admin_portal_admindashboard_path
-   else
-   end
+   #  if @user.chairman_role|@user.admin_role == true
+   #  redirect_to admin_portal_admindashboard_path
+   # else
+   # end
 
 
    # respond_to do |format|

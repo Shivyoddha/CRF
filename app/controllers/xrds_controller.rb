@@ -1,6 +1,6 @@
 class XrdsController < ApplicationController
   before_action :set_xrd, only: %i[ show edit update destroy ]
-
+  
   # GET /xrds or /xrds.json
   def index
     @xrds = Xrd.all

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+    get 'slotbooker/xrdslot'
     get 'home/index'
     get 'know/xrd'
     get 'records/record'
