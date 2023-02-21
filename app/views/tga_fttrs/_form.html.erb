@@ -38,7 +38,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
-          <%= form.select(:measurement, ['TGA','FTIR','TGA+FTIR','TG-IR Hyphenation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          <%= form.select(:measurement, ['TGA','FTIR','TGA+FTIR','TG-IR Hyphenation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
         </div>
 
 
@@ -203,17 +203,17 @@
         ftir.classList.add('vis');
 
 
-      if (measurement.value == 'tga') {
+      if (measurement.value == 'TGA') {
         tgaSpecs.classList.toggle('vis');
       }
-      if (measurement.value == 'ftir') {
+      if (measurement.value == 'FTIR') {
         ftir.classList.toggle('vis');
       }
-      if (measurement.value == 'tga+ftir') {
+      if (measurement.value == 'TGA+FTIR') {
         tgaSpecs.classList.toggle('vis');
         ftir.classList.toggle('vis');
       }
-      if (measurement.value == 'tga+ftir-hyphenation') {
+      if (measurement.value == 'TG-IR Hyphenation') {
         tgaSpecs.classList.toggle('vis');
         ftir.classList.toggle('vis');
       }

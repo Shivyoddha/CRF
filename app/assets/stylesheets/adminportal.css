@@ -2,6 +2,12 @@
     margin: 0%;
     padding: 0%;
 }
+.font-unbounded {
+    font-family: "Unbounded", 'cursive';
+  }
+  .font-quicksand {
+    font-family: "Quicksand", "sans-serif";
+  }
 
 #title {
     padding: 0 0 0 1em;
@@ -31,6 +37,15 @@
 }
 
 .container {
+    max-width: 100%;
+    margin: auto;
+    padding: 0%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+    grid-template-rows: 1fr;
+}
+.container-slot-booker {
     max-width: 100%;
     margin: auto;
     padding: 0%;
@@ -89,29 +104,27 @@
     display: flex;
     align-items: center;
     padding: 0 0 0 1.5em;
-    border-radius: 1em;
+    border-radius: 10px;
     font-size: smaller;
 }
 
-.sidelink-wrap-model {
+.sidelink-wrap {
     display: flex;
     align-items: center;
-    padding: 0;
-    border-radius: 1em;
+    padding: 0 0 0 1.5em;
+    border-radius: 10px;
     font-size: smaller;
 }
 
 .sidelink-wrap:hover {
-    background-color: #4b49ac59;
+    background-color: #3f5ac9;
+    color: #eae8ff;
     transition-duration: 0.2s;
-    transform: scale(1.02);
     text-decoration: none;
 }
 
 .sidelink-wrap-model:hover {
     background-color: #4b49ac59;
-    transition-duration: 0.2s;
-    transform: scale(1.02);
     text-decoration: none;
 }
 
@@ -129,14 +142,11 @@ ul {
     text-decoration: none;
     color: #1d40d2;
     margin: 10px;
-    padding: 5px;
+    padding: 10px 10px;
     font-size: 1.15em;
 }
 
 
-.sidelinks-model-list:hover {
-    background-color: #fff5e8;
-}
 
 .sidelinks-model-list>ul>li {
     padding-left: 0%;
@@ -205,7 +215,18 @@ ul {
 
 /* the slots page element stylings are done below */
 #slots {
-    background-color: aquamarine;
+    background-color: #ddf1fb;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.table-head {
+    background-color: #3f5ac9;
+    color: azure;
+}
+
+#slot-details {
+    text-align: center;
 }
 
 
@@ -251,5 +272,12 @@ ul {
     #myChart {
         max-width: 20em;
         padding: 0%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .container-slot-booker {
+        display: flex;
+        flex-direction: column;
     }
 }
