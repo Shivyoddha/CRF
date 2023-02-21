@@ -1,6 +1,6 @@
 class SlotbookerController < ApplicationController
-
 def xrd
+  @xrd=Xrd.all
  end
 
 end
