@@ -18,6 +18,13 @@ body {
   font-family: "Unbounded", 'cursive';
 }
 
+.font-unbounded {
+  font-family: "Unbounded", 'cursive';
+}
+.font-quiucksand {
+  font-family: "Quicksand", "sans-serif";
+}
+
 .navlist {
   list-style: none;
   text-decoration: none;

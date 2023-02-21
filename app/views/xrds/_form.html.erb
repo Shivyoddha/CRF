@@ -26,27 +26,27 @@
         <% end %>
 
           <div class="input-group mb-3">
-            <%= form.label :sample, class:"input-group-text", for:"inputGroupSelect01"%>
-            <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect01",:required => true}) %>
+            <%= form.label :sample, class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+            <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
           </div>
 
 
 
           <div class="input-group mb-3">
-          <%= form.label :measurement,"measurement", class:"input-group-text", for:"inputGroupSelect02" %>
-          <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect02",:required => true}) %>
+          <%= form.label :measurement,"measurement", class:"input-group-text", for:"measurement" %>
+          <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
         </div>
 
 
           <div class="input-group mb-3">
-          <%= form.label :composition, "Composition", class:"input-group-text",for:"inputGroupSelect03"%>
-          <%= form.text_field :composition, class:"form-control", id:"inputGroupSelect03", placeholder:"(Ex: ZnO, GO)"%>
+          <%= form.label :composition, "Composition", class:"input-group-text",for:"composition"%>
+          <%= form.text_field :composition, class:"form-control", id:"composition", placeholder:"(Ex: ZnO, GO)"%>
         </div>
 
 
         <div class="input-group mb-3">
-          <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect04" %>
-          <%= form.select(:stype, ['Solid', 'Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect04",:required => true}) %>
+          <%= form.label :stype, "Sample Type", class:"input-group-text", for:"sample-type" %>
+          <%= form.select(:stype, ['Solid', 'Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
         </div>
 
 
@@ -65,16 +65,16 @@
 
 
 
-        <div class="input-group mb-3" id="collegeid-input">
-          <%= form.label :references ,"Reference Files" ,for:"exampleInputEmail1", class:"input-group-text "%>
-          <%= form.file_field :references,class:"form-control ",  id:"exampleInputEmail1",multiple:true  %>
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
 
 
 
         <div class="input-group mb-3">
-        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"inputGroupSelect02" %>
-        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect02",:required => true}) %>
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
       </div>
 
         <!-- <div class="input-group mb-3">
@@ -90,13 +90,13 @@
     </div> -->
 
 
-    <div id="instruct">
-        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
-    </div>
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
 
 
         <div class="input-group mb-3">
-          <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
         </div>
 
         <div class="actions">

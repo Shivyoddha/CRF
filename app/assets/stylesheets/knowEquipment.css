@@ -51,6 +51,29 @@ p {
     text-align: justify;
 }
 
+#content {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.data{
+    margin: 0 0 0 0.5em;
+}
+
+.regular-charges {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.express-charges {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#applications-div {
+    margin: 0 0 0 1em;
+}
+
 @media only screen and (max-width: 912px) {
     .hero{
         width: 100%;

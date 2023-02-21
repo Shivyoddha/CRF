@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
+    get 'slotbooker/ftnmr'
+    get 'slotbooker/icp'
 
     devise_scope :user do
     root to: "devise/sessions#new"
