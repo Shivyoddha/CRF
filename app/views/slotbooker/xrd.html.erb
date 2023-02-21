@@ -69,21 +69,22 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Phase</th>
+                        <th scope="col" id="phase">Type</th>
                         <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">Request</th>
+                        <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
-
-
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+
                       <% @xrd.each do |xrds|%>
+                      <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
                         <td> <%= xrds.user.name%> </td>
@@ -95,14 +96,17 @@
                         <td> <%= xrds.composition%> </td>
                         <td> <%= xrds.stype%> </td>
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> </td>
                         <td> <%= xrds.more%> </td>
-
-                        <%end%>
                         <td>Booked</td>
-                        <td>10-30 A.M</td>.
-                        <td>Not Available OR <button type="button" class="btn btn-primary">Primary</button></td>
+                        <td>10-30 A.M</td>
+                        <td> Slot time</td>
+                           <%xrds.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td> Slot time</td>
+                        <%end%>
+
                     </tr>
+                      <%end%>
                 </tbody>
             </table>
 

@@ -69,8 +69,8 @@ class XrdsController < ApplicationController
       @xrd = Xrd.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+0    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit,:user_id ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :status,:user_id ,references: [])
     end
 end

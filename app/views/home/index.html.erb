@@ -89,7 +89,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_xrd_path(), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>

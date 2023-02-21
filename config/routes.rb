@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     get 'slotbooker/bet'
     get 'slotbooker/cell'
     get 'slotbooker/fesemc'
+    get 'slotbooker/fesemj'
     get 'slotbooker/icp'
     get 'slotbooker/laser'
     get 'slotbooker/lcms'
