@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "adminportal" %>
 
 <div id="header">
-<nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+<nav class="navbar bg-primary navbar-expand-lg navbar-dark">
 <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
 <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="sidelinks">
-            
+
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
@@ -66,7 +66,7 @@
             <h2 class="fw-bold" id="tab-name">Slots</h2>
         </div>
 
-        
+
         <div id="slot-details">
 
             <table class="table table-hover">
@@ -92,26 +92,32 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">CRF/XRD/741	</th>
-                        <td>Mark</td>
-                        <td>NITK</td>
-                        <td>Chemical</td>
-                        <td>90582655154</td>
-                        <td>1</td>
-                        <td>C, O, H,N</td>
-                        <td>Powder</td>
-                        <td>10°-80°</td>
-                        <td>NIL</td>.
-                        <td>2023-02-20 11:53:49</td>
+                      <% @xrd.each do |xrds|%>
+                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+
+                        <td> <%= xrds.user.name%> </td>
+                        <td> <%= xrds.user.orgname%> </td>
+                        <td> <%= xrds.user.department%> </td>
+                        <td> <%= xrds.user.contact%> </td>
+                        <td> <%= xrds.sample%> </td>
+                        <td> <%= xrds.measurement%> </td>
+                        <td> <%= xrds.composition%> </td>
+                        <td> <%= xrds.stype%> </td>
+                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                        <td> </td>
+                        <td> <%= xrds.more%> </td>
+
+                        <%end%>
                         <td>Booked</td>
-                        <td>10-30 A.M</td>.
+                        <td><button type="button" name="button" type="btn btn-primary">Assign</button></td>.
                         <td>Not Available</td>
+
                     </tr>
                 </tbody>
             </table>
 
         </div>
-        
+
 
     </div>
 

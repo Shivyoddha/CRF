@@ -6,8 +6,6 @@ class User < ApplicationRecord
 
 
  has_one_attached :file
-
-
-
+has_many :xrds
 
 end

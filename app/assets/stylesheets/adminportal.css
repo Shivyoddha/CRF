@@ -76,7 +76,7 @@
 }
 
 .sidelinks-list:hover {
-    background-color: #fff5e8;
+    background-color: rgb(221,241,251);
 }
 
 .sidelinks-model-list {
@@ -102,14 +102,14 @@
 }
 
 .sidelink-wrap:hover {
-    background-color: #4b49ac59;
+    background-color: rgb(221,241,251);
     transition-duration: 0.2s;
     transform: scale(1.02);
     text-decoration: none;
 }
 
 .sidelink-wrap-model:hover {
-    background-color: #4b49ac59;
+    background-color: white;
     transition-duration: 0.2s;
     transform: scale(1.02);
     text-decoration: none;
@@ -135,7 +135,7 @@ ul {
 
 
 .sidelinks-model-list:hover {
-    background-color: #fff5e8;
+    background-color:rgb(221,241,251);
 }
 
 .sidelinks-model-list>ul>li {
@@ -205,7 +205,7 @@ ul {
 
 /* the slots page element stylings are done below */
 #slots {
-    background-color: aquamarine;
+    background-color:rgb(221,241,251);
 }
 
 
