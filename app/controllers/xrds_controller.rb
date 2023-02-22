@@ -1,6 +1,6 @@
 class XrdsController < ApplicationController
   before_action :set_xrd, only: %i[ show edit update destroy ]
-  
+
   # GET /xrds or /xrds.json
   def index
     @xrds = Xrd.all
@@ -14,8 +14,9 @@ class XrdsController < ApplicationController
 
   # GET /xrds/new
   def new
-    @xrd = Xrd.new
-    @user=User.find(current_user.id)
+      @user=User.find(params[:id])
+    @xrd = Xrd.new()
+
   end
 
   # GET /xrds/1/edit
@@ -25,8 +26,10 @@ class XrdsController < ApplicationController
   # POST /xrds or /xrds.json
   def create
     @xrd = Xrd.new(xrd_params)
+      @xrd.user=current_user
     respond_to do |format|
       if @xrd.save
+
         XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
@@ -41,7 +44,6 @@ class XrdsController < ApplicationController
   def update
     respond_to do |format|
       if @xrd.update(xrd_params)
-
         format.html { redirect_to home_index_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
@@ -67,8 +69,8 @@ class XrdsController < ApplicationController
       @xrd = Xrd.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+0    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit  ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :status,:user_id ,references: [])
     end
 end

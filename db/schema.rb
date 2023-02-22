@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_20_145146) do
+ActiveRecord::Schema.define(version: 2023_02_21_201947) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -315,6 +315,7 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
     t.boolean "chairman_role"
     t.string "name"
     t.string "slotbooker"
+    t.string "firstname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -333,17 +334,20 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
   end
 
   create_table "xrds", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "composition"
     t.string "stype"
-    t.string "mind"
-    t.string "maxd"
+    t.float "mind"
+    t.float "maxd"
     t.binary "reference"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "debit"
+    t.integer "user_id"
+    t.string "status"
+    t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
   create_table "zeta_potential_sizes", force: :cascade do |t|
@@ -365,4 +369,5 @@ ActiveRecord::Schema.define(version: 2023_02_20_145146) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "xrds", "users"
 end
