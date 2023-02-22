@@ -3,23 +3,28 @@ def xrd
   @xrd=Xrd.all
  end
 
- def xrd1
-   @xrd=Xrd.where(status='pending')
-  end
 
-  def xrd2
-    @xrd=Xrd.where(status='assigned')
-   end
+def xrd1
+ @xrd1=Xrd.all
+end
 
-   def xrd3
-     @xrd=Xrd.where(status='completed')
-    end
+def xrd2
+ @xrd2=Xrd.all
+end
+
+def xrd3
+ @xrd3=Xrd.all
+end
+
+def xrd4
+ @xrd4=Xrd.all
+end
 
 def fesemc
- end
+end
 
 def fesemj
-  @fesemj=HrFesemJ.all
+ @fesemj=HrFesemJ.all
 end
 
 def threednon

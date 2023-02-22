@@ -29,6 +29,9 @@
 #sample-details{
   display: -webkit-box;
 }
+#safety-info{
+  display: -webkit-box;
+}
 
 
 .element {
@@ -44,8 +47,11 @@
 #signatures-upper-left{
     width: 72%;
 }
+#signatures-upper-left-3d-pro{
+    width: 68%;
+}
 #signatures-upper-right{
-    width: 28%;
+    width: 32%;
 }
 #faculty-incharge {
   margin: 0 0 7.5em 0;
@@ -78,8 +84,20 @@
   .right{
     width:35%;
   }
+  .right-lcms{
+    width:38%;
+  }
+  .right-uv{
+    width:42%;
+  }
   .left{
     width:67%;
+  }
+  .left-lcms{
+    width:62%;
+  }
+  .left-uv{
+    width:58%;
   }
 
  #angle {
@@ -114,6 +132,18 @@ outline: none;
   font-family: 'Montserrat', sans-serif;
 }
 
+.font-smaller{
+  font-size: 15px;
+}
+
+.threeD-pro {
+  font-size: 15px;
+}
+
 #debit-head{
   margin: 0 0 5em 0;
+}
+
+#department {
+  font-size: 15px;
 }

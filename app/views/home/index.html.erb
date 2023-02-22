@@ -28,6 +28,9 @@
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
               <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+
+              <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
+
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
             </ul>
