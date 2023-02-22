@@ -83,7 +83,7 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd.each do |xrds|%>
+                      <% @xrd3.where(status:'completed').each do |xrds|%>
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 

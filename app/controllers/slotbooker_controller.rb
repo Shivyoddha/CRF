@@ -5,15 +5,15 @@ def xrd
 
 
  def xrd1
-   @xrd=Xrd.where(status='pending')
+   @xrd1=Xrd.all
   end
 
   def xrd2
-    @xrd=Xrd.where(status='assigned')
+    @xrd2=Xrd.all
    end
 
    def xrd3
-     @xrd=Xrd.where(status='completed')
+     @xrd3=Xrd.all
     end
 
 def fesemc
