@@ -229,6 +229,11 @@ ul {
     text-align: center;
 }
 
+#active-tab {
+    background-color: #3f5ac9;
+    color: aliceblue;
+}
+
 
 @media only screen and (max-width: 1430px) {
     #myChart {
