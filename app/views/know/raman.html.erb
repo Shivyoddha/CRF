@@ -1,0 +1,120 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Confocal Raman Microscope</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Compact Raman Spectrometer, Renishaw, UK]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data"> Raman spectral analysis using visible excitation at 532 nm and 785 nm</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - F01</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold"><u>Facilities</u>:</span>
+                <ul>
+                  <li>Specially adapted Leica microscope allowing confocal measurements</li>
+                  <li>Reflected light illumination</li>
+                  <li>10×, 50×, and 100× objectives</li>
+                  <li><span class="fw-bold">Laser sources: </span><span>532 nm laser at 50 mW and 785 nm (Near Infrared) diode Laser at 300 mW</span></li>
+                  <li> Detector Ultra-low noise, ultrahigh sensitivity CCD cameras</li>
+                </ul>
+            </div>
+
+            <p class="fw-bold">Applications of Confocal Microscope:</p>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                <li>Raman and photoluminescence measurements</li>
+                <li>Raman chemical imaging in 3D and see both the chemistry and the topography</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">Raman <span class="text-warning">[per sample]</span></th>
+                  <th scope="col" id="gixrd">Photoluminescence<sup>#</sup><span class="text-warning">[per sample]</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK Users</th>
+                  <td>	Rs. 300/-</td>
+                  <td>Rs. 1000/- </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">Other academic institution/ Research/ Development organizations</th>
+                  <td>Rs. 610/-</td>
+                  <td>Rs. 1500/-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Industry personnel</th>
+                  <td>Rs. 1,450/-</td>
+                  <td>Rs. 2,000/-</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger">
+            <p>*Sample preparation charges is not included, GST(18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Pradeep (Technical Staff, CRF) , Email:<span class="text-info">crf_raman@nitk.edu.in</span></h5>
+            <h5>Prof. Anandhan Srinivasan (Raman Microscope Faculty in-charge) , Email:<span class="text-info"> anandhan@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

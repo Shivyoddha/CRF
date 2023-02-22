@@ -1,0 +1,120 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">MultiRole Mechanical Test System</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data fw-bold text-warning">FoundatiONE, Nanotom Technologies Pvt. Ltd, INDIA</span>
+            </div>
+            <div class="mb-3">
+                <h5 class="fw-bold"><u>Features:</u></h5>
+                <ol type="a">
+                  <li>Modular indentation and tensile testing platform</li>
+                  <li>It can carry out indentation tests on the tensile samples at any given instant of time</li>
+                  <li>The enclosure provides excellent acoustic and thermal isolation</li>
+                  <li>High quality optical imaging</li>
+                  <li>Fully automated operations</li>
+                  <li>Independent force and depth sensors, high frame stiffness, calibrated indenter tips, direct measurement of hardness and elastic modulus</li>
+                </ol>
+            </div>
+            <div class="mb-3">
+              <h5 class="fw-bold"><u>Resolution/Specification:</u></h5>
+              <ol type="a">
+                <li>Loading condition: 0.1 N to 20 N</li>
+                <li>Temperature analysis: Maximum upto 400 °C</li>
+              </ol>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF CRF Annexe - F05</span>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (per sample)</u></h3>
+            <table class="table table-hover">
+                <thead>
+                  <tr style="border-bottom: 2.5px solid #000;">
+
+                    <th></th>
+                    <th style="color:#0094BB">Normal indentation</th>
+                    <th style="color:#0094BB">Temperature analysis</th>
+                    <th style="color:#0094BB">Tensile test</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th>NITK</th>
+                    <th>Rs. 500/-</th>
+                    <th>Rs. 600/-</th>
+                    <th>Rs. 1000/-</th>
+                  </tr>
+
+                  <tr>
+                    <th>Academic &amp; Research Institute*</th>
+                    <th>Rs. 750/-</th>
+                    <th>Rs. 900/-</th>
+                    <th>Rs. 1500/-</th>
+                  </tr>
+
+                   <tr>
+                     <th>Industry*</th>
+                     <th>Rs. 1000/-</th>
+                     <th>Rs. 1200/-</th>
+                     <th>Rs. 2000/-</th>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Kiran (Technical Staff, CRF), Email: <span class="text-info">office.crf@nitk.edu.in</span></h5>
+            <h5>Dr. Preetham Kumar G.V (Faculty in-charge), Email:<span class="text-info">preethamk11@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

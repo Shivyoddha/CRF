@@ -1,0 +1,253 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">HR-FESEM</h2>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">[GEMINI 300, Carl Zeiss, Germany]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data">Schottky type field emitter</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Resolution:</span><span class="data">0.7 nm @15 kV, 1.2 nm @1 kV</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G01</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Facilities:</span><span class="data">High efficiency annular in-lens SE detector system, Energy selective back scattered detector for pure SE, pure BSE, and a mixture of SE+BSE signals, Everhart-Thornley detector, Six segment back scattered detector for Z contrast and crystal orientation, Quorum coater with gold, carbon and platinum source, PV 7600 SU A EDAX Octane super EDS System-SDD 70mm, EDAX Team EBSD system with Hikari plus, EDAX TEAM WDS-Texas HP stand alone system, aSTEM detector with tilt tomography holder with 0.6 nm @ 30 kV- Dark field (DF), Bright field (BF), Oriented dark field (ODF), annular dark field (ADF), High angular dark field (HAADF), 12 numbers of 3 mm TEM grids.</span>
+            </div>
+
+            <p class="fw-bold">Applications of Field Emission Gun Scanning Electron Microscope (FEGSEM):</p>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                <li>Imaging –Grains, grain boundaries, their distribution in metals and alloys</li>
+                <li>Dendrites, dendrite arms, their placings, coring in castings</li>
+                <li>Study of inclusions, slags, oxides, second phase investigations in metals and alloys</li>
+                <li>Indications of deformations in deformed materials (rolling, forging, extrusions)</li>
+                <li>Study of fractured surfaces (in failure analysis, forensic investigations)</li>
+                <li>Study of composites (reinforcement distribution, interface reactions, etc.)</li>
+                <li>Study of nanomaterials, biomaterials, energy materials, water purification media</li>
+                <li>Study of ores and minerals, concrete materials (concrete mixes, cements, reinforcement steels), etc.</li>
+                <li>Study of tribological systems (wear, erosion, abrasion)</li>
+                <li>Textures in materials, pole figure mapping</li>
+                <li>Composition mapping (point, line and area) using EDS and WDS</li>
+                <li>Cored structures in nanomaterials</li>
+                <li> Remaining life estimation of expensive and high risk structures</li>
+                <li>Study of functional materials (nanoparticles, nanofibers, films, reflective and magnetic coatings, etc.)</li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold text-danger">Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No excuses/ permissions will be considered. And also we will not analyse the samples which brought on the same date of analysis even if it is/was in the desiccator. Samples must be submitted before 4pm (Monday - Friday). Late submission of samples will not be considered.</h5>
+            </div>
+
+            <p class="fw-bold"><u>General Guidelines for FESEM Users:</u></p>
+            <p>For the safety and longevity of FESEM at CRF, the following guideline are framed and users are expected to adhere to the same.
+                  The samples will be <span class="fw-bold">rejected</span> if the below instructions are not followed by the users.</p>
+            <div class="mb-3" id="applications-div">
+              <p><u>The protocols to be followed are:</u></p>
+              <p class="fw-bold">Preparation of any kind of sample is entirely the reposibility of users.</p>
+                <div>
+                <ol>
+                  <li>The samples <span class="fw-bold">should not </span> contain any <span class="fw-text-bold">acrylic/epoxy </span>material.</li>
+                  <li>Samples must be <span class="fw-bold">dry, free of moisture, free of oil and grease; Samples must be dessicated.</span> </li>
+                  <li> For <span class="fw-bold">Powder</span> samples min. quantity 5mg, All analysis on non-mettalic and magnetic powder samples will be carried out below 3kV.</li>
+                  <li> For solid (non-Degassing), size should be <span class="fw-bold"><= 1cm</span> dimension per sample, height <span class="fw-bold"><= 1cm</span>. if possible clean the sample with ethanol to remove oil and dust.</li>
+                  <li>Since the current model of FESEM is not suitable for measuring biological samples <span class="fw-bold">(tissues, cells, etc)</span>. The CRF will not accept such samples.</li>
+                  <li>Samples <span class="fw-bold">should not have any degassing species.</span></li>
+                  <li> For Polymer and other non-conducting samples, analysis will be done <span class="fw-bold">@ < 4kV.</span</li>
+                </ol>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">Details/th>
+                  <th scope="col" id="p-xrd">Charge Basis</th>
+                  <th scope="col" id="gixrd">	NITK <sup>#</sup></th>
+                  <th scope="col" id="residual-stress">Academia / R&D Institute <sup>*</sup></th>
+                  <th scope="col" id="texture">Industry<sup>*</sup></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Only Imaging or Only EDS.<span class="text-warning">[max. 20 mins]</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 600/-</td>
+                  <td>Rs. 1000/- </td>
+                  <td>Rs. 2000/- </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS<span class="text-warning">[max. 30 mins]</span> (10 images + 2 regions)</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 850/-</td>
+                  <td>Rs. 1400/- </td>
+                  <td>Rs. 2750/- </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">EDS Mapping or Line Scan<span style="color:grey">(per scan)</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 700/-</td>
+                  <td>Rs. 1200/- </td>
+                  <td>Rs. 2300/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + Mapping or Line Scan <span style="color:grey">(10 images + per scan)</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 950/-</td>
+                  <td>Rs. 1600/- </td>
+                  <td>Rs. 3050/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS + Mapping or Line Scan</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1100/-</td>
+                  <td>Rs. 1800/- </td>
+                  <td>Rs. 3500/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS + Mapping + Line Scan</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1250/-</td>
+                  <td>Rs. 2000/- </td>
+                  <td>Rs. 4000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Sputtering (Gold Coating)<span class="text-warning">[Std. 100 sec]</span>For non-conducting sample</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 100/-</td>
+                  <td>Rs. 150/- </td>
+                  <td>Rs. 300/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">EBSD <span class="text-warning">[Excluding sample preparation]</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1500/-</td>
+                  <td>Rs. 2500/- </td>
+                  <td>Rs. 3500/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="express-charges">
+            <h3 class="text-danger"><u>Express Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">Details/th>
+                  <th scope="col" id="p-xrd">Charge Basis</th>
+                  <th scope="col" id="gixrd">	NITK <sup>#</sup></th>
+                  <th scope="col" id="residual-stress">Academia / R&D Institute <sup>*</sup></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Only Imaging or Only EDS.<span class="text-warning">[max. 20 mins]</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 900/-</td>
+                  <td>Rs. 1500/- </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS<span class="text-warning">[max. 30 mins]</span> (10 images + 2 regions)</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1275/-</td>
+                  <td>Rs. 2100/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">EDS Mapping or Line Scan<span style="color:grey">(per scan)</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1050/-</td>
+                  <td>Rs. 1800/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + Mapping or Line Scan <span style="color:grey">(10 images + per scan)</span></th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1425/-</td>
+                  <td>Rs. 2400/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS + Mapping or Line Scan</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1650/-</td>
+                  <td>Rs. 2700/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Images + EDS + Mapping + Line Scan</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 1875/-</td>
+                  <td>Rs. 3000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Sputtering (Gold Coating)<span class="text-warning">[Std. 100 sec]</span>For non-conducting sample</th>
+                  <td>	Per Sample</td>
+                  <td>Rs. 150/-</td>
+                  <td>Rs. 225/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger">
+            <p>#<sup>*</sup>Extra images and EDS will be charged Rs. 100/- per region.<p>
+            <p><sup>*</sup>Extra Mapping and Line Scan will be charged Rs. 250/- per scan.</p>
+            <p><sup>*</sup>GST(18%) extra. Above charges are for providing raw data</p>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mrs. Pratheeksha K P (Technical Staff, CRF ), Email: <span><span style="color:blue">crf_hrfesem@nitk.edu.in</span></span></h5>
+            <h5>Prof. M. N. Satyanarayan (FESEM Faculty in-charge), Email:<span><span style="color:blue"> satya_mn@nitk.edu.in</span></span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
