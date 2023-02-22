@@ -3,6 +3,19 @@ def xrd
   @xrd=Xrd.all
  end
 
+ def xrd1
+   @xrd=Xrd.where(status='pending')
+  end
+
+  def xrd2
+    @xrd=Xrd.where(status='assigned')
+   end
+
+   def xrd3
+     @xrd=Xrd.where(status='completed')
+    end
+
+
 end
 
 def fesemc
