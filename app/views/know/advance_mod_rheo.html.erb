@@ -1,0 +1,138 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Advanced Modular Rheometer</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[MCR 702 Multi Drive, Anton-Paar, Austria]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - F04</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data"> Rheology, Magnetorheology</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Specifications:</span><span class="data">Magnetic field: Maximum up to 1 T, Temperature maximum 170°C (with rotational and oscillation). Synchronous motor for, torque rotation (minimum : 1.00 nNm), torque oscillation (min: 0.5 nNm, maximum torque: 200 mNm), speed range: 10-9 to 314 rad/s, frequency range: 10-7 to 628 rad/s</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Facilities: </span><span>Optical encoder, Rotational/ Oscillation operation, Automatic trim lock during sample loading and sample trimming, Operating temperature with 0.01% accuracy with cooling unit, Desktop with RheoCompass software inbuilt templates, Integrated modelling/ curve fitting, Inter rheological conversion, Data reduction and handling protocols, temperature sweep at constant frequency/torque, Rotational with rate /control stress/ combination of rate and stress/magnetic field, Oscillatory with strain/ Direct strain amplitude/Control stress/Combination of strain/magnetic field, Transient with creep (Single/multi-level)/step strain(stress relaxation), transient rotational or oscillatory rotation..</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold"><u>Applications</u> </span>
+                  <ul>
+                    <li>Rheological characterization of Fluid.</li>
+                    <li>Magnetorheological Fluid Characterization and Devices such as MR Clutches, Magnetorheological Brakes, Magnetorheological Valves, Seismic damper</li>
+                    <li>Bio-Medical Applications</li>
+                  </ul>
+            </div>
+
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges (per sweep).</u></h3>
+        <table class="table ">
+            <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th>Details</th>
+                  <th><span style="color:#0094BB">Field</span></th>
+                  <th></th>
+                </tr>
+              </thead>
+
+           <tbody>
+                <tr>
+                  <th rowspan="2" style="vertical-align: middle;">NITK users</th>
+                  <th><span style="color:#0094BB">(without magnetic field)</span></th>
+                  <th>Per run Rs 500/- </th>
+                </tr>
+
+                <tr>
+                   <th><span style="color:#0094BB">(with magnetic field)</span></th>
+                  <th>Per run Rs 1,000/- </th>
+                </tr>
+
+                <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Other academic institution/ Research/ Development organizations*</th>
+                  <th><span style="color:#0094BB">(without magnetic field)</span></th>
+                  <th>Per run Rs. 1,000/- </th>
+                </tr>
+
+                 <tr>
+                  <th><span style="color:#0094BB">(with magnetic field)</span></th>
+                  <th>Per run Rs. 2,000/- </th>
+                </tr>
+
+                <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Industry personnel*</th>
+                   <th><span style="color:#0094BB">(without magnetic field)</span></th>
+                  <th>Per run Rs. 1,000/- </th>
+                </tr>
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th><span style="color:#0094BB">(with magnetic field)</span></th>
+                  <th>Per run Rs. 2,000/- </th>
+                </tr>
+
+          </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges is not included, GST(18%) extra..</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Kiran (Technical Staff, CRF ), Email: <span class="text-info">crf_rheo@nitk.edu.in</span></h5>
+            <h5>Dr. Hemantha Kumar (Rheometer, Faculty in-charge), Email: <span class="text-info"> hemantha@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

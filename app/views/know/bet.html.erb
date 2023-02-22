@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">BET Surface Area Analyzer</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Autosorb IQ-XR-XR, Anton Paar, Austria]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold"><u>Facilities</u>:</span><span>Two Physisorption analysis stations, Adsorbates N2, CO2, He, Analysis dewar 3L, 90+ hours (liquid nitrogen), Cryogen level control Active sensor/elevator, Ultimate vacuum: 5 x 10-10 mbar, Minimum surface area 0.01 m2/g, Minimum pore size 0.35 nm, Degassing 4 dedicated and built-in degassing ports, Operate simultaneously with analysis up to 450°C</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - F04</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Sensitivity:</span><span class="data"> <2x10-9 moles adsorbed /desorbed gas with 0.1 torr transducer</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Measurement:</span><span class="data">5 point adsorption, 7 point adsorption, 7 point adsorption & desorption, 20 point adsorption & desorption</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data"> Specific surface area: Minimum surface area of 0.01 m2/g and above</span>
+            </div>
+
+            <h4 class="fw-bold">Applications of BET Surface Area Analyzer:</h4>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                  <li>Measurement of surface area</li>
+                  <li>Pore volume, pore size of powder materials</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">Particulars</th>
+                  <th scope="col" id="p-xrd">Gases	</th>
+                  <th scope="col" id="gixrd">5 point Surface area (BET)</th>
+                  <th scope="col" id="residual-stress">7 point Surface area, average pore size & pore volume (BET)</th>
+                  <th scope="col" id="texture">20 point Surface area, pore size distribution & pore volume distribution</th>
+                  <th scope="col" id="texture">20 point Surface area, pore size distribution & pore volume distribution</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <tr>
+                    <th rowspan="2" style="vertical-align: middle;">NITK  </th>
+                    <th style="color:#0094BB">N<sub>2</sub></th>
+                    <th> Rs. 750/- </th>
+                    <th> Rs. 1000/- </th>
+                    <th> Rs. 1400/- </th>
+                    <th> Rs. 2200/- </th>
+                  </tr>
+                </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">CO<sub>2</sub></th>
+                    <th> Rs. 1200/- </th>
+                    <th> Rs. 1700/- </th>
+                    <th> Rs. 2000/- </th>
+                    <th> Rs. 3300/- </th>
+                </tr>
+                <tr>
+                  <th rowspan="2" style="vertical-align: middle;"> Sample charge for per sample for academia &amp; research institutes* </th>
+                  <th style="color:#0094BB">N<sub>2</sub></th>
+                  <th> Rs. 1200/- </th>
+                  <th> Rs. 1500/- </th>
+                  <th> Rs. 1900/- </th>
+                  <th> Rs. 3500/- </th>
+                </tr>
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB">CO<sub>2</sub></th>
+                  <th> Rs. 1950/- </th>
+                  <th> Rs. 2700/- </th>
+                  <th> Rs. 3000/- </th>
+                  <th> Rs. 5100/- </th>
+                </tr>
+                <tr>
+                  <th rowspan="2" style="vertical-align: middle; "> Sample charge for per sample for Industry*</th>
+                  <th style="color:#0094BB">N<sub>2</sub></th>
+                  <th> Rs. 2350/- </th>
+                  <th> Rs. 3300/- </th>
+                  <th> Rs. 3900/- </th>
+                  <th> Rs. 7000/- </th>
+                </tr>
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB">CO<sub>2</sub></th>
+                  <th> Rs. 3750/- </th>
+                  <th> Rs. 5200/- </th>
+                  <th> Rs. 5800/- </th>
+                  <th> Rs. 10500/- </th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST(18%) extra. Above charges are for providing raw data</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Ms. Disha A Shetty (Technical Staff, CRF ), Email:<span class="text-info"> crf_bet@nitk.edu.in</span></h5>
+            <h5>Mr. Keyur Raval (Faculty in-charge), Mob: <span class="text-info"><span>+91-9342421444</span></span>, Email:<span class="text-info"> keyurnraval@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

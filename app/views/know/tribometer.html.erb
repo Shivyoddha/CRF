@@ -1,0 +1,128 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+  <div id="equipment-name">
+    <h1 class="text-center">Tribometer </h1>
+
+  </div>
+  <div class="hero">
+
+    <div class="equipment-img-wrap">
+      <div class="equipment-img">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="mb-3">
+        <span class="fw-bold text-warning">
+          [THT 1000 and TRB3, Anton Paar, Austria]</span>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="fw-bold">
+          <u>Features:</u>
+        </h5>
+        <p>Table top, Manual deadweight loading</p>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="fw-bold">
+          <u>Specifications:</u>
+        </h5>
+        <p>0.5 to 20 N Normal loads, 3 different ball sizes</p>
+      </div>
+
+      <div class="mb-3">
+        <span class="fw-bold">
+          <u>Located at:</u>
+        </span>
+        <span class="data">
+          CRF Annexe - F05</span>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="fw-bold">
+          <u>Facilities:</u>
+        </h5>
+        <p>High temperature, Pin on disk (upto 1000°C), Reciprocatory and fretting (upto 800°C), humidity chamber, inert atmosphere, dry or lubricated testing, profilometer attached.</p>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="fw-bold">
+          <u>Applications of Tribometer:</u>
+        </h5>
+        <p>Wear and Friction monitoring</p>
+      </div>
+
+    </div>
+
+    <div class="regular-charges">
+      <h3 class="text-danger">
+        <u>Charges (per hour).</u>
+      </h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="color:#0094BB">NITK users</th>
+
+            <th>Per hour Rs. 350/-
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="color:#0094BB">Other academic institutions and Research and Development organizations</th>
+            <th>Per hour Rs. 700/-
+            </th>
+
+          </tr>
+          <tr>
+            <th style="color:#0094BB">Industry personnel</th>
+            <th>Per hour Rs. 1,400/-
+            </th>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-danger fw-bold">
+      <p>*Sample preparation charges is not included, GST(18%) extra.</p>
+      <br>
+    </div>
+
+    <div class="queries text-center">
+      <h3>For further Query Contact:</h3>
+      <h5>Mr. Kiran (Operator CRF)  Mob: <span class="text-info">+91-7259344896</span></h5>
+      <h5>Dr. Sumanth Govindarajan (Faculty in-charge) , Mob: <span class="text-info">+91-9742222282</span>, Email: <span class="text-info">sumanthg@nitk.edu.in</span></h5>
+
+    </div>
+
+  </div>
+</div>
+
+<%=render "partials/footer" %>
