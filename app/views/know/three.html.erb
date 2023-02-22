@@ -1,0 +1,121 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">3D Noncontact Profilometer</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[ST400, NANOVEA, USA]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data">2D & 3D surface measurement & imaging (200mm x 150mm X-Y axis continuous scan with speed up to 40 mm/s)</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Specification:</span><span class="data">Sample scanning size is 150mm x 150mm; Maximum weight of the sample is 8kg; Height range is 2.5nm to 25mm</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - F01</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Facilities:</span><span class="data">Nanovea ST400 3D Non-contact Profiler with motorized Z-stage; High speed 110µm & 3mm sensors; 5x & 20x polarized & long working distance objective lenses; Video microscope for advanced imaging; Expert 3D-GP software for analysis.</span>
+            </div>
+
+            <p class="fw-bold">Applications of 3D-Non Contact Profilometer:</p>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                <li>Roughness & Finish with imaging</li>
+                <li>Texture</li>
+                <li>Solid Samples XRD</li>
+                <li> Flatness & Warpage</li>
+                <li>Volume & Area</li>
+                <li>Geometry & Shape</li>
+                <li> Step height & Thickness</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">Area Scan <span class="text-warning">[per sample per hour]</span></th>
+                  <th scope="col" id="gixrd">Profile Scan <sup>#</sup><span class="text-warning">[per sample]</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK Users</th>
+                  <td>	Rs. 550/-</td>
+                  <td>Rs. 50/- </td>
+
+                </tr>
+                <tr>
+                  <th scope="row">Academic & research institutes*</th>
+                  <td>Rs. 900/-</td>
+                  <td>Rs. 100/-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Industries*</th>
+                  <td>Rs. 3300/-</td>
+                  <td>Rs. 400/-</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger">
+            <p>#[Report preparation charges Rs. 550/- per hour ]<p>
+            <p>*Sample preparation charges is not included, GST(18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Pradeep S. P (Technical Staff CRF)  Mob: <span class="text-info">+91-9741381322</span>, Email:<span class="text-info">crf_profilo@nitk.edu.in</span></h5>
+            <h5>Dr. Keyur Raval (Faculty in-charge)  Mob: <span class="text-info">+91-9342421444</span>, Email:<span class="text-info"> keyurnraval@nitk.edu.in</span></h5>
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

@@ -1,0 +1,143 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Cell Imaging Multi-Mode Reader</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[CYT5MPV, BioTek Instruments, USA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - F04</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Facilities</u>:</h4>
+                <ul>
+                  <li><span class="fw-bold">Module supports detection modes:</span><span>UV-Vis absorbance, Fluorescence Luminescence, Time-resolved fluorescence</span></li>
+                  <li><span class="fw-bold">Read methods:</span><span>Endpoint, kinetic, spectral scanning, well area scanning.</span></li>
+                </ul>
+            </div>
+
+            <h4 class="fw-bold"><u>Applications of Confocal Microscope:</u></h4>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                  <li>Absorbance, fluorescence and luminescence-based endpoint and kinetic assays</li>
+                  <li>Cell imaging: 6 to 1536 well plates</li>
+                  <li>Determination of cell count</li>
+                  <li>Cytoplasm, intracellular, subpopulation analysis,</li>
+                  <li>Signal translocation</li>
+                  <li>Cell migration and invasion</li>
+                  <li>Immunofluorescence</li>
+                  <li> Phenotypic assays</li>
+                  <li>Histology</li>
+                </ul>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Technical specifications Cell imaging multimode reader:</u>:</h4>
+                <p><span class="fw-bold">Detection mode:</span><span> Fluorescence, Luminescence, UV-Vis absorbance and Time-resolved fluorescence/span></p>
+                <p><span class="fw-bold">Light sources:/span><span>  Xenon flash<</span></p>
+                <p><span class="fw-bold"> Detector: </span><span> PMT for florescence system, Photodiode for absorbance</span></p>
+                <p><span class="fw-bold">Wavelength range: </span><span>  250-700nm (fluorescence), 230-999nm (absorbance)</span></p>
+                <p><span class="fw-bold"> Dynamic range: </span><span>7 decades (fluorescence), 0.4 OD (absorbance), >6 decades (luminescence)</span></p>
+                <p><span class="fw-bold">Reading speed (kinetic):</span><span>  96 wells in 11 seconds, 384 wells in 22 seconds</span></p>
+                <p><span class="fw-bold">Plate compatibility</span><span>  Reads 6 to 384 well plates and imaging of 6 to 1536 well plates</span></p>
+                <p><span class="fw-bold"> It can accommodate microscope slides, petri and cell culture dishes, cell culture flasks (T25)</p>
+                <p><span class="fw-bold"> Plate shaking:</span><span> Linear, orbital, double orbital shaking modes</span></p>
+                <p><span class="fw-bold">  Imaging modes:</span><span>  Fluorescence, bright-field, color bright-field and phase contrast with single color, multi-color, montage, time lapse and z-stacking</span></p>
+                <p><span class="fw-bold">Image filter cube: </span><span> DAPI, GFP, Texas Red Filter cubes with imaging LED cubes of 365nm, 465nm and 590nm</span></p>
+                <p><span class="fw-bold">Monochromator wavelength accuracy and repeatability:</span><span> 2 nm, +0.2 nm</span></p>
+                <p><span class="fw-bold"> OD accuracy:</span><span> <1% at 2.0 OD <3% at 3.0 OD, OD linearity; <1% from 0 to 3.0 OD; OD repeatability:<0.5% at 2.0 OD</span></p>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">Plate reading assay <span class="text-warning">[per sample/plate]</span> </th>
+                  <th scope="col" id="gixrd">Cell imaging<span class="text-warning">[per sample per mode]</span> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK Users</th>
+                  <td>Rs. 250/- </td>
+                  <td>Rs. 500/- </td
+                </tr>
+                <tr>
+                  <th scope="row">Academic Institute* </th>
+                  <td>Rs. 550/- </td>
+                  <td>Rs. 800/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Research Institute* </th>
+                  <td>Rs. 650/- </td>
+                  <td>Rs. 1000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Industry*</th>
+                  <td>Rs. 750/- </td>
+                  <td>Rs. 1200/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mrs. Suraksha S Shetty (Technical Staff, CRF), Email:<span class="text-info">crf_cellimg@nitk.edu.in</span></h5>
+            <h5>Dr.(Ms) Gangamma S (Cell-Imaging Faculty in-charge), Email:<span class="text-info"> gangamma@nitk.edu.in</span> ,Mob: <span class="text-info">+91-8970110470</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

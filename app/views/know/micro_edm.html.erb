@@ -1,0 +1,138 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Micromachining with EDM facility</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[DT-110i, Mikrotools Pte. Ltd., Singapore]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G06</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <p>Low speed spindle (3000 rpm), High speed spindle (10000 rpm), Micro EDM</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Specification:</u></h4>
+                  <p>Precision control of movement by NC codes, Job area of (in mm) 100(1<sup>st</sup> spat axis), 100(2<sup>nd</sup> axis), 200(3<sup>rd</sup> axis)</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Facilities:</u></h4>
+                  <p>Capable of multiple machining processes such as turning (50 µm), milling (100 µm low speed, 30 µm high speed), drilling (200 µm), grinding and high speed milling of hard alloys, EDM die sinking, EDM milling, wire based electrode dressing facility, 200 mm travel in X-, 100 mm each in Y- and Z-directions with negligible backlash, touch-screen based GUI, CCD camera to visually monitor the workpiece with rapid tool changing mechanism, NC code assisted:</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Applications of Micromachining</u>:</h4>
+                  <ul>
+                    <li>Removal of material in the order of microns</li>
+                    <li>Machining of high precision parts like bio medical implants/stents</li>
+                    <li>Micro EDM facility for drilling holes or slots with minimum dimension of 250 µm</li>
+                    <li>High degree of Surface roughness</li>
+                    <li>Micro Geometry & Shape</li>
+                  </ul>
+            </div>
+
+            <p class="text-success">Note: Machining charges as per actuals (Machine time x cost per hour)</p>
+            <p class="text-success">Raw material and consumables charges will be as per the requirement, if any.</p>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Job order type</th>
+                    <th><b>Turning</b></th>
+                     <th><b>Milling/Drilling</b></th>
+                      <th><b>EDM</b> </th>
+                       <th><b>WEDG</b> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="color:#0094BB">NITK users</th>
+                         <th>Rs. 250/- </th>
+                         <th>Rs. 300/- </th>
+                         <th>Rs. 350/- </th>
+                         <th>Rs. 450/- </th>
+
+                    </tr>
+                  <tr>
+                    <th style="color:#0094BB">Other academic institutions / Research and Development organizations*</th>
+                   <th>Rs. 550/- </th>
+                         <th>Rs. 600/- </th>
+                         <th>Rs. 650/- </th>
+                         <th>Rs. 750/- </th>
+
+                  </tr>
+                  <tr>
+                    <th style="color:#0094BB">Industry personnel*</th>
+                    <th>Rs. 850/- </th>
+                         <th>Rs. 900/- </th>
+                         <th>Rs. 950/- </th>
+                         <th>Rs. 1050/- </th>
+
+                  </tr>
+
+
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST(18%) extra. Above charges are for providing raw material</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Nishanth (Operator CRF),  Mob: <span class="text-info"> +91-9632493401 </span>, Email: <span class="text-info">crf_mircotool@nitk.edu.in</span></h5>
+            <h5>Dr. Navin Karanth P. (Faculty in-charge), Mob: <span class="text-info"> +91-9449058052 </span> , Email: <span class="text-info"> navinkaranth.p@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

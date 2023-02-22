@@ -1,0 +1,144 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+  <div id="equipment-name">
+    <h1 class="text-center">Impedance Analyzer</h1>
+
+  </div>
+  <div class="hero">
+
+    <div class="equipment-img-wrap">
+      <div class="equipment-img">
+        <div id="carouselExample" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="mb-3">
+        <span class="fw-bold text-warning">[E4990A, Keysight Technologies, USA]</span>
+      </div>
+
+      <div class="mb-3">
+        <span class="fw-bold">Located at:</span>
+        <span class="data">
+          CRF Annexe - S03</span>
+      </div>
+
+      <div class="mb-3">
+        <h4 class="fw-bold">
+          <u>Features</u>:</h4>
+        <ol type="a">
+          <li>Measurement parameters: |Z|, |Y|, θ, R, X, G, B, L, C, D, Q, Complex Z, Complex Y, Vac, Iac, Vdc, Idc</li>
+          <li>25 mΩ to 40 MΩ wide impedance measurement range (10% measurement accuracy range)</li>
+          <li>4-channel and 4-trace on 10.4-inch color LCD with touch screen</li>
+          <li>
+            Built-in DC bias range: 0 V to ±40 V, 0 A to ±100 mA</li>
+        </ol>
+      </div>
+
+      <div class="mb-3">
+        <h4 class="fw-bold">
+          <u>Resolution/Specification</u>:</h4>
+        <h5 class="fw-bold">Particle size specifications</h5>
+        <ol type="i">
+          <li>
+            Frequency range: 20 Hz to 20 MHz</li>
+          <li>Impedance range: 25 mΩ to 40 MΩ</li>
+        </ol>
+      </div>
+
+      <div class="mb-3">
+        <h5 class="fw-bold">
+          <u>List of Facilities</u>
+        </h5>
+        <ul>
+          <li>
+            Sweep type: Linear frequency, log frequency, OSC level (voltage, current), DC bias (voltage, current), log DC bias (voltage, current),Up / Down(sweep)</li>
+        </ul>
+      </div>
+
+      <div class="mb-3">
+        <h4 class="fw-bold">
+          <u>Estimated testing charges (per sample)</u>
+        </h4>
+        <ul>
+          <li>
+            Measures the dielectric constant of a material</li>
+          <li>Characterization of many electrochemical devices such as photovoltaic cells, fuel cells and batteries</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="regular-charges">
+      <h3 class="text-danger">
+        <u>Testing Charges</u>
+      </h3>
+      <table class="table table-hover">
+        <thead>
+          <tr style="border-bottom: 2.5px solid #000;">
+            <th></th>
+            <th style="color:#0094BB">Impedance</th>
+            <th style="color:#0094BB">I / V</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>NITK</th>
+            <th>Rs. 250/-</th>
+            <th>Rs. 250/-</th>
+          </tr>
+
+          <tr>
+            <th>Academic &amp; Research Institute*</th>
+            <th>Rs. 350/-</th>
+            <th>Rs. 350/-</th>
+          </tr>
+          <tr>
+            <th>Industry*</th>
+            <th>Rs. 1000/-</th>
+            <th>Rs. 1000/-</th>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-danger fw-bold">
+      <p>*GST(18%) extra. Above charges are for providing raw data.</p>
+      <br>
+    </div>
+
+    <div class="queries text-center">
+      <h3>For further Query Contact:</h3>
+      <h5>Dr. Rizwanur Rahman (Impedance Analyzer, Faculty in-charge) Mob:
+        <span class="text-info">+91-9620169801</span>, Email:<span class="text-info">crf_xrd@nitk.edu.in</span></h5>
+
+    </div>
+
+  </div>
+</div>
+
+<%=render "partials/footer" %>

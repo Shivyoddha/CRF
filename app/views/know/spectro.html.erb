@@ -1,0 +1,219 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Hyperspectral Spectroradiometer</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+
+          <div class="mb-3">
+              <span class="fw-bold text-warning" >FieldSpec 4 Hi-Res, ASD Inc., UK</span>
+          </div>
+
+            <div class="mb-3">
+              <h5 class="features fw-bold"><u>Features:</u></h5>
+              <p>12 Motion Capture Cameras, 2 Video Camera, Treadmill, and 2 Force Plates.</p>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - S02</span>
+            </div>
+
+            <div class="mb-3">
+              <h5 class="fw-bold"><u>Key Applications:</u></h5>
+              <ul>
+                <li>To study the Physical and Chemical properties of soil</li>
+                <li>To study the Plant Physiology</li>
+                <li>Applications in Artwork and Heritage materials</li>
+                <li>Applications in Food Industry</li>
+                <li> Applications in Pharmaceutical Industry</li>
+                <li>Camouflage Characterization and Detection</li>
+                <li>Sensor Calibration</li>
+                <li>Spectroradiometry and Radiometric Calibration</li>
+                <li> Landscape Ecology and Ecology Research</li>
+                <li>Atmospheric Remote Sensing Research</li>
+                <li>Airborne Remote Sensing Measurements</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+          <!-- resoltuon table for overflow property it is kept in here -->
+          <h5 class="fw-bold"><u>Resolution/Specification:</u></h5>
+          <table class="table">
+          <thead>
+
+          </thead>
+              <tbody>
+
+                  <tr style="border-bottom: 2px solid;">
+                  <th>Spectral Range:</th>
+                  <th>350-2500 nm</th>
+                  </tr>
+
+                  <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Spectral Resolution</th>
+                  <th>3 nm @ 700 nm</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>6 nm  @ 1400/2100 nm</th>
+                   </tr>
+
+                     <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Spectral Sampling:<br>(bandwidth)</th>
+                  <th>1.4 nm @ 350-1000 nm</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>1.1 nm @ 1001-2500 nm</th>
+                   </tr>
+
+                 <tr style="border-bottom: 2px solid;">
+                  <th>Scanning Time:</th>
+                  <th>100 ms</th>
+                  </tr>
+
+                     <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Stray light specification:</th>
+                  <th>VNIR 0.02%</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>SWIR 1&amp;2 0.01%</th>
+                   </tr>
+
+           <tr style="border-bottom: 2px solid;">
+                  <th>Wavelength reproducibility:</th>
+                  <th>0.1 nm</th>
+                  </tr>
+
+                  <tr style="border-bottom: 2px solid;">
+                  <th>Wavelength accuracy:</th>
+                  <th>0.5 nm</th>
+                  </tr>
+
+                  <tr>
+                  <th rowspan="2" style="vertical-align: middle;">Maximum radiance:</th>
+                  <th>VNIR 2x Solar</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>SWIR 10x Solar</th>
+                   </tr>
+
+           <tr style="border-bottom: 2px solid;">
+                  <th>Channels:</th>
+                  <th>2151</th>
+                  </tr>
+
+                   <tr>
+                  <th rowspan="3" style="vertical-align: middle;">Detectors:</th>
+                  <th>VNIR detector (350-1000 nm): 512 element silicon arrays</th>
+                  </tr>
+                   <tr>
+                  <th>SWIR 1 detector (1001-1800 nm): Graded Index InGaAs Photodiode, Two Stage TE Cooled</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>SWIR 2 detector (1801-2500 nm): Graded Index InGaAs Photodiode, Two Stage TE Cooled</th>
+                   </tr>
+
+                    <tr style="border-bottom: 2px solid;">
+                  <th>Input:</th>
+                  <th>1.5 m fiber optic (25° field of view)<br>
+                    Optional narrower field of view fiber optics available.</th>
+                  </tr>
+
+                    <tr>
+                  <th rowspan="3" style="vertical-align: middle;">Noise Equivalent Radiance (NEdL):</th>
+                  <th>VNIR 1.0 X10<sup>-9</sup>  W/cm<sup>2</sup>/nm/sr @700 nm</th>
+                  </tr>
+                   <tr>
+                  <th>SWIR 1  8.0 X10<sup>-9</sup>  W/cm<sup>2</sup>/nm/sr @ 1400 nm</th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid;">
+                   <th>SWIR 2  8.0 X10<sup>-9</sup>  W/cm<sup>2</sup>/nm/sr @ 2100 nm </th>
+                   </tr>
+
+              </tbody>
+        </table>
+        <br>
+          <!--  -->
+            <h3 class="text-danger"><u>Testing Charges.</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th>Particulars</th>
+                  <th>Sample scan at Laboratory Dark Room condition</th>
+                  <th>Sample scan at Field condition<sup>#</sup></th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+                  <th> NITK <span style="font-family: monospace; color:orange">[per sample]</span></th>
+                  <th style="color:#0094BB">Rs. 150/-</th>
+                  <th style="color:#0094BB">Rs. 200/-</th>
+                </tr>
+
+                  <tr>
+                  <th> Academia &amp; research institutes*<span style="font-family: monospace; color:orange">[per sample]</span></th>
+                  <th style="color:#0094BB">Rs. 250/-</th>
+                  <th style="color:#0094BB">Rs. 300/-</th>
+                </tr>
+
+              <tr>
+                  <th> Industry*<span style="font-family: monospace; color:orange">[per sample]</span></th>
+                  <th style="color:#0094BB">Rs. 1050/-</th>
+                  <th style="color:#0094BB">Rs. 1100/-</th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-danger fw-bold">
+            <p>*GST (18%) extra. Above charges are for providing raw data.<p>
+              <p>#Transportation and other Charges will be extra for the field visit</p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Shwetha H.R. (Faculty in-charge), Email: <span class="text-info">hrshwetha@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

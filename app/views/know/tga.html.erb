@@ -1,0 +1,156 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Thermal Gravimetric Analysis-Fourier Transform Infrared</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[TGA 4000 and Spectrum 2 FT-IR Spectrometer, PerkinElmer, Singapore]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold"><u>Facilities</u>:</span>
+                <ol type="a">
+                  <li>High performance balance and furnace for accuracy and precision</li>
+                  <li>Top loading balance for easy sample load and unload</li>
+                  <li>Fast cooling for reduced cycle times and improving productivity</li>
+                  <li>Integrated mass flow controller extends applications flexibility</li>
+                </ol>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - F04</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>TGA Specification:</u>:</h4>
+                <p><span class="fw-bold">Balance type:</span><span>Top-loading balance</span></p>
+                <p><span class="fw-bold">Balance Digital resolution:</span><span> 0.2 μg</span></p>
+                <p><span class="fw-bold">Balance Capacity:</span><span> 1500 mg</span></p>
+                <p><span class="fw-bold">Temperature Range:</span><span> Room temperature to 800°C</span></p>
+                <p><span class="fw-bold">Cool down Temperature: </span><span>800 to 100 °C in less than 10 min</span></p>
+                <p><span class="fw-bold">Balance Accuracy:</span><span> Better than ± 0.02 % with ref material</span></p>
+                <p><span class="fw-bold">Temperature upgrade:</span><span> Lower to 15 °C with optional chiller</span></p>
+                <p><span class="fw-bold">Temperature Precision:</span><span> Better than ± 0.8 °C on scanning</span></p>
+                <p><span class="fw-bold">Heating Rate:</span><span>: 0.1 to 200 °C/min</span></p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>FTIR:</u></h4>
+                <p><span class="fw-bold">Detector: </span><span>Temperature stabilized DTGA (deuterated triglycine sulfate)</span></p>
+                <p><span class="fw-bold">Resolution: </span><span>0.5 cm-1 or better/span></p>
+                <p><span class="fw-bold">Wavenumber range:</span><span> 8200 to 350 cm-1 or better</span></p>
+                <p><span class="fw-bold">Signal to noise (S/N) ratio: </span><span>50000:1 Peak to Peak in 1 min</span></p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Usability</u></h4>
+                <p><span class="fw-bold">TGA: </span><span>To monitor thermal decomposition of materials, such as, for example, torrefaction or combustion of wood which quantifies the moisture content and the content of cellulose, hemicellulose, lignin, etc</span></p>
+                <p><span class="fw-bold">FTIR: </span><span>To the identification of substances and chemical bonds in a gas, but also in liquid / solid phase.</span></p>
+            </div>
+
+            <h4 class="fw-bold">Applications of Confocal Microscope:</h4>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                  <li>Industrial – QA (quality assurance)/QC (quality control), Thermal Stability, Bio-polymers gases degradation</li>
+                  <li>Food – adulteration</li>
+                  <li>Environment – contaminated soil</li>
+                  <li>Pharmaceutical – residual solvent</li>
+                  <li>Unknown identification</li>
+                  <li>Decomposition studies</li>
+                  <li>Polymer QA/QC</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">TGA</th>
+                  <th scope="col" id="gixrd">FTIR (ATR)</th>
+                  <th scope="col" id="residual-stress">	FTIR (KBR)</th>
+                  <th scope="col" id="texture">TGIR (Hyphenation)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK Users <span><span class="text-warning">[Per Sample]</span></th>
+                  <td>Rs. 700/- </td>
+                  <td>Rs. 700/- </td>
+                  <td>Rs. 800/- </td>
+                  <td>Rs. 3500/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Academic & Research Institute* <span><span class="text-warning">[Per Sample]</span></th>
+                  <td>Rs. 1000/- </td>
+                  <td>Rs. 1000/- </td>
+                  <td>Rs. 1200/- </td>
+                  <td>Rs. 5000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Industry*<span><span class="text-warning">[Per Sample]</span></th>
+                  <td>Rs. 1500/- </td>
+                  <td>Rs. 1500/- </td>
+                  <td>Rs. 1700/- </td>
+                  <td>Rs. 8000/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST(18%) extra. Above charges are for providing raw data</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Ms. Disha Shetty (Technical Staff, CRF), Email:<span class="text-info">crf_tgaftir@nitk.edu.in</span></h5>
+            <h5>Prof. Veershetty Gumtapure (Faculty in-charge), Email:<span class="text-info"> veersg@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
