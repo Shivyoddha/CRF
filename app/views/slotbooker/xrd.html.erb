@@ -79,14 +79,15 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="assign-col">Asssign</th>
                     </tr>
                 </thead>
                 <tbody>
 
                       <% @xrd.each do |xrds|%>
                       <tr>
+                        <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
@@ -100,9 +101,34 @@
                         <td>Booked</td>
                         <td>10-30 A.M</td>
                         <td> Slot time</td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td> <%= xrds.status %></td>
+                        <%xrds.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                            Assign
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ...
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Assign a Slot</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
 <%end%>
                     </tr>
                       <%end%>

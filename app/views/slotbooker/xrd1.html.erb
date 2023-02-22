@@ -33,7 +33,7 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <a class="nav-link active sidelink-wrap" aria-current="page" href="#">All</a>
+                         <%= link_to 'All',slotbooker_xrd_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
                         <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
@@ -79,6 +79,7 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="assign-col">Asssign</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,9 +101,34 @@
                         <td>Booked</td>
                         <td>10-30 A.M</td>
                         <td> Slot time</td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td> <%= xrds.status %></td>
+                        <%xrds.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Assign
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        ...
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Understood</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
 <%end%>
                     </tr>
                       <%end%>
