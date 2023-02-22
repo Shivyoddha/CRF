@@ -15,13 +15,11 @@ def xrd
      @xrd=Xrd.where(status='completed')
     end
 
-
-end
-
 def fesemc
  end
 
 def fesemj
+  @fesemj=HrFesemJ.all
 end
 
 def threednon
@@ -55,4 +53,5 @@ def ftnmr
 end
 
 def icp
+end
 end
