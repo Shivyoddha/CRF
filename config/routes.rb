@@ -44,7 +44,6 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
-<<<<<<< HEAD
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'
@@ -85,11 +84,8 @@ Rails.application.routes.draw do
     get 'know/liq_nitrogen'
     get 'know/ansys'
     get 'know/auto_multi_speci_polish'
-=======
     get 'slotbooker/ftnmr'
     get 'slotbooker/icp'
->>>>>>> a95b4ce20f45f8354e82c2b1738c938109ff5047
-
     devise_scope :user do
     root to: "devise/sessions#new"
   end

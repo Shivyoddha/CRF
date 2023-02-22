@@ -28,7 +28,7 @@
         </div>
 
         <div class="sidelinks">
-            
+
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
@@ -57,7 +57,7 @@
             <h2 class="fw-bold font-unbounded" id="tab-name">HR-FESEM [Jeol] Slots</h2>
         </div>
 
-        
+
         <div id="slot-details">
         <div>
             <table class="table table-hover font-quicksand">
@@ -88,32 +88,37 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">CRF/XRD/741	</th>
-                        <td>Mark</td>
-                        <td>NITK</td>
-                        <td>Chemical</td>
-                        <td>90582655154</td>
-                        <td>1</td>
-                        <td>C, O, H,N</td>
-                        <td>Powder</td>
-                        <td>10°-80°</td>
-                        <td>NIL</td>.
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Both</td>.
-                        <td>No</td>.
-                        <td>Yes</td>.
-                        <td>N/A</td>.
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Booked</td>
-                        <td>10-30 A.M</td>.
-                        <td>Not Available OR <button type="button" class="btn btn-primary">Primary</button></td>
+                        <% @fesemj.each do |fesemjs|%>
+                          <tr>
+                        <th scope="row">CRF/XRD/<%= fesemjs.id%>	</th>
+                          <td> <%= fesemjs.user.name%> </td>
+                          <td> <%= fesemjs.user.orgname%> </td>
+                          <td> <%=fesemjs.user.department%> </td>
+                          <td> <%= fesemjs.user.contact%> </td>
+                          <td> <%= fesemjs.sample%> </td>
+                          <td> <%= fesemjs.stype%> </td>
+                          <td> <%= fesemjs.composition%> </td>
+                          <td> <%=fesemjs.sphase%> </td>
+                          <td> <%= fesemjs.measurement%></td>
+                            <td> <%= fesemjs.eds_required%></td>
+                            <td> <%= fesemjs.toxic%></td>
+                              <td> <%= fesemjs.conducting%></td>
+                          <td> <%= fesemjs.more%> </td>
+                          <td>Booked</td>
+                          <td>10-30 A.M</td>
+                          <td> Slot time</td>
+    <td> <%= fesemjs.status %></td>
+  <%fesemjs.references.each do |file|%>
+<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+<%end%>
+  <%end%>
                     </tr>
                 </tbody>
             </table>
 
         </div>
         </div>
-        
+
 
     </div>
 
