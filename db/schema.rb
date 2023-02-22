@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_134029) do
+ActiveRecord::Schema.define(version: 2023_02_22_140617) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -158,9 +158,9 @@ ActiveRecord::Schema.define(version: 2023_02_22_134029) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.string "debithead"
     t.date "slotdate"
     t.time "slottime"
+    t.string "debit"
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
