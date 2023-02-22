@@ -3,6 +3,7 @@ def xrd
   @xrd=Xrd.all
  end
 
+
  def xrd1
    @xrd=Xrd.where(status='pending')
   end

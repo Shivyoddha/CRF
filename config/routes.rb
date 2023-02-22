@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get 'slotbooker/xrd1'
     get 'slotbooker/xrd2'
     get 'slotbooker/xrd3'
+    get 'slotbooker/xrd4'
     get 'slotbooker/atomic'
     get 'slotbooker/bet'
     get 'slotbooker/cell'

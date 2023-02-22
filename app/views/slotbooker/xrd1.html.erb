@@ -36,16 +36,16 @@
                         <a class="nav-link active sidelink-wrap" aria-current="page" href="#">All</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link active sidelink-wrap" aria-current="page" href="#">Pending Slot</a>
+                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <a class="nav-link active sidelink-wrap" aria-current="page" href="#chart">Alloted Slots</a>
+                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <a class="nav-link active sidelink-wrap" aria-current="page" href="#chart">Completed Slots</a>
+                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <a class="nav-link active sidelink-wrap" aria-current="page" href="#chart">Cancelled Slots</a>
+                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -77,8 +77,8 @@
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
                         <th scope="col">Status</th>
+                        <th scope="col" id="reference-paper">Reference Paper</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,11 +100,10 @@
                         <td>Booked</td>
                         <td>10-30 A.M</td>
                         <td> Slot time</td>
-                           <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <td> Slot time</td>
-                        <%end%>
-
+  <td> <%= xrds.status %></td>
+  <%xrds.references.each do |file|%>
+<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+<%end%>
                     </tr>
                       <%end%>
                 </tbody>
