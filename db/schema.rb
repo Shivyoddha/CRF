@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_21_201947) do
+ActiveRecord::Schema.define(version: 2023_02_22_134029) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "anishes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "atomic_force_microscopes", force: :cascade do |t|
     t.string "sample"
     t.string "stype"
@@ -86,7 +91,6 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
   end
 
   create_table "cell_imagings", force: :cascade do |t|
-    t.string "sample"
     t.string "stype"
     t.string "plate"
     t.string "expected_wavelenght"
@@ -100,6 +104,13 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sample"
+    t.string "debithead"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -135,7 +146,7 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
   end
 
   create_table "hr_fesem_cs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "composition"
     t.string "stype"
     t.string "sphase"
@@ -146,6 +157,10 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.string "debithead"
+    t.date "slotdate"
+    t.time "slottime"
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
@@ -321,16 +336,25 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
   end
 
   create_table "uv_vis_nirs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "srange"
     t.string "erange"
-    t.string "measurement"
     t.string "composition"
     t.string "toxicity"
     t.string "sampletype"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debithead"
+    t.string "transmittance"
+    t.string "absorbance"
+    t.string "reflectance"
+    t.string "measurement"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
   create_table "xrds", force: :cascade do |t|
@@ -369,5 +393,7 @@ ActiveRecord::Schema.define(version: 2023_02_21_201947) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cell_imagings", "users"
+  add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
 end
