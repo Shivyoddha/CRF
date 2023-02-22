@@ -14,7 +14,7 @@ class XrdsController < ApplicationController
 
   # GET /xrds/new
   def new
-      @user=User.find(params[:id])
+    @user=User.find(params[:id])
     @xrd = Xrd.new()
 
   end
@@ -27,6 +27,7 @@ class XrdsController < ApplicationController
   def create
     @xrd = Xrd.new(xrd_params)
       @xrd.user=current_user
+      @xrd.status="pending"
     respond_to do |format|
       if @xrd.save
 
