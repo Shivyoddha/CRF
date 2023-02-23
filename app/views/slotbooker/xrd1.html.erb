@@ -84,7 +84,7 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd1.where(status:'pending').each do |xrds|%>
+                      <% @xrd.where(status:'pending').each do |xrds|%>
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
@@ -99,11 +99,16 @@
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td>10-30 A.M</td>
-                        <td> Slot time</td>
+                        <td><%= xrds.slotdate %></td>
+                        <td><%= xrds.slottime %></td>
                         <td> <%= xrds.status %></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                          <%if xrds.references.attached? %>
+                          <%xrds.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                        <td id="assign-btn">
                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
@@ -119,17 +124,19 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
+                                    <%= render partial: "form_xrd",locals: { xrd: xrds } %>
                                         </div>
+
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Assign a Slot</button>
+
                                         </div>
+
                                     </div>
                                 </div>
-                            </div>
+  </div>
                         </td>
-<%end%>
+
                     </tr>
                       <%end%>
                 </tbody>

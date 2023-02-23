@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'admin_portal/slotdashboard'
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
+    post 'slotbooker/xrd1'
+    patch 'slotbooker/xrd1'
     get 'slotbooker/xrd2'
     get 'slotbooker/xrd3'
     get 'slotbooker/xrd4'

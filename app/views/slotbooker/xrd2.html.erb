@@ -100,9 +100,9 @@
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td>10-30 A.M</td>
+                        <td> <%= xrds.slotdate %> </td>
                         <td> Slot time</td>
-                        <td> <%= xrds.status %></td>
+                        <td> <%= xrds.slottime %> </td>
                         <%xrds.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                         <td id="assign-btn">
@@ -120,7 +120,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                        
+...........................
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

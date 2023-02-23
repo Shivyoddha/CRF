@@ -1,11 +1,14 @@
 class SlotbookerController < ApplicationController
+
+
 def xrd
   @xrd=Xrd.all
  end
 
 
 def xrd1
- @xrd1=Xrd.all
+@xrd=Xrd.all
+
 end
 
 def xrd2
@@ -59,4 +62,7 @@ end
 
 def icp
 end
+
+
+
 end
