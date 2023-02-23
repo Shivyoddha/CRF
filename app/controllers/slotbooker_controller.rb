@@ -24,6 +24,7 @@ def xrd4
 end
 
 def fesemc
+  @fesemc = HrFesemC.all
 end
 
 def fesemj

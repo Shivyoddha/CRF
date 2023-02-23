@@ -89,6 +89,13 @@ Rails.application.routes.draw do
     get 'know/auto_multi_speci_polish'
     get 'slotbooker/ftnmr'
     get 'slotbooker/icp'
+    get 'slotbooker/payment'
+    get 'slotbooker/paymentD'
+    get 'slotbooker/paymentC'
+    get 'slotbooker/paymentS'
+    get 'slotbooker/paymentP'
+    get 'slotbooker/paymentM'
+    get 'slotbooker/paymentU'
     devise_scope :user do
     root to: "devise/sessions#new"
   end
