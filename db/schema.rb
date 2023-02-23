@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_192859) do
+ActiveRecord::Schema.define(version: 2023_02_22_185534) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -379,6 +379,8 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "debit"
     t.integer "user_id"
     t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
