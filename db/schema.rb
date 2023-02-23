@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_155135) do
+ActiveRecord::Schema.define(version: 2023_02_22_192859) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -158,9 +158,11 @@ ActiveRecord::Schema.define(version: 2023_02_22_155135) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.date "slotdate"
-    t.time "slottime"
     t.string "debit"
+    t.time "slottime"
+    t.date "slotdate"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_hr_fesem_cs_on_user_id"
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
@@ -305,13 +307,13 @@ ActiveRecord::Schema.define(version: 2023_02_22_155135) do
   create_table "three_d_non_contacts", force: :cascade do |t|
     t.string "sample"
     t.string "scant"
-    t.string "range"
     t.string "stepinterval"
     t.string "incompatible"
     t.string "toxicity"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "range"
   end
 
   create_table "users", force: :cascade do |t|
@@ -399,6 +401,9 @@ ActiveRecord::Schema.define(version: 2023_02_22_155135) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cell_imagings", "users"
+  add_foreign_key "hr_fesem_cs", "users"
   add_foreign_key "hr_fesem_js", "users"
+  add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
 end
