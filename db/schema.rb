@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "anishes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "atomic_force_microscopes", force: :cascade do |t|
     t.string "sample"
     t.string "stype"
@@ -86,7 +91,6 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
   end
 
   create_table "cell_imagings", force: :cascade do |t|
-    t.string "sample"
     t.string "stype"
     t.string "plate"
     t.string "expected_wavelenght"
@@ -100,6 +104,13 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "sample"
+    t.string "debithead"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -135,7 +146,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
   end
 
   create_table "hr_fesem_cs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "composition"
     t.string "stype"
     t.string "sphase"
@@ -146,6 +157,12 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.string "debit"
+    t.time "slottime"
+    t.date "slotdate"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_hr_fesem_cs_on_user_id"
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
@@ -290,13 +307,13 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
   create_table "three_d_non_contacts", force: :cascade do |t|
     t.string "sample"
     t.string "scant"
-    t.string "range"
     t.string "stepinterval"
     t.string "incompatible"
     t.string "toxicity"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "range"
   end
 
   create_table "users", force: :cascade do |t|
@@ -327,16 +344,25 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
   end
 
   create_table "uv_vis_nirs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "srange"
     t.string "erange"
-    t.string "measurement"
     t.string "composition"
     t.string "toxicity"
     t.string "sampletype"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debithead"
+    t.string "transmittance"
+    t.string "absorbance"
+    t.string "reflectance"
+    t.string "measurement"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
   create_table "xrds", force: :cascade do |t|
@@ -377,6 +403,9 @@ ActiveRecord::Schema.define(version: 2023_02_22_185534) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cell_imagings", "users"
+  add_foreign_key "hr_fesem_cs", "users"
   add_foreign_key "hr_fesem_js", "users"
+  add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
 end
