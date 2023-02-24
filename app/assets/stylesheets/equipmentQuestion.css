@@ -20,3 +20,13 @@
     margin: 0 auto auto auto;
     border-radius: 0 0 15px 15px;
 }
+
+@media only screen and (max-width: 600px) {
+    .hero {
+        width: 95%;
+    }
+    #equipment-name {
+        width: 95%;
+    }
+    
+}
