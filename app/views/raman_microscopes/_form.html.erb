@@ -33,16 +33,13 @@
           <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
           <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
-
-        <div class="input-group mb-3 vis" id="raman-select">
-            <label class="input-group-text text-success" for="inputGroupSelect01">Laser To Be Used</label>
-            <select class="form-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="visi">Visible-532nm</option>
-                <option value="nearIR">NearIR-785nm</option>
-                <option value="both">Both (400nm-785nm)</option>
-            </select>
+         
+        <div class="input-group mb-3">
+          <%= form.label :laser, "Laser to ne used",class:"input-group-text", for:"measurement"%>
+          <%= form.select(:laser, ['Visible-532nm','Near Ir-785nm','Both(400-785nm)',], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
+
+        
         <div class="input-group mb-3 vis" id="photo-select">
             <label class="input-group-text text-primary" for="inputGroupSelect01">Laser To Be Used</label>
             <select class="form-select" id="inputGroupSelect01">
@@ -87,12 +84,12 @@
 
 
         <div>
-          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <%= form.label :Compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %>  Corrossive
+                <%= form.radio_button :Compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Corrossive
             </div>
             <div class="form-check">
-                  <%= form.radio_button :compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Corrossive
+                  <%= form.radio_button :Compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %>Non-Corrossive
             </div>
         </div>
 
@@ -105,14 +102,22 @@
                   <%= form.radio_button :carcinogenic, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true  %> No
             </div>
         </div>
-
-
-
-        <div class="input-group mt-3 mb-3" id="collegeid-input">
-            <label for="exampleInputEmail1" class="input-group-text ">Attach Reference Files(optional)</label>
-            <input type="file" class="form-control " id="exampleInputEmail1" >
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
 
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+       </div>
+
+        
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
           <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>

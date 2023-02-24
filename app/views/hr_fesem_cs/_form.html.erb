@@ -103,7 +103,18 @@
           <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
           <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
         
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+      </div>
+       
         <div class="input-group mb-3">
             <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
         </div>

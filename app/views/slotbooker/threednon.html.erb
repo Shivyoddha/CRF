@@ -74,38 +74,43 @@
                         <th scope="col">Y Range</th>
                         <th scope="col">Step Interval</th>
                         <th scope="col">Whether Incompatible with any material</th>
-                        <th scope="col">Incompatible Material</th>
                         <th scope="col">Toxicity</th>
                         <th scope="col">More Information</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col">Slot Time</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Reference Paper</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
+                <% @three.each do |threes|%>
                     <tr>
-                        <th scope="row">CRF/XRD/741	</th>
-                        <td>Mark</td>
-                        <td>NITK</td>
-                        <td>Chemical</td>
-                        <td>90582655154</td>
-                        <td>1</td>
-                        <td>C, O, H,N</td>
-                        <td>Powder</td>
-                        <td>10°-80°</td>
-                        <td>NIL</td>
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Both</td>
-                        <td>No</td>
-                        <td>N/A</td>
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Booked</td>
-                        <td>10-30 A.M</td>
-                        <td>Not Available OR <button type="button" class="btn btn-primary">Primary</button></td>
-                    </tr>
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/XRD/<%=threes.id %>	</th>
+                      <td> <%= threes.user.name%> </td>
+                      <td> <%= threes.user.orgname%> </td>
+                      <td> <%= threes.user.department%> </td>
+                      <td> <%= threes.user.contact%> </td>
+                      <td> <%= threes.sample%> </td>
+                      <td> <%= threes.scant%> </td>
+                      <td> <%= threes.xrange%> </td>
+                      <td> <%= threes.yrange%> </td>
+                      <td> <%= threes.stepinterval%> </td>
+                      <td> <%= threes.incompatible%> </td>
+                      <td> <%= threes.toxicity%> </td>
+                      
+                      <td> <%= threes.more%> </td>
+                      <td>Booked</td>
+                      <td> <%=threes.slotdate %></td>
+                      <td> <%= threes.status %></td>
+                      <%threes.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>            
+<%end%>
+                  </tr>
+                    <%end%>
                 </tbody>
             </table>
 

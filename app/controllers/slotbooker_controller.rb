@@ -29,12 +29,15 @@ def fesemj
 end
 
 def threednon
+  @three= ThreeDNonContact.all
 end
 
 def raman
+  @raman = RamanMicroscope.all
 end
 
 def tga
+  @tga = TgaFttr.all
 end
 
 def bet
@@ -44,6 +47,7 @@ def lcms
 end
 
 def uv
+  @uv = UvVisNir.all
 end
 
 def laser
@@ -53,6 +57,7 @@ def cell
 end
 
 def atomic
+  @atomic = AtomicForceMicroscope.all
 end
 
 def ftnmr

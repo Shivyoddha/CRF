@@ -12,6 +12,7 @@ class UvVisNirsController < ApplicationController
 
   # GET /uv_vis_nirs/new
   def new
+    @user=User.find(params[:id])
     @uv_vis_nir = UvVisNir.new
   end
 
@@ -22,7 +23,8 @@ class UvVisNirsController < ApplicationController
   # POST /uv_vis_nirs or /uv_vis_nirs.json
   def create
     @uv_vis_nir = UvVisNir.new(uv_vis_nir_params)
-
+    @uv_vis_nir.user=current_user
+      @uv_vis_nir.status="pending"
     respond_to do |format|
       if @uv_vis_nir.save
         format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
@@ -65,6 +67,6 @@ class UvVisNirsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange, :measurement, :composition, :toxicity, :sampletype, :more)
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:reflectance,:absorbance,:transmittance,:user_id,references: [])
     end
 end
