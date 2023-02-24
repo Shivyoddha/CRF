@@ -102,9 +102,9 @@
             </div>
 
 
-            <div class="input-group mb-3" id="collegeid-input">
-              <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
-              <input type="file" class="form-control " id="exampleInputEmail1" >
+            <div class="input-group mb-3" id="ref-file">
+              <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+              <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
             </div>
 
           <div class="input-group mb-3">

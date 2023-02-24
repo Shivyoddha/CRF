@@ -45,6 +45,9 @@ display: -webkit-box;
 #safety-info{
 display: -webkit-box;
 }
+#safety-info{
+  display: -webkit-box;
+}
 
 
 .element {
@@ -63,6 +66,7 @@ display: -webkit-box;
 #signatures-upper-left-3d-pro{
   width: 68%;
 }
+<<<<<<< HEAD
 
 #faculty-incharge-ansys{
 
@@ -71,6 +75,13 @@ display: -webkit-box;
 
 #signatures-upper-right{
   width: 32%;
+=======
+#signatures-upper-left-3d-pro{
+    width: 68%;
+}
+#signatures-upper-right{
+    width: 32%;
+>>>>>>> ad1d1f21fc63dffb2b069dbd12c6f53e678d6505
 }
 #faculty-incharge {
 margin: 0 0 9em 0;
@@ -100,9 +111,30 @@ width: 75%;
 
 }
 
+<<<<<<< HEAD
 .right{
   width:35%;
 }
+=======
+  .right{
+    width:35%;
+  }
+  .right-lcms{
+    width:38%;
+  }
+  .right-uv{
+    width:42%;
+  }
+  .left{
+    width:67%;
+  }
+  .left-lcms{
+    width:62%;
+  }
+  .left-uv{
+    width:58%;
+  }
+>>>>>>> ad1d1f21fc63dffb2b069dbd12c6f53e678d6505
 
 .right-3d{
   width:40%;
@@ -164,10 +196,22 @@ font-size: 15px;
 font-size: 15px;
 }
 
+.font-smaller{
+  font-size: 15px;
+}
+
+.threeD-pro {
+  font-size: 15px;
+}
+
 #debit-head{
 margin: 0 0 5em 0;
 }
 
 #department {
+<<<<<<< HEAD
 font-size: 15px;
+=======
+  font-size: 15px;
+>>>>>>> ad1d1f21fc63dffb2b069dbd12c6f53e678d6505
 }

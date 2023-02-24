@@ -1,0 +1,27 @@
+<%= form_with(model: xrd,local:true) do |form| %>
+  <% if xrd.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(xrd.errors.count, "error") %> prohibited this xrd from being saved:</h2>
+
+      <ul>
+        <% xrd.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <div class="input-group mb-3">
+    <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+    <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+  </div>
+
+  <div class="input-group mb-3">
+  <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+</div>
+ <%=xrd.id%>
+  <div class="actions">
+    <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+  </div>
+<% end %>

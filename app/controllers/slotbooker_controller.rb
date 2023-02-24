@@ -1,14 +1,52 @@
 class SlotbookerController < ApplicationController
+
+
 def xrd
   @xrd=Xrd.all
  end
 
+
+def xrd1
+@xrd=Xrd.all
+
+end
+
+def xrd2
+ @xrd2=Xrd.all
+end
+
+def xrd3
+ @xrd3=Xrd.all
+end
+
+def xrd4
+ @xrd4=Xrd.all
 end
 
 def fesemc
- end
+  @fesemc = HrFesemC.all
+end
 
+
+def fesemc1
+  @fesemc=HrFesemC.all
+  
+  end
+  
+  def fesemc2
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc3
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc4
+   @fesemc=HrFesemC.all
+  end
+  
 def fesemj
+ @fesemj=HrFesemJ.all
 end
 
 def threednon
@@ -42,4 +80,8 @@ def ftnmr
 end
 
 def icp
+end
+
+
+
 end

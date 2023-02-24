@@ -14,9 +14,8 @@ class XrdsController < ApplicationController
 
   # GET /xrds/new
   def new
-      @user=User.find(params[:id])
+    @user=User.find(params[:id])
     @xrd = Xrd.new()
-
   end
 
   # GET /xrds/1/edit
@@ -27,6 +26,8 @@ class XrdsController < ApplicationController
   def create
     @xrd = Xrd.new(xrd_params)
       @xrd.user=current_user
+      @xrd.status="pending"
+
     respond_to do |format|
       if @xrd.save
 
@@ -44,7 +45,8 @@ class XrdsController < ApplicationController
   def update
     respond_to do |format|
       if @xrd.update(xrd_params)
-        format.html { redirect_to home_index_path, notice: "Xrd was successfully updated."}
+         @xrd.status="alloted"
+        format.html { redirect_to slotbooker_xrd_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,6 +73,6 @@ class XrdsController < ApplicationController
 
 0    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :status,:user_id ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status,:user_id ,references: [])
     end
 end

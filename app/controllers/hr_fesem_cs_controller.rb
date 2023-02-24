@@ -13,6 +13,8 @@ class HrFesemCsController < ApplicationController
   # GET /hr_fesem_cs/new
   def new
     @hr_fesem_c = HrFesemC.new
+    @user=User.find(params[:id])
+
   end
 
   # GET /hr_fesem_cs/1/edit
@@ -22,7 +24,8 @@ class HrFesemCsController < ApplicationController
   # POST /hr_fesem_cs or /hr_fesem_cs.json
   def create
     @hr_fesem_c = HrFesemC.new(hr_fesem_c_params)
-
+    @hr_fesem_c.user=current_user
+      @hr_fesem_c.status="pending"
     respond_to do |format|
       if @hr_fesem_c.save
         format.html { redirect_to hr_fesem_c_url(@hr_fesem_c), notice: "Hr fesem c was successfully created." }
@@ -65,6 +68,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more)
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, references: [])
     end
 end

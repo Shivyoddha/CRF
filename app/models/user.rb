@@ -7,5 +7,6 @@ class User < ApplicationRecord
 
  has_one_attached :file
 has_many :xrds
-
+has_many :hr_fesem_cs
+has_many :hr_fesem_js
 end

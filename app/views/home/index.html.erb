@@ -29,6 +29,9 @@
               <li><a class="dropdown-item" href="#">My Slots</a></li>
               <li><%= link_to "Download", home_index_path(format: :pdf)%></li>
               <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+
+              <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
+
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
             </ul>
@@ -159,8 +162,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
