@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:All Slots</h2>
         </div>
 
 
@@ -83,7 +83,7 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd.each do |xrds|%>
+                      <% Xrd.all.each do |xrds|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
@@ -98,11 +98,15 @@
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td> <%= @xrd.slotdate %></td>
-                        <td> <%= xrds.status %></td>
+                  
+                        <td> <%= xrds.slotdate %></td>
+
+                        <td> <%= xrds.slottime %></td>
+
+                          <td><%= xrds.status%></td>
                         <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>            
-<%end%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <%end%>
                     </tr>
                       <%end%>
                 </tbody>

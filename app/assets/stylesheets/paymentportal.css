@@ -45,7 +45,7 @@
     grid-template-columns: 0.5fr 2fr;
     grid-template-rows: 1fr;
 }
-.container-slot-booker {
+.container-payments {
     max-width: 100%;
     margin: auto;
     padding: 0%;
@@ -53,7 +53,28 @@
     display: grid;
     grid-template-columns: 0.5fr 2fr;
     grid-template-rows: 1fr;
+    background-color: #ddf1fb;
+    font-family: "Quicksand", "sans-serif";
 }
+
+#manual-heading {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    font-family: "Unbounded", "sans-serif";
+    background-color: #f9fdff;
+    margin: 0 auto 0.3em auto;
+    border-radius: 1em 1em 0 0;
+}
+
+#hero {
+    background-color: #f9fdff;
+    padding: 20px 40px;
+    width: 70%;
+    margin: auto auto auto auto;
+    border-radius: 15px;
+}
+
 
 /* NAvigation pane organized and styled */
 #navigation {
@@ -63,12 +84,14 @@
     min-width: 270px;
     font-family: "quicksand", sans-serif;
     padding: 15px;
+    background-color: #f9fdff;
 }
 
 /* logo picture styled */
 #navigation-logo {
     display: flex;
     justify-content: center;
+    margin: 0 0 30px 0;
 }
 
 #logopic {
@@ -95,7 +118,7 @@
 }
 
 .sidelinks-model-list {
-    padding: 1em 0;
+    padding: 0 0;
     list-style: none;
     border-radius: 1em;
 }
@@ -126,6 +149,14 @@
 .sidelink-wrap-model:hover {
     background-color: #4b49ac59;
     text-decoration: none;
+}
+
+.hero-manual-entry {
+    background-color: #f9fdff;
+    padding: 1em 7em;
+    width: 65%;
+    margin: 0 auto auto auto;
+    border-radius: 0 0 15px 15px;
 }
 
 ol,
@@ -233,6 +264,17 @@ ul {
     background-color: #3f5ac9;
     color: aliceblue;
 }
+
+#sbt {
+    width: 100%;
+    background-color: #157347;
+  }
+
+ #sbt-check {
+    width: 100%;
+    text-decoration: none;
+
+ } 
 
 
 @media only screen and (max-width: 1430px) {

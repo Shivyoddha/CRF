@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag "adminportal" %>
+<%= stylesheet_link_tag "paymentportal" %>
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
@@ -19,7 +19,7 @@
     </nav>
 </div>
 
-<div class="container-slot-booker">
+<div class="container-payments">
 
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
@@ -27,25 +27,36 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
+        <%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>
+
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap" %>
+                <li class="nav-item">              
+                 <%= link_to 'All Payments',slotbooker_payment_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>              
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
+                        <%= link_to 'Department Operating Cost',slotbooker_paymentD_path,class:"nav-link active sidelink-wrap" %>
+                </li>           
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
-                        </li>
+                    <%= link_to 'CPDA Fund',slotbooker_paymentC_path,class:"nav-link active sidelink-wrap" %> 
+                </li>
+                           
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
+                    <%= link_to 'Student Contingency',slotbooker_paymentS_path,class:"nav-link active sidelink-wrap" %> 
+                </li>
+                        
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Project Fund',slotbooker_paymentP_path,class:"nav-link active sidelink-wrap" %> 
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to 'Manual Entry',slotbooker_paymentM_path,class:"nav-link active sidelink-wrap" %> 
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Update',slotbooker_paymentU_path,class:"nav-link active sidelink-wrap" %> 
                 </li>
             </ul>
         </div>
@@ -54,7 +65,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Proforma Console</h2>
         </div>
 
 
@@ -67,25 +78,56 @@
                         <th scope="col" id="name">Name</th>
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reasssign</th>
-                        <th scope="col" id="cancel-col">Cancel Slot</th>
+                        <th scope="col" id="contact-no">Contact No</th>
+                        <th scope="col" id="debit-head">Debit Head</th>
+                        <th scope="col" id="proforma-col">Proforma</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @xrd2.where(status:'alloted').each do |xrds|%>
+                        <tr>
+                        <th scope="row">CRF/XRD/123	</th>
+
+                        <td> User Name </td>
+                        <td> NITK </td>
+                        <td> Mechanical </td>
+                        <td> 7760763125 </td>
+                        <td> Student Contingency </td>
+                        <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
+                            Generate
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Proforma Details</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                                <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                       
+                    </tr>
+
+
+                      <%
+=begin%>
+ <% @xrd2.where(status:'alloted').each do |xrds|%>
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
@@ -100,9 +142,9 @@
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
+                        <td>10-30 A.M</td>
                         <td> Slot time</td>
-                        <td> <%= xrds.slottime %> </td>
+                        <td> <%= xrds.status %></td>
                         <%xrds.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                         <td id="assign-btn">
@@ -120,7 +162,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-...........................
+                                        
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -157,9 +199,26 @@
                         </td>
 <%end%>
                     </tr>
-                      <%end%>
+                      <%end%> 
+<%
+=end%>
+
+
+
                 </tbody>
+
+
+
+
+
+
             </table>
+
+
+
+
+
+
 
         </div>
         </div>

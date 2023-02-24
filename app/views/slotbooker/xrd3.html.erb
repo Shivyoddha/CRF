@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
         </div>
 
 
@@ -98,8 +98,8 @@
                         <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td>10-30 A.M</td>
-                        <td> Slot time</td>
+                        <td> <%= xrds.slotdate %> </td>
+                        <td> <%= xrds.slottime %> </td>
   <td> <%= xrds.status %></td>
   <%xrds.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>

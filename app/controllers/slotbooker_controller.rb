@@ -1,11 +1,14 @@
 class SlotbookerController < ApplicationController
+
+
 def xrd
   @xrd=Xrd.all
  end
 
 
 def xrd1
- @xrd1=Xrd.all
+@xrd=Xrd.all
+
 end
 
 def xrd2
@@ -24,6 +27,24 @@ def fesemc
   @fesemc = HrFesemC.all
 end
 
+
+def fesemc1
+  @fesemc=HrFesemC.all
+  
+  end
+  
+  def fesemc2
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc3
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc4
+   @fesemc=HrFesemC.all
+  end
+  
 def fesemj
  @fesemj=HrFesemJ.all
 end
@@ -65,4 +86,7 @@ end
 
 def icp
 end
+
+
+
 end

@@ -25,7 +25,7 @@
 
     <div class="input-group mb-3">
         <%= form.label :sample, "No of Samples", class:"input-group-text", for:"inputGroupSelect01"%>
-        <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -49,12 +49,12 @@
 
           <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
           <div class="form-check">
-          <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+          <%= form.check_box :measurement,{:class=>'form-check-input'}, "SEM", "-"%>
           <%= form.label "SEM", class:"form-check-label", for:"flexCheckChecked"%>
 
           </div>
           <div class="form-check">
-            <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
+            <%= form.check_box :measurement,{:class=>'form-check-input'}, "EBSD", "-"%>
             <%= form.label "EBSD", class:"form-check-label", for:"flexCheckChecked"%>
           </div>
           <div><p class="text-warning">Max. 1 Sample</p></div>

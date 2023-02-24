@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get 'admin_portal/slotdashboard'
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
+    post 'slotbooker/xrd1'
+    patch 'slotbooker/xrd1'
     get 'slotbooker/xrd2'
     get 'slotbooker/xrd3'
     get 'slotbooker/xrd4'
@@ -36,6 +38,10 @@ Rails.application.routes.draw do
     get 'slotbooker/bet'
     get 'slotbooker/cell'
     get 'slotbooker/fesemc'
+    get 'slotbooker/fesemc1'
+    get 'slotbooker/fesemc2'
+    get 'slotbooker/fesemc3'
+    get 'slotbooker/fesemc4'
     get 'slotbooker/fesemj'
     get 'slotbooker/icp'
     get 'slotbooker/laser'
@@ -87,6 +93,13 @@ Rails.application.routes.draw do
     get 'know/auto_multi_speci_polish'
     get 'slotbooker/ftnmr'
     get 'slotbooker/icp'
+    get 'slotbooker/payment'
+    get 'slotbooker/paymentD'
+    get 'slotbooker/paymentC'
+    get 'slotbooker/paymentS'
+    get 'slotbooker/paymentP'
+    get 'slotbooker/paymentM'
+    get 'slotbooker/paymentU'
     devise_scope :user do
     root to: "devise/sessions#new"
   end
