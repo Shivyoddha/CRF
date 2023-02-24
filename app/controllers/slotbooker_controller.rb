@@ -27,6 +27,24 @@ def fesemc
   @fesemc = HrFesemC.all
 end
 
+
+def fesemc1
+  @fesemc=HrFesemC.all
+  
+  end
+  
+  def fesemc2
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc3
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc4
+   @fesemc=HrFesemC.all
+  end
+  
 def fesemj
  @fesemj=HrFesemJ.all
 end

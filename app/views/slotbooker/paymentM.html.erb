@@ -60,17 +60,79 @@
         </div>
     </div>
 
-<%# the content section is coded here %>
-    <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Manual Entry</h2>
+
+    <div id="hero">
+    
+        <div id="manual-heading">
+            <h1>Manual Entry</h1>
         </div>
 
+        <div id="wrap">
+            <div class="mb-3">
+                <div class="input-group">
+                    <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>
+                    <input type="text" class="form-control" id="app-no" aria-describedby="basic-addon3">
+                </div>
+            </div>
+                
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Equipment</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                </select>
+            </div>
 
-       
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="user-name">User Name</label>
+                <input type="text" class="form-control" id="user-name" aria-describedby="basic-addon3">
+            </div>
 
+            <div class="input-group mb-3">
+                <label class="input-group-text" id="reg-id-label" for="reg-id">Reg ID</label>
+                <input type="text" class="form-control" id="reg-id" aria-describedby="basic-addon3" placeholder="Optional">
+            </div>
+                
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="department">Department</label>
+                <select class="form-select" id="department">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" id="guide-label" for="guide">Guide</label>
+                <input type="text" class="form-control" id="guide" aria-describedby="basic-addon3" placeholder="Optional">
+            </div>
+                
+            
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="position">Course/Position</label>
+                <select class="form-select" id="position">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" id="amount-lanbel" for="amount">Amount</label>
+                    <label class="input-group-text" for="amount">₹</label>
+                    <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3">
+                </div>
+            </div> 
+
+            <div class="actions">
+                <button type="submit" class="btn btn-success" id="sbt">Submit</button>
+            </div>   
+
+        </div>
 
     </div>
 
 
+
 </div>
+
+
