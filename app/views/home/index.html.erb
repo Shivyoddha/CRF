@@ -27,6 +27,7 @@
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
+              <li><%= link_to "Download", home_index_path(format: :pdf)%></li>
               <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
@@ -202,7 +203,7 @@
             </div>
          </div>
 
-        
+
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-FESEM [Jeol]</h5>

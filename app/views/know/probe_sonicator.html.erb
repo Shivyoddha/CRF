@@ -1,0 +1,120 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Probe Sonicator</h1>
+
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[VCX 750, Sonics and Materials Inc., USA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Block - S03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <ol type="a">
+                    <li>Energy and temperature set-point control</li>
+                    <li>Digital wattmeter</li>
+                    <li>Automatic tuning</li>
+                    <li> 10 hour process timer</li>
+                    <li> Independent On/ Off pulser</li>
+                    <li>Variable power output control</li>
+                  </ol>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution/Specification:</u></h4>
+                  <ol type="a">
+                    <li>750W ultrasonic processor with ½” diameter probe (Ti6Al4V titanium alloy) 13mm Solid probe (0.5- 15 ml), 25mm Solid Probe (100-1000ml) and 19mm Solid Probe (50- 500ml)</li>
+                    <li>Processing Volume: 200µl – 1L* (*The actual processing volume of a specific probe or accessory is application specific)</li>
+                  </ol>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Application domains</u>:</h4>
+                  <ul>
+                    <li>Nanotechnology (producing nanoparticle materials and graphene dispersions)</li>
+                    <li>Cell lysing</li>
+                    <li>Sample preparation</li>
+                    <li>Homogenization</li>
+                    <li>ChIP Assay</li>
+                    <li>Emulsification</li>
+                    <li>Disaggregation and Deagglomeration</li>
+                    <li>Uses in the field of sonochemical processing</li>
+                  </ul>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th>NITK</th>
+                  <th>Academic &amp; Research Institute*</th>
+                   <th>Industry*</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr><th style="color:#0094BB">Rs. 100/-</th>
+                  <th style="color:#0094BB">Rs. 200/-</th>
+                  <th style="color:#0094BB">Rs. 400/-</th>
+              </tr></tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Rizwanur Rahman (Faculty in-charge), Mob: <span class="text-info">+91-9620169801</span>  ,Email: <span class="text-info"> crf_synlab@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

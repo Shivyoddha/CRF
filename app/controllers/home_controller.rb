@@ -12,16 +12,16 @@ class HomeController < ApplicationController
    end
 
 
-   # respond_to do |format|
-   #       format.html
-   #       format.pdf do
-   #         render pdf: "ShriRam",
-   #                template: "home/index",
-   #                formats: [:html],
-   #                disposition: :inline,
-   #                layout: 'pdf'
-   #       end
-   #     end
+   respond_to do |format|
+         format.html
+         format.pdf do
+           render pdf: "ShriRam",
+                  template: "home/anish",
+                  formats: [:html],
+                  disposition: :inline,
+                  layout: 'pdf'
+         end
+       end
 
 
   end
