@@ -92,9 +92,6 @@ Rails.application.routes.draw do
     get 'know/liq_nitrogen'
     get 'know/ansys'
     get 'know/auto_multi_speci_polish'
-<<<<<<< HEAD
-
-=======
     get 'slotbooker/ftnmr'
     get 'slotbooker/icp'
     get 'slotbooker/payment'
@@ -104,7 +101,6 @@ Rails.application.routes.draw do
     get 'slotbooker/paymentP'
     get 'slotbooker/paymentM'
     get 'slotbooker/paymentU'
->>>>>>> ad1d1f21fc63dffb2b069dbd12c6f53e678d6505
     devise_scope :user do
     root to: "devise/sessions#new"
   end
