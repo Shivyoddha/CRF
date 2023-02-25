@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "knowEquipment"%>
 <%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
 
 <div class="container">
     <div id="equipment-name">
@@ -9,31 +10,25 @@
     </div>
     <div class="hero">
 
-        <div class="equipment-img-wrap">
-            <div class="equipment-img">
-                <div id="carouselExample" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100" alt="...">
-                        </div>
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="high-temp-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'high-temperature-vacc-images/HTVAF.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                     </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                 </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#high-temp-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#high-temp-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
             </div>
         </div>
+     </div>
 
 
         <div id="content">
