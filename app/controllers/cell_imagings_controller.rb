@@ -65,6 +65,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more)
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id )
     end
 end

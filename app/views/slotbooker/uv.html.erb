@@ -71,39 +71,50 @@
                         <th scope="col">No of Samples</th>
                         <th scope="col">Start range</th>
                         <th scope="col">End Range</th>
-                        <th scope="co">Measurement</th>
-                        <th scope="co">Sample Composition</th>
-                        <th scope="co">Sample Type</th>
+                        <th scope="col">Transmittance</th>
+                        <th scope="col">Absorbance</th>
+                        <th scope="col">Reflectance</th>
+                        <th scope="col">Sample Composition</th>
+                        <th scope="col">Sample Type</th>
                         <th scope="col">Toxicity</th>
                         <th scope="col">More Information</th>
                         <th scope="col">Booked On</th>
                         <th scope="col">Slot Date</th>
                         <th scope="col">Slot Time</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Reference Paper</th>
 
 
                     </tr>
                 </thead>
                 <tbody>
+                <% @uv.each do |xrds|%>
                     <tr>
-                        <th scope="row">CRF/XRD/741	</th>
-                        <td>Mark</td>
-                        <td>NITK</td>
-                        <td>Chemical</td>
-                        <td>90582655154</td>
-                        <td>1</td>
-                        <td>C, O, H,N</td>
-                        <td>Powder</td>
-                        <td>10°-80°</td>
-                        <td>NIL</td>
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Both</td>
-                        <td>Yes</td>
-                        <td>N/A</td>
-                        <td>2023-02-20 11:53:49</td>
-                        <td>Booked</td>
-                        <td>Not Available OR <button type="button" class="btn btn-primary">Primary</button></td>
-                    </tr>
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/UV/<%=xrds.id %>	</th>
+                      <td> <%= xrds.user.name%> </td>
+                      <td> <%= xrds.user.orgname%> </td>
+                      <td> <%= xrds.user.department%> </td>
+                      <td> <%= xrds.user.contact%> </td>
+                      <td> <%= xrds.sample%> </td>
+                      <td> <%= xrds.srange%> </td>
+                      <td> <%= xrds.erange%> </td>
+                      <td> <%= xrds.transmittance%> </td>
+                      <td> <%= xrds.absorbance%> </td>
+                      <td> <%= xrds.reflectance%> </td>
+                      <td> <%= xrds.composition%> </td>
+                      <td> <%= xrds.sampletype%> </td>
+                      <td> <%= xrds.toxicity%> </td>
+                      <td> <%= xrds.more%> </td>
+                      <td>Booked</td>
+                      <td> 23/2/23 </td>
+                      <td>  10-30 A.M </td>
+                      <td> <%= xrds.status %></td>
+                      <%xrds.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>            
+<%end%>
+                  </tr>
+                    <%end%>
                 </tbody>
             </table>
 

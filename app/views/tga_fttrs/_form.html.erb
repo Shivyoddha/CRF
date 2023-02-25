@@ -82,35 +82,41 @@
 
             <div class="input-group mb-3">
               <%= form.label :atmosphere,"Atmosphere",class:"input-group-text", for:"atmosphere"%>
-              <%= form.select(:atmosphere, ['Oxygen','Nitrogen','Argon'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere",:required => true}) %>
+              <%= form.select(:atmosphere, ['Oxygen','Nitrogen','Argon'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere"}) %>
             </div>
         </div>
 
         <div id="ftir" class="vis">
             <p class="fw-bold text-success">FTIR-Method</p>
-
+         
             <div class="input-group mb-3">
                 <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="ftr" value="option1">
+                <%= form.check_box :atr,{:class=>'form-check-input',:id=>'fftr'}, true, false%>
+         
                 <label class="form-check-label" for="ftr">FTR</label>
                 </div>
                 <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="kbr" value="option2">
+                <%= form.check_box :kbr ,{:class=>'form-check-input',:id=>'kbr'}, true, false%>
+              
                 <label class="form-check-label" for="kbr">KBR</label>
                 </div>
             </div>
-
+            
             <div class="y-ordinate">
                 <p class="fw-bold">Y-Ordinate</p>
             </div>
+            <div>
+ 
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="absorbance" value="option1">
-                <label class="form-check-label" for="absorbance">Absorbance</label>
+                <%= form.radio_button :yordinate, 'Abosrbance', class:"form-check-input", type:"radio", id:"absorbance",:checked => true  %> Abosrbance
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="transmittance" value="option2">
-                <label class="form-check-label" for="transmittance">Transmittance</label>
+                  <%= form.radio_button :yordinate, 'Transmittance', class:"form-check-input", type:"radio", id:"transmittance"  %> Transmittance
             </div>
+        </div>
+
+
+           
         </div>
 
         <div>
@@ -161,24 +167,31 @@
         </div>
 
 
-        <div class="input-group mt-3 mb-3" id="collegeid-input">
-            <label for="exampleInputEmail1" class="input-group-text ">Attach Ref. paper/ Protocol (optional)</label>
-            <input type="file" class="form-control " id="exampleInputEmail1" >
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
 
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+      </div>
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
           <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
         </div>
 
         <div class="actions">
-            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
-        </div>
+        <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+      </div>
 
 
-        <div>
-          <%= form.submit %>
-        </div>
+        
       <% end %>
 
 
