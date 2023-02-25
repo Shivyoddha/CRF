@@ -10,6 +10,5 @@ class Addcolumnuv < ActiveRecord::Migration[6.1]
 
     add_column:uv_vis_nirs,:absorbance  ,:string
     add_column:uv_vis_nirs,:reflectance ,:string
-    add_column:uv_vis_nirs,:measurement ,:string
   end
 end

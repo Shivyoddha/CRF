@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_192859) do
+ActiveRecord::Schema.define(version: 2023_02_24_124320) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -360,7 +362,6 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
   create_table "three_d_non_contacts", force: :cascade do |t|
     t.integer "sample"
     t.string "scant"
-    t.string "range"
     t.string "stepinterval"
     t.string "incompatible"
     t.string "toxicity"
@@ -408,7 +409,6 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "sample"
     t.string "srange"
     t.string "erange"
-    t.string "measurement"
     t.string "composition"
     t.string "toxicity"
     t.string "sampletype"
