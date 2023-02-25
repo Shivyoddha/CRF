@@ -4,83 +4,81 @@
 }
 
 #margin {
-  margin: 3px;
-  border: 2px dashed grey;
-  padding: 15px;
-  border-radius: 2px;
+margin: 3px;
+border: 2px dashed grey;
+padding: 15px;
+border-radius: 2px;
 
-  /* height: 150vh; */
+/* height: 150vh; */
 }
 
-#equip-heading {
+#equip-heading{
   font-family: 'Montserrat', sans-serif;
 }
 
 .user-info {
-  display: -webkit-box;
-  /* wkhtmltopdf uses this one */
-  margin: 5px 0 0 0;
+    display: -webkit-box; /* wkhtmltopdf uses this one */
+    margin: 5px 0 0 0;
 }
 
 #sample-details-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+font-family: 'Montserrat', sans-serif;
+font-size: 20px;
 }
 
-#sample-details {
+#sample-details-heading-3d{
+  font-size: 17px;
+}
+
+#sample-details{
   display: -webkit-box;
 }
-
-#safety-info {
+#safety-info{
   display: -webkit-box;
 }
 
 
 .element {
-  margin: 8px 0;
+  margin:8px 0;
   font-size: 17px;
   font-family: 'Montserrat', sans-serif;
 }
 
 #signatures-upper {
-  display: -webkit-box;
+display: -webkit-box;
 }
 
-#signatures-upper-left {
-  width: 72%;
+#signatures-upper-left{
+    width: 72%;
 }
-
-#signatures-upper-left-3d-pro {
-  width: 68%;
+#signatures-upper-left-3d-pro{
+    width: 68%;
 }
-
-#signatures-upper-right {
-  width: 32%;
+#signatures-upper-right{
+    width: 32%;
 }
 
 #faculty-incharge {
-  margin: 0 0 7.5em 0;
+margin: 0 0 9em 0;
 }
 
 
 
 
 
-.crf-heading {
+.crf-heading{
   width: 75%;
 }
-
-.logo {
-  /* width: 40%; */
-  display: -webkit-box;
-  -webkit-box-pack: center;
-  /* justify-content: center; */
-  align-items: center;
+.logo{
+    /* width: 40%; */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    /* justify-content: center; */
+    align-items: center;
 
 }
-
-.equipment {
-  margin-top: 5px;
+.equipment{
+    margin-top: 5px;
 }
 
 #app-no-tag {
@@ -112,15 +110,15 @@
   width: 58%;
 }
 
-#angle {
+ #angle {
   display: -webkit-box;
-}
+ }
 
-#start-angle {
+ #start-angle {
   width: 50%;
-}
+ }
 
-input {
+ input {
   border: none;
   border-bottom: 1px solid black;
 }
@@ -130,20 +128,35 @@ input:focus {
 }
 
 .data {
-  margin: 0 0 0 5px;
+margin: 0 0 0 5px;
 }
 
-.signatures {
+.signatures{
   margin-top: 5em;
   display: -webkit-box;
 }
-
-.chairman-sign {
+.chairman-sign{
   margin-left: 26em;
 }
 
 .notes {
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
+}
+
+.font-smaller{
+font-size: 15px;
+}
+
+.threeD-pro {
+font-size: 15px;
+}
+
+.font-smaller{
+font-size: 15px;
+}
+
+.threeD-pro {
+font-size: 15px;
 }
 
 .font-smaller {
@@ -154,7 +167,7 @@ input:focus {
   font-size: 15px;
 }
 
-#debit-head {
+#debit-head{
   margin: 0 0 5em 0;
 }
 

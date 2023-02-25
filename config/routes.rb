@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
     devise_for :users
     get 'home/index'
+    get 'home/anish'
     get 'know/xrd'
     get 'records/record'
     get 'admin_portal/admindashboard'
