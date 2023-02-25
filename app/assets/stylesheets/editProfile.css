@@ -16,20 +16,18 @@
     border-radius: 0 0 15px 15px;
 }
 
-#account-delete {
-
-}
+#account-delete {}
 
 #account-delete-heading {
     display: flex;
     justify-content: center;
     font-family: "Unbounded", "sans-serif";
     font-size: 2em;
-    
+
 }
 
-.edit-page-notices{
-    font-size:14px;
+.edit-page-notices {
+    font-size: 14px;
 }
 
 .back-btn {
@@ -37,24 +35,27 @@
     text-decoration: none;
 }
 
-#account-delete{
+#account-delete {
     margin: 4em 0 0 0;
 }
-#delete-account-alert{
-    font-size:15px;
+
+#delete-account-alert {
+    font-size: 15px;
 }
 
-.red-text{
+.red-text {
     color: #fa3b3b;
 }
-#dlt{
+
+#dlt {
     width: 100%;
     background-color: #ffffff;
     color: #fa3b3b;
     border: 1px solid #ff6e6e;
     transition-duration: 0.5s;
 }
-#dlt:hover{
+
+#dlt:hover {
     background-color: #ff6e6e;
     color: #ffffff;
 }
@@ -63,7 +64,7 @@
     #edit-page-heading {
         width: 98%;
     }
-    
+
     .hero {
         width: 98%;
         padding: 1em 1em;

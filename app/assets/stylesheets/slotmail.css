@@ -1,6 +1,6 @@
 .container-11 {
-    display: -webkit-box;
-    margin: 0 0 2em 0;
+  display: -webkit-box;
+  margin: 0 0 2em 0;
 }
 
 #margin {
@@ -12,13 +12,14 @@
   /* height: 150vh; */
 }
 
-#equip-heading{
+#equip-heading {
   font-family: 'Montserrat', sans-serif;
 }
 
 .user-info {
-    display: -webkit-box; /* wkhtmltopdf uses this one */
-    margin: 5px 0 0 0;
+  display: -webkit-box;
+  /* wkhtmltopdf uses this one */
+  margin: 5px 0 0 0;
 }
 
 #sample-details-heading {
@@ -26,16 +27,17 @@
   font-size: 20px;
 }
 
-#sample-details{
+#sample-details {
   display: -webkit-box;
 }
-#safety-info{
+
+#safety-info {
   display: -webkit-box;
 }
 
 
 .element {
-  margin:8px 0;
+  margin: 8px 0;
   font-size: 17px;
   font-family: 'Montserrat', sans-serif;
 }
@@ -44,15 +46,18 @@
   display: -webkit-box;
 }
 
-#signatures-upper-left{
-    width: 72%;
+#signatures-upper-left {
+  width: 72%;
 }
-#signatures-upper-left-3d-pro{
-    width: 68%;
+
+#signatures-upper-left-3d-pro {
+  width: 68%;
 }
-#signatures-upper-right{
-    width: 32%;
+
+#signatures-upper-right {
+  width: 32%;
 }
+
 #faculty-incharge {
   margin: 0 0 7.5em 0;
 }
@@ -61,78 +66,87 @@
 
 
 
-.crf-heading{
+.crf-heading {
   width: 75%;
 }
-.logo{
-    /* width: 40%; */
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    /* justify-content: center; */
-    align-items: center;
+
+.logo {
+  /* width: 40%; */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  /* justify-content: center; */
+  align-items: center;
 
 }
-.equipment{
-    margin-top: 5px;
+
+.equipment {
+  margin-top: 5px;
 }
 
 #app-no-tag {
-    font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
-  }
+}
 
-  .right{
-    width:35%;
-  }
-  .right-lcms{
-    width:38%;
-  }
-  .right-uv{
-    width:42%;
-  }
-  .left{
-    width:67%;
-  }
-  .left-lcms{
-    width:62%;
-  }
-  .left-uv{
-    width:58%;
-  }
+.right {
+  width: 35%;
+}
 
- #angle {
+.right-lcms {
+  width: 38%;
+}
+
+.right-uv {
+  width: 42%;
+}
+
+.left {
+  width: 67%;
+}
+
+.left-lcms {
+  width: 62%;
+}
+
+.left-uv {
+  width: 58%;
+}
+
+#angle {
   display: -webkit-box;
- }
+}
 
- #start-angle {
+#start-angle {
   width: 50%;
- }
+}
 
- input {
+input {
   border: none;
   border-bottom: 1px solid black;
 }
 
 input:focus {
-outline: none;
+  outline: none;
 }
 
 .data {
   margin: 0 0 0 5px;
 }
 
-.signatures{
+.signatures {
   margin-top: 5em;
   display: -webkit-box;
 }
-.chairman-sign{
+
+.chairman-sign {
   margin-left: 26em;
 }
+
 .notes {
   font-family: 'Montserrat', sans-serif;
 }
 
-.font-smaller{
+.font-smaller {
   font-size: 15px;
 }
 
@@ -140,7 +154,7 @@ outline: none;
   font-size: 15px;
 }
 
-#debit-head{
+#debit-head {
   margin: 0 0 5em 0;
 }
 

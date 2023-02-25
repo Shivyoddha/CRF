@@ -1,11 +1,11 @@
-.table-container{
+.table-container {
     margin: 2%;
     display: flex;
     min-height: 50vh;
     flex-direction: column;
 }
 
-.t-head{
+.t-head {
     display: table;
     width: 100%;
     margin: 10px auto;
@@ -14,11 +14,11 @@
     padding: 12px 0;
     color: #555;
     background-color: #ddf1fb;
-    box-shadow: 0 1px 4px 0 rgba(0,0,50,0.3);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
     font-family: unbounded;
 }
 
-.h-cell{
+.h-cell {
     display: table-cell;
     width: 20%;
     text-align: center;
@@ -28,7 +28,7 @@
     border-right: 1px solid #555;
 }
 
-.table-row{
+.table-row {
     display: table;
     width: 100%;
     margin: 10px auto;
@@ -39,7 +39,7 @@
     background-color: white;
 }
 
-.table-cell{
+.table-cell {
     display: table-cell;
     width: 20%;
     text-align: center;
@@ -51,6 +51,6 @@
 
 @media only screen and (max-width: 600px) {
     .table-row {
-      font-size: 11px;
+        font-size: 11px;
     }
-  }
+}
