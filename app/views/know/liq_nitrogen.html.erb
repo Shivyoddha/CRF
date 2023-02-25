@@ -1,0 +1,101 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Liquid Nitrogen Plant</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="nitrogen-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'nitrogen-images/LN_3.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#nitrogen-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#nitrogen-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[StirLIN-1 Economy, Stirling Cryogenics BV, Netherlands]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF New Building</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Production Capacity:</u>:</h4>
+                  <ul>
+                    <li> 120 litre per day <span style="color:blue">[5 litre/ hour]</span></li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Purity:</u></h4>
+                <p>99%</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>List of Applications:</u></h4>
+                  <p> Material Characterisation(SEM,TEM, NMR, etc.), Cryo-Surgery, Space Simulation, Infrared Sensors, Dry Freezing, Cryopreservation of biological samples, Cryomachining, Shielding material from oxygen atmosphere</p>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th style="color: cadetblue;">NITK</th>
+                  <th style="color: cadetblue;">Academia / R&amp;D (Externals)*</th>
+                  <th style="color: cadetblue;">Industry*</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+
+                  <th> Rs. 60 per litre </th>
+                  <th> Rs. 80 per litre </th>
+                  <th> Rs. 80 per litre </th>
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Yashvanth K S (Technical Staff, CRF), Email: <span class="text-info">office.crf@nitk.edu.in</span></h5>
+            <h5>Dr. Kumar G N (Liquid Nitrogen Plant, Faculty in-charge), Mob: <span class="text-info">+91-9481848572</span> , Email: <span class="text-info"> gnkumar33@nitk.edu.in</span></h5>
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
