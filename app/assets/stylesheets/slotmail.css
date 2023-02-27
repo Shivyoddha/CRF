@@ -13,12 +13,12 @@ border-radius: 2px;
 }
 
 #equip-heading{
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
 }
 
 .user-info {
-    display: -webkit-box; /* wkhtmltopdf uses this one */
-    margin: 5px 0 0 0;
+  display: -webkit-box; /* wkhtmltopdf uses this one */
+  margin: 5px 0 0 0;
 }
 
 #sample-details-heading {
@@ -31,7 +31,19 @@ font-size: 20px;
 }
 
 #sample-details{
-  display: -webkit-box;
+display: -webkit-box;
+}
+
+#Caution{
+  font-size: 'Montserrat';
+}
+
+.caution-user{
+  font-family: 'Montserrat';
+}
+
+#safety-info{
+display: -webkit-box;
 }
 #safety-info{
   display: -webkit-box;
@@ -39,9 +51,9 @@ font-size: 20px;
 
 
 .element {
-  margin:8px 0;
-  font-size: 17px;
-  font-family: 'Montserrat', sans-serif;
+margin:8px 0;
+font-size: 17px;
+font-family: 'Montserrat', sans-serif;
 }
 
 #signatures-upper {
@@ -49,15 +61,20 @@ display: -webkit-box;
 }
 
 #signatures-upper-left{
-    width: 72%;
+  width: 72%;
 }
 #signatures-upper-left-3d-pro{
-    width: 68%;
-}
-#signatures-upper-right{
-    width: 32%;
+  width: 68%;
 }
 
+#faculty-incharge-ansys{
+
+  margin: 0 0 7.5em 0;
+}
+
+#signatures-upper-right{
+  width: 32%;
+}
 #faculty-incharge {
 margin: 0 0 9em 0;
 }
@@ -67,18 +84,18 @@ margin: 0 0 9em 0;
 
 
 .crf-heading{
-  width: 75%;
+width: 75%;
 }
 .logo{
-    /* width: 40%; */
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    /* justify-content: center; */
-    align-items: center;
+  /* width: 40%; */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  /* justify-content: center; */
+  align-items: center;
 
 }
 .equipment{
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 #app-no-tag {
@@ -86,45 +103,60 @@ margin: 0 0 9em 0;
 
 }
 
-.right {
-  width: 35%;
+  .right{
+    width:35%;
+  }
+  .right-lcms{
+    width:38%;
+  }
+  .right-uv{
+    width:42%;
+  }
+  .left{
+    width:67%;
+  }
+  .left-lcms{
+    width:62%;
+  }
+  .left-uv{
+    width:58%;
+  }
+
+.right-3d{
+  width:40%;
 }
 
-.right-lcms {
-  width: 38%;
+.right-lcms{
+  width:38%;
+}
+.right-uv{
+  width:42%;
+}
+.left{
+  width:67%;
+}
+.left-lcms{
+  width:62%;
+}
+.left-uv{
+  width:58%;
 }
 
-.right-uv {
-  width: 42%;
+#angle {
+display: -webkit-box;
 }
 
-.left {
-  width: 67%;
+#start-angle {
+width: 50%;
 }
 
-.left-lcms {
-  width: 62%;
-}
-
-.left-uv {
-  width: 58%;
-}
-
- #angle {
-  display: -webkit-box;
- }
-
- #start-angle {
-  width: 50%;
- }
-
- input {
-  border: none;
-  border-bottom: 1px solid black;
+input {
+border: none;
+border-bottom: 1px solid black;
 }
 
 input:focus {
-  outline: none;
+outline: none;
 }
 
 .data {
@@ -132,13 +164,12 @@ margin: 0 0 0 5px;
 }
 
 .signatures{
-  margin-top: 5em;
-  display: -webkit-box;
+margin-top: 5em;
+display: -webkit-box;
 }
 .chairman-sign{
-  margin-left: 26em;
+margin-left: 26em;
 }
-
 .notes {
 font-family: 'Montserrat', sans-serif;
 }
@@ -152,14 +183,6 @@ font-size: 15px;
 }
 
 .font-smaller{
-font-size: 15px;
-}
-
-.threeD-pro {
-font-size: 15px;
-}
-
-.font-smaller {
   font-size: 15px;
 }
 
@@ -168,7 +191,7 @@ font-size: 15px;
 }
 
 #debit-head{
-  margin: 0 0 5em 0;
+margin: 0 0 5em 0;
 }
 
 #department {
