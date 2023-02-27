@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :liquid_nitrogens
+  resources :gas_sensings
+  resources :ultra_centrifuges
+  resources :probe_sonicators
+  resources :glove_boxes
+  resources :milli_qs
+  resources :electro_chemicals
+  resources :five_axis
+  resources :micro_edms
+  resources :spark_os
+  resources :spectro_radio_meters
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
    default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
@@ -52,6 +63,17 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
+    get 'slotbooker/spectro'
+    get 'slotbooker/spark'
+    get 'slotbooker/fiveaxis'
+    get 'slotbooker/elctro'
+    get 'slotbooker/nitrogen'
+    get 'slotbooker/gassensing'
+    get 'slotbooker/centrifuge'
+    get 'slotbooker/probe'
+    get 'slotbooker/glove'
+    get 'slotbooker/bet'
+    get 'slotbooker/milli'
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'

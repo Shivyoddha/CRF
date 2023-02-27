@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Micro Edms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Toolelectrode</th>
+      <th>Toolmaterial</th>
+      <th>Milling</th>
+      <th>Turning</th>
+      <th>Drilling</th>
+      <th>Edm</th>
+      <th>Edg</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @micro_edms.each do |micro_edm| %>
+      <tr>
+        <td><%= micro_edm.sample %></td>
+        <td><%= micro_edm.composition %></td>
+        <td><%= micro_edm.toolelectrode %></td>
+        <td><%= micro_edm.toolmaterial %></td>
+        <td><%= micro_edm.milling %></td>
+        <td><%= micro_edm.turning %></td>
+        <td><%= micro_edm.drilling %></td>
+        <td><%= micro_edm.edm %></td>
+        <td><%= micro_edm.edg %></td>
+        <td><%= micro_edm.more %></td>
+        <td><%= micro_edm.debit %></td>
+        <td><%= micro_edm.slotdate %></td>
+        <td><%= micro_edm.slottime %></td>
+        <td><%= micro_edm.status %></td>
+        <td><%= link_to 'Show', micro_edm %></td>
+        <td><%= link_to 'Edit', edit_micro_edm_path(micro_edm) %></td>
+        <td><%= link_to 'Destroy', micro_edm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Micro Edm', new_micro_edm_path %>

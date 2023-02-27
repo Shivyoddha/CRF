@@ -378,7 +378,7 @@
 
 
     <div class="equipment">
-   
+
       <div class="card">
         <div class="equipment-img-wrap" >
           <div class="equipment-img">
@@ -488,8 +488,8 @@
                          </button>
 
                          <ul class="dropdown-menu">
-                               <li> <%= link_to "Regular Slot", new_bet_path, class:"book-dropdown dropdown-item" %> </li>
-                               <li> <%= link_to "Express Slot", new_bet_path, class:"book-dropdown dropdown-item" %> </li>
+                               <li> <%= link_to "Regular Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                               <li> <%= link_to "Express Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                          </ul>
                      </div>
                  </div>
@@ -1529,8 +1529,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="Regular slots" class="book-dropdown dropdown-item"></a><!--%= link_to "Regular Slot", forms_spectro_radiometer_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_spectro_radiometer_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1589,8 +1589,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="Regular Slots" class="book-dropdown dropdown-item"></a><!--%= link_to "Regular Slot", forms_spark_oes_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li><a href="Express Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_spark_oes_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1835,9 +1835,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_micro_edm_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_micro_edm_path, class:"book-dropdown dropdown-item" %--> </li>
-                        </ul>
+                          <li> <%= link_to "Regular Slot", new_micro_edm_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_micro_edm_path, class:"book-dropdown dropdown-item" %> </li>
                     </div>
                 </div>
             </div>
@@ -1898,8 +1897,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_axes_5_cnc_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_axes_5_cnc_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2082,8 +2081,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li>  <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_electro_chem_polish_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_electro_chem_polish_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2142,8 +2141,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_milli_q_water_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_milli_q_water_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2202,8 +2201,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_glove_box_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li><a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_glove_box_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2262,8 +2261,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a><!--%= link_to "Regular Slot", forms_probe_sonicator_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a><!--%= link_to "Express Slot", forms_probe_sonicator_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2325,8 +2324,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li>  <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_ultra_centrifuge_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li>  <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_ultra_centrifuge_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2385,8 +2384,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_gas_sensing_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_gas_sensing_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2445,8 +2444,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="Regular Slots" class="book-dropdown dropdown-item"></a>  <!--%= link_to "Regular Slot", forms_liq_nitrogen_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_liq_nitrogen_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_liquid_nitrogen_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_liquid_nitrogen_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>

@@ -30,21 +30,21 @@ end
 
 def fesemc1
   @fesemc=HrFesemC.all
-  
+
   end
-  
+
   def fesemc2
    @fesemc=HrFesemC.all
   end
-  
+
   def fesemc3
    @fesemc=HrFesemC.all
   end
-  
+
   def fesemc4
    @fesemc=HrFesemC.all
   end
-  
+
 def fesemj
  @fesemj=HrFesemJ.all
 end
@@ -62,6 +62,7 @@ def tga
 end
 
 def bet
+  @bet=Bet.all
 end
 
 def lcms
@@ -86,7 +87,34 @@ end
 
 def icp
 end
-
-
-
+def spectro
+ @spectro=SpectroRadioMeter.all
+end
+def spark
+  @spark = SparkO.all
+end
+def fiveaxis
+  @five=FiveAxi.all
+end
+def elctro
+  @electro=ElectroChemical.all
+end
+def gassensing
+  @sensing=GasSensing.all
+end
+def nitrogen
+  @nitrogen=LiquidNitrogen.all
+end
+def centrifuge
+  @centrifuge=UltraCentrifuge.all
+end
+def probe
+  @probe=ProbeSonicator.all
+end
+def glove
+  @glove=GloveBox.all
+end
+def milli
+  @milli=MilliQ.all
+end
 end

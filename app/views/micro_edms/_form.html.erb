@@ -1,0 +1,87 @@
+<%= form_with(model: micro_edm) do |form| %>
+  <% if micro_edm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(micro_edm.errors.count, "error") %> prohibited this micro_edm from being saved:</h2>
+
+      <ul>
+        <% micro_edm.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sample %>
+    <%= form.number_field :sample %>
+  </div>
+
+  <div class="field">
+    <%= form.label :composition %>
+    <%= form.text_field :composition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :toolelectrode %>
+    <%= form.text_field :toolelectrode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :toolmaterial %>
+    <%= form.text_field :toolmaterial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :milling %>
+    <%= form.text_field :milling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :turning %>
+    <%= form.text_field :turning %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drilling %>
+    <%= form.text_field :drilling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edm %>
+    <%= form.text_field :edm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edg %>
+    <%= form.text_field :edg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :more %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.text_field :debit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slotdate %>
+    <%= form.date_select :slotdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slottime %>
+    <%= form.time_select :slottime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

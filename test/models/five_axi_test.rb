@@ -1,6 +1,6 @@
 require "test_helper"
 
-class ElectroChemicalPolishingTest < ActiveSupport::TestCase
+class FiveAxiTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spectro Radio Meters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Nature</th>
+      <th>Application</th>
+      <th>Stype</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spectro_radio_meters.each do |spectro_radio_meter| %>
+      <tr>
+        <td><%= spectro_radio_meter.sample %></td>
+        <td><%= spectro_radio_meter.nature %></td>
+        <td><%= spectro_radio_meter.application %></td>
+        <td><%= spectro_radio_meter.stype %></td>
+        <td><%= spectro_radio_meter.more %></td>
+        <td><%= spectro_radio_meter.debit %></td>
+        <td><%= spectro_radio_meter.slotdate %></td>
+        <td><%= spectro_radio_meter.slottime %></td>
+        <td><%= spectro_radio_meter.status %></td>
+        <td><%= link_to 'Show', spectro_radio_meter %></td>
+        <td><%= link_to 'Edit', edit_spectro_radio_meter_path(spectro_radio_meter) %></td>
+        <td><%= link_to 'Destroy', spectro_radio_meter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spectro Radio Meter', new_spectro_radio_meter_path %>

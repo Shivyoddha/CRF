@@ -22,7 +22,8 @@ class BetsController < ApplicationController
   # POST /bets or /bets.json
   def create
     @bet = Bet.new(bet_params)
-
+    @bet.user=current_user
+    @bet.status="pending"
     respond_to do |format|
       if @bet.save
         format.html { redirect_to bet_url(@bet), notice: "Bet was successfully created." }
@@ -65,6 +66,6 @@ class BetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :analysis, :incompatibe, :toxicity, :disposal, :more)
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end

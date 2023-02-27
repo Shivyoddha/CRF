@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Five Axis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Material</th>
+      <th>Depth</th>
+      <th>Operation</th>
+      <th>Tool</th>
+      <th>Specimentolerance</th>
+      <th>Cncprogram</th>
+      <th>Rotationalspeed</th>
+      <th>Feedrate</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @five_axis.each do |five_axi| %>
+      <tr>
+        <td><%= five_axi.sample %></td>
+        <td><%= five_axi.material %></td>
+        <td><%= five_axi.depth %></td>
+        <td><%= five_axi.operation %></td>
+        <td><%= five_axi.tool %></td>
+        <td><%= five_axi.specimentolerance %></td>
+        <td><%= five_axi.cncprogram %></td>
+        <td><%= five_axi.rotationalspeed %></td>
+        <td><%= five_axi.feedrate %></td>
+        <td><%= five_axi.more %></td>
+        <td><%= five_axi.debit %></td>
+        <td><%= five_axi.slotdate %></td>
+        <td><%= five_axi.slottime %></td>
+        <td><%= five_axi.status %></td>
+        <td><%= link_to 'Show', five_axi %></td>
+        <td><%= link_to 'Edit', edit_five_axi_path(five_axi) %></td>
+        <td><%= link_to 'Destroy', five_axi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Five Axi', new_five_axi_path %>

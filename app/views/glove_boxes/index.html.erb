@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Glove Boxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Days</th>
+      <th>Toxicity</th>
+      <th>Carcinogenic</th>
+      <th>Incompatible</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @glove_boxes.each do |glove_box| %>
+      <tr>
+        <td><%= glove_box.weight %></td>
+        <td><%= glove_box.days %></td>
+        <td><%= glove_box.toxicity %></td>
+        <td><%= glove_box.carcinogenic %></td>
+        <td><%= glove_box.incompatible %></td>
+        <td><%= glove_box.more %></td>
+        <td><%= glove_box.debit %></td>
+        <td><%= glove_box.slotdate %></td>
+        <td><%= glove_box.slottime %></td>
+        <td><%= glove_box.status %></td>
+        <td><%= link_to 'Show', glove_box %></td>
+        <td><%= link_to 'Edit', edit_glove_box_path(glove_box) %></td>
+        <td><%= link_to 'Destroy', glove_box, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Glove Box', new_glove_box_path %>
