@@ -26,17 +26,22 @@
         <%= form.label :scant, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
         <%= form.select(:scant, ['Area', 'Profile'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
     </div>
-
-
+  
     <div class="input-group mb-3">
         <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
         <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
-        <%= form.label :range,"X Range", class:"input-group-text", for:"x_range"%>
-        <%= form.text_field :range, type:"text", class:"form-control", id:"x_range", placeholder:"Possible Elements" %>
-        <%= form.label :range,"mm", class:"input-group-text", for:"x_range"%>
+        <%= form.label :xrange,"X Range", class:"input-group-text", for:"x_range"%>
+        <%= form.text_field :xrange, type:"text", class:"form-control", id:"x_range", placeholder:"Possible Elements" %>
+        <%= form.label :xrange,"mm", class:"input-group-text", for:"x_range"%>
+    </div>
+    
+    <div class="input-group mb-3">
+    <%= form.label :yrange,"Y Range", class:"input-group-text", for:"y_range"%>
+    <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range", placeholder:"Possible Elements" %>
+    <%= form.label :yrange,"mm", class:"input-group-text", for:"y_range"%>
     </div>
 
       <div class="input-group mb-3">
@@ -60,25 +65,29 @@
        <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "incompatibile",:required => true}) %>
 
     </div>
-
     <div class="input-group mb-3">
-      <%= form.label :toxicity,"Toxicity", class:"input-group-text", for:"toxic" %>
-      <%= form.select(:toxicity, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "compatibile",:required => true}) %>
-    </div>
+    <%= form.label :toxicity, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
+    <%= form.select(:toxicity, ['yes', 'No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+</div>
 
-
-      <div class="input-group mb-3" id="collegeid-input">
-   <label for="exampleInputEmail1" class="input-group-text ">Reference Files</label>
-      <input type="file" class="form-control " id="exampleInputEmail1" >
-    </div>
-
+    <div class="input-group mb-3" id="ref-file">
+    <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+    <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+  </div>
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Tell us more about testing requirement">
-    </div>
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+  </div>
+  <div class="input-group mb-3">
+  <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more"%>
+  <%= form.text_field :more, type:"text", class:"form-control", id:"tell-us-more", placeholder:"Possible Elements" %>
+  </div>
 
   <div class="actions">
-      <button type="submit" class="btn btn-primary" id="sbt">Book Slot</button>
-
+      <%= form.submit 'Book Slot',class:"btn btn-primary" ,id:"sbt" %>
     </div>
   </div>
 </div>
@@ -118,64 +127,13 @@
 
 
 
+<div>
 
+</div>
 
+<div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div>
-    <%= form.label :incompatible, style: "display: block" %>
-    <%= form.text_field :incompatible %>
-  </div>
-
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
-
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>
+
+ 

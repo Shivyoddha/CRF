@@ -299,8 +299,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -360,8 +360,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -378,7 +378,7 @@
 
 
     <div class="equipment">
-      <%# card-6 TGA-FTIR %>
+   
       <div class="card">
         <div class="equipment-img-wrap" >
           <div class="equipment-img">
@@ -427,8 +427,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -735,8 +735,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>

@@ -1,0 +1,46 @@
+class AddColumnFtNmr < ActiveRecord::Migration[6.1]
+  def change
+    add_column :ft_nmrs, :solvent1, :string
+    add_column :ft_nmrs, :h1, :string
+    add_column :ft_nmrs, :c1, :string
+    add_column :ft_nmrs, :hd1, :string
+    add_column :ft_nmrs, :dep1, :string
+    add_column :ft_nmrs, :cos1, :string
+    add_column :ft_nmrs, :hsq1, :string
+    add_column :ft_nmrs, :solvent2, :string
+    add_column :ft_nmrs, :h2, :string
+    add_column :ft_nmrs, :c2, :string
+    add_column :ft_nmrs, :hd2, :string
+    add_column :ft_nmrs, :dep2, :string
+    add_column :ft_nmrs, :cos2, :string
+    add_column :ft_nmrs, :hsq2, :string
+    add_column :ft_nmrs, :solvent3, :string
+    add_column :ft_nmrs, :h3, :string
+    add_column :ft_nmrs, :c3, :string
+    add_column :ft_nmrs, :hd3, :string
+    add_column :ft_nmrs, :dept3, :string
+    add_column :ft_nmrs, :cosy3, :string
+    add_column :ft_nmrs, :hsqc3, :string
+    add_column :ft_nmrs, :solvent4, :string
+    add_column :ft_nmrs, :h4, :string
+    add_column :ft_nmrs, :c4, :string
+    add_column :ft_nmrs, :hd4, :string
+    add_column :ft_nmrs, :dept4, :string
+    add_column :ft_nmrs, :cosy4, :string
+    add_column :ft_nmrs, :hsqc4, :string
+    add_column :ft_nmrs, :solvent5, :string
+    add_column :ft_nmrs, :h5, :string
+    add_column :ft_nmrs, :c5, :string
+    add_column :ft_nmrs, :hd5, :string
+    add_column :ft_nmrs, :dept5, :string
+    add_column :ft_nmrs, :cosy5, :string
+    add_column :ft_nmrs, :hsqc5, :string
+    add_column :ft_nmrs, :irritanteye, :string
+    add_column :ft_nmrs, :harmfulskin, :string
+    add_column :ft_nmrs, :toxicinhale, :string
+    add_column :ft_nmrs, :status, :string
+    add_column :ft_nmrs, :slottime, :time
+    add_column :ft_nmrs, :slotdate, :date
+    add_column :ft_nmrs, :debit, :string
+  end
+end

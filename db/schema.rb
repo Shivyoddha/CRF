@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_22_192859) do
+ActiveRecord::Schema.define(version: 2023_02_24_124320) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
   end
 
   create_table "atomic_force_microscopes", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "stype"
     t.string "technique"
     t.string "scan_rate"
@@ -71,6 +71,12 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
 
   create_table "bets", force: :cascade do |t|
@@ -100,6 +106,8 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -132,6 +140,48 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "solvent1"
+    t.string "h1"
+    t.string "c1"
+    t.string "hd1"
+    t.string "dep1"
+    t.string "cos1"
+    t.string "hsq1"
+    t.string "solvent2"
+    t.string "h2"
+    t.string "c2"
+    t.string "hd2"
+    t.string "dep2"
+    t.string "cos2"
+    t.string "hsq2"
+    t.string "solvent3"
+    t.string "h3"
+    t.string "c3"
+    t.string "hd3"
+    t.string "dept3"
+    t.string "cosy3"
+    t.string "hsqc3"
+    t.string "solvent4"
+    t.string "h4"
+    t.string "c4"
+    t.string "hd4"
+    t.string "dept4"
+    t.string "cosy4"
+    t.string "hsqc4"
+    t.string "solvent5"
+    t.string "h5"
+    t.string "c5"
+    t.string "hd5"
+    t.string "dept5"
+    t.string "cosy5"
+    t.string "hsqc5"
+    t.string "irritanteye"
+    t.string "harmfulskin"
+    t.string "toxicinhale"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
   end
 
   create_table "hr_fesem_cs", force: :cascade do |t|
@@ -246,7 +296,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
   end
 
   create_table "raman_microscopes", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "stype"
     t.string "description"
@@ -256,6 +306,13 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "laser"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_raman_microscopes_on_user_id"
   end
 
   create_table "scratch_indentations", force: :cascade do |t|
@@ -275,7 +332,7 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
   end
 
   create_table "tga_fttrs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "stype"
     t.string "description"
@@ -291,18 +348,34 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "atr"
+    t.string "kbr"
+    t.string "yordinate"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_tga_fttrs_on_user_id"
   end
 
   create_table "three_d_non_contacts", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "scant"
-    t.string "range"
     t.string "stepinterval"
     t.string "incompatible"
     t.string "toxicity"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.float "xrange"
+    t.float "yrange"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -336,13 +409,21 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
     t.string "sample"
     t.string "srange"
     t.string "erange"
-    t.string "measurement"
     t.string "composition"
     t.string "toxicity"
     t.string "sampletype"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
+    t.string "transmittance"
+    t.string "absorbance"
+    t.string "reflectance"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
   create_table "xrds", force: :cascade do |t|
@@ -383,7 +464,13 @@ ActiveRecord::Schema.define(version: 2023_02_22_192859) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "atomic_force_microscopes", "users"
+  add_foreign_key "cell_imagings", "users"
   add_foreign_key "hr_fesem_cs", "users"
   add_foreign_key "hr_fesem_js", "users"
+  add_foreign_key "raman_microscopes", "users"
+  add_foreign_key "tga_fttrs", "users"
+  add_foreign_key "three_d_non_contacts", "users"
+  add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
 end

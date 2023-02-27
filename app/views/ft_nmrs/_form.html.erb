@@ -8,33 +8,39 @@
       <h1>FT-NMR</h1>
     </div>
     <div class='hero'>
+     <%= form_with(model: ft_nmr) do |form| %>
+        <% if ft_nmr.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(ft_nmr.errors.count, "error") %> prohibited this ft_nmr from being saved:</h2>
 
+            <ul>
+              <% ft_nmr.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
     <h6 class="text-danger">Note: Currently <sup>1</sup>H and <sup>13</sup>C based analysis are only available in liquid mode</h6>
     <hr>
-
     <div class="input-group mb-3">
-        <label class="input-group-text" for="no-of-sample-ft-nmr">No of Sample</label>
-        <select class="form-select" id="no-of-sample-ft-nmr">
-        <option selected>Choose...</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        </select>
+    <%= form.label :sample, class:"input-group-text", for:"no-of-sample-ft-nmr"%>
+    <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample-ft-nmr",:required => true}) %>
     </div>
-
+    
     <div class="mb-3">
-        <label class="form-check-label fw-bold" for="flexRadioDefault2">Sample Nature</label>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="sample_nature" id="organic-ft-nmr">
-            <label class="form-check-label" for="organic-ft-nmr">Organic</label>
+          <%= form.label :sample_nature, "Sample Nature",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :sample_nature, 'Organic', class:"form-check-input", type:"radio", id:"organic-ft-nmr",:checked => true  %> Organic
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :sample_nature, 'In-organic', class:"form-check-input", type:"radio", id:"inorganic-ft-nmr"  %> Inorganic
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="sample_nature" id="inorganic-ft-nmr">
-            <label class="form-check-label" for="inorganic-ft-nmr">In-organic</label>
-        </div>
-    </div>
+    
+        <div class="input-group mb-3">
+        <%= form.label :sample_phase , "Sample Phase", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :sample_phase , type:"text", class:"form-control", id:"inputGroupSelect03" %>
+      </div>
 
     <div class="input-group mb-3">
         <label class="input-group-text" for="sample-phase">Sample Phase</label>
@@ -324,19 +330,30 @@
     </div>
 
 
-    <div class="input-group mb-3" id="collegeid-input">
-        <label for="attach-ref-ft-nmr" class="input-group-text ">Attach reference paper (optional)</label>
-        <input type="file" class="form-control " id="attach-ref-ft-nmr" >
-    </div>
+    <div class="input-group mb-3" id="ref-file">
+    <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+    <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+  </div>
 
-    <div class="mb-3">
-      <label class="input-group-text" for="tell-us-more">Tell us more about testing requirement</label>
-      <textarea class="form-control" id="tell-us-more" rows="3"></textarea>
-    </div>
 
-    <div class="actions">
-      <button type="submit" class="btn btn-primary" id="sbt">Submit</button>
-    </div>
+
+  <div class="input-group mb-3">
+  <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+  <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+</div>
+<div id="instruct">
+<p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+ </div>
+
+  
+  <div class="mb-3">
+    <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+    <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+  </div>
+
+  <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+  </div>
 
     <p class="text-danger mt-3" >*Please attach the details regarding characteristic proton shift for a sample along with this application.</p>
     <p class="text-danger">#NMR analysis of Paramagnetic and Ferromagnetic compounds cannot be done.</p>
@@ -345,7 +362,7 @@
 
 
 <%=render "partials/footer" %>
-
+<%end %>
 
 <script>
     let sampleNumber = document.getElementById('no-of-sample-ft-nmr');
