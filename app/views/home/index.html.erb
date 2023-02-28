@@ -549,8 +549,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_hrlcm_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hrlcm_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_hrlcm_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hrlcm_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -856,8 +856,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_icp_m_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_icp_m_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_icp_m_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -916,8 +916,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -977,8 +977,8 @@
                     </button>
 
                     <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path, class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_ion_chromotography_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_ion_chromotography_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                     </ul>
                 </div>
             </div>
@@ -994,30 +994,12 @@
 </div>
 
 <div class="equipment">
-        <%# card-17 Intergrated MultiRole Tester%>
+        <%# card-22 Tribometer%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="integ-multirole-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'integ-multi-images/IMRT.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#integ-multirole-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#integ-multirole-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
+                    <h5 class="card-title fw-bold">Tribometer	</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -1030,7 +1012,7 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_integ_multirole_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
@@ -1053,48 +1035,31 @@
         </div>
     </div>
 
-    <div class="equipment">
-        <%# card-18 Scratch/Indentation Tester%>
-        <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="scratch-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'scratch-images/ST_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#scratch-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#scratch-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
-                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
-                </div>
+<div class="equipment">
+     <%# card-26 Glow Discharges-OES%>
+     <div class="card">
+         <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+         <div class="card-body">
+             <div id="more">
+                 <h5 class="card-title fw-bold">Glow Discharges-OES</h5>
+                 <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                 <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                               status-active is for avtive state
+                                               status-undermaintainance is for maintainance state
+                                               status-unavailable for unavailable state -->
+             </div>
 
-                <div class="wrap-action">
-                    <%= link_to "Know More", know_scratch_indentation_path ,class:"btn btn-primary know-more"%>
-                    <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Slot
-                        </button>
+             <span class="fw-bold">Located At</span>
+             <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+             <div class="wrap-action">
+                 <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                 <div class="dropdown book">
+                     <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         Book Slot
+                     </button>
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_scratch_indentation_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
@@ -1113,31 +1078,14 @@
         </div>
     </div>
 
-    <div class="equipment">
-        <%# card-19 Zeta Potential/Particle Sizer%>
+
+     <div class="equipment">
+        <%# card-27 Ball Milling Unit%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="zeta-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'zeta-images/ZP_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#zeta-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#zeta-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
+                    <h5 class="card-title fw-bold">Ball Milling Unit</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -1150,7 +1098,7 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_zeta_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
@@ -1173,31 +1121,14 @@
         </div>
     </div>
 
+
     <div class="equipment">
-        <%# card-20 High Temp Vacuum Furnace%>
+        <%# card-31 Multi Purpose Impact Testing (SHPB)%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="high-temp-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'high-temperature-vacc-images/HTVAF.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#high-temp-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#high-temp-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
+                    <h5 class="card-title fw-bold">Multi Purpose Impact Testing (SHPB)</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -1210,7 +1141,7 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_high_temp_vac_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
@@ -1233,31 +1164,15 @@
         </div>
     </div>
 
+
+
     <div class="equipment">
-        <%# card-21 Impedance Analyzer%>
+        <%# card-32 Friction Stir Welding/Surfacing(FSW)%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="impedance-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'impedance-images/Impedance_1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#impedance-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#impedance-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">Impedance Analyzer</h5>
+                    <h5 class="card-title fw-bold">Friction Stir Welding/Surfacing(FSW)</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -1270,7 +1185,7 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_impedance_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
@@ -1293,34 +1208,16 @@
         </div>
     </div>
 
+
+
+
     <div class="equipment">
-        <%# card-22 Tribometer%>
+        <%# card-42 Automatic MultiSpecimen Polisher%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="tribometer-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <%=image_tag 'tribometer-images/Tribo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                        <div class="carousel-item active">
-                            <%=image_tag 'tribometer-images/Tribo_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#tribometer-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#tribometer-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
-                    <h5 class="card-title fw-bold">Tribometer	</h5>
+                    <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
                     <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -1333,70 +1230,7 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_tribometer_path ,class:"btn btn-primary know-more"%>
-                    <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Book Slot
-                        </button>
-
-                        <ul class="dropdown-menu">
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_tribometer_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot"  class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_tribometer_path, class:"book-dropdown dropdown-item" %--> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="card-footer-express">
-                    <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="equipment">
-        <%# card-23 3D-Scanner%>
-        <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="scan-3d-images" class="carousel slide">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                          <%=image_tag 'scan-3d-images/3D Leg1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
-                      <div class="carousel-item active">
-                          <%=image_tag 'scan-3d-images/3D Leg2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#scan-3d-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#scan-3d-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold">3D-Scanner</h5>
-                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
-                </div>
-
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
-
-                <div class="wrap-action">
-                    <%= link_to "Know More", know_scanner_3d_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
@@ -1422,31 +1256,7 @@
     <div class="equipment">
         <%# card-24 GAIT Analysis%>
         <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="gait-images" class="carousel slide">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                          <%=image_tag 'gait-images/Gait_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
-                      <div class="carousel-item active">
-                          <%=image_tag 'gait-images/Gait_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
-                      <div class="carousel-item active">
-                          <%=image_tag 'gait-images/Gait_3.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#gait-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#gait-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">GAIT Analysis</h5>
@@ -1462,15 +1272,15 @@
                 <p class="card-text text-muted"> CRF Annexe - G01</p>
 
                 <div class="wrap-action">
-                    <%= link_to "Know More", know_gait_path ,class:"btn btn-primary know-more"%>
+                    <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="#Regular Slot" class="book-dropdown dropdown-item"></a><!--%= link_to "Regular Slot", forms_gait_analysis_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li><a href="#Express Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_gait_analysis_path, class:"book-dropdown dropdown-item" %--> </li>
+                              <li> <%= link_to "Regular Slot", new_gait_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_gait_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1484,26 +1294,37 @@
             </div>
         </div>
     </div>
-
     <div class="equipment">
-        <%# card-25 Spectro-Radiometer%>
-        <div class="card">
-          <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="spectro-images" class="carousel slide">
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                          <%=image_tag 'spectro-images/Spectro_Radio2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                      </div>
+            <%# card-28 Low Force Fatigue with DMA%>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Low Force Fatigue with DMA</h5>
+                        <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                        <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                      status-active is for avtive state
+                                                      status-undermaintainance is for maintainance state
+                                                      status-unavailable for unavailable state -->
                     </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#spectro-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#spectro-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                    <div class="wrap-action">
+                        <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
+                        <div class="dropdown book">
+                            <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Book Slot
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                  <li> <%= link_to "Regular Slot",  new_low_fatigue_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                                  <li> <%= link_to "Express Slot",  new_low_fatigue_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
          </div>
@@ -2560,10 +2381,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
 
 <script>
 const ele1="<%= @user.firstname %> "

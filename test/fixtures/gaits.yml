@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  measurement: MyString
+  trials: 1
+  force_plate: 
+  clinical_trial: MyString
+  physician: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 20:08:55
+  debit: MyString
+
+two:
+  subject: MyString
+  measurement: MyString
+  trials: 1
+  force_plate: 
+  clinical_trial: MyString
+  physician: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 20:08:55
+  debit: MyString

@@ -1,97 +1,209 @@
-<%= form_with(model: ion_chromotography) do |form| %>
-  <% if ion_chromotography.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(ion_chromotography.errors.count, "error") %> prohibited this ion_chromotography from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% ion_chromotography.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Ion Chromatography</h1>
     </div>
-  <% end %>
+    <div class='hero'>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+      <%= form_with(model: ion_chromotography) do |form| %>
+        <% if ion_chromotography.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(ion_chromotography.errors.count, "error") %> prohibited this ion_chromotography from being saved:</h2>
 
-  <div>
-    <%= form.label :nature, style: "display: block" %>
-    <%= form.text_field :nature %>
-  </div>
+            <ul>
+              <% ion_chromotography.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :solvent, style: "display: block" %>
-    <%= form.text_field :solvent %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :volume, style: "display: block" %>
-    <%= form.text_field :volume %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :nature,"Nature of Sample", class:"input-group-text", for:"select-nature"%>
+      <%= form.select(:nature, ["Organic","In-Organic","Mixture of both", "Peptide / Protein"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"select-nature",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :concentration, style: "display: block" %>
-    <%= form.text_field :concentration %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :solvent,"Solvent used to dissolve sample:", class:"input-group-text", for:"solvent-used"%>
+      <%= form.text_field :solvent, class:"form-control", id:"solvent-used", placeholder:"Mention Solvent Name" %>
+    </div>
 
-  <div>
-    <%= form.label :eluent, style: "display: block" %>
-    <%= form.text_field :eluent %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :volume, "Volume", class:"input-group-text",for:"vol"%>
+      <%= form.text_field :volume, class:"form-control", id:"vol", placeholder:""%>
+      <%= form.label :volume, "mL", class:"input-group-text",for:"vol"%>
+    </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :concentration, "Concentration", class:"input-group-text",for:"conc"%>
+      <%= form.text_field :concentration, class:"form-control", id:"conc", placeholder:""%>
+      <%= form.label :concentration, "ppm", class:"input-group-text",for:"conc"%>
+    </div>
 
-  <div>
-    <%= form.label :elements, style: "display: block" %>
-    <%= form.text_field :elements %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :eluent, "Eluent", class:"input-group-text",for:"eluent"%>
+      <%= form.text_field :eluent, class:"form-control", id:"eluent", placeholder:"Eluent Name"%>
+    </div>
 
-  <div>
-    <%= form.label :column, style: "display: block" %>
-    <%= form.text_field :column %>
-  </div>
+    <div>
+        <p class="fw-bold text-primary">Measurement Information</p>
+    </div>
 
-  <div>
-    <%= form.label :flow_rate, style: "display: block" %>
-    <%= form.text_field :flow_rate %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :analysis,"Analysis Required", class:"input-group-text", for:"analysis-required"%>
+      <%= form.select(:analysis, ["Qualitative","In-Quantitative","Both"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"analysis-required",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :temperature, style: "display: block" %>
-    <%= form.text_field :temperature %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :elements, "Elements to Analysis", class:"input-group-text",for:"ele_analysis"%>
+      <%= form.text_field :elements, class:"form-control", id:"ele_analysis", placeholder:"Element Name"%>
+    </div>
 
-  <div>
-    <%= form.label :detector, style: "display: block" %>
-    <%= form.text_field :detector %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :column, "Column", class:"input-group-text",for:"column"%>
+      <%= form.text_field :column, class:"form-control", id:"column", placeholder:"Column Name"%>
+    </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :flow_rate, "Flow Rate", class:"input-group-text",for:"flow_rate"%>
+      <%= form.text_field :flow_rate, class:"form-control", id:"flow_rate", placeholder:""%>
+      <%= form.label :flow_rate, "mL/min", class:"input-group-text",for:"flow_rate"%>
+    </div>
 
-  <div>
-    <%= form.label :hazards, style: "display: block" %>
-    <%= form.text_field :hazards %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :temperature, "Temperature[10-70°C]", class:"input-group-text",for:"temperature"%>
+      <%= form.text_field :temperature, class:"form-control", id:"temperature", placeholder:""%>
+      <%= form.label :temperature, "°C", class:"input-group-text",for:"temperature"%>
+      <!-- <label class="input-group-text" for="temperature">Temperature:<em class="text-danger">[10-70°C]</em></label>
+      <input type="text" class="form-control" id="temperature" placeholder="">
+      <label class="input-group-text" for="temperature">°C</label> -->
+    </div>
 
-  <div>
-    <%= form.label :disposal, style: "display: block" %>
-    <%= form.text_field :disposal %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :detector,"Detector", class:"input-group-text", for:"detector"%>
+      <%= form.select(:detector, ["Electrochemical","In-Conductivity","UV-Vis"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"detector",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+    <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+        <div>
+          <%= form.label :toxicity, "Toxicity", class:"form-check-label fw-bold", for:"Toxicity" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, "Toxic", class:"form-check-input", type:"radio", id:"toxic-yes" %>
+                <%= form.label :toxicity, "Toxic", class:"form-check-label", for:"toxic-yes"%>
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'Non-Toxic', class:"form-check-input", type:"radio", id:"toxic-no",:checked => true  %>
+                  <%= form.label :toxicity, "Non-Toxic", class:"form-check-label", for:"toxic-no"%>
+            </div>
+        </div>
 
-  <div>
-    <%= form.submit %>
+        <div class="input-group mb-3">
+          <%= form.label :hazards,"Health Hazard", class:"input-group-text", for:"health-hazard"%>
+          <%= form.select(:hazards, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"health-hazard",:required => true}) %>
+        </div>
+
+    <div class="input-group mb-3 vis" id="health-hazard-checkbox">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="irritate-skin-eyes" value="option1" checked>
+            <label class="form-check-label" for="irritate-skin-eyes">Irritant to skin/eyes</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="harm-skin" value="option2">
+            <label class="form-check-label" for="harm-skin">Harmful to skin</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inhale" value="option3">
+            <label class="form-check-label" for="inhale">Toxic if inhaled</label>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :disposal,"Any specific disposal method?", class:"input-group-text", for:"disposal-method"%>
+      <%= form.select(:disposal, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"disposal-method",:required => true}) %>
+      </div>
+
+    <div class="input-group mb-3 vis" id="spec-method-input">
+      <%= form.text_field :disposal_yes, class:"form-control", id:"spec-method-input-field", placeholder:"Please Specify The Method"%>
+    </div>
+
+
+    <div class="input-group mb-3" id="ref-file">
+        <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+        <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+    </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+    </div>
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="mb-3">
+      <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+    </div>
+
+
+    <div class="actions">
+        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+    </div>
+
+
   </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+
+<script>
+    let healthHazard = document.getElementById('health-hazard');
+    let healthCheck = document.getElementById('health-hazard-checkbox');
+    let disposalMethod = document.getElementById('disposal-method');
+    let specMethodInput = document.getElementById('spec-method-input');
+
+    healthHazard.addEventListener('click', () => {
+        healthCheck.classList.add('vis');
+
+
+      if (healthHazard.value == 'Yes') {
+        healthCheck.classList.toggle('vis');
+      }
+     })
+    disposalMethod.addEventListener('click', () => {
+        specMethodInput.classList.add('vis');
+
+
+      if (disposalMethod.value == 'Yes') {
+        specMethodInput.classList.toggle('vis');
+      }
+     })
+
+
+
+
+</script>
+
 <% end %>

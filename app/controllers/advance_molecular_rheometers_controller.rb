@@ -12,6 +12,7 @@ class AdvanceMolecularRheometersController < ApplicationController
 
   # GET /advance_molecular_rheometers/new
   def new
+    @user=User.find(params[:id])
     @advance_molecular_rheometer = AdvanceMolecularRheometer.new
   end
 
@@ -22,7 +23,8 @@ class AdvanceMolecularRheometersController < ApplicationController
   # POST /advance_molecular_rheometers or /advance_molecular_rheometers.json
   def create
     @advance_molecular_rheometer = AdvanceMolecularRheometer.new(advance_molecular_rheometer_params)
-
+    @advance_molecular_rheometer.user=current_user
+    @advance_molecular_rheometer.status="pending"
     respond_to do |format|
       if @advance_molecular_rheometer.save
         format.html { redirect_to advance_molecular_rheometer_url(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully created." }
@@ -38,6 +40,7 @@ class AdvanceMolecularRheometersController < ApplicationController
   def update
     respond_to do |format|
       if @advance_molecular_rheometer.update(advance_molecular_rheometer_params)
+         @advance_molecular_rheometer.status="alloted"
         format.html { redirect_to advance_molecular_rheometer_url(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully updated." }
         format.json { render :show, status: :ok, location: @advance_molecular_rheometer }
       else
@@ -65,6 +68,6 @@ class AdvanceMolecularRheometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def advance_molecular_rheometer_params
-      params.require(:advance_molecular_rheometer).permit(:sample, :type, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more)
+      params.require(:advance_molecular_rheometer).permit(:sample, :stype, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more,:status,:debit,:slotdate, :slottime,:user_id, references: [])
     end
 end

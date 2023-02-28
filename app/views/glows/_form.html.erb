@@ -1,0 +1,111 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Glow Discharges-OES</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: glow) do |form| %>
+        <% if glow.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(glow.errors.count, "error") %> prohibited this glow from being saved:</h2>
+
+            <ul>
+              <% glow.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+    <p class="text-warning">Min. Sample size 3 x 3 cm</p>
+    <hr>
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :elemental, "Elemental Composition", class:"input-group-text",for:"element_composition"%>
+      <%= form.text_field :elemental, class:"form-control", id:"element_composition", placeholder:"Ex. Fe, C, Al, Cr, etc.."%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :coated,"Coated Sample", class:"input-group-text", for:"sample_coat"%>
+      <%= form.select(:coated, ["No","Yes"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample_coat",:required => true}) %>
+    </div>
+
+    <div id="yes-case" class="vis">
+      <div class="input-group mb-3">
+        <%= form.label :coated_ele, "Coating Element", class:"input-group-text",for:"coat_element"%>
+        <%= form.text_field :coated_ele, class:"form-control", id:"coat_element", placeholder:""%>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :substarte, "Substrate Element", class:"input-group-text",for:"substrate_element"%>
+        <%= form.text_field :substarte, class:"form-control", id:"substrate_element", placeholder:""%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :specification, "If specific details are known please mention", class:"input-group-text",for:"specific_details"%>
+      <%= form.text_field :specification, class:"form-control", id:"specific_details", placeholder:""%>
+    </div>
+    </div>
+
+
+        <div class="input-group mt-3 mb-3" id="user-file-input">
+          <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+            <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        </div>
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let yesCase = document.getElementById('yes-case');
+    let sampleCoat = document.getElementById('sample_coat');
+
+    sampleCoat.addEventListener('click', () => {
+        yesCase.classList.add('vis');
+
+
+      if (sampleCoat.value == 'Yes') {
+        yesCase.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>
+
+<% end %>

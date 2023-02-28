@@ -1,0 +1,2 @@
+module FrictionsHelper
+end

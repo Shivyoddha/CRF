@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Low Fatigues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Sc1</th>
+      <th>St1</th>
+      <th>Tt1</th>
+      <th>Tf1</th>
+      <th>Sc2</th>
+      <th>St2</th>
+      <th>Tt2</th>
+      <th>Tf2</th>
+      <th>Sc3</th>
+      <th>St3</th>
+      <th>Tt3</th>
+      <th>Tf3</th>
+      <th>Sc4</th>
+      <th>St4</th>
+      <th>Tt4</th>
+      <th>Tf4</th>
+      <th>Sc5</th>
+      <th>St5</th>
+      <th>Tt5</th>
+      <th>Tf5</th>
+      <th>More</th>
+      <th>Slottime</th>
+      <th>Slotdate</th>
+      <th>Status</th>
+      <th>Debit</th>
+      <th>M1</th>
+      <th>M2</th>
+      <th>M3</th>
+      <th>M4</th>
+      <th>M5</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @low_fatigues.each do |low_fatigue| %>
+      <tr>
+        <td><%= low_fatigue.sample %></td>
+        <td><%= low_fatigue.sc1 %></td>
+        <td><%= low_fatigue.st1 %></td>
+        <td><%= low_fatigue.tt1 %></td>
+        <td><%= low_fatigue.tf1 %></td>
+        <td><%= low_fatigue.sc2 %></td>
+        <td><%= low_fatigue.st2 %></td>
+        <td><%= low_fatigue.tt2 %></td>
+        <td><%= low_fatigue.tf2 %></td>
+        <td><%= low_fatigue.sc3 %></td>
+        <td><%= low_fatigue.st3 %></td>
+        <td><%= low_fatigue.tt3 %></td>
+        <td><%= low_fatigue.tf3 %></td>
+        <td><%= low_fatigue.sc4 %></td>
+        <td><%= low_fatigue.st4 %></td>
+        <td><%= low_fatigue.tt4 %></td>
+        <td><%= low_fatigue.tf4 %></td>
+        <td><%= low_fatigue.sc5 %></td>
+        <td><%= low_fatigue.st5 %></td>
+        <td><%= low_fatigue.tt5 %></td>
+        <td><%= low_fatigue.tf5 %></td>
+        <td><%= low_fatigue.more %></td>
+        <td><%= low_fatigue.slottime %></td>
+        <td><%= low_fatigue.slotdate %></td>
+        <td><%= low_fatigue.status %></td>
+        <td><%= low_fatigue.debit %></td>
+        <td><%= low_fatigue.m1 %></td>
+        <td><%= low_fatigue.m2 %></td>
+        <td><%= low_fatigue.m3 %></td>
+        <td><%= low_fatigue.m4 %></td>
+        <td><%= low_fatigue.m5 %></td>
+        <td><%= link_to 'Show', low_fatigue %></td>
+        <td><%= link_to 'Edit', edit_low_fatigue_path(low_fatigue) %></td>
+        <td><%= link_to 'Destroy', low_fatigue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Low Fatigue', new_low_fatigue_path %>

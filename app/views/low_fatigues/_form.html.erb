@@ -1,0 +1,497 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Low Force Fatigue with DMA</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: low_fatigue) do |form| %>
+        <% if low_fatigue.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(low_fatigue.errors.count, "error") %> prohibited this low_fatigue from being saved:</h2>
+
+            <ul>
+              <% low_fatigue.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p class="text-info">Note: Kindly contact faculty in-charge for any query<p>
+        <hr>
+
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+          <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+        </div>
+
+        <p class="text-primary">Sample Information<p>
+
+
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-1">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc1, "Sample Code", class:"input-group-text",for:"sample-code-1"%>
+              <%= form.text_field :sc1, class:"form-control", id:"sample-code-1", placeholder:"Sample 1 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+                <%= form.label :st1,"Sample Type", class:"input-group-text", for:"sample-type-1"%>
+                <%= form.select(:st1, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-1"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag1'>
+                <input type="text" class="form-control" id="sample-type-1-other-mention" placeholder="Mention">
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt1,"Type of Test", class:"input-group-text", for:"type-of-test-1"%>
+              <%= form.select(:tt1, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-1"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :st1,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-1"%>
+              <%= form.select(:st1, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-1"}) %>
+
+                <label class="input-group-text" for="type-of-fixture-1">Type of Fixture</label>
+                <select class="form-select" id="type-of-fixture-1">
+                    <option selected>Choose...</option>
+                    <option value="tension">Tension</option>
+                    <option value="compression">Compression</option>
+                    <option value="three-point-bending">Three-Points Bending</option>
+                </select>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-2">
+            <div class="input-group mt-3 mb-3">
+                <label class="input-group-text" for="sample-code-2">Sample Code</label>
+                <input type="text" class="form-control" id="sample-code-2" placeholder="Sample 2 Code">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="sample-type-2">Sample Type</label>
+                <select class="form-select" id="sample-type-2">
+                    <option selected>Choose...</option>
+                    <option value="polymer">Polymers</option>
+                    <option value="rubber">Rubber</option>
+                    <option value="soft-materials">Soft Materials</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 vis" id='tag2'>
+                <input type="text" class="form-control" id="sample-type-2-other-mention" placeholder="Mention">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-test-2">Type of Test</label>
+                <select class="form-select" id="type-of-test-2">
+                    <option selected>Choose...</option>
+                    <option value="dma">DMA</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="creep">Creep</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-fixture-2">Type of Fixture</label>
+                <select class="form-select" id="type-of-fixture-2">
+                    <option selected>Choose...</option>
+                    <option value="tension">Tension</option>
+                    <option value="compression">Compression</option>
+                    <option value="three-point-bending">Three-Points Bending</option>
+                </select>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-3">
+            <div class="input-group mt-3 mb-3">
+                <label class="input-group-text" for="sample-code-3">Sample Code</label>
+                <input type="text" class="form-control" id="sample-code-3" placeholder="Sample 3 Code">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="sample-type-3">Sample Type</label>
+                <select class="form-select" id="sample-type-3">
+                    <option selected>Choose...</option>
+                    <option value="Polymers">Polymers</option>
+                    <option value="Rubber">Rubber</option>
+                    <option value="Soft Materials">Soft Materials</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 vis" id='tag3'>
+                <input type="text" class="form-control" id="sample-type-3-other-mention" placeholder="Mention">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-test-3">Type of Test</label>
+                <select class="form-select" id="type-of-test-3">
+                    <option selected>Choose...</option>
+                    <option value="dma">DMA</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="creep">Creep</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-fixture-3">Type of Fixture</label>
+                <select class="form-select" id="type-of-fixture-3">
+                    <option selected>Choose...</option>
+                    <option value="tension">Tension</option>
+                    <option value="compression">Compression</option>
+                    <option value="three-point-bending">Three-Points Bending</option>
+                </select>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-4">
+            <div class="input-group mt-3 mb-3">
+                <label class="input-group-text" for="sample-code-4">Sample Code</label>
+                <input type="text" class="form-control" id="sample-code-4" placeholder="Sample 4 Code">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="sample-type-4">Sample Type</label>
+                <select class="form-select" id="sample-type-4">
+                    <option selected>Choose...</option>
+                    <option value="Polymers">Polymers</option>
+                    <option value="Rubber">Rubber</option>
+                    <option value="Soft Materials">Soft Materials</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 vis" id='tag4'>
+                <input type="text" class="form-control" id="sample-type-4-other-mention" placeholder="Mention">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-test-4">Type of Test</label>
+                <select class="form-select" id="type-of-test-4">
+                    <option selected>Choose...</option>
+                    <option value="dma">DMA</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="creep">Creep</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-fixture-4">Type of Fixture</label>
+                <select class="form-select" id="type-of-fixture-4">
+                    <option selected>Choose...</option>
+                    <option value="tension">Tension</option>
+                    <option value="compression">Compression</option>
+                    <option value="three-point-bending">Three-Points Bending</option>
+                </select>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-5">
+            <div class="input-group mt-3 mb-3">
+                <label class="input-group-text" for="sample-code-5">Sample Code</label>
+                <input type="text" class="form-control" id="sample-code-5" placeholder="Sample 5 Code">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="sample-type-5">Sample Type</label>
+                <select class="form-select" id="sample-type-5">
+                   <option selected>Choose...</option>
+                    <option value="Polymers">Polymers</option>
+                    <option value="Rubber">Rubber</option>
+                    <option value="Soft Materials">Soft Materials</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="input-group mb-3 vis" id='tag5'>
+                <input type="text" class="form-control" id="sample-type-5-other-mention" placeholder="Mention">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-test-5">Type of Test</label>
+                <select class="form-select" id="type-of-test-5">
+                    <option selected>Choose...</option>
+                    <option value="dma">DMA</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="creep">Creep</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="type-of-fixture-5">Type of Fixture</label>
+                <select class="form-select" id="type-of-fixture-5">
+                    <option selected>Choose...</option>
+                    <option value="tension">Tension</option>
+                    <option value="compression">Compression</option>
+                    <option value="three-point-bending">Three-Points Bending</option>
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="input-group mt-3 mb-3" id="user-file-input">
+            <label for="upload-file" class="input-group-text ">Attach Material properties in .pdf<i class="text-muted">(optional)</i></label>
+            <input type="file" class="form-control " id="upload-file" >
+        </div>
+
+        <div class="mb-3">
+            <label class="input-group-text" for="tell-us-more">Tell us more about testing requirement</label>
+            <textarea class="form-control" id="tell-us-more" rows="3"></textarea>
+        </div>
+
+        <div class="actions">
+            <button type="submit" class="btn btn-primary" id="sbt">Book Slot</button>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+
+
+
+
+<script>
+    let sample_no = document.getElementById('sample-no-of-low-fatigue');
+    let step1 = document.getElementById('low-force-fatigue-sample-no-is-1');
+    let step2 = document.getElementById('low-force-fatigue-sample-no-is-2');
+    let step3 = document.getElementById('low-force-fatigue-sample-no-is-3');
+    let step4 = document.getElementById('low-force-fatigue-sample-no-is-4');
+    let step5 = document.getElementById('low-force-fatigue-sample-no-is-5');
+    let type1 = document.getElementById('sample-type-1');
+    let type2 = document.getElementById('sample-type-2');
+    let type3 = document.getElementById('sample-type-3');
+    let type4 = document.getElementById('sample-type-4');
+    let type5 = document.getElementById('sample-type-5');
+    let tag1 = document.getElementById('tag1');
+    let tag2 = document.getElementById('tag2');
+    let tag3 = document.getElementById('tag3');
+    let tag4 = document.getElementById('tag4');
+    let tag5 = document.getElementById('tag5');
+
+    sample_no.addEventListener('click', () => {
+        step1.classList.add('vis');
+        step2.classList.add('vis');
+        step3.classList.add('vis');
+        step4.classList.add('vis');
+        step5.classList.add('vis');
+
+        if (sample_no.value == '1') {
+        step1.classList.toggle('vis');
+        }
+
+        if (sample_no.value == '2') {
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+        }
+        if (sample_no.value == '3') {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+        }
+        if (sample_no.value == '4') {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+        }
+        if (sample_no.value == '5') {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+            step5.classList.toggle('vis');
+        }
+
+    })
+
+    type1.addEventListener('click', () => {
+        tag1.classList.add('vis')
+
+    if (type1.value == 'Others') {
+        tag1.classList.toggle('vis')
+        }
+    })
+    type2.addEventListener('click', () => {
+        tag2.classList.add('vis')
+
+        if (type2.value == 'Others') {
+            tag2.classList.toggle('vis')
+        }
+    })
+    type3.addEventListener('click', () => {
+        tag3.classList.add('vis')
+
+        if (type3.value == 'Others') {
+            tag3.classList.toggle('vis')
+        }
+    })
+    type4.addEventListener('click', () => {
+        tag4.classList.add('vis')
+
+        if (type4.value == 'Others') {
+            tag4.classList.toggle('vis')
+        }
+    })
+    type5.addEventListener('click', () => {
+        tag5.classList.add('vis')
+
+        if (type5.value == 'Others') {
+            tag5.classList.toggle('vis')
+        }
+    })
+</script>
+
+
+  <div class="field">
+    <%= form.label :sc1 %>
+    <%= form.text_field :sc1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :st1 %>
+    <%= form.text_field :st1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tt1 %>
+    <%= form.text_field :tt1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tf1 %>
+    <%= form.text_field :tf1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sc2 %>
+    <%= form.text_field :sc2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :st2 %>
+    <%= form.text_field :st2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tt2 %>
+    <%= form.text_field :tt2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tf2 %>
+    <%= form.text_field :tf2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sc3 %>
+    <%= form.text_field :sc3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :st3 %>
+    <%= form.text_field :st3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tt3 %>
+    <%= form.text_field :tt3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tf3 %>
+    <%= form.text_field :tf3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sc4 %>
+    <%= form.text_field :sc4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :st4 %>
+    <%= form.text_field :st4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tt4 %>
+    <%= form.text_field :tt4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tf4 %>
+    <%= form.text_field :tf4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sc5 %>
+    <%= form.text_field :sc5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :st5 %>
+    <%= form.text_field :st5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tt5 %>
+    <%= form.text_field :tt5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tf5 %>
+    <%= form.text_field :tf5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :more %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slottime %>
+    <%= form.time_select :slottime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slotdate %>
+    <%= form.date_select :slotdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.text_field :debit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :m1 %>
+    <%= form.text_field :m1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :m2 %>
+    <%= form.text_field :m2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :m3 %>
+    <%= form.text_field :m3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :m4 %>
+    <%= form.text_field :m4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :m5 %>
+    <%= form.text_field :m5 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module FrictionStirsHelper
+end

@@ -123,8 +123,6 @@ Rails.application.routes.draw do
     get 'know/liq_nitrogen'
     get 'know/ansys'
     get 'know/auto_multi_speci_polish'
-    get 'slotbooker/ftnmr'
-    get 'slotbooker/icp'
     get 'slotbooker/payment'
     get 'slotbooker/paymentD'
     get 'slotbooker/paymentC'
