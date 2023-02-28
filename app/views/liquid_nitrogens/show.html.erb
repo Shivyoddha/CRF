@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @liquid_nitrogen.quantity %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @liquid_nitrogen.purpose %>
+</p>
+
+<p>
+  <strong>More:</strong>
+  <%= @liquid_nitrogen.more %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @liquid_nitrogen.debit %>
+</p>
+
+<p>
+  <strong>Slotdate:</strong>
+  <%= @liquid_nitrogen.slotdate %>
+</p>
+
+<p>
+  <strong>Slottime:</strong>
+  <%= @liquid_nitrogen.slottime %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @liquid_nitrogen.status %>
+</p>
+
+<%= link_to 'Edit', edit_liquid_nitrogen_path(@liquid_nitrogen) %> |
+<%= link_to 'Back', liquid_nitrogens_path %>

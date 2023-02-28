@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
-  resources :low_fatigues
-    resources :gaits
-    resources :grindings
-    resources :friction_stirs
-    resources :frictions
-    resources :multi_impact_testers
-    resources :ball_mailings
-    resources :glows
-    resources :tribometers
-     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-     default_url_options :host => "localhost:3000"
+  resources :three_d_scanners
+  resources :impedance_analies
+  resources :high_temp_vaccums
+  resources :liquid_nitrogens
+  resources :gas_sensings
+  resources :ultra_centrifuges
+  resources :probe_sonicators
+  resources :glove_boxes
+  resources :milli_qs
+  resources :electro_chemicals
+  resources :five_axis
+  resources :micro_edms
+  resources :spark_os
+  resources :spectro_radio_meters
+   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+   default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
     resources :scratch_indentations
     resources :integrated_multi_role_testers
@@ -61,6 +66,23 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
+    get 'slotbooker/spectro'
+    get 'slotbooker/spark'
+    get 'slotbooker/fiveaxis'
+    get 'slotbooker/elctro'
+    get 'slotbooker/nitrogen'
+    get 'slotbooker/gassensing'
+    get 'slotbooker/centrifuge'
+    get 'slotbooker/probe'
+    get 'slotbooker/glove'
+    get 'slotbooker/bet'
+    get 'slotbooker/milli'
+    get 'slotbooker/integrated'
+    get 'slotbooker/scratch'
+    get 'slotbooker/threescanner'
+    get 'slotbooker/impdeance'
+    get 'slotbooker/zeta'
+    get 'slotbooker/highvaccum'
     get 'slotbooker/amr'
     get 'slotbooker/ionc'
     get 'slotbooker/trib'

@@ -30,21 +30,21 @@ end
 
 def fesemc1
   @fesemc=HrFesemC.all
-  
+
   end
-  
+
   def fesemc2
    @fesemc=HrFesemC.all
   end
-  
+
   def fesemc3
    @fesemc=HrFesemC.all
   end
-  
+
   def fesemc4
    @fesemc=HrFesemC.all
   end
-  
+
 def fesemj
  @fesemj=HrFesemJ.all
 end
@@ -62,6 +62,7 @@ def tga
 end
 
 def bet
+  @bet=Bet.all
 end
 
 def lcms
@@ -76,6 +77,7 @@ def laser
 end
 
 def cell
+  @cell=CellImaging.all
 end
 
 def atomic
@@ -86,6 +88,15 @@ def ftnmr
 
 end
 
+def integrated
+  @integrated=IntegratedMultiRoleTester.all
+end
+def scratch
+  @scratch=ScratchIndentation.all
+end
+def threescanner
+  @threescan=ThreeDScanner.all
+end
 def icp
   @icp_m =IcpM.all
 end
@@ -98,6 +109,46 @@ end
 def ionc
   @ion_chromotography =IonChromotography.all
 end
+def spectro
+ @spectro=SpectroRadioMeter.all
+end
+def spark
+  @spark = SparkO.all
+end
+def fiveaxis
+  @five=FiveAxi.all
+end
+def elctro
+  @electro=ElectroChemical.all
+end
+def gassensing
+  @sensing=GasSensing.all
+end
+def nitrogen
+  @nitrogen=LiquidNitrogen.all
+end
+def centrifuge
+  @centrifuge=UltraCentrifuge.all
+end
+def probe
+  @probe=ProbeSonicator.all
+end
+def glove
+  @glove=GloveBox.all
+end
+def milli
+  @milli=MilliQ.all
+end
+def impdeance
+  @impedance_analy=ImpedanceAnaly.all
+end
+def zeta
+  @zeta=ZetaPotentialSize.all
+end
+def highvaccum
+  @high=HighTempVaccum.all
+end
+
 
 def trib
   @tribometer =Tribometer.all
@@ -128,6 +179,4 @@ end
  def multi
    @multi_impact_tester = MultiImpactTester.all
  end
-
-
 end

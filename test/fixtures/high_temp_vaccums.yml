@@ -1,0 +1,53 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  composition: MyString
+  toxicity: MyString
+  req_atoms: MyString
+  gas: MyString
+  starttemp: 1.5
+  endtemp: 1.5
+  samplemelting: 1.5
+  no_steps: MyString
+  temp1: 1.5
+  min1: 1.5
+  temp2: 1.5
+  min2: 1.5
+  temp3: 1.5
+  min3: 1.5
+  temp4: 1.5
+  min4: 1.5
+  temp5: 1.5
+  min5: 1.5
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 23:20:52
+  status: MyString
+
+two:
+  sample: 1
+  composition: MyString
+  toxicity: MyString
+  req_atoms: MyString
+  gas: MyString
+  starttemp: 1.5
+  endtemp: 1.5
+  samplemelting: 1.5
+  no_steps: MyString
+  temp1: 1.5
+  min1: 1.5
+  temp2: 1.5
+  min2: 1.5
+  temp3: 1.5
+  min3: 1.5
+  temp4: 1.5
+  min4: 1.5
+  temp5: 1.5
+  min5: 1.5
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 23:20:52
+  status: MyString

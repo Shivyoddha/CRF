@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_28_081401) do
+ActiveRecord::Schema.define(version: 2023_02_28_143240) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.string "debit"
-    t.time "slottime"
     t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -109,19 +109,26 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   end
 
   create_table "bets", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "degassing"
-    t.string "analysis"
     t.string "incompatibe"
     t.string "toxicity"
     t.string "disposal"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "analysiscustom"
+    t.string "analysisstandard"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "cell_imagings", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "stype"
     t.string "plate"
     t.string "expected_wavelenght"
@@ -136,7 +143,27 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
     t.index ["user_id"], name: "index_cell_imagings_on_user_id"
+  end
+
+  create_table "electro_chemicals", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "electrolyte"
+    t.string "application"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_electro_chemicals_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -157,6 +184,27 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "name"
     t.string "department"
     t.string "email"
+  end
+
+  create_table "five_axis", force: :cascade do |t|
+    t.integer "sample"
+    t.string "material"
+    t.string "depth"
+    t.string "operation"
+    t.string "tool"
+    t.string "specimentolerance"
+    t.string "cncprogram"
+    t.string "rotationalspeed"
+    t.string "feedrate"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_five_axis_on_user_id"
   end
 
   create_table "frictions", force: :cascade do |t|
@@ -203,6 +251,40 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_gaits_on_user_id"
   end
 
+  create_table "gas_sensings", force: :cascade do |t|
+    t.integer "sample"
+    t.string "gas"
+    t.string "toxicity"
+    t.string "compatibility"
+    t.string "carcinogenic"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_gas_sensings_on_user_id"
+  end
+
+  create_table "glove_boxes", force: :cascade do |t|
+    t.float "weight"
+    t.integer "days"
+    t.string "toxicity"
+    t.string "carcinogenic"
+    t.string "incompatible"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_glove_boxes_on_user_id"
+  end
+
   create_table "glows", force: :cascade do |t|
     t.integer "sample"
     t.string "elemental"
@@ -238,6 +320,37 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_grindings_on_user_id"
+  end
+
+  create_table "high_temp_vaccums", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "toxicity"
+    t.string "req_atoms"
+    t.string "gas"
+    t.float "starttemp"
+    t.float "endtemp"
+    t.float "samplemelting"
+    t.string "no_steps"
+    t.float "temp1"
+    t.float "min1"
+    t.float "temp2"
+    t.float "min2"
+    t.float "temp3"
+    t.float "min3"
+    t.float "temp4"
+    t.float "min4"
+    t.float "temp5"
+    t.float "min5"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_high_temp_vaccums_on_user_id"
   end
 
   create_table "hr_fesem_cs", force: :cascade do |t|
@@ -332,16 +445,45 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_icp_ms_on_user_id"
   end
 
+  create_table "impedance_analies", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "capacitance"
+    t.string "dielectric"
+    t.string "iv"
+    t.float "freqrange"
+    t.float "currentrange"
+    t.float "voltagerange"
+    t.string "impedance"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "losstangent"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_impedance_analies_on_user_id"
+  end
+
   create_table "integrated_multi_role_testers", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
-    t.string "type"
     t.string "loading"
     t.string "temperature"
     t.string "analysis"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "indentation"
+    t.string "stype"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_integrated_multi_role_testers_on_user_id"
   end
 
   create_table "ion_chromotographies", force: :cascade do |t|
@@ -371,6 +513,20 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "disposal_yes"
     t.integer "user_id"
     t.index ["user_id"], name: "index_ion_chromotographies_on_user_id"
+  end
+
+  create_table "liquid_nitrogens", force: :cascade do |t|
+    t.float "quantity"
+    t.string "purpose"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
   create_table "low_fatigues", force: :cascade do |t|
@@ -411,6 +567,41 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_low_fatigues_on_user_id"
   end
 
+  create_table "micro_edms", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "toolelectrode"
+    t.string "toolmaterial"
+    t.string "milling"
+    t.string "turning"
+    t.string "drilling"
+    t.string "edm"
+    t.string "edg"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "milli_qs", force: :cascade do |t|
+    t.string "typewater"
+    t.float "volumeone"
+    t.float "volumetwo"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "projectfund"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_milli_qs_on_user_id"
+  end
+
   create_table "multi_impact_testers", force: :cascade do |t|
     t.integer "sample"
     t.string "stype"
@@ -437,10 +628,21 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
+  create_table "probe_sonicators", force: :cascade do |t|
+    t.integer "sample"
+    t.float "size"
+    t.float "amplitude"
+    t.float "volume"
+    t.float "viscosity"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_probe_sonicators_on_user_id"
   end
 
   create_table "raman_microscopes", force: :cascade do |t|
@@ -464,8 +666,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   end
 
   create_table "scratch_indentations", force: :cascade do |t|
-    t.string "sample"
-    t.string "type"
+    t.integer "sample"
     t.string "measurement"
     t.string "stroke"
     t.string "number_indentation"
@@ -477,6 +678,52 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "stype"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_scratch_indentations_on_user_id"
+  end
+
+  create_table "spark_os", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.integer "samplefe"
+    t.integer "sampleni"
+    t.integer "samplezn"
+    t.integer "samplesn"
+    t.integer "samplecu"
+    t.integer "sampleti"
+    t.integer "sampleal"
+    t.integer "samplepb"
+    t.integer "samplemg"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_spark_os_on_user_id"
+  end
+
+  create_table "spectro_radio_meters", force: :cascade do |t|
+    t.integer "sample"
+    t.string "nature"
+    t.string "application"
+    t.string "stype"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_spectro_radio_meters_on_user_id"
   end
 
   create_table "tga_fttrs", force: :cascade do |t|
@@ -526,6 +773,29 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
   end
 
+  create_table "three_d_scanners", force: :cascade do |t|
+    t.integer "sample"
+    t.integer "size"
+    t.string "texture"
+    t.string "ply"
+    t.string "stt"
+    t.string "wrl"
+    t.string "obj"
+    t.string "asc"
+    t.string "aop"
+    t.string "ptx"
+    t.string "xyzrgb"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_three_d_scanners_on_user_id"
+  end
+
   create_table "tribometers", force: :cascade do |t|
     t.integer "sample"
     t.string "measurement"
@@ -545,12 +815,31 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.index ["user_id"], name: "index_tribometers_on_user_id"
   end
 
+  create_table "ultra_centrifuges", force: :cascade do |t|
+    t.integer "sample"
+    t.float "volume"
+    t.float "speed"
+    t.float "temperature"
+    t.string "toxicity"
+    t.string "compatibility"
+    t.string "carcinogenic"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_ultra_centrifuges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -582,6 +871,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.string "status"
     t.date "slotdate"
     t.time "slottime"
@@ -589,7 +879,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "transmittance"
     t.string "absorbance"
     t.string "reflectance"
-    t.integer "user_id"
+    t.string "measurement"
     t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
@@ -613,20 +903,30 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   end
 
   create_table "zeta_potential_sizes", force: :cascade do |t|
-    t.string "sample"
-    t.string "type"
+    t.integer "sample"
     t.string "toxicity"
     t.string "element"
     t.string "solvent"
     t.string "refractive_index"
-    t.string "viscosity"
-    t.string "solute"
     t.string "angle"
     t.string "analysis_type"
     t.string "analysis_temperature"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "stype"
+    t.float "viscositypoise"
+    t.float "viscositytemp"
+    t.string "soluteknown"
+    t.string "solutename"
+    t.float "refindex"
+    t.string "abscoefficent"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_zeta_potential_sizes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -634,22 +934,39 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   add_foreign_key "advance_molecular_rheometers", "users"
   add_foreign_key "atomic_force_microscopes", "users"
   add_foreign_key "ball_mailings", "users"
+  add_foreign_key "bets", "users"
   add_foreign_key "cell_imagings", "users"
+  add_foreign_key "electro_chemicals", "users"
+  add_foreign_key "five_axis", "users"
   add_foreign_key "frictions", "users"
   add_foreign_key "gaits", "users"
+  add_foreign_key "gas_sensings", "users"
+  add_foreign_key "glove_boxes", "users"
   add_foreign_key "glows", "users"
   add_foreign_key "grindings", "users"
+  add_foreign_key "high_temp_vaccums", "users"
   add_foreign_key "hr_fesem_cs", "users"
   add_foreign_key "hr_fesem_js", "users"
   add_foreign_key "hrlcms", "users"
   add_foreign_key "icp_ms", "users"
+  add_foreign_key "impedance_analies", "users"
+  add_foreign_key "integrated_multi_role_testers", "users"
   add_foreign_key "ion_chromotographies", "users"
+  add_foreign_key "liquid_nitrogens", "users"
   add_foreign_key "low_fatigues", "users"
+  add_foreign_key "milli_qs", "users"
   add_foreign_key "multi_impact_testers", "users"
+  add_foreign_key "probe_sonicators", "users"
   add_foreign_key "raman_microscopes", "users"
+  add_foreign_key "scratch_indentations", "users"
+  add_foreign_key "spark_os", "users"
+  add_foreign_key "spectro_radio_meters", "users"
   add_foreign_key "tga_fttrs", "users"
   add_foreign_key "three_d_non_contacts", "users"
+  add_foreign_key "three_d_scanners", "users"
   add_foreign_key "tribometers", "users"
+  add_foreign_key "ultra_centrifuges", "users"
   add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
+  add_foreign_key "zeta_potential_sizes", "users"
 end

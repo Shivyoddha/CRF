@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @gas_sensing.sample %>
+</p>
+
+<p>
+  <strong>Gas:</strong>
+  <%= @gas_sensing.gas %>
+</p>
+
+<p>
+  <strong>Toxicity:</strong>
+  <%= @gas_sensing.toxicity %>
+</p>
+
+<p>
+  <strong>Compatibility:</strong>
+  <%= @gas_sensing.compatibility %>
+</p>
+
+<p>
+  <strong>Carcinogenic:</strong>
+  <%= @gas_sensing.carcinogenic %>
+</p>
+
+<p>
+  <strong>More:</strong>
+  <%= @gas_sensing.more %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @gas_sensing.debit %>
+</p>
+
+<p>
+  <strong>Slotdate:</strong>
+  <%= @gas_sensing.slotdate %>
+</p>
+
+<p>
+  <strong>Slottime:</strong>
+  <%= @gas_sensing.slottime %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @gas_sensing.status %>
+</p>
+
+<%= link_to 'Edit', edit_gas_sensing_path(@gas_sensing) %> |
+<%= link_to 'Back', gas_sensings_path %>

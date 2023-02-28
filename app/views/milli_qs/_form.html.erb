@@ -1,0 +1,126 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div id="search-div">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+
+
+
+      <div id="profile-div">
+        <div class="btn-group btn-profile">
+          <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
+          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu font-quicksand">
+            <div>
+              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+              <a class="dropdown-item" href="#">UserName</a>
+            </div>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#">My Slots</a></li>
+            <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Milli-Q Water Entry</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: milli_q) do |form| %>
+        <% if milli_q.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(milli_q.errors.count, "error") %> prohibited this milli_q from being saved:</h2>
+
+            <ul>
+              <% milli_q.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <h5 class="text-danger">Note: User needs to bring own Container</h5>
+
+    <div class="input-group mb-3">
+      <div class="field">
+        <%= form.label :typewater,"Type of water",class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:typewater, ['Type-I','Type-II','Type-I & Type-II'], {:include_blank => 'Choose...'},{  class:"form-select", id:"inputGroupSelect01",:required => true}) %>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text " for="amount">Amount</label>
+      <label class="input-group-text fw-bold" for="amount"  >₹</label>
+      <input type="text" class="form-control" id="amount" placeholder="" disabled>
+    </div>
+
+    <div class="volume">
+        <p class="text-warning">Volume</p>
+            <div class="input-group mb-3">
+              <%= form.label :volumeone,"Type-1",class:"input-group-text fw-bold" ,for:"type-1" %>
+              <%= form.text_field :volumeone,class:"form-control" ,id:"type-1", placeholder:"" %>
+              <%= form.label :volumeone,"Litre",class:"input-group-text fw-bold" ,for:"type-1" %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :volumetwo,"Type-2",class:"input-group-text fw-bold" ,for:"type-2" %>
+              <%= form.text_field :volumetwo,class:"form-control" ,id:"type-2", placeholder:"" %>
+              <%= form.label :volumetwo,"Litre",class:"input-group-text fw-bold" ,for:"type-2" %>
+            </div>
+    </div>
+
+
+
+    <div class="input-group mb-3" id="ref-file">
+      <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+
+
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<%=render "partials/footer" %>

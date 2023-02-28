@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 1.5
+  days: 1
+  toxicity: MyString
+  carcinogenic: MyString
+  incompatible: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:18:05
+  status: MyString
+
+two:
+  weight: 1.5
+  days: 1
+  toxicity: MyString
+  carcinogenic: MyString
+  incompatible: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:18:05
+  status: MyString

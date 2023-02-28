@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Three D Scanners</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Size</th>
+      <th>Texture</th>
+      <th>Ply</th>
+      <th>Stt</th>
+      <th>Wrl</th>
+      <th>Obj</th>
+      <th>Asc</th>
+      <th>Aop</th>
+      <th>Ptx</th>
+      <th>Xyzrgb</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @three_d_scanners.each do |three_d_scanner| %>
+      <tr>
+        <td><%= three_d_scanner.sample %></td>
+        <td><%= three_d_scanner.size %></td>
+        <td><%= three_d_scanner.texture %></td>
+        <td><%= three_d_scanner.ply %></td>
+        <td><%= three_d_scanner.stt %></td>
+        <td><%= three_d_scanner.wrl %></td>
+        <td><%= three_d_scanner.obj %></td>
+        <td><%= three_d_scanner.asc %></td>
+        <td><%= three_d_scanner.aop %></td>
+        <td><%= three_d_scanner.ptx %></td>
+        <td><%= three_d_scanner.xyzrgb %></td>
+        <td><%= three_d_scanner.more %></td>
+        <td><%= three_d_scanner.debit %></td>
+        <td><%= three_d_scanner.slotdate %></td>
+        <td><%= three_d_scanner.slottime %></td>
+        <td><%= three_d_scanner.status %></td>
+        <td><%= link_to 'Show', three_d_scanner %></td>
+        <td><%= link_to 'Edit', edit_three_d_scanner_path(three_d_scanner) %></td>
+        <td><%= link_to 'Destroy', three_d_scanner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Three D Scanner', new_three_d_scanner_path %>

@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spark Os</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Samplefe</th>
+      <th>Sampleni</th>
+      <th>Samplezn</th>
+      <th>Samplesn</th>
+      <th>Samplecu</th>
+      <th>Sampleti</th>
+      <th>Sampleal</th>
+      <th>Samplepb</th>
+      <th>Samplemg</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spark_os.each do |spark_o| %>
+      <tr>
+        <td><%= spark_o.sample %></td>
+        <td><%= spark_o.composition %></td>
+        <td><%= spark_o.samplefe %></td>
+        <td><%= spark_o.sampleni %></td>
+        <td><%= spark_o.samplezn %></td>
+        <td><%= spark_o.samplesn %></td>
+        <td><%= spark_o.samplecu %></td>
+        <td><%= spark_o.sampleti %></td>
+        <td><%= spark_o.sampleal %></td>
+        <td><%= spark_o.samplepb %></td>
+        <td><%= spark_o.samplemg %></td>
+        <td><%= spark_o.more %></td>
+        <td><%= spark_o.debit %></td>
+        <td><%= spark_o.slotdate %></td>
+        <td><%= spark_o.slottime %></td>
+        <td><%= spark_o.status %></td>
+        <td><%= link_to 'Show', spark_o %></td>
+        <td><%= link_to 'Edit', edit_spark_o_path(spark_o) %></td>
+        <td><%= link_to 'Destroy', spark_o, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spark O', new_spark_o_path %>

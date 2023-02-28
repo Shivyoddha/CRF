@@ -1,19 +1,16 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<%= form_with(model: bet) do |form| %>
+<div class="container">
+    <div id="equipment-name">
+      <h1>BET Surface Area Analyzer</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: bet) do |form| %>
   <% if bet.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(bet.errors.count, "error") %> prohibited this bet from being saved:</h2>
@@ -25,43 +22,177 @@
       </ul>
     </div>
   <% end %>
+         <div class="input-group mb-3">
+        <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no" %>
+        <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sampe-no",:required => true}) %>
+      </div>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
 
-  <div>
-    <%= form.label :degassing, style: "display: block" %>
-    <%= form.text_field :degassing %>
-  </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="degrassingTemp">Degrassing Temperature</label>
+            <select class="form-select" id="degrassingTemp">
+                <option value="std" selected>Standard(300°C)</option>
+                <option value="custom">Customized</option>
+            </select>
+        </div>
+        <div class="input-group mb-3 vis" id="custom-degrassing-temp-input">
+        <%= form.label :degassing , "Mention temperature(Max:300)", class:"input-group-text", for:"custom-degrassing-temp-input" %>
+        <%= form.text_field :degassing , type:"text", class:"form-control", id:"inputGroup-sizing-default"%>
+      </div>
 
-  <div>
-    <%= form.label :incompatibe, style: "display: block" %>
-    <%= form.text_field :incompatibe %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="analysis-required">Analysis Required</label>
+            <select class="form-select" id="analysis-required">
+                <option selected>Choose...</option>
+                <option value="std-analysis">Standard</option>
+                <option value="custom-analysis">Customized</option>
+            </select>
+        </div>
+        <div id="analysis-required-radio" class="vis">
 
-  <div>
-    <%= form.label :disposal, style: "display: block" %>
-    <%= form.text_field :disposal %>
-  </div>
+            <div class="form-check">
+                <%= form.radio_button :analysisstandard, '5 point adsorption', class:"form-check-input", type:"radio", id:"5-point" %> 5 point adsorption
+            </div>
+            <div class="form-check">
+                <%= form.radio_button :analysisstandard, '7 point adsorption', class:"form-check-input", type:"radio", id:"7-point" %> 7 point adsorption
+            </div>
+            <div class="form-check">
+                <%= form.radio_button :analysisstandard, '10 point adsorption', class:"form-check-input", type:"radio", id:"10-point" %> 10 point adsorption
+            </div>
+            <div class="form-check">
+                <%= form.radio_button :analysisstandard, '20 point adsorption and desorption', class:"form-check-input", type:"radio", id:"20-point" %>  20 point adsorption and desorption
+            </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+        </div>
+        <div id="mention-analysis-required" class="vis">
+            <div class="input-group mb-3">
+                <%= form.text_field :analysiscustom, type:"text", class:"form-control", placeholder:"Mention Here" %>
+            </div>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+
+        <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text fw-bold" for="whether-incompatible">Whether incompatible with any material</label>
+            <select class="form-select" id="whether-incompatible">
+                <option selected>Choose...</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="text-success mb-3 vis" id="incompatible-mention">
+            <%= form.text_field :incompatibe, type:"text", class:"form-control", id: "incompatible-mention-field", placeholder:"Name The Material" %>
+        </div>
+
+        <div>
+          <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non Toxic
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text fw-bold" for="any-disposal-method">Any specific disposal method?</label>
+            <select class="form-select" id="any-disposal-method">
+                <option value="1">Yes</option>
+                <option value="2" selected>No</option>
+            </select>
+        </div>
+
+         <div class="input-group mb-3">
+        <%= form.label :disposal , "Disposal", class:"input-group-text", for:"inputGroupSelect03" %>
+        <%= form.text_field :disposal , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Please Specific Method" %>
+      </div>
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
 <% end %>
+<%=render "partials/footer" %>
+
+<script>
+    let degrassingTemp = document.getElementById('degrassingTemp');
+    let analysisRequired = document.getElementById('analysis-required');
+    let customDegrassingTemp = document.getElementById('custom-degrassing-temp-input');
+    let analysisequiredRadio = document.getElementById('analysis-required-radio');
+    let mentionAnalysisRequired = document.getElementById('mention-analysis-required');
+    let whetherIncompatible = document.getElementById('whether-incompatible');
+    let incompatibleMention = document.getElementById('incompatible-mention');
+
+    degrassingTemp.addEventListener('click', () => {
+        customDegrassingTemp.classList.add('vis');
+
+
+      if (degrassingTemp.value == 'custom') {
+        customDegrassingTemp.classList.toggle('vis');
+      }
+    })
+
+    analysisRequired.addEventListener('click', () => {
+        analysisequiredRadio.classList.add('vis');
+        mentionAnalysisRequired.classList.add('vis');
+
+
+      if (analysisRequired.value == 'std-analysis') {
+        analysisequiredRadio.classList.toggle('vis');
+      }
+      if (analysisRequired.value == 'custom-analysis') {
+        mentionAnalysisRequired.classList.toggle('vis');
+      }
+    })
+
+    whetherIncompatible.addEventListener('click', () => {
+        incompatibleMention.classList.add('vis');
+
+
+      if (whetherIncompatible.value == 'yes') {
+        incompatibleMention.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>

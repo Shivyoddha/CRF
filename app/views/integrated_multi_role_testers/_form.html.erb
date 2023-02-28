@@ -1,4 +1,17 @@
-<%= form_with(model: integrated_multi_role_tester) do |form| %>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Intergrated MultiRole Tester</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: integrated_multi_role_tester) do |form| %>
   <% if integrated_multi_role_tester.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(integrated_multi_role_tester.errors.count, "error") %> prohibited this integrated_multi_role_tester from being saved:</h2>
@@ -11,42 +24,112 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
 
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
+       <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+      <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
-  </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="measurement">Measurement</label>
+            <%= form.select(:measurement, ['indentation','tensile','both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement"}) %>
 
-  <div>
-    <%= form.label :loading, style: "display: block" %>
-    <%= form.text_field :loading %>
-  </div>
+        </div>
 
-  <div>
-    <%= form.label :temperature, style: "display: block" %>
-    <%= form.text_field :temperature %>
-  </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="sample-type">Sample type</label>
+            <%= form.select(:stype, ['solid'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type"}) %>
+        </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+        <div class="input-group mb-3 vis" id="indentation-value">
+            <label class="input-group-text" for="indentation-value-input">No of indentation on each sample:</label>
+            <%= form.text_field :indentation, type:"text", class:"form-control", id:"indentation-value-input", placeholder:"..." %>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+        <label class="input-group-text" for="indentation-value-input">Loading condition<em class="text-warning">(0.1 to 20 N )</em></label>
+        <div class="input-group mb-3" id="indentation-value">
+            <%= form.text_field :loading, type:"text", class:"form-control", id:"indentation-value-input", placeholder:"..." %>
+            <label class="input-group-text" for="indentation-value-input">N</label>
+        </div>
+
+
+        <label class="input-group-text text-danger" for="temp-val">Temperature</label>
+        <div class="input-group mb-3" id="indentation-value">
+            <%= form.text_field :temperature, type:"text", class:"form-control", id:"temp-val", placeholder:"Max.400" %>
+            <label class="input-group-text" for="temp-val">°C</label>
+        </div>
+        <div class="input-group mb-3" id="indentation-value">
+        <label class="input-group-text" for="analysis-type">Type of Analysis required</label>
+            <%= form.text_field :analysis, type:"text", class:"form-control", id:"analysis-type", placeholder:"..." %>
+        </div>
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more"%>
+         <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+
+
+
+
+        <hr>
+        <p class="text-success"><b>Note:</b> Sample Size (L x W x H) must be 20 x 19 x 8 mm</p>
+        <hr>
+
+       <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+ <% end %>
+<%=render "partials/footer" %>
+
+<script>
+    let measurement = document.getElementById('measurement');
+    let indentationValue = document.getElementById('indentation-value');
+
+    measurement.addEventListener('click', () => {
+        indentationValue.classList.add('vis');
+
+
+      if (measurement.value == 'indentation') {
+        indentationValue.classList.toggle('vis');
+      }
+
+      if (measurement.value == 'both') {
+        indentationValue.classList.toggle('vis');
+      }
+
+    })
+
+
+
+</script>
