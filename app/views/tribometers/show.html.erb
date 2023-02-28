@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @tribometer.sample %>
+</p>
+
+<p>
+  <strong>Measurement:</strong>
+  <%= @tribometer.measurement %>
+</p>
+
+<p>
+  <strong>Stype:</strong>
+  <%= @tribometer.stype %>
+</p>
+
+<p>
+  <strong>Temp req:</strong>
+  <%= @tribometer.temp_req %>
+</p>
+
+<p>
+  <strong>Loading:</strong>
+  <%= @tribometer.loading %>
+</p>
+
+<p>
+  <strong>Indenter:</strong>
+  <%= @tribometer.indenter %>
+</p>
+
+<p>
+  <strong>Stroke:</strong>
+  <%= @tribometer.stroke %>
+</p>
+
+<p>
+  <strong>More:</strong>
+  <%= @tribometer.more %>
+</p>
+
+<%= link_to 'Edit', edit_tribometer_path(@tribometer) %> |
+<%= link_to 'Back', tribometers_path %>

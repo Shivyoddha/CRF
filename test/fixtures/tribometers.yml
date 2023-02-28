@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  measurement: MyString
+  stype: MyString
+  temp_req: 1.5
+  loading: 1.5
+  indenter: MyString
+  stroke: 1.5
+  more: MyString
+
+two:
+  sample: 1
+  measurement: MyString
+  stype: MyString
+  temp_req: 1.5
+  loading: 1.5
+  indenter: MyString
+  stroke: 1.5
+  more: MyString

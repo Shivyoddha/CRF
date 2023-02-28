@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gaits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Measurement</th>
+      <th>Trials</th>
+      <th>Force plate</th>
+      <th>Clinical trial</th>
+      <th>Physician</th>
+      <th>More</th>
+      <th>Status</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Debit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gaits.each do |gait| %>
+      <tr>
+        <td><%= gait.subject %></td>
+        <td><%= gait.measurement %></td>
+        <td><%= gait.trials %></td>
+        <td><%= gait.force_plate %></td>
+        <td><%= gait.clinical_trial %></td>
+        <td><%= gait.physician %></td>
+        <td><%= gait.more %></td>
+        <td><%= gait.status %></td>
+        <td><%= gait.slotdate %></td>
+        <td><%= gait.slottime %></td>
+        <td><%= gait.debit %></td>
+        <td><%= link_to 'Show', gait %></td>
+        <td><%= link_to 'Edit', edit_gait_path(gait) %></td>
+        <td><%= link_to 'Destroy', gait, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gait', new_gait_path %>

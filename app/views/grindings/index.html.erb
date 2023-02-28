@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Grindings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Diameter</th>
+      <th>Mould</th>
+      <th>Grit</th>
+      <th>Diamond</th>
+      <th>Suspension</th>
+      <th>Lapping</th>
+      <th>More</th>
+      <th>Status</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Debit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grindings.each do |grinding| %>
+      <tr>
+        <td><%= grinding.sample %></td>
+        <td><%= grinding.diameter %></td>
+        <td><%= grinding.mould %></td>
+        <td><%= grinding.grit %></td>
+        <td><%= grinding.diamond %></td>
+        <td><%= grinding.suspension %></td>
+        <td><%= grinding.lapping %></td>
+        <td><%= grinding.more %></td>
+        <td><%= grinding.status %></td>
+        <td><%= grinding.slotdate %></td>
+        <td><%= grinding.slottime %></td>
+        <td><%= grinding.debit %></td>
+        <td><%= link_to 'Show', grinding %></td>
+        <td><%= link_to 'Edit', edit_grinding_path(grinding) %></td>
+        <td><%= link_to 'Destroy', grinding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grinding', new_grinding_path %>

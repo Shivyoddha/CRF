@@ -1,0 +1,113 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Tribometer</h1>
+    </div>
+    <div class='hero'>
+
+      <%= form_with(model: tribometer) do |form| %>
+        <% if tribometer.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(tribometer.errors.count, "error") %> prohibited this tribometer from being saved:</h2>
+
+            <ul>
+              <% tribometer.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+  </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :stype,"Sample Type", class:"input-group-text", for:"sample_type"%>
+      <%= form.select(:stype, ["Metal","Poylmer","Ceramic"], {:include_blank => 'Select sample type'},{ :class => 'form-select' ,:id => "sample_type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :measurement,"Measurement", class:"input-group-text", for:"measurement"%>
+      <%= form.select(:measurement, ["THT","TRB³"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :temp_req, "Temperature Required", class:"input-group-text",for:"temp"%>
+      <%= form.text_field :temp_req, class:"form-control", id:"temp", placeholder:""%>
+      <%= form.label :temp_req, "°C", class:"input-group-text",for:"temp"%>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :loading, "Loading Condition", class:"input-group-text",for:"load"%>
+      <%= form.text_field :loading, class:"form-control", id:"load", placeholder:""%>
+      <%= form.label :loading, "N", class:"input-group-text",for:"load"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :indenter,"Indenter Ball", class:"input-group-text", for:"indent_ball"%>
+      <%= form.select(:indenter, ["Steel","Alumina","Tungsten Carbide"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "indent_ball",:required => true}) %>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :stroke, "Stroke Length/ Diameter", class:"input-group-text",for:"stroke"%>
+      <%= form.text_field :stroke, class:"form-control", id:"stroke", placeholder:"max 60"%>
+      <%= form.label :stroke, "mm", class:"input-group-text",for:"stroke"%>
+    </div>
+
+    <div class="input-group mt-3 mb-3" id="user-file-input">
+      <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+    </div>
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="mb-3">
+      <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+    </div>
+
+  </div>
+</div>
+
+<%=render "partials/footer" %>
+
+<script>
+
+    let measurement = document.getElementById('measurement');
+    let temp = document.getElementById('temp');
+
+    measurement.addEventListener('click', () => {
+        temp.setAttribute('placeholder', "");
+
+        if(measurement.value == 'THT'){
+          temp.setAttribute('placeholder', "Max. 1000");
+        }
+        if(measurement.value == 'TRB³'){
+          temp.setAttribute('placeholder', "Max. 400");
+        }
+    })
+
+</script>
+<% end %>

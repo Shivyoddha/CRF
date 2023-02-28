@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  feed: MyString
+  btype: MyString
+  grind: MyString
+  specify: MyString
+  size: 1.5
+  grinding: 1.5
+  speed: 1.5
+  hardness: MyString
+  toxicity: MyString
+  compatibility: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 14:59:20
+  debit: MyString
+
+two:
+  sample: 1
+  feed: MyString
+  btype: MyString
+  grind: MyString
+  specify: MyString
+  size: 1.5
+  grinding: 1.5
+  speed: 1.5
+  hardness: MyString
+  toxicity: MyString
+  compatibility: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 14:59:20
+  debit: MyString

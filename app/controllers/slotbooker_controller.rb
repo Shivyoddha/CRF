@@ -44,6 +44,7 @@ def bet
 end
 
 def lcms
+  @hrlcm = Hrlcm.all
 end
 
 def uv
@@ -59,11 +60,51 @@ def atomic
 end
 
 def ftnmr
+
 end
 
 def icp
+  @icp_m =IcpM.all
 end
 
+def amr
+  @advance_molecular_rheometer =AdvanceMolecularRheometer.all
+end
+
+
+def ionc
+  @ion_chromotography =IonChromotography.all
+end
+
+def trib
+  @tribometer =Tribometer.all
+end
+
+def glow
+  @glow =Glow.all
+end
+
+def ball
+  @ball_mailing =BallMailing.all
+end
+
+
+def fric
+  @friction = Friction.all
+end
+
+
+def gait
+  @gait = Gait.all
+end
+
+def grind
+  @grinding = Grinding.all
+end
+
+ def multi
+   @multi_impact_tester = MultiImpactTester.all
+ end
 
 
 end

@@ -12,6 +12,7 @@ class IonChromotographiesController < ApplicationController
 
   # GET /ion_chromotographies/new
   def new
+    @user=User.find(params[:id])
     @ion_chromotography = IonChromotography.new
   end
 
@@ -22,6 +23,8 @@ class IonChromotographiesController < ApplicationController
   # POST /ion_chromotographies or /ion_chromotographies.json
   def create
     @ion_chromotography = IonChromotography.new(ion_chromotography_params)
+    @ion_chromotography.user=current_user
+    @ion_chromotography.status="pending"
 
     respond_to do |format|
       if @ion_chromotography.save
@@ -38,6 +41,7 @@ class IonChromotographiesController < ApplicationController
   def update
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
+        @advance_molecular_rheometer.status="alloted"
         format.html { redirect_to ion_chromotography_url(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else
@@ -65,6 +69,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more)
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, references: [])
     end
 end

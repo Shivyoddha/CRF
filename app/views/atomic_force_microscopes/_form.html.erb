@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag "equipmentQuestion"%>
 
 <%=render "partials/loginHeading"%>
-
+<%=render "partials/formsBackbtn"%>
 
 <div class="container">
     <div id="equipment-name">
@@ -26,29 +26,28 @@
 
 
           <div class="input-group mb-3">
-            <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
-            <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no" %>
+            <%= form.select(:sample, [1,2,3,4,5,6,7,8,9,10], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
           </div>
 
           <div class="input-group mb-3">
-            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
-              <%= form.select(:stype, ['Solid','Powder','Fabric/Polymer','Liquid/Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"sample-type" %>
+              <%= form.select(:stype, ['Solid','Powder','Fabric/Polymer','Liquid/Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
           </div>
 
 
 
 
           <div>
-            <div>
-              <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"inputGroupSelect02" %>
+              <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"technique" %>
               <div class="form-check">
-              <%= form.check_box :technique,{:class=>'form-check-input'}, true, false%>
-              <%= form.label "Contact", class:"form-check-label", for:"flexCheckChecked"%>
+              <%= form.check_box :technique,{:class=>'form-check-input',id:"contact"} %>
+              <%= form.label :technique, "Contact", class:"form-check-label", for:"contact"%>
 
               </div>
               <div class="form-check">
-                <%= form.check_box :technique,{:checked=> true, :class=>'form-check-input'}, true, false%>
-                <%= form.label "Tapping", class:"form-check-label", for:"flexCheckChecked"%>
+                <%= form.check_box :technique,{:checked=> true, :class=>'form-check-input',id:"tapping"}%>
+                <%= form.label :technique, "Tapping", class:"form-check-label", for:"tapping"%>
               </div>
 
           </div>
@@ -81,6 +80,7 @@
             <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
         </div>
 
+
         <div>
           <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
@@ -90,6 +90,7 @@
                   <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> Non-Hazardous
             </div>
         </div>
+
 
         <div>
           <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
@@ -117,20 +118,28 @@
             <input type="file" class="form-control " id="exampleInputEmaeil1" >
         </div>
 
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
           <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
         </div>
 
+
         <div class="actions">
             <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
         </div>
+        <% end %>
+
     </div>
 </div>
-
-
-
-
-<% end %>
 
 <%=render "partials/footer" %>

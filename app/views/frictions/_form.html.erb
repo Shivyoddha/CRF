@@ -1,0 +1,153 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Friction Stir Welding/Surfacing(FSW)</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: friction) do |form| %>
+        <% if friction.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(friction.errors.count, "error") %> prohibited this friction from being saved:</h2>
+
+            <ul>
+              <% friction.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+    <p class="text-warning">Max. Sample size 150 x 150 mm; Thickness 6 mm</p>
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5,6,7,8,9,10], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+    </div>
+
+    <div>
+        <p class="fw-bold">Sample Material</p>
+        <div class="input-group mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="aluminium" value="Aluminium">
+                        <label class="form-check-label" for="aluminium">Aluminium</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="copper" value="Copper">
+                        <label class="form-check-label" for="copper">Copper</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="metal-matrix" value="Metal matrix composition">
+                        <label class="form-check-label" for="metal-matrix">Metal matrix composition</label>
+                    </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :pstype,"Type of process", class:"input-group-text", for:"process-type"%>
+      <%= form.select(:pstype, ["Welding","Surface Processing"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "process-type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :tool,"Tool required", class:"input-group-text", for:"tool-reqd"%>
+      <%= form.select(:tool, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "tool-reqd",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.text_field :toolnom, class:"form-control", id:"tool-nomenclature", placeholder:"Tool Nomenclature" %>
+    </div>
+
+    <div class="process-param">
+        <p class="text-success fw-bold">Process Parameter</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :rspeed, "Rotational Speed", class:"input-group-text",for:"rotation-speed"%>
+          <%= form.text_field :rspeed, class:"form-control", id:"rotation-speed", placeholder:"2"%>
+          <%= form.label :rspeed, "Rpm", class:"input-group-text",for:"rotation-speed"%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :wspeed, "Welding Speed", class:"input-group-text",for:"weld-speed"%>
+          <%= form.text_field :wspeed, class:"form-control", id:"weld-speed", placeholder:"2"%>
+          <%= form.label :wspeed, "mm/min", class:"input-group-text",for:"weld-speed"%>
+        </div>
+    </div>
+
+    <div class="process-param">
+        <p class="text-success fw-bold">Optional Parameter</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :otforce, "Thrust Force", class:"input-group-text",for:"thrust-force"%>
+          <%= form.text_field :otforce, class:"form-control", id:"thrust-force", placeholder:"2"%>
+          <%= form.label :otforce, "kN", class:"input-group-text",for:"thrust-force"%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :temp,"Welding Temp (IR type)", class:"input-group-text", for:"weld-temp"%>
+          <%= form.select(:temp, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "weld-temp",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :measurement,"Welding Temp (IR type)", class:"input-group-text", for:"acoustic-measure"%>
+          <%= form.select(:measurement, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "acoustic-measure",:required => true}) %>
+        </div>
+
+    </div>
+
+    <div class="process-param">
+        <p class="text-success fw-bold">Penetration Parameter</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :depth, "Depth", class:"input-group-text",for:"depth"%>
+          <%= form.text_field :depth, class:"form-control", id:"depth", placeholder:"2"%>
+          <%= form.label :depth, "mm", class:"input-group-text",for:"depth"%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :ptforce, "Thrust Force", class:"input-group-text",for:"thrust-force-penetrate"%>
+          <%= form.text_field :ptforce, class:"form-control", id:"thrust-force-penetrate", placeholder:"2"%>
+          <%= form.label :ptforce, "kN", class:"input-group-text",for:"thrust-force-penetrate"%>
+        </div>
+    </div>
+
+        <div class="input-group mb-3" id="ref-file">
+            <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+            <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+        </div>
+
+
+          <div class="input-group mb-3">
+            <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+            <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+
+        <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+  </div>
+</div>
+<%=render "partials/footer" %>
+
+<% end %>
