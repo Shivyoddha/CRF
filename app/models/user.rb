@@ -26,7 +26,6 @@ has_many:uv_vis_nir
 has_many:tga_fttr
 has_many:atomic_force_microscope
 has_many:cell_imaging
-<<<<<<< HEAD
 has_many:spectro_radio_meter
 has_many:spark_o
 has_many:five_axi
@@ -44,7 +43,4 @@ has_many:three_d_scanner
 has_many:impedance_analy
 has_many:zeta_potential_size
 has_many:high_temp_vaccum
-=======
-
->>>>>>> e0e03313dde9aa217df42aa0d138e167c09f9f12
 end
