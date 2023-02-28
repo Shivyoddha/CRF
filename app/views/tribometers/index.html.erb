@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tribometers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Measurement</th>
+      <th>Stype</th>
+      <th>Temp req</th>
+      <th>Loading</th>
+      <th>Indenter</th>
+      <th>Stroke</th>
+      <th>More</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tribometers.each do |tribometer| %>
+      <tr>
+        <td><%= tribometer.sample %></td>
+        <td><%= tribometer.measurement %></td>
+        <td><%= tribometer.stype %></td>
+        <td><%= tribometer.temp_req %></td>
+        <td><%= tribometer.loading %></td>
+        <td><%= tribometer.indenter %></td>
+        <td><%= tribometer.stroke %></td>
+        <td><%= tribometer.more %></td>
+        <td><%= link_to 'Show', tribometer %></td>
+        <td><%= link_to 'Edit', edit_tribometer_path(tribometer) %></td>
+        <td><%= link_to 'Destroy', tribometer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tribometer', new_tribometer_path %>

@@ -12,7 +12,7 @@ class AtomicForceMicroscopesController < ApplicationController
 
   # GET /atomic_force_microscopes/new
   def new
-    
+
     @atomic_force_microscope = AtomicForceMicroscope.new
   end
 

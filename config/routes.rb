@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-   default_url_options :host => "localhost:3000"
+  resources :low_fatigues
+    resources :gaits
+    resources :grindings
+    resources :friction_stirs
+    resources :frictions
+    resources :multi_impact_testers
+    resources :ball_mailings
+    resources :glows
+    resources :tribometers
+     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+     default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
     resources :scratch_indentations
     resources :integrated_multi_role_testers
@@ -52,6 +61,17 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
+    get 'slotbooker/amr'
+    get 'slotbooker/ionc'
+    get 'slotbooker/trib'
+    get 'slotbooker/glow'
+    get 'slotbooker/ball'
+    get 'slotbooker/ftnmr'
+    get 'slotbooker/icp'
+    get 'slotbooker/fric'
+    get 'slotbooker/gait'
+    get 'slotbooker/grind'
+    get 'slotbooker/multi'
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'
@@ -92,8 +112,6 @@ Rails.application.routes.draw do
     get 'know/liq_nitrogen'
     get 'know/ansys'
     get 'know/auto_multi_speci_polish'
-    get 'slotbooker/ftnmr'
-    get 'slotbooker/icp'
     get 'slotbooker/payment'
     get 'slotbooker/paymentD'
     get 'slotbooker/paymentC'

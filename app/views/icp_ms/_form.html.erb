@@ -1,72 +1,207 @@
-<%= form_with(model: icp_m) do |form| %>
-  <% if icp_m.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(icp_m.errors.count, "error") %> prohibited this icp_m from being saved:</h2>
 
-      <ul>
-        <% icp_m.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>ICP-MS</h1>
     </div>
-  <% end %>
+    <div class='hero'>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+      <%= form_with(model: icp_m) do |form| %>
+        <% if icp_m.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(icp_m.errors.count, "error") %> prohibited this icp_m from being saved:</h2>
 
-  <div>
-    <%= form.label :composition, style: "display: block" %>
-    <%= form.text_field :composition %>
-  </div>
+            <ul>
+              <% icp_m.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :sample_phase, style: "display: block" %>
-    <%= form.text_field :sample_phase %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Sample",class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.select(:sample, [1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"inputGroupSelect01",:required => true}) %>
+         </div>
 
-  <div>
-    <%= form.label :nature, style: "display: block" %>
-    <%= form.text_field :nature %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :composition,"Sample Composition", class:"input-group-text", for:"inputGroupSelect03" %>
+          <%= form.text_field :composition, class:"form-control", id:"inputGroupSelect03" %>
+        </div>
 
-  <div>
-    <%= form.label :concentration, style: "display: block" %>
-    <%= form.text_field :concentration %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :sample_phase,"Sample Phase", class:"input-group-text", for:"inputGroupSelect01e"%>
+          <%= form.select(:sample_phase, ["Solid(>0.5gm)","Liquid(>0.2ml)"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"inputGroupSelect01e",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :testing, style: "display: block" %>
-    <%= form.text_field :testing %>
-  </div>
+        <div class="input-group mb-3">
+          <%= form.label :nature,"Sample Nature", class:"input-group-text", for:"select-nature"%>
+          <%= form.select(:nature, ["Organic","In-Organic","Food","Alloys","Environmental","Biological","Soil","Catalyst","others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"select-nature",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :storage, style: "display: block" %>
-    <%= form.text_field :storage %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
 
-  <div>
-    <%= form.label :compatibility, style: "display: block" %>
-    <%= form.text_field :compatibility %>
-  </div>
+        <div class="text-success mb-3 vis" id="sample-nature-input">
+          <%= form.label :nature,"Mention Sample Nature", class:"input-group-text", for:"sample-nature-input-field"%>
+          <%= form.text_field :nature, class:"form-control", id:"sample-nature-input-field" %>
+        </div>
 
-  <div>
-    <%= form.label :hazard, style: "display: block" %>
-    <%= form.text_field :hazard %>
-  </div>
+            <%= form.label :concentration,"Tentative element concentration in each sample (ppb,ppm):", class:"input-group-text", for:"inputGroupSelect03ery"%>
+        <div class="mb-3">
+            <div class="input-group">
+              <%= form.text_field :concentration, class:"form-control", id:"inputGroupSelect03ery", placeholder:"Ex: Cl(200ppm), Na(150ppb)" %>
+            </div>
+        </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+        <div class="input-group mb-3">
+            <%= form.label :testing,"Testing Requirement", class:"input-group-text", for:"mention-acid"%>
+            <%= form.select(:testing, ["Standardization and Measurement","Sample Preparation/Digestion + Standardization and Measurement"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"mention-acid",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+        <div class="text-success mb-3 vis" id="acid-used-input">
+          <%= form.label :acid,"Mention acid used in each sample", class:"input-group-text", for:"acid-used-input-field"%>
+          <%= form.text_field :acid, class:"form-control", id:"acid-used-input-field", placeholder:"Seperated by Commas" %>
+        </div>
+
+         <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :temp,"Storage & handling conditions", class:"input-group-text", for:"storage-handle"%>
+          <%= form.select(:temp, ["Room Temperature","Specific Temperature"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"storage-handle",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3 vis" id="storage-input-field-div">
+            <%= form.label :temp,"Mention Storage Condition", class:"input-group-text text-success", for:"storage-input-field"%>
+            <%= form.text_field :temp, class:"form-control", id:"storage-input-field", placeholder:"Ex: 4 deg celsius, store in dark (max. 50 chars)" %>
+        </div>
+
+        <div>
+          <%= form.label :toxicity, "Toxicity", class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, "Hazardous", class:"form-check-input", type:"radio", id:"flexRadioDefault22" %>
+                <%= form.label :toxicity, "Hazardous", class:"form-check-label", for:"flexRadioDefault21"%>
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault21",:checked => true  %>
+                  <%= form.label :toxicity, "Non-Hazardous", class:"form-check-label", for:"flexRadioDefault21"%>
+            </div>
+        </div>
+
+        <div>
+          <%= form.label :compatibility, "Compatability", class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatibility, "Corrosive", class:"form-check-input", type:"radio", id:"flexRadioDefaultwu2" %>
+                <%= form.label :compatibility, "Corrosive", class:"form-check-label", for:"flexRadioDefaultwu2"%>
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatibility, 'Non-Corrosive', class:"form-check-input", type:"radio", id:"flexRadioDefaultwu1",:checked => true  %>
+                  <%= form.label :compatibility, "Non-Corrosive", class:"form-check-label", for:"flexRadioDefaultwu1"%>
+            </div>
+        </div>
+
+        <div>
+          <%= form.label :hazard, "Carcinogenic", class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :hazard, "Yes", class:"form-check-input", type:"radio", id:"flexRadioDefault2y" %>
+                <%= form.label :hazard, "Yes", class:"form-check-label", for:"flexRadioDefault2y"%>
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :hazard, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefaultw1u",:checked => true  %>
+                  <%= form.label :hazard, "No", class:"form-check-label", for:"flexRadioDefaultw1u"%>
+            </div>
+        </div>
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+        </div>
+
+
+
+
+      <div class="input-group mb-3">
+      <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+      <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+    </div>
+
+
+      <div id="instruct">
+          <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+      </div>
+
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+        <div class="input-group mt-3 mb-3" id="note">
+            <p class="text-danger">Note: Pre-digested/prepared samples should not contain suspended particles and for interference free analysis, the samples must be digested with suprapure/trace-element grade acids</p>
+      </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<%=render "partials/footer" %>
+
 <% end %>
+
+
+<script>
+    let mentionAcid = document.getElementById('mention-acid');
+    let selectNature = document.getElementById('select-nature');
+    let sampleNatureInput= document.getElementById('sample-nature-input');
+    let acidUsedInput = document.getElementById('acid-used-input');
+    let storageHandle = document.getElementById('storage-handle');
+    let storageInputField = document.getElementById('storage-input-field-div');
+
+    selectNature.addEventListener('click', () => {
+        sampleNatureInput.classList.add('vis');
+
+
+      if (selectNature.value == 'others') {
+        sampleNatureInput.classList.toggle('vis');
+      }
+     })
+    mentionAcid.addEventListener('click', () => {
+        acidUsedInput.classList.add('vis');
+
+
+      if (mentionAcid.value == 'Standardization and Measurement') {
+        acidUsedInput.classList.toggle('vis');
+      }
+     })
+    storageHandle.addEventListener('click', () => {
+        storageInputField.classList.add('vis');
+
+
+      if (storageHandle.value == 'Specific Temperature') {
+        storageInputField.classList.toggle('vis');
+      }
+     })
+
+
+
+</script>

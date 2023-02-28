@@ -13,6 +13,7 @@ class HrlcmsController < ApplicationController
   # GET /hrlcms/new
   def new
     @hrlcm = Hrlcm.new
+    @user=User.find(params[:id])
   end
 
   # GET /hrlcms/1/edit
@@ -22,6 +23,8 @@ class HrlcmsController < ApplicationController
   # POST /hrlcms or /hrlcms.json
   def create
     @hrlcm = Hrlcm.new(hrlcm_params)
+    @hrlcm.user=current_user
+    @hrlcm.status="pending"
 
     respond_to do |format|
       if @hrlcm.save
@@ -38,6 +41,7 @@ class HrlcmsController < ApplicationController
   def update
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
+          @hrlcm.status="alloted"
         format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully updated." }
         format.json { render :show, status: :ok, location: @hrlcm }
       else
@@ -65,6 +69,6 @@ class HrlcmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hrlcm_params
-      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage, :testing_required, :incompatible, :toxicity, :disposal, :health, :more)
+      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :health, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id,references: [])
     end
 end

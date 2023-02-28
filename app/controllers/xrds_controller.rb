@@ -25,8 +25,8 @@ class XrdsController < ApplicationController
   # POST /xrds or /xrds.json
   def create
     @xrd = Xrd.new(xrd_params)
-      @xrd.user=current_user
-      @xrd.status="pending"
+    @xrd.user=current_user
+    @xrd.status="pending"
 
     respond_to do |format|
       if @xrd.save
@@ -71,7 +71,7 @@ class XrdsController < ApplicationController
       @xrd = Xrd.find(params[:id])
     end
 
-0    # Only allow a list of trusted parameters through.
+   # Only allow a list of trusted parameters through.
     def xrd_params
       params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status,:user_id ,references: [])
     end
