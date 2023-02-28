@@ -27,17 +27,38 @@ def fesemc
   @fesemc = HrFesemC.all
 end
 
+
+def fesemc1
+  @fesemc=HrFesemC.all
+  
+  end
+  
+  def fesemc2
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc3
+   @fesemc=HrFesemC.all
+  end
+  
+  def fesemc4
+   @fesemc=HrFesemC.all
+  end
+  
 def fesemj
  @fesemj=HrFesemJ.all
 end
 
 def threednon
+  @three= ThreeDNonContact.all
 end
 
 def raman
+  @raman = RamanMicroscope.all
 end
 
 def tga
+  @tga = TgaFttr.all
 end
 
 def bet
@@ -48,6 +69,7 @@ def lcms
 end
 
 def uv
+  @uv = UvVisNir.all
 end
 
 def laser
@@ -57,6 +79,7 @@ def cell
 end
 
 def atomic
+  @atomic = AtomicForceMicroscope.all
 end
 
 def ftnmr

@@ -43,20 +43,20 @@
 
       <div>
         <div>
-          <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+          <%= form.label :reflectance, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
           <div class="form-check">
-          <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
-          <%= form.label "Transmittance", class:"form-check-label", for:"flexCheckChecked"%>
+          <%= form.check_box :reflectance,{:class=>'form-check-input'}, true, false%>
+          <%= form.label "Reflectance", class:"form-check-label", for:"flexCheckChecked"%>
 
           </div>
           <div class="form-check">
-            <%= form.check_box :measurement,{:checked=> true, :class=>'form-check-input'}, true, false%>
+            <%= form.check_box :absorbance,{:checked=> true, :class=>'form-check-input'}, true, false%>
             <%= form.label "Absorbance", class:"form-check-label", for:"flexCheckChecked"%>
           </div>
 
           <div class="form-check">
-            <%= form.check_box :measurement,{:class=>'form-check-input'}, true, false%>
-            <%= form.label "Reflectance", class:"form-check-label", for:"flexCheckChecked"%>
+            <%= form.check_box :transmittance,{:class=>'form-check-input'}, true, false%>
+            <%= form.label "Transmittance", class:"form-check-label", for:"flexCheckChecked"%>
           </div>
       </div>
 
@@ -84,11 +84,20 @@
         </div>
 
 
-        <div class="input-group mt-3 mb-3" id="collegeid-input">
-            <label for="exampleInputEmail1" class="input-group-text ">Attach reference paper (optional)</label>
-            <input type="file" class="form-control " id="exampleInputEmail1" >
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
 
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+      </div>
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
           <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
@@ -103,10 +112,7 @@
 
 
 
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
+  
 
 
 <% end %>

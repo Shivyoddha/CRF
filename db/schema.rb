@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -440,7 +442,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   end
 
   create_table "raman_microscopes", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "stype"
     t.string "description"
@@ -450,6 +452,13 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "laser"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_raman_microscopes_on_user_id"
   end
 
   create_table "scratch_indentations", force: :cascade do |t|
@@ -469,7 +478,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   end
 
   create_table "tga_fttrs", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
     t.string "stype"
     t.string "description"
@@ -485,10 +494,19 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "atr"
+    t.string "kbr"
+    t.string "yordinate"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_tga_fttrs_on_user_id"
   end
 
   create_table "three_d_non_contacts", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "scant"
     t.string "range"
     t.string "stepinterval"
@@ -556,6 +574,15 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
+    t.string "transmittance"
+    t.string "absorbance"
+    t.string "reflectance"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
   create_table "xrds", force: :cascade do |t|

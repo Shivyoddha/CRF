@@ -27,6 +27,8 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
+        <%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>
+
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
@@ -93,7 +95,7 @@
                         <td> Student Contingency </td>
                         <td id="assign-btn">
                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
                             Generate
                             </button>
 

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
     devise_for :users
     get 'home/index'
+    get 'home/anish'
     get 'know/xrd'
     get 'records/record'
     get 'admin_portal/admindashboard'
@@ -47,6 +48,10 @@ Rails.application.routes.draw do
     get 'slotbooker/bet'
     get 'slotbooker/cell'
     get 'slotbooker/fesemc'
+    get 'slotbooker/fesemc1'
+    get 'slotbooker/fesemc2'
+    get 'slotbooker/fesemc3'
+    get 'slotbooker/fesemc4'
     get 'slotbooker/fesemj'
     get 'slotbooker/icp'
     get 'slotbooker/laser'

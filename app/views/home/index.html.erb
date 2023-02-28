@@ -27,6 +27,7 @@
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
+              <li><%= link_to "Download", home_index_path(format: :pdf)%></li>
               <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
 
               <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
@@ -50,13 +51,13 @@
                 <div id="XRD-images" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100 card-img" alt="...">
+                              <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                     </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
@@ -116,17 +117,17 @@
                 <div id="hrfesemc-images" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/Fesem1.png" class="equipment-img-tag d-block w-100 card-img" alt="...">
+                            <%=image_tag 'hr-fesem-images/Fesem1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/FESEM-1.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'hr-fesem-images/FESEM-2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/FESEM-2.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'hr-fesem-images/FESEM-3.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
-                      <!--  <div class="carousel-item">
-                            <video src="https://crf.nitk.ac.in/images/FESEM-2.png" class="equipment-img-tag d-block w-100 card-img" alt="..." autoplay >
-                        </div>   -->
+                       <div class="carousel-item">
+                            <%=image_tag 'hr-fesem-images/FESEM-4.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
                     </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#hrfesemc-images" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -187,10 +188,10 @@
                 <div id="hrfesemj-images" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/Sem_2.jpg" class="equipment-img-tag d-block w-100 card-img" alt="...">
+                            <%=image_tag 'hr-fesem-jeol-images/jeol-1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/Sem_1.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'hr-fesem-jeol-images/jeol-2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                     </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#hrfesemj-images" data-bs-slide="prev">
@@ -253,16 +254,16 @@
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/Profilelo2.png" class="equipment-img-tag d-block w-100 card-img" alt="...">
+                            <%=image_tag 'contact-3d-images/3d-1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/Pflo_3.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'contact-3d-images/Depth Profile.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/Depth%20Profile.jpg" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'contact-3d-images/Profilelo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                         <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/Profilelo1.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'contact-3d-images/Profilelo2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                     </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -298,8 +299,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -323,13 +324,7 @@
                 <div id="raman-images" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://crf.nitk.ac.in/images/XRD1.png" class="equipment-img-tag d-block w-100 card-img" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/RS_Result.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://crf.nitk.ac.in/images/XRDCompare.png" class="equipment-img-tag d-block w-100 card-img" alt="..." >
+                            <%=image_tag 'raman-images/Raman-1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                         </div>
                     </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#raman-images" data-bs-slide="prev">
@@ -365,8 +360,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_raman_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -383,9 +378,33 @@
 
 
     <div class="equipment">
-      <%# card-6 TGA-FTIR %>
+
       <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="equipment-img-wrap" >
+          <div class="equipment-img">
+              <div id="tga-images" class="carousel slide">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'tga-images/tga-1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                       <div class="carousel-item">
+                          <%=image_tag 'tga-images/tga-2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                      <div class="carousel-item">
+                          <%=image_tag 'tga-images/TGA_IR_Hyphenation.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                  </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#tga-images" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#tga-images" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+              </div>
+          </div>
+       </div>
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">TGA-FTIR</h5>
@@ -408,8 +427,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -428,7 +447,25 @@
       <div class="equipment">
          <%# card-7 BET Surface Area Analyzer%>
          <div class="card">
-             <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+           <div class="equipment-img-wrap" >
+             <div class="equipment-img">
+                 <div id="bet-images" class="carousel slide">
+                     <div class="carousel-inner">
+                         <div class="carousel-item active">
+                             <%=image_tag 'bet-images/BET1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                         </div>
+                     </div>
+                         <button class="carousel-control-prev" type="button" data-bs-target="#bet-images" data-bs-slide="prev">
+                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Previous</span>
+                         </button>
+                         <button class="carousel-control-next" type="button" data-bs-target="#bet-images" data-bs-slide="next">
+                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                             <span class="visually-hidden">Next</span>
+                         </button>
+                 </div>
+             </div>
+          </div>
              <div class="card-body">
                  <div id="more">
                      <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
@@ -471,7 +508,25 @@
       <div class="equipment">
         <%# card-8 HR-LCMS %>
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="lcms-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'lcms-images/HRLCMS.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#lcms-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#lcms-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-LCMS</h5>
@@ -515,7 +570,25 @@
     <div class="equipment">
        <%# card-9 UV-Vis-NIR%>
        <div class="card">
-           <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+         <div class="equipment-img-wrap" >
+           <div class="equipment-img">
+               <div id="uv-vis-images" class="carousel slide">
+                   <div class="carousel-inner">
+                       <div class="carousel-item active">
+                           <%=image_tag 'uv-vis-images/UV1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                       </div>
+                   </div>
+                       <button class="carousel-control-prev" type="button" data-bs-target="#uv-vis-images" data-bs-slide="prev">
+                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Previous</span>
+                       </button>
+                       <button class="carousel-control-next" type="button" data-bs-target="#uv-vis-images" data-bs-slide="next">
+                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="visually-hidden">Next</span>
+                       </button>
+               </div>
+           </div>
+        </div>
            <div class="card-body">
                <div id="more">
                    <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
@@ -560,7 +633,25 @@
    <div class="equipment">
            <%# card-11 Cell-Imaging MultiMode Reader%>
            <div class="card">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+             <div class="equipment-img-wrap" >
+               <div class="equipment-img">
+                   <div id="cell-images" class="carousel slide">
+                       <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'cell-imaging-images/Cell_imaging_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                       </div>
+                           <button class="carousel-control-prev" type="button" data-bs-target="#cell-images" data-bs-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="visually-hidden">Previous</span>
+                           </button>
+                           <button class="carousel-control-next" type="button" data-bs-target="#cell-images" data-bs-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="visually-hidden">Next</span>
+                           </button>
+                   </div>
+               </div>
+            </div>
                <div class="card-body">
                    <div id="more">
                        <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
@@ -603,7 +694,25 @@
        <div class="equipment">
         <%# card-12 Atomic Force Microscope%>
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="atomic-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'atomic-images/AFM_1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#atomic-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#atomic-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
@@ -626,8 +735,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -645,7 +754,25 @@
     <div class="equipment">
         <%# card-13 FT-NMR%>
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="ft_nmr-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'ft_nmr-images/NMR_3.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#ft_nmr-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#ft_nmr-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">FT-NMR</h5>
@@ -688,7 +815,25 @@
     <div class="equipment">
       <%# card-14 ICP-MS%>
       <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="equipment-img-wrap" >
+          <div class="equipment-img">
+              <div id="icp_ms-images" class="carousel slide">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'icp_ms-images/ICP_main.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                  </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#icp_ms-images" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#icp_ms-images" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+              </div>
+          </div>
+       </div>
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">ICP-MS</h5>
@@ -730,7 +875,25 @@
   <div class="equipment">
       <%# card-15 Advance Modular Rheometer%>
       <div class="card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+        <div class="equipment-img-wrap" >
+          <div class="equipment-img">
+              <div id="Rheometer-images" class="carousel slide">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'rheometer-images/Rheo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                  </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#Rheometer-images" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#Rheometer-images" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+              </div>
+          </div>
+       </div>
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
@@ -773,7 +936,25 @@
   <div class="equipment">
     <%# card-16 Ion Chromatography%>
     <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="ion-chromatography-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'ion-chromato-images/ICS_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#ion-chromatography-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#ion-chromatography-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
         <div class="card-body">
             <div id="more">
                 <h5 class="card-title fw-bold">Ion Chromatography</h5>

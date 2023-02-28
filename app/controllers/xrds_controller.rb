@@ -16,7 +16,6 @@ class XrdsController < ApplicationController
   def new
     @user=User.find(params[:id])
     @xrd = Xrd.new()
-
   end
 
   # GET /xrds/1/edit

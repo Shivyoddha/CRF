@@ -1,0 +1,119 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">5-Axis CNC Machining vertical center</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="axis-5-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'axis-5-images/CNC.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'axis-5-images/CNC_Full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#axis-5-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#axis-5-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[G 670-5AX, ACE Manufacturing Systems, India]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF (Mechanical Workshop)</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <p> Movement accuracy: 0.01 mm, Precision/Repeatablity: +/- 0.03 mm, Controlled tool speed: 1 rpm, Position feedback system.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Job Space</u>:</h4>
+                  <p> X-600 mm, Y-700 mm, Z-500 mm.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>List of Facilities:</u></h4>
+                  <p>High Precision Simultaneous 5 Axes Vertical Machining Center with built in Rotary tables. High performance in all types of machining processes that demands rigorous indexing accuracy & high machined surface quality. Ergonomically designed structure for outstanding dynamic rigidity & totally isolated working zone for better chip and coolant management system. Simultaneous 5 Axes with built Rotary tables. Elevated guideway for superior accuracy Versatile machine configuration BT-40 / HSK A63 spindle 20 tool ATC Variable table options from fixed to swivel rotary table for 5 axes simultaneous machining.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Applications of 5 axis CNC machining vertical center</u>:</h4>
+                  <ul>
+                    <li>High resolution surface finish, High dimensional accuracy</li>
+                    <li>Machining of aerospace components</li>
+                    <li>Machining of Automotive components</li>
+                    <li>Machining Bio medical implants</li>
+                    <li>Machining Marine structures</li>
+                    <li>Machining of metallic civil structures</li>
+                  </ul>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <th style="color:#0094BB">NITK users<sup>#</sup></th>
+
+                    <th>Rs. 750/- </th>
+                  </tr>
+
+
+                  <tr>
+                    <th style="color:#0094BB">Other academic institutions and Research and Development organizations<sup>#</sup>*</th>
+                    <th>Rs. 1500/- </th>
+
+                  </tr>
+                  <tr>
+                    <th style="color:#0094BB">Industry personnel<sup>#</sup>*</th>
+                    <th>Rs. 1770/- </th>
+
+                  </tr>
+
+
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>#Grit Paper, Grinding Suspension or other consumable charged extra.</p>
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Vikram Suvarna (Technical Staff, CRF ), Email: <span class="text-info">crf_cnc@nitk.edu.in</span></h5>
+            <h5>Prof. Srikantha Rao (5-axis CNC Faculty in-charge),  Email: <span class="text-info"> sthg@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

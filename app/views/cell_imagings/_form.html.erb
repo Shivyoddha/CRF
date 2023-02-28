@@ -1,77 +1,156 @@
-<%= form_with(model: cell_imaging) do |form| %>
-  <% if cell_imaging.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(cell_imaging.errors.count, "error") %> prohibited this cell_imaging from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% cell_imaging.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+ 
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Cell-Imaging MultiMode Reader</h1>
     </div>
-  <% end %>
+    <div class='hero'>
+    <%= form_with(model: cell_imaging) do |form| %>
+      <% if cell_imaging.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(cell_imaging.errors.count, "error") %> prohibited this cell_imaging from being saved:</h2>
+    
+          <ul>
+            <% cell_imaging.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="input-group mb-3">
+        <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no" %>
+        <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sampe-no",:required => true}) %>
+      </div>
+    
+    <div class="input-group mb-3">
+        <%= form.label :stype,"sample-nature", class:"input-group-text", for:"sample-nature" %>
+        <%= form.select(:stype, ['biological','chemical'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-nature",:required => true}) %>
+      </div>
+   
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+    <div class="input-group mb-3">
+        <%= form.label :plate , "Plate Format", class:"input-group-text", for:"plate-format" %>
+        <%= form.text_field :plate , type:"text", class:"form-control", id:"plate-format"%>
+      </div>
+    
+    <div class="input-group mb-3">
+    <%= form.label :expected_wavelenght,"Expected Wavelength", class:"input-group-text", for:"wavelength-expected" %>
+    <%= form.select(:expected_wavelenght, ['Fluoresence','Absorbance'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "wavelength-expected",:required => true}) %>
+     </div>
+    
+    
+    <div class="measure-info">
+        <h5 class="fw-bold">Measurement Info</h5>
+    </div>
+    <div class="input-group mb-3">
+        <%= form.label :assay_type,"Assay Type", class:"input-group-text", for:"assay-type" %>
+        <%= form.select(:assay_type, ['Kinectic','2endpoint','spectral'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "assay-type",:required => true}) %>
+      </div>
+    
+    <div class="input-group mb-3">
+        <%= form.label :detection,"Detection Mode", class:"input-group-text", for:"detection-mode" %>
+        <%= form.select(:detection, ['fluoro','adsorb','lumines','time_resol_fluoro'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "detection-mode",:required => true}) %>
+      </div>
+    
+    <div class="input-group mb-3">
+        <%= form.label :image_filter,"Image Filter Cube", class:"input-group-text", for:"image-filter" %>
+        <%= form.select(:image_filter, ['DAPI','GFP','TEXAS RED'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "image-filter",:required => true}) %>
+      </div>
+    
+    <div class="input-group mb-3">
+    <%= form.label :image_mode,"Imaging Mode", class:"input-group-text", for:"imaging-mode" %>
+    <%= form.select(:image_mode, ['Fluorescence','Bright-field','Clr-Bright-Field','wavelength_contrast'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "imaging-mode",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :stype, style: "display: block" %>
-    <%= form.text_field :stype %>
-  </div>
+    
 
-  <div>
-    <%= form.label :plate, style: "display: block" %>
-    <%= form.text_field :plate %>
+    <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+    </div>
+    <div>
+    <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"Toxicity" %>
+      <div class="form-check">
+          <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"hazardous",:checked => true  %> Hazardous
+      </div>
+      <div class="form-check">
+            <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"non-hazardous"  %> Non-Hazardous
+      </div>
   </div>
+  
+    <div>
+          <%= form.label :compatibility, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatibility, '  Corrossive', class:"form-check-input", type:"radio", id:"corrosive",:checked => true  %> Corrossive
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatibility, 'Non -Corrossive', class:"form-check-input", type:"radio", id:"non-corrosive"  %> Non -Corrossive
+            </div>
+        </div>
+    
+    <div>
+          <%= form.label :hazard, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :hazard, ' Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :hazard, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+       
 
-  <div>
-    <%= form.label :expected_wavelenght, style: "display: block" %>
-    <%= form.text_field :expected_wavelenght %>
-  </div>
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
 
-  <div>
-    <%= form.label :assay_type, style: "display: block" %>
-    <%= form.text_field :assay_type %>
-  </div>
 
-  <div>
-    <%= form.label :detection, style: "display: block" %>
-    <%= form.text_field :detection %>
-  </div>
 
-  <div>
-    <%= form.label :image_filter, style: "display: block" %>
-    <%= form.text_field :image_filter %>
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+      <div class="mb-3">
+    <%= form.label :more, "Additional information if any", class:"input-group-text", for:"tell-us-more" %>
+    <%= form.text_field :more , type:"text", class:"form-control", id:"tell-us-more" %>
   </div>
+  <div class="actions">
+<%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+</div>
+  </div>
+  </div>
+  
 
-  <div>
-    <%= form.label :image_mode, style: "display: block" %>
-    <%= form.text_field :image_mode %>
-  </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
 
-  <div>
-    <%= form.label :compatibility, style: "display: block" %>
-    <%= form.text_field :compatibility %>
-  </div>
 
-  <div>
-    <%= form.label :hazard, style: "display: block" %>
-    <%= form.text_field :hazard %>
   </div>
+</div>
+<%end%>
+<%=render "partials/footer" %>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

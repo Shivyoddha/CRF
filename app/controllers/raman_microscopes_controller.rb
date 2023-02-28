@@ -12,6 +12,7 @@ class RamanMicroscopesController < ApplicationController
 
   # GET /raman_microscopes/new
   def new
+    @user=User.find(params[:id])
     @raman_microscope = RamanMicroscope.new
   end
 
@@ -22,7 +23,8 @@ class RamanMicroscopesController < ApplicationController
   # POST /raman_microscopes or /raman_microscopes.json
   def create
     @raman_microscope = RamanMicroscope.new(raman_microscope_params)
-
+    @raman_microscope.user=current_user
+    @raman_microscope.status="pending"
     respond_to do |format|
       if @raman_microscope.save
         format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully created." }
@@ -65,6 +67,6 @@ class RamanMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def raman_microscope_params
-      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more)
+      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more,:laser,:debit, :slotdate, :slottime, :status,:user_id ,references: [])
     end
 end

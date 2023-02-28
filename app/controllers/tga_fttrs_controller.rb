@@ -22,7 +22,8 @@ class TgaFttrsController < ApplicationController
   # POST /tga_fttrs or /tga_fttrs.json
   def create
     @tga_fttr = TgaFttr.new(tga_fttr_params)
-
+    @tga_fttr.user=current_user
+      @tga_fttr.status="pending"
     respond_to do |format|
       if @tga_fttr.save
         format.html { redirect_to tga_fttr_url(@tga_fttr), notice: "Tga fttr was successfully created." }
@@ -65,6 +66,6 @@ class TgaFttrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more)
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,references: [])
     end
 end

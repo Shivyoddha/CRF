@@ -13,6 +13,7 @@ class ThreeDNonContactsController < ApplicationController
   # GET /three_d_non_contacts/new
   def new
     @three_d_non_contact = ThreeDNonContact.new
+    @user=User.find(params[:id])
   end
 
   # GET /three_d_non_contacts/1/edit
@@ -22,7 +23,8 @@ class ThreeDNonContactsController < ApplicationController
   # POST /three_d_non_contacts or /three_d_non_contacts.json
   def create
     @three_d_non_contact = ThreeDNonContact.new(three_d_non_contact_params)
-
+    @three_d_non_contact.user=current_user
+    @three_d_non_contact.status="pending"
     respond_to do |format|
       if @three_d_non_contact.save
         format.html { redirect_to three_d_non_contact_url(@three_d_non_contact), notice: "Three d non contact was successfully created." }
@@ -65,6 +67,6 @@ class ThreeDNonContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_non_contact_params
-      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more)
+      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotime, references: [])
     end
 end

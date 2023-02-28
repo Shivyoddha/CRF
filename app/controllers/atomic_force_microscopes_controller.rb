@@ -12,6 +12,7 @@ class AtomicForceMicroscopesController < ApplicationController
 
   # GET /atomic_force_microscopes/new
   def new
+
     @atomic_force_microscope = AtomicForceMicroscope.new
   end
 
@@ -22,7 +23,8 @@ class AtomicForceMicroscopesController < ApplicationController
   # POST /atomic_force_microscopes or /atomic_force_microscopes.json
   def create
     @atomic_force_microscope = AtomicForceMicroscope.new(atomic_force_microscope_params)
-
+    @atomic_force_microscope.user=current_user
+    @atomic_force_microscope.status="pending"
     respond_to do |format|
       if @atomic_force_microscope.save
         format.html { redirect_to atomic_force_microscope_url(@atomic_force_microscope), notice: "Atomic force microscope was successfully created." }
@@ -65,6 +67,6 @@ class AtomicForceMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atomic_force_microscope_params
-      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :status,:slotdate,:slottime,:debit)
+      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more,:debit, :slotdate, :slottime, :status,:user_id,references: [])
     end
 end
