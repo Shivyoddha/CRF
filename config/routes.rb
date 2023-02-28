@@ -13,6 +13,15 @@ Rails.application.routes.draw do
   resources :micro_edms
   resources :spark_os
   resources :spectro_radio_meters
+  resources :gaits
+   resources :grindings
+   resources :friction_stirs
+   resources :frictions
+   resources :multi_impact_testers
+   resources :ball_mailings
+   resources :glows
+   resources :tribometers
+   resources :low_fatigues
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
    default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
