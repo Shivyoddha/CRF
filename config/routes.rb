@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :three_d_scanners
+  resources :impedance_analies
+  resources :high_temp_vaccums
   resources :liquid_nitrogens
   resources :gas_sensings
   resources :ultra_centrifuges
@@ -74,6 +77,12 @@ Rails.application.routes.draw do
     get 'slotbooker/glove'
     get 'slotbooker/bet'
     get 'slotbooker/milli'
+    get 'slotbooker/integrated'
+    get 'slotbooker/scratch'
+    get 'slotbooker/threescanner'
+    get 'slotbooker/impdeance'
+    get 'slotbooker/zeta'
+    get 'slotbooker/highvaccum'
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'

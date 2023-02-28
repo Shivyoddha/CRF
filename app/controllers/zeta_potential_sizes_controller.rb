@@ -22,7 +22,8 @@ class ZetaPotentialSizesController < ApplicationController
   # POST /zeta_potential_sizes or /zeta_potential_sizes.json
   def create
     @zeta_potential_size = ZetaPotentialSize.new(zeta_potential_size_params)
-
+    @zeta_potential_size.user=current_user
+    @zeta_potential_size.status="pending"
     respond_to do |format|
       if @zeta_potential_size.save
         format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully created." }
@@ -65,6 +66,6 @@ class ZetaPotentialSizesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def zeta_potential_size_params
-      params.require(:zeta_potential_size).permit(:sample, :type, :toxicity, :element, :solvent, :refractive_index, :viscosity, :solute, :angle, :analysis_type, :analysis_temperature, :more)
+      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,references: [])
     end
 end

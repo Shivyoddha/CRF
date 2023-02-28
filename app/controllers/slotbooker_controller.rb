@@ -76,6 +76,7 @@ def laser
 end
 
 def cell
+  @cell=CellImaging.all
 end
 
 def atomic
@@ -85,6 +86,15 @@ end
 def ftnmr
 end
 
+def integrated
+  @integrated=IntegratedMultiRoleTester.all
+end
+def scratch
+  @scratch=ScratchIndentation.all
+end
+def threescanner
+  @threescan=ThreeDScanner.all
+end
 def icp
 end
 def spectro
@@ -116,5 +126,14 @@ def glove
 end
 def milli
   @milli=MilliQ.all
+end
+def impdeance
+  @impedance_analy=ImpedanceAnaly.all
+end
+def zeta
+  @zeta=ZetaPotentialSize.all
+end
+def highvaccum
+  @high=HighTempVaccum.all
 end
 end

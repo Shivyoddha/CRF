@@ -1,0 +1,234 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>High Temp Vacuum Furnace</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: high_temp_vaccum) do |form| %>
+        <% if high_temp_vaccum.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(high_temp_vaccum.errors.count, "error") %> prohibited this high_temp_vaccum from being saved:</h2>
+
+            <ul>
+              <% high_temp_vaccum.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+          <div class="input-group mb-3">
+         <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+         <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect01",:required => true}) %>
+       </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :composition,"Sample composition",class:"input-group-text",for:"sample-comp" %>
+          <%= form.text_field :composition ,class:"form-control",id:"sample-comp"%>
+        </div>
+
+        <div>
+          <%= form.label :toxicity, "Sample Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'Non Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :req_atoms,"Required Atmosphere", class:"input-group-text", for:"atmosphere-req" %>
+          <%= form.select(:req_atoms, ['withour-vaccum','without-vaccum','gaseous-atmosphere'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere-req",:required => true}) %>
+        </div>
+        <div class="vis mb-3" id="gas-type-list">
+          <%= form.label :gas, "Specify the type of gas",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :gas, 'Ar', class:"form-check-input", type:"radio", id:"Ar",:checked => true  %> Ar
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :gas, 'N2', class:"form-check-input", type:"radio", id:"N2"  %> N<sub>2</sub>
+            </div>
+            <div class="form-check">
+                 <%= form.radio_button :gas, 'CO2', class:"form-check-input", type:"radio", id:"CO2"  %> CO<sub>2</sub>
+            </div>
+            <div class="form-check">
+                <%= form.radio_button :gas, 'O2', class:"form-check-input", type:"radio", id:"O2"  %> O<sub>2</sub>
+            </div>
+            <div class="form-check">
+                 <%= form.radio_button :gas, 'N<sub>2</sub> + H<sub>2</sub>', class:"form-check-input", type:"radio", id:"NH"  %> N<sub>2</sub> + H<sub>2</sub>
+            </div>
+            <div class="form-check">
+                <%= form.radio_button :gas, ' Ar + H<sub>2</sub>', class:"form-check-input", type:"radio", id:"ArH"  %>   Ar + H<sub>2</sub>
+            </div>
+        </div>
+
+        <div class="input-group mb-2">
+            <label class="input-group-text" for="start-temp">Start Temperature</label>
+            <%= form.text_field :starttemp, class:"form-control",id:"start-temp",placeholder:"Min. 500°C"%>
+            <label class="input-group-text" for="start-temp">°C</label>
+        </div>
+        <div class="input-group mb-2">
+            <label class="input-group-text" for="end-temp">End Temperature</label>
+              <%= form.text_field :endtemp,class:"form-control",id:"end-temp",placeholder:"Max. 1450°C" %>
+            <label class="input-group-text" for="end-temp">°C</label>
+        </div>
+        <div class="input-group mb-2">
+            <label class="input-group-text" for="sample-mp">Sample Melting Point</label>
+            <%= form.text_field :samplemelting,class:"form-control",id:"sample-mp" %>
+            <label class="input-group-text" for="sample-mp">°C</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :no_steps,"No of Temp Steps:", class:"input-group-text", for:"no-of-steps" %>
+          <%= form.select(:no_steps, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-steps",:required => true}) %>
+        </div>
+
+        <div>
+            <div>
+                <h5 class="text-primary vis" id="tag">Holding Temperature & Time information</h5>
+            </div>
+            <div class="input-group mb-2 vis" id="step-1">
+                <%= form.text_field :temp1,class:"form-control",for:"temp-1"%>
+                <%= form.label :temp1,"°C",class:"input-group-text",id:"temp-1" %>
+
+                <%= form.text_field :min1 ,class:"form-control",for:"time-1"%>
+                  <%= form.label :min1,"mins",class:"input-group-text",id:"time-1" %>
+            </div>
+            <div class="input-group mb-2 vis" id="step-2">
+
+              <%= form.text_field :temp2,class:"form-control",for:"temp-2"%>
+              <%= form.label :temp2,"°C",class:"input-group-text",id:"temp-2" %>
+              <%= form.text_field :min2 ,class:"form-control",for:"time-2"%>
+                <%= form.label :min2,"mins",class:"input-group-text",id:"time-2" %>
+            </div>
+            <div class="input-group mb-2 vis" id="step-3">
+              <%= form.text_field :temp3,class:"form-control",for:"temp-3"%>
+              <%= form.label :temp3,"°C",class:"input-group-text",id:"temp-3" %>
+              <%= form.text_field :min3 ,class:"form-control",for:"time-3"%>
+                <%= form.label :min3,"mins",class:"input-group-text",id:"time-3" %>
+            </div>
+            <div class="input-group mb-2 vis" id="step-4">
+              <%= form.text_field :temp4,class:"form-control",for:"temp-4"%>
+              <%= form.label :temp4,"°C",class:"input-group-text",id:"temp-4" %>
+              <%= form.text_field :min4 ,class:"form-control",for:"time-4"%>
+                <%= form.label :min4,"mins",class:"input-group-text",id:"time-4" %>
+            </div>
+            <div class="input-group mb-2 vis" id="step-5">
+              <%= form.text_field :temp5,class:"form-control",for:"temp-5"%>
+              <%= form.label :temp5,"°C",class:"input-group-text",id:"temp-5" %>
+              <%= form.text_field :min5 ,class:"form-control",for:"time-5"%>
+                <%= form.label :min5,"mins",class:"input-group-text",id:"time-5" %>
+            </div>
+        </div>
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let atmosphereReq = document.getElementById('atmosphere-req');
+    let gasTypeList = document.getElementById('gas-type-list');
+    let steps = document.getElementById('no-of-steps');
+    let step1 = document.getElementById('step-1');
+    let step2 = document.getElementById('step-2');
+    let step3 = document.getElementById('step-3');
+    let step4 = document.getElementById('step-4');
+    let step5 = document.getElementById('step-5');
+    let tag = document.getElementById('tag');
+
+    atmosphereReq.addEventListener('click', () => {
+        gasTypeList.classList.add('vis');
+
+
+      if (atmosphereReq.value == 'gaseous-atmosphere') {
+        gasTypeList.classList.toggle('vis');
+      }
+    })
+    steps.addEventListener('click', () => {
+        step1.classList.add('vis');
+        step2.classList.add('vis');
+        step3.classList.add('vis');
+        step4.classList.add('vis');
+        step5.classList.add('vis');
+        tag.classList.add('vis');
+
+
+      if (steps.value == '1') {
+        tag.classList.toggle('vis');
+        step1.classList.toggle('vis');
+      }
+      if (steps.value == '2') {
+        tag.classList.toggle('vis');
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+      }
+      if (steps.value == '3') {
+        tag.classList.toggle('vis');
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+        step3.classList.toggle('vis');
+      }
+      if (steps.value == '4') {
+        tag.classList.toggle('vis');
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+        step3.classList.toggle('vis');
+        step4.classList.toggle('vis');
+      }
+      if (steps.value == '5') {
+        tag.classList.toggle('vis');
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+        step3.classList.toggle('vis');
+        step4.classList.toggle('vis');
+        step5.classList.toggle('vis');
+      }
+    })
+
+
+
+</script>

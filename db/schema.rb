@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_26_213535) do
+ActiveRecord::Schema.define(version: 2023_02_28_143240) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
   end
 
   create_table "cell_imagings", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "stype"
     t.string "plate"
     t.string "expected_wavelenght"
@@ -114,6 +114,10 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
     t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
@@ -262,6 +266,37 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
     t.index ["user_id"], name: "index_glove_boxes_on_user_id"
   end
 
+  create_table "high_temp_vaccums", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "toxicity"
+    t.string "req_atoms"
+    t.string "gas"
+    t.float "starttemp"
+    t.float "endtemp"
+    t.float "samplemelting"
+    t.string "no_steps"
+    t.float "temp1"
+    t.float "min1"
+    t.float "temp2"
+    t.float "min2"
+    t.float "temp3"
+    t.float "min3"
+    t.float "temp4"
+    t.float "min4"
+    t.float "temp5"
+    t.float "min5"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_high_temp_vaccums_on_user_id"
+  end
+
   create_table "hr_fesem_cs", force: :cascade do |t|
     t.integer "sample"
     t.string "composition"
@@ -340,16 +375,45 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "impedance_analies", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "capacitance"
+    t.string "dielectric"
+    t.string "iv"
+    t.float "freqrange"
+    t.float "currentrange"
+    t.float "voltagerange"
+    t.string "impedance"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "losstangent"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_impedance_analies_on_user_id"
+  end
+
   create_table "integrated_multi_role_testers", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "measurement"
-    t.string "type"
     t.string "loading"
     t.string "temperature"
     t.string "analysis"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "indentation"
+    t.string "stype"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_integrated_multi_role_testers_on_user_id"
   end
 
   create_table "ion_chromotographies", force: :cascade do |t|
@@ -460,8 +524,7 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
   end
 
   create_table "scratch_indentations", force: :cascade do |t|
-    t.string "sample"
-    t.string "type"
+    t.integer "sample"
     t.string "measurement"
     t.string "stroke"
     t.string "number_indentation"
@@ -473,6 +536,13 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "stype"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_scratch_indentations_on_user_id"
   end
 
   create_table "spark_os", force: :cascade do |t|
@@ -559,6 +629,29 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
     t.float "yrange"
     t.integer "user_id"
     t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
+  end
+
+  create_table "three_d_scanners", force: :cascade do |t|
+    t.integer "sample"
+    t.integer "size"
+    t.string "texture"
+    t.string "ply"
+    t.string "stt"
+    t.string "wrl"
+    t.string "obj"
+    t.string "asc"
+    t.string "aop"
+    t.string "ptx"
+    t.string "xyzrgb"
+    t.string "more"
+    t.string "debit"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_three_d_scanners_on_user_id"
   end
 
   create_table "ultra_centrifuges", force: :cascade do |t|
@@ -649,20 +742,30 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
   end
 
   create_table "zeta_potential_sizes", force: :cascade do |t|
-    t.string "sample"
-    t.string "type"
+    t.integer "sample"
     t.string "toxicity"
     t.string "element"
     t.string "solvent"
     t.string "refractive_index"
-    t.string "viscosity"
-    t.string "solute"
     t.string "angle"
     t.string "analysis_type"
     t.string "analysis_temperature"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.string "stype"
+    t.float "viscositypoise"
+    t.float "viscositytemp"
+    t.string "soluteknown"
+    t.string "solutename"
+    t.float "refindex"
+    t.string "abscoefficent"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_zeta_potential_sizes_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -674,17 +777,23 @@ ActiveRecord::Schema.define(version: 2023_02_26_213535) do
   add_foreign_key "five_axis", "users"
   add_foreign_key "gas_sensings", "users"
   add_foreign_key "glove_boxes", "users"
+  add_foreign_key "high_temp_vaccums", "users"
   add_foreign_key "hr_fesem_cs", "users"
   add_foreign_key "hr_fesem_js", "users"
+  add_foreign_key "impedance_analies", "users"
+  add_foreign_key "integrated_multi_role_testers", "users"
   add_foreign_key "liquid_nitrogens", "users"
   add_foreign_key "milli_qs", "users"
   add_foreign_key "probe_sonicators", "users"
   add_foreign_key "raman_microscopes", "users"
+  add_foreign_key "scratch_indentations", "users"
   add_foreign_key "spark_os", "users"
   add_foreign_key "spectro_radio_meters", "users"
   add_foreign_key "tga_fttrs", "users"
   add_foreign_key "three_d_non_contacts", "users"
+  add_foreign_key "three_d_scanners", "users"
   add_foreign_key "ultra_centrifuges", "users"
   add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
+  add_foreign_key "zeta_potential_sizes", "users"
 end

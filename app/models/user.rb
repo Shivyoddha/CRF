@@ -26,4 +26,10 @@ has_many:probe_sonicator
 has_many:glove_box
 has_many:milli_q
 has_many:bets
+has_many:integrated_multi_role_tester
+has_many:scratch_indentations
+has_many:three_d_scanner
+has_many:impedance_analy
+has_many:zeta_potential_size
+has_many:high_temp_vaccum
 end

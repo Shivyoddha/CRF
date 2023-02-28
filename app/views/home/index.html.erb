@@ -674,8 +674,8 @@
                            </button>
 
                            <ul class="dropdown-menu">
-                                 <li> <%= link_to "Regular Slot", new_cell_imaging_path, class:"book-dropdown dropdown-item" %> </li>
-                                 <li> <%= link_to "Express Slot", new_cell_imaging_path, class:"book-dropdown dropdown-item" %> </li>
+                                 <li> <%= link_to "Regular Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                                 <li> <%= link_to "Express Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                            </ul>
                        </div>
                    </div>
@@ -1037,8 +1037,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_integ_multirole_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a><!--%= link_to "Express Slot", forms_integ_multirole_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1097,8 +1097,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_indentation_tester_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_indentation_tester_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_scratch_indentation_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_scratch_indentation_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1157,8 +1157,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slot" class="book-dropdown dropdown-item"></a><!--%= link_to "Regular Slot", forms_zeta_potential_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a><!--%= link_to "Express Slot", forms_zeta_potential_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_zeta_potential_size_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1217,8 +1217,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Express" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_high_temp_vacc_furnace_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_high_temp_vacc_furnace_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_high_temp_vaccum_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1277,8 +1277,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slot" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_impedance_analyse_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express slot" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_impedance_analyse_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_impedance_analy_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_impedance_analy_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1403,8 +1403,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li><a href="Regular Slot" class="book-dropdown dropdown-itembook-dropdown dropdown-item"></a><!--%= link_to "Regular Slot", forms_scanner_3d_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express" class="book-dropdown dropdown-item"></a><!--%= link_to "Express Slot", forms_scanner_3d_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_three_d_scanner_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
