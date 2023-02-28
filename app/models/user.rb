@@ -20,4 +20,11 @@ has_many :gaits
 has_many :hrlcms
 has_many :grindings
 has_many :low_fatigues
+has_many:three_d_non_contacts
+has_many:raman_microscope
+has_many:uv_vis_nir
+has_many:tga_fttr
+has_many:atomic_force_microscope
+has_many:cell_imaging
+
 end

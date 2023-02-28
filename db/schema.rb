@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "debit"
     t.time "slottime"
     t.date "slotdate"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
 
   create_table "ball_mailings", force: :cascade do |t|
@@ -508,13 +510,20 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   create_table "three_d_non_contacts", force: :cascade do |t|
     t.integer "sample"
     t.string "scant"
-    t.string "range"
     t.string "stepinterval"
     t.string "incompatible"
     t.string "toxicity"
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
+    t.float "xrange"
+    t.float "yrange"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
   end
 
   create_table "tribometers", force: :cascade do |t|
@@ -567,7 +576,6 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
     t.string "sample"
     t.string "srange"
     t.string "erange"
-    t.string "measurement"
     t.string "composition"
     t.string "toxicity"
     t.string "sampletype"
@@ -624,7 +632,9 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "advance_molecular_rheometers", "users"
+  add_foreign_key "atomic_force_microscopes", "users"
   add_foreign_key "ball_mailings", "users"
+  add_foreign_key "cell_imagings", "users"
   add_foreign_key "frictions", "users"
   add_foreign_key "gaits", "users"
   add_foreign_key "glows", "users"
@@ -636,6 +646,10 @@ ActiveRecord::Schema.define(version: 2023_02_28_081401) do
   add_foreign_key "ion_chromotographies", "users"
   add_foreign_key "low_fatigues", "users"
   add_foreign_key "multi_impact_testers", "users"
+  add_foreign_key "raman_microscopes", "users"
+  add_foreign_key "tga_fttrs", "users"
+  add_foreign_key "three_d_non_contacts", "users"
   add_foreign_key "tribometers", "users"
+  add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
 end
