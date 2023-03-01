@@ -26,6 +26,7 @@ class CellImagingsController < ApplicationController
     @cell_imaging.status="pending"
     respond_to do |format|
       if @cell_imaging.save
+        CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to cell_imaging_url(@cell_imaging), notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
       else

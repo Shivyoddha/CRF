@@ -27,6 +27,7 @@ class AtomicForceMicroscopesController < ApplicationController
     @atomic_force_microscope.status="pending"
     respond_to do |format|
       if @atomic_force_microscope.save
+        AtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to atomic_force_microscope_url(@atomic_force_microscope), notice: "Atomic force microscope was successfully created." }
         format.json { render :show, status: :created, location: @atomic_force_microscope }
       else

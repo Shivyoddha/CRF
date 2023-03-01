@@ -179,4 +179,8 @@ end
  def multi
    @multi_impact_tester = MultiImpactTester.all
  end
+
+ def low
+   @low_fatigues = LowFatigue.all
+ end
 end

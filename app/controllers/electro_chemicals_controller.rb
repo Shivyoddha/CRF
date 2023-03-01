@@ -26,6 +26,7 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.status="pending"
     respond_to do |format|
       if @electro_chemical.save
+        ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to electro_chemical_url(@electro_chemical), notice: "Electro chemical was successfully created." }
         format.json { render :show, status: :created, location: @electro_chemical }
       else

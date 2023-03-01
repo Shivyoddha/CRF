@@ -26,6 +26,7 @@ class FiveAxisController < ApplicationController
     @five_axi.status="pending"
     respond_to do |format|
       if @five_axi.save
+        FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to five_axi_url(@five_axi), notice: "Five axi was successfully created." }
         format.json { render :show, status: :created, location: @five_axi }
       else

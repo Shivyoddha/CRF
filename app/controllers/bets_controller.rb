@@ -26,6 +26,7 @@ class BetsController < ApplicationController
     @bet.status="pending"
     respond_to do |format|
       if @bet.save
+        BetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to bet_url(@bet), notice: "Bet was successfully created." }
         format.json { render :show, status: :created, location: @bet }
       else
