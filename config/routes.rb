@@ -154,6 +154,11 @@ Rails.application.routes.draw do
     get 'slotbooker/paymentP'
     get 'slotbooker/paymentM'
     get 'slotbooker/paymentU'
+    get 'slotbooker/paymentExt'
+    get 'slotbooker/paymentExtR'
+    get 'slotbooker/paymentExtM'
+    get 'slotbooker/paymentExtC'
+    get 'slotbooker/paymentExtU'
     devise_scope :user do
     root to: "devise/sessions#new"
   end
