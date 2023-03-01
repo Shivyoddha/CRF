@@ -28,6 +28,7 @@ class GaitsController < ApplicationController
 
     respond_to do |format|
       if @gait.save
+        Gait.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to gait_url(@gait), notice: "Gait was successfully created." }
         format.json { render :show, status: :created, location: @gait }
       else

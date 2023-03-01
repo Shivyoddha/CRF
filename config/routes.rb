@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     get 'records/record'
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
+
+    
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'
@@ -103,6 +105,8 @@ Rails.application.routes.draw do
     get 'slotbooker/gait'
     get 'slotbooker/grind'
     get 'slotbooker/multi'
+    get 'slotbooker/low'
+
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'

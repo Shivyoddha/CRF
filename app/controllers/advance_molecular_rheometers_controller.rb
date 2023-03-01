@@ -26,7 +26,10 @@ class AdvanceMolecularRheometersController < ApplicationController
     @advance_molecular_rheometer.user=current_user
     @advance_molecular_rheometer.status="pending"
     respond_to do |format|
+
       if @advance_molecular_rheometer.save
+
+        AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to advance_molecular_rheometer_url(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully created." }
         format.json { render :show, status: :created, location: @advance_molecular_rheometer }
       else
