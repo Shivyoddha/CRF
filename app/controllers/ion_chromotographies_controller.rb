@@ -28,6 +28,7 @@ class IonChromotographiesController < ApplicationController
 
     respond_to do |format|
       if @ion_chromotography.save
+        IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to ion_chromotography_url(@ion_chromotography), notice: "Ion chromotography was successfully created." }
         format.json { render :show, status: :created, location: @ion_chromotography }
       else

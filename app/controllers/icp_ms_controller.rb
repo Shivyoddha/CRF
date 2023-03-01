@@ -29,6 +29,7 @@ class IcpMsController < ApplicationController
 
     respond_to do |format|
       if @icp_m.save
+        IcpMMailer.with(id:@icp_m.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully created." }
         format.json { render :show, status: :created, location: @icp_m }
       else

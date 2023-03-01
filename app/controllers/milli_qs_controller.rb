@@ -26,6 +26,7 @@ class MilliQsController < ApplicationController
     @milli_q.status="pending"
     respond_to do |format|
       if @milli_q.save
+        MilliQMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to milli_q_url(@milli_q), notice: "Milli q was successfully created." }
         format.json { render :show, status: :created, location: @milli_q }
       else

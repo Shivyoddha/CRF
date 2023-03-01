@@ -26,6 +26,7 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.status="pending"
     respond_to do |format|
       if @zeta_potential_size.save
+        ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully created." }
         format.json { render :show, status: :created, location: @zeta_potential_size }
       else

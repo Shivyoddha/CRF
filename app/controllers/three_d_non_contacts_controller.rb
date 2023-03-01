@@ -27,6 +27,7 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact.status="pending"
     respond_to do |format|
       if @three_d_non_contact.save
+        ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to three_d_non_contact_url(@three_d_non_contact), notice: "Three d non contact was successfully created." }
         format.json { render :show, status: :created, location: @three_d_non_contact }
       else

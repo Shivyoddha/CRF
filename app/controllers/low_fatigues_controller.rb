@@ -28,6 +28,8 @@ class LowFatiguesController < ApplicationController
 
     respond_to do |format|
       if @low_fatigue.save
+        LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+
         format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully created." }
         format.json { render :show, status: :created, location: @low_fatigue }
       else

@@ -25,6 +25,8 @@ class MicroEdmsController < ApplicationController
 
     respond_to do |format|
       if @micro_edm.save
+        MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).Mail.deliver_later
+
         format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully created." }
         format.json { render :show, status: :created, location: @micro_edm }
       else

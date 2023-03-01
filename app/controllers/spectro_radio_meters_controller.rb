@@ -26,6 +26,7 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter.status="pending"
     respond_to do |format|
       if @spectro_radio_meter.save
+        SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully created." }
         format.json { render :show, status: :created, location: @spectro_radio_meter }
       else

@@ -24,9 +24,10 @@ class UvVisNirsController < ApplicationController
   def create
     @uv_vis_nir = UvVisNir.new(uv_vis_nir_params)
     @uv_vis_nir.user=current_user
-      @uv_vis_nir.status="pending"
+    @uv_vis_nir.status="pending"
     respond_to do |format|
       if @uv_vis_nir.save
+        UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
         format.json { render :show, status: :created, location: @uv_vis_nir }
       else
