@@ -62,8 +62,8 @@
 
  <div class="input-group mb-3">
        <%= form.label :incompatible, "Whether incompatible with any material ", class:"input-group-text fw-bold", for:"incompatibile" %>
-       <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "incompatibile"}) %>
-       
+       <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "incompatibile",:required => true}) %>
+
     </div>
     <div class="input-group mb-3">
     <%= form.label :toxicity, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
@@ -95,6 +95,34 @@
 </div>
 
 <%=render "partials/footer" %>
+
+
+<script>
+
+    let incompability = document.getElementById('incompatibile');
+    let mentionCompabilty = document.getElementById('mention-compability');
+    let yRange = document.getElementById('y_range');
+    let scanType = document.getElementById('scan-type');
+    
+    
+    incompability.addEventListener('click', () => {
+        mentionCompabilty.classList.add('vis');
+
+        if(incompability.value == 'yes'){
+          mentionCompabilty.classList.toggle('vis')
+        }
+    })
+    scanType.addEventListener('click', () => {
+        yRange.classList.add('vis');
+
+        if(scanType.value == 'area'){
+          yRange.classList.toggle('vis')
+        }
+    })
+
+</script>
+
+
 
 
 
