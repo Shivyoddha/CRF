@@ -427,8 +427,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_tga_fttr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -549,8 +549,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_hrlcm_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hrlcm_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -611,8 +611,8 @@
                        </button>
 
                        <ul class="dropdown-menu">
-                             <li> <%= link_to "Regular Slot", new_uv_vis_nir_path, class:"book-dropdown dropdown-item" %> </li>
-                             <li> <%= link_to "Express Slot", new_uv_vis_nir_path, class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Express Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                        </ul>
                    </div>
                </div>
@@ -795,8 +795,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_ft_nmr_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_ft_nmr_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_ft_nmr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_ft_nmr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -856,8 +856,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_icp_m_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -916,8 +916,8 @@
                       </button>
 
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -977,8 +977,8 @@
                     </button>
 
                     <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_ion_chromotography_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                     </ul>
                 </div>
             </div>
@@ -993,6 +993,556 @@
     </div>
 </div>
 
+<div class="equipment">
+        <%# card-17 Intergrated MultiRole Tester%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="integ-multirole-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'integ-multi-images/IMRT.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#integ-multirole-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#integ-multirole-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_integ_multirole_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-18 Scratch/Indentation Tester%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="scratch-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'scratch-images/ST_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#scratch-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#scratch-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_scratch_indentation_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-19 Zeta Potential/Particle Sizer%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="zeta-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'zeta-images/ZP_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#zeta-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#zeta-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_zeta_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-20 High Temp Vacuum Furnace%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="high-temp-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'high-temperature-vacc-images/HTVAF.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#high-temp-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#high-temp-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_high_temp_vac_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-21 Impedance Analyzer%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="impedance-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'impedance-images/Impedance_1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#impedance-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#impedance-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">Impedance Analyzer</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_impedance_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-22 Tribometer%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="tribometer-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'tribometer-images/Tribo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                        <div class="carousel-item active">
+                            <%=image_tag 'tribometer-images/Tribo_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#tribometer-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#tribometer-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">Tribometer	</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_tribometer_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-23 3D-Scanner%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="scan-3d-images" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'scan-3d-images/3D Leg1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                      <div class="carousel-item active">
+                          <%=image_tag 'scan-3d-images/3D Leg2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#scan-3d-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#scan-3d-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">3D-Scanner</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_scanner_3d_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-24 GAIT Analysis%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="gait-images" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'gait-images/Gait_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                      <div class="carousel-item active">
+                          <%=image_tag 'gait-images/Gait_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                      <div class="carousel-item active">
+                          <%=image_tag 'gait-images/Gait_3.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#gait-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#gait-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">GAIT Analysis</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_gait_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="equipment">
+        <%# card-25 Spectro-Radiometer%>
+        <div class="card">
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="spectro-images" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'spectro-images/Spectro_Radio2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#spectro-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#spectro-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">Spectro-Radiometer</h5>
+                    <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", know_spectro_path ,class:"btn btn-primary know-more"%>
+                    <div class="dropdown book">
+                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Book Slot
+                        </button>
+
+                        <ul class="dropdown-menu">
+                          <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Express Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-success badge-outlined">Available</div>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="equipment">
         <%# card-26 Spark-OES%>
@@ -1098,8 +1648,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slot" class="book-dropdown dropdown-item"> </a><!--%= link_to "Regular Slot", forms_glow_discharges_oes_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slot" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_glow_discharges_oes_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                     <li> <%= link_to "Express Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1158,8 +1708,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_ball_milling_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_ball_milling_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1218,8 +1768,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_low_force_fatigue_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_low_force_fatigue_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        <li> <%= link_to "Express Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1284,8 +1834,9 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_micro_edm_path, class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_micro_edm_path, class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1347,7 +1898,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1407,8 +1958,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_multi_impact_test_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_multi_impact_test_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                         <li> <%= link_to "Express Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1470,8 +2021,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li>  <a href="Regular Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Regular Slot", forms_friction_stir_weld_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li>  <a href="Express Slots" class="book-dropdown dropdown-item"> </a> <!--%= link_to "Express Slot", forms_friction_stir_weld_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1531,7 +2082,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1591,7 +2142,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1651,7 +2202,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1774,7 +2325,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                    <li> <%= link_to "Express Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1834,7 +2385,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                        <li> <%= link_to "Express Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1894,7 +2445,7 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_liquid_nitrogen_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_liquid_nitrogen_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                       <li> <%= link_to "Express Slot", new_liquid_nitrogen_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1995,8 +2546,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Regular Slot", forms_multi_speci_polish_path, class:"book-dropdown dropdown-item" %--> </li>
-                              <li> <a href="Express Slots" class="book-dropdown dropdown-item"></a> <!--%= link_to "Express Slot", forms_multi_speci_polish_path, class:"book-dropdown dropdown-item" %--> </li>
+                          <li> <%= link_to "Regular Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      <li> <%= link_to "Express Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2009,6 +2560,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+
 
 <script>
 const ele1="<%= @user.firstname %> "
