@@ -74,6 +74,18 @@ p {
     margin: 0 0 0 1em;
 }
 
+.back-btn-forms {
+    padding: 0.4em 3em;
+}
+
+.btn-outline-warning {
+    --bs-btn-color: #3f5ac9;
+    --bs-btn-border-color: #3f5ac9;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #3f5ac9;
+    --bs-btn-hover-border-color: #3f5ac9;
+}
+
 @media only screen and (max-width: 912px) {
     .hero {
         width: 100%;
