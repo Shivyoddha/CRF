@@ -1,0 +1,127 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Glove Box</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: glove_box) do |form| %>
+        <% if glove_box.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(glove_box.errors.count, "error") %> prohibited this glove_box from being saved:</h2>
+
+            <ul>
+              <% glove_box.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <div class="input-group mb-3">
+      <%= form.label :weight,"Weight of sample" , class:"input-group-text" ,for:"sample-weight"%>
+      <%= form.text_field :weight,class:"form-control", id:"sample-weight", placeholder:"" %>
+      <%= form.label :weight,"gm" ,class:"input-group-text", for:"sample-weight"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :days,"No of days" ,class:"input-group-text",for:"sample-weight"%>
+      <%= form.number_field :days,class:"form-control", id:"sample-weight" ,placeholder:"" %>
+      <%= form.label :days,"days" ,class:"input-group-text", for:"sample-weight"%>
+    </div>
+
+    <div>
+        <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+    </div>
+
+    <div>
+      <div>
+          <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+            </div>
+        </div>
+        <div>
+          <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :carcinogenic, 'Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :carcinogenic, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+            </div>
+        </div>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="incompatible">Whether incompatible with any material</label>
+      <select class="form-select" id="incompatible">
+        <option selected>Choose...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3 vis" id='material_name_div'>
+      <%= form.text_field :incompatible,class:"form-control" ,id:"material_name" ,placeholder:"Name of Material with which it is incompatible if any" %>
+    </div>
+    <div class="input-group mb-3" id="ref-file">
+      <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+
+
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<%=render "partials/footer" %>
+
+<script>
+    let incompatible = document.getElementById('incompatible');
+    let material = document.getElementById('material_name_div');
+
+    incompatible.addEventListener('click', () => {
+        material.classList.add('vis');
+
+
+        if (incompatible.value == 'Yes') {
+            material.classList.toggle('vis');
+        }
+
+    })
+</script>

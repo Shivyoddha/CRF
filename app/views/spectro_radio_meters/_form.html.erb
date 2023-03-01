@@ -1,0 +1,98 @@
+
+
+
+
+
+
+
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Spectro-Radiometer</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: spectro_radio_meter) do |form| %>
+        <% if spectro_radio_meter.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(spectro_radio_meter.errors.count, "error") %> prohibited this spectro_radio_meter from being saved:</h2>
+
+            <ul>
+              <% spectro_radio_meter.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="input-group mb-3">
+            <%= form.label :sample,"no of sample"   , class:"input-group-text", for:"sample-no"%>
+            <%= form.text_field :sample,class:"form-control", id:"sample-no", placeholder:"Min. 5" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :nature,"Nature of Sample",class:"input-group-text", for:"sample-nature"%>
+          <%= form.text_field :nature,class:"form-control", id: "sample-nature" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :application,"Application Area",class:"input-group-text", for: "application-area" %>
+          <%= form.text_field :application,class: "form-control" ,id: "application-area" %>
+
+        </div>
+
+        <div>
+            <%= form.label :stype, "Sample type",class: "form-check-label fw-bold", for: "flexRadioDefault2" %>
+              <div class="form-check">
+                  <%= form.radio_button :stype, 'wet', class: "form-check-input", type: "radio", id: "flexRadioDefault2", :checked => true  %> Wet
+              </div>
+              <div class="form-check">
+                    <%= form.radio_button :stype, 'dry', class: "form-check-input", type: "radio", id: "flexRadioDefault1"  %> Dry
+              </div>
+          </div>
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>

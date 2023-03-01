@@ -22,7 +22,8 @@ class IntegratedMultiRoleTestersController < ApplicationController
   # POST /integrated_multi_role_testers or /integrated_multi_role_testers.json
   def create
     @integrated_multi_role_tester = IntegratedMultiRoleTester.new(integrated_multi_role_tester_params)
-
+    @integrated_multi_role_tester.user=current_user
+    @integrated_multi_role_tester.status="pending"
     respond_to do |format|
       if @integrated_multi_role_tester.save
         format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully created." }
@@ -65,6 +66,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def integrated_multi_role_tester_params
-      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :type, :loading, :temperature, :analysis, :more)
+      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end

@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>High Temp Vaccums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Toxicity</th>
+      <th>Req atoms</th>
+      <th>Gas</th>
+      <th>Starttemp</th>
+      <th>Endtemp</th>
+      <th>Samplemelting</th>
+      <th>No steps</th>
+      <th>Temp1</th>
+      <th>Min1</th>
+      <th>Temp2</th>
+      <th>Min2</th>
+      <th>Temp3</th>
+      <th>Min3</th>
+      <th>Temp4</th>
+      <th>Min4</th>
+      <th>Temp5</th>
+      <th>Min5</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @high_temp_vaccums.each do |high_temp_vaccum| %>
+      <tr>
+        <td><%= high_temp_vaccum.sample %></td>
+        <td><%= high_temp_vaccum.composition %></td>
+        <td><%= high_temp_vaccum.toxicity %></td>
+        <td><%= high_temp_vaccum.req_atoms %></td>
+        <td><%= high_temp_vaccum.gas %></td>
+        <td><%= high_temp_vaccum.starttemp %></td>
+        <td><%= high_temp_vaccum.endtemp %></td>
+        <td><%= high_temp_vaccum.samplemelting %></td>
+        <td><%= high_temp_vaccum.no_steps %></td>
+        <td><%= high_temp_vaccum.temp1 %></td>
+        <td><%= high_temp_vaccum.min1 %></td>
+        <td><%= high_temp_vaccum.temp2 %></td>
+        <td><%= high_temp_vaccum.min2 %></td>
+        <td><%= high_temp_vaccum.temp3 %></td>
+        <td><%= high_temp_vaccum.min3 %></td>
+        <td><%= high_temp_vaccum.temp4 %></td>
+        <td><%= high_temp_vaccum.min4 %></td>
+        <td><%= high_temp_vaccum.temp5 %></td>
+        <td><%= high_temp_vaccum.min5 %></td>
+        <td><%= high_temp_vaccum.more %></td>
+        <td><%= high_temp_vaccum.debit %></td>
+        <td><%= high_temp_vaccum.slotdate %></td>
+        <td><%= high_temp_vaccum.slottime %></td>
+        <td><%= high_temp_vaccum.status %></td>
+        <td><%= link_to 'Show', high_temp_vaccum %></td>
+        <td><%= link_to 'Edit', edit_high_temp_vaccum_path(high_temp_vaccum) %></td>
+        <td><%= link_to 'Destroy', high_temp_vaccum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New High Temp Vaccum', new_high_temp_vaccum_path %>

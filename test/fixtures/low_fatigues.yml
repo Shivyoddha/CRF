@@ -1,0 +1,67 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  sc1: MyString
+  st1: MyString
+  tt1: MyString
+  tf1: MyString
+  sc2: MyString
+  st2: MyString
+  tt2: MyString
+  tf2: MyString
+  sc3: MyString
+  st3: MyString
+  tt3: MyString
+  tf3: MyString
+  sc4: MyString
+  st4: MyString
+  tt4: MyString
+  tf4: MyString
+  sc5: MyString
+  st5: MyString
+  tt5: MyString
+  tf5: MyString
+  more: MyString
+  slottime: 2023-02-28 13:43:27
+  slotdate: 2023-02-28
+  status: MyString
+  debit: MyString
+  m1: MyString
+  m2: MyString
+  m3: MyString
+  m4: MyString
+  m5: MyString
+
+two:
+  sample: 1
+  sc1: MyString
+  st1: MyString
+  tt1: MyString
+  tf1: MyString
+  sc2: MyString
+  st2: MyString
+  tt2: MyString
+  tf2: MyString
+  sc3: MyString
+  st3: MyString
+  tt3: MyString
+  tf3: MyString
+  sc4: MyString
+  st4: MyString
+  tt4: MyString
+  tf4: MyString
+  sc5: MyString
+  st5: MyString
+  tt5: MyString
+  tf5: MyString
+  more: MyString
+  slottime: 2023-02-28 13:43:27
+  slotdate: 2023-02-28
+  status: MyString
+  debit: MyString
+  m1: MyString
+  m2: MyString
+  m3: MyString
+  m4: MyString
+  m5: MyString

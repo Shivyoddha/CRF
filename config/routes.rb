@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  resources :three_d_scanners
+  resources :impedance_analies
+  resources :high_temp_vaccums
+  resources :liquid_nitrogens
+  resources :gas_sensings
+  resources :ultra_centrifuges
+  resources :probe_sonicators
+  resources :glove_boxes
+  resources :milli_qs
+  resources :electro_chemicals
+  resources :five_axis
+  resources :micro_edms
+  resources :spark_os
+  resources :spectro_radio_meters
+  resources :gaits
+   resources :grindings
+   resources :friction_stirs
+   resources :frictions
+   resources :multi_impact_testers
+   resources :ball_mailings
+   resources :glows
+   resources :tribometers
+   resources :low_fatigues
    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
    default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
@@ -28,6 +51,8 @@ Rails.application.routes.draw do
     get 'records/record'
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
+
+    
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'
@@ -52,6 +77,36 @@ Rails.application.routes.draw do
     get 'slotbooker/threednon'
     get 'slotbooker/uv'
     get 'slotbooker/xrd'
+    get 'slotbooker/spectro'
+    get 'slotbooker/spark'
+    get 'slotbooker/fiveaxis'
+    get 'slotbooker/elctro'
+    get 'slotbooker/nitrogen'
+    get 'slotbooker/gassensing'
+    get 'slotbooker/centrifuge'
+    get 'slotbooker/probe'
+    get 'slotbooker/glove'
+    get 'slotbooker/bet'
+    get 'slotbooker/milli'
+    get 'slotbooker/integrated'
+    get 'slotbooker/scratch'
+    get 'slotbooker/threescanner'
+    get 'slotbooker/impdeance'
+    get 'slotbooker/zeta'
+    get 'slotbooker/highvaccum'
+    get 'slotbooker/amr'
+    get 'slotbooker/ionc'
+    get 'slotbooker/trib'
+    get 'slotbooker/glow'
+    get 'slotbooker/ball'
+    get 'slotbooker/ftnmr'
+    get 'slotbooker/icp'
+    get 'slotbooker/fric'
+    get 'slotbooker/gait'
+    get 'slotbooker/grind'
+    get 'slotbooker/multi'
+    get 'slotbooker/low'
+
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'
@@ -92,8 +147,6 @@ Rails.application.routes.draw do
     get 'know/liq_nitrogen'
     get 'know/ansys'
     get 'know/auto_multi_speci_polish'
-    get 'slotbooker/ftnmr'
-    get 'slotbooker/icp'
     get 'slotbooker/payment'
     get 'slotbooker/paymentD'
     get 'slotbooker/paymentC'

@@ -22,7 +22,8 @@ class ScratchIndentationsController < ApplicationController
   # POST /scratch_indentations or /scratch_indentations.json
   def create
     @scratch_indentation = ScratchIndentation.new(scratch_indentation_params)
-
+    @scratch_indentation.user=current_user
+    @scratch_indentation.status="pending"
     respond_to do |format|
       if @scratch_indentation.save
         format.html { redirect_to scratch_indentation_url(@scratch_indentation), notice: "Scratch indentation was successfully created." }
@@ -65,6 +66,6 @@ class ScratchIndentationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scratch_indentation_params
-      params.require(:scratch_indentation).permit(:sample, :type, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more)
+      params.require(:scratch_indentation).permit(:sample, :stype, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more,:debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end

@@ -112,7 +112,7 @@
                         <td> <>10-30 A.M</td>
                         <td> <%= xrds.status %></td>
                         <%xrds.references.each do |file|%>
-                            <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>            
+                            <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
     <%end%>
                     </tr>
                       <%end%>

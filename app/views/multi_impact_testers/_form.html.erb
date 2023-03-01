@@ -1,0 +1,175 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>SHPB</h1>
+    </div>
+    <div class='hero'>
+
+      <%= form_with(model: multi_impact_tester) do |form| %>
+        <% if multi_impact_tester.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(multi_impact_tester.errors.count, "error") %> prohibited this multi_impact_tester from being saved:</h2>
+
+            <ul>
+              <% multi_impact_tester.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+        </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :stype,"Sample Type", class:"input-group-text", for:"sample-type"%>
+      <%= form.select(:stype, ["Metal","Polymer","Ceramice"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :size, "Specimen Size", class:"input-group-text",for:"specimen-size"%>
+      <%= form.text_field :size, class:"form-control", id:"specimen-size", placeholder:""%>
+      <%= form.label :size, "mm", class:"input-group-text",for:"specimen-size"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :measuerment,"Measurement", class:"input-group-text", for:"measurement"%>
+      <%= form.select(:measuerment, ["Drop Weight Testing","SHPB","Bullet Impact Testing","Bird Strike"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
+    </div>
+
+    <div class="drop-weight">
+        <p class="text-warning">Experimental Condition Drop Weight Testing</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :drop_range, "Height Range", class:"input-group-text",for:"height-range"%>
+          <%= form.text_field :drop_range, class:"form-control", id:"height-range", placeholder:"Min 2"%>
+          <%= form.label :drop_range, "m", class:"input-group-text",for:"height-range"%>
+        </div>
+
+        <p class="text-danger">(0-1.5 meters free fall + spring based)</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :drop_velocity, "Impact Velocity", class:"input-group-text",for:"impact-velocity"%>
+          <%= form.text_field :drop_velocity, class:"form-control", id:"impact-velocity", placeholder:"Min 2"%>
+          <%= form.label :drop_velocity, "m", class:"input-group-text",for:"impact-velocity"%>
+        </div>
+
+        <p class="text-danger">(1 - 20 m/sec)</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :drop_shape, "Shape of the Impactor", class:"input-group-text",for:"impactor-shape"%>
+          <%= form.text_field :drop_shape, class:"form-control", id:"impactor-shape", placeholder:""%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :drop_temp, "Temperature (30-150 °C)", class:"input-group-text",for:"temp"%>
+          <%= form.text_field :drop_temp, class:"form-control", id:"temp", placeholder:""%>
+          <%= form.label :drop_temp, "°C", class:"input-group-text",for:"temp"%>
+        </div>
+
+
+    </div>
+
+    <div class="shpb">
+        <p class="text-warning">Experimental Condition SHPB</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :shpb_lenght, "Length", class:"input-group-text",for:"length"%>
+          <%= form.text_field :shpb_lenght, class:"form-control", id:"length", placeholder:""%>
+          <%= form.label :shpb_lenght, "m", class:"input-group-text",for:"length"%>
+        </div>
+
+        <p class="text-danger">Note: Specimen diameter/length ratio is ~2.30(Max. diameter 12.5mm)</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :shpb_temp, "Temperature (30-700 °C)", class:"input-group-text",for:"temp-shpb"%>
+          <%= form.text_field :shpb_temp, class:"form-control", id:"temp-shpb", placeholder:""%>
+          <%= form.label :shpb_temp, "°C", class:"input-group-text",for:"temp-shpb"%>
+        </div>
+
+
+    </div>
+
+    <div class="bullet-impact">
+        <p class="text-warning">Experimental Condition Bullet Impact Testing</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :bullet_velocity, "Impact Velocity", class:"input-group-text",for:"impact-velocity-bullet"%>
+          <%= form.text_field :bullet_velocity, class:"form-control", id:"impact-velocity-bullet", placeholder:""%>
+          <%= form.label :bullet_velocity, "m/sec", class:"input-group-text",for:"impact-velocity-bullet"%>
+        </div>
+
+        <p class="text-danger">(Note: 200-1500+ m/sec)</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :bullet_shape, "Shape of the Impactor", class:"input-group-text",for:"impactor-shape-bullet"%>
+          <%= form.text_field :bullet_shape, class:"form-control", id:"impactor-shape-bullet", placeholder:""%>
+        </div>
+
+
+    </div>
+
+    <div class="bird-strike">
+        <p class="text-warning">Experimental Condition Bird Strike</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :bird_velocity, "Impact Velocity", class:"input-group-text",for:"impact-velocity-bird"%>
+          <%= form.text_field :bird_velocity, class:"form-control", id:"impact-velocity-bird", placeholder:"Min 2"%>
+          <%= form.label :bird_velocity, "m/sec", class:"input-group-text",for:"impact-velocity-bird"%>
+        </div>
+
+        <p class="text-danger">(Note: Fired upto a velocity of 50 m/sec)</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :bird_shape, "Shape of the Impactor", class:"input-group-text",for:"impactor-shape-bullet"%>
+          <%= form.text_field :bird_shape, class:"form-control", id:"impactor-shape-bullet", placeholder:""%>
+        </div>
+    </div>
+
+
+
+
+        <div class="input-group mb-3" id="ref-file">
+            <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+            <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+        </div>
+
+
+          <div class="input-group mb-3">
+            <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+            <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+
+        <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        </div>
+  </div>
+</div>
+<%=render "partials/footer" %>
+
+<% end %>

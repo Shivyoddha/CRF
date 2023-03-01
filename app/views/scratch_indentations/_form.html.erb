@@ -1,4 +1,20 @@
-<%= form_with(model: scratch_indentation) do |form| %>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Scratch/Indentation Tester</h1>
+    </div>
+    <div class='hero'>
+    <%= form_with(model: scratch_indentation) do |form| %>
   <% if scratch_indentation.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(scratch_indentation.errors.count, "error") %> prohibited this scratch_indentation from being saved:</h2>
@@ -11,62 +27,102 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
 
-  <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
-  </div>
 
-  <div>
-    <%= form.label :measurement, style: "display: block" %>
-    <%= form.text_field :measurement %>
-  </div>
 
-  <div>
-    <%= form.label :stroke, style: "display: block" %>
-    <%= form.text_field :stroke %>
-  </div>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="sample-no">No of Sample</label>
+        <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
 
-  <div>
-    <%= form.label :number_indentation, style: "display: block" %>
-    <%= form.text_field :number_indentation %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="sample-type">Sample type</label>
+      <%= form.select(:stype, ['solid','fabric_polymer','thin_film','metal_sheet'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :constant_load, style: "display: block" %>
-    <%= form.text_field :constant_load %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="measurement">Measurement</label>
+      <%= form.select(:measurement, ['scratch','indentation','scratch_indentation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :increment_load, style: "display: block" %>
-    <%= form.text_field :increment_load %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="stroke_length">Stroke Length</label>
+      <%= form.text_field :stroke, type:"text", class:"form-control", id:"stroke_length", placeholder:"Max 30" %>
+      <label class="input-group-text" for="stroke_length">mm</label>
+    </div>
 
-  <div>
-    <%= form.label :progressive_load, style: "display: block" %>
-    <%= form.text_field :progressive_load %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="scratch_indentation">No of scratch/indentation on each sample:</label>
+      <%= form.text_field :number_indentation, type:"text", class:"form-control", id:"scratch_indentation" %>
+    </div>
 
-  <div>
-    <%= form.label :temperature, style: "display: block" %>
-    <%= form.text_field :temperature %>
-  </div>
+    <div>
+        <h5 class="text-success text-center">Loading condition (2-200N)</h5>
+    </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="const_load">Constant Load (in N)</label>
+      <%= form.text_field :constant_load, type:"text", class:"form-control", id:"const_load"%>
+      <label class="input-group-text" for="const_load">N</label>
+    </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="increment_load">Incremental Load (in N)</label>
+      <%= form.text_field :increment_load, type:"text", class:"form-control", id:"increment_load" %>
+      <label class="input-group-text" for="increment_load">N</label>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="progress_load">Progressive Load (in N)</label>
+      <%= form.text_field :progressive_load, type:"text", class:"form-control", id:"progress_load" %>
+      <label class="input-group-text" for="progress_load">N</label>
+    </div>
+
+    <div>
+        <h5 class="text-success text-center"> Analysis condition</h5>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text text-danger" for="wear_temp">Temperature at which wear analysis required</label>
+      <%= form.text_field :temperature, type:"text", class:"form-control", id:"wear_temp", placeholder:"Max 400" %>
+      <label class="input-group-text" for="wear_temp">°C</label>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="analysis_type">Type of analysis required</label>
+      <%= form.text_field :analysis, type:"text", class:"form-control", id:"analysis_type", placeholder:"Possible Requirement" %>
+    </div>
+
+      <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
   </div>
-<% end %>
+</div>
+
+
+<%=render "partials/footer" %>

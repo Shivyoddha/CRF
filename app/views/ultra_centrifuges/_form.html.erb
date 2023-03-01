@@ -1,0 +1,120 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Ultra-Centrifuge</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: ultra_centrifuge) do |form| %>
+        <% if ultra_centrifuge.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(ultra_centrifuge.errors.count, "error") %> prohibited this ultra_centrifuge from being saved:</h2>
+
+            <ul>
+              <% ultra_centrifuge.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+          <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :volume ,"Sample Volume",class:"input-group-text", for:"sample-vol"%>
+    <%= form.text_field :volume, class:"form-control" ,id:"sample-vol" ,placeholder:""%>
+    <%= form.label :volume ,"ml",class:"input-group-text", for:"sample-vol"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :speed ," Speed (max. 50000 RPM)", class:"input-group-text", for:"speed"%>
+    <%= form.text_field :speed, class:"form-control", id:"speed", placeholder:""%>
+        <%= form.label :speed ,"RPM",class:"input-group-text" ,for:"speed"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :temperature,"Temperature (0 - 40°C)",class:"input-group-text" ,for:"temp" %>
+      <%= form.text_field :temperature, class:"form-control", id:"temp" ,placeholder:""%>
+      <%= form.label :temperature,"°C" ,class:"input-group-text", for:"temp"%>
+    </div>
+
+    <div>
+       <div>
+                <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+
+        <div>
+            <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+              <div class="form-check">
+                  <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+              </div>
+              <div class="form-check">
+                    <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+              </div>
+          </div>
+
+          <div>
+            <%= form.label :compatibility, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+              <div class="form-check">
+                  <%= form.radio_button :compatibility, 'Corrosive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Corrosive
+              </div>
+              <div class="form-check">
+                    <%= form.radio_button :compatibility, 'non-Corrosive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Corrosive
+              </div>
+          </div>
+          <div>
+            <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+              <div class="form-check">
+                  <%= form.radio_button :carcinogenic, 'Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+              </div>
+              <div class="form-check">
+                    <%= form.radio_button :carcinogenic, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+              </div>
+          </div>
+
+
+
+    </div>
+
+    <div class="input-group mb-3" id="ref-file">
+      <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+
+
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    </div>
+  </div>
+</div>
+<%end%>
+<%=render "partials/footer" %>

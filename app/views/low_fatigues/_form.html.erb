@@ -1,0 +1,299 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Low Force Fatigue with DMA</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: low_fatigue) do |form| %>
+        <% if low_fatigue.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(low_fatigue.errors.count, "error") %> prohibited this low_fatigue from being saved:</h2>
+
+            <ul>
+              <% low_fatigue.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <p class="text-info">Note: Kindly contact faculty in-charge for any query<p>
+        <hr>
+
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+          <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+        </div>
+
+        <p class="text-primary">Sample Information<p>
+
+
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-1">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc1, "Sample Code", class:"input-group-text",for:"sample-code-1"%>
+              <%= form.text_field :sc1, class:"form-control", id:"sample-code-1", placeholder:"Sample 1 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+                <%= form.label :st1,"Sample Type", class:"input-group-text", for:"sample-type-1"%>
+                <%= form.select(:st1, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-1"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag1'>
+              <%= form.text_field :m1 , type:"text", class:"form-control", id:"sample-type-1-other-mention", placeholder:"Mention"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt1,"Type of Test", class:"input-group-text", for:"type-of-test-1"%>
+              <%= form.select(:tt1, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-1"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tf1,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-1"%>
+              <%= form.select(:tf1, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-1"}) %>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-2">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc2, "Sample Code", class:"input-group-text",for:"sample-code-2"%>
+              <%= form.text_field :sc2, class:"form-control", id:"sample-code-2", placeholder:"Sample 2 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :st2,"Sample Type", class:"input-group-text", for:"sample-type-2"%>
+              <%= form.select(:st2, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-2"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag2'>
+              <%= form.text_field :m2 , type:"text", class:"form-control", id:"sample-type-2-other-mention", placeholder:"Mention"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt2,"Type of Test", class:"input-group-text", for:"type-of-test-2"%>
+              <%= form.select(:tt2, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-2"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tf2,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-2"%>
+              <%= form.select(:tf2, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-2"}) %>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-3">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc3, "Sample Code", class:"input-group-text",for:"sample-code-3"%>
+              <%= form.text_field :sc3, class:"form-control", id:"sample-code-2", placeholder:"Sample 3 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :st3,"Sample Type", class:"input-group-text", for:"sample-type-3"%>
+              <%= form.select(:st3, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-3"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag3'>
+              <%= form.text_field :m3 , type:"text", class:"form-control", id:"sample-type-2-other-mention", placeholder:"Mention"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt3,"Type of Test", class:"input-group-text", for:"type-of-test-2"%>
+              <%= form.select(:tt3, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-3"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tf3,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-3"%>
+              <%= form.select(:tf3, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-3"}) %>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-4">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc4, "Sample Code", class:"input-group-text",for:"sample-code-4"%>
+              <%= form.text_field :sc4, class:"form-control", id:"sample-code-4", placeholder:"Sample 4 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :st4,"Sample Type", class:"input-group-text", for:"sample-type-4"%>
+              <%= form.select(:st4, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-4"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag4'>
+              <%= form.text_field :m4 , type:"text", class:"form-control", id:"sample-type-4-other-mention", placeholder:"Mention"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt4,"Type of Test", class:"input-group-text", for:"type-of-test-4"%>
+              <%= form.select(:tt4, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-4"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tf4,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-4"%>
+              <%= form.select(:tf4, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-4"}) %>
+            </div>
+        </div>
+
+<div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-5">
+            <div class="input-group mt-3 mb-3">
+              <%= form.label :sc5, "Sample Code", class:"input-group-text",for:"sample-code-5"%>
+              <%= form.text_field :sc5, class:"form-control", id:"sample-code-5", placeholder:"Sample 5 Code"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :st5,"Sample Type", class:"input-group-text", for:"sample-type-5"%>
+              <%= form.select(:st5, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-5"}) %>
+            </div>
+
+            <div class="input-group mb-3 vis" id='tag5'>
+              <%= form.text_field :m5 , type:"text", class:"form-control", id:"sample-type-5-other-mention", placeholder:"Mention"%>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tt5,"Type of Test", class:"input-group-text", for:"type-of-test-5"%>
+              <%= form.select(:tt5, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-2"}) %>
+            </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :tf5,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-5"%>
+              <%= form.select(:tf5, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-5"}) %>
+            </div>
+        </div>
+
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Attach Material properties in .pdf" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
+
+
+
+
+
+<script>
+    let sample_no = document.getElementById('sample-no');
+    let step1 = document.getElementById('low-force-fatigue-sample-no-is-1');
+    let step2 = document.getElementById('low-force-fatigue-sample-no-is-2');
+    let step3 = document.getElementById('low-force-fatigue-sample-no-is-3');
+    let step4 = document.getElementById('low-force-fatigue-sample-no-is-4');
+    let step5 = document.getElementById('low-force-fatigue-sample-no-is-5');
+    let type1 = document.getElementById('sample-type-1');
+    let type2 = document.getElementById('sample-type-2');
+    let type3 = document.getElementById('sample-type-3');
+    let type4 = document.getElementById('sample-type-4');
+    let type5 = document.getElementById('sample-type-5');
+    let tag1 = document.getElementById('tag1');
+    let tag2 = document.getElementById('tag2');
+    let tag3 = document.getElementById('tag3');
+    let tag4 = document.getElementById('tag4');
+    let tag5 = document.getElementById('tag5');
+
+    sample_no.addEventListener('click', () => {
+        step1.classList.add('vis');
+        step2.classList.add('vis');
+        step3.classList.add('vis');
+        step4.classList.add('vis');
+        step5.classList.add('vis');
+
+        if (sample_no.value == 1) {
+        step1.classList.toggle('vis');
+        }
+
+        if (sample_no.value == 2) {
+        step1.classList.toggle('vis');
+        step2.classList.toggle('vis');
+        }
+        if (sample_no.value == 3) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+        }
+        if (sample_no.value == 4) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+        }
+        if (sample_no.value == 5) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+            step5.classList.toggle('vis');
+        }
+
+    })
+
+    type1.addEventListener('click', () => {
+        tag1.classList.add('vis')
+
+    if (type1.value == 'Others') {
+        tag1.classList.toggle('vis')
+        }
+    })
+    type2.addEventListener('click', () => {
+        tag2.classList.add('vis')
+
+        if (type2.value == 'Others') {
+            tag2.classList.toggle('vis')
+        }
+    })
+    type3.addEventListener('click', () => {
+        tag3.classList.add('vis')
+
+        if (type3.value == 'Others') {
+            tag3.classList.toggle('vis')
+        }
+    })
+    type4.addEventListener('click', () => {
+        tag4.classList.add('vis')
+
+        if (type4.value == 'Others') {
+            tag4.classList.toggle('vis')
+        }
+    })
+    type5.addEventListener('click', () => {
+        tag5.classList.add('vis')
+
+        if (type5.value == 'Others') {
+            tag5.classList.toggle('vis')
+        }
+    })
+</script>
+
+<% end %>

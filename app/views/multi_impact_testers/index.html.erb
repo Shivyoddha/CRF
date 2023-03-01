@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Multi Impact Testers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Stype</th>
+      <th>Size</th>
+      <th>Measuerment</th>
+      <th>Drop range</th>
+      <th>Drop velocity</th>
+      <th>Drop temp</th>
+      <th>Drop shape</th>
+      <th>Shpb lenght</th>
+      <th>Shpb temp</th>
+      <th>Bullet velocity</th>
+      <th>Bullet shape</th>
+      <th>Bird velocity</th>
+      <th>Bird shape</th>
+      <th>More</th>
+      <th>Status</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Debit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @multi_impact_testers.each do |multi_impact_tester| %>
+      <tr>
+        <td><%= multi_impact_tester.sample %></td>
+        <td><%= multi_impact_tester.stype %></td>
+        <td><%= multi_impact_tester.size %></td>
+        <td><%= multi_impact_tester.measuerment %></td>
+        <td><%= multi_impact_tester.drop_range %></td>
+        <td><%= multi_impact_tester.drop_velocity %></td>
+        <td><%= multi_impact_tester.drop_temp %></td>
+        <td><%= multi_impact_tester.drop_shape %></td>
+        <td><%= multi_impact_tester.shpb_lenght %></td>
+        <td><%= multi_impact_tester.shpb_temp %></td>
+        <td><%= multi_impact_tester.bullet_velocity %></td>
+        <td><%= multi_impact_tester.bullet_shape %></td>
+        <td><%= multi_impact_tester.bird_velocity %></td>
+        <td><%= multi_impact_tester.bird_shape %></td>
+        <td><%= multi_impact_tester.more %></td>
+        <td><%= multi_impact_tester.status %></td>
+        <td><%= multi_impact_tester.slotdate %></td>
+        <td><%= multi_impact_tester.slottime %></td>
+        <td><%= multi_impact_tester.debit %></td>
+        <td><%= link_to 'Show', multi_impact_tester %></td>
+        <td><%= link_to 'Edit', edit_multi_impact_tester_path(multi_impact_tester) %></td>
+        <td><%= link_to 'Destroy', multi_impact_tester, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Multi Impact Tester', new_multi_impact_tester_path %>

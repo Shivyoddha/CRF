@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Frictions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Material</th>
+      <th>Pstype</th>
+      <th>Tool</th>
+      <th>Toolnom</th>
+      <th>Rspeed</th>
+      <th>Wspeed</th>
+      <th>Otforce</th>
+      <th>Wtemp</th>
+      <th>Measurement</th>
+      <th>Depth</th>
+      <th>Ptforce</th>
+      <th>More</th>
+      <th>Status</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Debit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @frictions.each do |friction| %>
+      <tr>
+        <td><%= friction.sample %></td>
+        <td><%= friction.material %></td>
+        <td><%= friction.pstype %></td>
+        <td><%= friction.tool %></td>
+        <td><%= friction.toolnom %></td>
+        <td><%= friction.rspeed %></td>
+        <td><%= friction.wspeed %></td>
+        <td><%= friction.otforce %></td>
+        <td><%= friction.wtemp %></td>
+        <td><%= friction.measurement %></td>
+        <td><%= friction.depth %></td>
+        <td><%= friction.ptforce %></td>
+        <td><%= friction.more %></td>
+        <td><%= friction.status %></td>
+        <td><%= friction.slotdate %></td>
+        <td><%= friction.slottime %></td>
+        <td><%= friction.debit %></td>
+        <td><%= link_to 'Show', friction %></td>
+        <td><%= link_to 'Edit', edit_friction_path(friction) %></td>
+        <td><%= link_to 'Destroy', friction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Friction', new_friction_path %>

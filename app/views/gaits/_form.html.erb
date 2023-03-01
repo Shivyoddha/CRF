@@ -1,0 +1,174 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>GAIT Analysis</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: gait) do |form| %>
+        <% if gait.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(gait.errors.count, "error") %> prohibited this gait from being saved:</h2>
+
+            <ul>
+              <% gait.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <h6 class="text-danger">(*Ethical Clearance mandatory to upload)</h6>
+
+    <div class="input-group mb-3">
+      <%= form.label :subject,"Subjects", class:"input-group-text", for:"subject"%>
+      <%= form.select(:subject, ["Healthy","Patient"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"subject",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :measurement,"Type of Measurement", class:"input-group-text", for:"measure_type"%>
+      <%= form.select(:measurement, ["Upper Body","Lower Body","Full Body"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"measure_type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :trials,"No of Trails", class:"input-group-text", for:"trail_no"%>
+      <%= form.select(:trials, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "trail_no",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="fw-bold">
+            Whether Force Plate included:-
+        </div>
+
+
+
+        <div class="input-group mb-3">
+            <div class="form-check form-check-inline">
+                <%= form.radio_button :force_plate, "Yes", class:"form-check-input", type:"radio", id:"force_plate_yes" %>
+                <%= form.label :force_plate, "Yes", class:"form-check-label", for:"force_plate_yes"%>
+            </div>
+            <div class="form-check form-check-inline">
+                  <%= form.radio_button :force_plate, 'No', class:"form-check-input", type:"radio", id:"force_plate_no",:checked => true  %>
+                  <%= form.label :force_plate, "No", class:"form-check-label", for:"force_plate_no"%>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <h6 class="fw-bold">Final output format required</h6>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="mat_out" value="mat">
+            <label class="form-check-label" for="inlineCheckbox1">.mat</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="tsv_out" value="tsv">
+            <label class="form-check-label" for="tsv_out">.tsv</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="c3d_out" value="c3d">
+            <label class="form-check-label" for="c3d_out">.c3d</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="doc_out" value="doc">
+            <label class="form-check-label" for="doc_out">.doc</label>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :clinical_trial,"Clinical Trail Insurance Taken", class:"input-group-text", for:"clinical_trail"%>
+      <%= form.select(:clinical_trial, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"clinical_trail",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :physician,"Prescribed by any Physician", class:"input-group-text", for:"physician"%>
+      <%= form.select(:physician, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"physician",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+        <h6 class="fw-bold text-danger">Attach Reports.<span class="text-success"> [max. size 5 MB, .pdf only] </span></h6>
+    </div>
+
+    <div class="input-group mb-3" id="ethical-clearnace-input">
+      <%= form.label :ethicals ,"Attach Ethical Clearance*" ,for:"ethical-clearance", class:"input-group-text text-info"%>
+      <%= form.file_field :ethicals,class:"form-control ",  id:"ethical-clearance",multiple:true  %>
+    </div>
+
+    <div class="input-group mb-3 vis" id="phy-pres-input">
+      <%= form.label :prescrptions ,"Attach Physician Prescription" ,for:"attach_phy_prescp", class:"input-group-text text-info"%>
+      <%= form.file_field :prescrptions,class:"form-control ",  id:"attach_phy_prescp",multiple:true  %>
+    </div>
+
+    <div class="input-group mb-3 vis" id="insurance-input">
+      <%= form.label :clinicals ,"Attach Clinical Trail Insurance" ,for:"insurance", class:"input-group-text text-info"%>
+      <%= form.file_field :clinicals,class:"form-control ",  id:"insurance",multiple:true  %>
+    </div>
+
+    <div class="input-group mb-3" id="collegeid-input">
+      <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+      <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+
+  <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+  </div>
+
+
+
+
+    <div class="input-group mb-3">
+      <%= form.text_field :more, class:"form-control", id:"brief_descrp", placeholder:"Brief Experiment Description (max. 200 chars)"%>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+    </div>
+
+  </div>
+</div>
+
+
+<%=render "partials/footer" %>
+
+<script>
+    let subject = document.getElementById('subject')
+    let physician = document.getElementById('physician')
+    let phy_pres_input = document.getElementById('phy-pres-input')
+    let ethical_clearnace_input = document.getElementById('ethical-clearnace-input')
+    let clinical_trail = document.getElementById('clinical_trail')
+    let insuarance = document.getElementById('insurance-input')
+
+    physician.addEventListener('click', ()=> {
+        phy_pres_input.classList.add('vis');
+
+        if(physician.value == "Yes") {
+            phy_pres_input.classList.toggle('vis')
+        }
+    })
+    clinical_trail.addEventListener('click', ()=> {
+        insuarance.classList.add('vis');
+
+        if(clinical_trail.value == "Yes") {
+            insuarance.classList.toggle('vis')
+        }
+    })
+
+</script>
+
+<% end %>

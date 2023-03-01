@@ -1,0 +1,144 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>3D Scanner</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: three_d_scanner) do |form| %>
+        <% if three_d_scanner.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(three_d_scanner.errors.count, "error") %> prohibited this three_d_scanner from being saved:</h2>
+
+            <ul>
+              <% three_d_scanner.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Sample", class:"input-group-text", for:"sample-no"%>
+          <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :size,"Sample Size", class:"input-group-text", for:"sample-size"%>
+          <%= form.select(:size, ['small','medium','large','huge'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-size",:required => true}) %>
+        </div>
+
+
+
+
+        <div>
+         <%= form.label :texture, "Whether Texture is required:",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+           <div class="form-check">
+               <%= form.radio_button :texture, 'yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+           </div>
+           <div class="form-check">
+                 <%= form.radio_button :texture, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+           </div>
+       </div>
+
+
+        <div>
+            <label class="input-group-text" for="final-op">Final output format required</label>
+            <div class="form-check">
+                 <%= form.check_box :ply,{:class=>'form-check-input'},"ply", nil%>
+
+                <label class="form-check-label" for="ply">
+                     ply
+                </label>
+            </div>
+            <div class="form-check">
+                 <%= form.check_box :asc,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="asc">
+                    asc
+                </label>
+            </div>
+            <div class="form-check">
+               <%= form.check_box :stt,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="stl">
+                    stl
+                </label>
+            </div>
+            <div class="form-check">
+                <%= form.check_box :aop,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="aop">
+                     aop
+                </label>
+            </div>
+            <div class="form-check">
+               <%= form.check_box :wrl,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="wrl">
+                    wrl
+                </label>
+            </div>
+            <div class="form-check">
+               <%= form.check_box :ptx,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="ptx">
+                    ptx
+                </label>
+            </div>
+            <div class="form-check">
+                 <%= form.check_box :obj,{:class=>'form-check-input'}, true, false%>
+
+                <label class="form-check-label" for="obj">
+                    obj
+                </label>
+            </div>
+            <div class="form-check">
+              <%= form.check_box :xyzrgb,{:class=>'form-check-input'}, true, false%>
+                <label class="form-check-label" for="xyzrgb">
+                    xyzrgb
+                </label>
+            </div>
+        </div>
+
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+<% end %>
+
+<%=render "partials/footer" %>

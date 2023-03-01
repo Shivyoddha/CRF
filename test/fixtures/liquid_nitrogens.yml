@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1.5
+  purpose: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:31:46
+  status: MyString
+
+two:
+  quantity: 1.5
+  purpose: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:31:46
+  status: MyString

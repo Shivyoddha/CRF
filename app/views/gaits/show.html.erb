@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @gait.subject %>
+</p>
+
+<p>
+  <strong>Measurement:</strong>
+  <%= @gait.measurement %>
+</p>
+
+<p>
+  <strong>Trials:</strong>
+  <%= @gait.trials %>
+</p>
+
+<p>
+  <strong>Force plate:</strong>
+  <%= @gait.force_plate %>
+</p>
+
+<p>
+  <strong>Clinical trial:</strong>
+  <%= @gait.clinical_trial %>
+</p>
+
+<p>
+  <strong>Physician:</strong>
+  <%= @gait.physician %>
+</p>
+
+<p>
+  <strong>More:</strong>
+  <%= @gait.more %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @gait.status %>
+</p>
+
+<p>
+  <strong>Slotdate:</strong>
+  <%= @gait.slotdate %>
+</p>
+
+<p>
+  <strong>Slottime:</strong>
+  <%= @gait.slottime %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @gait.debit %>
+</p>
+
+<%= link_to 'Edit', edit_gait_path(@gait) %> |
+<%= link_to 'Back', gaits_path %>

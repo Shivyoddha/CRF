@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Liquid Nitrogens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Purpose</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @liquid_nitrogens.each do |liquid_nitrogen| %>
+      <tr>
+        <td><%= liquid_nitrogen.quantity %></td>
+        <td><%= liquid_nitrogen.purpose %></td>
+        <td><%= liquid_nitrogen.more %></td>
+        <td><%= liquid_nitrogen.debit %></td>
+        <td><%= liquid_nitrogen.slotdate %></td>
+        <td><%= liquid_nitrogen.slottime %></td>
+        <td><%= liquid_nitrogen.status %></td>
+        <td><%= link_to 'Show', liquid_nitrogen %></td>
+        <td><%= link_to 'Edit', edit_liquid_nitrogen_path(liquid_nitrogen) %></td>
+        <td><%= link_to 'Destroy', liquid_nitrogen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Liquid Nitrogen', new_liquid_nitrogen_path %>

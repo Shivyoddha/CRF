@@ -1,0 +1,127 @@
+
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Book 5 Axis Vertical CNC Slot</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: five_axi) do |form| %>
+        <% if five_axi.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(five_axi.errors.count, "error") %> prohibited this five_axi from being saved:</h2>
+
+            <ul>
+              <% five_axi.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+<p class="text-danger">Max. Sample size: 200mm X 200mm<p>
+<hr>
+
+<div class="input-group mb-3">
+  <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+  <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+</div>
+
+<div class="input-group mb-3">
+  <%= form.label :material,"Sample Material", class:"input-group-text", for:"inputGroupSelect01"%>
+  <%= form.select(:material, ['Hard','Soft'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+</div>
+
+        <div class="input-group mb-3">
+          <%= form.label :depth,"Sample Composition",class:"input-group-text", for:"sample-comp" %>
+          <%= form.text_field :depth,type:"text" ,class:"form-control", id:"sample-comp" %>
+            <label class="input-group-text" for="sample-comp">mm</label>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="type-of-operation">Type of Operation</label>
+              <%= form.text_field :operation ,class:"form-control" ,id:"type-of-operation" ,placeholder:"Milling, Drilling, Tapping, etc" %>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="tool-nomenclature">Tool Nomenclature</label>
+              <%= form.text_field :tool, class:"form-control", id:"tool-nomenclature", placeholder:"Optional" %>
+        </div>
+
+        <div>
+            <%= form.label :specimentolerance, "Specimen drawing with Tolerance",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+              <div class="form-check">
+                  <%= form.radio_button :specimentolerance, 'yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %> yes
+              </div>
+              <div class="form-check">
+                    <%= form.radio_button :specimentolerance, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true  %> No
+              </div>
+          </div>
+
+          <div>
+              <%= form.label :cncprogram, "CNC Program",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+                <div class="form-check">
+                    <%= form.radio_button :cncprogram, 'supplied', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Supplied
+                </div>
+                <div class="form-check">
+                      <%= form.radio_button :cncprogram, 'Generated at Nitk', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> Generated at Nitk
+                </div>
+            </div>
+
+        <p class="text-success fw-bold">Process Parameter<p>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="rotaional-speed">Rotational Speed</label>
+            <%= form.text_field :rotationalspeed, class:"form-control", id:"rotaional-speed",placeholder:"Milling, Drilling, Tapping, etc" %>
+            <label class="input-group-text" for="rotaional-speed">rpm</label>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="feed-rate">Feed Rate</label>
+            <%= form.text_field :feedrate,class:"form-control", id:"feed-rate", placeholder:"Milling, Drilling, Tapping, etc" %>
+            <label class="input-group-text" for="feed-rate">mm/min</label>
+        </div>
+
+
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+       </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+<%end %>
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>
