@@ -26,6 +26,7 @@ class ScratchIndentationsController < ApplicationController
     @scratch_indentation.status="pending"
     respond_to do |format|
       if @scratch_indentation.save
+        ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to scratch_indentation_url(@scratch_indentation), notice: "Scratch indentation was successfully created." }
         format.json { render :show, status: :created, location: @scratch_indentation }
       else

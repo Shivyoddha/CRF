@@ -28,6 +28,7 @@ class MultiImpactTestersController < ApplicationController
 
     respond_to do |format|
       if @multi_impact_tester.save
+        MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to multi_impact_tester_url(@multi_impact_tester), notice: "Multi impact tester was successfully created." }
         format.json { render :show, status: :created, location: @multi_impact_tester }
       else

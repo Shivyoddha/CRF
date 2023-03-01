@@ -26,6 +26,7 @@ class UltraCentrifugesController < ApplicationController
       @ultra_centrifuge.status="pending"
     respond_to do |format|
       if @ultra_centrifuge.save
+        UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to ultra_centrifuge_url(@ultra_centrifuge), notice: "Ultra centrifuge was successfully created." }
         format.json { render :show, status: :created, location: @ultra_centrifuge }
       else

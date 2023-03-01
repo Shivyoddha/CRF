@@ -26,6 +26,7 @@ class SparkOsController < ApplicationController
     @spark_o.status="pending"
     respond_to do |format|
       if @spark_o.save
+        SparkOMailer.with(id:@spark_o.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to spark_o_url(@spark_o), notice: "Spark o was successfully created." }
         format.json { render :show, status: :created, location: @spark_o }
       else
