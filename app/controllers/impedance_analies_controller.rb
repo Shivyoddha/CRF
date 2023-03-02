@@ -26,6 +26,7 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.status="pending"
     respond_to do |format|
       if @impedance_analy.save
+        ImpedanceAnalyzerMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to impedance_analy_url(@impedance_analy), notice: "Impedance analy was successfully created." }
         format.json { render :show, status: :created, location: @impedance_analy }
       else

@@ -28,6 +28,7 @@ class HrFesemCsController < ApplicationController
       @hr_fesem_c.status="pending"
     respond_to do |format|
       if @hr_fesem_c.save
+        HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to hr_fesem_c_url(@hr_fesem_c), notice: "Hr fesem c was successfully created." }
         format.json { render :show, status: :created, location: @hr_fesem_c }
       else

@@ -52,6 +52,8 @@ Rails.application.routes.draw do
     get 'records/record'
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
+
+
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'
@@ -308,6 +310,11 @@ Rails.application.routes.draw do
     get 'slotbooker/paymentP'
     get 'slotbooker/paymentM'
     get 'slotbooker/paymentU'
+    get 'slotbooker/paymentExt'
+    get 'slotbooker/paymentExtR'
+    get 'slotbooker/paymentExtM'
+    get 'slotbooker/paymentExtC'
+    get 'slotbooker/paymentExtU'
     devise_scope :user do
     root to: "devise/sessions#new"
   end

@@ -26,6 +26,7 @@ class HighTempVaccumsController < ApplicationController
       @high_temp_vaccum.status="pending"
     respond_to do |format|
       if @high_temp_vaccum.save
+        HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully created." }
         format.json { render :show, status: :created, location: @high_temp_vaccum }
       else

@@ -43,9 +43,9 @@ class XrdsController < ApplicationController
 
   # PATCH/PUT /xrds/1 or /xrds/1.json
   def update
+     @xrd.status="alloted"
     respond_to do |format|
       if @xrd.update(xrd_params)
-         @xrd.status="alloted"
         format.html { redirect_to slotbooker_xrd_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else

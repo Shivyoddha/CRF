@@ -27,6 +27,7 @@ class BallMailingsController < ApplicationController
 
     respond_to do |format|
       if @ball_mailing.save
+        BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to ball_mailing_url(@ball_mailing), notice: "Ball mailing was successfully created." }
         format.json { render :show, status: :created, location: @ball_mailing }
       else

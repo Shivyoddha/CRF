@@ -2,12 +2,14 @@
     margin: 0%;
     padding: 0%;
 }
+
 .font-unbounded {
     font-family: "Unbounded", 'cursive';
-  }
-  .font-quicksand {
+}
+
+.font-quicksand {
     font-family: "Quicksand", "sans-serif";
-  }
+}
 
 #title {
     padding: 0 0 0 1em;
@@ -45,6 +47,7 @@
     grid-template-columns: 0.5fr 2fr;
     grid-template-rows: 1fr;
 }
+
 .container-slot-booker {
     max-width: 100%;
     margin: auto;
@@ -91,7 +94,7 @@
 }
 
 .sidelinks-list:hover {
-    background-color: rgb(221,241,251);
+    background-color: rgb(221, 241, 251);
 }
 
 .sidelinks-model-list {

@@ -47,7 +47,7 @@
             </div>
 
             <div class="input-group mb-3 vis" id='tag1'>
-                <input type="text" class="form-control" id="sample-type-1-other-mention" placeholder="Mention">
+              <%= form.text_field :m1 , type:"text", class:"form-control", id:"sample-type-1-other-mention", placeholder:"Mention"%>
             </div>
 
             <div class="input-group mb-3">
@@ -56,185 +56,141 @@
             </div>
 
             <div class="input-group mb-3">
-              <%= form.label :st1,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-1"%>
-              <%= form.select(:st1, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-1"}) %>
-
-                <label class="input-group-text" for="type-of-fixture-1">Type of Fixture</label>
-                <select class="form-select" id="type-of-fixture-1">
-                    <option selected>Choose...</option>
-                    <option value="tension">Tension</option>
-                    <option value="compression">Compression</option>
-                    <option value="three-point-bending">Three-Points Bending</option>
-                </select>
+              <%= form.label :tf1,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-1"%>
+              <%= form.select(:tf1, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-1"}) %>
             </div>
         </div>
 
 <div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-2">
             <div class="input-group mt-3 mb-3">
-                <label class="input-group-text" for="sample-code-2">Sample Code</label>
-                <input type="text" class="form-control" id="sample-code-2" placeholder="Sample 2 Code">
+              <%= form.label :sc2, "Sample Code", class:"input-group-text",for:"sample-code-2"%>
+              <%= form.text_field :sc2, class:"form-control", id:"sample-code-2", placeholder:"Sample 2 Code"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="sample-type-2">Sample Type</label>
-                <select class="form-select" id="sample-type-2">
-                    <option selected>Choose...</option>
-                    <option value="polymer">Polymers</option>
-                    <option value="rubber">Rubber</option>
-                    <option value="soft-materials">Soft Materials</option>
-                    <option value="others">Others</option>
-                </select>
+              <%= form.label :st2,"Sample Type", class:"input-group-text", for:"sample-type-2"%>
+              <%= form.select(:st2, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-2"}) %>
             </div>
+
             <div class="input-group mb-3 vis" id='tag2'>
-                <input type="text" class="form-control" id="sample-type-2-other-mention" placeholder="Mention">
+              <%= form.text_field :m2 , type:"text", class:"form-control", id:"sample-type-2-other-mention", placeholder:"Mention"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-test-2">Type of Test</label>
-                <select class="form-select" id="type-of-test-2">
-                    <option selected>Choose...</option>
-                    <option value="dma">DMA</option>
-                    <option value="fatigue">Fatigue</option>
-                    <option value="creep">Creep</option>
-                </select>
+              <%= form.label :tt2,"Type of Test", class:"input-group-text", for:"type-of-test-2"%>
+              <%= form.select(:tt2, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-2"}) %>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-fixture-2">Type of Fixture</label>
-                <select class="form-select" id="type-of-fixture-2">
-                    <option selected>Choose...</option>
-                    <option value="tension">Tension</option>
-                    <option value="compression">Compression</option>
-                    <option value="three-point-bending">Three-Points Bending</option>
-                </select>
+              <%= form.label :tf2,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-2"%>
+              <%= form.select(:tf2, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-2"}) %>
             </div>
         </div>
 
 <div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-3">
             <div class="input-group mt-3 mb-3">
-                <label class="input-group-text" for="sample-code-3">Sample Code</label>
-                <input type="text" class="form-control" id="sample-code-3" placeholder="Sample 3 Code">
+              <%= form.label :sc3, "Sample Code", class:"input-group-text",for:"sample-code-3"%>
+              <%= form.text_field :sc3, class:"form-control", id:"sample-code-2", placeholder:"Sample 3 Code"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="sample-type-3">Sample Type</label>
-                <select class="form-select" id="sample-type-3">
-                    <option selected>Choose...</option>
-                    <option value="Polymers">Polymers</option>
-                    <option value="Rubber">Rubber</option>
-                    <option value="Soft Materials">Soft Materials</option>
-                    <option value="Others">Others</option>
-                </select>
+              <%= form.label :st3,"Sample Type", class:"input-group-text", for:"sample-type-3"%>
+              <%= form.select(:st3, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-3"}) %>
             </div>
+
             <div class="input-group mb-3 vis" id='tag3'>
-                <input type="text" class="form-control" id="sample-type-3-other-mention" placeholder="Mention">
+              <%= form.text_field :m3 , type:"text", class:"form-control", id:"sample-type-2-other-mention", placeholder:"Mention"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-test-3">Type of Test</label>
-                <select class="form-select" id="type-of-test-3">
-                    <option selected>Choose...</option>
-                    <option value="dma">DMA</option>
-                    <option value="fatigue">Fatigue</option>
-                    <option value="creep">Creep</option>
-                </select>
+              <%= form.label :tt3,"Type of Test", class:"input-group-text", for:"type-of-test-2"%>
+              <%= form.select(:tt3, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-3"}) %>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-fixture-3">Type of Fixture</label>
-                <select class="form-select" id="type-of-fixture-3">
-                    <option selected>Choose...</option>
-                    <option value="tension">Tension</option>
-                    <option value="compression">Compression</option>
-                    <option value="three-point-bending">Three-Points Bending</option>
-                </select>
+              <%= form.label :tf3,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-3"%>
+              <%= form.select(:tf3, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-3"}) %>
             </div>
         </div>
 
 <div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-4">
             <div class="input-group mt-3 mb-3">
-                <label class="input-group-text" for="sample-code-4">Sample Code</label>
-                <input type="text" class="form-control" id="sample-code-4" placeholder="Sample 4 Code">
+              <%= form.label :sc4, "Sample Code", class:"input-group-text",for:"sample-code-4"%>
+              <%= form.text_field :sc4, class:"form-control", id:"sample-code-4", placeholder:"Sample 4 Code"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="sample-type-4">Sample Type</label>
-                <select class="form-select" id="sample-type-4">
-                    <option selected>Choose...</option>
-                    <option value="Polymers">Polymers</option>
-                    <option value="Rubber">Rubber</option>
-                    <option value="Soft Materials">Soft Materials</option>
-                    <option value="Others">Others</option>
-                </select>
+              <%= form.label :st4,"Sample Type", class:"input-group-text", for:"sample-type-4"%>
+              <%= form.select(:st4, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-4"}) %>
             </div>
+
             <div class="input-group mb-3 vis" id='tag4'>
-                <input type="text" class="form-control" id="sample-type-4-other-mention" placeholder="Mention">
+              <%= form.text_field :m4 , type:"text", class:"form-control", id:"sample-type-4-other-mention", placeholder:"Mention"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-test-4">Type of Test</label>
-                <select class="form-select" id="type-of-test-4">
-                    <option selected>Choose...</option>
-                    <option value="dma">DMA</option>
-                    <option value="fatigue">Fatigue</option>
-                    <option value="creep">Creep</option>
-                </select>
+              <%= form.label :tt4,"Type of Test", class:"input-group-text", for:"type-of-test-4"%>
+              <%= form.select(:tt4, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-4"}) %>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-fixture-4">Type of Fixture</label>
-                <select class="form-select" id="type-of-fixture-4">
-                    <option selected>Choose...</option>
-                    <option value="tension">Tension</option>
-                    <option value="compression">Compression</option>
-                    <option value="three-point-bending">Three-Points Bending</option>
-                </select>
+              <%= form.label :tf4,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-4"%>
+              <%= form.select(:tf4, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-4"}) %>
             </div>
         </div>
 
 <div class="mb-3 set vis" id="low-force-fatigue-sample-no-is-5">
             <div class="input-group mt-3 mb-3">
-                <label class="input-group-text" for="sample-code-5">Sample Code</label>
-                <input type="text" class="form-control" id="sample-code-5" placeholder="Sample 5 Code">
+              <%= form.label :sc5, "Sample Code", class:"input-group-text",for:"sample-code-5"%>
+              <%= form.text_field :sc5, class:"form-control", id:"sample-code-5", placeholder:"Sample 5 Code"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="sample-type-5">Sample Type</label>
-                <select class="form-select" id="sample-type-5">
-                   <option selected>Choose...</option>
-                    <option value="Polymers">Polymers</option>
-                    <option value="Rubber">Rubber</option>
-                    <option value="Soft Materials">Soft Materials</option>
-                    <option value="Others">Others</option>
-                </select>
+              <%= form.label :st5,"Sample Type", class:"input-group-text", for:"sample-type-5"%>
+              <%= form.select(:st5, ["Polymers","Rubber","Soft Materials","Others"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type-5"}) %>
             </div>
+
             <div class="input-group mb-3 vis" id='tag5'>
-                <input type="text" class="form-control" id="sample-type-5-other-mention" placeholder="Mention">
+              <%= form.text_field :m5 , type:"text", class:"form-control", id:"sample-type-5-other-mention", placeholder:"Mention"%>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-test-5">Type of Test</label>
-                <select class="form-select" id="type-of-test-5">
-                    <option selected>Choose...</option>
-                    <option value="dma">DMA</option>
-                    <option value="fatigue">Fatigue</option>
-                    <option value="creep">Creep</option>
-                </select>
+              <%= form.label :tt5,"Type of Test", class:"input-group-text", for:"type-of-test-5"%>
+              <%= form.select(:tt5, ["DMA","Fatigue","Creep"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-test-2"}) %>
             </div>
+
             <div class="input-group mb-3">
-                <label class="input-group-text" for="type-of-fixture-5">Type of Fixture</label>
-                <select class="form-select" id="type-of-fixture-5">
-                    <option selected>Choose...</option>
-                    <option value="tension">Tension</option>
-                    <option value="compression">Compression</option>
-                    <option value="three-point-bending">Three-Points Bending</option>
-                </select>
+              <%= form.label :tf5,"Type of Fixture", class:"input-group-text", for:"type-of-fixture-5"%>
+              <%= form.select(:tf5, ["Tension","Compression","Three-Points Bending"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "type-of-fixture-5"}) %>
             </div>
         </div>
 
 
 
-        <div class="input-group mt-3 mb-3" id="user-file-input">
-            <label for="upload-file" class="input-group-text ">Attach Material properties in .pdf<i class="text-muted">(optional)</i></label>
-            <input type="file" class="form-control " id="upload-file" >
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Attach Material properties in .pdf" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
         </div>
 
-        <div class="mb-3">
-            <label class="input-group-text" for="tell-us-more">Tell us more about testing requirement</label>
-            <textarea class="form-control" id="tell-us-more" rows="3"></textarea>
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
         </div>
 
         <div class="actions">
-            <button type="submit" class="btn btn-primary" id="sbt">Book Slot</button>
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
         </div>
 
 
@@ -250,7 +206,7 @@
 
 
 <script>
-    let sample_no = document.getElementById('sample-no-of-low-fatigue');
+    let sample_no = document.getElementById('sample-no');
     let step1 = document.getElementById('low-force-fatigue-sample-no-is-1');
     let step2 = document.getElementById('low-force-fatigue-sample-no-is-2');
     let step3 = document.getElementById('low-force-fatigue-sample-no-is-3');
@@ -274,26 +230,26 @@
         step4.classList.add('vis');
         step5.classList.add('vis');
 
-        if (sample_no.value == '1') {
+        if (sample_no.value == 1) {
         step1.classList.toggle('vis');
         }
 
-        if (sample_no.value == '2') {
+        if (sample_no.value == 2) {
         step1.classList.toggle('vis');
         step2.classList.toggle('vis');
         }
-        if (sample_no.value == '3') {
+        if (sample_no.value == 3) {
             step1.classList.toggle('vis');
             step2.classList.toggle('vis');
             step3.classList.toggle('vis');
         }
-        if (sample_no.value == '4') {
+        if (sample_no.value == 4) {
             step1.classList.toggle('vis');
             step2.classList.toggle('vis');
             step3.classList.toggle('vis');
             step4.classList.toggle('vis');
         }
-        if (sample_no.value == '5') {
+        if (sample_no.value == 5) {
             step1.classList.toggle('vis');
             step2.classList.toggle('vis');
             step3.classList.toggle('vis');
@@ -340,158 +296,4 @@
     })
 </script>
 
-
-  <div class="field">
-    <%= form.label :sc1 %>
-    <%= form.text_field :sc1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :st1 %>
-    <%= form.text_field :st1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tt1 %>
-    <%= form.text_field :tt1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tf1 %>
-    <%= form.text_field :tf1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sc2 %>
-    <%= form.text_field :sc2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :st2 %>
-    <%= form.text_field :st2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tt2 %>
-    <%= form.text_field :tt2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tf2 %>
-    <%= form.text_field :tf2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sc3 %>
-    <%= form.text_field :sc3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :st3 %>
-    <%= form.text_field :st3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tt3 %>
-    <%= form.text_field :tt3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tf3 %>
-    <%= form.text_field :tf3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sc4 %>
-    <%= form.text_field :sc4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :st4 %>
-    <%= form.text_field :st4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tt4 %>
-    <%= form.text_field :tt4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tf4 %>
-    <%= form.text_field :tf4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sc5 %>
-    <%= form.text_field :sc5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :st5 %>
-    <%= form.text_field :st5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tt5 %>
-    <%= form.text_field :tt5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tf5 %>
-    <%= form.text_field :tf5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :more %>
-    <%= form.text_field :more %>
-  </div>
-
-  <div class="field">
-    <%= form.label :slottime %>
-    <%= form.time_select :slottime %>
-  </div>
-
-  <div class="field">
-    <%= form.label :slotdate %>
-    <%= form.date_select :slotdate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :debit %>
-    <%= form.text_field :debit %>
-  </div>
-
-  <div class="field">
-    <%= form.label :m1 %>
-    <%= form.text_field :m1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :m2 %>
-    <%= form.text_field :m2 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :m3 %>
-    <%= form.text_field :m3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :m4 %>
-    <%= form.text_field :m4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :m5 %>
-    <%= form.text_field :m5 %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

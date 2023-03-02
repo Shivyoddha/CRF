@@ -26,6 +26,7 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.status="pending"
     respond_to do |format|
       if @three_d_scanner.save
+        ThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to three_d_scanner_url(@three_d_scanner), notice: "Three d scanner was successfully created." }
         format.json { render :show, status: :created, location: @three_d_scanner }
       else
