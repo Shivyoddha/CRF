@@ -38,7 +38,7 @@
     </div>
 
     <div class="input-group mb-3">
-      <%= form.label :mould,"No of Samples", class:"input-group-text", for:"mould-required"%>
+      <%= form.label :mould,"Mould Required", class:"input-group-text", for:"mould-required"%>
       <%= form.select(:mould, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "mould-required",:required => true}) %>
     </div>
 
@@ -203,11 +203,6 @@
     <%= form.text_field :suspension %>
   </div>
 
-  <div class="field">
-    <%= form.label :lapping %>
-    <%= form.text_field :lapping %>
-  </div>
 
 
-  </div>
 <% end %>
