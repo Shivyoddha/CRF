@@ -74,7 +74,3 @@ class SlotMailerController < ApplicationController
   def zeta_potential_size
   end
   end
-
-
-
-end

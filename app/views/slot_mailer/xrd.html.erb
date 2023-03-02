@@ -20,7 +20,7 @@
           <div class="left">
               <div class="element">
                   <span>Applicant Name:</span>
-                  <span class="fw-bold data"> <%= @user.firstname %> <%= @user.lastname %> </span>
+                  <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
               </div>
               <div class="element">
                   <span>Applicant Email:</span>
@@ -94,7 +94,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                    <span class="text-muted element"><i> <%= @xrd.debit%></i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -147,7 +147,7 @@
             </div>
 
             <div class="generated-on">
-                <i>Generated on: December 23,2022/ 1:18PM</i>
+                <i>Generated on: <%= @xrd.created_at%></i>
             </div>
 
         </div>

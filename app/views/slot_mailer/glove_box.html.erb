@@ -1,0 +1,166 @@
+<div id="margin">
+    <div class="container-11">
+          <div class="logo">
+              <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+          </div>
+          <div class="crf-heading text-center">
+              <h1 class="fw-bold" style="font-family: 'Montserrat', sans-serif;">Central Research Facility</h1>
+              <h3>National Institute of Technology Karnataka, Surathkal </h3>
+              <p><i>www.nitk.ac.in</i></p>
+          </div>
+      </div>
+
+      <!-- equipment name -->
+      <div class="equipment">
+          <h2 class="text-center" id="equip-heading"><u>Glove Box</u></h2>
+      </div>
+
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/GB/<%=@glove_box.id%></span>
+      <div class = "user-info" >
+          <div class="left">
+              <div class="element">
+                  <span>Applicant Name:</span>
+                  <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+              </div>
+              <div class="element">
+                  <span>Applicant Email:</span>
+                  <span class="fw-bold data"> <%= @user.email %></span>
+              </div>
+              <div class="element">
+                  <span>Department:</span>
+                  <span class="fw-bold data"> <%= @user.department %></span>
+              </div>
+          </div>
+          <div class = "right">
+                <div class="element">
+
+                    <span>Contact No:</span>
+                    <span class="fw-bold data"> <%= @user.contact %></span>
+                </div>
+
+            <div class="element">
+                <span>Course:</span>
+                <span class="fw-bold data"> <%= @user.course %></span>
+            </div>
+
+          </div>
+      </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
+        <div id="sample-details">
+            <div class="left">
+                <div id="no-of-sample" class="element">
+                    <span>Wt. of Samples:<span><span class="fw-bold data"><%=@glove_box.weight%><span>
+                </div>
+
+
+            </div>
+
+            <div class="right">
+                <div id="sample-type" class="element">
+                    <span>No of Days:<span><span class="fw-bold data"><%=@glove_box.days%><span>
+                </div>
+
+            </div>
+
+
+
+            </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Safety Informatiopn</u></p>
+        <div id="safety-info">
+            <div class="left">
+                <div id="measurement" class="element">
+                    <span>Toxicity:<span><span class="fw-bold data"><%=@glove_box.toxicity%><span>
+                </div>
+                <div id="compatibilty" class="element">
+                    <span>Carcinogenic:<span><span class="fw-bold data"><%=@glove_box.carcinogenic%><span>
+                </div>
+
+            </div>
+
+            <div class="right">
+
+               <div id="compatibilty" class="element">
+                    <span>Whether Incompatibile with any material:<span><span class="fw-bold data"><%=@glove_box.incompatible%><span>
+                </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        <div id="testing-req-div">
+            <div id="testing-req" class="element">
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@glove_box.more%><span>
+            </div>
+        </div>
+
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left-3d-pro" class="element">
+                <div>
+                    <span>Supervisor Name:</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div id="debit-head">
+                    <span class="text-muted element"><i><%=@glove_box.debit%></i></span>
+                </div>
+
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span>Supervisor Signature</span>
+                </div>
+            </div>
+
+            <div id="signatures-upper-right-3d-pro" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty In-Charge:</span>
+                </div>
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div>
+                    <span id="department"><b>(Dept. Of MME, NITK)</b></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="notes ">
+            <p class="fw-bold text-center">Note:</p>
+            <section class="font-smaller">
+                <p>I confirm that the samples submitted for analysis are for research purpose only and the above furnished details are correct and true to the best of my knowledge I understand that I will be held resposible for any damages arising from incorrect information provided by me against "Safety Information".</p>
+                <p><b> I agree to acknowledge CRF, NITK for providing (Prolab GB II, ProRes Scientific LLP, INDIA) analytical facility for my research work, in my report/thesis publications conference. I also agree to send the publication reference (DOI or other revelant information) to <u>office.crf@nitk.edu.in</u></b></p>
+                <p> I declare that the "Content of this report is meant for our information only and we will not use the content of this report for advertisement, evidence, litigation or quote as certificate to third party</p>
+                <p>I accept that all the issued reports/results (soft/hard) will not carry any Signature or Seal and Stamp of CRF-NITK</p>
+                <p class="text-center"><i>Declaration: I hereby agree to abide by the rules and regulations of the Glove-Box laboratory.</i></p>
+            </section>
+
+            <div class="signatures">
+                <div class="student-sign">
+                    <input id="student" type="textfield"/>
+                    <p>Student signature after experiment</p>
+                </div>
+                <div class="chairman-sign">
+                    <center>Sd/-</center>
+                    <i>Chairman CRF</i>
+                </div>
+            </div>
+
+            <div class="generated-on mt-3">
+                <i><%=@user.created_at%></i>
+            </div>
+
+        </div>
+
+</div>

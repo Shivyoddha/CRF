@@ -8,8 +8,8 @@ class ImpedanceAnalyzerMailer < ApplicationMailer
   def Mail
     @impedance_analies=ImpedanceAnaly.find(params[:id])
     @user=User.find(params[:userid])
-    attachments["impedance_analies.pdf"] = WickedPdf.new.pdf_from_string(
-    render_to_string(template: 'slot_mailer/impedance_analyzer.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    attachments["impedence_analyzer.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/impedence_analyzer.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
 
 
