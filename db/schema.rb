@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_28_143240) do
+ActiveRecord::Schema.define(version: 2023_03_01_134224) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,10 +77,6 @@ ActiveRecord::Schema.define(version: 2023_02_28_143240) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.date "slotdate"
-    t.time "slottime"
-    t.string "debit"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -515,6 +511,24 @@ ActiveRecord::Schema.define(version: 2023_02_28_143240) do
     t.index ["user_id"], name: "index_ion_chromotographies_on_user_id"
   end
 
+  create_table "lasers", force: :cascade do |t|
+    t.integer "sample"
+    t.string "composition"
+    t.string "stype"
+    t.string "temp_points"
+    t.string "toxicity"
+    t.string "compatibility"
+    t.string "more"
+    t.string "debit"
+    t.string "slotdate"
+    t.string "slottime"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_lasers_on_user_id"
+  end
+
   create_table "liquid_nitrogens", force: :cascade do |t|
     t.float "quantity"
     t.string "purpose"
@@ -838,8 +852,8 @@ ActiveRecord::Schema.define(version: 2023_02_28_143240) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -952,6 +966,7 @@ ActiveRecord::Schema.define(version: 2023_02_28_143240) do
   add_foreign_key "impedance_analies", "users"
   add_foreign_key "integrated_multi_role_testers", "users"
   add_foreign_key "ion_chromotographies", "users"
+  add_foreign_key "lasers", "users"
   add_foreign_key "liquid_nitrogens", "users"
   add_foreign_key "low_fatigues", "users"
   add_foreign_key "milli_qs", "users"

@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lasers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Stype</th>
+      <th>Temp points</th>
+      <th>Toxicity</th>
+      <th>Compatibility</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lasers.each do |laser| %>
+      <tr>
+        <td><%= laser.sample %></td>
+        <td><%= laser.composition %></td>
+        <td><%= laser.stype %></td>
+        <td><%= laser.temp_points %></td>
+        <td><%= laser.toxicity %></td>
+        <td><%= laser.compatibility %></td>
+        <td><%= laser.more %></td>
+        <td><%= laser.debit %></td>
+        <td><%= laser.slotdate %></td>
+        <td><%= laser.slottime %></td>
+        <td><%= laser.status %></td>
+        <td><%= link_to 'Show', laser %></td>
+        <td><%= link_to 'Edit', edit_laser_path(laser) %></td>
+        <td><%= link_to 'Destroy', laser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Laser', new_laser_path %>

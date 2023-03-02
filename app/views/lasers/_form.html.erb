@@ -1,0 +1,109 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Laser Flash Analyser</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: laser) do |form| %>
+        <% if laser.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(laser.errors.count, "error") %> prohibited this laser from being saved:</h2>
+
+            <ul>
+              <% laser.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class="input-group mb-3">
+        <%= form.label :sample,"No of Samples", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+        <%= form.select(:sample, ['1','2'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+      </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :composition ,"Sample Composition",class:"input-group-text",for:"temp"%>
+      <%= form.text_field :composition,class:"form-control",id:"temp",placeholder:"Ex. Al2O3" %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"Sample Type", class:"input-group-text", for:"sample-type"%>
+      <%= form.select(:sample, ['Metal','Ceramic','Polymer'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+    </div>
+
+     <div class="input-group mb-3">
+       <%= form.label :temp_points,"No of Temp Points", class:"input-group-text", for:"temp-points"%>
+       <%= form.select(:temp_points, ['1','2','3','4','5','6','7','8','9','10'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "temp-points",:required => true}) %>
+    </div>
+
+
+
+    <div>
+        <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+    </div>
+
+    <p class="fw-bold text-danger">Toxicity</p>
+    <div class="input-group mb-3">
+
+      <div>
+        <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <div class="form-check">
+              <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+          </div>
+          <div class="form-check">
+                <%= form.radio_button :toxicity, 'non-toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+          </div>
+      </div>
+    </div>
+
+
+    <p class="fw-bold text-danger">Compatibility</p>
+    <div class="input-group mb-3">
+
+      <div>
+        <%= form.label :compatibility, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <div class="form-check">
+              <%= form.radio_button :compatibility, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Explosive
+          </div>
+          <div class="form-check">
+                <%= form.radio_button :compatibility, 'non-toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Explosive
+          </div>
+    </div>
+
+    <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    </div>
+  </div>
+</div>
+<%end%>
+<%=render "partials/footer" %>

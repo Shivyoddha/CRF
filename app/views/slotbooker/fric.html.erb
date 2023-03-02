@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'All Slots',slotbooker_fric_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_fric1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_fric2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_fric3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_fric4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -69,10 +69,17 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                         <th scope="col" id="sample-material">Sample Material</th>
+                         <th scope="col" id="process-type">Process Type</th>
+                         <th scope="col" id="tool">Tool Required</th>
+                         <th scope="col" id="tool">Tool Nomenclature</th>
+                         <th scope="col" id="rotation-process">Rotational Speed</th>
+                         <th scope="col" id="welding-process">Welding Speed</th>
+                         <th scope="col" id="thrust-force">Thrust Force</th>
+                         <th scope="col" id="weld-temp">Welding Temp (IR type)</th>
+                         <th scope="col" id="acoustic-measure">Acoustic Measurement</th>
+                         <th scope="col" id="depth">Depth(Penetration Parameter)</th>
+                         <th scope="col" id="thrust-force-penetrate">Thrust Force(Penetration Parameter)</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +90,7 @@
                 </thead>
                 <tbody>
 
-                      <% Friction.all.each do |fric|%>
+                      <% @fric.all.each do |fric|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/FRIC/<%=fric.id %>	</th>

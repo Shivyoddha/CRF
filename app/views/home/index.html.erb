@@ -628,6 +628,67 @@
    </div>
 
 
+   <div class="equipment">
+      <%# card-10 Laser Flash Analyser%>
+      <div class="card">
+        <div class="equipment-img-wrap" >
+          <div class="equipment-img">
+              <div id="uv-vis-images" class="carousel slide">
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <%=image_tag 'uv-vis-images/UV1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                      </div>
+                  </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#uv-vis-images" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#uv-vis-images" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+              </div>
+          </div>
+       </div>
+          <div class="card-body">
+              <div id="more">
+                  <h5 class="card-title fw-bold">Laser Flash Analyser</h5>
+                  <span class="badge rounded-pill status-active">Active</span> <!--for time being active state is set -->
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
+              </div>
+
+              <span class="fw-bold">Located At</span>
+              <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+              <div class="wrap-action">
+                  <%= link_to "Know More", know_laser_path ,class:"btn btn-primary know-more"%>
+                  <div class="dropdown book">
+                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Book Slot
+                      </button>
+
+                      <ul class="dropdown-menu">
+                            <li> <%= link_to "Regular Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer">
+              <div class="card-footer-express">
+                  <small class="text-muted card-footer-express">Express Slot:</small>
+                  <div class="badge badge-success badge-outlined">Available</div>
+                  <div class="badge badge-warning badge-outlined">Not Available</div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
 
 
    <div class="equipment">

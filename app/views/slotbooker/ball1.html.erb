@@ -1,0 +1,167 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-slot-booker">
+
+    <div id="navigation" class="font-quiucksand">
+        <!--below is the button of Nitk CRF logo-->
+        <div id="navigation-logo">
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+        </div>
+
+        <div class="sidelinks">
+
+            <h2 class="fw-bold text-center">Navigation</h2>
+            <ul class="sidelinks-model-list">
+                <%# below are code to get items on the navigation pane %>
+                <li class="nav-item">
+                        <%= link_to 'All Slots',slotbooker_ball_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to 'Pending Slots',slotbooker_ball1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Alloted Slots',slotbooker_ball2_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Completed Slots',slotbooker_ball3_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                      <%= link_to 'Cancelled Slots',slotbooker_ball4_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<%# the content section is coded here %>
+<div id="slots">
+    <div id="current-tab">
+        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+    </div>
+
+
+    <div id="slot-details">
+    <div>
+        <table class="table table-hover font-quicksand">
+            <thead>
+                <tr class="table-head font-unbounded">
+                    <th scope="col" id="application-no">Appl No</th>
+                    <th scope="col" id="name">Name</th>
+                    <th scope="col" id="institute">Institute</th>
+                    <th scope="col" id="department">Department</th>
+                    <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col" id="sample-no">No of Samples</th>
+                    <th scope="col" id="sample-no">Specific Sample Type</th>
+                    <th scope="col" id="feed-material">Feed Material</th>
+                    <th scope="col" id="ball-mill-type">Ball Milling Type</th>
+                    <th scope="col" id="grind-feed">Grind Feed Type</th>
+                    <th scope="col" id="grain-size">Grain Size (<3mm)</th>
+                    <th scope="col" id="grind-time"> Grinding Time</th>
+                    <th scope="col" id="hardness">Hardness</th>
+                    <th scope="col" id="speed">Speed (<2000)</th>
+                    <th scope="col" id="toxicity">Toxicity</th>
+                    <th scope="col" id="compatability">Compatability</th>
+                    <th scope="col" id="request">More info</th>
+                    <th scope="col" id="booked-on">Booked On</th>
+                    <th scope="col" id="slot-date">Slot Date</th>
+                    <th scope="col" id="slot-time">Slot Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" id="reference-paper">Reference Paper</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                  <% @ball1.all.each do |ball|%>
+                  <tr>
+                    <!-- Button trigger modal -->
+                    <th scope="row">CRF/BALL/<%=ball.id %>	</th>
+                    <td> <%= ball.user.name%> </td>
+                    <td> <%= ball.user.orgname%> </td>
+                    <td> <%= ball.user.department%> </td>
+                    <td> <%= ball.user.contact%> </td>
+                    <td> <%= ball.sample%> </td>
+                    <td> <%= ball.specify%> </td>
+                    <td> <%= ball.feed%> </td>
+                    <td> <%= ball.btype%> </td>
+                    <td> <%= ball.grind%> </td>
+                    <td> <%= ball.grinding%> </td>
+                    <td> <%= ball.hardness%> </td>
+                    <td> <%= ball.speed%></td>
+                    <td> <%= ball.toxicity%> </td>
+                    <td> <%= ball.compatibility%>
+                    <td> <%= ball.more%> </td>
+                    <td>Booked</td>
+
+                    <td> <%= ball.slotdate %></td>
+
+                    <td> <%= ball.slottime %></td>
+
+                      <td><%= ball.status%></td>
+                    <%ball.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                 <%end%>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                       <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                            Assign
+                            </button> -->
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
+                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+<%end%>
+                                    </div>
+                                </div>
+  </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+
+    </div>
+
+
+</div>

@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'All Slots',slotbooker_spark_path,class:"nav-link active sidelink-wrap"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_spark1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_spark2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_spark3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_spark4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -70,15 +70,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="sample-no Fe">No of Samples</th>
-                        <th scope="col" id="sample-no Ni">No of Samples</th>
-                        <th scope="col" id="sample-no Zn">No of Samples</th>
-                        <th scope="col" id="sample-no Sn">No of Samples</th>
-                        <th scope="col" id="sample-no Cu">No of Samples</th>
-                        <th scope="col" id="sample-no Ti">No of Samples</th>
-                        <th scope="col" id="sample-no Al">No of Samples</th>
-                        <th scope="col" id="sample-no Pb">No of Samples</th>
-                        <th scope="col" id="sample-no Mg">No of Samples</th>
+                        <th scope="col" id="sample-no Fe">No of Samples of each element</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -92,22 +84,23 @@
                       <% @spark.all.each do |xrds|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/SPARK/<%=xrds.id %>	</th>
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
                         <td> <%= xrds.sample%> </td>
                         <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.samplefe%> </td>
-                        <td> <%= xrds.sampleni%> </td>
-                        <td> <%= xrds.samplezn%> </td>
-                        <td> <%= xrds.samplesn%> </td>
-                        <td> <%= xrds.samplecu%> </td>
-                        <td> <%= xrds.sampleti%> </td>
-                        <td> <%= xrds.sampleal%> </td>
-                        <td> <%= xrds.samplepb%> </td>
-                        <td> <%= xrds.samplemg%> </td>
+                        <td> Fe Sample:<nobr><%= xrds.samplefe%><br>
+                            Ni Sample:<%= xrds.sampleni%><br>
+                             Zn Sample: <%= xrds.samplezn%><br>
+                             Sn sample: <%= xrds.samplesn%><br>
+                             Cu Sample: <%= xrds.samplecu%><br>
+                             Ti Sample: <%= xrds.sampleti%><br>
+                             Al Sample: <%= xrds.sampleal%><br>
+                             Pb Sample: <%= xrds.samplepb%><br>
+                             Mg Sample: <%= xrds.samplemg%>
+                         </td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
 
