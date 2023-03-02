@@ -51,8 +51,7 @@ config.action_controller.perform_caching = true
  user_name:            'crfnitk@gmail.com',
  password:            'hcgzyqpdxgcnxwha',
  authentication:       :plain,
- enable_starttls_auto: true,
- tls:                    true}
+ enable_starttls_auto: true}
  config.action_mailer.default_url_op
   # Don't care if the mailer can't send.
   # Print deprecation notices to the Rails logger.
