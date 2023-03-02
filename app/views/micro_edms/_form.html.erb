@@ -1,0 +1,325 @@
+<%= form_with(model: micro_edm) do |form| %>
+  <% if micro_edm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(micro_edm.errors.count, "error") %> prohibited this micro_edm from being saved:</h2>
+
+      <ul>
+        <% micro_edm.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sample %>
+    <%= form.number_field :sample %>
+  </div>
+
+  <div class="field">
+    <%= form.label :composition %>
+    <%= form.text_field :composition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :toolelectrode %>
+    <%= form.text_field :toolelectrode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :toolmaterial %>
+    <%= form.text_field :toolmaterial %>
+  </div>
+
+  <div class="field">
+    <%= form.label :milling %>
+    <%= form.text_field :milling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :turning %>
+    <%= form.text_field :turning %>
+  </div>
+
+  <div class="field">
+    <%= form.label :drilling %>
+    <%= form.text_field :drilling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edm %>
+    <%= form.text_field :edm %>
+  </div>
+
+  <div class="field">
+    <%= form.label :edg %>
+    <%= form.text_field :edg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :more %>
+    <%= form.text_field :more %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit %>
+    <%= form.text_field :debit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slotdate %>
+    <%= form.date_select :slotdate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slottime %>
+    <%= form.time_select :slottime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div id="search-div">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </form>
+      </div>
+
+
+
+      <div id="profile-div">
+        <div class="btn-group btn-profile">
+          <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown"%>
+          <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu font-quicksand">
+            <div>
+              <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+              <a class="dropdown-item" href="#">UserName</a>
+            </div>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#">My Slots</a></li>
+            <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1> μ-EDM</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: micro_edm) do |form| %>
+        <% if micro_edm.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(micro_edm.errors.count, "error") %> prohibited this micro_edm from being saved:</h2>
+
+            <ul>
+              <% micro_edm.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="sample_no">No of Sample</label>
+        <select class="form-select" id="sample_no">
+        <option selected>Choose...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="sample_composition">Samples Composition</label>
+      <input type="text" class="form-control" id="sample_composition" placeholder="">
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="tool">Tool/Electrode</label>
+      <select class="form-select" id="tool">
+        <option selected>Choose...</option>
+        <option value="From Applicant">From Applicant</option>
+        <option value="From Lab">From Lab</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="tool_nomenclature">Tool Material/Nomenclature</label>
+      <input type="text" class="form-control" id="tool_nomenclature" placeholder="">
+    </div>
+
+    <div>
+        <p class="fw-bold text-info">Measurement Information</p>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">Micro-Milling</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">Micro-Turning</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+        <label class="form-check-label" for="inlineCheckbox3">Micro-Drilling</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+        <label class="form-check-label" for="inlineCheckbox4">Micro-EDM</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
+        <label class="form-check-label" for="inlineCheckbox5">Micro-EDG</label>
+      </div>
+    </div>
+
+    <div class="text-success">
+      <p>If process parameters are known, click above checkboxes</p>
+    </div>
+
+    <div class="process-param">
+      <div class="text-warning">
+        <p>Process Parameter</p>
+      </div>
+
+      <div>
+
+        <div>
+          <p class="fw-bold">Milling</p>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="feed" placeholder="Feed">
+          <label class="input-group-text" for="feed">mm/min</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="feed" placeholder="Tool Speed">
+          <label class="input-group-text" for="feed">rpm</label>
+        </div>
+
+        <div>
+          <p class="fw-bold">Turning</p>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="feed" placeholder="Feed">
+          <label class="input-group-text" for="feed">mm/min</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="tool_speed" placeholder="Tool Speed">
+          <label class="input-group-text" for="tool_speed">rpm</label>
+        </div>
+
+        <div>
+          <p class="fw-bold">Drilling</p>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="depth" placeholder="Depth">
+          <label class="input-group-text" for="depth">mm</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="tool_speed" placeholder="Tool Speed">
+          <label class="input-group-text" for="tool_speed">rpm</label>
+        </div>
+
+        <div class="EDG" id="EDGParameter">
+          <p class="fw-bold" >EDG</p>
+        </div>
+
+        <div>
+            <label class="form-check-label fw-bold" for="flexRadioDefault2">Tool Polarity</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tool-polarity" id="flexRadiotoxicDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    +ve
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tool-polarity" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    -ve
+                </label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="wire_tension" placeholder="Wire Tension">
+          <label class="input-group-text" for="wire_tension">%</label>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="wire_feed" placeholder="Wire Feed">
+          <label class="input-group-text" for="wire_feed">mm</label>
+        </div>
+    </div>
+
+    <div class="input-group mb-3" id="ref-file">
+      <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+  <div id="instruct">
+  <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+   </div>
+
+
+    <div class="mb-3">
+      <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    </div>
+
+  </div>
+</div>
+</div>
+<%end%>
+<%=render "partials/footer" %>

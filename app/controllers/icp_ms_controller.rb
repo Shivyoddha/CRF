@@ -12,7 +12,8 @@ class IcpMsController < ApplicationController
 
   # GET /icp_ms/new
   def new
-    @icp_m = IcpM.new
+    @user=User.find(params[:id])
+    @icp_m = IcpM.new()
   end
 
   # GET /icp_ms/1/edit
@@ -22,9 +23,13 @@ class IcpMsController < ApplicationController
   # POST /icp_ms or /icp_ms.json
   def create
     @icp_m = IcpM.new(icp_m_params)
+    @icp_m.user=current_user
+    @icp_m.status="pending"
+
 
     respond_to do |format|
       if @icp_m.save
+        IcpMMailer.with(id:@icp_m.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully created." }
         format.json { render :show, status: :created, location: @icp_m }
       else
@@ -38,6 +43,7 @@ class IcpMsController < ApplicationController
   def update
     respond_to do |format|
       if @icp_m.update(icp_m_params)
+         @icp_m.status="alloted"
         format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully updated." }
         format.json { render :show, status: :ok, location: @icp_m }
       else
@@ -65,6 +71,6 @@ class IcpMsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def icp_m_params
-      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :storage, :toxicity, :compatibility, :hazard, :more)
+      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id ,references: [])
     end
 end

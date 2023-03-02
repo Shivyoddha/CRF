@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Impedance Analies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Capacitance</th>
+      <th>Dielectric</th>
+      <th>Iv</th>
+      <th>Freqrange</th>
+      <th>Currentrange</th>
+      <th>Voltagerange</th>
+      <th>Impedance</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @impedance_analies.each do |impedance_analy| %>
+      <tr>
+        <td><%= impedance_analy.sample %></td>
+        <td><%= impedance_analy.composition %></td>
+        <td><%= impedance_analy.capacitance %></td>
+        <td><%= impedance_analy.dielectric %></td>
+        <td><%= impedance_analy.iv %></td>
+        <td><%= impedance_analy.freqrange %></td>
+        <td><%= impedance_analy.currentrange %></td>
+        <td><%= impedance_analy.voltagerange %></td>
+        <td><%= impedance_analy.impedance %></td>
+        <td><%= impedance_analy.more %></td>
+        <td><%= impedance_analy.debit %></td>
+        <td><%= impedance_analy.slotdate %></td>
+        <td><%= impedance_analy.slottime %></td>
+        <td><%= impedance_analy.status %></td>
+        <td><%= link_to 'Show', impedance_analy %></td>
+        <td><%= link_to 'Edit', edit_impedance_analy_path(impedance_analy) %></td>
+        <td><%= link_to 'Destroy', impedance_analy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Impedance Analy', new_impedance_analy_path %>

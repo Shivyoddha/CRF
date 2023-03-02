@@ -1,0 +1,113 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Impedance Analyzer</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: impedance_analy) do |form| %>
+        <% if impedance_analy.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(impedance_analy.errors.count, "error") %> prohibited this impedance_analy from being saved:</h2>
+
+            <ul>
+              <% impedance_analy.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <div class="input-group mb-3">
+      <div class="input-group mb-3">
+        <%= form.label :sample, class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+        <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+      </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :composition,"Sample Composition",class:"input-group-text",for:"sample-composition"%>
+      <%= form.text_field :composition,class:"form-control",id:"sample-composition",placeholder:"Possible Elements"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group mb-3">
+        <div class="form-check form-check-inline">
+              <%= form.check_box :capacitance,{:class=>'form-check-input'}, true, false%>
+              <%= form.label :capacitance,"Capacitance" ,class:"form-check-label",for:"capacitance"%>
+        </div>
+        <div class="form-check form-check-inline">
+            <%= form.check_box :impedance,{:class=>'form-check-input'}, true, false%>
+          <%= form.label :impedance,"Impedance" ,class:"form-check-label",for:"impedance"%>
+        </div>
+        <div class="form-check form-check-inline">
+              <%= form.check_box :dielectric,{:class=>'form-check-input'}, true, false%>
+                <%= form.label :dielectric,"Dielectric" ,class:"form-check-label",for:"dielectric"%>
+        </div>
+        <div class="form-check form-check-inline">
+              <%= form.check_box :iv,{:class=>'form-check-input'}, true, false%>
+                <%= form.label :iv,"I-V" ,class:"form-check-label",for:"i-v"%>
+        </div>
+    </div>
+    </div>
+
+    <div>
+          <h6 class="text-success">Symbol Map: [Ω, V, A, Hz]</h6>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :freqrange,"Frequency Range",class:"input-group-text",for:"freq-range" %>
+      <%= form.text_field :freqrange,class:"form-control",id:"freq-range",placeholder:"20Hz to 20MHz"%>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.label :currentrange,"Curent Range",class:"input-group-text",for:"curr-range"%>
+    <%= form.text_field :currentrange, class:"form-control",id:"curr-range",placeholder:"0A to ±100mA"%>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.label :voltagerange,"Voltage Range",class:"input-group-text",for:"volt-range"%>
+      <%= form.text_field :voltagerange,class:"form-control",id:"volt-range",placeholder:"0V to ±40V"%>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.label :losstangent,"Impedance/Loss Tangent",class:"input-group-text",for:"impedance-loss"%>
+      <%= form.text_field :losstangent,class:"form-control",id:"impedance-loss",placeholder:"25mΩ to 40MΩ"%>
+    </div>
+
+
+    <div class="input-group mb-3" id="ref-file">
+      <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+      <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+    </div>
+
+
+
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+
+
+
+    <div id="instruct">
+        <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    </div>
+
+  </div>
+</div>
+<%end%>
+<%=render "partials/footer" %>

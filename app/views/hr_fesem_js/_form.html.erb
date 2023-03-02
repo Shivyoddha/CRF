@@ -26,60 +26,60 @@
     <div class='hero'>
         <div class="input-group mb-3">
           <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
-          <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+          <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
         </div>
 
         <div class="input-group mb-3">
-          <%= form.label :composition, "Sample Composition", class:"input-group-text", for:"inputGroupSelect03" %>
-          <%= form.text_field :composition, type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Possible Elements" %>
+          <%= form.label :composition, "Sample Composition", class:"input-group-text", for:"composition" %>
+          <%= form.text_field :composition, type:"text", class:"form-control", id:"composition", placeholder:"Possible Elements" %>
         </div>
 
         <div class="input-group mb-3">
-            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01"%>
-            <%= form.select(:stype, ['Powder', 'Metal','Ceramic','Polymer'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"sample-type" %>
+            <%= form.select(:stype, ['Powder', 'Metal','Ceramic','Polymer'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
         </div>
 
         <div class="input-group mb-3">
-          <%= form.label :sphase,"Sample Phase", class:"input-group-text", for:"inputGroupSelect03" %>
-          <%= form.text_field :sphase, class:"form-control", id:"inputGroupSelect03", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
+          <%= form.label :sphase,"Sample Phase", class:"input-group-text", for:"phase" %>
+          <%= form.text_field :sphase, class:"form-control", id:"phase", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
         </div>
 
         <div>
           <div>
-            <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+            <%= form.label :measurement, "Measurement Required", class:"input-group-text" %>
             <div class="form-check">
             <%= form.check_box :measurement,{}, true, false%>
-            <%= form.label "SEM", class:"form-check-label", for:"flexCheckChecked"%>
+            <%= form.label "SEM", class:"form-check-label" %>
             </div>
         </div>
 
 
         <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01f">EDS Required</label>
-          <select class="form-select" id="inputGroupSelect01f">
+          <label class="input-group-text" for="eds-reqd">EDS Required</label>
+          <select class="form-select" id="eds-reqd">
             <option selected>Choose...</option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
-         <div>
+         <div id="eds-radio" class="vis">
               <label class="form-check-label fw-bold text-success" for="flexRadioDefault2">EDS:</label>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="flexRadioDefault2" checked>
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <input class="form-check-input" type="radio" name="eds" id="map" checked>
+                  <label class="form-check-label" for="map">
                       Mapping/Line
                   </label>
               </div>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="eds" id="area">
+                  <label class="form-check-label" for="area">
                       Area/Point
                   </label>
               </div>
 
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="flexRadioDefault1">
-                  <label class="form-check-label" for="flexRadioDefault1">
+                  <input class="form-check-input" type="radio" name="eds" id="both">
+                  <label class="form-check-label" for="both">
                       Both
                   </label>
               </div>
@@ -90,15 +90,15 @@
           </div>
 
           <div class="input-group mb-3">
-              <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"inputGroupSelect04" %>
-              <%= form.select(:toxic, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+              <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"toxic" %>
+              <%= form.select(:toxic, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "toxic",:required => true}) %>
             </div>
 
 
 
             <div class="input-group mb-3">
-              <%= form.label :conducting, "Sample is Conducting?",class:"input-group-text", for:"inputGroupSelect04" %>
-              <%= form.select(:conducting, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+              <%= form.label :conducting, "Sample is Conducting?",class:"input-group-text", for:"conduct" %>
+              <%= form.select(:conducting, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "conduct",:required => true}) %>
             </div>
 
 
@@ -124,3 +124,20 @@
   <%=render "partials/footer" %>
 
   <% end %>
+
+
+
+  <script>
+
+    let edsRequired = document.getElementById('eds-reqd');
+    let edsRadio = document.getElementById('eds-radio');
+    
+    edsRequired.addEventListener('click', () => {
+        edsRadio.classList.add('vis');
+
+        if(edsRequired.value == 'yes'){
+          edsRadio.classList.toggle('vis')
+        }
+    })
+
+</script>

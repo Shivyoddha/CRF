@@ -1,0 +1,93 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Liquid Nitrogen</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: liquid_nitrogen) do |form| %>
+        <% if liquid_nitrogen.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(liquid_nitrogen.errors.count, "error") %> prohibited this liquid_nitrogen from being saved:</h2>
+
+            <ul>
+              <% liquid_nitrogen.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <P class="text-danger">Note: User needs to bring own Cryogenic Container</p>
+    <hr>
+
+
+
+        <div class="input-group mb-3">
+          <%= form.label :quantity ,"Quantity",class:"input-group-text" ,for:"quantity-nitrogen"%>
+          <%= form.text_field :quantity ,class:"form-control", id:"quantity-nitrogen"%>
+          <%= form.label :quantity ,"Litre",class:"input-group-text" ,for:"quantity-nitrogen"%>
+        </div>
+
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="bill-nitro">Amount</label>
+            <label class="input-group-text fw-bold" for="bill-nitro">₹</label>
+            <input type="text" class="form-control" name="Amount" id="bill-nitro" readonly="" disabled>
+        </div>
+        <%= form.label :purpose,"Purpose of Liquid Nitrogen",class:"input-group-text", for:"purpose-nitrogen" %>
+
+        <div class="mb-3">
+          <%= form.text_field :purpose ,class:"form-control", id:"purpose-nitrogen",rows:"3",placeholder:"Max. 120 Characters" %>
+        </div>
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>
+
+  <% end %>
+
+<%=render "partials/footer" %>
+
+<script>
+    let quantNitro = document.getElementById('quantity-nitrogen');
+    let billNitro = document.getElementById('bill-nitro');
+
+    quantNitro.addEventListener('keyup', () => {
+        billNitro.setAttribute('placeholder', '`${}`')
+
+
+    })
+
+
+
+</script>

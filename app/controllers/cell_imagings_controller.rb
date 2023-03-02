@@ -22,9 +22,11 @@ class CellImagingsController < ApplicationController
   # POST /cell_imagings or /cell_imagings.json
   def create
     @cell_imaging = CellImaging.new(cell_imaging_params)
-
+    @cell_imaging.user=current_user
+    @cell_imaging.status="pending"
     respond_to do |format|
       if @cell_imaging.save
+        CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to cell_imaging_url(@cell_imaging), notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
       else
@@ -65,6 +67,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id )
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id,references: [] )
     end
 end

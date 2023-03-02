@@ -1,77 +1,159 @@
-<%= form_with(model: advance_molecular_rheometer) do |form| %>
-  <% if advance_molecular_rheometer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(advance_molecular_rheometer.errors.count, "error") %> prohibited this advance_molecular_rheometer from being saved:</h2>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
 
-      <ul>
-        <% advance_molecular_rheometer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Advance Modular Rheometer</h1>
     </div>
-  <% end %>
+    <div class='hero'>
 
-  <div>
-    <%= form.label :sample, style: "display: block" %>
-    <%= form.text_field :sample %>
-  </div>
+      <%= form_with(model: advance_molecular_rheometer) do |form| %>
+        <% if advance_molecular_rheometer.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(advance_molecular_rheometer.errors.count, "error") %> prohibited this advance_molecular_rheometer from being saved:</h2>
 
-  <div>
-    <%= form.label :type, style: "display: block" %>
-    <%= form.text_field :type %>
-  </div>
+            <ul>
+              <% advance_molecular_rheometer.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-  <div>
-    <%= form.label :size, style: "display: block" %>
-    <%= form.text_field :size %>
-  </div>
 
-  <div>
-    <%= form.label :nature, style: "display: block" %>
-    <%= form.text_field :nature %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :temperature, style: "display: block" %>
-    <%= form.text_field :temperature %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :stype,"Sample Type", class:"input-group-text", for:"sample-type"%>
+      <%= form.select(:stype, ["gel","liquid"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :current, style: "display: block" %>
-    <%= form.text_field :current %>
-  </div>
+    <div>
+      <p class="text-info vis" id="gel-info">(For Gel, Sample size must be less than 20mm dia)</p>
+    </div>
 
-  <div>
-    <%= form.label :shear_type, style: "display: block" %>
-    <%= form.text_field :shear_type %>
-  </div>
+    <div class="input-group mb-3">
+    <%= form.label :size, "Sample Size(dia)", class:"input-group-text",for:"sample-size"%>
+    <%= form.text_field :size, class:"form-control", id:"sample-size", placeholder:"Sample size"%>
+    <%= form.label :size, "mm", class:"input-group-text",for:"sample-size"%>
+    </div>
 
-  <div>
-    <%= form.label :shear_rate, style: "display: block" %>
-    <%= form.text_field :shear_rate %>
-  </div>
 
-  <div>
-    <%= form.label :sweeps, style: "display: block" %>
-    <%= form.text_field :sweeps %>
-  </div>
 
-  <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :nature,"Nature of Test", class:"input-group-text", for:"test_nature-type"%>
+      <%= form.select(:nature, ["Magnetic","Non-Magnetic"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "test_nature-type",:required => true}) %>
+    </div>
 
-  <div>
-    <%= form.label :toxicity, style: "display: block" %>
-    <%= form.text_field :toxicity %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :temperature, "Temperature", class:"input-group-text",for:"temp"%>
+      <%= form.text_field :temperature, class:"form-control", id:"temp", placeholder:"Max 150"%>
+      <%= form.label :temperature, "°C", class:"input-group-text",for:"temp"%>
+    </div>
 
-  <div>
-    <%= form.label :more, style: "display: block" %>
-    <%= form.text_field :more %>
-  </div>
+    <div class="input-group mb-3">
+      <%= form.label :current, "Current", class:"input-group-text",for:"current"%>
+      <%= form.text_field :current, class:"form-control", id:"current", placeholder:"Max 3"%>
+      <%= form.label :current, "Amp", class:"input-group-text",for:"current"%>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div class="input-group mb-3">
+      <%= form.label :shear_type, "Shear Type", class:"input-group-text",for:"shear-type"%>
+      <%= form.select(:shear_type, ["Varying","Constant"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "shear-type",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :shear_rate, "Shear Rate", class:"input-group-text",for:"shear-rate"%>
+      <%= form.text_field :shear_rate, class:"form-control", id:"shear-rate", placeholder:"Max 1000"%>
+      <%= form.label :shear_rate, "sec-1" , class:"input-group-text",for:"shear-rate"%>
+    <!-- <label class="input-group-text" for="shear-rate">Shear Rate</label>
+    <input type="text" class="form-control" id="shear-rate" placeholder="Max 1000">
+    <label class="input-group-text" for="shear-rate">sec<sup>-1</sup></label> -->
+    </div>
+
+    <div class="input-group mb-3">
+    <%= form.label :sweeps, "No of Sweeps", class:"input-group-text",for:"sweep-no"%>
+    <%= form.text_field :sweeps, class:"form-control", id:"sweep-no", placeholder:"Optional"%>
+    </div>
+
+    <div class="input-group mb-3">
+        <p class="fw-bold">Analysis Required</p>
+        <div class="input-group">
+          <%= form.text_area :analysis, class:"form-control", id:"With textarea"%>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+    </div>
+
+    <p class="fw-bold">Nature of sample is:-</p>
+    <div class="input-group mb-3">
+      <div class="form-check form-check-inline">
+          <%= form.radio_button :toxicity, "Toxic", class:"form-check-input", type:"radio", id:"toxic" %>
+          <%= form.label :toxicity, "Toxic", class:"form-check-label", for:"toxic"%>
+      </div>
+      <div class="form-check form-check-inline">
+            <%= form.radio_button :toxicity, 'Non-Toxic', class:"form-check-input", type:"radio", id:"non-toxics",:checked => true  %>
+            <%= form.label :toxicity, "Non-Toxic", class:"form-check-label", for:"non-toxic"%>
+      </div>
+    </div>
+
+
+
+        <div class="input-group mb-3" id="user-file-input">
+          <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+        </div>
+
+
+
+
+        <div class="input-group mb-3">
+          <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+          <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+    <div class="mb-3">
+      <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+    </div>
+
+  <div class="actions">
+     <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+
+    </div>
   </div>
+</div>
+
+
+<%=render "partials/footer" %>
+
+
+<script>
+
+    let gelInfo = document.getElementById('gel-info');
+    let gelType = document.getElementById('sample-type');
+
+    gelType.addEventListener('click', () => {
+        gelInfo.classList.add('vis');
+        if(gelType.value == 'gel'){
+          gelInfo.classList.toggle('vis')
+        }
+    })
+
+</script>
+
+
 <% end %>

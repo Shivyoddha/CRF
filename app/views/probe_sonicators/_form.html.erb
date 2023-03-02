@@ -1,0 +1,91 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Probe Sonicator</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: probe_sonicator) do |form| %>
+        <% if probe_sonicator.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(probe_sonicator.errors.count, "error") %> prohibited this probe_sonicator from being saved:</h2>
+
+            <ul>
+              <% probe_sonicator.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="input-group mb-3">
+          <%= form.label :sample,"No of Sample", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+          <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :size,"Probe Size", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+          <%= form.select(:size, ['13mm', '19mm','25mm'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :amplitude,"Amplitude",class:"input-group-text" ,for:"amplitude-probe-sonicator" %>
+          <%= form.text_field :amplitude ,class:"form-control" ,id:"amplitude-probe-sonicator"%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :volume,"Sample Volume" ,class:"input-group-text", for:"sample-volume-probe-sonicator"%>
+           <%= form.text_field :volume,class:"form-control", id:"sample-volume-probe-sonicator", placeholder:"Ex: 5mL, 15mL" %>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :viscosity ,"Sample Viscosity",class:"input-group-text", for:"sample-viscocity-probe-sonicator"%>
+          <%= form.text_field :viscosity,class:"form-control" ,id:"sample-viscocity-probe-sonicator", placeholder:"Ex: 12 Pa.s, 8 cSt" %>
+        </div>
+
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<%=render "partials/footer" %>

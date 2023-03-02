@@ -1,0 +1,89 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Electro Chemical Polishing</h1>
+    </div>
+    <div class='hero'>
+      <%= form_with(model: electro_chemical) do |form| %>
+        <% if electro_chemical.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(electro_chemical.errors.count, "error") %> prohibited this electro_chemical from being saved:</h2>
+
+            <ul>
+              <% electro_chemical.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class="input-group mb-3">
+        <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+        <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+      </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :composition,"Sample Composition ",class:"input-group-text", for:"sample-comp-ecm" %>
+          <%= form.text_field :composition ,class:"form-control", id:"sample-comp-ecm"%>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :electrolyte,"Suitable Electrolyte",class:"input-group-text", for:"suitable-ecm"%>
+          <%= form.text_field :electrolyte,class:"form-control" ,id:"suitable-ecm" %>
+        </div>
+
+
+        <p class="text-primary fw-bold">Electrolyte to be brought by user</p>
+
+        <div class="input-group mb-3">
+          <%= form.label :application,class:"input-group-text",for:"application-ecm" %>
+          <%= form.text_field :application,class:"form-control" ,id:"application-ecm", placeholder:"Ex: EBSD, SEM, XRD, etc" %>
+        </div>
+
+
+
+
+
+        <div class="input-group mb-3">
+          <%= form.label :more,"Requirement (Such as Current, Time, Temp.)",class:"input-group-text" ,for:"requirement-ecm" %>
+          <%= form.text_field :more,class:"form-control", id:"requirement-ecm", placeholder:"Tell us more about testing requirement" %>
+        </div>
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+      <div id="instruct">
+      <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+       </div>
+       <div class="actions">
+           <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+       </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<%end%>
+
+<%=render "partials/footer" %>

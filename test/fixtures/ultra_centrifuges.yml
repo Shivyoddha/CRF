@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  volume: 1.5
+  speed: 1.5
+  temperature: 1.5
+  toxicity: MyString
+  compatibility: MyString
+  carcinogenic: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:26:28
+  status: MyString
+
+two:
+  sample: 1
+  volume: 1.5
+  speed: 1.5
+  temperature: 1.5
+  toxicity: MyString
+  compatibility: MyString
+  carcinogenic: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-02-26
+  slottime: 2023-02-26 19:26:28
+  status: MyString

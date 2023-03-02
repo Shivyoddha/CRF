@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  elemental: MyString
+  coated: MyString
+  coated_ele: MyString
+  substarte: MyString
+  specification: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 13:35:17
+  debit: MyString
+
+two:
+  sample: 1
+  elemental: MyString
+  coated: MyString
+  coated_ele: MyString
+  substarte: MyString
+  specification: MyString
+  more: MyString
+  status: MyString
+  slotdate: 2023-02-27
+  slottime: 2023-02-27 13:35:17
+  debit: MyString

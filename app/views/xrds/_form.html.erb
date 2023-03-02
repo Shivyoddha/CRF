@@ -25,8 +25,8 @@
         <% end %>
 
           <div class="input-group mb-3">
-            <%= form.label :sample, class:"input-group-text", for:"xrd-select-no-of-equipment"%>
-            <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+            <%= form.label :sample,"No of Samples", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+            <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
           </div>
 
 
@@ -77,14 +77,13 @@
       </div>
 
 
-
         <div id="instruct">
             <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
         </div>
 
 
         <div class="input-group mb-3">
-          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
         </div>
 
         <div class="actions">

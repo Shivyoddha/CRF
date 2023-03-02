@@ -26,6 +26,7 @@ class TgaFttrsController < ApplicationController
       @tga_fttr.status="pending"
     respond_to do |format|
       if @tga_fttr.save
+        TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to tga_fttr_url(@tga_fttr), notice: "Tga fttr was successfully created." }
         format.json { render :show, status: :created, location: @tga_fttr }
       else

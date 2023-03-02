@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Electro Chemicals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Composition</th>
+      <th>Electrolyte</th>
+      <th>Application</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @electro_chemicals.each do |electro_chemical| %>
+      <tr>
+        <td><%= electro_chemical.sample %></td>
+        <td><%= electro_chemical.composition %></td>
+        <td><%= electro_chemical.electrolyte %></td>
+        <td><%= electro_chemical.application %></td>
+        <td><%= electro_chemical.more %></td>
+        <td><%= electro_chemical.debit %></td>
+        <td><%= electro_chemical.slotdate %></td>
+        <td><%= electro_chemical.slottime %></td>
+        <td><%= electro_chemical.status %></td>
+        <td><%= link_to 'Show', electro_chemical %></td>
+        <td><%= link_to 'Edit', edit_electro_chemical_path(electro_chemical) %></td>
+        <td><%= link_to 'Destroy', electro_chemical, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Electro Chemical', new_electro_chemical_path %>

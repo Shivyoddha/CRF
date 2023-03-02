@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Ball Milling Unit</h1>
+    </div>
+    <div class='hero'>
+
+      <%= form_with(model: ball_mailing) do |form| %>
+        <% if ball_mailing.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(ball_mailing.errors.count, "error") %> prohibited this ball_mailing from being saved:</h2>
+
+            <ul>
+              <% ball_mailing.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+
+    <div class="input-group mb-3">
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :feed, "Feed Material", class:"input-group-text",for:"feed_material"%>
+      <%= form.text_field :feed, class:"form-control", id:"feed_material", placeholder:""%>
+    </div>
+
+
+    <div>
+      <%= form.label :toxicity, "Type of Ball Milling", class:"form-check-label fw-bold", for:"type_of_ball_" %>
+        <div class="form-check">
+            <%= form.radio_button :btype, "Planetary [100 - 600 RPM]", class:"form-check-input", type:"radio", id:"planetary" %>
+            <%= form.label :btype, "Planetary [100 - 600 RPM]", class:"form-check-label", for:"planetary"%>
+        </div>
+        <div class="form-check">
+              <%= form.radio_button :btype, 'High Energy [400 - 2000 RPM]', class:"form-check-input", type:"radio", id:"high_energy"  %>
+              <%= form.label :btype, "High Energy [400 - 2000 RPM]", class:"form-check-label", for:"high_energy"%>
+        </div>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.label :grind,"Grinding Feed Type", class:"input-group-text", for:"grind_feed_type"%>
+      <%= form.select(:grind, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "grind_feed_type",:required => true}) %>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <%= form.label :specify, "Specify type of Solvent", class:"input-group-text",for:"spec_solvent"%>
+      <%= form.text_field :specify, class:"form-control", id:"spec_solvent", placeholder:""%>
+    </div>
+
+    <div>
+        <p class="fw-bold text-info">Measurement Information</p>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :size, "Grain Size (<3mm)", class:"input-group-text",for:"grain_size"%>
+      <%= form.text_field :size, class:"form-control", id:"grain_size", placeholder:""%>
+      <%= form.label :size, "°C", class:"input-group-text",for:"grain_size"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :grinding, "Grinding Time", class:"input-group-text",for:"grind_time"%>
+      <%= form.text_field :grinding, class:"form-control", id:"grind_time", placeholder:""%>
+      <%= form.label :grinding, "mL/min", class:"input-group-text",for:"grind_time"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :speed, "Speed (<2000)", class:"input-group-text",for:"speed"%>
+      <%= form.text_field :speed, class:"form-control", id:"speed", placeholder:""%>
+      <%= form.label :speed, "RPM", class:"input-group-text",for:"speed"%>
+    </div>
+
+    <div class="input-group mb-3">
+      <%= form.label :hardness, "Hardness", class:"input-group-text",for:"hardness"%>
+      <%= form.text_field :hardness, class:"form-control", id:"hardness", placeholder:""%>
+      <%= form.label :hardness, "RPM", class:"input-group-text",for:"hardness"%>
+    </div>
+
+    <div>
+        <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+    </div>
+
+
+    <div>
+      <%= form.label :toxicity, "Toxicity", class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+        <div class="form-check">
+            <%= form.radio_button :toxicity, "Hazardous", class:"form-check-input", type:"radio", id:"flexRadioDefault22" %>
+            <%= form.label :toxicity, "Hazardous", class:"form-check-label", for:"flexRadioDefault21"%>
+        </div>
+        <div class="form-check">
+              <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault21",:checked => true  %>
+              <%= form.label :toxicity, "Non-Hazardous", class:"form-check-label", for:"flexRadioDefault21"%>
+        </div>
+    </div>
+
+
+
+
+        <div>
+          <%= form.label :compatibility, "Compatability", class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :compatibility, "Corrosive", class:"form-check-input", type:"radio", id:"flexRadioDefaultwu2" %>
+                <%= form.label :compatibility, "Corrosive", class:"form-check-label", for:"flexRadioDefaultwu2"%>
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :compatibility, 'Non-Corrosive', class:"form-check-input", type:"radio", id:"flexRadioDefaultwu1",:checked => true  %>
+                  <%= form.label :compatibility, "Non-Corrosive", class:"form-check-label", for:"flexRadioDefaultwu1"%>
+            </div>
+        </div>
+
+
+
+        <div class="input-group mt-3 mb-3" id="user-file-input">
+          <%= form.label :references ,"Attach Reference Paper(optional)" ,for:"upload-file", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"upload-file",multiple:true  %>
+          </div>
+
+
+          <div class="input-group mb-3">
+            <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+            <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="mb-3">
+          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        </div>
+  </div>
+</div>
+
+<%=render "partials/footer" %>
+
+<% end %>

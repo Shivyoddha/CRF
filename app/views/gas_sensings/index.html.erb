@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gas Sensings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Gas</th>
+      <th>Toxicity</th>
+      <th>Compatibility</th>
+      <th>Carcinogenic</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gas_sensings.each do |gas_sensing| %>
+      <tr>
+        <td><%= gas_sensing.sample %></td>
+        <td><%= gas_sensing.gas %></td>
+        <td><%= gas_sensing.toxicity %></td>
+        <td><%= gas_sensing.compatibility %></td>
+        <td><%= gas_sensing.carcinogenic %></td>
+        <td><%= gas_sensing.more %></td>
+        <td><%= gas_sensing.debit %></td>
+        <td><%= gas_sensing.slotdate %></td>
+        <td><%= gas_sensing.slottime %></td>
+        <td><%= gas_sensing.status %></td>
+        <td><%= link_to 'Show', gas_sensing %></td>
+        <td><%= link_to 'Edit', edit_gas_sensing_path(gas_sensing) %></td>
+        <td><%= link_to 'Destroy', gas_sensing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gas Sensing', new_gas_sensing_path %>

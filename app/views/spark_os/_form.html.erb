@@ -1,0 +1,188 @@
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>Optical Emission Spectrometer</h1>
+    </div>
+        <div class='hero'>
+          <%= form_with(model: spark_o) do |form| %>
+            <% if spark_o.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(spark_o.errors.count, "error") %> prohibited this spark_o from being saved:</h2>
+
+                <ul>
+                  <% spark_o.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <p class="text-warning">Cobalt 'Co' analysis currently under maintenance</p>
+            <hr>
+
+            <div class="input-group mb-3">
+                <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+            </div>
+            <div class="input-group mb-3">
+              <%= form.label :composition,"Composition",class:"input-group-text", for: "application-area" %>
+              <%= form.text_field :composition,class: "form-control" ,id: "application-area" %>
+
+            </div>
+        <p class="fw-bold">Base Material & Number of sample of each base type</p>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="fe" value="Fe">
+                <label class="form-check-label" for="fe">Fe</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplefe,"No of Fe Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplefe, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline disabled">
+                <input class="form-check-input" type="checkbox" id="co" value="Co" disabled>
+                <label class="form-check-label" for="co">Co</label>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="no-of-co-sample">No of  Co Sample</label>
+                    <select class="form-select" id="no-of-co-sample" disabled>
+                        <option selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ni" value="Ni">
+                <label class="form-check-label" for="ni">Ni</label>
+                <div class="input-group mb-3">
+                    <%= form.label :sampleni,"No of Ni Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:sampleni, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="zn" value="Zn">
+                <label class="form-check-label" for="zn">Zn</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplezn,"No of Zn Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplezn, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="sn" value="Sn">
+                <label class="form-check-label" for="sn">Sn</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplesn,"No of Sn Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplesn, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cu" value="Cu">
+                <label class="form-check-label" for="cu">Cu</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplecu,"No of Cu  Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplecu, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ti" value="Ti">
+                <label class="form-check-label" for="ti">Ti</label>
+                <div class="input-group mb-3">
+                    <%= form.label :sampleti,"No of Ti Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:sampleti, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="al" value="Al">
+                <label class="form-check-label" for="al">Al</label>
+                <div class="input-group mb-3">
+                    <%= form.label :sampleal,"No of Al Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:sampleal, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="pb" value="Pb">
+                <label class="form-check-label" for="pb">Pb</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplepb,"No of Pb Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplepb, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 check-select" >
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="mg" value="Mg">
+                <label class="form-check-label" for="mg">Mg</label>
+                <div class="input-group mb-3">
+                    <%= form.label :samplemg,"No of Mg Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+                    <%= form.select(:samplemg, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+          <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+        </div>
+
+
+
+        <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<%=render "partials/footer" %>
