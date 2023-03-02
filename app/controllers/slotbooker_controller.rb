@@ -582,7 +582,7 @@ end
  def multi
    @multi_impact_tester = MultiImpactTester.all
  end
-<<<<<<< HEAD
+
      def multi1
        @multi_impact_tester1 = MultiImpactTester.all
      end
@@ -618,10 +618,10 @@ def ftnmr
 
 end
 
-=======
+
 
  def low
    @low_fatigues = LowFatigue.all
  end
->>>>>>> 054160cca0c74060737b2d264f11330432057374
+
 end
