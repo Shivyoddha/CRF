@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'All Slots',slotbooker_threescanner_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_threescanner1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_threescanner2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_threescanner3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_threescanner4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -71,14 +71,7 @@
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Size</th>
                         <th scope="col" id="composition">Texture</th>
-                        <th scope="col" id="phase">Ply</th>
-                        <th scope="col" id="range">Stt</th>
-                        <th scope="col" id="phase">Wrl</th>
-                        <th scope="col" id="range">Obj</th>
-                        <th scope="col" id="phase">Asc</th>
-                        <th scope="col" id="range">Aop</th>
-                        <th scope="col" id="phase">Ptx</th>
-                        <th scope="col" id="range">xyzrgb</th>
+                        <th scope="col" id="phase">Final Output Required</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -92,22 +85,24 @@
                       <% @threescan.all.each do |xrds|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/THREESCAN/<%=xrds.id %>	</th>
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
                         <td> <%= xrds.sample%> </td>
                         <td> <%= xrds.size%> </td>
-                        <td> <%= xrds.texture%> </td>
-                        <td> <%= xrds.ply%> </td>
-                        <td> <%= xrds.stt%> </td>
-                        <td> <%= xrds.wrl%> </td>
-                        <td> <%= xrds.obj%> </td>
-                        <td> <%= xrds.asc%> </td>
-                        <td> <%= xrds.aop%> </td>
-                        <td> <%= xrds.ptx%> </td>
-                        <td> <%= xrds.xyzrgb%></td>
+                        <td> <%= xrds.texture%></td>
+                        <td>  Stl:<nobr><%= xrds.stt%> <br>
+                          Ply:<%= xrds.ply%><br>
+                          Wrl:<%= xrds.wrl%> <br>
+                          Obj: <%= xrds.obj%> <br>
+                          Asc: <%= xrds.asc%> <br>
+                          Aop: <%= xrds.aop%> <br>
+                          Ptx: <%= xrds.ptx%> <br>
+                          Xyzrgb: <%= xrds.xyzrgb%>
+                        </td>
+
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
 

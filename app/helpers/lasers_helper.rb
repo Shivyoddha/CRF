@@ -1,0 +1,2 @@
+module LasersHelper
+end

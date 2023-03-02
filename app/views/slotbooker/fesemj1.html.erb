@@ -1,0 +1,162 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-slot-booker">
+
+    <div id="navigation" class="font-quiucksand">
+        <!--below is the button of Nitk CRF logo-->
+        <div id="navigation-logo">
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+        </div>
+
+        <div class="sidelinks">
+
+            <h2 class="fw-bold text-center">Navigation</h2>
+            <ul class="sidelinks-model-list">
+                <%# below are code to get items on the navigation pane %>
+                <li class="nav-item">
+                        <%= link_to 'All Slots',slotbooker_fesemj_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to 'Pending Slots',slotbooker_fesemj1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Alloted Slots',slotbooker_fesemj2_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Completed Slots',slotbooker_fesemj3_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                      <%= link_to 'Cancelled Slots',slotbooker_fesemj4_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<%# the content section is coded here %>
+    <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+        </div>
+
+
+        <div id="slot-details">
+        <div>
+            <table class="table table-hover font-quicksand">
+                <thead>
+                    <tr class="table-head font-unbounded">
+                      <th scope="col">Appl No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Institute</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Contact No:</th>
+                      <th scope="col">No of Samples</th>
+                      <th scope="col">Sample Type</th>
+                      <th scope="co">Composition</th>
+                      <th scope="col">Sample Phase</th>
+                      <th scope="col">Measurement</th>
+                      <th scope="col">EDS/EDAX Required</th>
+                      <th scope="col">EDS/EDAX Type</th>
+                      <th scope="col">Sample is Toxic</th>
+                      <th scope="col">Sample is Conducting</th>
+                      <th scope="col">More Information</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col">Slot Time</th>
+                      <th scope="col">Reference Paper</th>
+                        <th scope="col" id="assign-col">Asssign</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                      <% @fesemj1.where(status:'pending').each do |xrds|%>
+                      <tr>
+                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+
+                        <td> <%= fesemjs.user.name%> </td>
+                        <td> <%= fesemjs.user.orgname%> </td>
+                        <td> <%=fesemjs.user.department%> </td>
+                        <td> <%= fesemjs.user.contact%> </td>
+                        <td> <%= fesemjs.sample%> </td>
+                        <td> <%= fesemjs.stype%> </td>
+                        <td> <%= fesemjs.composition%> </td>
+                        <td> <%=fesemjs.sphase%> </td>
+                        <td> <%= fesemjs.measurement%></td>
+                          <td> <%= fesemjs.eds_required%></td>
+                          <td> <%= fesemjs.toxic%></td>
+                            <td> <%= fesemjs.conducting%></td>
+                        <td> <%= xrds.more%> </td>
+                        <td>Booked</td>
+                        <td><%= xrds.slotdate %></td>
+                        <td><%= xrds.slottime %></td>
+
+                        <td> <%= xrds.status %></td>
+                        <%if xrds.references.attached? %>
+                        <%xrds.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                       <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                            Assign
+                            </button> -->
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
+                                    <p>You are assigning XRD with ID <%= HrFesemJ.find(xrds.id) %> to Preetham Naik.</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+<%end%>
+                                    </div>
+                                </div>
+  </div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+
+    </div>
+
+
+</div>

@@ -48,135 +48,573 @@ def fesemc1
 def fesemj
  @fesemj=HrFesemJ.all
 end
+    def fesemj1
+      @fesemj1=HrFesemJ.all
+    end
+    def fesemj2
+      @fesemj2=HrFesemJ.all
+    end
+    def fesemj3
+      @fesemj3=HrFesemJ.all
+    end
+    def fesemj4
+      @fesemj4=HrFesemJ.all
+    end
 
 def threednon
   @three= ThreeDNonContact.all
 end
+   def threednon1
+     @three1=ThreeDNonContact.all
+   end
+   def threednon2
+     @three2=ThreeDNonContact.all
+   end
+   def threednon3
+     @three3=ThreeDNonContact.all
+   end
+   def threednon4
+     @three4=ThreeDNonContact.all
+   end
 
 def raman
   @raman = RamanMicroscope.all
 end
+   def raman1
+     @raman =RamanMicroscope.all
+   end
+   def raman2
+     @raman =RamanMicroscope.all
+   end
+   def raman3
+     @raman =RamanMicroscope.all
+   end
+   def raman4
+     @raman =RamanMicroscope.all
+   end
 
 def tga
   @tga = TgaFttr.all
 end
-
+    def tga1
+      @tga1 =TgaFttr.all
+    end
+    def tga2
+      @tga2 =TgaFttr.all
+    end
+    def tga3
+      @tga3 =TgaFttr.all
+    end
+    def tga4
+      @tga4 =TgaFttr.all
+    end
 def bet
   @bet=Bet.all
 end
+    def bet1
+      @bet1=Bet.all
+    end
+    def bet2
+      @bet2=Bet.all
+    end
+    def bet3
+      @bet3=Bet.all
+    end
+    def bet4
+      @bet4=Bet.all
+    end
 
 def lcms
   @hrlcm = Hrlcm.all
 end
+   def lcms1
+     @lcms1=Lcms.all
+  end
+  def lcms2
+    @lcms2=Lcms.all
+  end
+  def lcms3
+    @lcms3=Lcms.all
+  end
+  def lcms4
+    @lcms4=Lcms.all
+  end
 
 def uv
   @uv = UvVisNir.all
 end
-
-def laser
-end
+   def uv1
+   @uv1= UvVisNir.all
+   end
+   def uv2
+   @uv2= UvVisNir.all
+   end
+   def uv3
+   @uv3= UvVisNir.all
+   end
+   def uv4
+   @uv4= UvVisNir.all
+   end
 
 def cell
   @cell=CellImaging.all
 end
+   def cell1
+    @cell1=CellImaging.all
+   end
+   def cell2
+    @cell2=CellImaging.all
+   end
+   def cell3
+    @cell3=CellImaging.all
+   end
+   def cell4
+    @cell4=CellImaging.all
+   end
 
 def atomic
   @atomic = AtomicForceMicroscope.all
 end
+   def atomic1
+       @atomic1 = AtomicForceMicroscope.all
+   end
+   def atomic2
+       @atomic = AtomicForceMicroscope.all
+   end
+   def atomic3
+       @atomic3 = AtomicForceMicroscope.all
+   end
+   def atomic4
+       @atomic4 = AtomicForceMicroscope.all
+   end
 
-def ftnmr
-
-end
 
 def integrated
   @integrated=IntegratedMultiRoleTester.all
 end
+   def integrated1
+     @integrated1=IntegratedMultiRoleTester.all
+   end
+   def integrated2
+     @integrated2=IntegratedMultiRoleTester.all
+   end
+   def integrated3
+     @integrated3=IntegratedMultiRoleTester.all
+   end
+   def integrated4
+     @integrated4=IntegratedMultiRoleTester.all
+   end
 def scratch
   @scratch=ScratchIndentation.all
 end
+    def scratch1
+      @scratch1=ScratchIndentation.all
+    end
+    def scratch2
+      @scratch2=ScratchIndentation.all
+    end
+    def scratch3
+      @scratch3=ScratchIndentation.all
+    end
+    def scratch4
+      @scratch4=ScratchIndentation.all
+    end
 def threescanner
   @threescan=ThreeDScanner.all
 end
+      def threescanner1
+        @threescan1=ThreeDScanner.all
+      end
+      def threescanner2
+        @threescan2=ThreeDScanner.all
+      end
+      def threescanner3
+        @threescan3=ThreeDScanner.all
+      end
+      def threescanner4
+        @threescan4=ThreeDScanner.all
+      end
 def icp
   @icp_m =IcpM.all
 end
+      def icp1
+        @icp_m1 =IcpM.all
+      end
+      def icp2
+        @icp_m2 =IcpM.all
+      end
+      def icp3
+        @icp_m3 =IcpM.all
+      end
+      def icp4
+        @icp_m4=IcpM.all
+      end
 
 def amr
   @advance_molecular_rheometer =AdvanceMolecularRheometer.all
 end
+      def amr1
+        @advance_molecular_rheometer1 =AdvanceMolecularRheometer.all
+      end
+      def amr2
+        @advance_molecular_rheometer2 =AdvanceMolecularRheometer.all
+      end
+      def amr3
+        @advance_molecular_rheometer3 =AdvanceMolecularRheometer.all
+      end
+      def amr4
+        @advance_molecular_rheometer4 =AdvanceMolecularRheometer.all
+      end
 
 
 def ionc
   @ion_chromotography =IonChromotography.all
 end
+      def ionc1
+        @ion_chromotography1 =IonChromotography.all
+      end
+      def ionc2
+        @ion_chromotography2 =IonChromotography.all
+      end
+      def ionc3
+        @ion_chromotography3 =IonChromotography.all
+      end
+      def ionc4
+        @ion_chromotography4 =IonChromotography.all
+      end
 def spectro
  @spectro=SpectroRadioMeter.all
 end
+      def spectro1
+       @spectro1=SpectroRadioMeter.all
+      end
+      def spectro2
+       @spectro2=SpectroRadioMeter.all
+      end
+      def spectro3
+       @spectro3=SpectroRadioMeter.all
+      end
+      def spectro4
+       @spectro4=SpectroRadioMeter.all
+      end
 def spark
   @spark = SparkO.all
 end
+      def spark1
+        @spark1 = SparkO.all
+      end
+      def spark2
+        @spark2 = SparkO.all
+      end
+      def spark3
+        @spark3 = SparkO.all
+      end
+      def spark4
+        @spark4 = SparkO.all
+      end
 def fiveaxis
   @five=FiveAxi.all
 end
+      def fiveaxis1
+        @five1=FiveAxi.all
+      end
+      def fiveaxis2
+        @five2=FiveAxi.all
+      end
+      def fiveaxis3
+        @five3=FiveAxi.all
+      end
+      def fiveaxis4
+        @five4=FiveAxi.all
+      end
 def elctro
   @electro=ElectroChemical.all
 end
+      def elctro1
+        @electro1=ElectroChemical.all
+      end
+      def elctro2
+        @electro2=ElectroChemical.all
+      end
+      def elctro3
+        @electro3=ElectroChemical.all
+      end
+      def elctro4
+        @electro4=ElectroChemical.all
+      end
 def gassensing
   @sensing=GasSensing.all
 end
+      def gassensing1
+        @sensing1=GasSensing.all
+      end
+      def gassensing2
+        @sensing2=GasSensing.all
+      end
+      def gassensing3
+        @sensing3=GasSensing.all
+      end
+      def gassensing4
+        @sensing4=GasSensing.all
+      end
+
 def nitrogen
   @nitrogen=LiquidNitrogen.all
 end
+      def nitrogen1
+        @nitrogen1=LiquidNitrogen.all
+      end
+      def nitrogen2
+        @nitrogen2=LiquidNitrogen.all
+      end
+      def nitrogen3
+        @nitrogen3=LiquidNitrogen.all
+      end
+      def nitrogen4
+        @nitrogen4=LiquidNitrogen.all
+      end
+
 def centrifuge
   @centrifuge=UltraCentrifuge.all
 end
+      def centrifuge1
+        @centrifuge1=UltraCentrifuge.all
+      end
+      def centrifuge2
+        @centrifuge=UltraCentrifuge.all
+      end
+      def centrifuge3
+        @centrifuge3=UltraCentrifuge.all
+      end
+      def centrifuge4
+        @centrifuge4=UltraCentrifuge.all
+      end
 def probe
   @probe=ProbeSonicator.all
 end
+      def probe1
+        @probe1=ProbeSonicator.all
+      end
+      def probe2
+        @probe2=ProbeSonicator.all
+      end
+      def probe3
+        @probe3=ProbeSonicator.all
+      end
+      def probe4
+        @probe4=ProbeSonicator.all
+      end
 def glove
   @glove=GloveBox.all
 end
+      def glove1
+        @glove1=GloveBox.all
+      end
+      def glove2
+        @glove2=GloveBox.all
+      end
+      def glove3
+        @glove3=GloveBox.all
+      end
+      def glove4
+        @glove4=GloveBox.all
+      end
+
 def milli
   @milli=MilliQ.all
 end
+      def milli1
+        @milli1=MilliQ.all
+      end
+      def milli2
+        @milli2=MilliQ.all
+      end
+      def milli3
+        @milli3=MilliQ.all
+      end
+      def milli4
+        @milli4=MilliQ.all
+      end
+
 def impdeance
   @impedance_analy=ImpedanceAnaly.all
 end
+      def impdeance1
+        @impedance_analy1=ImpedanceAnaly.all
+      end
+      def impdeance2
+        @impedance_analy2=ImpedanceAnaly.all
+      end
+      def impdeance3
+        @impedance_analy3=ImpedanceAnaly.all
+      end
+      def impdeance4
+        @impedance_analy4=ImpedanceAnaly.all
+      end
 def zeta
   @zeta=ZetaPotentialSize.all
 end
+      def zeta1
+        @zeta1=ZetaPotentialSize.all
+      end
+      def zeta2
+        @zeta2=ZetaPotentialSize.all
+      end
+      def zeta3
+        @zeta3=ZetaPotentialSize.all
+      end
+      def zeta4
+        @zeta4=ZetaPotentialSize.all
+      end
 def highvaccum
   @high=HighTempVaccum.all
 end
-
+      def highvaccum1
+        @high1=HighTempVaccum.all
+      end
+      def highvaccum2
+        @high2=HighTempVaccum.all
+      end
+      def highvaccum3
+        @high=HighTempVaccum.all
+      end
+      def highvaccum4
+        @high4=HighTempVaccum.all
+      end
 
 def trib
   @tribometer =Tribometer.all
 end
+      def trib1
+        @tribometer1 =Tribometer.all
+      end
+      def trib2
+        @tribometer2 =Tribometer.all
+      end
+      def trib3
+        @tribometer3 =Tribometer.all
+      end
+      def trib4
+        @tribometer4 =Tribometer.all
+      end
+
 
 def glow
   @glow =Glow.all
 end
+      def glow1
+        @glow1 =Glow.all
+      end
+      def glow2
+        @glow2 =Glow.all
+      end
+      def glow3
+        @glow3 =Glow.all
+      end
+      def glow4
+        @glow4 =Glow.all
+      end
 
 def ball
   @ball_mailing =BallMailing.all
 end
-
+      def ball1
+        @ball_mailing1 =BallMailing.all
+      end
+      def ball2
+        @ball_mailing2 =BallMailing.all
+      end
+      def ball3
+        @ball_mailing3 =BallMailing.all
+      end
+      def ball4
+        @ball_mailing4 =BallMailing.all
+      end
 
 def fric
   @friction = Friction.all
 end
-
+    def fric1
+      @friction1 = Friction.all
+    end
+    def fric2
+      @friction2 = Friction.all
+    end
+    def fric3
+      @friction3 = Friction.all
+    end
+    def fric4
+      @friction4 = Friction.all
+    end
 
 def gait
   @gait = Gait.all
 end
+    def gait1
+      @gait1 = Gait.all
+    end
+    def gait2
+      @gait2 = Gait.all
+    end
+    def gait3
+      @gait3 = Gait.all
+    end
+    def gait4
+      @gait4 = Gait.all
+    end
 
 def grind
   @grinding = Grinding.all
 end
+    def grind1
+      @grinding1 = Grinding.all
+    end
+    def grind2
+      @grinding2 = Grinding.all
+    end
+    def grind3
+      @grinding3 = Grinding.all
+    end
+    def grind4
+      @grinding4 = Grinding.all
+    end
 
  def multi
    @multi_impact_tester = MultiImpactTester.all
  end
+     def multi1
+       @multi_impact_tester1 = MultiImpactTester.all
+     end
+     def multi2
+       @multi_impact_tester2 = MultiImpactTester.all
+     end
+     def multi3
+       @multi_impact_tester3 = MultiImpactTester.all
+     end
+     def multi4
+       @multi_impact_tester4 = MultiImpactTester.all
+     end
+
+ def laser
+   @laser=Laser.all
+ end
+        def laser1
+        @laser1=Laser.all
+        end
+        def laser2
+        @laser2=Laser.all
+        end
+        def laser3
+        @laser3=Laser.all
+        end
+        def laser4
+        @laser4=Laser.all
+        end
+
+
+
+def ftnmr
+
+end
+
 end

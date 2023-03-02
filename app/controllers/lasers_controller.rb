@@ -1,0 +1,71 @@
+class LasersController < ApplicationController
+  before_action :set_laser, only: %i[ show edit update destroy ]
+
+  # GET /lasers or /lasers.json
+  def index
+    @lasers = Laser.all
+  end
+
+  # GET /lasers/1 or /lasers/1.json
+  def show
+  end
+
+  # GET /lasers/new
+  def new
+    @laser = Laser.new
+  end
+
+  # GET /lasers/1/edit
+  def edit
+  end
+
+  # POST /lasers or /lasers.json
+  def create
+    @laser = Laser.new(laser_params)
+    @laser.user=current_user
+    @laser.status="pending"
+    respond_to do |format|
+      if @laser.save
+        format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
+        format.json { render :show, status: :created, location: @laser }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @laser.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /lasers/1 or /lasers/1.json
+  def update
+    respond_to do |format|
+      if @laser.update(laser_params)
+        format.html { redirect_to laser_url(@laser), notice: "Laser was successfully updated." }
+        format.json { render :show, status: :ok, location: @laser }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @laser.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /lasers/1 or /lasers/1.json
+  def destroy
+    @laser.destroy
+
+    respond_to do |format|
+      format.html { redirect_to lasers_url, notice: "Laser was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_laser
+      @laser = Laser.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def laser_params
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+    end
+end
