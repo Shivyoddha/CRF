@@ -34,29 +34,29 @@
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">              
-                 <%= link_to 'All Payments',slotbooker_payment_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>              
+                <li class="nav-item">
+                 <%= link_to 'All Payments',slotbooker_payment_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
                 <li class="nav-item">
                         <%= link_to 'Department Operating Cost',slotbooker_paymentD_path,class:"nav-link active sidelink-wrap" %>
-                </li>           
-                <li class="nav-item">
-                    <%= link_to 'CPDA Fund',slotbooker_paymentC_path,class:"nav-link active sidelink-wrap" %> 
                 </li>
-                           
                 <li class="nav-item">
-                    <%= link_to 'Student Contingency',slotbooker_paymentS_path,class:"nav-link active sidelink-wrap" %> 
-                </li>
-                        
-                <li class="nav-item">
-                    <%= link_to 'Project Fund',slotbooker_paymentP_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'CPDA Fund',slotbooker_paymentC_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Manual Entry',slotbooker_paymentM_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Student Contingency',slotbooker_paymentS_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to 'Project Fund',slotbooker_paymentP_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to 'Manual Entry',slotbooker_paymentM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',slotbooker_paymentU_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Update',slotbooker_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -84,141 +84,55 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                        <% Xrd.all.each do |xrds|%>
                         <tr>
-                        <th scope="row">CRF/XRD/123	</th>
+                          <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                          <td> <%= xrds.user.name%> </td>
+                          <td> <%= xrds.user.orgname%> </td>
+                          <td> <%= xrds.user.department%> </td>
+                          <td> <%= xrds.user.contact%> </td>
+                          <td> Slot time</td>
+                          <td id="assign-btn">
+                              <!-- Button trigger modal -->
+                               <%= button_tag "Generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "nik" %>
+                               <div id="<%= xrds.id%>" class="mod">
 
-                        <td> User Name </td>
-                        <td> NITK </td>
-                        <td> Mechanical </td>
-                        <td> 7760763125 </td>
-                        <td> Student Contingency </td>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Generate
-                            </button>
+     <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                     <%= form_with(model: xrds,local:true) do |form| %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Proforma Details</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                                <input class="form-control" type="text" value="Readonly input here..." aria-label="readonly input example" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                       
+                         <div class="input-group mb-3">
+                         <%= form.label :amount, "Enter the amount", class:"input-group-text"%>
+                         <%= form.date_field :amount, class:"form-control", id:"composition"%>
+                       </div>
+
+                       <div class="actions">
+                         <%= form.submit "Generte", class:"btn btn-primary", id:"sbt" %>
+
+                       </div>
+                     <% end %>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-primary">Cancel Slot</button>
+                   </div>
+               </div>
+           </div>
+
+   </div>
+
+                           </td>
+
+                   <%end%>
                     </tr>
-
-
-                      <%
-=begin%>
- <% @xrd2.where(status:'alloted').each do |xrds|%>
-                      <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
-                        <td>Booked</td>
-                        <td>10-30 A.M</td>
-                        <td> Slot time</td>
-                        <td> <%= xrds.status %></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-<%end%>
-                    </tr>
-                      <%end%> 
-<%
-=end%>
-
-
-
                 </tbody>
 
-
-
-
-
-
             </table>
-
-
-
-
-
-
 
         </div>
         </div>
@@ -228,3 +142,27 @@
 
 
 </div>
+<script>
+  // Get the modals and buttons
+  var modal1 = document.getElementByClass("mod");
+  var btn1 = document.getElementById("nik");
+
+  // Add event listeners to the buttons
+  btn1.addEventListener("click", function() {
+    modal1.style.display = "block";
+  });
+
+  btn2.addEventListener("click", function() {
+    modal2.style.display = "block";
+  });
+
+  // Close the modal when the user clicks anywhere outside of it
+  window.addEventListener("click", function(event) {
+    if (event.target == modal1) {
+      modal1.style.display = "none";
+    }
+    if (event.target == modal2) {
+      modal2.style.display = "none";
+    }
+  });
+</script>
