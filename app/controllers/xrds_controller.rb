@@ -74,6 +74,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status,:user_id ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id ,references: [])
     end
 end
