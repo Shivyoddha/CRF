@@ -29,8 +29,8 @@
 
 
     <div class="input-group mb-3">
-      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
-      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+      <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample_no"%>
+      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample_no",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -54,11 +54,11 @@
 
     <div class="input-group mb-3">
       <%= form.label :grind,"Grinding Feed Type", class:"input-group-text", for:"grind_feed_type"%>
-      <%= form.select(:grind, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "grind_feed_type",:required => true}) %>
+      <%= form.select(:grind, ["Wet", "Dry"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "grind_feed_type",:required => true}) %>
     </div>
 
 
-    <div class="input-group mb-3">
+    <div class="input-group mb-3 vis" id="solvent-type-div">
       <%= form.label :specify, "Specify type of Solvent", class:"input-group-text",for:"spec_solvent"%>
       <%= form.text_field :specify, class:"form-control", id:"spec_solvent", placeholder:""%>
     </div>
@@ -67,29 +67,140 @@
         <p class="fw-bold text-info">Measurement Information</p>
     </div>
 
-    <div class="input-group mb-3">
-      <%= form.label :size, "Grain Size (<3mm)", class:"input-group-text",for:"grain_size"%>
-      <%= form.text_field :size, class:"form-control", id:"grain_size", placeholder:""%>
-      <%= form.label :size, "°C", class:"input-group-text",for:"grain_size"%>
+    <div id='step1' class='set vis'>
+      <div class="input-group mb-3">
+        <%= form.label :size, "Grain Size (<3mm)", class:"input-group-text",for:"grain_size"%>
+        <%= form.text_field :size, class:"form-control", id:"grain_size", placeholder:""%>
+        <%= form.label :size, "°C", class:"input-group-text",for:"grain_size"%>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :grinding, "Grinding Time", class:"input-group-text",for:"grind_time"%>
+        <%= form.text_field :grinding, class:"form-control", id:"grind_time", placeholder:""%>
+        <%= form.label :grinding, "mL/min", class:"input-group-text",for:"grind_time"%>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :speed, "Speed (<2000)", class:"input-group-text",for:"speed"%>
+        <%= form.text_field :speed, class:"form-control", id:"speed", placeholder:""%>
+        <%= form.label :speed, "RPM", class:"input-group-text",for:"speed"%>
+      </div>
+
+      <div class="input-group mb-3">
+        <%= form.label :hardness, "Hardness", class:"input-group-text",for:"hardness"%>
+        <%= form.text_field :hardness, class:"form-control", id:"hardness", placeholder:""%>
+        <%= form.label :hardness, "mohs", class:"input-group-text",for:"hardness"%>
+      </div>
     </div>
 
-    <div class="input-group mb-3">
-      <%= form.label :grinding, "Grinding Time", class:"input-group-text",for:"grind_time"%>
-      <%= form.text_field :grinding, class:"form-control", id:"grind_time", placeholder:""%>
-      <%= form.label :grinding, "mL/min", class:"input-group-text",for:"grind_time"%>
-    </div>
 
-    <div class="input-group mb-3">
-      <%= form.label :speed, "Speed (<2000)", class:"input-group-text",for:"speed"%>
-      <%= form.text_field :speed, class:"form-control", id:"speed", placeholder:""%>
-      <%= form.label :speed, "RPM", class:"input-group-text",for:"speed"%>
-    </div>
+    <div id='step2' class='set vis'>
+            <div class="input-group mb-3 mt-3">
+              <label class="input-group-text text-succcess" for="grain_size_2">Grain Size (&lt3mm)</label>
+              <input type="text" class="form-control" id="grain_size_2" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_2">mm</label>
+            </div>
 
-    <div class="input-group mb-3">
-      <%= form.label :hardness, "Hardness", class:"input-group-text",for:"hardness"%>
-      <%= form.text_field :hardness, class:"form-control", id:"hardness", placeholder:""%>
-      <%= form.label :hardness, "RPM", class:"input-group-text",for:"hardness"%>
-    </div>
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="grind_time_2">Grinding Time</label>
+              <input type="text" class="form-control" id="grind_time_2" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_2">mL/min</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="speed_2">Speed (&lt2000)</label>
+              <input type="text" class="form-control" id="speed_2" placeholder="">
+              <label class="input-group-text" for="speed_2">RPM</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="hardness_2">Hardness</label>
+              <input type="text" class="form-control" id="hardness_2" placeholder="">
+              <label class="input-group-text" for="hardness_2">mohs</label>
+            </div>
+        </div>
+
+        <div id='step3' class='set vis'>
+            <div class="input-group mb-3 mt-3">
+              <label class="input-group-text text-succcess" for="grain_size_3">Grain Size (&lt3mm)</label>
+              <input type="text" class="form-control" id="grain_size_3" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_3">mm</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="grind_time_3">Grinding Time</label>
+              <input type="text" class="form-control" id="grind_time_3" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_3">mL/min</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="speed_3">Speed (&lt2000)</label>
+              <input type="text" class="form-control" id="speed_3" placeholder="">
+              <label class="input-group-text" for="speed_3">RPM</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="hardness_3">Hardness</label>
+              <input type="text" class="form-control" id="hardness_3" placeholder="">
+              <label class="input-group-text" for="hardness_3">mohs</label>
+            </div>
+        </div>
+
+        <div id='step4' class='set vis'>
+        <div class="input-group mb-3 mt-3">
+                <label class="input-group-text text-succcess" for="grain_size_4">Grain Size (&lt3mm)</label>
+              <input type="text" class="form-control" id="grain_size_4" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_4">mm</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="grind_time_4">Grinding Time</label>
+              <input type="text" class="form-control" id="grind_time_4" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_4">mL/min</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="speed_4">Speed (&lt2000)</label>
+              <input type="text" class="form-control" id="speed_4" placeholder="">
+              <label class="input-group-text" for="speed_4">RPM</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="hardness_4">Hardness</label>
+              <input type="text" class="form-control" id="hardness_4" placeholder="">
+              <label class="input-group-text" for="hardness_4">mohs</label>
+            </div>
+        </div>
+
+<div id='step5' class='set vis'>
+            <div class="input-group mb-3 mt-3">
+              <label class="input-group-text text-succcess" for="grain_size_5">Grain Size (&lt3mm) </label>
+              <input type="text" class="form-control" id="grain_size_5" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_5">mm</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="grind_time_5">Grinding Time</label>
+              <input type="text" class="form-control" id="grind_time_5" placeholder="">
+              <label class="input-group-text text-succcess" for="grain_size_5">mL/min</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text text-succcess" for="speed_5">Speed (&lt2000)</label>
+              <input type="text" class="form-control" id="speed_5" placeholder="">
+              <label class="input-group-text" for="speed_5">RPM</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <label class="input-group-text" for="hardness_5">Hardness</label>
+              <input type="text" class="form-control" id="hardness_5" placeholder="">
+              <label class="input-group-text" for="hardness_5">mohs</label>
+            </div>
+        </div>
+
+
+
+
 
     <div>
         <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
@@ -155,3 +266,59 @@
 <%=render "partials/footer" %>
 
 <% end %>
+
+
+<script>
+    let sample_no = document.getElementById('sample_no');
+    let step1 = document.getElementById('step1');
+    let step2 = document.getElementById('step2');
+    let step3 = document.getElementById('step3');
+    let step4 = document.getElementById('step4');
+    let step5 = document.getElementById('step5');
+    let grind_feed_type = document.getElementById('grind_feed_type');
+    let solvent_type_div = document.getElementById('solvent-type-div');
+
+    sample_no.addEventListener('click', () => {
+        step1.classList.add('vis');
+        step2.classList.add('vis');
+        step3.classList.add('vis');
+        step4.classList.add('vis');
+        step5.classList.add('vis');
+
+        if (sample_no.value == 1) {
+            step1.classList.toggle('vis');
+        }
+
+        if (sample_no.value == 2) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+        }
+        if (sample_no.value == 3) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+        }
+        if (sample_no.value == 4) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+        }
+        if (sample_no.value == 5) {
+            step1.classList.toggle('vis');
+            step2.classList.toggle('vis');
+            step3.classList.toggle('vis');
+            step4.classList.toggle('vis');
+            step5.classList.toggle('vis');
+        }
+
+    })
+
+    grind_feed_type.addEventListener('click', ()=> {
+      solvent_type_div.classList.add('vis')
+
+      if (grind_feed_type.value == "Wet") {
+        solvent_type_div.classList.toggle('vis')
+      }
+    })
+</script>

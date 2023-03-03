@@ -63,7 +63,7 @@
       <%= form.select(:tool, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "tool-reqd",:required => true}) %>
     </div>
 
-    <div class="input-group mb-3">
+    <div class="input-group mb-3 vis" id="mention_tool_div">
       <%= form.text_field :toolnom, class:"form-control", id:"tool-nomenclature", placeholder:"Tool Nomenclature" %>
     </div>
 
@@ -72,13 +72,13 @@
 
         <div class="input-group mb-3">
           <%= form.label :rspeed, "Rotational Speed", class:"input-group-text",for:"rotation-speed"%>
-          <%= form.text_field :rspeed, class:"form-control", id:"rotation-speed", placeholder:"2"%>
+          <%= form.text_field :rspeed, class:"form-control", id:"rotation-speed", placeholder:""%>
           <%= form.label :rspeed, "Rpm", class:"input-group-text",for:"rotation-speed"%>
         </div>
 
         <div class="input-group mb-3">
           <%= form.label :wspeed, "Welding Speed", class:"input-group-text",for:"weld-speed"%>
-          <%= form.text_field :wspeed, class:"form-control", id:"weld-speed", placeholder:"2"%>
+          <%= form.text_field :wspeed, class:"form-control", id:"weld-speed", placeholder:""%>
           <%= form.label :wspeed, "mm/min", class:"input-group-text",for:"weld-speed"%>
         </div>
     </div>
@@ -88,7 +88,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :otforce, "Thrust Force", class:"input-group-text",for:"thrust-force"%>
-          <%= form.text_field :otforce, class:"form-control", id:"thrust-force", placeholder:"2"%>
+          <%= form.text_field :otforce, class:"form-control", id:"thrust-force", placeholder:""%>
           <%= form.label :otforce, "kN", class:"input-group-text",for:"thrust-force"%>
         </div>
 
@@ -109,13 +109,13 @@
 
         <div class="input-group mb-3">
           <%= form.label :depth, "Depth", class:"input-group-text",for:"depth"%>
-          <%= form.text_field :depth, class:"form-control", id:"depth", placeholder:"2"%>
+          <%= form.text_field :depth, class:"form-control", id:"depth", placeholder:""%>
           <%= form.label :depth, "mm", class:"input-group-text",for:"depth"%>
         </div>
 
         <div class="input-group mb-3">
           <%= form.label :ptforce, "Thrust Force", class:"input-group-text",for:"thrust-force-penetrate"%>
-          <%= form.text_field :ptforce, class:"form-control", id:"thrust-force-penetrate", placeholder:"2"%>
+          <%= form.text_field :ptforce, class:"form-control", id:"thrust-force-penetrate", placeholder:""%>
           <%= form.label :ptforce, "kN", class:"input-group-text",for:"thrust-force-penetrate"%>
         </div>
     </div>
@@ -151,3 +151,19 @@
 <%=render "partials/footer" %>
 
 <% end %>
+
+
+<script>
+    let tool = document.getElementById('tool-reqd');
+    let mention_tool_div = document.getElementById('mention_tool_div');
+
+    tool.addEventListener('click', () => {
+        mention_tool_div.classList.add('vis');
+
+
+        if (tool.value == 'Yes') {
+            mention_tool_div.classList.toggle('vis');
+        }
+
+    })
+</script>

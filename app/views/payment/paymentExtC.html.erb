@@ -27,27 +27,25 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
-        <!--<%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>-->
-
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">              
-                 <%= link_to 'All Payments',slotbooker_paymentExt_path,class:"nav-link active sidelink-wrap" %>              
+               <li class="nav-item">
+                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Recently Completed',slotbooker_paymentExtR_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>           
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',slotbooker_paymentExtM_path,class:"nav-link active sidelink-wrap" %> 
+                        <%= link_to 'Recently Completed',payment_paymentExtR_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Completed',slotbooker_paymentExtC_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',slotbooker_paymentExtU_path,class:"nav-link active sidelink-wrap"  %> 
+                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -81,11 +79,13 @@
                 <tbody>
 
                         <tr>
-                        <th scope="row">CRF/XRD/123	</th>
-
-                        <td> User Name </td>
-                        <td> NITK </td>
-                        <td>    Industry Professional </td>
+                          <%Xrd.all.each do|xrds|%>
+                          <tr>
+                            <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                            <td> <%= xrds.user.name%> </td>
+                            <td> <%= xrds.user.orgname%> </td>
+                            <td> <%= xrds.user.profession%> </td>
+                            <%end%>
                         <td> HR-LCMS </td>
                         <td> Dr.Shriram Marathe </td>
                         <td> Assistant professor,Department of Civil Engineering,NMAMIT-NITTE,Karkala -574110 </td>
@@ -119,7 +119,7 @@
                                 </div>
                             </div>
                         </td>
-                       
+
                     </tr>
 
 
@@ -160,7 +160,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                        
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -197,7 +197,7 @@
                         </td>
 <%end%>
                     </tr>
-                      <%end%> 
+                      <%end%>
 <%
 =end%>
 

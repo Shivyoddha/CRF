@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
 
+    get 'home/mainPage'
+
 
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
@@ -303,18 +305,18 @@ Rails.application.routes.draw do
     get 'know/ansys'
     get 'know/laser'
     get 'know/auto_multi_speci_polish'
-    get 'slotbooker/payment'
-    get 'slotbooker/paymentD'
-    get 'slotbooker/paymentC'
-    get 'slotbooker/paymentS'
-    get 'slotbooker/paymentP'
-    get 'slotbooker/paymentM'
-    get 'slotbooker/paymentU'
-    get 'slotbooker/paymentExt'
-    get 'slotbooker/paymentExtR'
-    get 'slotbooker/paymentExtM'
-    get 'slotbooker/paymentExtC'
-    get 'slotbooker/paymentExtU'
+    get 'payment/payment'
+    get 'payment/paymentD'
+    get 'payment/paymentC'
+    get 'payment/paymentS'
+    get 'payment/paymentP'
+    get 'payment/paymentM'
+    get 'payment/paymentU'
+    get 'payment/paymentExt'
+    get 'payment/paymentExtR'
+    get 'payment/paymentExtM'
+    get 'payment/paymentExtC'
+    get 'payment/paymentExtU'
     devise_scope :user do
     root to: "devise/sessions#new"
   end

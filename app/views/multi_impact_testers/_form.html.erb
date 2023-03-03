@@ -37,7 +37,7 @@
 
     <div class="input-group mb-3">
       <%= form.label :stype,"Sample Type", class:"input-group-text", for:"sample-type"%>
-      <%= form.select(:stype, ["Metal","Polymer","Ceramice"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+      <%= form.select(:stype, ["Metal","Polymer","Ceramic"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -51,7 +51,7 @@
       <%= form.select(:measuerment, ["Drop Weight Testing","SHPB","Bullet Impact Testing","Bird Strike"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
     </div>
 
-    <div class="drop-weight">
+    <div id="drop-weight" class="vis">
         <p class="text-warning">Experimental Condition Drop Weight Testing</p>
 
         <div class="input-group mb-3">
@@ -84,7 +84,7 @@
 
     </div>
 
-    <div class="shpb">
+    <div id="shpb"  class="vis">
         <p class="text-warning">Experimental Condition SHPB</p>
 
         <div class="input-group mb-3">
@@ -104,7 +104,7 @@
 
     </div>
 
-    <div class="bullet-impact">
+    <div id="bullet-impact"  class="vis">
         <p class="text-warning">Experimental Condition Bullet Impact Testing</p>
 
         <div class="input-group mb-3">
@@ -123,7 +123,7 @@
 
     </div>
 
-    <div class="bird-strike">
+    <div id="bird-strike"  class="vis">
         <p class="text-warning">Experimental Condition Bird Strike</p>
 
         <div class="input-group mb-3">
@@ -173,3 +173,34 @@
 <%=render "partials/footer" %>
 
 <% end %>
+
+
+<script>
+    let measurement = document.getElementById('measurement');
+    let bird = document.getElementById('bird-strike');
+    let bullet = document.getElementById('bullet-impact');
+    let shpb = document.getElementById('shpb');
+    let drop_weight = document.getElementById('drop-weight');
+
+    measurement.addEventListener('click', () => {
+        bird.classList.add('vis');
+        bullet.classList.add('vis');
+        shpb.classList.add('vis');
+        drop_weight.classList.add('vis');
+
+
+        if (measurement.value == 'SHPB') {
+            shpb.classList.toggle('vis');
+        }
+        if (measurement.value == 'Bird Strike') {
+            bird.classList.toggle('vis');
+        }
+        if (measurement.value == 'Bullet Impact Testing') {
+            bullet.classList.toggle('vis');
+        }
+        if (measurement.value == 'Drop Weight Testing') {
+            drop_weight.classList.toggle('vis');
+        }
+
+    })
+</script>

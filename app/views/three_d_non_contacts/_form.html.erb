@@ -2,6 +2,7 @@
 <%= stylesheet_link_tag "equipmentQuestion"%>
 
 <%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
 
 <div class="container">
     <div id="equipment-name">
@@ -23,8 +24,8 @@
 
 
       <div class="input-group mb-3">
-        <%= form.label :scant, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
-        <%= form.select(:scant, ['Area', 'Profile'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
+        <%= form.label :scant, "ScanType", class:"input-group-text", for:"scan-type"%>
+        <%= form.select(:scant, ['Area', 'Profile'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "scan-type",:required => true}) %>
     </div>
   
     <div class="input-group mb-3">
@@ -38,10 +39,10 @@
         <%= form.label :xrange,"mm", class:"input-group-text", for:"x_range"%>
     </div>
     
-    <div class="input-group mb-3">
-    <%= form.label :yrange,"Y Range", class:"input-group-text", for:"y_range"%>
-    <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range", placeholder:"Possible Elements" %>
-    <%= form.label :yrange,"mm", class:"input-group-text", for:"y_range"%>
+    <div class="input-group mb-3 vis"  id="y_range" >
+      <%= form.label :yrange,"Y Range", class:"input-group-text", for:"y_range-f"%>
+      <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range-f", placeholder:"Possible Elements" %>
+      <%= form.label :yrange,"mm", class:"input-group-text", for:"y_range-f" %>
     </div>
 
       <div class="input-group mb-3">
@@ -97,30 +98,6 @@
 <%=render "partials/footer" %>
 
 
-<script>
-
-    let incompability = document.getElementById('incompatibile');
-    let mentionCompabilty = document.getElementById('mention-compability');
-    let yRange = document.getElementById('y_range');
-    let scanType = document.getElementById('scan-type');
-    
-    
-    incompability.addEventListener('click', () => {
-        mentionCompabilty.classList.add('vis');
-
-        if(incompability.value == 'yes'){
-          mentionCompabilty.classList.toggle('vis')
-        }
-    })
-    scanType.addEventListener('click', () => {
-        yRange.classList.add('vis');
-
-        if(scanType.value == 'area'){
-          yRange.classList.toggle('vis')
-        }
-    })
-
-</script>
 
 
 
@@ -137,3 +114,27 @@
 <% end %>
 
  
+<script>
+
+    let incompability = document.getElementById('incompatibile');
+    let mentionCompabilty = document.getElementById('mention-compability');
+    let yRange = document.getElementById('y_range');
+    let scanType = document.getElementById('scan-type');
+    
+    
+    incompability.addEventListener('click', () => {
+        mentionCompabilty.classList.add('vis');
+
+        if(incompability.value == 'Yes'){
+          mentionCompabilty.classList.toggle('vis')
+        }
+    })
+    scanType.addEventListener('click', () => {
+        yRange.classList.add('vis');
+
+        if(scanType.value == 'Area'){
+          yRange.classList.toggle('vis')
+        }
+    })
+
+</script>
