@@ -46,7 +46,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :req_atoms,"Required Atmosphere", class:"input-group-text", for:"atmosphere-req" %>
-          <%= form.select(:req_atoms, ['withour-vaccum','without-vaccum','gaseous-atmosphere'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere-req",:required => true}) %>
+          <%= form.select(:req_atoms, ['with-vaccum','without-vaccum','gaseous-atmosphere'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere-req",:required => true}) %>
         </div>
         <div class="vis mb-3" id="gas-type-list">
           <%= form.label :gas, "Specify the type of gas",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>

@@ -66,7 +66,7 @@
             <div class="input-group mb-2">
               <%= form.label :refractive_index,"Refective Index (optional)" ,class:"input-group-text" ,for:"solvent-ref-index" %>
               <%= form.label :refractive_index,"μ =" ,class:"input-group-text" ,for:"solvent-ref-index" %>
-              <%= form.text_field :refractive_index%>
+              <%= form.text_field :refractive_index %>
 
             </div>
             <div class="input-group mb-2">
@@ -108,7 +108,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :angle,"Measurement Angle", class:"input-group-text", for:"measure-angle" %>
-         <%= form.select(:angle, ['back-scatter','front-scatter','side-scatter'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measure-angle",:required => true}) %>
+         <%= form.select(:angle, ['Back-scatter','Front-scatter','Side-scatter'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measure-angle",:required => true}) %>
         </div>
         <div class="input-group mb-3">
           <%= form.label :analysis_type,"Type of Analysis Required", class:"input-group-text", for:"analysis-type" %>

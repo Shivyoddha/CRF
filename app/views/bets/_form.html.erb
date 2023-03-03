@@ -102,14 +102,14 @@
         <div class="input-group mb-3">
             <label class="input-group-text fw-bold" for="any-disposal-method">Any specific disposal method?</label>
             <select class="form-select" id="any-disposal-method">
-                <option value="1">Yes</option>
-                <option value="2" selected>No</option>
+                <option value="Yes">Yes</option>
+                <option value="No" selected>No</option>
             </select>
         </div>
 
-         <div class="input-group mb-3">
-        <%= form.label :disposal , "Disposal", class:"input-group-text", for:"inputGroupSelect03" %>
-        <%= form.text_field :disposal , type:"text", class:"form-control", id:"inputGroupSelect03", placeholder:"Please Specific Method" %>
+         <div class="input-group mb-3 vis" id="mention-disposal">
+        <%= form.label :disposal , "Disposal", class:"input-group-text", for:"dispo" %>
+        <%= form.text_field :disposal , type:"text", class:"form-control", id:"dispo", placeholder:"Please Specific Method" %>
       </div>
 
         <div class="input-group mb-3" id="ref-file">
@@ -161,6 +161,9 @@
     let mentionAnalysisRequired = document.getElementById('mention-analysis-required');
     let whetherIncompatible = document.getElementById('whether-incompatible');
     let incompatibleMention = document.getElementById('incompatible-mention');
+    let mention_disposal = document.getElementById('mention-disposal');
+    let any_disposal_method = document.getElementById('any-disposal-method');
+    
 
     degrassingTemp.addEventListener('click', () => {
         customDegrassingTemp.classList.add('vis');
@@ -190,6 +193,14 @@
 
       if (whetherIncompatible.value == 'yes') {
         incompatibleMention.classList.toggle('vis');
+      }
+    })
+    any_disposal_method.addEventListener('click', () => {
+        mention_disposal.classList.add('vis');
+        
+
+      if (any_disposal_method.value == 'Yes') {
+        mention_disposal.classList.toggle('vis');
       }
     })
 
