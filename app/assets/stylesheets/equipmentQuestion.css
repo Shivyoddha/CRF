@@ -33,6 +33,12 @@
     --bs-btn-hover-border-color: #3f5ac9;
 }
 
+.set {
+    border: 2px solid grey;
+    border-radius: 1em;
+    padding: 10px;
+}
+
 @media only screen and (max-width: 600px) {
     .hero {
         width: 95%;

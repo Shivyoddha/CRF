@@ -53,6 +53,8 @@ Rails.application.routes.draw do
     get 'admin_portal/admindashboard'
     get 'admin_portal/slotdashboard'
 
+    get 'home/mainPage'
+
 
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
