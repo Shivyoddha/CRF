@@ -27,27 +27,27 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
-        <!--<%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>-->
+        <!--<%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %> -->
 
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">              
-                 <%= link_to 'All Payments',slotbooker_paymentExt_path,class:"nav-link active sidelink-wrap" %>              
+                <li class="nav-item">
+                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Recently Completed',slotbooker_paymentExtR_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>           
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',slotbooker_paymentExtM_path,class:"nav-link active sidelink-wrap" %> 
+                        <%= link_to 'Recently Completed',payment_paymentExtR_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Completed',slotbooker_paymentExtC_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',slotbooker_paymentExtU_path,class:"nav-link active sidelink-wrap"  %> 
+                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %> 
                 </li>
             </ul>
         </div>
@@ -71,10 +71,6 @@
                        <!-- <th scope="col" id="Contact No">Contact No</th>  -->
                         <th scope="col" id="profession">Profession</th>
                         <th scope="col" id="contact-no">Equipment</th>
-                        <th scope="col" id="invoice-name">Invoice Name</th>
-                        <th scope="col" id="Iinvoice-address">Invoice Address</th>
-                        <th scope="col" id="paid">Paid</th>
-                        <th scope="col" id="date">Date</th>
                         <th scope="col" id="proforma-col">Proforma</th>
                     </tr>
                 </thead>
@@ -85,16 +81,12 @@
 
                         <td> User Name </td>
                         <td> NITK </td>
-                        <td>    Industry Professional </td>
+                        <td> 	Industry Professional </td>
                         <td> HR-LCMS </td>
-                        <td> Dr.Shriram Marathe </td>
-                        <td> Assistant professor,Department of Civil Engineering,NMAMIT-NITTE,Karkala -574110 </td>
-                        <td> 574110 </td>
-                        <td> 12-12-2023 </td>
                         <td id="assign-btn">
                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            View Proforma
+                            Generate
                             </button>
 
                             <!-- Modal -->
@@ -113,13 +105,13 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Dowmload</button>
+                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                       
+
                     </tr>
 
 
@@ -160,7 +152,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                        
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -197,7 +189,7 @@
                         </td>
 <%end%>
                     </tr>
-                      <%end%> 
+                      <%end%>
 <%
 =end%>
 
