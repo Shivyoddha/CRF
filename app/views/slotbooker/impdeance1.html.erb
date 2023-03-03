@@ -69,44 +69,54 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Capacitance</th>
+                        <th scope="col" id="phase">Dielectric</th>
+                        <th scope="col" id="range">I-V</th>
+                        <th scope="col" id="composition">Impedance</th>
+                        <th scope="col" id="composition">Frequency Range</th>
+                        <th scope="col" id="phase">Voltage Range</th>
+                        <th scope="col" id="range">Current Range</th>
+                        <th scope="col" id="phase">Impdeance/Loss Tangent</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="assign-col">Asssign</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @xrd.where(status:'pending').each do |xrds|%>
+                      <% @impedance_analy1.all.each do |xrds|%>
                       <tr>
+                        <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
                         <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
                         <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                        <td> <%= xrds.capacitance%> </td>
+                        <td> <%= xrds.dielectric%> </td>
+                        <td> <%= xrds.iv%> </td>
+                        <td> <%= xrds.impedance%> </td>
+                        <td> <%= xrds.freqrange%> </td>
+                        <td> <%= xrds.voltagerange%> </td>
+                        <td> <%= xrds.currentrange%> </td>
+                          <td> <%= xrds.losstangent%> </td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
+                        <td> <%= xrds.slotdate %></td>
+
+                        <td> <%= xrds.slottime %></td>
+
+                          <td><%= xrds.status%></td>
                         <%xrds.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
+                     <%end%>
                       <% else %>
                         <td>NA</td>
                       <% end %>

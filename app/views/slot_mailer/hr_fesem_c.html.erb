@@ -1,0 +1,166 @@
+<div id="margin">
+    <div class="container-11">
+          <div class="logo">
+              <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+          </div>
+          <div class="crf-heading text-center">
+              <h1 class="fw-bold" style="font-family: 'Montserrat', sans-serif;">Central Research Facility</h1>
+              <h3>National Institute of Technology Karnataka, Surathkal </h3>
+              <p><i>www.nitk.ac.in</i></p>
+          </div>
+      </div>
+
+      <!-- equipment name -->
+      <div class="equipment">
+          <h2 class="text-center" id="equip-heading"><u>HR-FRSEM (CZ) Form</u></h2>
+      </div>
+
+      <span id="app-no-tag">Application No : </span><span class="app-no fw-bold element data">CRF/FESEM/<%=@hr_fesem_c.id%></span>
+      <div class = "user-info" >
+          <div class="left">
+            <div class="element">
+                <span>Applicant Name:</span>
+                <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+            </div>
+            <div class="element">
+                <span>Applicant Email:</span>
+                <span class="fw-bold data"> <%= @user.email %></span>
+            </div>
+            <div class="element">
+                <span>Department:</span>
+                <span class="fw-bold data"> <%= @user.department %></span>
+            </div>
+        </div>
+        <div class = "right">
+              <div class="element">
+
+                  <span>Contact No:</span>
+                  <span class="fw-bold data"> <%= @user.contact %></span>
+              </div>
+
+          <div class="element">
+              <span>Course:</span>
+              <span class="fw-bold data"> <%= @user.course %></span>
+          </div>
+
+          </div>
+      </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+        <div id="sample-details">
+            <div class="left">
+                <div id="no-of-sample" class="element">
+                    <span>No. Of Samples:<span><span class="fw-bold data"><%=@hr_fesem_c.sample%><span>
+                </div>
+
+                <div id="edx-edax" class="element">
+                    <span>EDS/EDAX Required:<span><span class="fw-bold data"><%=@hr_fesem_c.eds_required%><span>
+                </div>
+                <div id="measurement" class="element">
+                    <span>Whether Sample is Toxic:<span><span class="fw-bold data"><%=@hr_fesem_c.toxic%><span>
+                </div>
+                 <div id="measurement" class="element">
+                    <span>Whether Sample is Conducting:<span><span class="fw-bold data"><%=@hr_fesem_c.conducting%><span>
+                </div>
+
+            </div>
+
+            <div class="right">
+                 <div id="sample-type" class="element">
+                    <span>Sample Type:<span><span class="fw-bold data"><%=@hr_fesem_c.stype%><span>
+                </div>
+                 <div id="sample-phase" class="element">
+                    <span>Sample Phase:<span><span class="fw-bold data"><%=@hr_fesem_c.sphase%><span>
+                </div>
+                <div id="composition" class="element">
+                    <span>Composition:<span><span class="fw-bold data"><%=@hr_fesem_c.composition%><span>
+                </div>
+                <div id="measurement" class="element">
+                    <span>Measurment:<span><span class="fw-bold data"><%=@hr_fesem_c.measurement%><span>
+                </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        <div id="testing-req-div">
+            <div id="testing-req" class="element">
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@hr_fesem_c.more%><span>
+            </div>
+        </div>
+
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left" class="element">
+                <div>
+                    <span>Supervisor Name:</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div id="debit-head">
+                    <span class="text-muted element"><i><%=@hr_fesem_c.debit%></i></span>
+                </div>
+
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span>Supervisor Signature</span>
+                </div>
+            </div>
+
+            <div id="signatures-upper-right" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty In-Charge:</span>
+                </div>
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span class="fw-bold">Prof. M N Satyanarayan</span>
+                </div>
+                <div>
+                    <span><b>(Dept. Of Physics, NITK)</b></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="notes">
+            <p class="fw-bold text-center">Note:</p>
+            <ul>
+                <li>Max 3. sample for EDS Mapping.</li>
+                <li>Prepare the sample as per the given size and weight mentioned in the CRF website.</li>
+                <li><b>Samples must be submitted to operator one day prior to Slot date.</b></li>
+                <li>Output data will be only in .tiff & .doc file formats.</li>
+                <li>Bring new CD/DVD (pen drive/hard disks are not allowed.).</li>
+                <li>Acknowledgement in publication and thesis is compulsory.</li>
+                <li>Copy of Acknowledgement can be mailed to <b>office.crf@nitk.edu.in</b> along with publication.</li>
+            </ul>
+
+            <center><i>Declaration: I hereby agree to abide by the rules and regulations of the FESEM laboratory.</i></center>
+
+            <div class="signatures">
+                <div class="student-sign">
+                    <input id="student" type="textfield"/>
+                    <p>Student signature after experiment</p>
+                </div>
+                <div class="chairman-sign">
+                    <center>Sd/-</center>
+                    <i>Chairman CRF</i>
+                </div>
+            </div>
+
+            <div class="generated-on mt-3">
+                <i><%=@hr_fesem_c.created_at%></i>
+            </div>
+
+        </div>
+
+</div>
+        </div>

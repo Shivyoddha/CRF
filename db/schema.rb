@@ -77,10 +77,6 @@ ActiveRecord::Schema.define(version: 2023_03_02_191438) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.string "debit"
-    t.time "slottime"
-    t.date "slotdate"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -646,12 +642,6 @@ ActiveRecord::Schema.define(version: 2023_03_02_191438) do
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "probe_sonicators", force: :cascade do |t|
     t.integer "sample"
     t.float "size"
@@ -923,7 +913,7 @@ ActiveRecord::Schema.define(version: 2023_03_02_191438) do
     t.string "status"
     t.time "slottime"
     t.date "slotdate"
-    t.string "amount"
+    t.float "amount"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
