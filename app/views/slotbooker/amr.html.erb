@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'All Slots',slotbooker_amr_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_amr1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_amr2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_amr3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_amr4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -69,10 +69,15 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="sample-type">Sample Type</th>
+                        <th scope="col" id="sample-type">Sample Size</th>
+                        <th scope="col" id="nature">Nature of Test</th>
+                        <th scope="col" id="temo">Temperature</th>
+                        <th scope="col" id="current">Current</th>
+                        <th scope="col" id="shear">Shear Type</th>
+                        <th scope="col" id="shear-rate">Shear Rate</th>
+                        <th scope="col" id="sweeps">No of Sweeps</th>
+                        <th scope="col" id="sweeps">Analysis </th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +88,7 @@
                 </thead>
                 <tbody>
 
-                      <% AdvanceMolecularRheometer.all.each do |amr|%>
+                      <% @amr.all.each do |amr|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/AMR/<%=amr.id %>	</th>
@@ -92,6 +97,7 @@
                         <td> <%= amr.user.department%> </td>
                         <td> <%= amr.user.contact%> </td>
                         <td> <%= amr.sample%> </td>
+                        <td> <%= amr.stype%> </td>
                         <td> <%= amr.size%> </td>
                         <td> <%= amr.nature%> </td>
                         <td> <%= amr.temperature%> </td>

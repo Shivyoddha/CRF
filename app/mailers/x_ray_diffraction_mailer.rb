@@ -18,7 +18,7 @@ class XRayDiffractionMailer < ApplicationMailer
             to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
-            subject: "New friend Created",
+            subject: "Slot Form filled",
             locals:{xrd:@xrd,user:@user}
           )
 

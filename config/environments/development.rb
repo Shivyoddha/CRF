@@ -46,12 +46,12 @@ config.action_controller.perform_caching = true
   config.action_mailer.default_options = {from: 'crfnitk@gmail.com'}
  config.action_mailer.smtp_settings = {
  address:              'smtp.gmail.com',
- port:                 587,
+ port:                 '587',
  domain:               'gmail.com',
  user_name:            'crfnitk@gmail.com',
  password:            'hcgzyqpdxgcnxwha',
- authentication:       'plain',
- enable_starttls_auto: true  }
+ authentication:       :plain,
+ enable_starttls_auto: true}
  config.action_mailer.default_url_op
   # Don't care if the mailer can't send.
   # Print deprecation notices to the Rails logger.

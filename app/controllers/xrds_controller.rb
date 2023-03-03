@@ -46,6 +46,7 @@ class XrdsController < ApplicationController
      @xrd.status="alloted"
     respond_to do |format|
       if @xrd.update(xrd_params)
+        XrdAllotedMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_xrd_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
@@ -73,6 +74,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status,:user_id ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id ,references: [])
     end
 end
