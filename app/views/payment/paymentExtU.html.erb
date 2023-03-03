@@ -32,29 +32,20 @@
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">              
-                 <%= link_to 'All Payments',slotbooker_payment_path,class:"nav-link active sidelink-wrap" %>              
+                 <li class="nav-item">
+                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Department Operating Cost',slotbooker_paymentD_path,class:"nav-link active sidelink-wrap" %>
-                </li>           
-                <li class="nav-item">
-                    <%= link_to 'CPDA Fund',slotbooker_paymentC_path,class:"nav-link active sidelink-wrap" %> 
-                </li>
-                           
-                <li class="nav-item">
-                    <%= link_to 'Student Contingency',slotbooker_paymentS_path,class:"nav-link active sidelink-wrap" %> 
-                </li>
-                        
-                <li class="nav-item">
-                    <%= link_to 'Project Fund',slotbooker_paymentP_path,class:"nav-link active sidelink-wrap" %> 
-                </li>
-
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',slotbooker_paymentM_path,class:"nav-link active sidelink-wrap" %> 
+                        <%= link_to 'Recently Completed',payment_paymentExtR_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',slotbooker_paymentU_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %> 
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %> 
                 </li>
             </ul>
         </div>
@@ -72,7 +63,7 @@
 
             <div class="mb-3">
                 <div class="input-group">
-                    <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>
+                    <label class="input-group-text" id="app-no-label" for="app-no">Job No</label>
                     <input type="text" class="form-control" id="app-no" aria-describedby="basic-addon3" placeholder="CRF/XXX/$$$">
                 </div>
             </div>
@@ -85,9 +76,9 @@
                 <button type="submit" class="btn btn-success" id="sbt">Edit Fund</button>
             </div>
 
-                
+
         </div>
-            
+
 
 
 
