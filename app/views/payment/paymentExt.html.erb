@@ -47,7 +47,7 @@
                     <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -77,11 +77,13 @@
                 <tbody>
 
                         <tr>
-                        <th scope="row">CRF/XRD/123	</th>
-
-                        <td> User Name </td>
-                        <td> NITK </td>
-                        <td> 	Industry Professional </td>
+                          <%Xrd.all.each do|xrds|%>
+                          <tr>
+                            <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                            <td> <%= xrds.user.name%> </td>
+                            <td> <%= xrds.user.orgname%> </td>
+                            <td> <%= xrds.user.profession%> </td>
+                            <%end%>
                         <td> HR-LCMS </td>
                         <td id="assign-btn">
                            <!-- Button trigger modal -->

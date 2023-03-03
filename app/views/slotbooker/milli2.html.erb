@@ -36,10 +36,10 @@
                         <%= link_to 'All Slots',slotbooker_milli_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_milli1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_milli1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_milli2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_milli2_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Completed Slots',slotbooker_milli3_path,class:"nav-link active sidelink-wrap" %>
@@ -68,44 +68,41 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="sample-no">Type Water</th>
+                        <th scope="col" id="composition">Volume One</th>
+                        <th scope="col" id="composition">Volume Two</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reasssign</th>
-                        <th scope="col" id="cancel-col">Cancel Slot</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @xrd2.where(status:'alloted').each do |xrds|%>
+                      <% @milli2.all.each do |xrds|%>
                       <tr>
+                        <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                        <td> <%= xrds.typewater%> </td>
+                        <td> <%= xrds.volumeone%> </td>
+                        <td> <%= xrds.volumetwo%> </td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> Slot time</td>
-                        <td> <%= xrds.slottime %> </td>
+
+                        <td> <%= xrds.slotdate %></td>
+
+                        <td> <%= xrds.slottime %></td>
+
+                          <td><%= xrds.status%></td>
                         <%xrds.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <%end%>
+                     <%end%>
                         <td id="assign-btn">
                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">

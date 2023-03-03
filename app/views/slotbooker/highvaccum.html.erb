@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_highvaccum_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_highvaccum_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_highvaccum2_path,class:"nav-link active sidelink-wrap" %>
@@ -77,16 +77,7 @@
                         <th scope="col" id="phase">End Temp</th>
                         <th scope="col" id="range">Sample Melting</th>
                         <th scope="col" id="composition">No of steps</th>
-                        <th scope="col" id="phase">Temp1</th>
-                        <th scope="col" id="range">Min 1</th>
-                        <th scope="col" id="phase">Temp2</th>
-                        <th scope="col" id="range">Min 2</th>
-                        <th scope="col" id="phase">Temp3</th>
-                        <th scope="col" id="range">Min 3</th>
-                        <th scope="col" id="phase">Temp4</th>
-                        <th scope="col" id="range">Min 4</th>
-                        <th scope="col" id="phase">Temp5</th>
-                        <th scope="col" id="range">Min 5</th>
+                        <th scope="col" id="phase">Temperature and Minutes</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -114,16 +105,12 @@
                         <td> <%= xrds.endtemp%> </td>
                         <td> <%= xrds.samplemelting%> </td>
                         <td> <%= xrds.no_steps%> </td>
-                        <td> <%= xrds.temp1%> </td>
-                        <td> <%= xrds.min1%> </td>
-                        <td> <%= xrds.temp2%> </td>
-                        <td> <%= xrds.min2%> </td>
-                        <td> <%= xrds.temp3%> </td>
-                        <td> <%= xrds.min3%> </td>
-                        <td> <%= xrds.temp4%> </td>
-                        <td> <%= xrds.min4%> </td>
-                        <td> <%= xrds.temp5%> </td>
-                        <td> <%= xrds.min5%> </td>
+                        <td> Temp1:<nobr><%= xrds.temp1%>  min1:<%= xrds.min1%> <br>
+                             Temp2:<%= xrds.temp1%>  min2: <%= xrds.temp2%><br>
+                             Temp3:<%= xrds.temp3%>  min3: <%= xrds.temp3%><br>
+                             Temp4:<%= xrds.temp4%>  min4: <%= xrds.temp4%><br>
+                             Temp5:<%= xrds.temp5%>  min5: <%= xrds.temp5%><br>
+                         </td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
 

@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_icp_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_icp_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_icp1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_icp1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_icp2_path,class:"nav-link active sidelink-wrap" %>
@@ -69,10 +69,16 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Sample Phase</th>
+                        <th scope="col" id="phase">Nature</th>
+                        <th scope="col" id="range">Concentration</th>
+                        <th scope="col" id="composition">Toxicity</th>
+                        <th scope="col" id="phase">Compatibility</th>
+                        <th scope="col" id="range">Hazard</th>
+                        <th scope="col" id="range">Acid</th>
+                        <th scope="col" id="range">Storge Condition</th>
+                          <th scope="col" id="range">Temperature</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +89,7 @@
                 </thead>
                 <tbody>
 
-                      <% IcpM.all.each do |icp|%>
+                      <% @icp.all.each do |icp|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ICP/<%=icp.id %>	</th>
