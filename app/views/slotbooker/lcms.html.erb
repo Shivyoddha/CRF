@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_lcms_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_lcms_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_lcms1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_lcms1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_lcms2_path,class:"nav-link active sidelink-wrap" %>
@@ -69,10 +69,21 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Sample Nature</th>
+                        <th scope="col" id="composition">Category</th>
+                        <th scope="col" id="phase"> Sample Type</th>
+                        <th scope="col" id="range">Solvent</th>
+                        <th scope="col" id="composition">Analysis</th>
+                        <th scope="col" id="phase"> Sample Volume</th>
+                        <th scope="col" id="range">Sample Concentration</th>
+                        <th scope="col" id="composition">Sample Salts</th>
+                        <th scope="col" id="phase"> Sample Contains</th>
+                        <th scope="col" id="range">Storage</th>
+                        <th scope="col" id="composition">Testing Required</th>
+                        <th scope="col" id="phase"> Incompatible</th>
+                        <th scope="col" id="range">Toxicity</th>
+                        <th scope="col" id="phase"> Disposal</th>
+                        <th scope="col" id="range">Health</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +94,7 @@
                 </thead>
                 <tbody>
 
-                      <% Hrlcm.all.each do |lcms|%>
+                      <% @lcms.all.each do |lcms|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/LCMS/<%=lcms.id %>	</th>

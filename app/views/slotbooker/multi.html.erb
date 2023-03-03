@@ -69,10 +69,19 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Sample Type</th>
+                        <th scope="col" id="composition">Size</th>
+                        <th scope="col" id="phase">Measurement</th>
+                        <th scope="col" id="range">Drop Range</th>
+                        <th scope="col" id="sample-no">Drop Velocity</th>
+                        <th scope="col" id="composition">Drop Temperature</th>
+                        <th scope="col" id="composition">Drop Shape</th>
+                        <th scope="col" id="phase">Shpb length</th>
+                        <th scope="col" id="range">Shpb Temp</th>
+                        <th scope="col" id="phase">Bullet Velocity</th>
+                        <th scope="col" id="range">Bullet Shape</th>
+                        <th scope="col" id="phase">Bird Velocity</th>
+                        <th scope="col" id="range">Bird Shape</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +92,7 @@
                 </thead>
                 <tbody>
 
-                      <% MultiImpactTester.all.each do |multi|%>
+                      <% @multi.all.each do |multi|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/multi/<%=multi.id %>	</th>

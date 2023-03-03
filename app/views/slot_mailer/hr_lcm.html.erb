@@ -1,0 +1,211 @@
+<div id="margin">
+    <div class="container-11">
+          <div class="logo">
+              <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+          </div>
+          <div class="crf-heading text-center">
+              <h1 class="fw-bold" style="font-family: 'Montserrat', sans-serif;">Central Research Facility</h1>
+              <h3>National Institute of Technology Karnataka, Surathkal </h3>
+              <p><i>www.nitk.ac.in</i></p>
+          </div>
+      </div>
+
+      <!-- equipment name -->
+      <div class="equipment">
+          <h2 class="text-center" id="equip-heading"><u>HR-LCMS Form</u></h2>
+      </div>
+
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/LCMS/<%=@hr_lcm.id%></span>
+      <div class = "user-info" >
+          <div class="left">
+            <div class="element">
+                <span>Applicant Name:</span>
+                <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+            </div>
+            <div class="element">
+                <span>Applicant Email:</span>
+                <span class="fw-bold data"> <%= @user.email %></span>
+            </div>
+            <div class="element">
+                <span>Department:</span>
+                <span class="fw-bold data"> <%= @user.department %></span>
+            </div>
+        </div>
+        <div class = "right">
+              <div class="element">
+
+                  <span>Contact No:</span>
+                  <span class="fw-bold data"> <%= @user.contact %></span>
+              </div>
+
+          <div class="element">
+              <span>Course:</span>
+              <span class="fw-bold data"> <%= @user.course %></span>
+          </div>
+
+          </div>
+      </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+        <div id="sample-details">
+            <div class="left-lcms">
+                <div class="element">
+                    <span>No. of Samples:<span><span class="fw-bold data"><%=@hr_lcm.sample%><span>
+                </div>
+                <div class="element">
+                    <span>Nature of Sample:<span><span class="fw-bold data"><%=@hr_lcm.nature_sample%><span>
+                </div>
+                <div class="element">
+                    <span>Category of Sample:<span><span class="fw-bold data"><%=@hr_lcm.category%><span>
+                </div>
+
+                <div class="element">
+                    <span>Type of Sample:<span><span class="fw-bold data"><%=@hr_lcm.sample_type%><span>
+                </div>
+
+                <div class="element">
+                    <span>Analysis Required:<span><span class="fw-bold data"><%=@hr_lcm.analysis%><span>
+                </div>
+                <div class="element">
+                    <span>Sample pH:<span><span class="fw-bold data"><%=@hr_lcm.sample_concentration%><span>
+                </div>
+
+            </div>
+
+            <div class="right-lcms">
+
+                <div class="element">
+                    <span>Solvent Used to dissolve sample:<span><span class="fw-bold data"><%=@hr_lcm.solvent%><span>
+                </div>
+                <div class="element">
+                    <span>Sample volume:<span><span class="fw-bold data"><%=@hr_lcm.sample_volume%><span>
+                </div>
+                <div class="element">
+                    <span>Sample concentration:<span><span class="fw-bold data"><%=@hr_lcm.sample_concentration%><span>
+                </div>
+                <div class="element">
+                    <span>Sample contains salts:<span><span class="fw-bold data"><%=@hr_lcm.sample_salts%><span>
+                </div>
+                <div class="element">
+                    <span>Sample contains:<span><span class="fw-bold data"><%=@hr_lcm.sample_contains%><span>
+                </div>
+
+            </div>
+        <!--out of right div-->
+
+
+            </div>
+                <div class="element">
+                    <span>Testing Required<span><span class="fw-bold data"><%=@hr_lcm.testing_required%><span>
+                </div>
+
+
+
+
+
+        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></h3>
+        <div id="safety-info">
+            <div class="left-lcms">
+                <div id="compatibilty" class="element">
+                    <span>Whether Incompatibile with any material:<span><span class="fw-bold data"><%=@hr_lcm.incompatible%><span>
+                </div>
+
+                <div id="hazard" class="element">
+                    <span>Toxicity:<span><span class="fw-bold data"><%=@hr_lcm.toxicity%><span>
+                </div>
+
+            </div>
+
+            <div class="right-lcms">
+
+                <div id="laser-to-be-used:" class="element">
+                    <span>Any Specific Disposal Method:<span><span class="fw-bold data"><%=@hr_lcm.disposal%><span>
+                </div>
+
+                 <div id="hazard" class="element">
+                    <span>Health Hazards:<span><span class="fw-bold data"><%=@hr_lcm.health%><span>
+                </div>
+                <div class="element">
+                    <span>Storage & handling conditions:<span><span class="fw-bold data"><%=@hr_lcm.storage%><span>
+                </div>
+
+            </div>
+
+
+            </div>
+
+
+
+        <div id="testing-req-div">
+            <div id="sample-description" class="element">
+                <span>Additional Information:<span><span class="fw-bold data"><%=@hr_lcm.more%><span>
+            </div>
+
+        </div>
+
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left-3d-pro" class="element">
+                <div>
+                    <span>Supervisor Name:</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div id="debit-head">
+                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                </div>
+
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span>Supervisor Signature</span>
+                </div>
+            </div>
+
+            <div id="signatures-upper-right-3d-pro" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty In-Charge:</span>
+                </div>
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span class="fw-bold">Dr. Keyur Raval</span>
+                </div>
+                <div>
+                    <span id="department"><b>(Dept. Of Chemical Engg., NITK)</b></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="notes ">
+            <p class="fw-bold text-center">Declaration:</p>
+            <section class="font-smaller">
+                <p>I confirm that the samples submitted for analysis are for research purpose only and the above furnished details are correct and true to the best of my knowledge. I understand that I will be held resposible for any damages arising from incorrect information provided by me against "Safety Information"</p>
+                <p>I agree to acknowledge CRF, NITK for providing (ACQUITY UPLC, Xevo G2 QToF, Waters Corp., USA) analytical facility for my research work, in my report/thesis/publications/conference. I also agree to send the publication reference (DOI or other revelant information) to <b><u>office.crf@nitk.edu.in</u></b></p>
+                <p>I declare that the "Content of this report is meant for our information only and we will not use the content of this report for advertisement, evidence, litigation or quote as certificate to third party".</p>
+                <p>1 accept that all the issued reports/results (soft/hard) will not carry any Signature or Seal and Stamp of CRF-NITK</p>
+            </section>
+
+            <div class="signatures">
+                <div class="student-sign">
+                    <input id="student" type="textfield"/>
+                    <p>Applicant signature after Expermiment</p>
+                </div>
+                <div class="chairman-sign">
+                    <center>Sd/-</center>
+                    <i>Chairman CRF</i>
+                </div>
+            </div>
+
+            <div class="generated-on mt-3">
+                <i><%=@hr_lcm.created_at%></i>
+            </div>
+
+        </div>
+
+</div>
+        </div>

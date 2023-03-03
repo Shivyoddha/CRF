@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_highvaccum_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_highvaccum2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_highvaccum3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_highvaccum4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_highvaccum4_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                 </li>
             </ul>
         </div>
@@ -69,10 +69,15 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Toxicity</th>
+                        <th scope="col" id="phase">Required Atmosphere</th>
+                        <th scope="col" id="range">Gas</th>
+                        <th scope="col" id="composition">Start Temp</th>
+                        <th scope="col" id="phase">End Temp</th>
+                        <th scope="col" id="range">Sample Melting</th>
+                        <th scope="col" id="composition">No of steps</th>
+                        <th scope="col" id="phase">Temperature and Minutes</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +88,42 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                      <% @high4.all.each do |xrds|%>
                       <tr>
+                        <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
                         <td> <%= xrds.user.name%> </td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
                         <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
                         <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                        <td> <%= xrds.toxicity%> </td>
+                        <td> <%= xrds.req_atoms%> </td>
+                        <td> <%= xrds.gas%> </td>
+                        <td> <%= xrds.starttemp%> </td>
+                        <td> <%= xrds.endtemp%> </td>
+                        <td> <%= xrds.samplemelting%> </td>
+                        <td> <%= xrds.no_steps%> </td>
+                        <td> Temp1:<nobr><%= xrds.temp1%>  min1:<%= xrds.min1%> <br>
+                             Temp2:<%= xrds.temp1%>  min2: <%= xrds.temp2%><br>
+                             Temp3:<%= xrds.temp3%>  min3: <%= xrds.temp3%><br>
+                             Temp4:<%= xrds.temp4%>  min4: <%= xrds.temp4%><br>
+                             Temp5:<%= xrds.temp5%>  min5: <%= xrds.temp5%><br>
+                         </td>
                         <td> <%= xrds.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= xrds.slotdate %></td>
+
+                        <td> <%= xrds.slottime %></td>
+
+                          <td><%= xrds.status%></td>
+                        <%xrds.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <%end%>
+                    </tr>
+                      <%end%>
                     </tr>
                       <%end%>
                 </tbody>

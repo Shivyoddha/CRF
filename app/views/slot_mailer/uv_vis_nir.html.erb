@@ -1,0 +1,176 @@
+<div id="margin">
+    <div class="container-11">
+          <div class="logo">
+              <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+          </div>
+          <div class="crf-heading text-center">
+              <h1 class="fw-bold" style="font-family: 'Montserrat', sans-serif;">Central Research Facility</h1>
+              <h3>National Institute of Technology Karnataka, Surathkal </h3>
+              <p><i>www.nitk.ac.in</i></p>
+          </div>
+      </div>
+
+      <!-- equipment name -->
+      <div class="equipment">
+          <h2 class="text-center" id="equip-heading"><u>UV-Vis-NIR Form</u></h2>
+      </div>
+
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/UV/<%@uv_vis_nir.id%></span>
+      <div class="element">
+          <span>Applicant Name:</span>
+          <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+      </div>
+      <div class="element">
+          <span>Applicant Email:</span>
+          <span class="fw-bold data"> <%= @user.email %></span>
+      </div>
+      <div class="element">
+          <span>Department:</span>
+          <span class="fw-bold data"> <%= @user.department %></span>
+      </div>
+    </div>
+    <div class = "right">
+          <div class="element">
+
+              <span>Contact No:</span>
+              <span class="fw-bold data"> <%= @user.contact %></span>
+          </div>
+
+      <div class="element">
+          <span>Course:</span>
+          <span class="fw-bold data"> <%= @user.course %></span>
+      </div>
+
+          </div>
+      </div>
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+        <div id="sample-details">
+            <div class="left-uv">
+                <div class="element">
+                    <span>No. of Samples:<span><span class="fw-bold data"><%@uv_vis_nir.sample%><span>
+                </div>
+                <div class="element">
+                    <span>Start Range:<span><span class="fw-bold data"><%@uv_vis_nir.srange%><span>
+                </div>
+                <div class="element">
+                    <span>Measurement required:<span><span class="fw-bold data">Transmittance:<%@uv_vis_nir.transmittance%>, Absorbance:<%@uv_vis_nir.absorbance%>, Reflectance:<%@uv_vis_nir.reflectance%><span>
+                </div>
+
+
+
+            </div>
+
+            <div class="right-uv">
+                <div class="element">
+                    <span>Sample composition:<span><span class="fw-bold data"><%@uv_vis_nir.composition%><span>
+                </div>
+                <div class="element">
+                    <span>End Range:<span><span class="fw-bold data"><%@uv_vis_nir.erange%><span>
+                </div>
+                <div class="element">
+                    <span>Sample Type:<span><span class="fw-bold data"><%@uv_vis_nir.stype%><span>
+                </div>
+
+            </div>
+
+            </div>
+
+
+
+
+
+        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></h3>
+        <div id="safety-info">
+            <div class="left-lcms">
+                <div id="hazard" class="element">
+                    <span>Toxicity:<span><span class="fw-bold data"><%@uv_vis_nir.toxicity%><span>
+                </div>
+
+            </div>
+
+            <div class="right-lcms">
+
+            </div>
+
+
+            </div>
+
+
+
+        <div id="testing-req-div">
+            <div id="sample-description" class="element">
+                <span>Additional Information:<span><span class="fw-bold data"><%@uv_vis_nir.more%><span>
+            </div>
+
+        </div>
+
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left-3d-pro" class="element">
+                <div>
+                    <span>Supervisor Name:</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div id="debit-head">
+                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                </div>
+
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span>Supervisor Signature</span>
+                </div>
+            </div>
+
+            <div id="signatures-upper-right-3d-pro" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty In-Charge:</span>
+                </div>
+                    <input id="student" type="textfield"/>
+                <div>
+                    <span class="fw-bold">Dr.M R Rahman</span>
+                </div>
+                <div>
+                    <span id="department"><b>(Dept. Of MME, NITK)</b></span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="notes ">
+            <p class="fw-bold text-center">Declaration:</p>
+            <section class="font-smaller">
+                <ul>
+                <li>Personal presence is mandatory.</li>
+                <li> Analysis has to be carried out by User.</li>
+                <li>For liquid sample bring solvent for backgound correction.</li>
+                <li>Output data will be only in .txt/.csv file formats.</li>
+                <li>Bring CD/DVD (pen drive/hard disks are not allowed).</li>
+                <li>Acknowledgment in publication and thesis is compulsory.</li>
+                <li>Copy of Acknowledgment can be mail to <b><u>office.crf@nitk.edu.in</u></b> along with publication.</li>
+                </ul>
+                <p><i>Declaration : I hereby agree to abide by the rules and regulations of the Uv-Vis laboratory</i></p>
+            </section>
+
+            <div class="signatures">
+                <div class="student-sign">
+                    <input id="student" type="textfield"/>
+                    <p>Student signature after Expermiment</p>
+                </div>
+                <div class="chairman-sign">
+                    <center>Sd/-</center>
+                    <i>Chairman CRF</i>
+                </div>
+            </div>
+
+            <div class="generated-on mt-3">
+                <i><%@uv_vis_nir.created_at%></i>
+            </div>
+
+        </div>
+
+</div>
+        </div>

@@ -45,7 +45,7 @@
                     <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %> 
+                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -79,11 +79,13 @@
                 <tbody>
 
                         <tr>
-                        <th scope="row">CRF/XRD/123	</th>
-
-                        <td> User Name </td>
-                        <td> NITK </td>
-                        <td>    Industry Professional </td>
+                          <%Xrd.all.each do|xrds|%>
+                          <tr>
+                            <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                            <td> <%= xrds.user.name%> </td>
+                            <td> <%= xrds.user.orgname%> </td>
+                            <td> <%= xrds.user.profession%> </td>
+                            <%end%>
                         <td> HR-LCMS </td>
                         <td> Dr.Shriram Marathe </td>
                         <td> Assistant professor,Department of Civil Engineering,NMAMIT-NITTE,Karkala -574110 </td>

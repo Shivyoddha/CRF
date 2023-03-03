@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_ionc_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_ionc1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_ionc1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_ionc2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_ionc3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_ionc4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_ionc4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
             </ul>
         </div>
@@ -69,10 +69,20 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Nature</th>
+                        <th scope="col" id="composition">Solvent</th>
+                        <th scope="col" id="phase">Volume</th>
+                        <th scope="col" id="range">Concentration</th>
+                        <th scope="col" id="composition">Eluent</th>
+                        <th scope="col" id="phase">Analysis</th>
+                        <th scope="col" id="range">Elements</th>
+                        <th scope="col" id="range">Column</th>
+                        <th scope="col" id="composition">Flow Rate</th>
+                        <th scope="col" id="phase">Temperature</th>
+                        <th scope="col" id="range">Detector</th>
+                        <th scope="col" id="phase">Toxicity</th>
+                        <th scope="col" id="range">Hazards</th>
+                        <th scope="col" id="range">/disposal</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +93,40 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                      <% @ionc4.all.each do |ionc|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/IONC/<%=ionc.id %>	</th>
+                        <td> <%= ionc.user.name%> </td>
+                        <td> <%= ionc.user.orgname%> </td>
+                        <td> <%= ionc.user.department%> </td>
+                        <td> <%= ionc.user.contact%> </td>
+                        <td> <%= ionc.sample%> </td>
+                        <td> <%= ionc.nature%> </td>
+                        <td> <%= ionc.solvent%> </td>
+                        <td> <%= ionc.volume%> </td>
+                        <td> <%= ionc.concentration%> </td>
+                        <td> <%= ionc.eluent%> </td>
+                        <td> <%= ionc.analysis%> </td>
+                        <td> <%= ionc.elements%> </td>
+                        <td> <%= ionc.column%> </td>
+                        <td> <%= ionc.flow_rate%> </td>
+                        <td> <%= ionc.temperature%> </td>
+                        <td> <%= ionc.detector%> </td>
+                        <td> <%= ionc.toxicity%> </td>
+                        <td>Hazards:<nobr> <%= ionc.hazards%> <br>Hazrds yes:<%= ionc.hazard_yes%></td>
+                        <td> Specific Disposal:<nobr><%= ionc.disposal%><br>Disposal Method :<%= ionc.disposal_yes%></td>
+                        <td> <%= ionc.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= ionc.slotdate %></td>
+
+                        <td> <%= ionc.slottime %></td>
+
+                          <td><%= ionc.status%></td>
+                         <td><%ionc.references.each do |file|%>
+                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                     <%end%>
                     </tr>
                       <%end%>
                 </tbody>
