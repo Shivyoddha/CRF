@@ -87,43 +87,43 @@
 
                         <% @uv1.where(status:'pending').each do |uv|%>
                       <tr>
-                        <th scope="row">CRF/UV/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.sampletype%> </td>
-                        <td> <%= xrds.srange%>nm-<%= xrds.erange%>nm</td>
-                        <td><b>Transmittance:<nobr></b><%= xrds.transmittance%><br><b>Absorbance:</b><%= xrds.absorbance%><br><b>Reflectance:</b><%= xrds.reflectance%></td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/UV/<%=uv.id %>	</th>
+                        <td> <%= uv.user.name%> </td>
+                        <td> <%= uv.user.orgname%> </td>
+                        <td> <%= uv.user.department%> </td>
+                        <td> <%= uv.user.contact%> </td>
+                        <td> <%= uv.sample%> </td>
+                        <td> <%= uv.composition%> </td>
+                        <td> <%= uv.sampletype%> </td>
+                        <td> <%= uv.srange%>nm-<%= uv.erange%>nm</td>
+                        <td><b>Transmittance:<nobr></b><%= uv.transmittance%><br><b>Absorbance:</b><%= uv.absorbance%><br><b>Reflectance:</b><%= uv.reflectance%></td>
+                        <td> <%= uv.toxicity%> </td>
+                        <td> <%= uv.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
+                        <td><%= uv.slotdate %></td>
+                        <td><%= uv.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
+                        <td> <%= uv.status %></td>
+                        <%if uv.references.attached? %>
+                      <%uv.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{uv.id}" }, id: "ani" %>
+                           <div id="<%= uv.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= uv.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: uv,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -134,7 +134,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=uv.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

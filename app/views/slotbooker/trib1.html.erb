@@ -75,7 +75,7 @@
                         <th scope="col" id="range">Loading Condition</th>
                         <th scope="col" id="phase">Indentaion ball</th>
                         <th scope="col" id="range">Stroke Length/ball</th>
-                        <th scope="col" id="range">Range</th>
+                        
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -101,6 +101,7 @@
                         <td> <%= trib.loading%> </td>
                         <td> <%= trib.indenter%> </td>
                         <td> <%= trib.stroke%> </td>
+
                         <td> <%= trib.more%> </td>
                         <td>Booked</td>
                         <td><%= trib.slotdate %></td>
@@ -108,25 +109,25 @@
 
                         <td> <%= trib.status %></td>
                         <%if trib.references.attached? %>
-                        <%trib.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
+                      <%trib.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{trib.id}" }, id: "ani" %>
+                           <div id="<%= trib.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= trib.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: trib,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -137,7 +138,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=trib.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

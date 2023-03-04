@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">NITROGEN:All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">NITROGEN:Pending Slots</h2>
     </div>
 
 
@@ -75,43 +75,44 @@
                     <th scope="col" id="slot-date">Slot Date</th>
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Assign</th>
                 </tr>
             </thead>
             <tbody>
 
-                    <% @nitrogen1.where(status:'pending').each do |xrds|%>
+                    <% @nitrogen1.where(status:'pending').each do |nitrogen|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/NITROGEN/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.quantity%> </td>
-                    <td> <%= xrds.purpose%> </td>
-                    <td> <%= xrds.more%> </td>
+                    <th scope="row">CRF/NITROGEN/<%=nitrogen.id %>	</th>
+                    <td> <%= nitrogen.user.name%> </td>
+                    <td> <%= nitrogen.user.orgname%> </td>
+                    <td> <%= nitrogen.user.department%> </td>
+                    <td> <%= nitrogen.user.contact%> </td>
+                    <td> <%= nitrogen.quantity%> </td>
+                    <td> <%= nitrogen.purpose%> </td>
+                    <td> <%= nitrogen.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= xrds.slotdate %></td>
+                    <td> <%= nitrogen.slotdate %></td>
 
-                    <td> <%= xrds.slottime %></td>
+                    <td> <%= nitrogen.slottime %></td>
 
-                      <td><%= xrds.status%></td>
+                      <td><%= nitrogen.status%></td>
 
 
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{nitrogen.id}" }, id: "ani" %>
+                           <div id="<%= nitrogen.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= nitrogen.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: nitrogen,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -122,7 +123,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=nitrogen.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

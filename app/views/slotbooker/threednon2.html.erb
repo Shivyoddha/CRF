@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">THREE:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">ThreeDNonContact:Alloted Slots</h2>
         </div>
 
 
@@ -62,57 +62,56 @@
         <div>
             <table class="table table-hover font-quicksand">
                 <thead>
-                  <tr class="table-head font-unbounded">
+                    <tr class="table-head font-unbounded">
+                      <th scope="col">Appl No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Institute</th>
+              <th scope="col">Department</th>
+              <th scope="col">Contact No:</th>
+              <th scope="col">No of Samples</th>
+              <th scope="col">Scan Type</th>
+              <th scope="co">X Range</th>
+              <th scope="col">Y Range</th>
+              <th scope="col">Step Interval</th>
+              <th scope="col">Whether Incompatible with any material</th>
+              <th scope="col">Toxicity</th>
+              <th scope="col" id="request">More info</th>
+              <th scope="col" id="slot-date">Slot Date</th>
+              <th scope="col" id="slot-time">Slot Time</th>
+              <th scope="col">Status</th>
+              <th scope="col" id="reference-paper">Reference Paper</th>
+              <th scope="col" id="reassign-col">Reasssign</th>
+              <th scope="col" id="cancel-col">Cancel Slot</th>
+              </tr>
+          </thead>
+          <tbody>
 
-                    <th scope="col">Appl No</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Institute</th>
-                  <th scope="col">Department</th>
-                  <th scope="col">Contact No:</th>
-                  <th scope="col">No of Samples</th>
-                  <th scope="col">Scan Type</th>
-                  <th scope="co">X Range</th>
-                  <th scope="col">Y Range</th>
-                  <th scope="col">Step Interval</th>
-                  <th scope="col">Whether Incompatible with any material</th>
-                  <th scope="col">Toxicity</th>
-                  <th scope="col" id="request">More info</th>
-                  <th scope="col" id="slot-date">Slot Date</th>
-                  <th scope="col" id="slot-time">Slot Time</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" id="reference-paper">Reference Paper</th>
-                  <th scope="col" id="reassign-col">Reasssign</th>
-                  <th scope="col" id="cancel-col">Cancel Slot</th>
-                  </tr>
-              </thead>
-              <tbody>
+                <% @three2.where(status:'alloted').each do |threes|%>
+                <tr>
+                  <th scope="row">CRF/THREE/<%=threes.id %>	</th>
 
-                    <% @three2.where(status:'alloted').each do |threes|%>
-                    <tr>
-                      <th scope="row">CRF/THREE/<%=threes.id %>	</th>
-
-                      <td> <%= threes.user.name%> </td>
-                   <td> <%= threes.user.orgname%> </td>
-                   <td> <%= threes.user.department%> </td>
-                   <td> <%= threes.user.contact%> </td>
-                   <td> <%= threes.sample%> </td>
-                   <td> <%= threes.scant%> </td>
-                   <td> <%= threes.xrange%> </td>
-                   <td> <%= threes.yrange%> </td>
-                   <td> <%= threes.stepinterval%> </td>
-                   <td> <%= threes.incompatible%> </td>
-                   <td> <%= threes.toxicity%> </td>
-                      <td> <%= threes.more%> </td>
-                  <td> <%=threes.slotdate %></td>
-                  <td> <%=threes.slottime %></td>
-                  <td> <%= threes.status %></td>
-                  <%if threes.references.attached? %>
-                <td><%threes.references.each do |file|%>
-                   <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <% end %></td>
-                <% else %>
-                  <td>NA</td>
-                <% end %>
+                  <td> <%= threes.user.name%> </td>
+               <td> <%= threes.user.orgname%> </td>
+               <td> <%= threes.user.department%> </td>
+               <td> <%= threes.user.contact%> </td>
+               <td> <%= threes.sample%> </td>
+               <td> <%= threes.scant%> </td>
+               <td> <%= threes.xrange%> </td>
+               <td> <%= threes.yrange%> </td>
+               <td> <%= threes.stepinterval%> </td>
+               <td> <%= threes.incompatible%> </td>
+               <td> <%= threes.toxicity%> </td>
+                  <td> <%= threes.more%> </td>
+              <td> <%=threes.slotdate %></td>
+              <td> <%=threes.slottime %></td>
+              <td> <%= threes.status %></td>
+              <%if threes.references.attached? %>
+            <td><%threes.references.each do |file|%>
+               <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                 <% end %></td>
+            <% else %>
+              <td>NA</td>
+            <% end %>
                         <td id="assign-btn">
                             <!-- Button trigger modal -->
                              <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{threes.id}" }, id: "ani" %>

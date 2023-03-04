@@ -38,6 +38,7 @@ class LiquidNitrogensController < ApplicationController
 
   # PATCH/PUT /liquid_nitrogens/1 or /liquid_nitrogens/1.json
   def update
+    @liquid_nitrogen.status="alloted"
     respond_to do |format|
       if @liquid_nitrogen.update(liquid_nitrogen_params)
         LiquidNitrogenAllotedMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later

@@ -41,10 +41,11 @@ class TribometersController < ApplicationController
 
   # PATCH/PUT /tribometers/1 or /tribometers/1.json
   def update
+    @tribometer.status="alloted"
     respond_to do |format|
       if @tribometer.update(tribometer_params)
           @tribometer.status="alloted"
-        format.html { redirect_to tribometer_url(@tribometer), notice: "Tribometer was successfully updated." }
+        format.html { redirect_to slotbooker_trib_path(@tribometer), notice: "Tribometer was successfully updated." }
         format.json { render :show, status: :ok, location: @tribometer }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">spark:All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">SPARK:Alloted Slots</h2>
     </div>
 
 
@@ -77,54 +77,60 @@
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reference-paper">Reassign</th>
+                    <th scope="col" id="reference-paper">Cancel</th>
                 </tr>
             </thead>
             <tbody>
 
-                    <% @spark2.where(status:'alloted').each do |sparks|%>
+                    <% @spark2.where(status:'alloted').each do |spark|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/SPARK/<%=sparks.id %>	</th>
-                    <td> <%= sparks.user.name%> </td>
-                    <td> <%= sparks.user.orgname%> </td>
-                    <td> <%= sparks.user.department%> </td>
-                    <td> <%= sparks.user.contact%> </td>
-                    <td> <%= sparks.sample%> </td>
-                    <td> <%= sparks.composition%> </td>
-                    <td> Fe Sample:<nobr><%= sparks.samplefe%><br>
-                        Ni Sample:<%= sparks.sampleni%><br>
-                         Zn Sample: <%= sparks.samplezn%><br>
-                         Sn sample: <%= sparks.samplesn%><br>
-                         Cu Sample: <%= sparks.samplecu%><br>
-                         Ti Sample: <%= sparks.sampleti%><br>
-                         Al Sample: <%= sparks.sampleal%><br>
-                         Pb Sample: <%= sparks.samplepb%><br>
-                         Mg Sample: <%= sparks.samplemg%>
+                    <th scope="row">CRF/SPARK/<%=spark.id %>	</th>
+                    <td> <%= spark.user.name%> </td>
+                    <td> <%= spark.user.orgname%> </td>
+                    <td> <%= spark.user.department%> </td>
+                    <td> <%= spark.user.contact%> </td>
+                    <td> <%= spark.sample%> </td>
+                    <td> <%= spark.composition%> </td>
+                    <td> Fe Sample:<nobr><%= spark.samplefe%><br>
+                        Ni Sample:<%= spark.sampleni%><br>
+                         Zn Sample: <%= spark.samplezn%><br>
+                         Sn sample: <%= spark.samplesn%><br>
+                         Cu Sample: <%= spark.samplecu%><br>
+                         Ti Sample: <%= spark.sampleti%><br>
+                         Al Sample: <%= spark.sampleal%><br>
+                         Pb Sample: <%= spark.samplepb%><br>
+                         Mg Sample: <%= spark.samplemg%>
                      </td>
-                    <td> <%= sparks.more%> </td>
+                    <td> <%= spark.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= sparks.slotdate %></td>
+                    <td> <%= spark.slotdate %></td>
 
-                    <td> <%= sparks.slottime %></td>
+                    <td> <%= spark.slottime %></td>
 
-                      <td><%= sparks.status%></td>
-                    <%sparks.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
+                      <td><%= spark.status%></td>
+                      <%if spark.references.attached? %>
+                      <%spark.references.each do |file|%>
+                <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                <%end%>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                  <td id="assign-btn">
                      <!-- Button trigger modal -->
-                      <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                      <div id="<%= xrds.id%>" class="modal">
+                      <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{spark.id}" }, id: "ani" %>
+                      <div id="<%= spark.id%>" class="modal">
 
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= spark.user.name %></b></h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <%= form_with(model: xrds,local:true) do |form| %>
+                              <%= form_with(model: spark,local:true) do |form| %>
 
                                   <div class="input-group mb-3">
                                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -135,7 +141,7 @@
                                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                               </div>
-                               <%=xrds.id%>
+                               <%=spark.id%>
 
                                 <div class="actions">
                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -155,18 +161,18 @@
 
                   <td id="cancel-btn">
                      <!-- Button trigger modal -->
-                       <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+                       <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{spark.id}" }, id: "anish" %>
 
                       <!-- Modal -->
-                       <div id="ani<%= xrds.id%>" class="modal">
+                       <div id="ani<%= spark.id%>" class="modal">
                         <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
+                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= spark.user.name %></b></h1>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body">
-                                    <%= form_for xrds do |f| %>
+                                    <%= form_for spark do |f| %>
                                       <p> Are you sure you want to cancel the slot ?</p>
                                       <%= f.hidden_field :status, value: 'cancelled' %>
                                   <div class="actions">

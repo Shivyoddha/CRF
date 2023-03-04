@@ -96,52 +96,52 @@
 
                         <% @zeta1.where(status:'pending').each do |zeta|%>
                       <tr>
-                        <th scope="row">CRF/Zeta Potential Sizes/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.element%> </td>
-                        <td> <%= xrds.solvent%> </td>
-                        <td> <%= xrds.refractive_index%> </td>
-                        <td> <%= xrds.viscositypoise%> </td>
-                        <td> <%= xrds.viscositytemp%> </td>
-                        <td> <%= xrds.soluteknown%> </td>
-                        <td> <%= xrds.solutename%> </td>
-                        <td> <%= xrds.refindex%> </td>
-                        <td> <%= xrds.abscoefficent%> </td>
-                        <td> <%= xrds.angle%> </td>
-                        <td> <%= xrds.analysis_type%> </td>
-                        <td> <%= xrds.analysis_temperature%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/Zeta Potential Sizes/<%=zeta.id %>	</th>
+                        <td> <%= zeta.user.name%> </td>
+                        <td> <%= zeta.user.orgname%> </td>
+                        <td> <%= zeta.user.department%> </td>
+                        <td> <%= zeta.user.contact%> </td>
+                        <td> <%= zeta.sample%> </td>
+                        <td> <%= zeta.stype%> </td>
+                        <td> <%= zeta.toxicity%> </td>
+                        <td> <%= zeta.element%> </td>
+                        <td> <%= zeta.solvent%> </td>
+                        <td> <%= zeta.refractive_index%> </td>
+                        <td> <%= zeta.viscositypoise%> </td>
+                        <td> <%= zeta.viscositytemp%> </td>
+                        <td> <%= zeta.soluteknown%> </td>
+                        <td> <%= zeta.solutename%> </td>
+                        <td> <%= zeta.refindex%> </td>
+                        <td> <%= zeta.abscoefficent%> </td>
+                        <td> <%= zeta.angle%> </td>
+                        <td> <%= zeta.analysis_type%> </td>
+                        <td> <%= zeta.analysis_temperature%> </td>
+                        <td> <%= zeta.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
+                        <td><%= zeta.slotdate %></td>
+                        <td><%= zeta.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
+                        <td> <%= zeta.status %></td>
+                        <%if zeta.references.attached? %>
+                      <%zeta.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{zeta.id}" }, id: "ani" %>
+                           <div id="<%= zeta.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= zeta.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: zeta,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -152,7 +152,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=zeta.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

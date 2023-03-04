@@ -99,14 +99,19 @@
                         <td> <%= trib.loading%> </td>
                         <td> <%= trib.indenter%> </td>
                         <td> <%= trib.stroke%> </td>
-                        <td> <%= xrds.more%> </td>
+                    
+                        <td> <%= trib.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                        <td> <%= trib.slotdate %> </td>
+                        <td> <%= trib.slottime %> </td>
+  <td> <%= trib.status %></td>
+  <%if trib.references.attached? %>
+  <%trib.references.each do |file|%>
+  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+  <%end%>
+  <% else %>
+    <td>NA</td>
+  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

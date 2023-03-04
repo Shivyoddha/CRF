@@ -38,9 +38,10 @@ class SpectroRadioMetersController < ApplicationController
 
   # PATCH/PUT /spectro_radio_meters/1 or /spectro_radio_meters/1.json
   def update
+    @spectro_radio_meter.status="alloted"
     respond_to do |format|
       if @spectro_radio_meter.update(spectro_radio_meter_params)
-        format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully updated." }
+        format.html { redirect_to slotbooker_spectro_path(@spectro_radio_meter), notice: "Spectro radio meter was successfully updated." }
         format.json { render :show, status: :ok, location: @spectro_radio_meter }
       else
         format.html { render :edit, status: :unprocessable_entity }

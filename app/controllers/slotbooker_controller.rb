@@ -81,16 +81,16 @@ def raman
   @raman = RamanMicroscope.all
 end
    def raman1
-     @raman =RamanMicroscope.all
+     @raman1 =RamanMicroscope.all
    end
    def raman2
-     @raman =RamanMicroscope.all
+     @raman2 =RamanMicroscope.all
    end
    def raman3
-     @raman =RamanMicroscope.all
+     @raman3 =RamanMicroscope.all
    end
    def raman4
-     @raman =RamanMicroscope.all
+     @raman4 =RamanMicroscope.all
    end
 
 def tga
