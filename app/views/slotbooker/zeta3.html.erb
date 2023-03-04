@@ -121,9 +121,13 @@
                         <td> <%= zeta.slotdate %> </td>
                         <td> <%= zeta.slottime %> </td>
   <td> <%= zeta.status %></td>
+  <%if zeta.references.attached? %>
   <%zeta.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 <%end%>
+<% else %>
+<td>NA</td>
+<% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -86,40 +86,44 @@
                 </thead>
                 <tbody>
 
-                      <% @uv2.where(status:'alloted').each do |uvs|%>
+                      <% @uv2.where(status:'alloted').each do |uv|%>
                       <tr>
-                        <th scope="row">CRF/UV/<%=uvs.id %>	</th>
-                      <td> <%= uvs.user.name%> </td>
-                      <td> <%= uvs.user.orgname%> </td>
-                      <td> <%= uvs.user.department%> </td>
-                      <td> <%= uvs.user.contact%> </td>
-                      <td> <%= uvs.sample%> </td>
-                      <td> <%= uvs.composition%> </td>
-                      <td> <%= uvs.sampletype%> </td>
-                      <td> <%= uvs.srange%>nm-<%= uvs.erange%>nm</td>
-                      <td><b>Transmittance:<nobr></b><%= uvs.transmittance%><br><b>Absorbance:</b><%= uvs.absorbance%><br><b>Reflectance:</b><%= uvs.reflectance%></td>
-                      <td> <%= uvs.toxicity%> </td>
-                        <td> <%= uvs.more%> </td>
+                        <th scope="row">CRF/UV/<%=uv.id %>	</th>
+                      <td> <%= uv.user.name%> </td>
+                      <td> <%= uv.user.orgname%> </td>
+                      <td> <%= uv.user.department%> </td>
+                      <td> <%= uv.user.contact%> </td>
+                      <td> <%= uv.sample%> </td>
+                      <td> <%= uv.composition%> </td>
+                      <td> <%= uv.sampletype%> </td>
+                      <td> <%= uv.srange%>nm-<%= uv.erange%>nm</td>
+                      <td><b>Transmittance:<nobr></b><%= uv.transmittance%><br><b>Absorbance:</b><%= uv.absorbance%><br><b>Reflectance:</b><%= uv.reflectance%></td>
+                      <td> <%= uv.toxicity%> </td>
+                        <td> <%= uv.more%> </td>
                         <td>Booked</td>
-                        <td> <%= uvs.slotdate %> </td>
+                        <td> <%= uv.slotdate %> </td>
                         <td> Slot time</td>
-                        <td> <%= uvs.slottime %> </td>
-                        <%uvs.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <%end%>
+                        <td> <%= uv.slottime %> </td>
+                        <%if uv.references.attached? %>
+                      <%uv.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                         <td id="assign-btn">
                             <!-- Button trigger modal -->
-                             <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                             <div id="<%= xrds.id%>" class="modal">
+                             <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{uv.id}" }, id: "ani" %>
+                             <div id="<%= uv.id%>" class="modal">
 
                            <div class="modal-dialog">
                                <div class="modal-content">
                                    <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= uv.user.name %></b></h1>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
                                    <div class="modal-body">
-                                     <%= form_with(model: xrds,local:true) do |form| %>
+                                     <%= form_with(model: uv,local:true) do |form| %>
 
                                          <div class="input-group mb-3">
                                          <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -130,7 +134,7 @@
                                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                        <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
-                                      <%=xrds.id%>
+                                      <%=uv.id%>
 
                                        <div class="actions">
                                          <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -150,18 +154,18 @@
 
                          <td id="cancel-btn">
                             <!-- Button trigger modal -->
-                              <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+                              <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{uv.id}" }, id: "anish" %>
 
                              <!-- Modal -->
-                              <div id="ani<%= xrds.id%>" class="modal">
+                              <div id="ani<%= uv.id%>" class="modal">
                                <div class="modal-dialog">
                                      <div class="modal-content">
                                          <div class="modal-header">
-                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
+                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= uv.user.name %></b></h1>
                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                          <div class="modal-body">
-                                           <%= form_for xrds do |f| %>
+                                           <%= form_for uv do |f| %>
                                              <p> Are you sure you want to cancel the slot ?</p>
                                              <%= f.hidden_field :status, value: 'cancelled' %>
                                          <div class="actions">

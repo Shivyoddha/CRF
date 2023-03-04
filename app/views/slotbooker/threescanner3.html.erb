@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">THREESCAN:Completed Slots</h2>
         </div>
 
 
@@ -82,7 +82,7 @@
                 </thead>
                 <tbody>
 
-                      <% @threescann3.where(status:'completed').each do |three|%>
+                      <% @threescan3.where(status:'completed').each do |three|%>
                       <tr>
                         <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
                         <td> <%= three.user.name%> </td>
@@ -106,9 +106,13 @@
                         <td> <%= three.slotdate %> </td>
                         <td> <%= three.slottime %> </td>
   <td> <%= three.status %></td>
-  <%three.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+  <%if three.references.attached? %>
+            <td><%three.references.each do |file|%>
+               <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                 <% end %></td>
+            <% else %>
+              <td>NA</td>
+            <% end %>
                     </tr>
                       <%end%>
                 </tbody>

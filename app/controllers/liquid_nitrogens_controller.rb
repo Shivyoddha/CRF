@@ -41,10 +41,7 @@ class LiquidNitrogensController < ApplicationController
     @liquid_nitrogen.status="alloted"
     respond_to do |format|
       if @liquid_nitrogen.update(liquid_nitrogen_params)
-<<<<<<< HEAD
-=======
         LiquidNitrogenAllotedMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later
->>>>>>> 7ce15e27e799e4dca14fa4cf5b1c863c5b650832
         format.html { redirect_to slotbooker_nitrogen_path(@liquid_nitrogen), notice: "Liquid nitrogen was successfully updated." }
         format.json { render :show, status: :ok, location: @liquid_nitrogen }
       else

@@ -42,7 +42,7 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.status="alloted"
     respond_to do |format|
       if @uv_vis_nir.update(uv_vis_nir_params)
-        format.html { redirect_to slotbooker_uv(@uv_vis_nir), notice: "Uv vis nir was successfully updated." }
+        format.html { redirect_to slotbooker_uv_path(@uv_vis_nir), notice: "Uv vis nir was successfully updated." }
         format.json { render :show, status: :ok, location: @uv_vis_nir }
       else
         format.html { render :edit, status: :unprocessable_entity }

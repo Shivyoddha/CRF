@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">THREESCAN:Pending Slots</h2>
         </div>
 
 
@@ -83,53 +83,53 @@
                 </thead>
                 <tbody>
 
-                      <% @threescann1.where(status:'pending').each do |xrds|%>
+                      <% @threescan1.where(status:'pending').each do |threes|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
-                        <th scope="row">CRF/THREESCAN/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.size%> </td>
-                        <td> <%= xrds.texture%></td>
-                        <td>  Stl:<nobr><%= xrds.stt%> <br>
-                          Ply:<%= xrds.ply%><br>
-                          Wrl:<%= xrds.wrl%> <br>
-                          Obj: <%= xrds.obj%> <br>
-                          Asc: <%= xrds.asc%> <br>
-                          Aop: <%= xrds.aop%> <br>
-                          Ptx: <%= xrds.ptx%> <br>
-                          Xyzrgb: <%= xrds.xyzrgb%>
+
+                        <th scope="row">CRF/THREESCAN/<%=threes.id %>	</th>
+                        <td> <%= threes.user.name%> </td>
+                        <td> <%= threes.user.orgname%> </td>
+                        <td> <%= threes.user.department%> </td>
+                        <td> <%= threes.user.contact%> </td>
+                        <td> <%= threes.sample%> </td>
+                        <td> <%= threes.size%> </td>
+                        <td> <%= threes.texture%></td>
+                        <td>  Stl:<nobr><%= threes.stt%> <br>
+                          Ply:<%= threes.ply%><br>
+                          Wrl:<%= threes.wrl%> <br>
+                          Obj: <%= threes.obj%> <br>
+                          Asc: <%= threes.asc%> <br>
+                          Aop: <%= threes.aop%> <br>
+                          Ptx: <%= threes.ptx%> <br>
+                          Xyzrgb: <%= threes.xyzrgb%>
                         </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= threes.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
+                        <td><%= threes.slotdate %></td>
+                        <td><%= threes.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
+                        <td> <%= threes.status %></td>
+                        <%if threes.references.attached? %>
+                      <td><%threes.references.each do |file|%>
+                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                           <% end %></td>
                       <% else %>
                         <td>NA</td>
                       <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{threes.id}" }, id: "ani" %>
+                           <div id="<%= threes.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= threes.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: threes,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -140,7 +140,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=threes.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
