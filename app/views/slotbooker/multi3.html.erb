@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">MULTI:Completed Slots</h2>
         </div>
 
 
@@ -122,9 +122,13 @@
                         <td> <%= multi.slottime %></td>
 
                           <td><%= multi.status%></td>
-                         <td><%multi.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if multi.references.attached? %>
+                          <%multi.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

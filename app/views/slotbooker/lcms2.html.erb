@@ -90,6 +90,8 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">ReAssign</th>
+                        <th scope="col" id="reference-paper">Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -126,22 +128,26 @@
                         <td> <%= lcms.slottime %></td>
 
                           <td><%= lcms.status%></td>
-                         <td><%lcms.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if lcms.references.attached? %>
+                          <%lcms.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                      <td id="assign-btn">
                          <!-- Button trigger modal -->
-                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                          <div id="<%= xrds.id%>" class="modal">
+                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{lcms.id}" }, id: "ani" %>
+                          <div id="<%= lcms.id%>" class="modal">
 
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= lcms.user.name %></b></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                  <%= form_with(model: xrds,local:true) do |form| %>
+                                  <%= form_with(model: lcms,local:true) do |form| %>
 
                                       <div class="input-group mb-3">
                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -152,7 +158,7 @@
                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                   </div>
-                                   <%=xrds.id%>
+                                   <%=lcms.id%>
 
                                     <div class="actions">
                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -172,18 +178,18 @@
 
                       <td id="cancel-btn">
                          <!-- Button trigger modal -->
-                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{lcms.id}" }, id: "anish" %>
 
                           <!-- Modal -->
-                           <div id="ani<%= xrds.id%>" class="modal">
+                           <div id="ani<%= lcms.id%>" class="modal">
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= lcms.user.name %></b></h1>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
-                                        <%= form_for xrds do |f| %>
+                                        <%= form_for lcms do |f| %>
                                           <p> Are you sure you want to cancel the slot ?</p>
                                           <%= f.hidden_field :status, value: 'cancelled' %>
                                       <div class="actions">

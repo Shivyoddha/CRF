@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">MILLI:Pending Slots</h2>
         </div>
 
 
@@ -77,6 +77,7 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,23 +85,24 @@
                         <% @milli1.where(status:'pending').each do |milli|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.typewater%> </td>
-                        <td> <%= xrds.volumeone%> </td>
-                        <td> <%= xrds.volumetwo%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/MILLI/<%=milli.id %>	</th>
+                        <td> <%= milli.user.name%> </td>
+                        <td> <%= milli.user.orgname%> </td>
+                        <td> <%= milli.user.department%> </td>
+                        <td> <%= milli.user.contact%> </td>
+                        <td> <%= milli.typewater%> </td>
+                        <td> <%= milli.volumeone%> </td>
+                        <td> <%= milli.volumetwo%> </td>
+                        <td> <%= milli.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= milli.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= milli.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
+                          <td><%= milli.status%></td>
+                          <%if milli.references.attached? %>
+                        <%milli.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                      <%end%>
                       <% else %>
@@ -108,17 +110,17 @@
                       <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                           <div id="<%= xrds.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{milli.id}" }, id: "ani" %>
+                           <div id="<%= milli.id%>" class="modal">
 
  <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= milli.user.name %></b></h1>
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                 <%= form_with(model: xrds,local:true) do |form| %>
+                 <%= form_with(model: milli,local:true) do |form| %>
 
                      <div class="input-group mb-3">
                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -129,7 +131,7 @@
                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                  </div>
-                  <%=xrds.id%>
+                  <%=milli.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

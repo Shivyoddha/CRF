@@ -125,19 +125,19 @@ end
     end
 
 def lcms
-  @hrlcm = Hrlcm.all
+  @lcms = Hrlcm.all
 end
    def lcms1
-     @lcms1=Lcms.all
+     @lcms1=Hrlcm.all
   end
   def lcms2
-    @lcms2=Lcms.all
+    @lcms2=Hrlcm.all
   end
   def lcms3
-    @lcms3=Lcms.all
+    @lcms3=Hrlcm.all
   end
   def lcms4
-    @lcms4=Lcms.all
+    @lcms4=Hrlcm.all
   end
 
 def uv
@@ -580,20 +580,20 @@ end
     end
 
  def multi
-   @multi_impact_tester = MultiImpactTester.all
+   @multi = MultiImpactTester.all
  end
 
      def multi1
-       @multi_impact_tester1 = MultiImpactTester.all
+       @multi1 = MultiImpactTester.all
      end
      def multi2
-       @multi_impact_tester2 = MultiImpactTester.all
+       @multi2 = MultiImpactTester.all
      end
      def multi3
-       @multi_impact_tester3 = MultiImpactTester.all
+       @multi3 = MultiImpactTester.all
      end
      def multi4
-       @multi_impact_tester4 = MultiImpactTester.all
+       @multi4 = MultiImpactTester.all
      end
 
  def laser
