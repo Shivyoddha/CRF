@@ -41,6 +41,7 @@ class SparkOsController < ApplicationController
       @spark_o.status="alloted"
     respond_to do |format|
       if @spark_o.update(spark_o_params)
+        SparkOAllotedMailer.with(id:@spark_o.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_spark_path(@spark_o), notice: "Spark o was successfully updated." }
         format.json { render :show, status: :ok, location: @spark_o }
       else

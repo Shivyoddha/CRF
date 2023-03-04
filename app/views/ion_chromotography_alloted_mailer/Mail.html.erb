@@ -1,9 +1,9 @@
 <p>Dear <%= @user.name %>,</p>
 <p>Your Slot Date-Time for IcpM Application No: CRF/SEM/<%= @ion_chromotography.id%>.</p>
-<% if @ion_chromotography.status = "alloted" %>
+<% if @ion_chromotography.status == "alloted" %>
 <p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @ion_chromotography.slotdate %> <%= @ion_chromotography.slottime %></p>
 <%end%>
-<% if @ion_chromotography.status = "cancelled" %>
+<% if @ion_chromotography.status == "cancelled" %>
 <p>The slot with AppNo  CRF/ion_chromotography/<%= @ion_chromotography.id%> has been cancelled</p>
 <%end%>
 <p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No

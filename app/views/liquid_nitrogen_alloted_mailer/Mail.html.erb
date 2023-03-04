@@ -1,9 +1,9 @@
 <p>Dear <%= @user.name %>,</p>
 <p>Your Slot Date-Time for IcpM Application No: CRF/SEM/<%= @liquid_nitrogen.id%>.</p>
-<% if @liquid_nitrogen.status = "alloted" %>
+<% if @liquid_nitrogen.status == "alloted" %>
 <p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @liquid_nitrogen.slotdate %> <%= @liquid_nitrogen.slottime %></p>
 <%end%>
-<% if @liquid_nitrogen.status = "cancelled" %>
+<% if @liquid_nitrogen.status == "cancelled" %>
 <p>The slot with AppNo  CRF/liquid_nitrogen/<%= @liquid_nitrogen.id%> has been cancelled</p>
 <%end%>
 <p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No
