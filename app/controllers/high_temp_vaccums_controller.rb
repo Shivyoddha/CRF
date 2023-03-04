@@ -41,6 +41,7 @@ class HighTempVaccumsController < ApplicationController
     @high_temp_vaccum.status="alloted"
     respond_to do |format|
       if @high_temp_vaccum.update(high_temp_vaccum_params)
+        HighTempVaccumAllotedMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_highvaccum_path(@high_temp_vaccum), notice: "High temp vaccum was successfully updated." }
         format.json { render :show, status: :ok, location: @high_temp_vaccum }
       else

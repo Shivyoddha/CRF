@@ -1,0 +1,18 @@
+<p>Dear <%= @user.name %>,</p>
+<p>Your Slot Date-Time for Glow Application No: CRF/SEM/<%= @glow.id%>.</p>
+<% if @glow.status == "alloted" %>
+<p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @glow.slotdate %> <%= @glow.slottime %></p>
+<%end%>
+<% if @glow.status == "cancelled" %>
+<p>The slot with AppNo  CRF/XRD/<%= @glow.id%> has been cancelled</p>
+<%end%>
+<p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No
+excuses/ permissions will be considered. And also we will not analyse the samples which brought on the same date of
+analysis even if it is/was in the desiccator. Samples must be submitted before 4pm-(Monday - Friday). Late submission of
+samples will not be considered.
+Cancellation/ Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for
+experiment after booking slot, penalty of Rs. 100/- is charged per slot. Slots Date is tentative, Depending on M/C
+avaliability. In case slot date is pre/postponed applicant will get e-mail for same.
+Regards,
+SEM Lab CRF.
+office.crf@nitk.edu.in</p>

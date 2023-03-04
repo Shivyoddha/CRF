@@ -43,6 +43,7 @@ class GrindingsController < ApplicationController
       @grinding.status="alloted"
     respond_to do |format|
       if @grinding.update(grinding_params)
+         GrindingAllotedMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
           @grinding.status="alloted"
         format.html { redirect_to slotbooker_grind_path(@grinding), notice: "Grinding was successfully updated." }
         format.json { render :show, status: :ok, location: @grinding }

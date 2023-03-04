@@ -43,6 +43,7 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.status="alloted"
     respond_to do |format|
       if @hr_fesem_c.update(hr_fesem_c_params)
+        HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_fesemc_path(@hr_fesem_c), notice: "Hr fesem c was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_c }
       else
