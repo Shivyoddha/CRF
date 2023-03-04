@@ -1,9 +1,9 @@
 <p>Dear <%= @user.name %>,</p>
 <p>Your Slot Date-Time for FESEM (Jeol) Application No: CRF/SEM/<%= @hr_fesem_j.id%>.</p>
-<% if @hr_fesem_j.status = "alloted" %>
+<% if @hr_fesem_j.status == "alloted" %>
 <p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @hr_fesem_j.slotdate %> <%= @hr_fesem_j.slottime %></p>
 <%end%>
-<% if @hr_fesem_j.status = "cancelled" %>
+<% if @hr_fesem_j.status == "cancelled" %>
 <p>The slot with AppNo  CRF/hr_fesem_j/<%= @hr_fesem_j.id%> has been cancelled</p>
 <%end%>
 <p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No

@@ -1,9 +1,9 @@
 <p>Dear <%= @user.name %>,</p>
 <p>Your Slot Date-Time for IcpM Application No: CRF/SEM/<%= @probe_sonicator.id%>.</p>
-<% if @probe_sonicator.status = "alloted" %>
+<% if @probe_sonicator.status == "alloted" %>
 <p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @probe_sonicator.slotdate %> <%= @probe_sonicator.slottime %></p>
 <%end%>
-<% if @probe_sonicator.status = "cancelled" %>
+<% if @probe_sonicator.status == "cancelled" %>
 <p>The slot with AppNo  CRF/probe_sonicator/<%= @probe_sonicator.id%> has been cancelled</p>
 <%end%>
 <p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No

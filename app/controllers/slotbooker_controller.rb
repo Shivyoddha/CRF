@@ -483,19 +483,19 @@ end
       end
 
 def trib
-  @tribometer =Tribometer.all
+  @trib =Tribometer.all
 end
       def trib1
-        @tribometer1 =Tribometer.all
+        @trib1 =Tribometer.all
       end
       def trib2
-        @tribometer2 =Tribometer.all
+        @trib2 =Tribometer.all
       end
       def trib3
-        @tribometer3 =Tribometer.all
+        @trib3 =Tribometer.all
       end
       def trib4
-        @tribometer4 =Tribometer.all
+        @trib4 =Tribometer.all
       end
 
 
