@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">ION:Completed Slots</h2>
         </div>
 
 
@@ -93,7 +93,7 @@
                 </thead>
                 <tbody>
 
-                      <% @ionc3.all.each do |ionc|%>
+                    <% @ionc3.where(status:'completed').each do |ionc|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/IONC/<%=ionc.id %>	</th>
@@ -124,9 +124,13 @@
                         <td> <%= ionc.slottime %></td>
 
                           <td><%= ionc.status%></td>
-                         <td><%ionc.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if ionc.references.attached? %>
+                          <%ionc.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

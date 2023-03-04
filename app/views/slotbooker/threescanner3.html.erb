@@ -82,31 +82,31 @@
                 </thead>
                 <tbody>
 
-                      <% @threescann3.where(status:'completed').each do |xrds|%>
+                      <% @threescann3.where(status:'completed').each do |three|%>
                       <tr>
-                        <th scope="row">CRF/THREESCAN/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.size%> </td>
-                        <td> <%= xrds.texture%></td>
-                        <td>  Stl:<nobr><%= xrds.stt%> <br>
-                          Ply:<%= xrds.ply%><br>
-                          Wrl:<%= xrds.wrl%> <br>
-                          Obj: <%= xrds.obj%> <br>
-                          Asc: <%= xrds.asc%> <br>
-                          Aop: <%= xrds.aop%> <br>
-                          Ptx: <%= xrds.ptx%> <br>
-                          Xyzrgb: <%= xrds.xyzrgb%>
+                        <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
+                        <td> <%= three.user.name%> </td>
+                        <td> <%= three.user.orgname%> </td>
+                        <td> <%= three.user.department%> </td>
+                        <td> <%= three.user.contact%> </td>
+                        <td> <%= three.sample%> </td>
+                        <td> <%= three.size%> </td>
+                        <td> <%= three.texture%></td>
+                        <td>  Stl:<nobr><%= three.stt%> <br>
+                          Ply:<%= three.ply%><br>
+                          Wrl:<%= three.wrl%> <br>
+                          Obj: <%= three.obj%> <br>
+                          Asc: <%= three.asc%> <br>
+                          Aop: <%= three.aop%> <br>
+                          Ptx: <%= three.ptx%> <br>
+                          Xyzrgb: <%= three.xyzrgb%>
                         </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= three.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
+                        <td> <%= three.slotdate %> </td>
+                        <td> <%= three.slottime %> </td>
+  <td> <%= three.status %></td>
+  <%three.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 <%end%>
                     </tr>

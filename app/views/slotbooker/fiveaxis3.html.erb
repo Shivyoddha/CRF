@@ -63,17 +63,21 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="application-no">Appl No</th>
                         <th scope="col" id="name">Name</th>
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
+                        <th scope="col" id="composition">Material</th>
+                        <th scope="col" id="composition">Depth</th>
+                        <th scope="col" id="phase">Operation</th>
+                        <th scope="col" id="range">Tool</th>
+                        <th scope="col" id="request">Specimen Tolerance</th>
+                        <th scope="col" id="phase">Cnc Program</th>
+                        <th scope="col" id="range">Rotational Speed</th>
+                        <th scope="col" id="request">Feed Rate</th>
+                        <th scope="col" id="request">More</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
@@ -84,29 +88,38 @@
                 </thead>
                 <tbody>
 
-                      <% @five3.where(status:'pending').each do |xrds|%>
+                        <% @fiveaxis3.where(status:'completed').each do |fiveaxis|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/FIVE AXIS/<%=fiveaxis.id %>	</th>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        ]<td> <%= fiveaxis.user.name%> </td>
+                        <td> <%= fiveaxis.user.orgname%> </td>
+                        <td> <%= fiveaxis.user.department%> </td>
+                        <td> <%= fiveaxis.user.contact%> </td>
+                        <td> <%= fiveaxis.sample%> </td>
+                        <td> <%= fiveaxis.material%> </td>
+                        <td> <%= fiveaxis.depth%> </td>
+                        <td> <%= fiveaxis.operation%> </td>
+                        <td> <%= fiveaxis.tool%> </td>
+                        <td> <%= fiveaxis.specimentolerance%> </td>
+                        <td> <%= fiveaxis.cncprogram%> </td>
+                        <td> <%= fiveaxis.rotationalspeed%> </td>
+                        <td> <%= fiveaxis.feedrate%> </td>
+                        <td> <%= fiveaxis.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
+                        <td> <%= fiveaxis.slotdate %></td>
+
+                        <td> <%= fiveaxis.slottime %></td>
+
+                          <td><%= fiveaxis.status%></td>
+                        <%if fiveaxis.references.attached? %>
+                    <%fiveaxis.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

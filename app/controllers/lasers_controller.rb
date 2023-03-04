@@ -37,9 +37,10 @@ class LasersController < ApplicationController
 
   # PATCH/PUT /lasers/1 or /lasers/1.json
   def update
+    @laser.status="alloted"
     respond_to do |format|
       if @laser.update(laser_params)
-        format.html { redirect_to laser_url(@laser), notice: "Laser was successfully updated." }
+        format.html { redirect_to slotbooker_laser_path(@laser), notice: "Laser was successfully updated." }
         format.json { render :show, status: :ok, location: @laser }
       else
         format.html { render :edit, status: :unprocessable_entity }

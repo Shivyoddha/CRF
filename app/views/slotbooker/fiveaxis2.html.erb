@@ -63,111 +63,174 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="application-no">Appl No</th>
                         <th scope="col" id="name">Name</th>
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
+                        <th scope="col" id="composition">Material</th>
+                        <th scope="col" id="composition">Depth</th>
+                        <th scope="col" id="phase">Operation</th>
+                        <th scope="col" id="range">Tool</th>
+                        <th scope="col" id="request">Specimen Tolerance</th>
+                        <th scope="col" id="phase">Cnc Program</th>
+                        <th scope="col" id="range">Rotational Speed</th>
+                        <th scope="col" id="request">Feed Rate</th>
+                        <th scope="col" id="request">More</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="assign-col">Asssign</th>
+
+                        <th scope="col" id="reference-paper">Reassign</th>
+                  <th scope="col" id="reference-paper">Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @five2.where(status:'pending').each do |xrds|%>
+                      <% @fiveaxis2.where(status:'alloted').each do |fiveaxis2|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/FIVE AXIS/<%=fiveaxis2.id %>	</th>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= fiveaxis2.user.name%> </td>
+                        <td> <%= fiveaxis2.user.orgname%> </td>
+                        <td> <%= fiveaxis2.user.department%> </td>
+                        <td> <%= fiveaxis2.user.contact%> </td>
+                        <td> <%= fiveaxis2.sample%> </td>
+                        <td> <%= fiveaxis2.material%> </td>
+                        <td> <%= fiveaxis2.depth%> </td>
+                        <td> <%= fiveaxis2.operation%> </td>
+                        <td> <%= fiveaxis2.tool%> </td>
+                        <td> <%= fiveaxis2.specimentolerance%> </td>
+                        <td> <%= fiveaxis2.cncprogram%> </td>
+                        <td> <%= fiveaxis2.rotationalspeed%> </td>
+                        <td> <%= fiveaxis2.feedrate%> </td>
+                        <td> <%= fiveaxis2.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                        <td> <%= fiveaxis2.slotdate %></td>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
+                        <td> <%= fiveaxis2.slottime %></td>
+
+                          <td><%= fiveaxis2.status%></td>
+                        <%if fiveaxis2.references.attached? %>
+                    <%fiveaxis2.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
+                  <td id="assign-btn">
+                      <!-- Button trigger modal -->
+                       <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fiveaxis2.id}" }, id: "ani" %>
+                       <div id="<%= fiveaxis2.id%>" class="modal">
+
+                     <div class="modal-dialog">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fiveaxis2.user.name %></b></h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                               <%= form_with(model: fiveaxis2,local:true) do |form| %>
+
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                   <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                 </div>
+
+                                 <div class="input-group mb-3">
+                                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                               </div>
+                                <%=fiveaxis2.id%>
+
+                                 <div class="actions">
+                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                 </div>
+                               <% end %>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary">Cancel Slot</button>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                   </td>
+
+
+                   <td id="cancel-btn">
+                      <!-- Button trigger modal -->
+                        <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{fiveaxis2.id}" }, id: "anish" %>
+
+                       <!-- Modal -->
+                        <div id="ani<%= fiveaxis2.id%>" class="modal">
+                         <div class="modal-dialog">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= fiveaxis2.user.name %></b></h1>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                     <%= form_for fiveaxis2 do |f| %>
+                                       <p> Are you sure you want to cancel the slot ?</p>
+                                       <%= f.hidden_field :status, value: 'cancelled' %>
+                                   <div class="actions">
+
+
+                                   </div>
+
                                     </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                         <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                   </div>
+                                   <% end %>
+                               </div>
+                           </div>
+                       </div>
+                   </td>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
 <%end%>
-                    </tr>
+              </tr>
 
-                </tbody>
-            </table>
+          </tbody>
+      </table>
 
-        </div>
-        </div>
-
-
-    </div>
+  </div>
+  </div>
 
 
 </div>
+
+
+</div>
+<script>
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal");
+var btn1 = document.getElementById("ani");
+var modal2 = document.getElementByClass("modal2");
+var btn2 = document.getElementById("anish");
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+modal1.style.display = "block";
+});
+
+btn2.addEventListener("click", function() {
+modal2.style.display = "block";
+});
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+if (event.target == modal1) {
+modal1.style.display = "none";
+}
+if (event.target == modal2) {
+modal2.style.display = "none";
+}
+});
+</script>

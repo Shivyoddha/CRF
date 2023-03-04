@@ -85,86 +85,87 @@
                     <th scope="col">Slot Time</th>
                     <th scope="col">Slot Status</th>
                     <th scope="col">Reference Paper</th>
-
+                    <th scope="col" id="reference-paper">Assign</th>
 
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <% @cell1.all.each do |cells|%>
+                  <% @cell1.where(status:'pending').each do |cell|%>
                     <tr>
                       <!-- Button trigger modal -->
-                      <th scope="row">CRF/CELL/<%=cells.id %>	</th>
-                      <td> <%= cells.user.name%> </td>
-                      <td> <%= cells.user.orgname%> </td>
-                      <td> <%= cells.user.department%> </td>
-                      <td> <%= cells.user.contact%> </td>
-                      <td> <%= cells.sample%> </td>
-                      <td> <%= cells.stype%> </td>
-                      <td> <%= cells.plate%> </td>
-                      <td> <%= cells.expected_wavelenght%> </td>
-                      <td> <%= cells.assay_type%> </td>
-                      <td> <%= cells.detection%> </td>
-                      <td> <%= cells.image_filter%> </td>
-                      <td> <%= cells.image_mode%> </td>
-                      <td> <%= cells.toxicity%> </td>
-                      <td> <%= cells.compatibility%> </td>
-                      <td> <%= cells.hazard%> </td>
+                      <th scope="row">CRF/CELL/<%=cell.id %>	</th>
+                      <td> <%= cell.user.name%> </td>
+                      <td> <%= cell.user.orgname%> </td>
+                      <td> <%= cell.user.department%> </td>
+                      <td> <%= cell.user.contact%> </td>
+                      <td> <%= cell.sample%> </td>
+                      <td> <%= cell.stype%> </td>
+                      <td> <%= cell.plate%> </td>
+                      <td> <%= cell.expected_wavelenght%> </td>
+                      <td> <%= cell.assay_type%> </td>
+                      <td> <%= cell.detection%> </td>
+                      <td> <%= cell.image_filter%> </td>
+                      <td> <%= cell.image_mode%> </td>
+                      <td> <%= cell.toxicity%> </td>
+                      <td> <%= cell.compatibility%> </td>
+                      <td> <%= cell.hazard%> </td>
 
-                      <td> <%= cells.more%> </td>
+                      <td> <%= cell.more%> </td>
                       <td>Booked</td>
 
-                      <td>  <%= cells.slotdate%> </td>
-                     <td>   <%= cells.slottime%></td>
+                      <td>  <%= cell.slotdate%> </td>
+                     <td>   <%= cell.slottime%></td>
 
-                        <td><%= cells.status%></td>
-                      <%cells.references.each do |file|%>
+                        <td><%= cell.status%></td>
+                        <%if cell.references.attached? %>
+                      <%cell.references.each do |file|%>
                       <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                   <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                         <td id="assign-btn">
+                             <!-- Button trigger modal -->
+                              <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: cell.id %>
+                              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                              Assign
+                              </button> -->
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                              <!-- Modal -->
+                              <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                                      <%= render partial: "form_xrd",locals: { xrd:cell } %>
+                                      <p>You are assigning XRD with ID <%= Xrd.find(cell.id) %> to Preetham Naik.</p>
+                                          </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
-
-
+                                          </div>
+  <%end%>
+                                      </div>
+                                  </div>
     </div>
+                          </td>
+
+                      </tr>
+
+                  </tbody>
+              </table>
+
+          </div>
+          </div>
 
 
-</div>
+      </div>
+
+
+  </div>

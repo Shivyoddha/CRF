@@ -40,10 +40,11 @@ class GrindingsController < ApplicationController
 
   # PATCH/PUT /grindings/1 or /grindings/1.json
   def update
+      @grinding.status="alloted"
     respond_to do |format|
       if @grinding.update(grinding_params)
           @grinding.status="alloted"
-        format.html { redirect_to grinding_url(@grinding), notice: "Grinding was successfully updated." }
+        format.html { redirect_to slotbooker_grind_path(@grinding), notice: "Grinding was successfully updated." }
         format.json { render :show, status: :ok, location: @grinding }
       else
         format.html { render :edit, status: :unprocessable_entity }

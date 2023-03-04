@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">ELECTRO:Completed Slots</h2>
         </div>
 
 
@@ -82,29 +82,33 @@
                 </thead>
                 <tbody>
 
-                      <% @electro3.all.each do |xrds|%>
+                      <% @elctro3.where(status:'completed').each do |elctro3|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/ELECTRO/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.electrolyte%> </td>
-                        <td> <%= xrds.application%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/ELECTRO/<%=elctro.id %>	</th>
+                        <td> <%= elctro.user.name%> </td>
+                        <td> <%= elctro.user.orgname%> </td>
+                        <td> <%= elctro.user.department%> </td>
+                        <td> <%= elctro.user.contact%> </td>
+                        <td> <%= elctro.sample%> </td>
+                        <td> <%= elctro.composition%> </td>
+                        <td> <%= elctro.electrolyte%> </td>
+                        <td> <%= elctro.application%> </td>
+                        <td> <%= elctro.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= elctro.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= elctro.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= elctro.status%></td>
+                          <%if elctro.references.attached? %>
+                          <%elctro.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                          <%end%>
                     </tr>
                       <%end%>
                 </tbody>

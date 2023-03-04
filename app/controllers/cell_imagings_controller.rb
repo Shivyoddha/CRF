@@ -38,9 +38,10 @@ class CellImagingsController < ApplicationController
 
   # PATCH/PUT /cell_imagings/1 or /cell_imagings/1.json
   def update
+      @cell_imaging.status="alloted"
     respond_to do |format|
       if @cell_imaging.update(cell_imaging_params)
-        format.html { redirect_to cell_imaging_url(@cell_imaging), notice: "Cell imaging was successfully updated." }
+        format.html { redirect_to slotbooker_cell_path(@cell_imaging), notice: "Cell imaging was successfully updated." }
         format.json { render :show, status: :ok, location: @cell_imaging }
       else
         format.html { render :edit, status: :unprocessable_entity }

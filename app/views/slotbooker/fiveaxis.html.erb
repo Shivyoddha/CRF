@@ -86,34 +86,38 @@
                 </thead>
                 <tbody>
 
-                      <% @five.all.each do |xrds|%>
+                      <% @fiveaxis.all.each do |fiveaxis|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/Five Axis/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.material%> </td>
-                        <td> <%= xrds.depth%> </td>
-                        <td> <%= xrds.operation%> </td>
-                        <td> <%= xrds.tool%> </td>
-                        <td> <%= xrds.specimentolerance%> </td>
-                        <td> <%= xrds.cncprogram%> </td>
-                        <td> <%= xrds.rotationalspeed%> </td>
-                        <td> <%= xrds.feedrate%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/Five Axis/<%=fiveaxis.id %>	</th>
+                        <td> <%= fiveaxis.user.name%> </td>
+                        <td> <%= fiveaxis.user.orgname%> </td>
+                        <td> <%= fiveaxis.user.department%> </td>
+                        <td> <%= fiveaxis.user.contact%> </td>
+                        <td> <%= fiveaxis.sample%> </td>
+                        <td> <%= fiveaxis.material%> </td>
+                        <td> <%= fiveaxis.depth%> </td>
+                        <td> <%= fiveaxis.operation%> </td>
+                        <td> <%= fiveaxis.tool%> </td>
+                        <td> <%= fiveaxis.specimentolerance%> </td>
+                        <td> <%= fiveaxis.cncprogram%> </td>
+                        <td> <%= fiveaxis.rotationalspeed%> </td>
+                        <td> <%= fiveaxis.feedrate%> </td>
+                        <td> <%= fiveaxis.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= fiveaxis.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= fiveaxis.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= fiveaxis.status%></td>
+                          <%if fiveaxis.references.attached? %>
+                      <%fiveaxis.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
                     </tr>
                       <%end%>
                 </tbody>

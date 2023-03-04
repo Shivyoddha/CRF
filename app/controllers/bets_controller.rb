@@ -38,9 +38,10 @@ class BetsController < ApplicationController
 
   # PATCH/PUT /bets/1 or /bets/1.json
   def update
+    @bet.status="alloted"
     respond_to do |format|
       if @bet.update(bet_params)
-        format.html { redirect_to bet_url(@bet), notice: "Bet was successfully updated." }
+        format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else
         format.html { render :edit, status: :unprocessable_entity }

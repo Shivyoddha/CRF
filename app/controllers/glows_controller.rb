@@ -40,10 +40,11 @@ class GlowsController < ApplicationController
 
   # PATCH/PUT /glows/1 or /glows/1.json
   def update
+    @glow.status="alloted"
     respond_to do |format|
       if @glow.update(glow_params)
         @glow.status="alloted"
-        format.html { redirect_to glow_url(@glow), notice: "Glow was successfully updated." }
+        format.html { redirect_to slotbooker_glow_path(@glow), notice: "Glow was successfully updated." }
         format.json { render :show, status: :ok, location: @glow }
       else
         format.html { render :edit, status: :unprocessable_entity }

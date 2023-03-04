@@ -94,34 +94,34 @@
                 </thead>
                 <tbody>
 
-                      <% @zeta3.where(status:'completed').each do |xrds|%>
+                      <% @zeta3.where(status:'completed').each do |zeta|%>
                       <tr>
-                        <th scope="row">CRF/Zeta Potential Sizes/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.element%> </td>
-                        <td> <%= xrds.solvent%> </td>
-                        <td> <%= xrds.refractive_index%> </td>
-                        <td> <%= xrds.viscositypoise%> </td>
-                        <td> <%= xrds.viscositytemp%> </td>
-                        <td> <%= xrds.soluteknown%> </td>
-                        <td> <%= xrds.solutename%> </td>
-                        <td> <%= xrds.refindex%> </td>
-                        <td> <%= xrds.abscoefficent%> </td>
-                        <td> <%= xrds.angle%> </td>
-                        <td> <%= xrds.analysis_type%> </td>
-                        <td> <%= xrds.analysis_temperature%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/Zeta Potential Sizes/<%=zeta.id %>	</th>
+                        <td> <%= zeta.user.name%> </td>
+                        <td> <%= zeta.user.orgname%> </td>
+                        <td> <%= zeta.user.department%> </td>
+                        <td> <%= zeta.user.contact%> </td>
+                        <td> <%= zeta.sample%> </td>
+                        <td> <%= zeta.stype%> </td>
+                        <td> <%= zeta.toxicity%> </td>
+                        <td> <%= zeta.element%> </td>
+                        <td> <%= zeta.solvent%> </td>
+                        <td> <%= zeta.refractive_index%> </td>
+                        <td> <%= zeta.viscositypoise%> </td>
+                        <td> <%= zeta.viscositytemp%> </td>
+                        <td> <%= zeta.soluteknown%> </td>
+                        <td> <%= zeta.solutename%> </td>
+                        <td> <%= zeta.refindex%> </td>
+                        <td> <%= zeta.abscoefficent%> </td>
+                        <td> <%= zeta.angle%> </td>
+                        <td> <%= zeta.analysis_type%> </td>
+                        <td> <%= zeta.analysis_temperature%> </td>
+                        <td> <%= zeta.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
+                        <td> <%= zeta.slotdate %> </td>
+                        <td> <%= zeta.slottime %> </td>
+  <td> <%= zeta.status %></td>
+  <%zeta.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 <%end%>
                     </tr>

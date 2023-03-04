@@ -81,7 +81,7 @@
                 </thead>
                 <tbody>
 
-                      <% @milli3.all.each do |xrds|%>
+                      <% @milli3.where(status:'completed').each do |milli|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>

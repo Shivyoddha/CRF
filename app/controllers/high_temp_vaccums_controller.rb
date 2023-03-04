@@ -38,9 +38,10 @@ class HighTempVaccumsController < ApplicationController
 
   # PATCH/PUT /high_temp_vaccums/1 or /high_temp_vaccums/1.json
   def update
+    @high_temp_vaccum.status="alloted"
     respond_to do |format|
       if @high_temp_vaccum.update(high_temp_vaccum_params)
-        format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully updated." }
+        format.html { redirect_to slotbooker_highvaccum_path(@high_temp_vaccum), notice: "High temp vaccum was successfully updated." }
         format.json { render :show, status: :ok, location: @high_temp_vaccum }
       else
         format.html { render :edit, status: :unprocessable_entity }

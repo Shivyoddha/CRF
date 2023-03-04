@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Ball:All Slots</h2>
         </div>
 
 
@@ -98,10 +98,12 @@
                         <td> <%= ball.user.department%> </td>
                         <td> <%= ball.user.contact%> </td>
                         <td> <%= ball.sample%> </td>
+
                         <td> <%= ball.specify%> </td>
                         <td> <%= ball.feed%> </td>
                         <td> <%= ball.btype%> </td>
                         <td> <%= ball.grind%> </td>
+                        <td> <%= ball.size%> </td>
                         <td> <%= ball.grinding%> </td>
                         <td> <%= ball.hardness%> </td>
                         <td> <%= ball.speed%></td>
@@ -115,9 +117,13 @@
                         <td> <%= ball.slottime %></td>
 
                           <td><%= ball.status%></td>
-                        <%ball.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <%if ball.references.attached? %>
+                          <%ball.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

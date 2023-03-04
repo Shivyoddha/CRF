@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FRIC:Pending Slots</h2>
         </div>
 
 
@@ -86,11 +86,12 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @fric1.all.each do |fric|%>
+                        <% @fric1.where(status:'pending').each do |fric|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/FRIC/<%=fric.id %>	</th>
@@ -118,15 +119,16 @@
                         <td> <%= fric.slottime %></td>
 
                           <td><%= fric.status%></td>
-                          <td><%fric.references.each do |file|%>
-                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
+                          <%if fric.references.attached? %>
+                    <%fric.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                        <td id="assign-btn">
                            <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: fric.id %>
                             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
                             Assign
                             </button> -->
@@ -141,8 +143,8 @@
                                         </div>
                                         <div class="modal-body">
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
+                                    <%= render partial: "form_xrd",locals: { xrd:fric } %>
+                                    <p>You are assigning XRD with ID <%= Xrd.find(fric.id) %> to Preetham Naik.</p>
                                         </div>
 
                                         <div class="modal-footer">

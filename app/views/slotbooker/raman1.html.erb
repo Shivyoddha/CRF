@@ -86,7 +86,7 @@
               </tr>
           </thead>
           <tbody>
-          <% @raman1.each do |xrds|%>
+            <% @raman1.where(status:'pending').each do |raman|%>
               <tr>
                 <!-- Button trigger modal -->
                 <th scope="row">CRF/RAMAN/<%=xrds.id %>	</th>
@@ -112,47 +112,82 @@
                       <% else %>
                         <td>NA</td>
                       <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
+                           <div id="<%= xrds.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: xrds,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=xrds.id%>
 
-                                        </div>
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+
+                   </tr>
 <%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+               </tbody>
+           </table>
 
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
+       </div>
+       </div>
 
 
-    </div>
+   </div>
 
 
 </div>
+<script>
+ // Get the modals and buttons
+ var modal1 = document.getElementByClass("modal");
+ var btn1 = document.getElementById("ani");
+
+ // Add event listeners to the buttons
+ btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+ });
+
+ btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+ });
+
+ // Close the modal when the user clicks anywhere outside of it
+ window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+     modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+     modal2.style.display = "none";
+   }
+ });
+</script>

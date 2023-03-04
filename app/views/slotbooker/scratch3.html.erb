@@ -88,7 +88,7 @@
             </thead>
             <tbody>
 
-                  <% @scratch3.all.each do |xrds|%>
+                <% @scratch3.where(status:'completed').each do |scratch|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/SCRATCH/<%=xrds.id %>	</th>

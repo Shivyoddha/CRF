@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">IMPEDEANCE:Cancelled Slots</h2>
         </div>
 
 
@@ -88,35 +88,39 @@
                 </thead>
                 <tbody>
 
-                      <% @impedance_analy4.all.each do |xrds|%>
+                        <% @imped4.where(status:'cancelled').each do |imped|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.capacitance%> </td>
-                        <td> <%= xrds.dielectric%> </td>
-                        <td> <%= xrds.iv%> </td>
-                        <td> <%= xrds.impedance%> </td>
-                        <td> <%= xrds.freqrange%> </td>
-                        <td> <%= xrds.voltagerange%> </td>
-                        <td> <%= xrds.currentrange%> </td>
-                          <td> <%= xrds.losstangent%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/IMPED/<%=imped.id %>	</th>
+                        <td> <%= imped.user.name%> </td>
+                        <td> <%= imped.user.orgname%> </td>
+                        <td> <%= imped.user.department%> </td>
+                        <td> <%= imped.user.contact%> </td>
+                        <td> <%= imped.sample%> </td>
+                        <td> <%= imped.composition%> </td>
+                        <td> <%= imped.capacitance%> </td>
+                        <td> <%= imped.dielectric%> </td>
+                        <td> <%= imped.iv%> </td>
+                        <td> <%= imped.impedance%> </td>
+                        <td> <%= imped.freqrange%> </td>
+                        <td> <%= imped.voltagerange%> </td>
+                        <td> <%= imped.currentrange%> </td>
+                          <td> <%= imped.losstangent%> </td>
+                        <td> <%= imped.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= imped.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= imped.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= imped.status%></td>
+                          <%if imped.references.attached? %>
+                                 <%imped.references.each do |file|%>
+                                 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                    <% end %>
+                               <% else %>
+                                 <td>NA</td>
+                               <% end %>
                     </tr>
                       <%end%>
                 </tbody>

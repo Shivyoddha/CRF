@@ -83,7 +83,7 @@
                   </thead>
                   <tbody>
 
-                        <% @spectro3.all.each do |xrds|%>
+                        <% @spectro3.where(status:'completed').each do |spectro|%>
                         <tr>
                           <!-- Button trigger modal -->
                           <th scope="row">CRF/XRD/<%=xrds.id %>	</th>

@@ -137,15 +137,7 @@
           <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
       </div>
 
-        <div class="input-group mb-3">
-        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
-        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
-      </div>
-
-
-        <div id="instruct">
-            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
-        </div>
+        
 
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>

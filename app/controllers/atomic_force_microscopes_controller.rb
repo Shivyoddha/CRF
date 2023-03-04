@@ -39,9 +39,10 @@ class AtomicForceMicroscopesController < ApplicationController
 
   # PATCH/PUT /atomic_force_microscopes/1 or /atomic_force_microscopes/1.json
   def update
+    @atomic_force_microscope.status="alloted"
     respond_to do |format|
       if @atomic_force_microscope.update(atomic_force_microscope_params)
-        format.html { redirect_to atomic_force_microscope_url(@atomic_force_microscope), notice: "Atomic force microscope was successfully updated." }
+        format.html { redirect_to slotbooker_atomic_path(@atomic_force_microscope), notice: "Atomic force microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @atomic_force_microscope }
       else
         format.html { render :edit, status: :unprocessable_entity }

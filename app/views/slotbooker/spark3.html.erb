@@ -81,7 +81,7 @@
             </thead>
             <tbody>
 
-                  <% @spark3.all.each do |xrds|%>
+                  <% @spark3.where(status:'completed').each do |spark|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/SPARK/<%=xrds.id %>	</th>

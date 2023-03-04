@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_thrednon_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_threednon_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_thrednon1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_threednon1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_thrednon2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_threednon2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_thrednon3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_threednon3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_thrednon4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_threednon4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -103,56 +103,92 @@
                         <td> <%= threes.more%> </td>
                         <td>Booked</td>
                         <td> <%=threes.slotdate %></td>
+                        <td> <%=threes.slottime %></td>
+                        <%if threes.references.attached? %>
                         <td> <%= threes.status %></td>
-                        <%threes.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-  <%end%>
-                    </tr>
-                      <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                        <td><%threes.references.each do |file|%>
+                           <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                             <% end %></td>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
+                         <td id="assign-btn">
+                             <!-- Button trigger modal -->
+                              <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{threes.id}" }, id: "ani" %>
+                              <div id="<%= threes.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+    <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= threes.user.name %></b></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_with(model: threes,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= ThreeDNon.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                        <div class="input-group mb-3">
+                        <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                        <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                      </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <div class="input-group mb-3">
+                      <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                      <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                    </div>
+                     <%=threes.id%>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
+                      <div class="actions">
+                        <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Cancel Slot</button>
+                  </div>
+              </div>
+          </div>
+
   </div>
-                        </td>
 
-                    </tr>
+                          </td>
 
-                </tbody>
-            </table>
+                      </tr>
+  <%end%>
 
-        </div>
-        </div>
+                  </tbody>
+              </table>
+
+          </div>
+          </div>
 
 
-    </div>
+      </div>
 
 
-</div>
+  </div>
+  <script>
+    // Get the modals and buttons
+    var modal1 = document.getElementByClass("modal");
+    var btn1 = document.getElementById("ani");
+
+    // Add event listeners to the buttons
+    btn1.addEventListener("click", function() {
+      modal1.style.display = "block";
+    });
+
+    btn2.addEventListener("click", function() {
+      modal2.style.display = "block";
+    });
+
+    // Close the modal when the user clicks anywhere outside of it
+    window.addEventListener("click", function(event) {
+      if (event.target == modal1) {
+        modal1.style.display = "none";
+      }
+      if (event.target == modal2) {
+        modal2.style.display = "none";
+      }
+    });
+  </script>

@@ -94,7 +94,7 @@
                 </thead>
                 <tbody>
 
-                      <% @lcms3.all.each do |lcms|%>
+                      <% @lcms3.where(status:'completed').each do |lcms|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/LCMS/<%=lcms.id %>	</th>

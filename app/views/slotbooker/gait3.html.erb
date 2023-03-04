@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GAIT:Completed Slots</h2>
         </div>
 
 
@@ -86,7 +86,7 @@
                 </thead>
                 <tbody>
 
-                      <% @gait3.all.each do |gait|%>
+                      <% @gait3.where(status:'completed').each do |gait3|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GAIT/<%=gait.id %>	</th>
@@ -116,9 +116,13 @@
                         <td> <%= gait.slottime %></td>
 
                           <td><%= gait.status%></td>
-                         <td><%gait.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if gait.references.attached? %>
+                    <%gait.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

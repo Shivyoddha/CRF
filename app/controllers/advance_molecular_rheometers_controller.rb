@@ -41,10 +41,11 @@ class AdvanceMolecularRheometersController < ApplicationController
 
   # PATCH/PUT /advance_molecular_rheometers/1 or /advance_molecular_rheometers/1.json
   def update
+    @advance_molecular_rheometer.status="alloted"
     respond_to do |format|
       if @advance_molecular_rheometer.update(advance_molecular_rheometer_params)
          @advance_molecular_rheometer.status="alloted"
-        format.html { redirect_to advance_molecular_rheometer_url(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully updated." }
+        format.html { redirect_to slotbooker_amr_path(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully updated." }
         format.json { render :show, status: :ok, location: @advance_molecular_rheometer }
       else
         format.html { render :edit, status: :unprocessable_entity }

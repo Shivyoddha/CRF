@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name"> GLOW All Slots</h2>
         </div>
 
 
@@ -70,7 +70,8 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="composition">No of Sample</th>
                         <th scope="col" id="composition">Elemental Composition</th>
-                       <th scope="col" id="coating-ele">Coating Element</th>
+                       <th scope="col" id="coating-ele">Coating </th>
+                       <th scope="col" id="coating-ele">Coated Element</th>
                        <th scope="col" id="substrate-ele">Substrate Element</th>
                         <th scope="col" id="substrate-ele">Specification</th>
                         <th scope="col" id="request">More info</th>
@@ -105,9 +106,13 @@
                         <td> <%= glow.slottime %></td>
 
                           <td><%= glow.status%></td>
-                         <td><%glow.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%></td>
+                          <%if glow.references.attached? %>
+                    <%glow.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>
