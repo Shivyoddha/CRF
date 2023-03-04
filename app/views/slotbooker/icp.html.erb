@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">ICP:All Slots</h2>
         </div>
 
 
@@ -89,7 +89,7 @@
                 </thead>
                 <tbody>
 
-                      <% @icp.all.each do |icp|%>
+                       <% @icp.all.each do |icp|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ICP/<%=icp.id %>	</th>
@@ -116,9 +116,13 @@
                         <td> <%= icp.slottime %></td>
 
                           <td><%= icp.status%></td>
-                         <td><%icp.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%></td>
+                          <%if icp.references.attached? %>
+                             <%icp.references.each do |file|%>
+                             <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                <% end %>
+                           <% else %>
+                             <td>NA</td>
+                           <% end %>
                     </tr>
                       <%end%>
                 </tbody>

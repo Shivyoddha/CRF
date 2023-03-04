@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FESEMJ:Pending Slots</h2>
         </div>
 
 
@@ -87,9 +87,9 @@
                 </thead>
                 <tbody>
 
-                      <% @fesemj1.where(status:'pending').each do |xrds|%>
+                      <% @fesemj1.where(status:'pending').each do |fesemjs|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/FESMJ/<%=fesemjs.id %>	</th>
 
                         <td> <%= fesemjs.user.name%> </td>
                         <td> <%= fesemjs.user.orgname%> </td>
@@ -103,49 +103,61 @@
                           <td> <%= fesemjs.eds_required%></td>
                           <td> <%= fesemjs.toxic%></td>
                             <td> <%= fesemjs.conducting%></td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= fesemjs.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
+                        <td><%= fesemjs.slotdate %></td>
+                        <td><%= fesemjs.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
+                        <td> <%= fesemjs.status %></td>
+                        <%if fesemjs.references.attached? %>
+                        <%fesemjs.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                            <% end %>
                       <% else %>
                         <td>NA</td>
                       <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fesemjs.id}" }, id: "ani" %>
+                           <div id="<%= fesemjs.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemjs.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: fesemjs,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= HrFesemJ.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=fesemjs.id%>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+                       <% end %>
 
                     </tr>
 

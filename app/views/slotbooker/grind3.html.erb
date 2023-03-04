@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GRIND:Completed Slots</h2>
         </div>
 
 
@@ -85,7 +85,7 @@
                 </thead>
                 <tbody>
 
-                      <% @grind3.all.each do |grind|%>
+                        <% @grind3.where(status:'completed').each do |grind3|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
@@ -108,9 +108,13 @@
                         <td> <%= grind.slottime %></td>
 
                           <td><%= grind.status%></td>
-                         <td><%grind.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if grind.references.attached? %>
+                      <%grind.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
                     </tr>
                       <%end%>
                 </tbody>

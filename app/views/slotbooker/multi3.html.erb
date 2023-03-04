@@ -92,7 +92,7 @@
                 </thead>
                 <tbody>
 
-                      <% @multi3.all.each do |multi|%>
+                      <% @multi3.where(status:'completed').each do |multi|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/multi/<%=multi.id %>	</th>

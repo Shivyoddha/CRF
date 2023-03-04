@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">HIGHVACCUM:Pending Slots</h2>
         </div>
 
         <div id="slot-details">
@@ -83,90 +83,128 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @high1.all.each do |xrds|%>
+                        <% @high1.where(status:'pending').each do |high|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.req_atoms%> </td>
-                        <td> <%= xrds.gas%> </td>
-                        <td> <%= xrds.starttemp%> </td>
-                        <td> <%= xrds.endtemp%> </td>
-                        <td> <%= xrds.samplemelting%> </td>
-                        <td> <%= xrds.no_steps%> </td>
-                        <td> Temp1:<nobr><%= xrds.temp1%>  min1:<%= xrds.min1%> <br>
-                             Temp2:<%= xrds.temp1%>  min2: <%= xrds.temp2%><br>
-                             Temp3:<%= xrds.temp3%>  min3: <%= xrds.temp3%><br>
-                             Temp4:<%= xrds.temp4%>  min4: <%= xrds.temp4%><br>
-                             Temp5:<%= xrds.temp5%>  min5: <%= xrds.temp5%><br>
+                        <th scope="row">CRF/HIGHVACCUM/<%=high.id %>	</th>
+                        <td> <%= high.user.name%> </td>
+                        <td> <%= high.user.orgname%> </td>
+                        <td> <%= high.user.department%> </td>
+                        <td> <%= high.user.contact%> </td>
+                        <td> <%= high.sample%> </td>
+                        <td> <%= high.composition%> </td>
+                        <td> <%= high.toxicity%> </td>
+                        <td> <%= high.req_atoms%> </td>
+                        <td> <%= high.gas%> </td>
+                        <td> <%= high.starttemp%> </td>
+                        <td> <%= high.endtemp%> </td>
+                        <td> <%= high.samplemelting%> </td>
+                        <td> <%= high.no_steps%> </td>
+                        <td> Temp1:<nobr><%= high.temp1%>  min1:<%= high.min1%> <br>
+                             Temp2:<%= high.temp1%>  min2: <%= high.temp2%><br>
+                             Temp3:<%= high.temp3%>  min3: <%= high.temp3%><br>
+                             Temp4:<%= high.temp4%>  min4: <%= high.temp4%><br>
+                             Temp5:<%= high.temp5%>  min5: <%= high.temp5%><br>
                          </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= high.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= high.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= high.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
-                    </tr>
-                      <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                          <td><%= high.status%></td>
+                          <%if high.references.attached? %>
+                             <%high.references.each do |file|%>
+                             <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                <% end %>
+                           <% else %>
+                             <td>NA</td>
+                           <% end %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                      w
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{high.id}" }, id: "ani" %>
+                           <div id="<%= high.id%>" class="modal">
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= high.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: high,local:true) do |form| %>
 
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
+
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=high.id%>
+
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+
+                   </tr>
 <%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+               </tbody>
+           </table>
 
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
+       </div>
+       </div>
 
 
-    </div>
+   </div>
 
 
 </div>
+<script>
+ // Get the modals and buttons
+ var modal1 = document.getElementByClass("modal");
+ var btn1 = document.getElementById("ani");
+
+ // Add event listeners to the buttons
+ btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+ });
+
+ btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+ });
+
+ // Close the modal when the user clicks anywhere outside of it
+ window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+     modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+     modal2.style.display = "none";
+   }
+ });
+</script>

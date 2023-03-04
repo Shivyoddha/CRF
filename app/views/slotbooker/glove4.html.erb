@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GLOVE:Cancelled Slots</h2>
         </div>
 
 
@@ -83,30 +83,34 @@
                 </thead>
                 <tbody>
 
-                      <% @glove4.all.each do |xrds|%>
+                      <% @glove4.where(status:'cancelled').each do |glove|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.weight%> </td>
-                        <td> <%= xrds.days%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.carcinogenic%> </td>
-                        <td> <%= xrds.incompatible%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/GLOVE/<%=glove.id %>	</th>
+                        <td> <%= glove.user.name%> </td>
+                        <td> <%= glove.user.orgname%> </td>
+                        <td> <%= glove.user.department%> </td>
+                        <td> <%= glove.user.contact%> </td>
+                        <td> <%= glove.weight%> </td>
+                        <td> <%= glove.days%> </td>
+                        <td> <%= glove.toxicity%> </td>
+                        <td> <%= glove.carcinogenic%> </td>
+                        <td> <%= glove.incompatible%> </td>
+                        <td> <%= glove.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= glove.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= glove.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= glove.status%></td>
+                          <%if glove.references.attached? %>
+                    <%glove.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

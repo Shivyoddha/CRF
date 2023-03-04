@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_laser_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_laser1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_laser2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_laser3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_laser4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">LASER:Cancelled Slots</h2>
         </div>
 
 
@@ -84,28 +84,32 @@
                 </thead>
                 <tbody>
 
-                      <% @laser4.where(status:'cancelled').each do |xrds|%>
+                      <% @laser4.where(status:'cancelled').each do |laser|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.temp_points%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.compatibility%> </td>
+                        <th scope="row">CRF/LASER/<%=laser.id %>	</th>
+                        <td> <%= laser.user.name%> </td>
+                        <td> <%= laser.user.orgname%> </td>
+                        <td> <%= laser.user.department%> </td>
+                        <td> <%= laser.user.contact%> </td>
+                        <td> <%= laser.sample%> </td>
+                        <td> <%= laser.composition%> </td>
+                        <td> <%= laser.stype%> </td>
+                        <td> <%= laser.temp_points%> </td>
+                        <td> <%= laser.toxicity%> </td>
+                        <td> <%= laser.compatibility%> </td>
 
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= laser.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                        <td><%= laser.slotdate %> </td>
+                        <td> <%= laser.slottime %> </td>
+  <td> <%= laser.status %></td>
+  <%if laser.references.attached? %>
+  <%laser.references.each do |file|%>
+  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+     <% end %>
+<% else %>
+  <td>NA</td>
+<% end %>
                     </tr>
                       <%end%>
                 </tbody>

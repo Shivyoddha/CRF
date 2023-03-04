@@ -41,10 +41,11 @@ class IcpMsController < ApplicationController
 
   # PATCH/PUT /icp_ms/1 or /icp_ms/1.json
   def update
+    @icp_m.status="alloted"
     respond_to do |format|
       if @icp_m.update(icp_m_params)
          @icp_m.status="alloted"
-        format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully updated." }
+        format.html { redirect_to slotbooker_icp_path(@icp_m), notice: "Icp m was successfully updated." }
         format.json { render :show, status: :ok, location: @icp_m }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_xrd_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_laser_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_laser1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_laser2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_laser3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_laser4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">LASER:Pending Slots</h2>
         </div>
 
 
@@ -86,73 +86,108 @@
                 </thead>
                 <tbody>
 
-                      <% @laser1.where(status:'pending').each do |xrds|%>
+                      <% @laser1.where(status:'pending').each do |laser|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.composition%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.temp_points%> </td>
-                    <td> <%= xrds.toxicity%> </td>
-                    <td> <%= xrds.compatibility%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/LASER/<%=laser.id %>	</th>
+                        <td> <%= laser.user.name%> </td>
+                    <td> <%= laser.user.orgname%> </td>
+                    <td> <%= laser.user.department%> </td>
+                    <td> <%= laser.user.contact%> </td>
+                    <td> <%= laser.sample%> </td>
+                    <td> <%= laser.composition%> </td>
+                    <td> <%= laser.stype%> </td>
+                    <td> <%= laser.temp_points%> </td>
+                    <td> <%= laser.toxicity%> </td>
+                    <td> <%= laser.compatibility%> </td>
+                        <td> <%= laser.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
+                        <td><%= laser.slotdate %></td>
+                        <td><%= laser.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
+                        <td> <%= laser.status %></td>
+                        <%if laser.references.attached? %>
+                        <%laser.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                            <% end %>
                       <% else %>
                         <td>NA</td>
                       <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{laser.id}" }, id: "ani" %>
+                           <div id="<%= laser.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= laser.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: laser,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Laser.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=laser.id%>
 
-                                        </div>
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+
+                   </tr>
 <%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+               </tbody>
+           </table>
 
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
+       </div>
+       </div>
 
 
-    </div>
+   </div>
 
 
 </div>
+<script>
+ // Get the modals and buttons
+ var modal1 = document.getElementByClass("modal");
+ var btn1 = document.getElementById("ani");
+
+ // Add event listeners to the buttons
+ btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+ });
+
+ btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+ });
+
+ // Close the modal when the user clicks anywhere outside of it
+ window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+     modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+     modal2.style.display = "none";
+   }
+ });
+</script>

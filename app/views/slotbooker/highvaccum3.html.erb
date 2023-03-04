@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">HIGHVACCUM:Completed Slots</h2>
         </div>
 
         <div id="slot-details">
@@ -87,44 +87,47 @@
                 </thead>
                 <tbody>
 
-                      <% @high3.all.each do |xrds|%>
+                        <% @high3.where(status:'completed').each do |high|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.req_atoms%> </td>
-                        <td> <%= xrds.gas%> </td>
-                        <td> <%= xrds.starttemp%> </td>
-                        <td> <%= xrds.endtemp%> </td>
-                        <td> <%= xrds.samplemelting%> </td>
-                        <td> <%= xrds.no_steps%> </td>
-                        <td> Temp1:<nobr><%= xrds.temp1%>  min1:<%= xrds.min1%> <br>
-                             Temp2:<%= xrds.temp1%>  min2: <%= xrds.temp2%><br>
-                             Temp3:<%= xrds.temp3%>  min3: <%= xrds.temp3%><br>
-                             Temp4:<%= xrds.temp4%>  min4: <%= xrds.temp4%><br>
-                             Temp5:<%= xrds.temp5%>  min5: <%= xrds.temp5%><br>
+                        <th scope="row">CRF/HIGHVACCUM/<%=high.id %>	</th>
+                        <td> <%= high.user.name%> </td>
+                        <td> <%= high.user.orgname%> </td>
+                        <td> <%= high.user.department%> </td>
+                        <td> <%= high.user.contact%> </td>
+                        <td> <%= high.sample%> </td>
+                        <td> <%= high.composition%> </td>
+                        <td> <%= high.toxicity%> </td>
+                        <td> <%= high.req_atoms%> </td>
+                        <td> <%= high.gas%> </td>
+                        <td> <%= high.starttemp%> </td>
+                        <td> <%= high.endtemp%> </td>
+                        <td> <%= high.samplemelting%> </td>
+                        <td> <%= high.no_steps%> </td>
+                        <td> Temp1:<nobr><%= high.temp1%>  min1:<%= high.min1%> <br>
+                             Temp2:<%= high.temp1%>  min2: <%= high.temp2%><br>
+                             Temp3:<%= high.temp3%>  min3: <%= high.temp3%><br>
+                             Temp4:<%= high.temp4%>  min4: <%= high.temp4%><br>
+                             Temp5:<%= high.temp5%>  min5: <%= high.temp5%><br>
                          </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= high.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= high.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= high.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= high.status%></td>
+                          <%if high.references.attached? %>
+                             <%high.references.each do |file|%>
+                             <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                <% end %>
+                           <% else %>
+                             <td>NA</td>
+                           <% end %>
                     </tr>
                       <%end%>
-                    </tr>
-                      <%end%>
+
                 </tbody>
             </table>
 

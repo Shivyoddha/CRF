@@ -91,7 +91,7 @@
                   </tr>
               </thead>
               <tbody>
-              <% @tga3.each do |xrds|%>
+              <% @tga3.where(status:'completed').each do |tga|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/XRD/<%=xrds.id %>	</th>

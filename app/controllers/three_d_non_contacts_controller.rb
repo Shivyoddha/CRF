@@ -39,9 +39,10 @@ class ThreeDNonContactsController < ApplicationController
 
   # PATCH/PUT /three_d_non_contacts/1 or /three_d_non_contacts/1.json
   def update
+    @three_d_non_contact.status="alloted"
     respond_to do |format|
       if @three_d_non_contact.update(three_d_non_contact_params)
-        format.html { redirect_to three_d_non_contact_url(@three_d_non_contact), notice: "Three d non contact was successfully updated." }
+        format.html { redirect_to slotbooker_threednon_path(@three_d_non_contact), notice: "Three d non contact was successfully updated." }
         format.json { render :show, status: :ok, location: @three_d_non_contact }
       else
         format.html { render :edit, status: :unprocessable_entity }

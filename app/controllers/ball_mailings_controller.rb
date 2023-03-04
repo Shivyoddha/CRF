@@ -39,10 +39,11 @@ class BallMailingsController < ApplicationController
 
   # PATCH/PUT /ball_mailings/1 or /ball_mailings/1.json
   def update
+    @ball_mailing.status="alloted"
     respond_to do |format|
       if @ball_mailing.update(ball_mailing_params)
          @ball_mailing.status="alloted"
-        format.html { redirect_to ball_mailing_url(@ball_mailing), notice: "Ball mailing was successfully updated." }
+        format.html { redirect_to slotbooker_ball_path(@ball_mailing), notice: "Ball mailing was successfully updated." }
         format.json { render :show, status: :ok, location: @ball_mailing }
       else
         format.html { render :edit, status: :unprocessable_entity }

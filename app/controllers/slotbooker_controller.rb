@@ -29,20 +29,20 @@ end
 
 
 def fesemc1
-  @fesemc=HrFesemC.all
+  @fesemc1=HrFesemC.all
 
   end
 
   def fesemc2
-   @fesemc=HrFesemC.all
+   @fesemc2=HrFesemC.all
   end
 
   def fesemc3
-   @fesemc=HrFesemC.all
+   @fesemc3=HrFesemC.all
   end
 
   def fesemc4
-   @fesemc=HrFesemC.all
+   @fesemc4=HrFesemC.all
   end
 
 def fesemj
@@ -179,7 +179,7 @@ end
        @atomic1 = AtomicForceMicroscope.all
    end
    def atomic2
-       @atomic = AtomicForceMicroscope.all
+       @atomic2 = AtomicForceMicroscope.all
    end
    def atomic3
        @atomic3 = AtomicForceMicroscope.all
@@ -235,52 +235,52 @@ end
         @threescan4=ThreeDScanner.all
       end
 def icp
-  @icp_m =IcpM.all
+  @icp =IcpM.all
 end
       def icp1
-        @icp_m1 =IcpM.all
+        @icp1 =IcpM.all
       end
       def icp2
-        @icp_m2 =IcpM.all
+        @icp2 =IcpM.all
       end
       def icp3
-        @icp_m3 =IcpM.all
+        @icp3 =IcpM.all
       end
       def icp4
-        @icp_m4=IcpM.all
+        @icp4=IcpM.all
       end
 
 def amr
-  @advance_molecular_rheometer =AdvanceMolecularRheometer.all
+  @amr =AdvanceMolecularRheometer.all
 end
       def amr1
-        @advance_molecular_rheometer1 =AdvanceMolecularRheometer.all
+        @amr1 =AdvanceMolecularRheometer.all
       end
       def amr2
-        @advance_molecular_rheometer2 =AdvanceMolecularRheometer.all
+        @amr2 =AdvanceMolecularRheometer.all
       end
       def amr3
-        @advance_molecular_rheometer3 =AdvanceMolecularRheometer.all
+        @amr3 =AdvanceMolecularRheometer.all
       end
       def amr4
-        @advance_molecular_rheometer4 =AdvanceMolecularRheometer.all
+        @amr4 =AdvanceMolecularRheometer.all
       end
 
 
 def ionc
-  @ion_chromotography =IonChromotography.all
+  @ionc =IonChromotography.all
 end
       def ionc1
-        @ion_chromotography1 =IonChromotography.all
+        @ionc1 =IonChromotography.all
       end
       def ionc2
-        @ion_chromotography2 =IonChromotography.all
+        @ionc2 =IonChromotography.all
       end
       def ionc3
-        @ion_chromotography3 =IonChromotography.all
+        @ionc3 =IonChromotography.all
       end
       def ionc4
-        @ion_chromotography4 =IonChromotography.all
+        @ionc4 =IonChromotography.all
       end
 def spectro
  @spectro=SpectroRadioMeter.all
@@ -313,34 +313,34 @@ end
         @spark4 = SparkO.all
       end
 def fiveaxis
-  @five=FiveAxi.all
+  @fiveaxis=FiveAxi.all
 end
       def fiveaxis1
-        @five1=FiveAxi.all
+        @fiveaxis1=FiveAxi.all
       end
       def fiveaxis2
-        @five2=FiveAxi.all
+        @fiveaxis2=FiveAxi.all
       end
       def fiveaxis3
-        @five3=FiveAxi.all
+        @fiveaxis3=FiveAxi.all
       end
       def fiveaxis4
-        @five4=FiveAxi.all
+        @fiveaxis4=FiveAxi.all
       end
 def elctro
-  @electro=ElectroChemical.all
+  @elctro=ElectroChemical.all
 end
       def elctro1
-        @electro1=ElectroChemical.all
+        @elctro1=ElectroChemical.all
       end
       def elctro2
-        @electro2=ElectroChemical.all
+        @elctro2=ElectroChemical.all
       end
       def elctro3
-        @electro3=ElectroChemical.all
+        @elctro3=ElectroChemical.all
       end
       def elctro4
-        @electro4=ElectroChemical.all
+        @elctro4=ElectroChemical.all
       end
 def gassensing
   @sensing=GasSensing.all
@@ -381,7 +381,7 @@ end
         @centrifuge1=UltraCentrifuge.all
       end
       def centrifuge2
-        @centrifuge=UltraCentrifuge.all
+        @centrifuge2=UltraCentrifuge.all
       end
       def centrifuge3
         @centrifuge3=UltraCentrifuge.all
@@ -437,19 +437,19 @@ end
       end
 
 def impdeance
-  @impedance_analy=ImpedanceAnaly.all
+  @imped=ImpedanceAnaly.all
 end
       def impdeance1
-        @impedance_analy1=ImpedanceAnaly.all
+        @imped1=ImpedanceAnaly.all
       end
       def impdeance2
-        @impedance_analy2=ImpedanceAnaly.all
+        @imped2=ImpedanceAnaly.all
       end
       def impdeance3
-        @impedance_analy3=ImpedanceAnaly.all
+        @imped3=ImpedanceAnaly.all
       end
       def impdeance4
-        @impedance_analy4=ImpedanceAnaly.all
+        @imped4=ImpedanceAnaly.all
       end
 def zeta
   @zeta=ZetaPotentialSize.all
@@ -476,7 +476,7 @@ end
         @high2=HighTempVaccum.all
       end
       def highvaccum3
-        @high=HighTempVaccum.all
+        @high3=HighTempVaccum.all
       end
       def highvaccum4
         @high4=HighTempVaccum.all
@@ -516,35 +516,35 @@ end
       end
 
 def ball
-  @ball_mailing =BallMailing.all
+  @ball =BallMailing.all
 end
       def ball1
-        @ball_mailing1 =BallMailing.all
+        @ball1 =BallMailing.all
       end
       def ball2
-        @ball_mailing2 =BallMailing.all
+        @ball2 =BallMailing.all
       end
       def ball3
-        @ball_mailing3 =BallMailing.all
+        @ball3 =BallMailing.all
       end
       def ball4
-        @ball_mailing4 =BallMailing.all
+        @ball4 =BallMailing.all
       end
 
 def fric
-  @friction = Friction.all
+  @fric = Friction.all
 end
     def fric1
-      @friction1 = Friction.all
+      @fric1 = Friction.all
     end
     def fric2
-      @friction2 = Friction.all
+      @fric2 = Friction.all
     end
     def fric3
-      @friction3 = Friction.all
+      @fric3 = Friction.all
     end
     def fric4
-      @friction4 = Friction.all
+      @fric4 = Friction.all
     end
 
 def gait
@@ -564,19 +564,19 @@ end
     end
 
 def grind
-  @grinding = Grinding.all
+  @grind = Grinding.all
 end
     def grind1
-      @grinding1 = Grinding.all
+      @grind1 = Grinding.all
     end
     def grind2
-      @grinding2 = Grinding.all
+      @grind2 = Grinding.all
     end
     def grind3
-      @grinding3 = Grinding.all
+      @grind3 = Grinding.all
     end
     def grind4
-      @grinding4 = Grinding.all
+      @grind4 = Grinding.all
     end
 
  def multi

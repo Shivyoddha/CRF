@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">AMR:All Slots</h2>
     </div>
 
 
@@ -78,8 +78,9 @@
                     <th scope="col" id="shear-rate">Shear Rate</th>
                     <th scope="col" id="sweeps">No of Sweeps</th>
                     <th scope="col" id="sweeps">Analysis </th>
+                    <th scope="col" id="sweeps">Toxicity </th>
                     <th scope="col" id="request">More info</th>
-                    <th scope="col" id="booked-on">Booked On</th>
+
                     <th scope="col" id="slot-date">Slot Date</th>
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
@@ -88,7 +89,7 @@
             </thead>
             <tbody>
 
-                  <% @amr4.all.each do |amr|%>
+                    <% @amr4.where(status:'cancelled').each do |amr|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/AMR/<%=amr.id %>	</th>
@@ -108,18 +109,21 @@
                     <td> <%= amr.analysis%> </td>
                     <td> <%= amr.toxicity%> </td>
                     <td> <%= amr.more%> </td>
-                    <td>Booked</td>
+
 
                     <td> <%= amr.slotdate %></td>
 
                     <td> <%= amr.slottime %></td>
 
                       <td><%= amr.status%></td>
-                    <% amr.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
-                    </tr>
-                      <%end%>
+                      <%if amr.references.attached? %>
+                    <td><%amr.references.each do |file|%>
+                       <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                         <% end %></td>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                      <% end %>
                 </tbody>
             </table>
 

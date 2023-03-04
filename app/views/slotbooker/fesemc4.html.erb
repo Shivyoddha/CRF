@@ -28,7 +28,7 @@
         </div>
 
         <div class="sidelinks">
-            
+
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
@@ -36,16 +36,16 @@
                         <%= link_to 'All Slots',slotbooker_fesemc_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_fesemc1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_fesemc1_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_fesemc3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_fesemc4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Canceled Slots',slotbooker_fesemc4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
             </ul>
         </div>
@@ -54,10 +54,10 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">HR-FESEM [Carl Zeiss] Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">HR-FESEM [Carl Zeiss] Cancelled  Slots</h2>
         </div>
 
-        
+
         <div id="slot-details">
         <div>
             <table class="table table-hover font-quicksand">
@@ -86,10 +86,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <% @fesemc.each do |fesemcs|%>
+                      <% @fesemc4.where(status:'cancelled').each do |fesemcs|%>
                         <tr>
-                          <th scope="row">CRF/XRD/<%=fesemcs.id %>	</th>
-                        
+                          <th scope="row">CRF/FESEMCS/<%=fesemcs.id %>	</th>
+
                           <td> <%=fesemcs.user.name%> </td>
                           <td> <%=fesemcs.user.orgname%> </td>
                           <td> <%=fesemcs.user.department%> </td>
@@ -104,12 +104,17 @@
                           <td> <%= fesemcs.toxic%> </td>
                           <td> <%= fesemcs.more%> </td>
                           <td>Booked</td>
-                          <td>10-30 A.M</td>
-                          <td> Slot time</td>
+                          <td> <%= fesemcs.slotdate %></td>
+
+                          <td> <%= fesemcs.slottime %></td>
     <td> <%= fesemcs.status %></td>
+    <%if fesemcs.references.attached? %>
     <%fesemcs.references.each do |file|%>
-  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-  <%end%>
+    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+       <% end %>
+  <% else %>
+    <td>NA</td>
+      <%end%>
   <%end%>
                     </tr>
                 </tbody>
@@ -117,7 +122,7 @@
 
         </div>
         </div>
-        
+
 
     </div>
 

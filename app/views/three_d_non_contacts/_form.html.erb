@@ -27,7 +27,7 @@
         <%= form.label :scant, "ScanType", class:"input-group-text", for:"scan-type"%>
         <%= form.select(:scant, ['Area', 'Profile'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "scan-type",:required => true}) %>
     </div>
-  
+
     <div class="input-group mb-3">
         <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
         <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
@@ -38,7 +38,7 @@
         <%= form.text_field :xrange, type:"text", class:"form-control", id:"x_range", placeholder:"Possible Elements" %>
         <%= form.label :xrange,"mm", class:"input-group-text", for:"x_range"%>
     </div>
-    
+
     <div class="input-group mb-3 vis"  id="y_range" >
       <%= form.label :yrange,"Y Range", class:"input-group-text", for:"y_range-f"%>
       <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range-f", placeholder:"Possible Elements" %>
@@ -113,15 +113,15 @@
 </div>
 <% end %>
 
- 
+
 <script>
 
     let incompability = document.getElementById('incompatibile');
     let mentionCompabilty = document.getElementById('mention-compability');
     let yRange = document.getElementById('y_range');
     let scanType = document.getElementById('scan-type');
-    
-    
+
+
     incompability.addEventListener('click', () => {
         mentionCompabilty.classList.add('vis');
 

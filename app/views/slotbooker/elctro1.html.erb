@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">ELECTRO:Pending Slots</h2>
         </div>
 
 
@@ -70,7 +70,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="composition">Electrolyte</th>
+                        <th scope="col" id="composition">elctrolyte</th>
                         <th scope="col" id="phase">Application</th>
                         <th scope="col" id="request">More</th>
                         <th scope="col" id="booked-on">Booked On</th>
@@ -78,77 +78,79 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @electro1.all.each do |xrds|%>
+                        <% @elctro1.where(status:'pending').each do |elctro|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/ELECTRO/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.electrolyte%> </td>
-                        <td> <%= xrds.application%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/elctro/<%=elctro.id %>	</th>
+                        <td> <%= elctro.user.name%> </td>
+                        <td> <%= elctro.user.orgname%> </td>
+                        <td> <%= elctro.user.department%> </td>
+                        <td> <%= elctro.user.contact%> </td>
+                        <td> <%= elctro.sample%> </td>
+                        <td> <%= elctro.composition%> </td>
+                        <td> <%= elctro.electrolyte%> </td>
+                        <td> <%= elctro.application%> </td>
+                        <td> <%= elctro.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= elctro.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= elctro.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                          <td><%= elctro.status%></td>
+                          <%if elctro.references.attached? %>
+                      <%elctro.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                         <td id="assign-btn">
+                             <!-- Button trigger modal -->
+                              <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: elctro.id %>
+                              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                              Assign
+                              </button> -->
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                              <!-- Modal -->
+                              <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                                      <%= render partial: "form_xrd",locals: { xrd:elctro } %>
+                                      <p>You are assigning XRD with ID <%= Xrd.find(elctro.id) %> to Preetham Naik.</p>
+                                          </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
-
-
+                                          </div>
+  <%end%>
+                                      </div>
+                                  </div>
     </div>
+                          </td>
+
+                      </tr>
+
+                  </tbody>
+              </table>
+
+          </div>
+          </div>
 
 
-</div>
+      </div>
+
+
+  </div>

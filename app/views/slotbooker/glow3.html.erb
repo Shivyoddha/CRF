@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GLOW:Completed Slots</h2>
         </div>
 
 
@@ -70,7 +70,8 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="composition">No of Sample</th>
                         <th scope="col" id="composition">Elemental Composition</th>
-                       <th scope="col" id="coating-ele">Coating Element</th>
+                       <th scope="col" id="coating-ele">Coating </th>
+                       <th scope="col" id="coating-ele">Coated Element</th>
                        <th scope="col" id="substrate-ele">Substrate Element</th>
                         <th scope="col" id="substrate-ele">Specification</th>
                         <th scope="col" id="request">More info</th>
@@ -83,7 +84,7 @@
                 </thead>
                 <tbody>
 
-                      <% @glow3.all.each do |glow|%>
+                      <% @glow3.where(status:'completed').each do |glow3|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
@@ -110,8 +111,7 @@
                      <%end%></td>
                     </tr>
                       <%end%>
-                    </tr>
-                      <%end%>
+
                 </tbody>
             </table>
 

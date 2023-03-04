@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Gas Sensing:Completed Slots</h2>
         </div>
 
 
@@ -83,30 +83,34 @@
                 </thead>
                 <tbody>
 
-                      <%@sensing3.all.each do |xrds|%>
+                      <% @sensing3.where(status:'completed').each do |sensing3|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/GAS/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.gas%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.compatibility%> </td>
-                        <td> <%= xrds.carcinogenic%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/GAS/<%=sensing.id %>	</th>
+                        <td> <%= sensing.user.name%> </td>
+                        <td> <%= sensing.user.orgname%> </td>
+                        <td> <%= sensing.user.department%> </td>
+                        <td> <%= sensing.user.contact%> </td>
+                        <td> <%= sensing.sample%> </td>
+                        <td> <%= sensing.gas%> </td>
+                        <td> <%= sensing.toxicity%> </td>
+                        <td> <%= sensing.compatibility%> </td>
+                        <td> <%= sensing.carcinogenic%> </td>
+                        <td> <%= sensing.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= sensing.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= sensing.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
+                          <td><%= sensing.status%></td>
+                          <%if sensing.references.attached? %>
+                        <%sensing.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
                     </tr>
                       <%end%>
                 </tbody>

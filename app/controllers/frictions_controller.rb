@@ -41,10 +41,11 @@ class FrictionsController < ApplicationController
 
   # PATCH/PUT /frictions/1 or /frictions/1.json
   def update
+      @friction.status="alloted"
     respond_to do |format|
       if @friction.update(friction_params)
         @friction.status="alloted"
-        format.html { redirect_to friction_url(@friction), notice: "Friction was successfully updated." }
+        format.html { redirect_to slotbooker_fric_path(@friction), notice: "Friction was successfully updated." }
         format.json { render :show, status: :ok, location: @friction }
       else
         format.html { render :edit, status: :unprocessable_entity }

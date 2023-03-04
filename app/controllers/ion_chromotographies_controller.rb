@@ -40,10 +40,11 @@ class IonChromotographiesController < ApplicationController
 
   # PATCH/PUT /ion_chromotographies/1 or /ion_chromotographies/1.json
   def update
+    @ion_chromotography.status="alloted"
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
-        @advance_molecular_rheometer.status="alloted"
-        format.html { redirect_to ion_chromotography_url(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
+
+        format.html { redirect_to slotbooker_ionc_path(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_fesemj_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_fesemj_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_fesemj1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_fesemj1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_fesemj2_path,class:"nav-link active sidelink-wrap" %>
@@ -104,9 +104,8 @@
                             <td> <%= fesemjs.toxic%></td>
                               <td> <%= fesemjs.conducting%></td>
                           <td> <%= fesemjs.more%> </td>
-                          <td>Booked</td>
-                          <td>10-30 A.M</td>
-                          <td> Slot time</td>
+                          <td> <%= fesemjs.slotdate%> </td>
+                          <td>  <%= fesemjs.slottime%> </td>
     <td> <%= fesemjs.status %></td>
   <%fesemjs.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>

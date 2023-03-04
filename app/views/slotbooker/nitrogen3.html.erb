@@ -79,7 +79,7 @@
             </thead>
             <tbody>
 
-                  <% @nitrogen3.all.each do |xrds|%>
+                  <% @nitrogen3.where(status:'completed').each do |nitrogen|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/NITROGEN/<%=xrds.id %>	</th>

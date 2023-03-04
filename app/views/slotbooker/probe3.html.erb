@@ -83,7 +83,7 @@
             </thead>
             <tbody>
 
-                  <% @probe4.all.each do |xrds|%>
+                <% @probe3.where(status:'completed').each do |probe|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/XRD/<%=xrds.id %>	</th>

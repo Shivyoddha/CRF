@@ -38,9 +38,10 @@ class FiveAxisController < ApplicationController
 
   # PATCH/PUT /five_axis/1 or /five_axis/1.json
   def update
+      @five_axi.status="alloted"
     respond_to do |format|
       if @five_axi.update(five_axi_params)
-        format.html { redirect_to five_axi_url(@five_axi), notice: "Five axi was successfully updated." }
+        format.html { redirect_to slotbooker_fiveaxis_path(@five_axi), notice: "Five axi was successfully updated." }
         format.json { render :show, status: :ok, location: @five_axi }
       else
         format.html { render :edit, status: :unprocessable_entity }

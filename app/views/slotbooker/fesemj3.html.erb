@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FeESEMJ:Completed Slots</h2>
         </div>
 
 
@@ -86,30 +86,34 @@
                 </thead>
                 <tbody>
 
-                      <% @fesemj3.where(status:'completed').each do |xrds|%>
+                      <% @fesemj3.where(status:'completed').each do |fesemj3|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/FESEMJ/<%=fesemj3.id %>	</th>
 
-                        <td> <%= fesemjs.user.name%> </td>
-                        <td> <%= fesemjs.user.orgname%> </td>
-                        <td> <%=fesemjs.user.department%> </td>
-                        <td> <%= fesemjs.user.contact%> </td>
-                        <td> <%= fesemjs.sample%> </td>
-                        <td> <%= fesemjs.stype%> </td>
-                        <td> <%= fesemjs.composition%> </td>
-                        <td> <%=fesemjs.sphase%> </td>
-                        <td> <%= fesemjs.measurement%></td>
-                          <td> <%= fesemjs.eds_required%></td>
-                          <td> <%= fesemjs.toxic%></td>
-                            <td> <%= fesemjs.conducting%></td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= fesemj3.user.name%> </td>
+                        <td> <%= fesemj3.user.orgname%> </td>
+                        <td> <%=fesemj3.user.department%> </td>
+                        <td> <%= fesemj3.user.contact%> </td>
+                        <td> <%= fesemj3.sample%> </td>
+                        <td> <%= fesemj3.stype%> </td>
+                        <td> <%= fesemj3.composition%> </td>
+                        <td> <%=fesemj3.sphase%> </td>
+                        <td> <%= fesemj3.measurement%></td>
+                          <td> <%= fesemj3.eds_required%></td>
+                          <td> <%= fesemj3.toxic%></td>
+                            <td> <%= fesemj3.conducting%></td>
+                        <td> <%= fesemj3.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                        <td> <%= fesemj3.slotdate %> </td>
+                        <td> <%= fesemj3.slottime %> </td>
+  <td> <%= fesemj3.status %></td>
+  <%if fesemj3.references.attached? %>
+  <%fesemj3.references.each do |file|%>
+  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+     <% end %>
+<% else %>
+  <td>NA</td>
+<% end %>
                     </tr>
                       <%end%>
                 </tbody>

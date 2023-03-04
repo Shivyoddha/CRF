@@ -40,10 +40,11 @@ class GaitsController < ApplicationController
 
   # PATCH/PUT /gaits/1 or /gaits/1.json
   def update
+      @gait.status="alloted"
     respond_to do |format|
       if @gait.update(gait_params)
           @gait.status="alloted"
-        format.html { redirect_to gait_url(@gait), notice: "Gait was successfully updated." }
+        format.html { redirect_to slotbooker_gait_path(@gait), notice: "Gait was successfully updated." }
         format.json { render :show, status: :ok, location: @gait }
       else
         format.html { render :edit, status: :unprocessable_entity }

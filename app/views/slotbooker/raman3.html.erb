@@ -86,7 +86,7 @@
                 </tr>
             </thead>
             <tbody>
-            <% @raman3.each do |xrds|%>
+            <% @raman3.where(status:'completed').each do |raman|%>
                 <tr>
                   <!-- Button trigger modal -->
                   <th scope="row">CRF/RAMAN/<%=xrds.id %>	</th>

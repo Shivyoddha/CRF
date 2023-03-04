@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name"> FRIC All Slots</h2>
         </div>
 
 
@@ -118,9 +118,13 @@
                         <td> <%= fric.slottime %></td>
 
                           <td><%= fric.status%></td>
-                          <td><%fric.references.each do |file|%>
-                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%></td>
+                          <%if fric.references.attached? %>
+                    <%fric.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>
