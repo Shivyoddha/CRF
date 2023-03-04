@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">MILLI:Cancelled Slots</h2>
         </div>
 
 
@@ -81,28 +81,32 @@
                 </thead>
                 <tbody>
 
-                      <% @milli4.all.each do |xrds|%>
+                      <% @milli4.where(status:'cancelled').each do |milli|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.typewater%> </td>
-                        <td> <%= xrds.volumeone%> </td>
-                        <td> <%= xrds.volumetwo%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/MILLI/<%=milli.id %>	</th>
+                        <td> <%= milli.user.name%> </td>
+                        <td> <%= milli.user.orgname%> </td>
+                        <td> <%= milli.user.department%> </td>
+                        <td> <%= milli.user.contact%> </td>
+                        <td> <%= milli.typewater%> </td>
+                        <td> <%= milli.volumeone%> </td>
+                        <td> <%= milli.volumetwo%> </td>
+                        <td> <%= milli.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= milli.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= milli.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
+                          <td><%= milli.status%></td>
+                          <%if milli.references.attached? %>
+                        <%milli.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                      <%end%>
+                     <% else %>
+                       <td>NA</td>
+                     <% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -87,11 +87,13 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="reference-paper">Reassign</th>
+                        <th scope="col" id="reference-paper">Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                        <% @multi2.where(status:'alloted').each do |multis|%>
+                        <% @multi2.where(status:'alloted').each do |multi|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/multi/<%=multi.id %>	</th>
@@ -121,22 +123,26 @@
                         <td> <%= multi.slottime %></td>
 
                           <td><%= multi.status%></td>
-                         <td><%multi.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if multi.references.attached? %>
+                         <%multi.references.each do |file|%>
+                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                            <% end %>
+                       <% else %>
+                         <td>NA</td>
+                       <% end %>
                      <td id="assign-btn">
                          <!-- Button trigger modal -->
-                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                          <div id="<%= xrds.id%>" class="modal">
+                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{multi.id}" }, id: "ani" %>
+                          <div id="<%= multi.id%>" class="modal">
 
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= multi.user.name %></b></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                  <%= form_with(model: xrds,local:true) do |form| %>
+                                  <%= form_with(model: multi,local:true) do |form| %>
 
                                       <div class="input-group mb-3">
                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -147,7 +153,7 @@
                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                   </div>
-                                   <%=xrds.id%>
+                                   <%=multi.id%>
 
                                     <div class="actions">
                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -167,18 +173,18 @@
 
                       <td id="cancel-btn">
                          <!-- Button trigger modal -->
-                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{multi.id}" }, id: "anish" %>
 
                           <!-- Modal -->
-                           <div id="ani<%= xrds.id%>" class="modal">
+                           <div id="ani<%= multi.id%>" class="modal">
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= multi.user.name %></b></h1>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
-                                        <%= form_for xrds do |f| %>
+                                        <%= form_for multi do |f| %>
                                           <p> Are you sure you want to cancel the slot ?</p>
                                           <%= f.hidden_field :status, value: 'cancelled' %>
                                       <div class="actions">
