@@ -38,9 +38,10 @@ class ScratchIndentationsController < ApplicationController
 
   # PATCH/PUT /scratch_indentations/1 or /scratch_indentations/1.json
   def update
+    @scratch_indentation.status="alloted"
     respond_to do |format|
       if @scratch_indentation.update(scratch_indentation_params)
-        format.html { redirect_to scratch_indentation_url(@scratch_indentation), notice: "Scratch indentation was successfully updated." }
+        format.html { redirect_to slotbooker_scratch_path(@scratch_indentation), notice: "Scratch indentation was successfully updated." }
         format.json { render :show, status: :ok, location: @scratch_indentation }
       else
         format.html { render :edit, status: :unprocessable_entity }

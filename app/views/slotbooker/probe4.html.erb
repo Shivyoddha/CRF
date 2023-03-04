@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">PROBE:Cancelled Slots</h2>
         </div>
 
 
@@ -63,47 +63,54 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
+                      <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="name">Name</th>
+                      <th scope="col" id="institute">Institute</th>
+                      <th scope="col" id="department">Department</th>
+                      <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="sample-no">No of Samples</th>
+                      <th scope="col" id="composition">Sample Size</th>
+                      <th scope="col" id="composition">Amplitude</th>
+                      <th scope="col" id="phase">Volume</th>
+                      <th scope="col" id="range">Viscosity</th>
+                      <th scope="col" id="request">More info</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col" id="slot-time">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" id="reference-paper">Reference Paper</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                      <% @probe4.where(status:'cancelled').each do |probe|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/PROBE/<%=probe.id %>	</th>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= probe.user.name%> </td>
+                        <td> <%= probe.user.orgname%> </td>
+                        <td> <%= probe.user.department%> </td>
+                        <td> <%= probe.user.contact%> </td>
+                        <td> <%= probe.sample%> </td>
+                        <td> <%= probe.size%> </td>
+                        <td> <%= probe.amplitude%> </td>
+                        <td> <%= probe.volume%> </td>
+                        <td> <%= probe.viscosity%> </td>
+                        <td> <%= probe.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
+
+                        <td> <%= probe.slotdate %></td>
+
+                        <td> <%= probe.slottime %></td>
+
+                          <td><%= probe.status%></td>
+  <%if probe.references.attached? %>
+<%probe.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 <%end%>
+  <% else %>
+    <td>NA</td>
+  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

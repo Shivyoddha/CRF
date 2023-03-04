@@ -88,36 +88,40 @@
                 </thead>
                 <tbody>
 
-                      <% @scratch.all.each do |xrds|%>
+                      <% @scratch.all.each do |scratch|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/SCRATCH/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.stroke%> </td>
-                        <td> <%= xrds.number_indentation%> </td>
-                        <td> <%= xrds.constant_load%> </td>
-                        <td> <%= xrds.increment_load%> </td>
-                        <td> <%= xrds.progressive_load%> </td>
-                        <td> <%= xrds.temperature%> </td>
-                        <td> <%= xrds.analysis%> </td>
-                         <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/SCRATCH/<%=scratch.id %>	</th>
+                        <td> <%= scratch.user.name%> </td>
+                        <td> <%= scratch.user.orgname%> </td>
+                        <td> <%= scratch.user.department%> </td>
+                        <td> <%= scratch.user.contact%> </td>
+                        <td> <%= scratch.sample%> </td>
+                        <td> <%= scratch.stype%> </td>
+                        <td> <%= scratch.measurement%> </td>
+                        <td> <%= scratch.stroke%> </td>
+                        <td> <%= scratch.number_indentation%> </td>
+                        <td> <%= scratch.constant_load%> </td>
+                        <td> <%= scratch.increment_load%> </td>
+                        <td> <%= scratch.progressive_load%> </td>
+                        <td> <%= scratch.temperature%> </td>
+                        <td> <%= scratch.analysis%> </td>
+                         <td> <%= scratch.more%> </td>
 
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= scratch.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= scratch.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= scratch.status%></td>
+                          <%if scratch.references.attached? %>
+                    <%scratch.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                    <%end%>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
                     </tr>
                       <%end%>
                 </tbody>

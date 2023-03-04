@@ -39,9 +39,10 @@ class RamanMicroscopesController < ApplicationController
 
   # PATCH/PUT /raman_microscopes/1 or /raman_microscopes/1.json
   def update
+    @raman_microscope.status="alloted"
     respond_to do |format|
       if @raman_microscope.update(raman_microscope_params)
-        format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully updated." }
+        format.html { redirect_to slotbooker_raman_path(@raman_microscope), notice: "Raman microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @raman_microscope }
       else
         format.html { render :edit, status: :unprocessable_entity }

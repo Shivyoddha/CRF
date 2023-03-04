@@ -38,9 +38,10 @@ class TgaFttrsController < ApplicationController
 
   # PATCH/PUT /tga_fttrs/1 or /tga_fttrs/1.json
   def update
+      @tga_fttr.status="alloted"
     respond_to do |format|
       if @tga_fttr.update(tga_fttr_params)
-        format.html { redirect_to tga_fttr_url(@tga_fttr), notice: "Tga fttr was successfully updated." }
+        format.html { redirect_to slotbooker_tga_path(@tga_fttr), notice: "Tga fttr was successfully updated." }
         format.json { render :show, status: :ok, location: @tga_fttr }
       else
         format.html { render :edit, status: :unprocessable_entity }

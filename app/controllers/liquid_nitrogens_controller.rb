@@ -38,9 +38,10 @@ class LiquidNitrogensController < ApplicationController
 
   # PATCH/PUT /liquid_nitrogens/1 or /liquid_nitrogens/1.json
   def update
+    @liquid_nitrogen.status="alloted"
     respond_to do |format|
       if @liquid_nitrogen.update(liquid_nitrogen_params)
-        format.html { redirect_to liquid_nitrogen_url(@liquid_nitrogen), notice: "Liquid nitrogen was successfully updated." }
+        format.html { redirect_to slotbooker_nitrogen_path(@liquid_nitrogen), notice: "Liquid nitrogen was successfully updated." }
         format.json { render :show, status: :ok, location: @liquid_nitrogen }
       else
         format.html { render :edit, status: :unprocessable_entity }

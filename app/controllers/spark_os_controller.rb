@@ -38,9 +38,10 @@ class SparkOsController < ApplicationController
 
   # PATCH/PUT /spark_os/1 or /spark_os/1.json
   def update
+      @spark_o.status="alloted"
     respond_to do |format|
       if @spark_o.update(spark_o_params)
-        format.html { redirect_to spark_o_url(@spark_o), notice: "Spark o was successfully updated." }
+        format.html { redirect_to slotbooker_spark_path(@spark_o), notice: "Spark o was successfully updated." }
         format.json { render :show, status: :ok, location: @spark_o }
       else
         format.html { render :edit, status: :unprocessable_entity }

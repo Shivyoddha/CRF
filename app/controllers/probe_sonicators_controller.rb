@@ -38,9 +38,10 @@ class ProbeSonicatorsController < ApplicationController
 
   # PATCH/PUT /probe_sonicators/1 or /probe_sonicators/1.json
   def update
+    @probe_sonicator.status="alloted"
     respond_to do |format|
       if @probe_sonicator.update(probe_sonicator_params)
-        format.html { redirect_to probe_sonicator_url(@probe_sonicator), notice: "Probe sonicator was successfully updated." }
+        format.html { redirect_to slotbooker_probe_path(@probe_sonicator), notice: "Probe sonicator was successfully updated." }
         format.json { render :show, status: :ok, location: @probe_sonicator }
       else
         format.html { render :edit, status: :unprocessable_entity }
