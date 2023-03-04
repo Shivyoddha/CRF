@@ -44,6 +44,7 @@ class IcpMsController < ApplicationController
     @icp_m.status="alloted"
     respond_to do |format|
       if @icp_m.update(icp_m_params)
+        IcpMAllotedMailer.with(id:@icp_m.id, userid:current_user.id).Mail.deliver_later
          @icp_m.status="alloted"
         format.html { redirect_to slotbooker_icp_path(@icp_m), notice: "Icp m was successfully updated." }
         format.json { render :show, status: :ok, location: @icp_m }
