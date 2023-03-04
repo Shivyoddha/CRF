@@ -44,6 +44,7 @@ class AdvanceMolecularRheometersController < ApplicationController
     @advance_molecular_rheometer.status="alloted"
     respond_to do |format|
       if @advance_molecular_rheometer.update(advance_molecular_rheometer_params)
+          AdvanceMolecularRheometerAllotedMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
          @advance_molecular_rheometer.status="alloted"
         format.html { redirect_to slotbooker_amr_path(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully updated." }
         format.json { render :show, status: :ok, location: @advance_molecular_rheometer }

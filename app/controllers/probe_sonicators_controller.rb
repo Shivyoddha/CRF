@@ -41,6 +41,7 @@ class ProbeSonicatorsController < ApplicationController
     @probe_sonicator.status="alloted"
     respond_to do |format|
       if @probe_sonicator.update(probe_sonicator_params)
+        ProbeSonicatorAllotedMailer.with(id:@probe_sonicator.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_probe_path(@probe_sonicator), notice: "Probe sonicator was successfully updated." }
         format.json { render :show, status: :ok, location: @probe_sonicator }
       else

@@ -40,6 +40,7 @@ class ImpedanceAnaliesController < ApplicationController
   def update
       @impedance_analy.status="alloted"
     respond_to do |format|
+      ImpedanceAnalyzerAllotedMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
       if @impedance_analy.update(impedance_analy_params)
         format.html { redirect_to slotbooker_impdeance_path(@impedance_analy), notice: "Impedance analy was successfully updated." }
         format.json { render :show, status: :ok, location: @impedance_analy }
