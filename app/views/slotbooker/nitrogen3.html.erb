@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">NITROGEN:All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">NITROGEN: Completed Slots</h2>
     </div>
 
 
@@ -79,28 +79,27 @@
             </thead>
             <tbody>
 
-                  <% @nitrogen3.all.each do |xrds|%>
+                  <% @nitrogen3.where(status:'completed').each do |nitrogen|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/NITROGEN/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.quantity%> </td>
-                    <td> <%= xrds.purpose%> </td>
-                    <td> <%= xrds.more%> </td>
+                    <th scope="row">CRF/NITROGEN/<%=nitrogen.id %>	</th>
+                    <td> <%= nitrogen.user.name%> </td>
+                    <td> <%= nitrogen.user.orgname%> </td>
+                    <td> <%= nitrogen.user.department%> </td>
+                    <td> <%= nitrogen.user.contact%> </td>
+                    <td> <%= nitrogen.quantity%> </td>
+                    <td> <%= nitrogen.purpose%> </td>
+                    <td> <%= nitrogen.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= xrds.slotdate %></td>
+                    <td> <%= nitrogen.slotdate %></td>
 
-                    <td> <%= xrds.slottime %></td>
+                    <td> <%= nitrogen.slottime %></td>
 
-                      <td><%= xrds.status%></td>
+                      <td><%= nitrogen.status%></td>
                 </tr>
                   <%end%>
-                    </tr>
-                      <%end%>
+
                 </tbody>
             </table>
 

@@ -38,9 +38,11 @@ class ImpedanceAnaliesController < ApplicationController
 
   # PATCH/PUT /impedance_analies/1 or /impedance_analies/1.json
   def update
+      @impedance_analy.status="alloted"
     respond_to do |format|
+      ImpedanceAnalyzerAllotedMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
       if @impedance_analy.update(impedance_analy_params)
-        format.html { redirect_to impedance_analy_url(@impedance_analy), notice: "Impedance analy was successfully updated." }
+        format.html { redirect_to slotbooker_impdeance_path(@impedance_analy), notice: "Impedance analy was successfully updated." }
         format.json { render :show, status: :ok, location: @impedance_analy }
       else
         format.html { render :edit, status: :unprocessable_entity }

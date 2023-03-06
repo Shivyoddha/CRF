@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">MULTi:Cancelled Slots</h2>
         </div>
 
 
@@ -69,10 +69,19 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Sample Type</th>
+                        <th scope="col" id="composition">Size</th>
+                        <th scope="col" id="phase">Measurement</th>
+                        <th scope="col" id="range">Drop Range</th>
+                        <th scope="col" id="sample-no">Drop Velocity</th>
+                        <th scope="col" id="composition">Drop Temperature</th>
+                        <th scope="col" id="composition">Drop Shape</th>
+                        <th scope="col" id="phase">Shpb length</th>
+                        <th scope="col" id="range">Shpb Temp</th>
+                        <th scope="col" id="phase">Bullet Velocity</th>
+                        <th scope="col" id="range">Bullet Shape</th>
+                        <th scope="col" id="phase">Bird Velocity</th>
+                        <th scope="col" id="range">Bird Shape</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +92,43 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                    <% @multi4.where(status:'cancelled').each do |multi|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/multi/<%=multi.id %>	</th>
+                        <td> <%= multi.user.name%> </td>
+                        <td> <%= multi.user.orgname%> </td>
+                        <td> <%= multi.user.department%> </td>
+                        <td> <%= multi.user.contact%> </td>
+                        <td> <%= multi.sample%> </td>
+                        <td> <%= multi.stype%> </td>
+                        <td> <%= multi.size%> </td>
+                        <td> <%= multi.measuerment%> </td>
+                        <td> <%= multi.drop_range%> </td>
+                        <td> <%= multi.drop_velocity%> </td>
+                        <td> <%= multi.drop_temp%> </td>
+                        <td> <%= multi.drop_shape%> </td>
+                        <td> <%= multi.shpb_lenght%> </td>
+                        <td> <%= multi.shpb_temp%> </td>
+                        <td> <%= multi.bullet_velocity%> </td>
+                        <td> <%= multi.bullet_shape%> </td>
+                        <td> <%= multi.bird_velocity%> </td>
+                        <td> <%= multi.bird_shape%> </td>
+                        <td> <%= multi.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= multi.slotdate %></td>
+
+                        <td> <%= multi.slottime %></td>
+
+                          <td><%= multi.status%></td>
+                          <%if multi.references.attached? %>
+                          <%multi.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

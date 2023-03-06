@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">AMR:All Slots</h2>
     </div>
 
 
@@ -63,94 +63,110 @@
         <table class="table table-hover font-quicksand">
             <thead>
                 <tr class="table-head font-unbounded">
-                    <th scope="col" id="application-no">Appl No</th>
-                    <th scope="col" id="name">Name</th>
-                    <th scope="col" id="institute">Institute</th>
-                    <th scope="col" id="department">Department</th>
-                    <th scope="col" id="contact-no">Contact No:</th>
-                    <th scope="col" id="sample-no">No of Samples</th>
-                    <th scope="col" id="sample-type">Sample Type</th>
-                    <th scope="col" id="sample-type">Sample Size</th>
-                    <th scope="col" id="nature">Nature of Test</th>
-                    <th scope="col" id="temo">Temperature</th>
-                    <th scope="col" id="current">Current</th>
-                    <th scope="col" id="shear">Shear Type</th>
-                    <th scope="col" id="shear-rate">Shear Rate</th>
-                    <th scope="col" id="sweeps">No of Sweeps</th>
-                    <th scope="col" id="sweeps">Analysis </th>
-                    <th scope="col" id="request">More info</th>
-                    <th scope="col" id="booked-on">Booked On</th>
-                    <th scope="col" id="slot-date">Slot Date</th>
-                    <th scope="col" id="slot-time">Slot Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" id="reference-paper">Reference Paper</th>
+                  <th scope="col" id="application-no">Appl No</th>
+                  <th scope="col" id="name">Name</th>
+                  <th scope="col" id="institute">Institute</th>
+                  <th scope="col" id="department">Department</th>
+                  <th scope="col" id="contact-no">Contact No:</th>
+                  <th scope="col" id="sample-no">No of Samples</th>
+                  <th scope="col" id="sample-type">Sample Type</th>
+                  <th scope="col" id="sample-type">Sample Size</th>
+                  <th scope="col" id="nature">Nature of Test</th>
+                  <th scope="col" id="temo">Temperature</th>
+                  <th scope="col" id="current">Current</th>
+                  <th scope="col" id="shear">Shear Type</th>
+                  <th scope="col" id="shear-rate">Shear Rate</th>
+                  <th scope="col" id="sweeps">No of Sweeps</th>
+                  <th scope="col" id="sweeps">Analysis </th>
+                    <th scope="col" id="sweeps">Toxicity </th>
+                  <th scope="col" id="request">More info</th>
+
+                  <th scope="col" id="slot-date">Slot Date</th>
+                  <th scope="col" id="slot-time">Slot Time</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" id="reference-paper">Reference Paper</th>
+                  <th scope="col" id="assign-col">Asssign</th>
                 </tr>
             </thead>
             <tbody>
 
-                  <% @amr1.each do |amr|%>
+                  <% @amr1.where(status:'pending').each do |amr1|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/AMR/<%=amr.id %>	</th>
-                    <td> <%= amr.user.name%> </td>
-                    <td> <%= amr.user.orgname%> </td>
-                    <td> <%= amr.user.department%> </td>
-                    <td> <%= amr.user.contact%> </td>
-                    <td> <%= amr.sample%> </td>
-                    <td> <%= amr.stype%> </td>
-                    <td> <%= amr.size%> </td>
-                    <td> <%= amr.nature%> </td>
-                    <td> <%= amr.temperature%> </td>
-                    <td> <%= amr.current%> </td>
-                    <td> <%= amr.shear_type%> </td>
-                    <td> <%= amr.shear_rate%> </td>
-                    <td> <%= amr.sweeps%> </td>
-                    <td> <%= amr.analysis%> </td>
-                    <td> <%= amr.toxicity%> </td>
-                    <td> <%= amr.more%> </td>
-                    <td>Booked</td>
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/amr1/<%=amr1.id %>	</th>
+                      <td> <%= amr1.user.name%> </td>
+                      <td> <%= amr1.user.orgname%> </td>
+                      <td> <%= amr1.user.department%> </td>
+                      <td> <%= amr1.user.contact%> </td>
+                      <td> <%= amr1.sample%> </td>
+                      <td> <%= amr1.stype%> </td>
+                      <td> <%= amr1.size%> </td>
+                      <td> <%= amr1.nature%> </td>
+                      <td> <%= amr1.temperature%> </td>
+                      <td> <%= amr1.current%> </td>
+                      <td> <%= amr1.shear_type%> </td>
+                      <td> <%= amr1.shear_rate%> </td>
+                      <td> <%= amr1.sweeps%> </td>
+                      <td> <%= amr1.analysis%> </td>
+                      <td> <%= amr1.toxicity%> </td>
+                      <td> <%= amr1.more%> </td>
 
-                    <td> <%= amr.slotdate %></td>
 
-                    <td> <%= amr.slottime %></td>
+                      <td> <%= amr1.slotdate %></td>
 
-                      <td><%= amr.status%></td>
-                    <% amr.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
+                      <td> <%= amr1.slottime %></td>
+
+                        <td><%= amr1.status%></td>
+                        <%if amr1.references.attached? %>
+                        <%amr1.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
                       <% else %>
                         <td>NA</td>
                       <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{amr1.id}" }, id: "ani" %>
+                           <div id="<%= amr1.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= amr1.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: amr1,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=amr1.id%>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+                       <% end %>
 
                     </tr>
 

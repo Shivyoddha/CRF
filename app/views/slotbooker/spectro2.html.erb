@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">spectro:Alloted Slots</h2>
         </div>
 
 
@@ -78,94 +78,150 @@
                       <th scope="col" id="slot-time">Slot Time</th>
                       <th scope="col">Status</th>
                       <th scope="col" id="reference-paper">Reference Paper</th>
+                      <th scope="col" id="reference-paper">Reassign</th>
+                      <th scope="col" id="reference-paper">Cancel</th>
                   </tr>
               </thead>
               <tbody>
 
-                    <% @spectro2.all.each do |xrds|%>
+                    <% @spectro2.where(status:'alloted').each do |spectro|%>
                     <tr>
                       <!-- Button trigger modal -->
-                      <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                      <td> <%= xrds.user.name%> </td>
-                      <td> <%= xrds.user.orgname%> </td>
-                      <td> <%= xrds.user.department%> </td>
-                      <td> <%= xrds.user.contact%> </td>
-                      <td> <%= xrds.sample%> </td>
-                      <td> <%= xrds.nature%> </td>
-                      <td> <%= xrds.application%> </td>
-                      <td> <%= xrds.stype%> </td>
-                      <td> <%= xrds.more%> </td>
+                      <th scope="row">CRF/SPECTRO/<%=spectro.id %>	</th>
+                      <td> <%= spectro.user.name%> </td>
+                      <td> <%= spectro.user.orgname%> </td>
+                      <td> <%= spectro.user.department%> </td>
+                      <td> <%= spectro.user.contact%> </td>
+                      <td> <%= spectro.sample%> </td>
+                      <td> <%= spectro.nature%> </td>
+                      <td> <%= spectro.application%> </td>
+                      <td> <%= spectro.stype%> </td>
+                      <td> <%= spectro.more%> </td>
                       <td>Booked</td>
 
-                      <td> <%= xrds.slotdate %></td>
+                      <td> <%= spectro.slotdate %></td>
 
-                      <td> <%= xrds.slottime %></td>
+                      <td> <%= spectro.slottime %></td>
 
-                        <td><%= xrds.status%></td>
-                      <%xrds.references.each do |file|%>
-                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                   <%end%>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                        <td><%= spectro.status%></td>
+                        <%if spectro.references.attached? %>
+                        <%spectro.references.each do |file|%>
+                  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                  <%end%>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                   
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                    <td id="assign-btn">
+                        <!-- Button trigger modal -->
+                         <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{spectro.id}" }, id: "ani" %>
+                         <div id="<%= spectro.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= spectro.user.name %></b></h1>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body">
+                                 <%= form_with(model: spectro,local:true) do |form| %>
 
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-<%end%>
-                    </tr>
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                   </div>
 
-                </tbody>
-            </table>
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+                                  <%=spectro.id%>
 
-        </div>
-        </div>
+                                   <div class="actions">
+                                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                   </div>
+                                 <% end %>
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                     </td>
 
 
+                     <td id="cancel-btn">
+                        <!-- Button trigger modal -->
+                          <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{spectro.id}" }, id: "anish" %>
+
+                         <!-- Modal -->
+                          <div id="ani<%= spectro.id%>" class="modal">
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= spectro.user.name %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                     </div>
+                                     <div class="modal-body">
+                                       <%= form_for spectro do |f| %>
+                                         <p> Are you sure you want to cancel the slot ?</p>
+                                         <%= f.hidden_field :status, value: 'cancelled' %>
+                                     <div class="actions">
+
+
+                                     </div>
+
+                                      </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                           <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                     </div>
+                                     <% end %>
+                                 </div>
+                             </div>
+                         </div>
+                     </td>
+
+   <%end%>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
     </div>
 
 
-</div>
+   </div>
+
+
+   </div>
+   <script>
+   // Get the modals and buttons
+   var modal1 = document.getElementByClass("modal");
+   var btn1 = document.getElementById("ani");
+   var modal2 = document.getElementByClass("modal2");
+   var btn2 = document.getElementById("anish");
+   // Add event listeners to the buttons
+   btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+   });
+
+   btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+   });
+
+   // Close the modal when the user clicks anywhere outside of it
+   window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+   modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+   modal2.style.display = "none";
+   }
+   });
+   </script>

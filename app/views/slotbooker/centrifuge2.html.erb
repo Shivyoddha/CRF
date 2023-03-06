@@ -33,145 +33,200 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_centrifuge_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_centrifuge1_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_centrifuge2_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_centrifuge3_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_centrifuge4_path,class:"nav-link active sidelink-wrap" %>
-                </li>
+                      <%= link_to 'All Slots',slotbooker_centrifuge_path,class:"nav-link active sidelink-wrap" %>
+              </li>
+              <li class="nav-item">
+                      <%= link_to 'Pending Slots',slotbooker_centrifuge1_path,class:"nav-link active sidelink-wrap" %>
+                      </li>
+              <li class="nav-item">
+                      <%= link_to 'Alloted Slots',slotbooker_centrifuge2_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
+                      </li>
+              <li class="nav-item">
+                      <%= link_to 'Completed Slots',slotbooker_centrifuge3_path,class:"nav-link active sidelink-wrap" %>
+                      </li>
+              <li class="nav-item">
+                    <%= link_to 'Cancelled Slots',slotbooker_centrifuge4_path,class:"nav-link active sidelink-wrap" %>
+              </li>
             </ul>
         </div>
     </div>
 
 <%# the content section is coded here %>
-    <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
-        </div>
-
-
-        <div id="slot-details">
-        <div>
-            <table class="table table-hover font-quicksand">
-                <thead>
-                    <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Volume</th>
-                        <th scope="col" id="composition">Speed</th>
-                        <th scope="col" id="phase">Temperature</th>
-                        <th scope="col" id="range">Toxicity</th>
-                        <th scope="col" id="phase">Compatibility</th>
-                        <th scope="col" id="range">Carcinogenic</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                      <% @centrifuge2.all.each do |xrds|%>
-                      <tr>
-                        <!-- Button trigger modal -->
-                        <th scope="row">CRF/CENTRIFUGE/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.volume%> </td>
-                        <td> <%= xrds.speed%> </td>
-                        <td> <%= xrds.temperature%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.compatibility%> </td>
-                        <td> <%= xrds.carcinogenic%> </td>
-                        <td> <%= xrds.more%> </td>
-                        <td>Booked</td>
-
-                        <td> <%= xrds.slotdate %></td>
-
-                        <td> <%= xrds.slottime %></td>
-
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-<%end%>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
-
-
+<div id="slots">
+    <div id="current-tab">
+        <h2 class="fw-bold font-unbounded" id="tab-name">centrifuge-Imaging Multimode Reader Alloted  Slots</h2>
     </div>
 
 
-</div>
+    <div id="slot-details">
+    <div>
+        <table class="table table-hover font-quicksand">
+            <thead>
+                <tr class="table-head font-unbounded">
+                  <th scope="col" id="application-no">Appl No</th>
+                    <th scope="col" id="name">Name</th>
+                    <th scope="col" id="institute">Institute</th>
+                    <th scope="col" id="department">Department</th>
+                    <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col" id="sample-no">No of Samples</th>
+                    <th scope="col" id="composition">Volume</th>
+                    <th scope="col" id="composition">Speed</th>
+                    <th scope="col" id="phase">Temperature</th>
+                    <th scope="col" id="range">Toxicity</th>
+                    <th scope="col" id="phase">Compatibility</th>
+                    <th scope="col" id="range">Carcinogenic</th>
+                    <th scope="col" id="request">More info</th>
+                    <th scope="col" id="booked-on">Booked On</th>
+                    <th scope="col" id="slot-date">Slot Date</th>
+                    <th scope="col" id="slot-time">Slot Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reference-paper">Reassign</th>
+              <th scope="col" id="reference-paper">Assign</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% @centrifuge2.where(status:'alloted').each do |centrifuge|%>
+                  <tr>
+                    <!-- Button trigger modal -->
+                    <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
+                    <td> <%= centrifuge.user.name%> </td>
+                    <td> <%= centrifuge.user.orgname%> </td>
+                    <td> <%= centrifuge.user.department%> </td>
+                    <td> <%= centrifuge.user.contact%> </td>
+                    <td> <%= centrifuge.sample%> </td>
+                    <td> <%= centrifuge.volume%> </td>
+                    <td> <%= centrifuge.speed%> </td>
+                    <td> <%= centrifuge.temperature%> </td>
+                    <td> <%= centrifuge.toxicity%> </td>
+                    <td> <%= centrifuge.compatibility%> </td>
+                    <td> <%= centrifuge.carcinogenic%> </td>
+                    <td> <%= centrifuge.more%> </td>
+                    <td>Booked</td>
+
+                    <td> <%= centrifuge.slotdate %></td>
+
+                    <td> <%= centrifuge.slottime %></td>
+
+                      <td><%= centrifuge.status%></td>
+                      <%if centrifuge.references.attached? %>
+                    <%centrifuge.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  
+                    <%end%>
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{centrifuge.id}" }, id: "ani" %>
+                           <div id="<%= centrifuge.id%>" class="modal">
+
+                         <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= centrifuge.user.name %></b></h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                   <%= form_with(model: centrifuge,local:true) do |form| %>
+
+                                       <div class="input-group mb-3">
+                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                       <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                   </div>
+                                    <%=centrifuge.id%>
+
+                                     <div class="actions">
+                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                     </div>
+                                   <% end %>
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                     <button type="button" class="btn btn-primary">Cancel Slot</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                       </td>
+
+
+                       <td id="cancel-btn">
+                          <!-- Button trigger modal -->
+                            <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{centrifuge.id}" }, id: "anish" %>
+
+                           <!-- Modal -->
+                            <div id="ani<%= centrifuge.id%>" class="modal">
+                             <div class="modal-dialog">
+                                   <div class="modal-content">
+                                       <div class="modal-header">
+                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= centrifuge.user.name %></b></h1>
+                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                       <div class="modal-body">
+                                         <%= form_for centrifuge do |f| %>
+                                           <p> Are you sure you want to cancel the slot ?</p>
+                                           <%= f.hidden_field :status, value: 'cancelled' %>
+                                       <div class="actions">
+
+
+                                       </div>
+
+                                        </div>
+                                       <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                             <%= f.submit "cancelled", class:"btn btn-primary", id:"sbt" %>
+                                       </div>
+                                       <% end %>
+                                   </div>
+                               </div>
+                           </div>
+                       </td>
+
+     <%end%>
+                  </tr>
+
+              </tbody>
+          </table>
+
+      </div>
+      </div>
+
+
+     </div>
+
+
+     </div>
+     <script>
+     // Get the modals and buttons
+     var modal1 = document.getElementByClass("modal");
+     var btn1 = document.getElementById("ani");
+     var modal2 = document.getElementByClass("modal2");
+     var btn2 = document.getElementById("anish");
+     // Add event listeners to the buttons
+     btn1.addEventListener("click", function() {
+     modal1.style.display = "block";
+     });
+
+     btn2.addEventListener("click", function() {
+     modal2.style.display = "block";
+     });
+
+     // Close the modal when the user clicks anywhere outside of it
+     window.addEventListener("click", function(event) {
+     if (event.target == modal1) {
+     modal1.style.display = "none";
+     }
+     if (event.target == modal2) {
+     modal2.style.display = "none";
+     }
+     });
+     </script>

@@ -38,9 +38,11 @@ class MilliQsController < ApplicationController
 
   # PATCH/PUT /milli_qs/1 or /milli_qs/1.json
   def update
+      @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)
-        format.html { redirect_to milli_q_url(@milli_q), notice: "Milli q was successfully updated." }
+        MilliQAllotedMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_milli_path(@milli_q), notice: "Milli q was successfully updated." }
         format.json { render :show, status: :ok, location: @milli_q }
       else
         format.html { render :edit, status: :unprocessable_entity }

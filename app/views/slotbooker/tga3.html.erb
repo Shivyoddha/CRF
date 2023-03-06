@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">TGAFTTR:Completed Slots</h2>
         </div>
 
 
@@ -85,40 +85,45 @@
                       <th scope="col" id="booked-on">Booked On</th>
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Reference Paper</th>
 
 
                   </tr>
               </thead>
               <tbody>
-              <% @tga3.each do |xrds|%>
+              <% @tga3.where(status:'completed').each do |tga|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.description%> </td>
-                    <td> <%= xrds.nature%> </td>
-                    <td> <%= xrds.measurement%> </td>
-                    <td> ATR:<nobr> <%= xrds.atr%><br>KBR:<%= xrds.kbr%><br>Yordinate:<%= xrds.yordinate%>  </td>
-                    <td> <%= xrds.min_temp%>° to <%= xrds.max_temp%>°</td>
-                    <td> <%= xrds.scan_rate%> </td>
-                    <td> <%= xrds.atmosphere%> </td>
-                    <td> <%= xrds.hazard%> </td>
-                    <td> <%= xrds.compatability%> </td>
-                    <td> <%= xrds.carcinogenic%> </td>
-                    <td> <%= xrds.hazard%> </td>
+                    <th scope="row">CRF/TGAFTTR/<%=tga.id %>	</th>
+                    <td> <%= tga.user.name%> </td>
+                    <td> <%= tga.user.orgname%> </td>
+                    <td> <%= tga.user.department%> </td>
+                    <td> <%= tga.user.contact%> </td>
+                    <td> <%= tga.sample%> </td>
+                    <td> <%= tga.stype%> </td>
+                    <td> <%= tga.description%> </td>
+                    <td> <%= tga.nature%> </td>
+                    <td> <%= tga.measurement%> </td>
+                    <td> ATR:<nobr> <%= tga.atr%><br>KBR:<%= tga.kbr%><br>Yordinate:<%= tga.yordinate%>  </td>
+                    <td> <%= tga.min_temp%>° to <%= tga.max_temp%>°</td>
+                    <td> <%= tga.scan_rate%> </td>
+                    <td> <%= tga.atmosphere%> </td>
+                    <td> <%= tga.hazard%> </td>
+                    <td> <%= tga.compatability%> </td>
+                    <td> <%= tga.carcinogenic%> </td>
+                    <td> <%= tga.explosive%> </td>
                     <td>Booked</td>
-                    <td><%= xrds.slotdate %></td>
-                    <td><%= xrds.slottime %></td>
-                    <td> <%= xrds.status %></td>
-                    <%xrds.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                    <td><%= tga.slotdate %></td>
+                    <td><%= tga.slottime %></td>
+                    <td> <%= tga.status %></td>
+                    <%if tga.references.attached? %>
+                    <%tga.references.each do |file|%>
+              <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+              <%end%>
+                <% else %>
+                  <td>NA</td>
+                <% end %>
                     </tr>
                       <%end%>
                 </tbody>

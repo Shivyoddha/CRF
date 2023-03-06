@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">THREESCAN:Alloted Slots</h2>
         </div>
 
 
@@ -84,84 +84,112 @@
                 </thead>
                 <tbody>
 
-                      <% @threescann2.where(status:'alloted').each do |xrds|%>
+                      <% @threescan2.where(status:'alloted').each do |three|%>
                       <tr>
-                        <th scope="row">CRF/THREESCAN/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.size%> </td>
-                        <td> <%= xrds.texture%></td>
-                        <td>  Stl:<nobr><%= xrds.stt%> <br>
-                          Ply:<%= xrds.ply%><br>
-                          Wrl:<%= xrds.wrl%> <br>
-                          Obj: <%= xrds.obj%> <br>
-                          Asc: <%= xrds.asc%> <br>
-                          Aop: <%= xrds.aop%> <br>
-                          Ptx: <%= xrds.ptx%> <br>
-                          Xyzrgb: <%= xrds.xyzrgb%>
+                        <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
+                        <td> <%= three.user.name%> </td>
+                        <td> <%= three.user.orgname%> </td>
+                        <td> <%= three.user.department%> </td>
+                        <td> <%= three.user.contact%> </td>
+                        <td> <%= three.sample%> </td>
+                        <td> <%= three.size%> </td>
+                        <td> <%= three.texture%></td>
+                        <td>  Stl:<nobr><%= three.stt%> <br>
+                          Ply:<%= three.ply%><br>
+                          Wrl:<%= three.wrl%> <br>
+                          Obj: <%= three.obj%> <br>
+                          Asc: <%= three.asc%> <br>
+                          Aop: <%= three.aop%> <br>
+                          Ptx: <%= three.ptx%> <br>
+                          Xyzrgb: <%= three.xyzrgb%>
                         </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= three.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> Slot time</td>
-                        <td> <%= xrds.slottime %> </td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <%end%>
+                        <td> <%= three.slotdate %> </td>
+                      
+                        <td> <%= three.slottime %> </td>
+                          <td> <%= three.status%> </td>
+                        <%if three.references.attached? %>
+                      <td><%three.references.each do |file|%>
+                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                           <% end %></td>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
                         <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                            <!-- Button trigger modal -->
+                             <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{three.id}" }, id: "ani" %>
+                             <div id="<%= three.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                           <div class="modal-dialog">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= three.user.name %></b></h1>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                     <%= form_with(model: three,local:true) do |form| %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                                         <div class="input-group mb-3">
+                                         <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                         <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                       </div>
 
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-<%end%>
+                                       <div class="input-group mb-3">
+                                       <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                     </div>
+                                      <%=three.id%>
+
+                                       <div class="actions">
+                                         <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                       </div>
+                                     <% end %>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-primary">Cancel Slot</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                         </td>
+
+
+                         <td id="cancel-btn">
+                            <!-- Button trigger modal -->
+                              <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{three.id}" }, id: "anish" %>
+
+                             <!-- Modal -->
+                              <div id="ani<%= three.id%>" class="modal">
+                               <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= three.user.name %></b></h1>
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                         </div>
+                                         <div class="modal-body">
+                                           <%= form_for three do |f| %>
+                                             <p> Are you sure you want to cancel the slot ?</p>
+                                             <%= f.hidden_field :status, value: 'cancelled' %>
+                                         <div class="actions">
+
+
+                                         </div>
+
+                                          </div>
+                                         <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                               <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                         </div>
+                                         <% end %>
+                                     </div>
+                                 </div>
+                             </div>
+                         </td>
+
+  <%end%>
                     </tr>
 
                 </tbody>
@@ -174,4 +202,29 @@
     </div>
 
 
-</div>
+  </div>
+  <script>
+  // Get the modals and buttons
+  var modal1 = document.getElementByClass("modal");
+  var btn1 = document.getElementById("ani");
+  var modal2 = document.getElementByClass("modal2");
+  var btn2 = document.getElementById("anish");
+  // Add event listeners to the buttons
+  btn1.addEventListener("click", function() {
+    modal1.style.display = "block";
+  });
+
+  btn2.addEventListener("click", function() {
+    modal2.style.display = "block";
+  });
+
+  // Close the modal when the user clicks anywhere outside of it
+  window.addEventListener("click", function(event) {
+    if (event.target == modal1) {
+      modal1.style.display = "none";
+    }
+    if (event.target == modal2) {
+      modal2.style.display = "none";
+    }
+  });
+  </script>

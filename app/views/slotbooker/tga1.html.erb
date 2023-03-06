@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">TGAFTTR:Pending Slots</h2>
         </div>
 
 
@@ -85,84 +85,121 @@
                       <th scope="col" id="booked-on">Booked On</th>
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Reference Paper</th>
-
+                      <th scope="col">Assign</th>
 
                   </tr>
               </thead>
               <tbody>
-              <% @tga1.each do |xrds|%>
+                <% @tga1.where(status:'pending').each do |tga|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.description%> </td>
-                    <td> <%= xrds.nature%> </td>
-                    <td> <%= xrds.measurement%> </td>
-                    <td> ATR:<nobr> <%= xrds.atr%><br>KBR:<%= xrds.kbr%><br>Yordinate:<%= xrds.yordinate%>  </td>
-                    <td> <%= xrds.min_temp%>° to <%= xrds.max_temp%>°</td>
-                    <td> <%= xrds.scan_rate%> </td>
-                    <td> <%= xrds.atmosphere%> </td>
-                    <td> <%= xrds.hazard%> </td>
-                    <td> <%= xrds.compatability%> </td>
-                    <td> <%= xrds.carcinogenic%> </td>
-                    <td> <%= xrds.hazard%> </td>
+                    <th scope="row">CRF/TGAFTTR/<%=tga.id %>	</th>
+                    <td> <%= tga.user.name%> </td>
+                    <td> <%= tga.user.orgname%> </td>
+                    <td> <%= tga.user.department%> </td>
+                    <td> <%= tga.user.contact%> </td>
+                    <td> <%= tga.sample%> </td>
+                    <td> <%= tga.stype%> </td>
+                    <td> <%= tga.description%> </td>
+                    <td> <%= tga.nature%> </td>
+                    <td> <%= tga.measurement%> </td>
+                    <td> ATR:<nobr> <%= tga.atr%><br>KBR:<%= tga.kbr%><br>Yordinate:<%= tga.yordinate%>  </td>
+                    <td> <%= tga.min_temp%>° to <%= tga.max_temp%>°</td>
+                    <td> <%= tga.scan_rate%> </td>
+                    <td> <%= tga.atmosphere%> </td>
+                    <td> <%= tga.hazard%> </td>
+                    <td> <%= tga.compatability%> </td>
+                    <td> <%= tga.carcinogenic%> </td>
+                    <td> <%= tga.explosive%> </td>
                     <td>Booked</td>
-                    <td><%= xrds.slotdate %></td>
-                    <td><%= xrds.slottime %></td>
-                    <td> <%= xrds.status %></td>
-                    <%xrds.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                    <%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                    <td><%= tga.slotdate %></td>
+                    <td><%= tga.slottime %></td>
+                    <td> <%= tga.status %></td>
+                    <%if tga.references.attached? %>
+                    <%tga.references.each do |file|%>
+              <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+              <%end%>
+                <% else %>
+                  <td>NA</td>
+                <% end %>
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{tga.id}" }, id: "ani" %>
+                           <div id="<%= tga.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+ <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= tga.user.name %></b></h1>
+                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                 <%= form_with(model: tga,local:true) do |form| %>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= TgaFttr.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                     <div class="input-group mb-3">
+                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                   </div>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <div class="input-group mb-3">
+                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                 </div>
+                  <%=tga.id%>
 
-                                        </div>
+                   <div class="actions">
+                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                   </div>
+                 <% end %>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+               </div>
+           </div>
+       </div>
+
+</div>
+
+                       </td>
+
+                   </tr>
 <%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+               </tbody>
+           </table>
 
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
+       </div>
+       </div>
 
 
-    </div>
+   </div>
 
 
 </div>
+<script>
+ // Get the modals and buttons
+ var modal1 = document.getElementByClass("modal");
+ var btn1 = document.getElementById("ani");
+
+ // Add event listeners to the buttons
+ btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+ });
+
+ btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+ });
+
+ // Close the modal when the user clicks anywhere outside of it
+ window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+     modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+     modal2.style.display = "none";
+   }
+ });
+</script>

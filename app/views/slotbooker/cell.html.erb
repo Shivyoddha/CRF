@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Cell-Imaging Multimode Reader Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Cell-Imaging Multimode Reader All Slots</h2>
         </div>
 
 
@@ -118,12 +118,17 @@
                          <td>   <%= cells.slottime%></td>
 
                             <td><%= cells.status%></td>
-                          <%cells.references.each do |file|%>
-                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                       <%end%>
+                            <%if cells.references.attached? %>
+                            <%cells.references.each do |file|%>
+                            <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                               <% end %>
+                          <% else %>
+                            <td>NA</td>
+                          <% end %>
                       </tr>
+
                         <%end%>
-                    </tr>
+                  
                 </tbody>
             </table>
 

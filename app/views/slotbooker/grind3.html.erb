@@ -36,13 +36,13 @@
                         <%= link_to 'All Slots',slotbooker_grind_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_grind1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_grind1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_grind2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_grind3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_grind3_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                         </li>
                 <li class="nav-item">
                       <%= link_to 'Cancelled Slots',slotbooker_grind4_path,class:"nav-link active sidelink-wrap" %>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GRIND:Completed Slots</h2>
         </div>
 
 
@@ -69,10 +69,12 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Diameter</th>
+                        <th scope="col" id="composition">Mould</th>
+                        <th scope="col" id="phase">Grit</th>
+                        <th scope="col" id="range">Diamond</th>
+                        <th scope="col" id="phase">Suspension</th>
+                        <th scope="col" id="range">Lapping</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +85,36 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd3.where(status:'completed').each do |xrds|%>
+                        <% @grind3.where(status:'completed').each do |grind3|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
+                        <td> <%= grind.user.name%> </td>
+                        <td> <%= grind.user.orgname%> </td>
+                        <td> <%= grind.user.department%> </td>
+                        <td> <%= grind.user.contact%> </td>
+                        <td> <%= grind.sample%> </td>
+                        <td> <%= grind.diameter%> </td>
+                        <td> <%= grind.mould%> </td>
+                        <td> <%= grind.grit%> </td>
+                        <td> <%= grind.diamond%> </td>
+                        <td> <%= grind.suspension%> </td>
+                        <td> <%= grind.lapping%> </td>
+                        <td> <%= grind.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= grind.slotdate %></td>
+
+                        <td> <%= grind.slottime %></td>
+
+                          <td><%= grind.status%></td>
+                          <%if grind.references.attached? %>
+                      <%grind.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">SCRATCH:All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">SCRATCH:Alloted Slots</h2>
     </div>
 
 
@@ -84,101 +84,155 @@
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reference-paper">Reassign</th>
+                    <th scope="col" id="reference-paper">Cancel</th>
                 </tr>
             </thead>
             <tbody>
 
-                  <% @scratch2.all.each do |xrds|%>
+                  <% @scratch2.where(status:'alloted').each do |scratch|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/SCRATCH/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.measurement%> </td>
-                    <td> <%= xrds.stroke%> </td>
-                    <td> <%= xrds.number_indentation%> </td>
-                    <td> <%= xrds.constant_load%> </td>
-                    <td> <%= xrds.increment_load%> </td>
-                    <td> <%= xrds.progressive_load%> </td>
-                    <td> <%= xrds.temperature%> </td>
-                    <td> <%= xrds.analysis%> </td>
-                     <td> <%= xrds.more%> </td>
+                    <th scope="row">CRF/SCRATCH/<%=scratch.id %>	</th>
+                    <td> <%= scratch.user.name%> </td>
+                    <td> <%= scratch.user.orgname%> </td>
+                    <td> <%= scratch.user.department%> </td>
+                    <td> <%= scratch.user.contact%> </td>
+                    <td> <%= scratch.sample%> </td>
+                    <td> <%= scratch.stype%> </td>
+                    <td> <%= scratch.measurement%> </td>
+                    <td> <%= scratch.stroke%> </td>
+                    <td> <%= scratch.number_indentation%> </td>
+                    <td> <%= scratch.constant_load%> </td>
+                    <td> <%= scratch.increment_load%> </td>
+                    <td> <%= scratch.progressive_load%> </td>
+                    <td> <%= scratch.temperature%> </td>
+                    <td> <%= scratch.analysis%> </td>
+                     <td> <%= scratch.more%> </td>
 
                     <td>Booked</td>
 
-                    <td> <%= xrds.slotdate %></td>
+                    <td> <%= scratch.slotdate %></td>
 
-                    <td> <%= xrds.slottime %></td>
+                    <td> <%= scratch.slottime %></td>
 
-                      <td><%= xrds.status%></td>
-                    <%xrds.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                      <td><%= scratch.status%></td>
+                      <%if scratch.references.attached? %>
+                      <%scratch.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
+                 <td id="assign-btn">
+                     <!-- Button trigger modal -->
+                      <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{scratch.id}" }, id: "ani" %>
+                      <div id="<%= scratch.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= scratch.user.name %></b></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                            <div class="modal-body">
+                              <%= form_with(model: scratch,local:true) do |form| %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
+                                  <div class="input-group mb-3">
+                                  <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                  <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
                                 </div>
+
+                                <div class="input-group mb-3">
+                                <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                              </div>
+                               <%=scratch.id%>
+
+                                <div class="actions">
+                                  <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                </div>
+                              <% end %>
                             </div>
-                        </td>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Cancel Slot</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  </td>
+
+
+                  <td id="cancel-btn">
+                     <!-- Button trigger modal -->
+                       <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{scratch.id}" }, id: "anish" %>
+
+                      <!-- Modal -->
+                       <div id="ani<%= scratch.id%>" class="modal">
+                        <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= scratch.user.name %></b></h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <%= form_for scratch do |f| %>
+                                      <p> Are you sure you want to cancel the slot ?</p>
+                                      <%= f.hidden_field :status, value: 'cancelled' %>
+                                  <div class="actions">
+
+
+                                  </div>
+
+                                   </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                  </div>
+                                  <% end %>
+                              </div>
+                          </div>
+                      </div>
+                  </td>
+
 <%end%>
-                    </tr>
+             </tr>
 
-                </tbody>
-            </table>
+         </tbody>
+     </table>
 
-        </div>
-        </div>
-
-
-    </div>
+ </div>
+ </div>
 
 
 </div>
+
+
+</div>
+<script>
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal");
+var btn1 = document.getElementById("ani");
+var modal2 = document.getElementByClass("modal2");
+var btn2 = document.getElementById("anish");
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+modal1.style.display = "block";
+});
+
+btn2.addEventListener("click", function() {
+modal2.style.display = "block";
+});
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+if (event.target == modal1) {
+modal1.style.display = "none";
+}
+if (event.target == modal2) {
+modal2.style.display = "none";
+}
+});
+</script>

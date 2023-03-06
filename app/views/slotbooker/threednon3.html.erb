@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_thrednon_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_threednon_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_thrednon1_path,class:"nav-link active sidelink-wrap"%>
+                        <%= link_to 'Pending Slots',slotbooker_threednon1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_thrednon2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_threednon2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_thrednon3_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
+                        <%= link_to 'Completed Slots',slotbooker_threednon3_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_thrednon4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_threednon4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -64,30 +64,30 @@
                 <thead>
                     <tr class="table-head font-unbounded">
                             <th scope="col">Appl No</th>
-                         <th scope="col">Name</th>
-                         <th scope="col">Institute</th>
-                         <th scope="col">Department</th>
-                         <th scope="col">Contact No:</th>
-                         <th scope="col">No of Samples</th>
-                         <th scope="col">Scan Type</th>
-                         <th scope="co">X Range</th>
-                         <th scope="col">Y Range</th>
-                         <th scope="col">Step Interval</th>
-                         <th scope="col">Whether Incompatible with any material</th>
-                         <th scope="col">Toxicity</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
+                            <th scope="col">Appl No</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Institute</th>
+                          <th scope="col">Department</th>
+                          <th scope="col">Contact No:</th>
+                          <th scope="col">No of Samples</th>
+                          <th scope="col">Scan Type</th>
+                          <th scope="co">X Range</th>
+                          <th scope="col">Y Range</th>
+                          <th scope="col">Step Interval</th>
+                          <th scope="col">Whether Incompatible with any material</th>
+                          <th scope="col">Toxicity</th>
+                          <th scope="col" id="request">More info</th>
+                          <th scope="col" id="slot-date">Slot Date</th>
+                          <th scope="col" id="slot-time">Slot Time</th>
+                          <th scope="col">Status</th>
+                          <th scope="col" id="reference-paper">Reference Paper</th>
                     </tr>
                 </thead>
                 <tbody>
 
                       <% @three3.where(status:'completed').each do |threes|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/THREE/<%=threes.id %>	</th>
 
                         <td> <%= threes.user.name%> </td>
                       <td> <%= threes.user.orgname%> </td>
@@ -103,12 +103,15 @@
                       <td> <%= threes.more%> </td>
                     <td>Booked</td>
                     <td> <%=threes.slotdate %></td>
+                    <td> <%=threes.slottime %></td>
                     <td> <%= threes.status %></td>
+                    <%if threes.references.attached? %>
                     <%threes.references.each do |file|%>
                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
-                </tr>
-                  <%end%>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

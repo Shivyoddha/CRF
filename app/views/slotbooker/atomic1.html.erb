@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">ATOMIC:All Slots</h2>
     </div>
 
 
@@ -84,42 +84,44 @@
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reference-paper">Assign</th>
                 </tr>
             </thead>
             <tbody>
 
-                  <% @atomic1.each do |xrds|%>
+                <% @atomic1.where(status:'pending').each do |atomic|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/ATOMIC/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.technique%> </td>
-                    <td> <%= xrds.scan_rate%> </td>
-                    <td> <%= xrds.x%> </td>
-                    <td> <%= xrds.y%> </td>
-                    <td> <%= xrds.description%> </td>
-                    <td> <%= xrds.toxicity%> </td>
-                    <td> <%= xrds.compatability%> </td>
-                    <td> <%= xrds.carcinogenic%> </td>
-                    <td> <%= xrds.more%> </td>
+                    <th scope="row">CRF/ATOMIC/<%=atomic.id %>	</th>
+                    <td> <%= atomic.user.name%> </td>
+                    <td> <%= atomic.user.orgname%> </td>
+                    <td> <%= atomic.user.department%> </td>
+                    <td> <%= atomic.user.contact%> </td>
+                    <td> <%= atomic.sample%> </td>
+                    <td> <%= atomic.stype%> </td>
+                    <td> <%= atomic.technique%> </td>
+                    <td> <%= atomic.scan_rate%> </td>
+                    <td> <%= atomic.x%> </td>
+                    <td> <%= atomic.y%> </td>
+                    <td> <%= atomic.description%> </td>
+                    <td> <%= atomic.toxicity%> </td>
+                    <td> <%= atomic.compatability%> </td>
+                    <td> <%= atomic.carcinogenic%> </td>
+                    <td> <%= atomic.more%> </td>
                     <td>Booked</td>
-                    <td> <23/2/23></td>
-                    <td> <>10-30 A.M</td>
-                    <td> <%= xrds.status %></td>
-                    <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
+                    <td> <%= atomic.slotdate%></td>
+                    <td> <%= atomic.slottime%></td>
+                    <td> <%= atomic.status %></td>
+                    <%if atomic.references.attached? %>
+                    <%atomic.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                        <td id="assign-btn">
                            <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: atomic.id %>
                             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
                             Assign
                             </button> -->
@@ -134,8 +136,8 @@
                                         </div>
                                         <div class="modal-body">
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
+                                    <%= render partial: "form_xrd",locals: { xrd:atomic } %>
+                                    <p>You are assigning XRD with ID <%= Xrd.find(atomic.id) %> to Preetham Naik.</p>
                                         </div>
 
                                         <div class="modal-footer">

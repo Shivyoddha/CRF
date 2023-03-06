@@ -38,9 +38,11 @@ class ThreeDScannersController < ApplicationController
 
   # PATCH/PUT /three_d_scanners/1 or /three_d_scanners/1.json
   def update
+    @three_d_scanner.status="alloted"
     respond_to do |format|
       if @three_d_scanner.update(three_d_scanner_params)
-        format.html { redirect_to three_d_scanner_url(@three_d_scanner), notice: "Three d scanner was successfully updated." }
+        ThreeDScannerAllotedMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_threescanner_path(@three_d_scanner), notice: "Three d scanner was successfully updated." }
         format.json { render :show, status: :ok, location: @three_d_scanner }
       else
         format.html { render :edit, status: :unprocessable_entity }

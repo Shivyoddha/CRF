@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">AMR:All Slots</h2>
     </div>
 
 
@@ -78,17 +78,20 @@
                     <th scope="col" id="shear-rate">Shear Rate</th>
                     <th scope="col" id="sweeps">No of Sweeps</th>
                     <th scope="col" id="sweeps">Analysis </th>
+                    <th scope="col" id="sweeps">Toxicity</th>
                     <th scope="col" id="request">More info</th>
                     <th scope="col" id="booked-on">Booked On</th>
                     <th scope="col" id="slot-date">Slot Date</th>
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reassign-col">Reasssign</th>
+                    <th scope="col" id="cancel-col">Cancel Slot</th>
                 </tr>
             </thead>
             <tbody>
 
-                  <% @amr2.all.each do |amr|%>
+                    <% @amr2.where(status:'alloted').each do |amr|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/AMR/<%=amr.id %>	</th>
@@ -115,70 +118,94 @@
                     <td> <%= amr.slottime %></td>
 
                       <td><%= amr.status%></td>
-                    <% amr.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                      <%if amr.references.attached? %>
+                    <td><%amr.references.each do |file|%>
+                       <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                         <% end %></td>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                    <td id="assign-btn">
+                        <!-- Button trigger modal -->
+                         <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{amr.id}" }, id: "ani" %>
+                         <div id="<%= amr.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= amr.user.name %></b></h1>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body">
+                                 <%= form_with(model: amr,local:true) do |form| %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                   </div>
 
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-<%end%>
-                    </tr>
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+                                  <%=amr.id%>
 
-                </tbody>
-            </table>
+                                   <div class="actions">
+                                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
 
-        </div>
-        </div>
+                                   </div>
+                                 <% end %>
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Cancel Slot</button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                     </td>
 
 
+                     <td id="cancel-btn">
+                        <!-- Button trigger modal -->
+                          <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{amr.id}" }, id: "anish" %>
+
+                         <!-- Modal -->
+                          <div id="ani<%= amr.id%>" class="modal">
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= amr.user.name %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                     </div>
+                                     <div class="modal-body">
+                                       <%= form_for amr do |f| %>
+                                         <p> Are you sure you want to cancel the slot ?</p>
+                                         <%= f.hidden_field :status, value: 'cancelled' %>
+                                     <div class="actions">
+
+
+                                     </div>
+
+                                      </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                           <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                     </div>
+                                     <% end %>
+                                 </div>
+                             </div>
+                         </div>
+                     </td>
+
+  <%end%>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
     </div>
 
 
-</div>
+  </div>

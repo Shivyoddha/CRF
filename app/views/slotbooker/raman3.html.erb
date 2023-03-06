@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">Raman Spectrometer Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">Raman Spectrometer  Completed Slots</h2>
     </div>
 
 
@@ -80,35 +80,41 @@
                     <th scope="col" id="booked-on">Booked On</th>
                     <th scope="col" id="slot-date">Slot Date</th>
                     <th scope="col">Slot Time</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Reference Paper</th>
 
 
                 </tr>
             </thead>
             <tbody>
-            <% @raman3.each do |xrds|%>
+            <% @raman3.where(status:'completed').each do |raman|%>
                 <tr>
                   <!-- Button trigger modal -->
-                  <th scope="row">CRF/RAMAN/<%=xrds.id %>	</th>
-                  <td> <%= xrds.user.name%> </td>
-                  <td> <%= xrds.user.orgname%> </td>
-                  <td> <%= xrds.user.department%> </td>
-                  <td> <%= xrds.user.contact%> </td>
-                  <td> <%= xrds.sample%> </td>
-                  <td> <%= xrds.measurement%> </td>
-                  <td> <%= xrds.laser%> </td>
-                  <td> <%= xrds.stype%> </td>
-                  <td> <%= xrds.description%> </td>
-                  <td> <%= xrds.toxicity%></td>
-                  <td> <%= xrds.compatability%></td>
-                  <td> <%= xrds.carcinogenic%></td>
-                  <td> <%= xrds.more%> </td>
+                  <th scope="row">CRF/RAMAN/<%=raman.id %>	</th>
+                  <td> <%= raman.user.name%> </td>
+                  <td> <%= raman.user.orgname%> </td>
+                  <td> <%= raman.user.department%> </td>
+                  <td> <%= raman.user.contact%> </td>
+                  <td> <%= raman.sample%> </td>
+                  <td> <%= raman.measurement%> </td>
+                  <td> <%= raman.laser%> </td>
+                  <td> <%= raman.stype%> </td>
+                  <td> <%= raman.description%> </td>
+                  <td> <%= raman.toxicity%></td>
+                  <td> <%= raman.compatability%></td>
+                  <td> <%= raman.carcinogenic%></td>
+                  <td> <%= raman.more%> </td>
                   <td>Booked</td>
-                  <td> <%= xrds.slotdate %></td>
-                  <td> <%= xrds.status %></td>
-                  <%xrds.references.each do |file|%>
-                  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                  <td> <%= raman.slotdate %></td>
+                  <td> <%= raman.slottime %></td>
+                  <td> <%= raman.status %></td>
+                  <%if raman.references.attached? %>
+                <%raman.references.each do |file|%>
+                <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                <%end%>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

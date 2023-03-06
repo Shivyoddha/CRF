@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FESEMJ:Alloted Slots</h2>
         </div>
 
 
@@ -78,7 +78,7 @@
                       <th scope="col">Sample is Toxic</th>
                       <th scope="col">Sample is Conducting</th>
                       <th scope="col">More Information</th>
-                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="booked-on">Status</th>
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
                       <th scope="col">Reference Paper</th>
@@ -88,92 +88,142 @@
                 </thead>
                 <tbody>
 
-                      <% @fesemj2.where(status:'alloted').each do |xrds|%>
+                      <% @fesemj2.where(status:'alloted').each do |fesemj2|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-
-                        <tr>
+                        <th scope="row">CRF/FESEMJ/<%=fesemj2.id %>	</th>
+                          <td> <%= fesemj2.user.name%> </td>
+                      <td> <%= fesemj2.user.orgname%> </td>
+                      <td> <%= fesemj2.user.department%> </td>
+                      <td> <%= fesemj2.user.contact%> </td>
+                      <td> <%= fesemj2.sample%> </td>
+                      <td> <%= fesemj2.stype%> </td>
+                      <td> <%= fesemj2.composition%> </td>
+                      <td> <%= fesemj2.sphase%> </td>
+                      <td> <%= fesemj2.measurement%> </td>
+                      <td> <%= fesemj2.eds_required%> </td>
+                      <td> <%= fesemj2.eds_required%> </td>
+                      <td> <%= fesemj2.toxic%> </td>
+                      <td> <%= fesemj2.conducting%> </td>
+                        <td> <%= fesemj2.more%> </td>
+                        <td><%= fesemj2.status%></td>
+                        <td> <%= fesemj2.slotdate %> </td>
+                        <td> <%= fesemj2.slottime %> </td>
+                        <%if fesemj2.references.attached? %>
+                      <td><%fesemj2.references.each do |file|%>
+                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                           <% end %></td>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                      <td id="assign-btn">
                           <!-- Button trigger modal -->
-                          <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                          <td> <%= xrds.user.name%> </td>
-                      <td> <%= xrds.user.orgname%> </td>
-                      <td> <%= xrds.user.department%> </td>
-                      <td> <%= xrds.user.contact%> </td>
-                      <td> <%= xrds.sample%> </td>
-                      <td> <%= xrds.composition%> </td>
-                      <td> <%= xrds.stype%> </td>
-                      <td> <%= xrds.temp_points%> </td>
-                      <td> <%= xrds.toxicity%> </td>
-                      <td> <%= xrds.compatibility%> </td>
-                        <td> <%= xrds.more%> </td>
-                        <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> Slot time</td>
-                        <td> <%= xrds.slottime %> </td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                        <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Reassign
-                            </button>
+                           <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fesemj2.id}" }, id: "ani" %>
+                           <div id="<%= fesemj2.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-...........................
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Reassign a Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td id="cancel-btn">
-                           <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reassign-diaolgue-box">
-                            Cancel
-                            </button>
+                         <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemj2.user.name %></b></h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                   <%= form_with(model: fesemj2,local:true) do |form| %>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="reassign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                                       <div class="input-group mb-3">
+                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                       <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                   </div>
+                                    <%=fesemj2.id%>
+
+                                     <div class="actions">
+                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                     </div>
+                                   <% end %>
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                     <button type="button" class="btn btn-primary">Cancel Slot</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                       </td>
+
+
+                       <td id="cancel-btn">
+                          <!-- Button trigger modal -->
+                            <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{fesemj2.id}" }, id: "anish" %>
+
+                           <!-- Modal -->
+                            <div id="ani<%= fesemj2.id%>" class="modal">
+                             <div class="modal-dialog">
+                                   <div class="modal-content">
+                                       <div class="modal-header">
+                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= fesemj2.user.name %></b></h1>
+                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                       <div class="modal-body">
+                                         <%= form_for fesemj2 do |f| %>
+                                           <p> Are you sure you want to cancel the slot ?</p>
+                                           <%= f.hidden_field :status, value: 'cancelled' %>
+                                       <div class="actions">
+
+
+                                       </div>
 
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+                                       <div class="modal-footer">
+                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                             <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                       </div>
+                                       <% end %>
+                                   </div>
+                               </div>
+                           </div>
+                       </td>
+
 <%end%>
-                    </tr>
-                      <%end%>
-                </tbody>
-            </table>
+                  </tr>
 
-        </div>
-        </div>
+              </tbody>
+          </table>
+
+      </div>
+      </div>
 
 
-    </div>
+  </div>
 
 
 </div>
+<script>
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal");
+var btn1 = document.getElementById("ani");
+var modal2 = document.getElementByClass("modal2");
+var btn2 = document.getElementById("anish");
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+  modal1.style.display = "block";
+});
+
+btn2.addEventListener("click", function() {
+  modal2.style.display = "block";
+});
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+});
+</script>

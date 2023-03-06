@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">TRIB:Cancelled Slots</h2>
         </div>
 
 
@@ -85,7 +85,7 @@
                 </thead>
                 <tbody>
 
-                      <% @trib4.where(status:'cancelled').each do |xrds|%>
+                      <% @trib4.where(status:'cancelled').each do |trib|%>
                       <tr>
                         <th scope="row">CRF/trib/<%=trib.id %>	</th>
                         <td> <%= trib.user.name%> </td>
@@ -99,14 +99,18 @@
                         <td> <%= trib.loading%> </td>
                         <td> <%= trib.indenter%> </td>
                         <td> <%= trib.stroke%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= trib.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                        <td><%= trib.slotdate %> </td>
+                        <td> <%= trib.slottime %> </td>
+  <td> <%= trib.status %></td>
+  <%if trib.references.attached? %>
+  <%trib.references.each do |file|%>
+  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+  <%end%>
+  <% else %>
+    <td>NA</td>
+  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

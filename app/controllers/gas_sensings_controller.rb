@@ -38,9 +38,11 @@ class GasSensingsController < ApplicationController
 
   # PATCH/PUT /gas_sensings/1 or /gas_sensings/1.json
   def update
+    @gas_sensing.status="alloted"
     respond_to do |format|
       if @gas_sensing.update(gas_sensing_params)
-        format.html { redirect_to gas_sensing_url(@gas_sensing), notice: "Gas sensing was successfully updated." }
+        GasSensingAllotedMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_gassensing_path(@gas_sensing), notice: "Gas sensing was successfully updated." }
         format.json { render :show, status: :ok, location: @gas_sensing }
       else
         format.html { render :edit, status: :unprocessable_entity }

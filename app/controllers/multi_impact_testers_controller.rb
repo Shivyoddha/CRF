@@ -40,10 +40,12 @@ class MultiImpactTestersController < ApplicationController
 
   # PATCH/PUT /multi_impact_testers/1 or /multi_impact_testers/1.json
   def update
+    @multi_impact_tester.status="alloted"
     respond_to do |format|
       if @multi_impact_tester.update(multi_impact_tester_params)
+        MultiImpactTesterAllotedMailer.with(id:@multi_impact_tester.id, userid:current_user.id).Mail.deliver_later
         @multi_impact_tester.status="alloted"
-        format.html { redirect_to multi_impact_tester_url(@multi_impact_tester), notice: "Multi impact tester was successfully updated." }
+        format.html { redirect_to slotbooker_multi_path(@multi_impact_tester), notice: "Multi impact tester was successfully updated." }
         format.json { render :show, status: :ok, location: @multi_impact_tester }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_highvaccum_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_highvaccum_path,class:"nav-link active sidelink-wrap",id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_highvaccum1_path,class:"nav-link active sidelink-wrap"%>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_highvaccum2_path,class:"nav-link active sidelink-wrap" %>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">HIGHVACCUM:All Slots</h2>
         </div>
 
 
@@ -77,16 +77,7 @@
                         <th scope="col" id="phase">End Temp</th>
                         <th scope="col" id="range">Sample Melting</th>
                         <th scope="col" id="composition">No of steps</th>
-                        <th scope="col" id="phase">Temp1</th>
-                        <th scope="col" id="range">Min 1</th>
-                        <th scope="col" id="phase">Temp2</th>
-                        <th scope="col" id="range">Min 2</th>
-                        <th scope="col" id="phase">Temp3</th>
-                        <th scope="col" id="range">Min 3</th>
-                        <th scope="col" id="phase">Temp4</th>
-                        <th scope="col" id="range">Min 4</th>
-                        <th scope="col" id="phase">Temp5</th>
-                        <th scope="col" id="range">Min 5</th>
+                        <th scope="col" id="phase">Temperature and Minutes</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -97,44 +88,44 @@
                 </thead>
                 <tbody>
 
-                      <% @high.all.each do |xrds|%>
+                      <% @high.all.each do |high|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.req_atoms%> </td>
-                        <td> <%= xrds.gas%> </td>
-                        <td> <%= xrds.starttemp%> </td>
-                        <td> <%= xrds.endtemp%> </td>
-                        <td> <%= xrds.samplemelting%> </td>
-                        <td> <%= xrds.no_steps%> </td>
-                        <td> <%= xrds.temp1%> </td>
-                        <td> <%= xrds.min1%> </td>
-                        <td> <%= xrds.temp2%> </td>
-                        <td> <%= xrds.min2%> </td>
-                        <td> <%= xrds.temp3%> </td>
-                        <td> <%= xrds.min3%> </td>
-                        <td> <%= xrds.temp4%> </td>
-                        <td> <%= xrds.min4%> </td>
-                        <td> <%= xrds.temp5%> </td>
-                        <td> <%= xrds.min5%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/HIGHVACCUM/<%=high.id %>	</th>
+                        <td> <%= high.user.name%> </td>
+                        <td> <%= high.user.orgname%> </td>
+                        <td> <%= high.user.department%> </td>
+                        <td> <%= high.user.contact%> </td>
+                        <td> <%= high.sample%> </td>
+                        <td> <%= high.composition%> </td>
+                        <td> <%= high.toxicity%> </td>
+                        <td> <%= high.req_atoms%> </td>
+                        <td> <%= high.gas%> </td>
+                        <td> <%= high.starttemp%> </td>
+                        <td> <%= high.endtemp%> </td>
+                        <td> <%= high.samplemelting%> </td>
+                        <td> <%= high.no_steps%> </td>
+                        <td> Temp1:<nobr><%= high.temp1%>  min1:<%= high.min1%> <br>
+                             Temp2:<%= high.temp1%>  min2: <%= high.temp2%><br>
+                             Temp3:<%= high.temp3%>  min3: <%= high.temp3%><br>
+                             Temp4:<%= high.temp4%>  min4: <%= high.temp4%><br>
+                             Temp5:<%= high.temp5%>  min5: <%= high.temp5%><br>
+                         </td>
+                        <td> <%= high.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= high.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= high.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <td><%= high.status%></td>
+                          <%if high.references.attached? %>
+                             <%high.references.each do |file|%>
+                             <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                <% end %>
+                           <% else %>
+                             <td>NA</td>
+                           <% end %>
                     </tr>
                       <%end%>
                 </tbody>

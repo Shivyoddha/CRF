@@ -1,0 +1,134 @@
+.container-11 {
+  display: -webkit-box;
+  margin: 0 0 2em 0;
+}
+
+.nitk-heading{
+  width: 90%;
+}
+
+#margin {
+margin: 3px;
+border: 2px dashed grey;
+padding: 15px;
+border-radius: 2px;
+font-family: 'Montserrat', sans-serif;
+
+/* height: 150vh; */
+}
+#pay-details
+{
+  display: -webkit-box;
+}
+
+.date{
+  margin-left: 5em;
+}
+
+#proforma-inv{
+  display: -webkit-box;
+}
+
+.user-info {
+  margin: 5px 0 0 0;
+}
+
+.center {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#lab-return {
+font-family: 'Montserrat', sans-serif;
+font-size: 20px;
+}
+
+.element {
+margin:8px 0;
+font-size: 17px;
+font-family: 'Montserrat', sans-serif;
+}
+
+#signatures-upper {
+display: -webkit-box;
+}
+
+#signatures-upper-left{
+  width: 72%;
+}
+#signatures-upper-left-3d-pro{
+    margin: 5em 0 0 0;
+  width: 68%;
+}
+
+#signatures-upper-right-3d-pro{
+  margin-top: 5em;
+}
+
+#signatures-upper-right{
+  width: 32%;
+}
+
+.crf-heading{
+width: 75%;
+}
+
+.logo{
+  /* width: 40%; */
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.crf{
+  margin-top: 5px;
+}
+
+.right{
+  width:35%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tan-no{
+  margin-left: 4em;
+}
+
+.state-code{
+  margin-left: 4em;
+}
+
+}
+.left{
+  width:67%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.left{
+  width:67%;
+}
+
+.data {
+margin: 0 0 0 5px;
+}
+
+.signatures{
+margin-top: 5em;
+}
+
+.notes {
+font-family: 'Montserrat', sans-serif;
+}
+
+.font-smaller{
+font-size: 15px;
+}
+
+.font-smaller{
+  font-size: 15px;
+}
+
+#seals {
+  font-size: 15px;
+}

@@ -40,10 +40,12 @@ class HrlcmsController < ApplicationController
 
   # PATCH/PUT /hrlcms/1 or /hrlcms/1.json
   def update
+    @hrlcm.status="alloted"
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
+        HrlcmAllotedMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
           @hrlcm.status="alloted"
-        format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully updated." }
+        format.html { redirect_to slotbooker_lcms_path(@hrlcm), notice: "Hrlcm was successfully updated." }
         format.json { render :show, status: :ok, location: @hrlcm }
       else
         format.html { render :edit, status: :unprocessable_entity }

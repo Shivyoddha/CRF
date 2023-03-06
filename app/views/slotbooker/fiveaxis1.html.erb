@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">fiveaxis:Pending Slots</h2>
         </div>
 
 
@@ -63,94 +63,116 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
+                      <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="name">Name</th>
+                      <th scope="col" id="institute">Institute</th>
+                      <th scope="col" id="department">Department</th>
+                      <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="sample-no">No of Samples</th>
+                      <th scope="col" id="composition">Material</th>
+                      <th scope="col" id="composition">Depth</th>
+                      <th scope="col" id="phase">Operation</th>
+                      <th scope="col" id="range">Tool</th>
+                      <th scope="col" id="request">Specimen Tolerance</th>
+                      <th scope="col" id="phase">Cnc Program</th>
+                      <th scope="col" id="range">Rotational Speed</th>
+                      <th scope="col" id="request">Feed Rate</th>
+                      <th scope="col" id="request">More</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col" id="slot-time">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" id="reference-paper">Reference Paper</th>
                         <th scope="col" id="assign-col">Asssign</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                      <% @five.where(status:'pending').each do |xrds|%>
+                        <% @fiveaxis1.where(status:'pending').each do |fiveaxis|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/fiveaxis/<%=fiveaxis.id %>	</th>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <td> <%= fiveaxis.user.name%> </td>
+                        <td> <%= fiveaxis.user.orgname%> </td>
+                        <td> <%= fiveaxis.user.department%> </td>
+                        <td> <%= fiveaxis.user.contact%> </td>
+                        <td> <%= fiveaxis.sample%> </td>
+                        <td> <%= fiveaxis.material%> </td>
+                        <td> <%= fiveaxis.depth%> </td>
+                        <td> <%= fiveaxis.operation%> </td>
+                        <td> <%= fiveaxis.tool%> </td>
+                        <td> <%= fiveaxis.specimentolerance%> </td>
+                        <td> <%= fiveaxis.cncprogram%> </td>
+                        <td> <%= fiveaxis.rotationalspeed%> </td>
+                        <td> <%= fiveaxis.feedrate%> </td>
+                        <td> <%= fiveaxis.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %></td>
-                        <td><%= xrds.slottime %></td>
 
-                        <td> <%= xrds.status %></td>
-                        <%if xrds.references.attached? %>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                           <% end %>
-                      <% else %>
-                        <td>NA</td>
-                      <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: xrds.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                        <td> <%= fiveaxis.slotdate %></td>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
+                        <td> <%= fiveaxis.slottime %></td>
 
-                                    <%= render partial: "form_xrd",locals: { xrd:xrds } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(xrds.id) %> to Preetham Naik.</p>
-                                        </div>
+                          <td><%= fiveaxis.status%></td>
+                        <%if fiveaxis.references.attached? %>
+                    <%fiveaxis.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
+                  <td id="assign-btn">
+                      <!-- Button trigger modal -->
+                       <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fiveaxis.id}" }, id: "ani" %>
+                       <div id="<%= fiveaxis.id%>" class="modal">
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<div class="modal-dialog">
+       <div class="modal-content">
+           <div class="modal-header">
+               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fiveaxis.user.name %></b></h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+             <%= form_with(model: fiveaxis,local:true) do |form| %>
 
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
+                 <div class="input-group mb-3">
+                 <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                 <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+               </div>
 
-                    </tr>
+               <div class="input-group mb-3">
+               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+               <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+             </div>
+              <%=fiveaxis.id%>
 
-                </tbody>
-            </table>
+               <div class="actions">
+                 <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
 
-        </div>
-        </div>
+               </div>
+             <% end %>
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Cancel Slot</button>
+           </div>
+       </div>
+   </div>
 
+</div>
+
+                   </td>
+                   <% end %>
+
+                </tr>
+
+            </tbody>
+        </table>
 
     </div>
+    </div>
+
+
+</div>
 
 
 </div>

@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %></a>
         </div>
 
         <div class="sidelinks">
@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_icp_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_icp1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_icp1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_icp2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,65 +45,84 @@
                         <%= link_to 'Completed Slots',slotbooker_icp3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_icp4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_icp4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
             </ul>
         </div>
     </div>
 
 <%# the content section is coded here %>
-    <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
-        </div>
+<div id="slots">
+    <div id="current-tab">
+        <h2 class="fw-bold font-unbounded" id="tab-name">ICP:Cancelled Slots</h2>
+    </div>
 
 
-        <div id="slot-details">
-        <div>
-            <table class="table table-hover font-quicksand">
-                <thead>
-                    <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div id="slot-details">
+    <div>
+        <table class="table table-hover font-quicksand">
+          <thead>
+            <tr class="table-head font-unbounded">
+                <th scope="col" id="application-no">Appl No</th>
+                <th scope="col" id="name">Name</th>
+                <th scope="col" id="institute">Institute</th>
+                <th scope="col" id="department">Department</th>
+                <th scope="col" id="contact-no">Contact No:</th>
+                <th scope="col" id="sample-no">No of Samples</th>
+                <th scope="col" id="composition">Composition</th>
+                <th scope="col" id="composition">Sample Phase</th>
+                <th scope="col" id="phase">Nature</th>
+                <th scope="col" id="range">Concentration</th>
+                <th scope="col" id="composition">Toxicity</th>
+                <th scope="col" id="phase">Compatibility</th>
+                <th scope="col" id="range">Hazard</th>
+                <th scope="col" id="range">Acid</th>
+                <th scope="col" id="range">Storge Condition</th>
+                  <th scope="col" id="range">Temperature</th>
+                <th scope="col" id="request">More info</th>
+                <th scope="col" id="booked-on">Booked On</th>
+                <th scope="col" id="slot-date">Slot Date</th>
+                <th scope="col" id="slot-time">Slot Time</th>
+                <th scope="col">Status</th>
+                <th scope="col" id="reference-paper">Reference Paper</th>
+            </tr>
+        </thead>
+        <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
-                      <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                <% @icp4.where(status:'cancelled').each do |icp|%>
+              <tr>
+                <!-- Button trigger modal -->
+                <th scope="row">CRF/ICP/<%=icp.id %>	</th>
+                <td> <%= icp.user.name%> </td>
+                <td> <%= icp.user.orgname%> </td>
+                <td> <%= icp.user.department%> </td>
+                <td> <%= icp.user.contact%> </td>
+                <td> <%= icp.sample%> </td>
+                <td> <%= icp.composition%> </td>
+                <td> <%= icp.sample_phase%> </td>
+                <td> <%= icp.nature%> </td>
+                <td> <%= icp.concentration%> </td>
+                <td> <%= icp.toxicity%> </td>
+                <td> <%= icp.compatibility%> </td>
+                <td> <%= icp.hazard%> </td>
+                <td> <%= icp.acid%> </td>
+                <td> <%= icp.storage_condition%> </td>
+                <td> <%= icp.temp%> </td>
+                <td> <%= icp.more%> </td>
+                <td>Booked</td>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
-                        <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                <td> <%= icp.slotdate %></td>
+
+                <td> <%= icp.slottime %></td>
+
+                  <td><%= icp.status%></td>
+                  <%if icp.references.attached? %>
+                               <%icp.references.each do |file|%>
+                               <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                  <% end %>
+                             <% else %>
+                               <td>NA</td>
+                             <% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">SPECTRO:Completed Slots</h2>
         </div>
 
 
@@ -83,29 +83,33 @@
                   </thead>
                   <tbody>
 
-                        <% @spectro3.all.each do |xrds|%>
+                        <% @spectro3.where(status:'completed').each do |spectro|%>
                         <tr>
                           <!-- Button trigger modal -->
-                          <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                          <td> <%= xrds.user.name%> </td>
-                          <td> <%= xrds.user.orgname%> </td>
-                          <td> <%= xrds.user.department%> </td>
-                          <td> <%= xrds.user.contact%> </td>
-                          <td> <%= xrds.sample%> </td>
-                          <td> <%= xrds.nature%> </td>
-                          <td> <%= xrds.application%> </td>
-                          <td> <%= xrds.stype%> </td>
-                          <td> <%= xrds.more%> </td>
+                          <th scope="row">CRF/SPECTRO/<%=spectro.id %>	</th>
+                          <td> <%= spectro.user.name%> </td>
+                          <td> <%= spectro.user.orgname%> </td>
+                          <td> <%= spectro.user.department%> </td>
+                          <td> <%= spectro.user.contact%> </td>
+                          <td> <%= spectro.sample%> </td>
+                          <td> <%= spectro.nature%> </td>
+                          <td> <%= spectro.application%> </td>
+                          <td> <%= spectro.stype%> </td>
+                          <td> <%= spectro.more%> </td>
                           <td>Booked</td>
 
-                          <td> <%= xrds.slotdate %></td>
+                          <td> <%= spectro.slotdate %></td>
 
-                          <td> <%= xrds.slottime %></td>
+                          <td> <%= spectro.slottime %></td>
 
-                            <td><%= xrds.status%></td>
-                          <%xrds.references.each do |file|%>
-                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                       <%end%>
+                            <td><%= spectro.status%></td>
+                            <%if spectro.references.attached? %>
+                        <%spectro.references.each do |file|%>
+                  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                  <%end%>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
                     </tr>
                       <%end%>
                 </tbody>

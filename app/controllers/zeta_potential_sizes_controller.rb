@@ -38,9 +38,11 @@ class ZetaPotentialSizesController < ApplicationController
 
   # PATCH/PUT /zeta_potential_sizes/1 or /zeta_potential_sizes/1.json
   def update
+    @zeta_potential_size.status="alloted"
     respond_to do |format|
       if @zeta_potential_size.update(zeta_potential_size_params)
-        format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully updated." }
+        ZetaPotentialSizeAllotedMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_zeta_path(@zeta_potential_size), notice: "Zeta potential size was successfully updated." }
         format.json { render :show, status: :ok, location: @zeta_potential_size }
       else
         format.html { render :edit, status: :unprocessable_entity }

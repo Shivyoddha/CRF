@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">CENTRIFUGE:Completed Slots</h2>
         </div>
 
 
@@ -85,34 +85,38 @@
                 </thead>
                 <tbody>
 
-                      <% @centrifuge3.all.each do |xrds|%>
+                      <% @centrifuge3.where(status:'completed').each do |centrifuge3|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/CENTRIFUGE/<%=xrds.id %>	</th>
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.volume%> </td>
-                        <td> <%= xrds.speed%> </td>
-                        <td> <%= xrds.temperature%> </td>
-                        <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.compatibility%> </td>
-                        <td> <%= xrds.carcinogenic%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
+                        <td> <%= centrifuge.user.name%> </td>
+                        <td> <%= centrifuge.user.orgname%> </td>
+                        <td> <%= centrifuge.user.department%> </td>
+                        <td> <%= centrifuge.user.contact%> </td>
+                        <td> <%= centrifuge.sample%> </td>
+                        <td> <%= centrifuge.volume%> </td>
+                        <td> <%= centrifuge.speed%> </td>
+                        <td> <%= centrifuge.temperature%> </td>
+                        <td> <%= centrifuge.toxicity%> </td>
+                        <td> <%= centrifuge.compatibility%> </td>
+                        <td> <%= centrifuge.carcinogenic%> </td>
+                        <td> <%= centrifuge.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= xrds.slotdate %></td>
+                        <td> <%= centrifuge.slotdate %></td>
 
-                        <td> <%= xrds.slottime %></td>
+                        <td> <%= centrifuge.slottime %></td>
 
-                          <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
+                          <td><%= centrifuge.status%></td>
+                          <%if centrifuge.references.attached? %>
+                        <%centrifuge.references.each do |file|%>
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
-                    </tr>
-                      <%end%>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      </tr>
+                        <%end%>
+                    <%end%>
                 </tbody>
             </table>
 

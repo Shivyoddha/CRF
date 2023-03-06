@@ -15,32 +15,32 @@
           <h2 class="text-center" id="equip-heading"><u>BET Surface Area Analyzer Form</u></h2>
       </div>
 
-      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/TGA/123</span>
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/TGA/<%=@bet.id%></span>
       <div class = "user-info" >
           <div class="left">
-              <div class="element">
-                  <span>Applicant Name:</span>
-                  <span class="fw-bold data">Akash Gupta</span>
-              </div>
-              <div class="element">
-                  <span>Applicant Email:</span>
-                  <span class="fw-bold data">akash.182nt002@nitk.edu.in</span>
-              </div>
-              <div class="element">
-                  <span>Department:</span>
-                  <span class="fw-bold data">Metallurgy & Materials</span>
-              </div>
+            <div class="element">
+                <span>Applicant Name:</span>
+                <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+            </div>
+            <div class="element">
+                <span>Applicant Email:</span>
+                <span class="fw-bold data"> <%= @user.email %></span>
+            </div>
+            <div class="element">
+                <span>Department:</span>
+                <span class="fw-bold data"> <%= @user.department %></span>
+            </div>
           </div>
           <div class = "right">
                 <div class="element">
 
                     <span>Contact No:</span>
-                    <span class="fw-bold data">7760763125</span>
+                    <span class="fw-bold data"> <%= @user.contact %></span>
                 </div>
 
             <div class="element">
                 <span>Course:</span>
-                <span class="fw-bold data">M.Tech-184334</span>
+                <span class="fw-bold data"> <%= @user.course %></span>
             </div>
 
           </div>
@@ -50,11 +50,12 @@
         <div id="sample-details">
             <div class="left">
                 <div id="no-of-sample" class="element">
-                    <span>No. of Samples:<span><span class="fw-bold data">5<span>
+                    <span>No. of Samples:<span><span class="fw-bold data"><u><%=@bet.sample%><span>
                 </div>
 
                 <div id="analysis-req" class="element">
-                    <span>Analysis Required:<span><span class="fw-bold data">Standard, 20 point adsorption & desorption<span>
+                    <span> Custom Analysis Required:<span><span class="fw-bold data"><%=@bet.analysiscustom%><span>
+                    <span> Standard Analysis Required:<span><span class="fw-bold data"><%=@bet.analysisstandard%><span>
                 </div>
 
             </div>
@@ -62,7 +63,7 @@
             <div class="right">
 
                 <div id="measurement" class="element">
-                    <span>Degrassing Temperature:<span><span class="fw-bold data">Standard(300°C)<span>
+                    <span>Degrassing Temperature:<span><span class="fw-bold data"><%=@bet.degassing%><span>
                 </div>
 
 
@@ -79,11 +80,11 @@
         <div id="safety-info">
             <div class="left">
                 <div id="compatibilty" class="element">
-                    <span>Whether Incompatibile with any material:<span><span class="fw-bold data">No<span>
+                    <span>Whether Incompatibile with any material:<span><span class="fw-bold data"><%=@bet.incompatibe%><span>
                 </div>
 
                 <div id="hazard" class="element">
-                    <span>Toxicity:<span><span class="fw-bold data">Non-Toxic<span>
+                    <span>Toxicity:<span><span class="fw-bold data"><%=@bet.toxicity%><span>
                 </div>
 
             </div>
@@ -91,7 +92,7 @@
             <div class="right">
 
                 <div id="laser-to-be-used:" class="element">
-                    <span>Any Specific Disposal Method:<span><span class="fw-bold data">Yes<span>
+                    <span>Any Specific Disposal Method:<span><span class="fw-bold data"><%=@bet.disposal%><span>
                 </div>
 
             </div>
@@ -103,7 +104,7 @@
 
         <div id="testing-req-div">
             <div id="sample-description" class="element">
-                <span>Testing Requirement:<span><span class="fw-bold data">N/A<span>
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@bet.more%><span>
             </div>
 
         </div>
@@ -118,7 +119,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                    <span class="text-muted element"><i><%=@bet.debit%></i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -167,7 +168,7 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i>Generated on: December 23,2022/ 1:18PM</i>
+                <i><%= @bet.created_at%></i>
             </div>
 
         </div>

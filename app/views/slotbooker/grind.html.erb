@@ -33,10 +33,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_grind_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_grind_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_grind1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_grind1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_grind2_path,class:"nav-link active sidelink-wrap" %>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GRIND All Slots</h2>
         </div>
 
 
@@ -69,10 +69,12 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Diameter</th>
+                        <th scope="col" id="composition">Mould</th>
+                        <th scope="col" id="phase">Grit</th>
+                        <th scope="col" id="range">Diamond</th>
+                        <th scope="col" id="phase">Suspension</th>
+                        <th scope="col" id="range">Lapping</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,7 +85,7 @@
                 </thead>
                 <tbody>
 
-                      <% Grinding.all.each do |grind|%>
+                      <% @grind.all.each do |grind|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
@@ -106,9 +108,13 @@
                         <td> <%= grind.slottime %></td>
 
                           <td><%= grind.status%></td>
-                         <td><%grind.references.each do |file|%>
-                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%></td>
+                          <%if grind.references.attached? %>
+                    <%grind.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -36,13 +36,13 @@
                         <%= link_to 'All Slots',slotbooker_glow_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_glow1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_glow1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_glow2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_glow3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_glow3_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
                       <%= link_to 'Cancelled Slots',slotbooker_glow4_path,class:"nav-link active sidelink-wrap" %>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Completed Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">GLOW:Completed Slots</h2>
         </div>
 
 
@@ -68,11 +68,12 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">No of Sample</th>
+                        <th scope="col" id="composition">Elemental Composition</th>
+                       <th scope="col" id="coating-ele">Coating </th>
+                       <th scope="col" id="coating-ele">Coated Element</th>
+                       <th scope="col" id="substrate-ele">Substrate Element</th>
+                        <th scope="col" id="substrate-ele">Specification</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,29 +84,34 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd3.where(status:'completed').each do |xrds|%>
+                      <% @glow3.where(status:'completed').each do |glow3|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
+                        <td> <%= glow.user.name%> </td>
+                        <td> <%= glow.user.orgname%> </td>
+                        <td> <%= glow.user.department%> </td>
+                        <td> <%= glow.user.contact%> </td>
+                        <td> <%= glow.sample%> </td>
+                        <td> <%= glow.elemental%> </td>
+                        <td> <%= glow.coated%> </td>
+                        <td> <%= glow.coated_ele%> </td>
+                        <td> <%= glow.substarte%> </td>
+                        <td> <%= glow.specification%> </td>
+                        <td> <%= glow.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= glow.slotdate %></td>
+
+                        <td> <%= glow.slottime %></td>
+
+                          <td><%= glow.status%></td>
+                         <td><%glow.references.each do |file|%>
+                      <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                     <%end%></td>
                     </tr>
                       <%end%>
+
                 </tbody>
             </table>
 

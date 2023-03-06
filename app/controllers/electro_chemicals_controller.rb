@@ -38,9 +38,10 @@ class ElectroChemicalsController < ApplicationController
 
   # PATCH/PUT /electro_chemicals/1 or /electro_chemicals/1.json
   def update
+      @electro_chemical.status="alloted"
     respond_to do |format|
       if @electro_chemical.update(electro_chemical_params)
-        format.html { redirect_to electro_chemical_url(@electro_chemical), notice: "Electro chemical was successfully updated." }
+        format.html { redirect_to slotbooker_elctro_path(@electro_chemical), notice: "Electro chemical was successfully updated." }
         format.json { render :show, status: :ok, location: @electro_chemical }
       else
         format.html { render :edit, status: :unprocessable_entity }

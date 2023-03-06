@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">BET Surface Area Analyzer Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">BET Surface Area Analyzer Cancelled Slots</h2>
     </div>
 
 
@@ -86,32 +86,36 @@
                 </tr>
             </thead>
             <tbody>
-                <% @bet4.all.each do |xrds|%>
+                  <% @bet4.where(status:'cancelled').each do |bet|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.degassing%> </td>
-                    <td> <%= xrds.analysiscustom%> </td>
-                    <td> <%= xrds.analysisstandard%> </td>
-                    <td> <%= xrds.incompatibe%> </td>
-                    <td> <%= xrds.toxicity%> </td>
-                    <td> <%= xrds.disposal%></td>
-                    <td> <%= xrds.more%> </td>
+                    <th scope="row">CRF/BET/<%=bet.id %>	</th>
+                    <td> <%= bet.user.name%> </td>
+                    <td> <%= bet.user.orgname%> </td>
+                    <td> <%= bet.user.department%> </td>
+                    <td> <%= bet.user.contact%> </td>
+                    <td> <%= bet.sample%> </td>
+                    <td> <%= bet.degassing%> </td>
+                    <td> <%= bet.analysiscustom%> </td>
+                    <td> <%= bet.analysisstandard%> </td>
+                    <td> <%= bet.incompatibe%> </td>
+                    <td> <%= bet.toxicity%> </td>
+                    <td> <%= bet.disposal%></td>
+                    <td> <%= bet.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= xrds.slotdate %></td>
+                    <td> <%= bet.slotdate %></td>
 
-                    <td> <%= xrds.slottime %></td>
+                    <td> <%= bet.slottime %></td>
 
-                      <td><%= xrds.status%></td>
-                    <%xrds.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                 <%end%>
+                      <td><%= bet.status%></td>
+                      <%if bet.references.attached? %>
+                      <%bet.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
                     </tr>
                       <%end%>
                 </tbody>

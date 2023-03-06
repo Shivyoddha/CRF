@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_integrated_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_integrated1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_integrated1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_integrated2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_integrated3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_integrated4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_integrated4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">INTEGRATED:Cancelled Slots</h2>
         </div>
 
 
@@ -69,11 +69,13 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
-                        <th scope="col" id="request">More info</th>
+                        <th scope="col" id="measurement">Measurement</th>
+                        <th scope="col" id="Indentation">Indentation</th>
+                        <th scope="col" id="sample-type">sample Type</th>
+                        <th scope="col" id="loading">Loading</th>
+                        <th scope="col" id="Temperature">Temperature</th>
+                        <th scope="col" id="Analysis">Analysis</th>
+                        <th scope="col" id="More">More</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
@@ -83,27 +85,36 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                        <% @integrated4.where(status:'cancelled').each do |integrated|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/INTEGRATED/<%=integrated.id %>	</th>
+                        <td> <%= integrated.user.name%> </td>
+                        <td> <%= integrated.user.orgname%> </td>
+                        <td> <%= integrated.user.department%> </td>
+                        <td> <%= integrated.user.contact%> </td>
+                        <td> <%= integrated.sample%> </td>
+                        <td> <%= integrated.measurement%> </td>
+                        <td> <%= integrated.indentation%> </td>
+                        <td> <%= integrated.stype%> </td>
+                        <td> <%= integrated.loading%> </td>
+                        <td> <%= integrated.temperature%> </td>
+                        <td> <%= integrated.analysis%> </td>
+                        <td> <%= integrated.more%> </td>
+                         <td>Booked</td>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
-                        <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                         <td> <%= integrated.slotdate %></td>
+
+                         <td> <%= integrated.slottime %></td>
+
+                          <td><%= integrated.status%></td>
+                          <%if integrated.references.attached? %>
+                                   <%integrated.references.each do |file|%>
+                                   <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                      <% end %>
+                                 <% else %>
+                                   <td>NA</td>
+                                 <% end %>
                     </tr>
                       <%end%>
                 </tbody>

@@ -62,6 +62,7 @@
         <div>
             <table class="table table-hover font-quicksand">
                 <thead>
+                  <tr class="table-head font-unbounded">
                     <th scope="col">Appl No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Institute</th>
@@ -83,27 +84,32 @@
                 </thead>
                 <tbody>
 
-                      <% @uv3.where(status:'completed').each do |xrds|%>
+                      <% @uv3.where(status:'completed').each do |uv|%>
                       <tr>
-                        <th scope="row">CRF/UV/<%=xrds.id %>	</th>
-                      <td> <%= xrds.user.name%> </td>
-                      <td> <%= xrds.user.orgname%> </td>
-                      <td> <%= xrds.user.department%> </td>
-                      <td> <%= xrds.user.contact%> </td>
-                      <td> <%= xrds.sample%> </td>
-                      <td> <%= xrds.composition%> </td>
-                      <td> <%= xrds.sampletype%> </td>
-                      <td> <%= xrds.srange%>nm-<%= xrds.erange%>nm</td>
-                      <td><b>Transmittance:<nobr></b><%= xrds.transmittance%><br><b>Absorbance:</b><%= xrds.absorbance%><br><b>Reflectance:</b><%= xrds.reflectance%></td>
-                      <td> <%= xrds.toxicity%> </td>
-                        <td> <%= xrds.more%> </td>
+                        <th scope="row">CRF/UV/<%=uv.id %>	</th>
+                      <td> <%= uv.user.name%> </td>
+                      <td> <%= uv.user.orgname%> </td>
+                      <td> <%= uv.user.department%> </td>
+                      <td> <%= uv.user.contact%> </td>
+                      <td> <%= uv.sample%> </td>
+                      <td> <%= uv.composition%> </td>
+                      <td> <%= uv.sampletype%> </td>
+                      <td> <%= uv.srange%>nm-<%= uv.erange%>nm</td>
+                      <td><b>Transmittance:<nobr></b><%= uv.transmittance%><br><b>Absorbance:</b><%= uv.absorbance%><br><b>Reflectance:</b><%= uv.reflectance%></td>
+                      <td> <%= uv.toxicity%> </td>
+                        <td> <%= uv.more%> </td>
                         <td>Booked</td>
-                        <td> <%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+                        <td> <%= uv.slotdate %> </td>
+                        <td> <%= uv.slottime %> </td>
+                        <td> <%= uv.status %></td>
+                        <%if uv.references.attached? %>
+                      <%uv.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                      <%end%>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
+
                     </tr>
                       <%end%>
                 </tbody>

@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FRIC:Cancelled Slots</h2>
         </div>
 
 
@@ -90,7 +90,7 @@
                 </thead>
                 <tbody>
 
-                      <% @fric4.all.each do |fric|%>
+                      <% @fric4.where(status:'cancelled').each do |fric|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/FRIC/<%=fric.id %>	</th>
@@ -118,9 +118,13 @@
                         <td> <%= fric.slottime %></td>
 
                           <td><%= fric.status%></td>
-                          <td><%fric.references.each do |file|%>
-                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-                     <%end%>
+                          <%if fric.references.attached? %>
+                    <%fric.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                     </tr>
                       <%end%>
                 </tbody>

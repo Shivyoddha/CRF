@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_lcms_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_lcms1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_lcms1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_lcms2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_lcms3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_lcms4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_lcms4_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">LCMS:Cancelled Slots</h2>
         </div>
 
 
@@ -69,10 +69,21 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Sample Nature</th>
+                        <th scope="col" id="composition">Category</th>
+                        <th scope="col" id="phase"> Sample Type</th>
+                        <th scope="col" id="range">Solvent</th>
+                        <th scope="col" id="composition">Analysis</th>
+                        <th scope="col" id="phase"> Sample Volume</th>
+                        <th scope="col" id="range">Sample Concentration</th>
+                        <th scope="col" id="composition">Sample Salts</th>
+                        <th scope="col" id="phase"> Sample Contains</th>
+                        <th scope="col" id="range">Storage</th>
+                        <th scope="col" id="composition">Testing Required</th>
+                        <th scope="col" id="phase"> Incompatible</th>
+                        <th scope="col" id="range">Toxicity</th>
+                        <th scope="col" id="phase"> Disposal</th>
+                        <th scope="col" id="range">Health</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +94,45 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                      <% @lcms4.where(status:'cancelled').each do |lcms|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/LCMS/<%=lcms.id %>	</th>
+                        <td> <%= lcms.user.name%> </td>
+                        <td> <%= lcms.user.orgname%> </td>
+                        <td> <%= lcms.user.department%> </td>
+                        <td> <%= lcms.user.contact%> </td>
+                        <td> <%= lcms.sample%> </td>
+                        <td> <%= lcms.nature_sample%> </td>
+                        <td> <%= lcms.category%> </td>
+                        <td> <%= lcms.sample_type%> </td>
+                        <td> <%= lcms.solvent%> </td>
+                        <td> <%= lcms.analysis%> </td>
+                        <td> <%= lcms.sample_volume%> </td>
+                        <td> <%= lcms.sample_concentration%> </td>
+                        <td> <%= lcms.sample_salts%> </td>
+                        <td> <%= lcms.sample_contains%> </td>
+                        <td> <%= lcms.storage%> </td>
+                        <td> <%= lcms.testing_required%> </td>
+                        <td> <%= lcms.incompatible%> </td>
+                        <td> <%= lcms.toxicity%> </td>
+                        <td> <%= lcms.disposal%> </td>
+                        <td> <%= lcms.health%> </td>
+                        <td> <%= lcms.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= lcms.slotdate %></td>
+
+                        <td> <%= lcms.slottime %></td>
+
+                          <td><%= lcms.status%></td>
+                          <%if lcms.references.attached? %>
+                          <%lcms.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

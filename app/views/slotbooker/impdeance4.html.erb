@@ -36,7 +36,7 @@
                         <%= link_to 'All Slots',slotbooker_impdeance_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_impdeance1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                        <%= link_to 'Pending Slots',slotbooker_impdeance1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_impdeance2_path,class:"nav-link active sidelink-wrap" %>
@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_impdeance3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_impdeance4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_impdeance4_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">IMPEDEANCE:Cancelled Slots</h2>
         </div>
 
 
@@ -69,10 +69,15 @@
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="phase">Type</th>
-                        <th scope="col" id="range">Range</th>
+                        <th scope="col" id="composition">Capacitance</th>
+                        <th scope="col" id="phase">Dielectric</th>
+                        <th scope="col" id="range">I-V</th>
+                        <th scope="col" id="composition">Impedance</th>
+                        <th scope="col" id="composition">Frequency Range</th>
+                        <th scope="col" id="phase">Voltage Range</th>
+                        <th scope="col" id="range">Current Range</th>
+                        <th scope="col" id="phase">Impdeance/Loss Tangent</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -83,27 +88,39 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                        <% @imped4.where(status:'cancelled').each do |imped|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/IMPED/<%=imped.id %>	</th>
+                        <td> <%= imped.user.name%> </td>
+                        <td> <%= imped.user.orgname%> </td>
+                        <td> <%= imped.user.department%> </td>
+                        <td> <%= imped.user.contact%> </td>
+                        <td> <%= imped.sample%> </td>
+                        <td> <%= imped.composition%> </td>
+                        <td> <%= imped.capacitance%> </td>
+                        <td> <%= imped.dielectric%> </td>
+                        <td> <%= imped.iv%> </td>
+                        <td> <%= imped.impedance%> </td>
+                        <td> <%= imped.freqrange%> </td>
+                        <td> <%= imped.voltagerange%> </td>
+                        <td> <%= imped.currentrange%> </td>
+                          <td> <%= imped.losstangent%> </td>
+                        <td> <%= imped.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= imped.slotdate %></td>
+
+                        <td> <%= imped.slottime %></td>
+
+                          <td><%= imped.status%></td>
+                          <%if imped.references.attached? %>
+                                 <%imped.references.each do |file|%>
+                                 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                    <% end %>
+                               <% else %>
+                                 <td>NA</td>
+                               <% end %>
                     </tr>
                       <%end%>
                 </tbody>

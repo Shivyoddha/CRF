@@ -39,9 +39,11 @@ class HrFesemJsController < ApplicationController
 
   # PATCH/PUT /hr_fesem_js/1 or /hr_fesem_js/1.json
   def update
+    @hr_fesem_j.status="alloted"
     respond_to do |format|
       if @hr_fesem_j.update(hr_fesem_j_params)
-        format.html { redirect_to hr_fesem_j_url(@hr_fesem_j), notice: "Hr fesem j was successfully updated." }
+        HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_fesemj_path, notice: "Hr fesem j was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_j }
       else
         format.html { render :edit, status: :unprocessable_entity }

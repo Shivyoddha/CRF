@@ -38,9 +38,11 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
   # PATCH/PUT /integrated_multi_role_testers/1 or /integrated_multi_role_testers/1.json
   def update
+    @integrated_multi_role_tester.status="alloted"
     respond_to do |format|
       if @integrated_multi_role_tester.update(integrated_multi_role_tester_params)
-        format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully updated." }
+        IntegratedMultiRoleTesterAllotedMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_integrated_path(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully updated." }
         format.json { render :show, status: :ok, location: @integrated_multi_role_tester }
       else
         format.html { render :edit, status: :unprocessable_entity }

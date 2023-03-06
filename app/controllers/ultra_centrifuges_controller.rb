@@ -38,9 +38,11 @@ class UltraCentrifugesController < ApplicationController
 
   # PATCH/PUT /ultra_centrifuges/1 or /ultra_centrifuges/1.json
   def update
+      @ultra_centrifuge.status="alloted"
     respond_to do |format|
       if @ultra_centrifuge.update(ultra_centrifuge_params)
-        format.html { redirect_to ultra_centrifuge_url(@ultra_centrifuge), notice: "Ultra centrifuge was successfully updated." }
+        UltraCentrifugeAllotedMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+        format.html { redirect_to slotbooker_centrifuge_path(@ultra_centrifuge), notice: "Ultra centrifuge was successfully updated." }
         format.json { render :show, status: :ok, location: @ultra_centrifuge }
       else
         format.html { render :edit, status: :unprocessable_entity }
