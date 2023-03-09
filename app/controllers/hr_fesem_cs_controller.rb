@@ -14,6 +14,7 @@ class HrFesemCsController < ApplicationController
   def new
     @hr_fesem_c = HrFesemC.new
     @user=User.find(params[:id])
+    @hr_fesem_c.build_equipment_table
 
   end
 
@@ -25,11 +26,12 @@ class HrFesemCsController < ApplicationController
   def create
     @hr_fesem_c = HrFesemC.new(hr_fesem_c_params)
     @hr_fesem_c.user=current_user
-      @hr_fesem_c.status="pending"
+    @hr_fesem_c.status="pending"
+    @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.save
         HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to hr_fesem_c_url(@hr_fesem_c), notice: "Hr fesem c was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
         format.json { render :show, status: :created, location: @hr_fesem_c }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,6 +43,7 @@ class HrFesemCsController < ApplicationController
   # PATCH/PUT /hr_fesem_cs/1 or /hr_fesem_cs/1.json
   def update
     @hr_fesem_c.status="alloted"
+    @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.update(hr_fesem_c_params)
         HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
@@ -71,6 +74,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, references: [])
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

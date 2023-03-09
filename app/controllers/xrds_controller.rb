@@ -16,6 +16,7 @@ class XrdsController < ApplicationController
   def new
     @user=User.find(params[:id])
     @xrd = Xrd.new()
+    @xrd.build_equipment_table
   end
 
   # GET /xrds/1/edit
@@ -27,6 +28,7 @@ class XrdsController < ApplicationController
     @xrd = Xrd.new(xrd_params)
     @xrd.user=current_user
     @xrd.status="pending"
+    @xrd.build_equipment_table
 
     respond_to do |format|
       if @xrd.save
@@ -44,6 +46,7 @@ class XrdsController < ApplicationController
   # PATCH/PUT /xrds/1 or /xrds/1.json
   def update
      @xrd.status="alloted"
+    @xrd.build_equipment_table
 
     respond_to do |format|
       if @xrd.update(xrd_params)
@@ -79,6 +82,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay] ,references: [])
     end
 end

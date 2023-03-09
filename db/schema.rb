@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_041231) do
+ActiveRecord::Schema.define(version: 2023_03_07_182546) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -166,12 +166,39 @@ ActiveRecord::Schema.define(version: 2023_03_04_041231) do
     t.index ["user_id"], name: "index_electro_chemicals_on_user_id"
   end
 
-  create_table "equipment", force: :cascade do |t|
+  create_table "equipment_tables", force: :cascade do |t|
+    t.string "username"
+    t.string "equipname"
+    t.string "app_no"
+    t.float "pay"
+    t.string "debit_head"
+    t.date "slotd"
+    t.time "slott"
+    t.string "dummy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "status"
-    t.text "location"
+    t.integer "xrd_id"
+    t.integer "hr_fesem_c_id"
+    t.integer "hr_fesem_j_id"
+    t.integer "three_d_non_contact_id"
+    t.integer "tga_fttr_id"
+    t.integer "advance_molecular_rheometer_id"
+    t.integer "atomic_force_microscope_id"
+    t.integer "ball_mailing_id"
+    t.integer "bet_id"
+    t.integer "cell_imaging_id"
+    t.integer "electro_chemical_id"
+    t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
+    t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
+    t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
+    t.index ["bet_id"], name: "index_equipment_tables_on_bet_id"
+    t.index ["cell_imaging_id"], name: "index_equipment_tables_on_cell_imaging_id"
+    t.index ["electro_chemical_id"], name: "index_equipment_tables_on_electro_chemical_id"
+    t.index ["hr_fesem_c_id"], name: "index_equipment_tables_on_hr_fesem_c_id"
+    t.index ["hr_fesem_j_id"], name: "index_equipment_tables_on_hr_fesem_j_id"
+    t.index ["tga_fttr_id"], name: "index_equipment_tables_on_tga_fttr_id"
+    t.index ["three_d_non_contact_id"], name: "index_equipment_tables_on_three_d_non_contact_id"
+    t.index ["xrd_id"], name: "index_equipment_tables_on_xrd_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -958,6 +985,17 @@ ActiveRecord::Schema.define(version: 2023_03_04_041231) do
   add_foreign_key "bets", "users"
   add_foreign_key "cell_imagings", "users"
   add_foreign_key "electro_chemicals", "users"
+  add_foreign_key "equipment_tables", "advance_molecular_rheometers"
+  add_foreign_key "equipment_tables", "atomic_force_microscopes"
+  add_foreign_key "equipment_tables", "ball_mailings"
+  add_foreign_key "equipment_tables", "bets"
+  add_foreign_key "equipment_tables", "cell_imagings"
+  add_foreign_key "equipment_tables", "electro_chemicals"
+  add_foreign_key "equipment_tables", "hr_fesem_cs"
+  add_foreign_key "equipment_tables", "hr_fesem_js"
+  add_foreign_key "equipment_tables", "tga_fttrs"
+  add_foreign_key "equipment_tables", "three_d_non_contacts"
+  add_foreign_key "equipment_tables", "xrds"
   add_foreign_key "five_axis", "users"
   add_foreign_key "frictions", "users"
   add_foreign_key "gaits", "users"

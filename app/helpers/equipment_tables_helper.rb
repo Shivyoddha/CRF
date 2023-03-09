@@ -1,0 +1,2 @@
+module EquipmentTablesHelper
+end
