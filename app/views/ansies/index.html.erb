@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ansies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sysno</th>
+      <th>Slotdate</th>
+      <th>Purpose</th>
+      <th>Amount</th>
+      <th>Debit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ansies.each do |ansy| %>
+      <tr>
+        <td><%= ansy.sysno %></td>
+        <td><%= ansy.slotdate %></td>
+        <td><%= ansy.purpose %></td>
+        <td><%= ansy.amount %></td>
+        <td><%= ansy.debit %></td>
+        <td><%= link_to 'Show', ansy %></td>
+        <td><%= link_to 'Edit', edit_ansy_path(ansy) %></td>
+        <td><%= link_to 'Destroy', ansy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ansy', new_ansy_path %>
