@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ansies
   resources :equipment_tables
   resources :lasers
   resources :three_d_scanners
