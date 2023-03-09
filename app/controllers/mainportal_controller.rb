@@ -1,0 +1,2 @@
+class MainportalController < ApplicationController
+end

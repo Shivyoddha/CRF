@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
+  create_table "anishes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "atomic_force_microscopes", force: :cascade do |t|
     t.integer "sample"
     t.string "stype"
@@ -78,9 +83,9 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
-    t.string "debit"
-    t.time "slottime"
     t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -669,12 +674,6 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "probe_sonicators", force: :cascade do |t|
     t.integer "sample"
     t.float "size"
@@ -885,8 +884,8 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -946,7 +945,7 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "status"
     t.time "slottime"
     t.date "slotdate"
-    t.string "amount"
+    t.float "amount"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
