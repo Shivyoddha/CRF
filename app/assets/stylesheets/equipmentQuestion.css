@@ -39,6 +39,14 @@
     padding: 10px;
 }
 
+h1 {
+    text-align: center;
+}
+
+.input-group-text {
+    white-space:pre-line ;
+}
+
 @media only screen and (max-width: 600px) {
     .hero {
         width: 95%;
@@ -46,6 +54,10 @@
 
     #equipment-name {
         width: 95%;
+    }
+
+    .input-group-text {
+        width: 100%;
     }
 
 }

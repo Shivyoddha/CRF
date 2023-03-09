@@ -6,7 +6,6 @@ class LiquidNitrogensController < ApplicationController
     @liquid_nitrogens = LiquidNitrogen.all
   end
 
-  # GET /liquid_nitrogens/1 or /liquid_nitrogens/1.json
   def show
   end
 
