@@ -76,57 +76,45 @@
                     <tr class="table-head font-unbounded">
                         <th scope="col" id="application-no">Appl No</th>
                         <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No</th>
                         <th scope="col" id="debit-head">Debit Head</th>
-                        <th scope="col" id="debit-head">Status</th>
                         <th scope="col" id="proforma-col">Proforma</th>
                     </tr>
                 </thead>
                 <tbody>
-                        <% Xrd.where(status:'alloted').each do |xrds|%>
+                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
                         <tr>
-                          <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                          <td> <%= xrds.user.name%> </td>
-                          <td> <%= xrds.user.orgname%> </td>
-                          <td> <%= xrds.user.department%> </td>
-                          <td> <%= xrds.user.contact%> </td>
-                          <td> <%= xrds.debit%> </td>
-                          <td> <%= xrds.status%></td>
+                          <th scope="row"><%= equipment.app_no%></th>
+                          <td> <%= equipment.username%> </td>
+                          <td> <%= equipment.debit_head%> </td>
                           <td id="assign-btn">
                               <!-- Button trigger modal -->
-                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                               <div id="<%= xrds.id%>" class="modal">
+                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
+                               <div id="<%= equipment.app_no%>" class="modal">
 
      <div class="modal-dialog">
                <div class="modal-content">
                    <div class="modal-header">
-                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                    </div>
                    <div class="modal-body">
 
-                        <%= form_with(model: xrds,local:true) do |form| %>
+                        <%= form_with(model:equipment ,local:true) do |form| %>
                          <div class="input-group mb-3">
                            <%= form.label :first_name, "Apllication No.", class:"input-group-text"%>
-                           <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"CRF/XRD/#{xrds.id}", readonly: true%>
+                           <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder: equipment.app_no , readonly: true%>
                        </div>
                        <div class="input-group mb-3">
                          <%= form.label :first_name, "Applicant Name", class:"input-group-text"%>
-                         <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"#{xrds.user.name}", readonly: true%>
+                         <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:equipment.username, readonly: true%>
+                     </div>
+                       <div class="input-group mb-3">
+                       <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
+                       <%= form.text_field :pay, class:"form-control", id:"amount"%>
                      </div>
                      <div class="input-group mb-3">
-                       <%= form.label :first_name, "Department", class:"input-group-text"%>
-                       <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"#{xrds.user.department}", readonly: true%>
+                     <%= form.hidden_field :dummy, value: 'done' %>
                    </div>
-                       <div class="input-group mb-3">
-                       <%= form.label :amount, "Amount", class:"input-group-text", for:"amount"%>
-                       <%= form.text_field :amount, class:"form-control", id:"amount"%>
-                     </div>
-
-
-                      <%=xrds.id%>
 
                        <div class="actions">
                          <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>

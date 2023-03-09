@@ -135,6 +135,25 @@
                                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                        <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
+
+                                     <%=form.fields_for :equipment_table do |f| %>
+                                      <div class="input-group mb-3">
+                                         <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
+                                       </div>
+
+                                      <div class="input-group mb-3">
+                                        <%= f.hidden_field :username, value:"#{xrds.user.name}"%>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :dummy, value:"#{xrds.status}"%>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
+                                    </div>
+
+                                     <%end%>
                                       <%=xrds.id%>
 
                                        <div class="actions">

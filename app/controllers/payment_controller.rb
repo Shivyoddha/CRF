@@ -1,38 +1,60 @@
 class PaymentController < ApplicationController
   def payment
-    @xrd = Xrd.all
+    @equipment = EquipmentTable.all
+    @equipment = EquipmentTable.order(updated_at: :desc)
+
   end
-  def paymentc
-      @xrd = Xrd.all
+  def paymentC
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
+
   end
-  def payementD
-      @xrd = Xrd.all
+  def paymentD
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentExt
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentExtC
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def payementExtM
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentExtR
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def payementExtU
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentM
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentP
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentS
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentU
       @xrd = Xrd.all
+      @equipment = EquipmentTable.all
+      @equipment = EquipmentTable.order(updated_at: :desc)
   end
 end

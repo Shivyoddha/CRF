@@ -13,6 +13,7 @@ class TgaFttrsController < ApplicationController
   # GET /tga_fttrs/new
   def new
     @tga_fttr = TgaFttr.new
+    @tga_fttr.build_equipment_table
   end
 
   # GET /tga_fttrs/1/edit
@@ -23,11 +24,12 @@ class TgaFttrsController < ApplicationController
   def create
     @tga_fttr = TgaFttr.new(tga_fttr_params)
     @tga_fttr.user=current_user
-      @tga_fttr.status="pending"
+    @tga_fttr.status="pending"
+    @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.save
         TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to tga_fttr_url(@tga_fttr), notice: "Tga fttr was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Tga fttr was successfully created." }
         format.json { render :show, status: :created, location: @tga_fttr }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,6 +41,7 @@ class TgaFttrsController < ApplicationController
   # PATCH/PUT /tga_fttrs/1 or /tga_fttrs/1.json
   def update
       @tga_fttr.status="alloted"
+      @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.update(tga_fttr_params)
         TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
@@ -69,6 +72,6 @@ class TgaFttrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,references: [])
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
     end
 end

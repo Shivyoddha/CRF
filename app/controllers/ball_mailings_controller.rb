@@ -13,6 +13,7 @@ class BallMailingsController < ApplicationController
   # GET /ball_mailings/new
   def new
     @ball_mailing = BallMailing.new
+    @ball_mailing.build_equipment_table
   end
 
   # GET /ball_mailings/1/edit
@@ -24,11 +25,12 @@ class BallMailingsController < ApplicationController
     @ball_mailing = BallMailing.new(ball_mailing_params)
     @ball_mailing.user=current_user
     @ball_mailing.status="pending"
+    @ball_mailing.build_equipment_table
 
     respond_to do |format|
       if @ball_mailing.save
         BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to ball_mailing_url(@ball_mailing), notice: "Ball mailing was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Ball mailing was successfully created." }
         format.json { render :show, status: :created, location: @ball_mailing }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,6 +42,7 @@ class BallMailingsController < ApplicationController
   # PATCH/PUT /ball_mailings/1 or /ball_mailings/1.json
   def update
     @ball_mailing.status="alloted"
+    @ball_mailing.build_equipment_table
     respond_to do |format|
       if @ball_mailing.update(ball_mailing_params)
         BallMailingAllotedMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
@@ -71,6 +74,6 @@ class BallMailingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ball_mailing_params
-      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id, references: [])
+      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

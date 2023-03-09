@@ -13,6 +13,7 @@ class CellImagingsController < ApplicationController
   # GET /cell_imagings/new
   def new
     @cell_imaging = CellImaging.new
+    @cell_imaging.build_equipment_table
   end
 
   # GET /cell_imagings/1/edit
@@ -24,10 +25,11 @@ class CellImagingsController < ApplicationController
     @cell_imaging = CellImaging.new(cell_imaging_params)
     @cell_imaging.user=current_user
     @cell_imaging.status="pending"
+    @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.save
         CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to cell_imaging_url(@cell_imaging), notice: "Cell imaging was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,6 +41,7 @@ class CellImagingsController < ApplicationController
   # PATCH/PUT /cell_imagings/1 or /cell_imagings/1.json
   def update
       @cell_imaging.status="alloted"
+      @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.update(cell_imaging_params)
         format.html { redirect_to slotbooker_cell_path(@cell_imaging), notice: "Cell imaging was successfully updated." }
@@ -68,6 +71,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id,references: [] )
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [] )
     end
 end

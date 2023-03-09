@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @equipment_table.username %>
+</p>
+
+<p>
+  <strong>Equipname:</strong>
+  <%= @equipment_table.equipname %>
+</p>
+
+<p>
+  <strong>App no:</strong>
+  <%= @equipment_table.app_no %>
+</p>
+
+<p>
+  <strong>Pay:</strong>
+  <%= @equipment_table.pay %>
+</p>
+
+<p>
+  <strong>Debit head:</strong>
+  <%= @equipment_table.debit_head %>
+</p>
+
+<p>
+  <strong>Slotd:</strong>
+  <%= @equipment_table.slotd %>
+</p>
+
+<p>
+  <strong>Slott:</strong>
+  <%= @equipment_table.slott %>
+</p>
+
+<p>
+  <strong>Dummy:</strong>
+  <%= @equipment_table.dummy %>
+</p>
+
+<%= link_to 'Edit', edit_equipment_table_path(@equipment_table) %> |
+<%= link_to 'Back', equipment_tables_path %>

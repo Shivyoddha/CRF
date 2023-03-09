@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: 
+  equipname: MyString
+  app_no: MyString
+  pay: 1.5
+  debit_head: MyString
+  slotd: 2023-03-05
+  slott: 2023-03-05 12:34:41
+  dummy: MyString
+
+two:
+  username: 
+  equipname: MyString
+  app_no: MyString
+  pay: 1.5
+  debit_head: MyString
+  slotd: 2023-03-05
+  slott: 2023-03-05 12:34:41
+  dummy: MyString
