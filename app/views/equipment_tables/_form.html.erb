@@ -1,0 +1,57 @@
+<%= form_with(model: equipment_table) do |form| %>
+  <% if equipment_table.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(equipment_table.errors.count, "error") %> prohibited this equipment_table from being saved:</h2>
+
+      <ul>
+        <% equipment_table.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipname %>
+    <%= form.text_field :equipname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :app_no %>
+    <%= form.text_field :app_no %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pay %>
+    <%= form.text_field :pay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :debit_head %>
+    <%= form.text_field :debit_head %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slotd %>
+    <%= form.date_select :slotd %>
+  </div>
+
+  <div class="field">
+    <%= form.label :slott %>
+    <%= form.time_select :slott %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dummy %>
+    <%= form.text_field :dummy %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

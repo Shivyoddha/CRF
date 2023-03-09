@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Equipment Tables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Equipname</th>
+      <th>App no</th>
+      <th>Pay</th>
+      <th>Debit head</th>
+      <th>Slotd</th>
+      <th>Slott</th>
+      <th>Dummy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @equipment_tables.each do |equipment_table| %>
+      <tr>
+        <td><%= equipment_table.username %></td>
+        <td><%= equipment_table.equipname %></td>
+        <td><%= equipment_table.app_no %></td>
+        <td><%= equipment_table.pay %></td>
+        <td><%= equipment_table.debit_head %></td>
+        <td><%= equipment_table.slotd %></td>
+        <td><%= equipment_table.slott %></td>
+        <td><%= equipment_table.dummy %></td>
+        <td><%= link_to 'Show', equipment_table %></td>
+        <td><%= link_to 'Edit', edit_equipment_table_path(equipment_table) %></td>
+        <td><%= link_to 'Destroy', equipment_table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Equipment Table', new_equipment_table_path %>

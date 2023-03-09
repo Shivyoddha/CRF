@@ -67,114 +67,108 @@
         </div>
 
 
-        <div id="slot-details">
-        <div>
-            <table class="table table-hover font-quicksand">
-                <thead>
-                    <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No</th>
-                        <th scope="col" id="debit-head">Debit Head</th>
-                        <th scope="col" id="proforma-col">Proforma</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <% Xrd.where(debit:'Department Operating Cost', status:'alloted').each do |xrds|%>
-                  <tr>
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.debit%> </td>
-                    <td id="assign-btn">
-                        <!-- Button trigger modal -->
-                         <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                         <div id="<%= xrds.id%>" class="modal">
 
-                  <div class="modal-dialog">
-                  <div class="modal-content">
-                  <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
+                <div id="slot-details">
+                <div>
+                    <table class="table table-hover font-quicksand">
+                        <thead>
+                            <tr class="table-head font-unbounded">
+                                <th scope="col" id="application-no">Appl No</th>
+                                <th scope="col" id="name">Name</th>
+                                <th scope="col" id="debit-head">Debit Head</th>
+                                <th scope="col" id="proforma-col">Proforma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                  <%= form_with(model: xrds,local:true) do |form| %>
-                   <div class="input-group mb-3">
-                     <%= form.label :first_name, "Apllication No.", class:"input-group-text"%>
-                     <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"CRF/XRD/#{xrds.id}", readonly: true%>
-                  </div>
-                  <div class="input-group mb-3">
-                   <%= form.label :first_name, "Applicant Name", class:"input-group-text"%>
-                   <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"#{xrds.user.name}", readonly: true%>
-                  </div>
-                  <div class="input-group mb-3">
-                  <%= form.label :first_name, "Department", class:"input-group-text"%>
-                  <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"#{xrds.user.department}", readonly: true%>
-                  </div>
-                  <div class="input-group mb-3">
-                  <%= form.label :amount, "Amount", class:"input-group-text", for:"amount"%>
-                  <%= form.text_field :amount, class:"form-control", id:"amount"%>
-                  </div>
+                                  <% @equipment.where(debit_head:'Department Operating Cost', dummy:'alloted').each do |equipment|%>
+                                  <tr>
+                                    <th scope="row"><%=equipment.app_no %>	</th>
+                                    <td> <%= equipment.username%> </td>
+                                    <td> <%= equipment.debit_head%> </td>
+                                    <td id="assign-btn">
+                                        <!-- Button trigger modal -->
+                                         <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
+                                         <div id="<%= equipment.app_no%>" class="modal">
+
+                          <div class="modal-dialog">
+                          <div class="modal-content">
+                             <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+
+                                  <%= form_with(model: equipment,local:true) do |form| %>
+                                   <div class="input-group mb-3">
+                                     <%= form.label :first_name, "Apllication No.", class:"input-group-text"%>
+                                     <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:equipment.app_no, readonly: true%>
+                                 </div>
+                                 <div class="input-group mb-3">
+                                   <%= form.label :first_name, "Applicant Name", class:"input-group-text"%>
+                                   <%= form.text_field :first_name, class:"form-control", id:"composition", placeholder:"#{equipment.username}", readonly: true%>
+                               </div>
+
+                                 <div class="input-group mb-3">
+                                 <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
+                                 <%= form.text_field :pay, class:"form-control", id:"amount"%>
+                               </div>
+                               <div class="input-group mb-3">
+                               <%= form.hidden_field :dummy, value: 'done' %>
+                             </div>
 
 
-                  <%=xrds.id%>
+                                 <div class="actions">
+                                   <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
 
-                  <div class="actions">
-                   <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
+                                 </div>
+                               <% end %>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary">Cancel Slot</button>
+                             </div>
+                          </div>
+                          </div>
 
-                  </div>
-                  <% end %>
-                  </div>
-                  <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Cancel Slot</button>
-                  </div>
-                  </div>
-                  </div>
+                          </div>
 
-                  </div>
+                                     </td>
 
-                     </td>
+                                 </tr>
+                          <%end%>
+                             </tbody>
+                          </table>
 
-                  </tr>
-                  <%end%>
-                  </tbody>
-                  </table>
-
-                  </div>
-                  </div>
+                          </div>
+                          </div>
 
 
-                  </div>
+                          </div>
 
 
-                  </div>
-                  <script>
-                  // Get the modals and buttons
-                  var modal1 = document.getElementByClass("modal");
-                  var btn1 = document.getElementById("ani");
+                          </div>
+                          <script>
+                          // Get the modals and buttons
+                          var modal1 = document.getElementByClass("modal");
+                          var btn1 = document.getElementById("ani");
 
-                  // Add event listeners to the buttons
-                  btn1.addEventListener("click", function() {
-                  modal1.style.display = "block";
-                  });
+                          // Add event listeners to the buttons
+                          btn1.addEventListener("click", function() {
+                          modal1.style.display = "block";
+                          });
 
-                  btn2.addEventListener("click", function() {
-                  modal2.style.display = "block";
-                  });
+                          btn2.addEventListener("click", function() {
+                          modal2.style.display = "block";
+                          });
 
-                  // Close the modal when the user clicks anywhere outside of it
-                  window.addEventListener("click", function(event) {
-                  if (event.target == modal1) {
-                  modal1.style.display = "none";
-                  }
-                  if (event.target == modal2) {
-                  modal2.style.display = "none";
-                  }
-                  });
-                  </script>
+                          // Close the modal when the user clicks anywhere outside of it
+                          window.addEventListener("click", function(event) {
+                          if (event.target == modal1) {
+                          modal1.style.display = "none";
+                          }
+                          if (event.target == modal2) {
+                          modal2.style.display = "none";
+                          }
+                          });
+                          </script>

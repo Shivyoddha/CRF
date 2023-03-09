@@ -13,6 +13,7 @@ class BetsController < ApplicationController
   # GET /bets/new
   def new
     @bet = Bet.new
+    @bet.build_equipment_table
   end
 
   # GET /bets/1/edit
@@ -24,10 +25,12 @@ class BetsController < ApplicationController
     @bet = Bet.new(bet_params)
     @bet.user=current_user
     @bet.status="pending"
+    @bet.build_equipment_table
+
     respond_to do |format|
       if @bet.save
         BetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to bet_url(@bet), notice: "Bet was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
         format.json { render :show, status: :created, location: @bet }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,6 +42,8 @@ class BetsController < ApplicationController
   # PATCH/PUT /bets/1 or /bets/1.json
   def update
     @bet.status="alloted"
+    @bet.build_equipment_table
+
     respond_to do |format|
       if @bet.update(bet_params)
         format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
@@ -68,6 +73,6 @@ class BetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

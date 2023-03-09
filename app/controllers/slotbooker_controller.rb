@@ -3,11 +3,13 @@ class SlotbookerController < ApplicationController
 
 def xrd
   @xrd=Xrd.all
- end
 
+ end
 
 def xrd1
 @xrd=Xrd.all
+EquipmentTable.new
+
 
 end
 
@@ -28,7 +30,7 @@ def fesemc
 end
 
 
-def fesemc1
+  def fesemc1
   @fesemc1=HrFesemC.all
 
   end

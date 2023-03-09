@@ -14,6 +14,7 @@ class ThreeDNonContactsController < ApplicationController
   def new
     @three_d_non_contact = ThreeDNonContact.new
     @user=User.find(params[:id])
+    @three_d_non_contact.build_equipment_table
   end
 
   # GET /three_d_non_contacts/1/edit
@@ -25,10 +26,11 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact = ThreeDNonContact.new(three_d_non_contact_params)
     @three_d_non_contact.user=current_user
     @three_d_non_contact.status="pending"
+    @three_d_non_contact.build_equipment_table
     respond_to do |format|
       if @three_d_non_contact.save
         ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to three_d_non_contact_url(@three_d_non_contact), notice: "Three d non contact was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Three d non contact was successfully created." }
         format.json { render :show, status: :created, location: @three_d_non_contact }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,6 +42,8 @@ class ThreeDNonContactsController < ApplicationController
   # PATCH/PUT /three_d_non_contacts/1 or /three_d_non_contacts/1.json
   def update
     @three_d_non_contact.status="alloted"
+    @three_d_non_contact.build_equipment_table
+
     respond_to do |format|
       if @three_d_non_contact.update(three_d_non_contact_params)
         ThreeDNonContactAllotedMailer.with(id:@three_d_non_contact.id, userid:current_user.id).Mail.deliver_later
@@ -70,6 +74,6 @@ class ThreeDNonContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_non_contact_params
-      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotime, references: [])
+      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotime,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end
