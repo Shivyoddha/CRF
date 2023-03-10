@@ -44,7 +44,11 @@ class FrictionsController < ApplicationController
       @friction.status="alloted"
     respond_to do |format|
       if @friction.update(friction_params)
-        @friction.status="alloted"
+        if @friction.amount == nil
+        FrictionAllotedMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentFrictionMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_fric_path(@friction), notice: "Friction was successfully updated." }
         format.json { render :show, status: :ok, location: @friction }
       else

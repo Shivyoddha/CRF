@@ -46,7 +46,11 @@ class AtomicForceMicroscopesController < ApplicationController
     @atomic_force_microscope.build_equipment_table
     respond_to do |format|
       if @atomic_force_microscope.update(atomic_force_microscope_params)
-        AtomicForceMicroscopeAllotedMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
+        if @atomic_force_microscope.amount == nil
+        AtomicForceMicroscopeAllotedMailer.with(id@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentAtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_atomic_path(@atomic_force_microscope), notice: "Atomic force microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @atomic_force_microscope }
       else

@@ -46,7 +46,11 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.update(hr_fesem_c_params)
-        HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
+        if @hr_fesem_c.amount == nil
+      HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
+      else
+      PaymentHrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_fesemc_path(@hr_fesem_c), notice: "Hr fesem c was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_c }
       else

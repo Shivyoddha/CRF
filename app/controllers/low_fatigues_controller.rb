@@ -41,9 +41,14 @@ class LowFatiguesController < ApplicationController
 
   # PATCH/PUT /low_fatigues/1 or /low_fatigues/1.json
   def update
+    @low_fatigue.status="alloted"
     respond_to do |format|
       if @low_fatigue.update(low_fatigue_params)
-        @low_fatigue.status="alloted"
+        if @low_fatigue.amount == nil
+        LowFatigueAllotedMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentLowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully updated." }
         format.json { render :show, status: :ok, location: @low_fatigue }
       else
