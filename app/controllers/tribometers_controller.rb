@@ -44,7 +44,11 @@ class TribometersController < ApplicationController
     @tribometer.status="alloted"
     respond_to do |format|
       if @tribometer.update(tribometer_params)
+        if @tribometer.amount == nil
         TribometerAllotedMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentTribometerMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
+      end
           @tribometer.status="alloted"
         format.html { redirect_to slotbooker_trib_path(@tribometer), notice: "Tribometer was successfully updated." }
         format.json { render :show, status: :ok, location: @tribometer }

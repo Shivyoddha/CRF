@@ -6,7 +6,7 @@ class AtomicForceMicroscopeMailer < ApplicationMailer
   #   en.atomic_force_microscope_mailer.Mail.subject
   #
   def Mail
-    @atomic_force_microscopes=AtomicForceMicroscope.find(params[:id])
+    @atomic_force_microscope=AtomicForceMicroscope.find(params[:id])
     @user=User.find(params[:userid])
     attachments["atomiclotbooking.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/atomic_force_microscope.html.erb', layout: 'pdf.html.erb', pdf: 'filename')

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ansies
   resources :equipment_tables
   resources :lasers
   resources :three_d_scanners
@@ -47,6 +48,11 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+    get 'mainportal/admindashboard'
+    get 'mainportal/adminModelUsers'
+    get 'mainportal/adminModelEquip'
+    get 'mainportal/adminModelPayment'
+    get 'mainportal/adminStats'
     get 'home/index'
     get 'home/anish'
     get 'know/xrd'

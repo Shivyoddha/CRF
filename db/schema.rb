@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_09_194127) do
+ActiveRecord::Schema.define(version: 2023_03_09_171925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2023_03_09_194127) do
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
+  create_table "ansies", force: :cascade do |t|
+    t.integer "sysno"
+    t.string "slotdate"
+    t.text "purpose"
+    t.float "amount"
+    t.string "debit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "atomic_force_microscopes", force: :cascade do |t|
     t.integer "sample"
     t.string "stype"
@@ -77,6 +87,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_194127) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end

@@ -80,7 +80,11 @@ class MilliQsController < ApplicationController
       @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)
+        if @milli_q.amount == nil
         MilliQAllotedMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentMilliQMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_milli_path(@milli_q), notice: "Milli q was successfully updated." }
         format.json { render :show, status: :ok, location: @milli_q }
       else
