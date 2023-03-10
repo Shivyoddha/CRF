@@ -26,9 +26,9 @@
 
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
-              <li><%= link_to "Download", home_index_path(format: :pdf)%></li>
-              <%# <li><a class="dropdown-item" href="#">Records</a></li> %>
+              <% link_to "Download", home_index_path(format: :pdf)%>
 
               <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
 
@@ -102,7 +102,6 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
                 </div>
             </div>
         </div>
@@ -172,7 +171,6 @@
           <div class="card-footer-express">
               <small class="text-muted card-footer-express">Express Slot:</small>
               <div class="badge badge-success badge-outlined">Available</div>
-              <div class="badge badge-warning badge-outlined">Not Available</div>
             </div>
          </div>
         </div>
@@ -239,7 +237,7 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
+
                 </div>
             </div>
         </div>
@@ -309,7 +307,7 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <div class="badge badge-success badge-outlined">Available</div>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
+
                 </div>
             </div>
         </div>
@@ -370,7 +368,7 @@
               <div class="card-footer-express">
                   <small class="text-muted card-footer-express">Express Slot:</small>
                   <div class="badge badge-success badge-outlined">Available</div>
-                  <div class="badge badge-warning badge-outlined">Not Available</div>
+                  
               </div>
           </div>
       </div>
@@ -2547,9 +2545,9 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a> 
+                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a>
                               <%= link_to "Regular Slot", new_ansy_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li><a href="Express Slots" class="book-dropdown dropdown-item"></a> 
+                              <li><a href="Express Slots" class="book-dropdown dropdown-item"></a>
                               <%= link_to "Express Slot", new_ansy_path, class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
@@ -2662,5 +2660,3 @@
             }
         });
 </script>
-
-

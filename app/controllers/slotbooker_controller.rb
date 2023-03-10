@@ -1,5 +1,5 @@
 class SlotbookerController < ApplicationController
-
+load_and_authorize_resource :class => false
 
 def xrd
   @xrd=Xrd.all

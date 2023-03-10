@@ -63,16 +63,12 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
-<<<<<<< HEAD
-  create_table "anishes", force: :cascade do |t|
-=======
   create_table "ansies", force: :cascade do |t|
     t.integer "sysno"
     t.string "slotdate"
     t.text "purpose"
     t.float "amount"
     t.string "debit"
->>>>>>> 2974011f2fc387c6bdf175b77962171c2e36b171
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

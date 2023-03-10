@@ -2,6 +2,10 @@ RailsAdmin.config do |config|
   config.asset_source = :sprockets
   config.authorize_with :cancancan
   config.main_app_name = ["CRF Admin", ""]
+  
+
+
+
   ### Popular gems integration
 
   ## == Devise ==
