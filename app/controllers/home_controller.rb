@@ -38,7 +38,7 @@ class HomeController < ApplicationController
     if @user.slotbooker == 'lcms'
     redirect_to slotbooker_lcms_path(current_user.id)
     end
-    
+
    if @user.admin_role == true
     redirect_to rails_admin_path
    end
@@ -48,7 +48,7 @@ class HomeController < ApplicationController
          format.html
          format.pdf do
            render pdf: "ShriRam",
-                  template: "home/anish",
+                  template: "slot_mailer/milli_q_payment",
                   formats: [:html],
                   disposition: :inline,
                   layout: 'pdf'

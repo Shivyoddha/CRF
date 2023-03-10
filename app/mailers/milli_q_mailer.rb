@@ -8,8 +8,17 @@ class MilliQMailer < ApplicationMailer
   def Mail
     @milli_q=MilliQ.find(params[:id])
     @user=User.find(params[:userid])
-    attachments["milli_q.pdf"] = WickedPdf.new.pdf_from_string(
+    # attachments["milli_q.pdf"] = WickedPdf.new.pdf_from_string(
+    # render_to_string(template: 'slot_mailer/milli_q.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    # )
+    # attachments["milli_q_payment.pdf"] = WickedPdf.new.pdf_from_string(
+    # render_to_string(template: 'slot_mailer/milli_q_payment.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    # )
+    attachments["liquid_nitrogen.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/milli_q.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+    attachments["liquid_nitrogenpayment.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/milli_q_payment.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
 
 

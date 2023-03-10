@@ -11,11 +11,14 @@ class LiquidNitrogenMailer < ApplicationMailer
     attachments["liquid_nitrogen.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/liquid_nitrogen.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
-
+    attachments["liquid_nitrogenpayment.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/liquid_nitrogenpayment.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
 
       mail(
             from:"crfnitk@gmail.com" ,
             to: "#{@user.email}",
+            # to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",
