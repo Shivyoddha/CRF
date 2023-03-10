@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_07_182546) do
+ActiveRecord::Schema.define(version: 2023_03_09_194127) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -77,10 +77,6 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.string "debit"
-    t.time "slottime"
-    t.date "slotdate"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -567,6 +563,7 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.float "amount"
     t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
@@ -640,6 +637,9 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "projectfund"
     t.integer "user_id"
+    t.float "amount1"
+    t.float "amount2"
+    t.float "amounttotal"
     t.index ["user_id"], name: "index_milli_qs_on_user_id"
   end
 
@@ -667,12 +667,6 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
-  end
-
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "probe_sonicators", force: :cascade do |t|
@@ -885,8 +879,8 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -904,6 +898,11 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -946,7 +945,7 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "status"
     t.time "slottime"
     t.date "slotdate"
-    t.string "amount"
+    t.float "amount"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 

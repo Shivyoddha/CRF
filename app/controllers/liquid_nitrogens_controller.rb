@@ -12,6 +12,7 @@ class LiquidNitrogensController < ApplicationController
   # GET /liquid_nitrogens/new
   def new
     @liquid_nitrogen = LiquidNitrogen.new
+    @user = User.find(params[:id])
   end
 
   # GET /liquid_nitrogens/1/edit
@@ -21,8 +22,16 @@ class LiquidNitrogensController < ApplicationController
   # POST /liquid_nitrogens or /liquid_nitrogens.json
   def create
     @liquid_nitrogen = LiquidNitrogen.new(liquid_nitrogen_params)
-    @liquid_nitrogen.user=current_user
+    @liquid_nitrogen.user = current_user
+
     @liquid_nitrogen.status="pending"
+
+    if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='Faculty'
+         @liquid_nitrogen.amount = (60.0)*@liquid_nitrogen.quantity
+    end
+    if @liquid_nitrogen.user.role=='external'
+         @liquid_nitrogen.amount = (80.0)*@liquid_nitrogen.quantity
+    end
     respond_to do |format|
       if @liquid_nitrogen.save
         LiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later
@@ -68,6 +77,6 @@ class LiquidNitrogensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def liquid_nitrogen_params
-      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id)
+      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount)
     end
 end
