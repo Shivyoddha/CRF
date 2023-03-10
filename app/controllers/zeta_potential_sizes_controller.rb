@@ -41,7 +41,11 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.status="alloted"
     respond_to do |format|
       if @zeta_potential_size.update(zeta_potential_size_params)
+        if @zeta_potential_size.amount == nil
         ZetaPotentialSizeAllotedMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_zeta_path(@zeta_potential_size), notice: "Zeta potential size was successfully updated." }
         format.json { render :show, status: :ok, location: @zeta_potential_size }
       else

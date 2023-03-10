@@ -41,7 +41,11 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.status="alloted"
     respond_to do |format|
       if @three_d_scanner.update(three_d_scanner_params)
+        if @three_d_scanner.amount == nil
         ThreeDScannerAllotedMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_threescanner_path(@three_d_scanner), notice: "Three d scanner was successfully updated." }
         format.json { render :show, status: :ok, location: @three_d_scanner }
       else

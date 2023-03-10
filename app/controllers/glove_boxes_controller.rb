@@ -41,7 +41,11 @@ class GloveBoxesController < ApplicationController
       @glove_box.status="alloted"
     respond_to do |format|
       if @glove_box.update(glove_box_params)
+        if @glove_box.amount == nil
         GloveBoxAllotedMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentGloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_glove_path(@glove_box), notice: "Glove box was successfully updated." }
         format.json { render :show, status: :ok, location: @glove_box }
       else

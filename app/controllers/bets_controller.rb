@@ -46,6 +46,11 @@ class BetsController < ApplicationController
 
     respond_to do |format|
       if @bet.update(bet_params)
+        if @xrd.amount == nil
+        BetAllotedMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+       else
+        PaymentBetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+       end
         format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else

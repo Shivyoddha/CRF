@@ -42,7 +42,11 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.status="alloted"
     respond_to do |format|
       if @uv_vis_nir.update(uv_vis_nir_params)
-        UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+        if @uv_vis_nir.amount == nil
+        UvVisNirAllotedMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentUvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_uv_path(@uv_vis_nir), notice: "Uv vis nir was successfully updated." }
         format.json { render :show, status: :ok, location: @uv_vis_nir }
       else
