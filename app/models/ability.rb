@@ -7,16 +7,16 @@ class Ability
     # if user.admin_role?
 
 
-      if user && user.admin_role?
+      # if user && user.admin_role?
             can :manage, MainportalController
             can :manage, :rails_admin
               can :manage, :all
-          end
+          # end
     # end
  # allow access to dashboard
-if user.slotbooker != nil
-  can :manage, SlotBookerController
-end
+# if user.slotbooker != nil
+  can :manage, SlotbookerController
+# end
  # can :access, :rails_admin  # only admin can access Rails Admin
  # can :manage, :dashboard
     if user.chairman_role?
