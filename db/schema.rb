@@ -87,6 +87,10 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
+=======
+
+>>>>>>> 515df0cf44554f84f069b22bbffaaba56a090db7
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -573,6 +577,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.float "amount"
     t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
@@ -646,6 +651,9 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "projectfund"
     t.integer "user_id"
+    t.float "amount1"
+    t.float "amount2"
+    t.float "amounttotal"
     t.index ["user_id"], name: "index_milli_qs_on_user_id"
   end
 
@@ -904,6 +912,11 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

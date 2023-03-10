@@ -31,7 +31,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :quantity ,"Quantity",class:"input-group-text" ,for:"quantity-nitrogen"%>
-          <%= form.text_field :quantity ,class:"form-control", id:"quantity-nitrogen"%>
+          <%= form.text_field :quantity ,class:"form-control", id:"quantity-nitrogen",required: true%>
           <%= form.label :quantity ,"Litre",class:"input-group-text" ,for:"quantity-nitrogen"%>
         </div>
 
@@ -45,6 +45,9 @@
         <div class="mb-3">
           <%= form.text_field :purpose ,class:"form-control", id:"purpose-nitrogen",rows:"3",placeholder:"Max. 120 Characters" %>
         </div>
+
+        
+
         <div class="input-group mb-3">
         <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
         <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
