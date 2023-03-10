@@ -10,22 +10,22 @@
                         <div class="flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                               <%= link_to "Dashboard", mainportal_admindashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                                <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link active nav-btn main-elements" id='active-tab'>Statistics</a>
+                             <%= link_to "Statistics", mainportal_chairmanStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
-                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
-
                 </div>
+
                     <div>
                     </div>
                     <ul class="navbar-nav ms-auto">
@@ -42,7 +42,66 @@
 
         </nav>
 
+
 <div class="container">
+<%# the content section is coded here %>
+    <div id="content">
+        <div id="current-tab">
+            <h2 class="fw-bold" id="tab-name">Chairman Dashboard</h2>
+        </div>
+        <%# the mini-cards coded here %>
+        <div id="mini-cards">
+            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <div id="icon-content">
+                        <%=image_tag 'approval', class:"mini-card-icon" %>
+                    </div>
+                </div>
+            </div>
+            <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+            <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Primary card title</h5>
+                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                </div>
+            </div>
+        </div>
 
         <div id="chart" class="mt-5 mb-3">
             <div id="stats">
@@ -55,6 +114,7 @@
                         var array=[]
                         for(let i=1; i<2; i++){
                             "<%@equipment=EquipmentTable.all.each do |equip|%> "
+                            
                             "<%end%>"
                         }
                     return array;

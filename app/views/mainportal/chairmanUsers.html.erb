@@ -1,0 +1,90 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                            <%= link_to "Statistics", mainportal_chairmanStats_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-btn main-elements" id="active-tab">Models</a>
+                            </li>
+                            <div id="model-list-active">
+                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element", id:'active-tab-1' %>
+                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element" %>
+                            </div>
+                        </ul>
+
+                </div>
+                    <div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="admin-mail">
+                            <a class="nav-link" href="#">admin@mail</a>
+                        </li>
+                        <li class="nav-item" id="logout">
+                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+
+        </nav>
+<div class="container">
+
+
+ <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold" id="tab-name">Maintainers</h2>
+        </div>
+
+
+        <div id="slot-details">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-light">
+                        <th scope="col" id="application-no">User Name</th>
+                        <th scope="col" id="name">12-3-2023</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1	</th>
+                        <td>XRD</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+<script>
+
+    let model = document.getElementById('model');
+    let modellist = document.getElementById('model-list');
+
+    model.addEventListener('click', ()=> {
+        modellist.classList.toggle('vis');
+        modellist.classList.toggle('flex');
+        model.classList.toggle('model-black');
+
+    })
+</script>

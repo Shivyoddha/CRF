@@ -10,7 +10,7 @@
                         <div class="flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                               <%= link_to "Dashboard", mainportal_admindashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                               <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-element" %>
                             </li>
                             <li class="nav-item">
                             <a class="nav-link active nav-btn main-elements" id='active-tab'>Statistics</a>
@@ -19,9 +19,9 @@
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
-                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
 

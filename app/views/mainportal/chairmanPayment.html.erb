@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "adminportal" %>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
                     <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,18 +10,18 @@
                         <div class="flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
+                                <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link active nav-btn main-elements" href="#stats">Statistics</a>
+                            <%= link_to "Statistics", mainportal_chairmanStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active nav-btn main-elements" id="model">Models</a>
+                                <a class="nav-link active nav-btn main-elements" id="active-tab">Models</a>
                             </li>
-                            <div id="model-list" class="vis">
-                                <%= link_to "Users", mainportal_admindashboard_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                            <div id="model-list-active">
+                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element", id:'active-tab-1' %>
                             </div>
                         </ul>
 
@@ -53,7 +53,7 @@
         <div id="mini-cards">
             <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <div id="icon-content">
                         <%=image_tag 'approval', class:"mini-card-icon" %>
                     </div>
@@ -61,43 +61,43 @@
             </div>
             <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-info mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
             <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title fw-bold">Primary card title</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
@@ -114,7 +114,6 @@
                         var array=[]
                         for(let i=1; i<2; i++){
                             "<%@equipment=EquipmentTable.all.each do |equip|%> "
-                            
                             "<%end%>"
                         }
                     return array;
@@ -163,17 +162,3 @@
 
 
 </div>
-
-
-<script>
-
-    let model = document.getElementById('model');
-    let modellist = document.getElementById('model-list');
-
-    model.addEventListener('click', ()=> {
-        modellist.classList.toggle('vis');
-        modellist.classList.toggle('flex');
-        model.classList.toggle('model-black');
-
-    })
-</script>
