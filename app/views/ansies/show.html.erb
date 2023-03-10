@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sysno:</strong>
+  <%= @ansy.sysno %>
+</p>
+
+<p>
+  <strong>Slotdate:</strong>
+  <%= @ansy.slotdate %>
+</p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @ansy.purpose %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @ansy.amount %>
+</p>
+
+<p>
+  <strong>Debit:</strong>
+  <%= @ansy.debit %>
+</p>
+
+<%= link_to 'Edit', edit_ansy_path(@ansy) %> |
+<%= link_to 'Back', ansies_path %>
