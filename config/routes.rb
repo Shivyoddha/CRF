@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'mainpage#landing'
+  resources :ansies
   resources :equipment_tables
   resources :lasers
   resources :three_d_scanners
@@ -47,12 +49,21 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+    get 'mainportal/admindashboard'
+    get 'mainportal/adminModelUsers'
+    get 'mainportal/adminModelEquip'
+    get 'mainportal/adminModelPayment'
+    get 'mainportal/adminStats'
+    get 'mainportal/chairmanDashboard'
+    get 'mainportal/chairmanStats'
+    get 'mainportal/chairmanEquip'
+    get 'mainportal/chairmanPayment'
+    get 'mainportal/chairmanUsers'
+    get 'mainpage/landing'
     get 'home/index'
     get 'home/anish'
     get 'know/xrd'
     get 'records/record'
-    get 'admin_portal/admindashboard'
-    get 'admin_portal/slotdashboard'
 
     get 'home/mainPage'
 
@@ -265,6 +276,11 @@ Rails.application.routes.draw do
     get 'slotbooker/laser3'
     get 'slotbooker/laser4'
     get 'slotbooker/ftnmr'
+    get 'slotbooker/low'
+    get 'slotbooker/low1'
+    get 'slotbooker/low2'
+    get 'slotbooker/low3'
+    get 'slotbooker/low4'
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'
@@ -318,10 +334,9 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
-    get 'home/email'
-    devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  #   devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
   devise_scope :user do
      get '/users/sign_out' => 'devise/sessions#destroy'
   end

@@ -1,0 +1,119 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                               <%= link_to "Dashboard", mainportal_admindashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link active nav-btn main-elements" id='active-tab'>Statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-btn main-elements" id="model">Models</a>
+                            </li>
+                            <div id="model-list" class="vis">
+                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                            </div>
+                        </ul>
+
+                </div>
+                    <div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="admin-mail">
+                            <a class="nav-link" href="#">admin@mail</a>
+                        </li>
+                        <li class="nav-item" id="logout">
+                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+
+        </nav>
+
+<div class="container">
+
+        <div id="chart" class="mt-5 mb-3">
+            <div id="stats">
+                <h2 class="fw-bold">Statistics</h2>
+            </div>
+                <canvas id="myChart" class="">  </canvas>
+
+                <script>
+                    function myFunction() {
+                        var array=[]
+                        for(let i=1; i<2; i++){
+                            "<%@equipment=EquipmentTable.all.each do |equip|%> "
+                            "<%end%>"
+                        }
+                    return array;
+                    }
+                    var xValues = myFunction();
+                    var yValues = [55, 49, 44, 70, 65];
+                    var barColors = [
+                    "#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#e8c3b9",
+                    "#1e7145"
+                    ];
+
+                    new Chart("myChart", {
+                    type: "pie",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                        }]
+                    },
+                        options: {
+
+                            title: {
+                            display: true,
+                            text: "World Wide Wine Production 2018",
+                            plugins: {
+                                legend: {
+                                    labels: {
+                                        // This more specific font property overrides the global property
+                                        font: {
+                                            size: 16
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                </script>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    let model = document.getElementById('model');
+    let modellist = document.getElementById('model-list');
+
+    model.addEventListener('click', ()=> {
+        modellist.classList.toggle('vis');
+        modellist.classList.toggle('flex');
+        model.classList.toggle('model-black');
+
+    })
+</script>

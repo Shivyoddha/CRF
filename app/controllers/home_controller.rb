@@ -48,7 +48,7 @@ class HomeController < ApplicationController
          format.html
          format.pdf do
            render pdf: "ShriRam",
-                  template: "home/anish",
+                  template: "slot_mailer/milli_q_payment",
                   formats: [:html],
                   disposition: :inline,
                   layout: 'pdf'

@@ -43,7 +43,11 @@ class IonChromotographiesController < ApplicationController
     @ion_chromotography.status="alloted"
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
+        if @ion_chromotography.amount == nil
         IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentIonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_ionc_path(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else

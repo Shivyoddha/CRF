@@ -24,6 +24,45 @@ class MilliQsController < ApplicationController
     @milli_q = MilliQ.new(milli_q_params)
     @milli_q.user=current_user
     @milli_q.status="pending"
+
+     # @milli_q.amount1=0
+     # @milli_q.amount2=0
+    # 'Student','Faculty','R & D Professional','Industry Professional','Entrepreneur'
+    if @milli_q.user.profession=='student'||@milli_q.user.profession=='Faculty'
+         if @milli_q.volumeone.present?
+         @milli_q.amount1 = (300.0)*@milli_q.volumeone
+       end
+       if @milli_q.volumetwo.present?
+        @milli_q.amount2= (200.0)*@milli_q.volumetwo
+      end
+    end
+    if @milli_q.user.profession=='R & D Professional'
+        if @milli_q.volumeone.present?
+         @milli_q.amount1 = (450.0)*@milli_q.volumeone
+       end
+         if @milli_q.volumetwo.present?
+         @milli_q.amount2= (300.0)*@milli_q.volumetwo
+       end
+    end
+    if @milli_q.user.profession=='Industry Professional'|| @milli_q.user.profession=='Entrepreneur'
+         if @milli_q.volumeone.present?
+         @milli_q.amount1 = ( 1200.0)*@milli_q.volumeone
+       end
+          if @milli_q.volumeone.present?
+         @milli_q.amount2= (800)*@milli_q.volumetwo
+       end
+    end
+       # @milli_q.amounttotal=0
+       #
+         if @milli_q.volumeone.blank?
+           @milli_q.amount1=0
+         end
+         if @milli_q.volumeone.blank?
+           @milli_q.amount2=0
+         end
+         @milli_q.amounttotal = @milli_q.amount1 + @milli_q.amount2
+
+
     respond_to do |format|
       if @milli_q.save
         MilliQMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
@@ -41,7 +80,11 @@ class MilliQsController < ApplicationController
       @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)
+        if @milli_q.amount == nil
         MilliQAllotedMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentMilliQMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_milli_path(@milli_q), notice: "Milli q was successfully updated." }
         format.json { render :show, status: :ok, location: @milli_q }
       else
@@ -69,6 +112,6 @@ class MilliQsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def milli_q_params
-      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, references: [])
     end
 end

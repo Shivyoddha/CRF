@@ -1,5 +1,5 @@
 class SlotbookerController < ApplicationController
-
+load_and_authorize_resource :class => false
 
 def xrd
   @xrd=Xrd.all
@@ -619,11 +619,34 @@ end
 def ftnmr
 
 end
+def ftnmr1
 
+end
+def ftnmr2
+
+end
+def ftnmr3
+
+end
+def ftnmr4
+
+end
 
 
  def low
-   @low_fatigues = LowFatigue.all
+   @low = LowFatigue.all
+ end
+ def low1
+   @low1 = LowFatigue.all
+ end
+ def low2
+   @low2 = LowFatigue.all
+ end
+ def low3
+   @low3 = LowFatigue.all
+ end
+ def low4
+   @low4 = LowFatigue.all
  end
 
 end

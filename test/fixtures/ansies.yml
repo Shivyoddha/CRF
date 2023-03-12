@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sysno: 1
+  slotdate: MyString
+  purpose: MyText
+  amount: 1.5
+  debit: MyString
+
+two:
+  sysno: 1
+  slotdate: MyString
+  purpose: MyText
+  amount: 1.5
+  debit: MyString

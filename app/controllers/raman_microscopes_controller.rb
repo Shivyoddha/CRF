@@ -42,7 +42,11 @@ class RamanMicroscopesController < ApplicationController
     @raman_microscope.status="alloted"
     respond_to do |format|
       if @raman_microscope.update(raman_microscope_params)
+        if @raman_microscope.amount == nil
         RamanMicroscopeAllotedMailer.with(id:@raman_microscope.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentRamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_raman_path(@raman_microscope), notice: "Raman microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @raman_microscope }
       else

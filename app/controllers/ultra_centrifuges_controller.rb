@@ -41,7 +41,11 @@ class UltraCentrifugesController < ApplicationController
       @ultra_centrifuge.status="alloted"
     respond_to do |format|
       if @ultra_centrifuge.update(ultra_centrifuge_params)
+        if @ultra_centrifuge.amount == nil
         UltraCentrifugeAllotedMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentUltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_centrifuge_path(@ultra_centrifuge), notice: "Ultra centrifuge was successfully updated." }
         format.json { render :show, status: :ok, location: @ultra_centrifuge }
       else

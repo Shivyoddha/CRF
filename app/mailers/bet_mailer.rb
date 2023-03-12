@@ -19,7 +19,7 @@ class BetMailer < ApplicationMailer
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",
-            locals:{ball_mailing:@bet,user:@user}
+            locals:{bet:@bet,user:@user}
           )
 
   end

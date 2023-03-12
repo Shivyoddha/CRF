@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_10_114750) do
+ActiveRecord::Schema.define(version: 2023_03_09_171925) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
+  create_table "ansies", force: :cascade do |t|
+    t.integer "sysno"
+    t.string "slotdate"
+    t.text "purpose"
+    t.float "amount"
+    t.string "debit"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "atomic_force_microscopes", force: :cascade do |t|
     t.integer "sample"
     t.string "stype"
@@ -77,10 +87,7 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.string "debit"
-    t.time "slottime"
-    t.date "slotdate"
+
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -567,6 +574,7 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.float "amount"
     t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
@@ -640,6 +648,9 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "projectfund"
     t.integer "user_id"
+    t.float "amount1"
+    t.float "amount2"
+    t.float "amounttotal"
     t.index ["user_id"], name: "index_milli_qs_on_user_id"
   end
 
@@ -667,12 +678,6 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
-  end
-
-  create_table "nameps", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "probe_sonicators", force: :cascade do |t|
@@ -885,8 +890,8 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -948,7 +953,7 @@ ActiveRecord::Schema.define(version: 2023_03_10_114750) do
     t.string "status"
     t.time "slottime"
     t.date "slotdate"
-    t.string "amount"
+    t.float "amount"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
