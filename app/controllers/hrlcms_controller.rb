@@ -14,6 +14,7 @@ class HrlcmsController < ApplicationController
   def new
     @hrlcm = Hrlcm.new
     @user=User.find(params[:id])
+    @hrlcm.build_equipment_table
   end
 
   # GET /hrlcms/1/edit
@@ -25,6 +26,7 @@ class HrlcmsController < ApplicationController
     @hrlcm = Hrlcm.new(hrlcm_params)
     @hrlcm.user=current_user
     @hrlcm.status="pending"
+    @hrlcm.build_equipment_table
 
     respond_to do |format|
       if @hrlcm.save
@@ -41,6 +43,8 @@ class HrlcmsController < ApplicationController
   # PATCH/PUT /hrlcms/1 or /hrlcms/1.json
   def update
     @hrlcm.status="alloted"
+    @hrlcm.build_equipment_table
+
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
         if @hrlcm.amount == nil
@@ -75,6 +79,6 @@ class HrlcmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hrlcm_params
-      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :health, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id,references: [])
+      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :health, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
     end
 end

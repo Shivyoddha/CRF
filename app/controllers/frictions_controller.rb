@@ -14,6 +14,8 @@ class FrictionsController < ApplicationController
   def new
     @friction = Friction.new
     @user=User.find(params[:id])
+    @friction.build_equipment_table
+
   end
 
   # GET /frictions/1/edit
@@ -25,6 +27,7 @@ class FrictionsController < ApplicationController
     @friction = Friction.new(friction_params)
     @friction.user=current_user
     @friction.status="pending"
+    @friction.build_equipment_table
 
 
     respond_to do |format|
@@ -42,6 +45,7 @@ class FrictionsController < ApplicationController
   # PATCH/PUT /frictions/1 or /frictions/1.json
   def update
       @friction.status="alloted"
+      @friction.build_equipment_table
     respond_to do |format|
       if @friction.update(friction_params)
         if @friction.amount == nil
@@ -76,6 +80,6 @@ class FrictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friction_params
-      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id, references: [])
+      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

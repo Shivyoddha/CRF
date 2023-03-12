@@ -13,6 +13,8 @@ class GasSensingsController < ApplicationController
   # GET /gas_sensings/new
   def new
     @gas_sensing = GasSensing.new
+    @gas_sensing.build_equipment_table
+
   end
 
   # GET /gas_sensings/1/edit
@@ -24,6 +26,8 @@ class GasSensingsController < ApplicationController
     @gas_sensing = GasSensing.new(gas_sensing_params)
     @gas_sensing.user=current_user
     @gas_sensing.status="pending"
+    @gas_sensing.build_equipment_table
+
     respond_to do |format|
       if @gas_sensing.save
         GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
@@ -39,6 +43,7 @@ class GasSensingsController < ApplicationController
   # PATCH/PUT /gas_sensings/1 or /gas_sensings/1.json
   def update
     @gas_sensing.status="alloted"
+    @gas_sensing.build_equipment_table
     respond_to do |format|
       if @gas_sensing.update(gas_sensing_params)
         if @gas_sensing.amount == nil
@@ -73,6 +78,6 @@ class GasSensingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gas_sensing_params
-      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

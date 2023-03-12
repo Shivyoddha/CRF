@@ -14,6 +14,8 @@ class GlowsController < ApplicationController
   def new
     @glow = Glow.new
     @user=User.find(params[:id])
+    @glow.build_equipment_table
+
   end
 
   # GET /glows/1/edit
@@ -25,6 +27,7 @@ class GlowsController < ApplicationController
     @glow = Glow.new(glow_params)
     @glow.user=current_user
     @glow.status="pending"
+    @glow.build_equipment_table
 
     respond_to do |format|
       if @glow.save
@@ -41,6 +44,8 @@ class GlowsController < ApplicationController
   # PATCH/PUT /glows/1 or /glows/1.json
   def update
     @glow.status="alloted"
+    @glow.build_equipment_table
+
     respond_to do |format|
       if @glow.update(glow_params)
         if @glow.amount == nil
@@ -75,6 +80,6 @@ class GlowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glow_params
-      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,references: [])
+      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
     end
 end

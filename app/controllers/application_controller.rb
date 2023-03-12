@@ -6,14 +6,15 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    after_action :faculty_mail, only: [:create]
 
+    after_action :faculty_mail, if: :devise_controller?, only: [:create]
 
     def faculty_mail
       if resource_name == :user && resource.persisted?
         FacultyMailer.with(id:current_user.id).Mail.deliver_later
       end
     end
+
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || home_index_path
@@ -28,5 +29,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end
+
+
+
+
 
 end

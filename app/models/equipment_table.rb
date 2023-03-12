@@ -10,5 +10,24 @@ class EquipmentTable < ApplicationRecord
   belongs_to :ball_mailing, optional: true
   belongs_to :atomic_force_microscope, optional: true
   belongs_to :advance_molecular_rheometer, optional: true
+  belongs_to :five_axi, optional: true
+  belongs_to :friction, optional: true
+  belongs_to :gait, optional: true
+  belongs_to :gas_sensing, optional: true
+  belongs_to :glove_box, optional: true
+  belongs_to :glow, optional: true
+  belongs_to :grinding, optional: true
+  belongs_to :high_temp_vaccum, optional: true
+  belongs_to :hrlcm, optional: true
+  belongs_to :icp_m, optional: true
+  belongs_to :impedance_analy, optional: true
+  belongs_to :integrated_multi_role_tester, optional: true
+  belongs_to :ion_chromotography, optional: true
+  belongs_to :laser, optional: true
+  belongs_to :liquid_nitrogen, optional: true
+  belongs_to :low_fatigue, optional: true
+  belongs_to :micro_edm, optional: true
+  belongs_to :milli_q, optional: true
+  belongs_to :multi_impact_tester, optional: true
 
 end

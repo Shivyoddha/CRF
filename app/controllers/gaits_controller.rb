@@ -14,6 +14,8 @@ class GaitsController < ApplicationController
   def new
     @gait = Gait.new
     @user=User.find(params[:id])
+    @gait.build_equipment_table
+
   end
 
   # GET /gaits/1/edit
@@ -25,6 +27,8 @@ class GaitsController < ApplicationController
    @gait = Gait.new(gait_params)
     @gait.user=current_user
     @gait.status="pending"
+    @gait.build_equipment_table
+
 
     respond_to do |format|
       if @gait.save
@@ -41,6 +45,7 @@ class GaitsController < ApplicationController
   # PATCH/PUT /gaits/1 or /gaits/1.json
   def update
       @gait.status="alloted"
+      @gait.build_equipment_table
     respond_to do |format|
       if @gait.update(gait_params)
         if @gait.amount == nil
@@ -75,6 +80,6 @@ class GaitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gait_params
-      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id,ethicals: [], prescrptions: [],clinicals: [], references: [])
+      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],ethicals: [], prescrptions: [],clinicals: [], references: [])
     end
 end

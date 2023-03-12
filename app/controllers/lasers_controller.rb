@@ -13,6 +13,8 @@ class LasersController < ApplicationController
   # GET /lasers/new
   def new
     @laser = Laser.new
+    @laser.build_equipment_table
+
   end
 
   # GET /lasers/1/edit
@@ -24,6 +26,8 @@ class LasersController < ApplicationController
     @laser = Laser.new(laser_params)
     @laser.user=current_user
     @laser.status="pending"
+    @laser.build_equipment_table
+
     respond_to do |format|
       if @laser.save
         format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
@@ -38,6 +42,8 @@ class LasersController < ApplicationController
   # PATCH/PUT /lasers/1 or /lasers/1.json
   def update
     @laser.status="alloted"
+    @laser.build_equipment_table
+
     respond_to do |format|
       if @laser.update(laser_params)
         format.html { redirect_to slotbooker_laser_path(@laser), notice: "Laser was successfully updated." }
@@ -67,6 +73,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

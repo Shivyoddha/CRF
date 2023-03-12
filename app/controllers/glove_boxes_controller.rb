@@ -13,6 +13,8 @@ class GloveBoxesController < ApplicationController
   # GET /glove_boxes/new
   def new
     @glove_box = GloveBox.new
+    @glove_box.build_equipment_table
+
   end
 
   # GET /glove_boxes/1/edit
@@ -24,6 +26,8 @@ class GloveBoxesController < ApplicationController
     @glove_box = GloveBox.new(glove_box_params)
     @glove_box.user=current_user
     @glove_box.status="pending"
+    @glove_box.build_equipment_table
+
     respond_to do |format|
       if @glove_box.save
         GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
@@ -39,6 +43,8 @@ class GloveBoxesController < ApplicationController
   # PATCH/PUT /glove_boxes/1 or /glove_boxes/1.json
   def update
       @glove_box.status="alloted"
+      @glove_box.build_equipment_table
+
     respond_to do |format|
       if @glove_box.update(glove_box_params)
         if @glove_box.amount == nil
@@ -73,6 +79,6 @@ class GloveBoxesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glove_box_params
-      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end
