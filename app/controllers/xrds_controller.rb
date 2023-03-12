@@ -4,7 +4,6 @@ class XrdsController < ApplicationController
   # GET /xrds or /xrds.json
   def index
     @xrds = Xrd.all
-
   end
 
   # GET /xrds/1 or /xrds/1.json

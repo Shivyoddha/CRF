@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_07_182546) do
+ActiveRecord::Schema.define(version: 2023_03_10_114750) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -904,7 +904,9 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.integer "faculty_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -1026,6 +1028,7 @@ ActiveRecord::Schema.define(version: 2023_03_07_182546) do
   add_foreign_key "three_d_scanners", "users"
   add_foreign_key "tribometers", "users"
   add_foreign_key "ultra_centrifuges", "users"
+  add_foreign_key "users", "faculties"
   add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
   add_foreign_key "zeta_potential_sizes", "users"

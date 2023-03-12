@@ -318,6 +318,7 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
+    get 'home/email'
     devise_scope :user do
     root to: "devise/sessions#new"
   end
