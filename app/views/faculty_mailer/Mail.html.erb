@@ -1,0 +1,11 @@
+<%= form_for @user, url: registration_path(@user) do |form| %>
+<div class="input-group mb-3">
+  <%= form.label :lastname, "Admin", class:"input-group-text"%>
+  <%= form.text_field :lastname, class:"form-control", value: "shetttyyyyyyy"%>
+
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+  </div>
+
+  <%end%>
+</div>

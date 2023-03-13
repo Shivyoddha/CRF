@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_09_171925) do
+ActiveRecord::Schema.define(version: 2023_03_10_114750) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -87,10 +87,10 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-=======
-
->>>>>>> 515df0cf44554f84f069b22bbffaaba56a090db7
+    t.string "status"
+    t.string "debit"
+    t.time "slottime"
+    t.date "slotdate"
     t.integer "user_id"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -683,6 +683,12 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
+  create_table "nameps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "probe_sonicators", force: :cascade do |t|
     t.integer "sample"
     t.float "size"
@@ -893,8 +899,8 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "department"
@@ -912,12 +918,9 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
-    t.string "encrypted_otp_secret"
-    t.string "encrypted_otp_secret_iv"
-    t.string "encrypted_otp_secret_salt"
-    t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
+    t.integer "faculty_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -959,7 +962,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
     t.string "status"
     t.time "slottime"
     t.date "slotdate"
-    t.float "amount"
+    t.string "amount"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
@@ -1039,6 +1042,7 @@ ActiveRecord::Schema.define(version: 2023_03_09_171925) do
   add_foreign_key "three_d_scanners", "users"
   add_foreign_key "tribometers", "users"
   add_foreign_key "ultra_centrifuges", "users"
+  add_foreign_key "users", "faculties"
   add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
   add_foreign_key "zeta_potential_sizes", "users"
