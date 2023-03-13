@@ -136,25 +136,6 @@
                                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                        <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
-
-                                     <%=form.fields_for :equipment_table do |f| %>
-                                      <div class="input-group mb-3">
-                                         <%= f.hidden_field :app_no, value:"CRF/TRIB/#{trib.id}"%>
-                                       </div>
-
-                                      <div class="input-group mb-3">
-                                        <%= f.hidden_field :username, value:"#{trib.user.name}"%>
-                                     </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :dummy, value:"#{trib.status}"%>
-                                    </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :debit_head, value:"#{trib.debit}" %>
-                                    </div>
-
-                                     <%end%>
                                       <%=trib.id%>
 
                                        <div class="actions">
@@ -162,6 +143,10 @@
 
                                        </div>
                                      <% end %>
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-primary">Cancel Slot</button>
                                    </div>
                                </div>
                            </div>

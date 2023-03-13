@@ -46,7 +46,11 @@ class BetsController < ApplicationController
 
     respond_to do |format|
       if @bet.update(bet_params)
+        if @xrd.amount == nil
         BetAllotedMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+       else
+        PaymentBetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+       end
         format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else
@@ -74,6 +78,6 @@ class BetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
     end
 end

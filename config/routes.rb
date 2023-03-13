@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     get 'home/anish'
     get 'know/xrd'
     get 'records/record'
-    post 'payment/paymentU'
+
     get 'home/mainPage'
 
 

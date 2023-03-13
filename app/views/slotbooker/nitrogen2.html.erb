@@ -100,8 +100,8 @@
 
                       <td><%= nitrogen.status%></td>
 
-
-                      <td id="assign-btn">
+                
+                  <td id="assign-btn">
                       <!-- Button trigger modal -->
                        <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{nitrogen.id}" }, id: "ani" %>
                        <div id="<%= nitrogen.id%>" class="modal">
@@ -124,28 +124,17 @@
                                  <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                </div>
+                                <%=nitrogen.id%>
 
-                               <%=form.fields_for :equipment_table do |f| %>
-                                <div class="input-group mb-3">
-                                   <%= f.hidden_field :app_no, value:"CRF/NITROGEN/#{nitrogen.id}"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :username, value:"#{nitrogen.user.name}"%>
-                               </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :dummy, value:"#{nitrogen.status}"%>
-                              </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :debit_head, value:"#{nitrogen.debit}" %>
-                              </div>
-                               <%end%>
                                  <div class="actions">
                                    <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
                                  </div>
                                <% end %>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary">Cancel Slot</button>
                              </div>
                          </div>
                      </div>

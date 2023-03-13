@@ -13,8 +13,6 @@ class LiquidNitrogensController < ApplicationController
   def new
     @liquid_nitrogen = LiquidNitrogen.new
     @user = User.find(params[:id])
-    @liquid_nitrogen.build_equipment_table
-
   end
 
   # GET /liquid_nitrogens/1/edit
@@ -25,8 +23,8 @@ class LiquidNitrogensController < ApplicationController
   def create
     @liquid_nitrogen = LiquidNitrogen.new(liquid_nitrogen_params)
     @liquid_nitrogen.user = current_user
+
     @liquid_nitrogen.status="pending"
-    @liquid_nitrogen.build_equipment_table
 
     if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='Faculty'
          @liquid_nitrogen.amount = (60.0)*@liquid_nitrogen.quantity
@@ -49,11 +47,13 @@ class LiquidNitrogensController < ApplicationController
   # PATCH/PUT /liquid_nitrogens/1 or /liquid_nitrogens/1.json
   def update
     @liquid_nitrogen.status="alloted"
-    @liquid_nitrogen.build_equipment_table
-
     respond_to do |format|
       if @liquid_nitrogen.update(liquid_nitrogen_params)
+        if @liquid_nitrogen.amount == nil
         LiquidNitrogenAllotedMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentLiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_nitrogen_path(@liquid_nitrogen), notice: "Liquid nitrogen was successfully updated." }
         format.json { render :show, status: :ok, location: @liquid_nitrogen }
       else
@@ -81,6 +81,6 @@ class LiquidNitrogensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def liquid_nitrogen_params
-      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] )
+      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount)
     end
 end

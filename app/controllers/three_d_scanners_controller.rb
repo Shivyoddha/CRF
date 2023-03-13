@@ -13,8 +13,6 @@ class ThreeDScannersController < ApplicationController
   # GET /three_d_scanners/new
   def new
     @three_d_scanner = ThreeDScanner.new
-    @three_d_scanner.build_equipment_table
-
   end
 
   # GET /three_d_scanners/1/edit
@@ -26,8 +24,6 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner = ThreeDScanner.new(three_d_scanner_params)
     @three_d_scanner.user=current_user
     @three_d_scanner.status="pending"
-    @three_d_scanner.build_equipment_table
-
     respond_to do |format|
       if @three_d_scanner.save
         ThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
@@ -43,12 +39,13 @@ class ThreeDScannersController < ApplicationController
   # PATCH/PUT /three_d_scanners/1 or /three_d_scanners/1.json
   def update
     @three_d_scanner.status="alloted"
-    @three_d_scanner.build_equipment_table
-
     respond_to do |format|
       if @three_d_scanner.update(three_d_scanner_params)
         if @three_d_scanner.amount == nil
         ThreeDScannerAllotedMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_threescanner_path(@three_d_scanner), notice: "Three d scanner was successfully updated." }
         format.json { render :show, status: :ok, location: @three_d_scanner }
       else
@@ -76,6 +73,6 @@ class ThreeDScannersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_scanner_params
-      params.require(:three_d_scanner).permit(:sample, :size, :texture, :ply, :stt, :wrl, :obj, :asc, :aop, :ptx, :xyzrgb, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+      params.require(:three_d_scanner).permit(:sample, :size, :texture, :ply, :stt, :wrl, :obj, :asc, :aop, :ptx, :xyzrgb, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end
