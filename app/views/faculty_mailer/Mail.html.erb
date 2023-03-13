@@ -1,7 +1,7 @@
-<%= form_for @user, url: registration_path(@user) do |form| %>
+<%= form_for @user, url: home_index_url, remote: true do |form| %>
 <div class="input-group mb-3">
-  <%= form.label :lastname, "Admin", class:"input-group-text"%>
-  <%= form.text_field :lastname, class:"form-control", value: "shetttyyyyyyy"%>
+  <%= form.label :admin_role, "Admin", class:"input-group-text"%>
+  <%= form.text_field :admin_role, class:"form-control", value: true%>
 
   <div class="actions">
     <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
