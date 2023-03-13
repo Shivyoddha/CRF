@@ -5,17 +5,6 @@ class ApplicationController < ActionController::Base
         format.html { redirect_to root_path, alert: exception.message }
       end
     end
-
-
-    after_action :faculty_mail, if: :devise_controller?, only: [:create]
-
-    def faculty_mail
-      if resource_name == :user && resource.persisted?
-        FacultyMailer.with(id:current_user.id).Mail.deliver_later
-      end
-    end
-
-
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || home_index_path
   end
