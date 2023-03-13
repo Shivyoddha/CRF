@@ -158,21 +158,10 @@
                     <%= f.hidden_field :debit_head, value:"#{fesemjs.debit}" %>
                  </div>
 
-
-                 <div class="input-group mb-3">
-                    <%= f.hidden_field :dept, value:"#{fesemjs.user.department}" %>
-                 </div>
-
-                 <div class="input-group mb-3">
-                   <%= f.hidden_field :email, value:"#{fesemjs.user.email}" %>
-                </div>
-
-                 <div class="input-group mb-3">
-                   <%= f.hidden_field :equipname, value:"fesemj" %>
-                </div>
-
                   <%end%>
 
+
+                  <%=fesemjs.id%>
 
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

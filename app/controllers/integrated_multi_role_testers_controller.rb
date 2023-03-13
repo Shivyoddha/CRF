@@ -13,8 +13,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
   # GET /integrated_multi_role_testers/new
   def new
     @integrated_multi_role_tester = IntegratedMultiRoleTester.new
-    @integrated_multi_role_tester.build_equipment_table
-
   end
 
   # GET /integrated_multi_role_testers/1/edit
@@ -26,8 +24,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester = IntegratedMultiRoleTester.new(integrated_multi_role_tester_params)
     @integrated_multi_role_tester.user=current_user
     @integrated_multi_role_tester.status="pending"
-    @integrated_multi_role_tester.build_equipment_table
-
     respond_to do |format|
       if @integrated_multi_role_tester.save
         IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
@@ -43,11 +39,13 @@ class IntegratedMultiRoleTestersController < ApplicationController
   # PATCH/PUT /integrated_multi_role_testers/1 or /integrated_multi_role_testers/1.json
   def update
     @integrated_multi_role_tester.status="alloted"
-    @integrated_multi_role_tester.build_equipment_table
-
     respond_to do |format|
       if @integrated_multi_role_tester.update(integrated_multi_role_tester_params)
+        if @integrated_multi_role_tester.amount == nil
         IntegratedMultiRoleTesterAllotedMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentIntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_integrated_path(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully updated." }
         format.json { render :show, status: :ok, location: @integrated_multi_role_tester }
       else
@@ -75,6 +73,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def integrated_multi_role_tester_params
-      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end

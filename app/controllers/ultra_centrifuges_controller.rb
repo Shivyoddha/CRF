@@ -13,8 +13,6 @@ class UltraCentrifugesController < ApplicationController
   # GET /ultra_centrifuges/new
   def new
     @ultra_centrifuge = UltraCentrifuge.new
-    @ultra_centrifuge.build_equipment_table
-
   end
 
   # GET /ultra_centrifuges/1/edit
@@ -25,9 +23,7 @@ class UltraCentrifugesController < ApplicationController
   def create
     @ultra_centrifuge = UltraCentrifuge.new(ultra_centrifuge_params)
     @ultra_centrifuge.user=current_user
-    @ultra_centrifuge.status="pending"
-    @ultra_centrifuge.build_equipment_table
-
+      @ultra_centrifuge.status="pending"
     respond_to do |format|
       if @ultra_centrifuge.save
         UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
@@ -43,11 +39,13 @@ class UltraCentrifugesController < ApplicationController
   # PATCH/PUT /ultra_centrifuges/1 or /ultra_centrifuges/1.json
   def update
       @ultra_centrifuge.status="alloted"
-      @ultra_centrifuge.build_equipment_table
-
     respond_to do |format|
       if @ultra_centrifuge.update(ultra_centrifuge_params)
+        if @ultra_centrifuge.amount == nil
         UltraCentrifugeAllotedMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentUltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_centrifuge_path(@ultra_centrifuge), notice: "Ultra centrifuge was successfully updated." }
         format.json { render :show, status: :ok, location: @ultra_centrifuge }
       else
@@ -75,6 +73,6 @@ class UltraCentrifugesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ultra_centrifuge_params
-      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,references: [])
     end
 end

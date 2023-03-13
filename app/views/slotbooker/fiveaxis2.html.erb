@@ -145,25 +145,6 @@
                                  <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                </div>
-
-                               <%=form.fields_for :equipment_table do |f| %>
-                                <div class="input-group mb-3">
-                                   <%= f.hidden_field :app_no, value:"CRF/FIVE/#{fiveaxis2.id}"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :username, value:"#{fiveaxis2.user.name}"%>
-                               </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :dummy, value:"#{fiveaxis2.status}"%>
-                              </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :debit_head, value:"#{fiveaxis2.debit}" %>
-                              </div>
-
-                               <%end%>
                                 <%=fiveaxis2.id%>
 
                                  <div class="actions">

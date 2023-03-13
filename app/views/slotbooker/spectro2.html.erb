@@ -111,7 +111,7 @@
                     <% else %>
                       <td>NA</td>
                     <% end %>
-
+                   
 
                     <td id="assign-btn">
                         <!-- Button trigger modal -->
@@ -136,25 +136,6 @@
                                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                  </div>
-
-                                 <%=form.fields_for :equipment_table do |f| %>
-                                  <div class="input-group mb-3">
-                                     <%= f.hidden_field :app_no, value:"CRF/SPECTRO/#{spectro.id}"%>
-                                   </div>
-
-                                  <div class="input-group mb-3">
-                                    <%= f.hidden_field :username, value:"#{spectro.user.name}"%>
-                                 </div>
-
-                                 <div class="input-group mb-3">
-                                   <%= f.hidden_field :dummy, value:"#{spectro.status}"%>
-                                </div>
-
-                                 <div class="input-group mb-3">
-                                   <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
-                                </div>
-
-                                 <%end%>
                                   <%=spectro.id%>
 
                                    <div class="actions">
@@ -205,7 +186,7 @@
                          </div>
                      </td>
 
-<%end%>
+   <%end%>
                 </tr>
 
             </tbody>
@@ -215,32 +196,32 @@
     </div>
 
 
-</div>
+   </div>
 
 
-</div>
-<script>
-// Get the modals and buttons
-var modal1 = document.getElementByClass("modal");
-var btn1 = document.getElementById("ani");
-var modal2 = document.getElementByClass("modal2");
-var btn2 = document.getElementById("anish");
-// Add event listeners to the buttons
-btn1.addEventListener("click", function() {
-modal1.style.display = "block";
-});
+   </div>
+   <script>
+   // Get the modals and buttons
+   var modal1 = document.getElementByClass("modal");
+   var btn1 = document.getElementById("ani");
+   var modal2 = document.getElementByClass("modal2");
+   var btn2 = document.getElementById("anish");
+   // Add event listeners to the buttons
+   btn1.addEventListener("click", function() {
+   modal1.style.display = "block";
+   });
 
-btn2.addEventListener("click", function() {
-modal2.style.display = "block";
-});
+   btn2.addEventListener("click", function() {
+   modal2.style.display = "block";
+   });
 
-// Close the modal when the user clicks anywhere outside of it
-window.addEventListener("click", function(event) {
-if (event.target == modal1) {
-  modal1.style.display = "none";
-}
-if (event.target == modal2) {
-  modal2.style.display = "none";
-}
-});
-</script>
+   // Close the modal when the user clicks anywhere outside of it
+   window.addEventListener("click", function(event) {
+   if (event.target == modal1) {
+   modal1.style.display = "none";
+   }
+   if (event.target == modal2) {
+   modal2.style.display = "none";
+   }
+   });
+   </script>

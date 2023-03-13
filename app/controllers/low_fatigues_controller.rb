@@ -14,8 +14,6 @@ class LowFatiguesController < ApplicationController
   def new
     @user=User.find(params[:id])
     @low_fatigue = LowFatigue.new
-    @low_fatigue.build_equipment_table
-
   end
 
   # GET /low_fatigues/1/edit
@@ -27,7 +25,6 @@ class LowFatiguesController < ApplicationController
     @low_fatigue = LowFatigue.new(low_fatigue_params)
     @low_fatigue.user=current_user
     @low_fatigue.status="pending"
-    @low_fatigue.build_equipment_table
 
     respond_to do |format|
       if @low_fatigue.save
@@ -45,11 +42,13 @@ class LowFatiguesController < ApplicationController
   # PATCH/PUT /low_fatigues/1 or /low_fatigues/1.json
   def update
     @low_fatigue.status="alloted"
-    @low_fatigue.build_equipment_table
-
     respond_to do |format|
       if @low_fatigue.update(low_fatigue_params)
+        if @low_fatigue.amount == nil
         LowFatigueAllotedMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentLowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully updated." }
         format.json { render :show, status: :ok, location: @low_fatigue }
       else
@@ -77,6 +76,6 @@ class LowFatiguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def low_fatigue_params
-      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id, references: [])
     end
 end

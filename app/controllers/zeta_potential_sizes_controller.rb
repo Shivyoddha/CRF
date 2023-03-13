@@ -13,8 +13,6 @@ class ZetaPotentialSizesController < ApplicationController
   # GET /zeta_potential_sizes/new
   def new
     @zeta_potential_size = ZetaPotentialSize.new
-    @zeta_potential_size.build_equipment_table
-
   end
 
   # GET /zeta_potential_sizes/1/edit
@@ -26,8 +24,6 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size = ZetaPotentialSize.new(zeta_potential_size_params)
     @zeta_potential_size.user=current_user
     @zeta_potential_size.status="pending"
-    @zeta_potential_size.build_equipment_table
-
     respond_to do |format|
       if @zeta_potential_size.save
         ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
@@ -43,11 +39,13 @@ class ZetaPotentialSizesController < ApplicationController
   # PATCH/PUT /zeta_potential_sizes/1 or /zeta_potential_sizes/1.json
   def update
     @zeta_potential_size.status="alloted"
-    @zeta_potential_size.build_equipment_table
-
     respond_to do |format|
       if @zeta_potential_size.update(zeta_potential_size_params)
+        if @zeta_potential_size.amount == nil
         ZetaPotentialSizeAllotedMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
+      else
+        PaymentZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_zeta_path(@zeta_potential_size), notice: "Zeta potential size was successfully updated." }
         format.json { render :show, status: :ok, location: @zeta_potential_size }
       else

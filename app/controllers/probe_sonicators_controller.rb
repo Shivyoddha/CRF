@@ -13,7 +13,6 @@ class ProbeSonicatorsController < ApplicationController
   # GET /probe_sonicators/new
   def new
     @probe_sonicator = ProbeSonicator.new
-    @probe_sonicator.build_equipment_table
   end
 
   # GET /probe_sonicators/1/edit
@@ -25,8 +24,6 @@ class ProbeSonicatorsController < ApplicationController
     @probe_sonicator = ProbeSonicator.new(probe_sonicator_params)
     @probe_sonicator.user=current_user
     @probe_sonicator.status="pending"
-    @probe_sonicator.build_equipment_table
-
     respond_to do |format|
       if @probe_sonicator.save
         ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).Mail.deliver_later
@@ -42,8 +39,6 @@ class ProbeSonicatorsController < ApplicationController
   # PATCH/PUT /probe_sonicators/1 or /probe_sonicators/1.json
   def update
     @probe_sonicator.status="alloted"
-    @probe_sonicator.build_equipment_table
-
     respond_to do |format|
       if @probe_sonicator.update(probe_sonicator_params)
         if @probe_sonicator.amount == nil
@@ -78,6 +73,6 @@ class ProbeSonicatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def probe_sonicator_params
-      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
     end
 end

@@ -6,7 +6,7 @@ class PaymentBetMailer < ApplicationMailer
   #   en.payment_bet_mailer.Mail.subject
   #
   def Mail
-    @equipment_table=EquipmentTable.find(params[:id])
+    @bet=Bet.find(params[:id])
     @user=User.find(params[:userid])
     attachments["Payment.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'payment_pdf/payment_xrd.html.erb', layout: 'pay.html.erb', pdf: 'filename')
@@ -15,11 +15,11 @@ class PaymentBetMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "#{@equipment_table.email}",
+            to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "Payment Details",
-            locals:{equipment_table:@equipment_table,user:@user}
+            locals:{bet:@bet,user:@user}
           )
   end
 end
