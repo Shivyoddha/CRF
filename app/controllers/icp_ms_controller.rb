@@ -14,6 +14,8 @@ class IcpMsController < ApplicationController
   def new
     @user=User.find(params[:id])
     @icp_m = IcpM.new()
+    @icp_m.build_equipment_table
+
   end
 
   # GET /icp_ms/1/edit
@@ -25,6 +27,7 @@ class IcpMsController < ApplicationController
     @icp_m = IcpM.new(icp_m_params)
     @icp_m.user=current_user
     @icp_m.status="pending"
+    @icp_m.build_equipment_table
 
 
     respond_to do |format|
@@ -42,13 +45,10 @@ class IcpMsController < ApplicationController
   # PATCH/PUT /icp_ms/1 or /icp_ms/1.json
   def update
     @icp_m.status="alloted"
+    @icp_m.build_equipment_table
     respond_to do |format|
       if @icp_m.update(icp_m_params)
-        if @icp_m.amount == nil
         IcpMAllotedMailer.with(id:@icp_m.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentIcpMMailer.with(id:@icp_m.id, userid:current_user.id).Mail.deliver_later
-      end
          @icp_m.status="alloted"
         format.html { redirect_to slotbooker_icp_path(@icp_m), notice: "Icp m was successfully updated." }
         format.json { render :show, status: :ok, location: @icp_m }
@@ -77,6 +77,6 @@ class IcpMsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def icp_m_params
-      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id ,references: [])
+      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

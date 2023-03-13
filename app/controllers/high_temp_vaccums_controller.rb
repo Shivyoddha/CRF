@@ -13,6 +13,8 @@ class HighTempVaccumsController < ApplicationController
   # GET /high_temp_vaccums/new
   def new
     @high_temp_vaccum = HighTempVaccum.new
+    @high_temp_vaccum.build_equipment_table
+
   end
 
   # GET /high_temp_vaccums/1/edit
@@ -23,7 +25,8 @@ class HighTempVaccumsController < ApplicationController
   def create
     @high_temp_vaccum = HighTempVaccum.new(high_temp_vaccum_params)
     @high_temp_vaccum.user=current_user
-      @high_temp_vaccum.status="pending"
+    @high_temp_vaccum.status="pending"
+    @high_temp_vaccum.build_equipment_table
     respond_to do |format|
       if @high_temp_vaccum.save
         HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
@@ -39,13 +42,10 @@ class HighTempVaccumsController < ApplicationController
   # PATCH/PUT /high_temp_vaccums/1 or /high_temp_vaccums/1.json
   def update
     @high_temp_vaccum.status="alloted"
+    @high_temp_vaccum.build_equipment_table
     respond_to do |format|
       if @high_temp_vaccum.update(high_temp_vaccum_params)
-        if @high_temp_vaccum.amount == nil
         HighTempVaccumAllotedMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentHighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_highvaccum_path(@high_temp_vaccum), notice: "High temp vaccum was successfully updated." }
         format.json { render :show, status: :ok, location: @high_temp_vaccum }
       else
@@ -73,6 +73,6 @@ class HighTempVaccumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def high_temp_vaccum_params
-      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

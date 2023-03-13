@@ -13,6 +13,8 @@ class ImpedanceAnaliesController < ApplicationController
   # GET /impedance_analies/new
   def new
     @impedance_analy = ImpedanceAnaly.new
+    @impedance_analy.build_equipment_table
+
   end
 
   # GET /impedance_analies/1/edit
@@ -24,6 +26,8 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy = ImpedanceAnaly.new(impedance_analy_params)
     @impedance_analy.user=current_user
     @impedance_analy.status="pending"
+    @impedance_analy.build_equipment_table
+
     respond_to do |format|
       if @impedance_analy.save
         ImpedanceAnalyzerMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
@@ -39,13 +43,11 @@ class ImpedanceAnaliesController < ApplicationController
   # PATCH/PUT /impedance_analies/1 or /impedance_analies/1.json
   def update
       @impedance_analy.status="alloted"
+      @impedance_analy.build_equipment_table
+
     respond_to do |format|
       if @impedance_analy.update(impedance_analy_params)
-        if @impedance_analy.amount == nil
         ImpedanceAnalyzerAllotedMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentImpedanceAnalyzerMailer.with(id:@impedance_analy.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_impdeance_path(@impedance_analy), notice: "Impedance analy was successfully updated." }
         format.json { render :show, status: :ok, location: @impedance_analy }
       else
@@ -73,6 +75,6 @@ class ImpedanceAnaliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id, references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

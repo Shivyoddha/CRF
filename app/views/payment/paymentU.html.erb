@@ -54,7 +54,7 @@
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %> 
+                    <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
             </ul>
         </div>
@@ -71,19 +71,36 @@
         <div id="wrap" class="mt-3">
 
             <div class="mb-3">
+              <%= form_with url: payment_paymentU_path do |form| %>
                 <div class="input-group">
-                    <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>
-                    <input type="text" class="form-control" id="app-no" aria-describedby="basic-addon3" placeholder="CRF/XXX/$$$">
+                  <%= form.label :entry, "ApplNo/Ref. No", class:"input-group-text", id:"app-no-label", for:"app-no"%>
+                  <%= form.text_field :entry, class:"form-control", id:"app-no", placeholder:"CRF/XXX/$$$"%>
                 </div>
+
+                <div class="actions">
+                  <%= form.submit "Check", class:"btn btn-outline-success", id:"sbt-check" %>
+                </div>
+                <%end%>
+
+                <% @equipment.where(dummy:'done').each do |equipment|%>
+               <%if @entry == equipment.app_no %>
+               <%= equipment.app_no %>
+               <br>
+               <%= form_with(model:equipment ,local:true) do |form| %>
+                 <div class="input-group">
+                   <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
+                   <%= form.text_field :pay, class:"form-control", id:"amount", placeholder:"#{equipment.pay}"%>
+                 </div>
+                 <div class="actions mb-3">
+                   <%= form.submit "Edit Fund", class:"btn btn-success", id:"sbt" %>
+                 </div>
+                 <%end%>
+               <%end%>
+               <%end%>
+
             </div>
 
-            <div class="actions mb-3">
-                <button type="submit" class="btn btn-outline-success" id="sbt-check">Check</button>
-            </div>
 
-            <div class="actions mb-3">
-                <button type="submit" class="btn btn-success" id="sbt">Edit Fund</button>
-            </div>
 
 
         </div>

@@ -13,6 +13,8 @@ class MilliQsController < ApplicationController
   # GET /milli_qs/new
   def new
     @milli_q = MilliQ.new
+    @milli_q.build_equipment_table
+
   end
 
   # GET /milli_qs/1/edit
@@ -24,6 +26,7 @@ class MilliQsController < ApplicationController
     @milli_q = MilliQ.new(milli_q_params)
     @milli_q.user=current_user
     @milli_q.status="pending"
+    @milli_q.build_equipment_table
 
      # @milli_q.amount1=0
      # @milli_q.amount2=0
@@ -77,6 +80,8 @@ class MilliQsController < ApplicationController
 
   # PATCH/PUT /milli_qs/1 or /milli_qs/1.json
   def update
+    @milli_q.build_equipment_table
+
       @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)
@@ -112,6 +117,6 @@ class MilliQsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def milli_q_params
-      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, references: [])
+      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

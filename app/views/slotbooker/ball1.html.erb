@@ -165,11 +165,19 @@
                                           <%= f.hidden_field :debit_head, value:"#{ball.debit}" %>
                                        </div>
 
+                                       <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{ball.user.department}" %>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{ball.user.email}" %>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"ball" %>
+                                    </div>
+
                                         <%end%>
-
-
-                                        <%=ball.id%>
-
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                                          </div>

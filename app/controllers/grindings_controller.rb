@@ -14,6 +14,8 @@ class GrindingsController < ApplicationController
   def new
     @grinding = Grinding.new
     @user=User.find(params[:id])
+    @grinding.build_equipment_table
+
   end
 
   # GET /grindings/1/edit
@@ -25,6 +27,8 @@ class GrindingsController < ApplicationController
     @grinding = Grinding.new(grinding_params)
     @grinding.user=current_user
     @grinding.status="pending"
+    @grinding.build_equipment_table
+
 
     respond_to do |format|
       if @grinding.save
@@ -41,6 +45,7 @@ class GrindingsController < ApplicationController
   # PATCH/PUT /grindings/1 or /grindings/1.json
   def update
       @grinding.status="alloted"
+      @grinding.build_equipment_table
     respond_to do |format|
       if @grinding.update(grinding_params)
          GrindingAllotedMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
@@ -72,6 +77,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould, :grit, :diamond, :suspension, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould, :grit, :diamond, :suspension, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

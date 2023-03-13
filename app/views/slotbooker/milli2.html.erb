@@ -110,89 +110,100 @@
                        <td>NA</td>
                      <% end %>
                      <td id="assign-btn">
-                         <!-- Button trigger modal -->
-                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{milli.id}" }, id: "ani" %>
-                          <div id="<%= milli.id%>" class="modal">
+                   <!-- Button trigger modal -->
+                    <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{milli.id}" }, id: "ani" %>
+                    <div id="<%= milli.id%>" class="modal">
 
-                        <div class="modal-dialog">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= milli.user.name %></b></h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <%= form_with(model: milli,local:true) do |form| %>
+
+                                <div class="input-group mb-3">
+                                <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                              </div>
+
+                              <div class="input-group mb-3">
+                              <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                              <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                            </div>
+
+                            <%=form.fields_for :equipment_table do |f| %>
+                             <div class="input-group mb-3">
+                                <%= f.hidden_field :app_no, value:"CRF/MILLI/#{milli.id}"%>
+                              </div>
+
+                             <div class="input-group mb-3">
+                               <%= f.hidden_field :username, value:"#{milli.user.name}"%>
+                            </div>
+
+                            <div class="input-group mb-3">
+                              <%= f.hidden_field :dummy, value:"#{milli.status}"%>
+                           </div>
+
+                            <div class="input-group mb-3">
+                              <%= f.hidden_field :debit_head, value:"#{milli.debit}" %>
+                           </div>
+                            <%end%>
+                              <div class="actions">
+                                <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                              </div>
+                            <% end %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </td>
+
+
+                <td id="cancel-btn">
+                   <!-- Button trigger modal -->
+                     <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{milli.id}" }, id: "anish" %>
+
+                    <!-- Modal -->
+                     <div id="ani<%= milli.id%>" class="modal">
+                      <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= milli.user.name %></b></h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= milli.user.name %></b></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                  <%= form_with(model: milli,local:true) do |form| %>
+                                  <%= form_for milli do |f| %>
+                                    <p> Are you sure you want to cancel the slot ?</p>
+                                    <%= f.hidden_field :status, value: 'cancelled' %>
+                                <div class="actions">
 
-                                      <div class="input-group mb-3">
-                                      <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                      <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                    </div>
 
-                                    <div class="input-group mb-3">
-                                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                                  </div>
-                                   <%=milli.id%>
-
-                                    <div class="actions">
-                                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-
-                                    </div>
-                                  <% end %>
                                 </div>
+
+                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Cancel Slot</button>
+                                      <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
                                 </div>
+                                <% end %>
                             </div>
                         </div>
                     </div>
-                      </td>
-
-
-                      <td id="cancel-btn">
-                         <!-- Button trigger modal -->
-                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{milli.id}" }, id: "anish" %>
-
-                          <!-- Modal -->
-                           <div id="ani<%= milli.id%>" class="modal">
-                            <div class="modal-dialog">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= milli.user.name %></b></h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <%= form_for milli do |f| %>
-                                          <p> Are you sure you want to cancel the slot ?</p>
-                                          <%= f.hidden_field :status, value: 'cancelled' %>
-                                      <div class="actions">
-
-
-                                      </div>
-
-                                       </div>
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
-                                      </div>
-                                      <% end %>
-                                  </div>
-                              </div>
-                          </div>
-                      </td>
+                </td>
 
 <%end%>
-                 </tr>
+           </tr>
 
-             </tbody>
-         </table>
+       </tbody>
+   </table>
 
-     </div>
-     </div>
+</div>
+</div>
 
 
- </div>
+</div>
 
 
 </div>
@@ -204,20 +215,20 @@ var modal2 = document.getElementByClass("modal2");
 var btn2 = document.getElementById("anish");
 // Add event listeners to the buttons
 btn1.addEventListener("click", function() {
- modal1.style.display = "block";
+modal1.style.display = "block";
 });
 
 btn2.addEventListener("click", function() {
- modal2.style.display = "block";
+modal2.style.display = "block";
 });
 
 // Close the modal when the user clicks anywhere outside of it
 window.addEventListener("click", function(event) {
- if (event.target == modal1) {
-   modal1.style.display = "none";
- }
- if (event.target == modal2) {
-   modal2.style.display = "none";
- }
+if (event.target == modal1) {
+modal1.style.display = "none";
+}
+if (event.target == modal2) {
+modal2.style.display = "none";
+}
 });
 </script>

@@ -13,6 +13,8 @@ class MicroEdmsController < ApplicationController
   # GET /micro_edms/new
   def new
     @micro_edm = MicroEdm.new
+    @micro_edm.build_equipment_table
+
   end
 
   # GET /micro_edms/1/edit
@@ -22,6 +24,7 @@ class MicroEdmsController < ApplicationController
   # POST /micro_edms or /micro_edms.json
   def create
     @micro_edm = MicroEdm.new(micro_edm_params)
+    @micro_edm.build_equipment_table
 
     respond_to do |format|
       if @micro_edm.save
@@ -38,6 +41,8 @@ class MicroEdmsController < ApplicationController
 
   # PATCH/PUT /micro_edms/1 or /micro_edms/1.json
   def update
+    @micro_edm.build_equipment_table
+
     respond_to do |format|
       if @micro_edm.update(micro_edm_params)
         format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully updated." }
@@ -67,6 +72,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :milling, :turning, :drilling, :edm, :edg, :more, :debit, :slotdate, :slottime, :status)
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :milling, :turning, :drilling, :edm, :edg, :more, :debit, :slotdate, :slottime, :status,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] )
     end
 end
