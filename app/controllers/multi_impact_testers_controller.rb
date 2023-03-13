@@ -48,11 +48,7 @@ class MultiImpactTestersController < ApplicationController
 
     respond_to do |format|
       if @multi_impact_tester.update(multi_impact_tester_params)
-        if @multi_impact_tester.amount == nil
         MultiImpactTesterAllotedMailer.with(id:@multi_impact_tester.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentMultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_multi_path(@multi_impact_tester), notice: "Multi impact tester was successfully updated." }
         format.json { render :show, status: :ok, location: @multi_impact_tester }
       else
@@ -80,6 +76,6 @@ class MultiImpactTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def multi_impact_tester_params
-      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

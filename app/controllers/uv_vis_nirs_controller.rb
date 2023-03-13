@@ -14,6 +14,8 @@ class UvVisNirsController < ApplicationController
   def new
     @user=User.find(params[:id])
     @uv_vis_nir = UvVisNir.new
+    @uv_vis_nir.build_equipment_table
+
   end
 
   # GET /uv_vis_nirs/1/edit
@@ -25,6 +27,8 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir = UvVisNir.new(uv_vis_nir_params)
     @uv_vis_nir.user=current_user
     @uv_vis_nir.status="pending"
+    @uv_vis_nir.build_equipment_table
+
     respond_to do |format|
       if @uv_vis_nir.save
         UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
@@ -40,13 +44,11 @@ class UvVisNirsController < ApplicationController
   # PATCH/PUT /uv_vis_nirs/1 or /uv_vis_nirs/1.json
   def update
     @uv_vis_nir.status="alloted"
+    @uv_vis_nir.build_equipment_table
+
     respond_to do |format|
       if @uv_vis_nir.update(uv_vis_nir_params)
-        if @uv_vis_nir.amount == nil
         UvVisNirAllotedMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentUvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_uv_path(@uv_vis_nir), notice: "Uv vis nir was successfully updated." }
         format.json { render :show, status: :ok, location: @uv_vis_nir }
       else
@@ -74,6 +76,6 @@ class UvVisNirsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:reflectance,:absorbance,:transmittance,:user_id,references: [])
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:reflectance,:absorbance,:transmittance,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
     end
 end

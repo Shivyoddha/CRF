@@ -126,47 +126,103 @@
                   <% else %>
                     <td>NA</td>
                   <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: fric.id %>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                            Assign
-                            </button> -->
+                  <td id="assign-btn">
+                      <!-- Button trigger modal -->
+                       <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fric.id}" }, id: "ani" %>
+                       <div id="<%= fric.id%>" class="modal">
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                       <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fric.user.name %></b></h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                   <div class="modal-body">
+                                     <%= form_with(model: fric,local:true) do |form| %>
+
+                                         <div class="input-group mb-3">
+                                         <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                         <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                       </div>
+
+                                       <div class="input-group mb-3">
+                                       <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                     </div>
+
+                                      <%=form.fields_for :equipment_table do |f| %>
+                                       <div class="input-group mb-3">
+                                          <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
                                         </div>
-                                        <div class="modal-body">
 
-                                    <%= render partial: "form_xrd",locals: { xrd:fric } %>
-                                    <p>You are assigning XRD with ID <%= Xrd.find(fric.id) %> to Preetham Naik.</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                        </div>
-<%end%>
-                                    </div>
-                                </div>
-  </div>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        </div>
+                                       <div class="input-group mb-3">
+                                         <%= f.hidden_field :username, value:"#{fric.user.name}"%>
+                                      </div>
 
 
-    </div>
+                                       <div class="input-group mb-3">
+                                         <%= f.hidden_field :dummy, value:"alloted"%>
+                                       </div>
+
+                                      <div class="input-group mb-3">
+                                        <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
+                                     </div>
+
+                                      <%end%>
 
 
-</div>
+                                      <%=fric.id%>
+
+                                       <div class="actions">
+                                         <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                       </div>
+                                     <% end %>
+
+
+
+                                   </div>
+                               </div>
+                           </div>
+
+                     </div>
+
+                                           </td>
+
+                                       </tr>
+                     <%end%>
+
+                                   </tbody>
+                               </table>
+
+                           </div>
+                           </div>
+
+
+                       </div>
+
+
+                     </div>
+                     <script>
+                     // Get the modals and buttons
+                     var modal1 = document.getElementByClass("modal");
+                     var btn1 = document.getElementById("ani");
+
+                     // Add event listeners to the buttons
+                     btn1.addEventListener("click", function() {
+                       modal1.style.display = "block";
+                     });
+
+                     btn2.addEventListener("click", function() {
+                       modal2.style.display = "block";
+                     });
+
+                     // Close the modal when the user clicks anywhere outside of it
+                     window.addEventListener("click", function(event) {
+                       if (event.target == modal1) {
+                         modal1.style.display = "none";
+                       }
+                       if (event.target == modal2) {
+                         modal2.style.display = "none";
+                       }
+                     });
+                     </script>

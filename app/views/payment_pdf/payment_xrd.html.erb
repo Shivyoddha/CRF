@@ -41,11 +41,11 @@
   <p class="text-center"><u>Demand Note for Book Adjustment</u></p>
      <div id="proforma-inv">
         <div class="left">
-          <span id="app-no-tag">Proforma Invoice No:</span><span class="app-no fw-bold element data">NITK/CRF/LFA/<%= @xrd.id%></span>
+          <span id="app-no-tag">Proforma Invoice No:</span><span class="app-no fw-bold element data">NITK/<%= @equipment_table.app_no%></span>
         </div>
         <div class="right">
           <div class="date">
-            <span>Date: </span><span class="fw-bold data"><%= @xrd.slotdate%></span>
+            <span>Date: </span><span class="fw-bold data"><%= @equipment_table.slotd%></span>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@
           </div>
           <br>
           <div class="subject text-center">
-              <span class="fw-bold">Sub:  </span><span>Book Transfer through <%= @xrd.debit%>-reg</span>
+              <span class="fw-bold">Sub:  </span><span>Book Transfer through <%= @equipment_table.debit_head%>-reg</span>
               <hr>
           </div>
       </div>
@@ -78,12 +78,12 @@
           <tr>
             <td>2.</td>
             <td >Name of User</td>
-            <td class="fw-bold" id="user-name"><%= @xrd.user.name%></td>
+            <td class="fw-bold" id="user-name"><%= @equipment_table.username%></td>
           </tr>
           <tr>
             <td>3.</td>
             <td >Department</td>
-            <td class="fw-bold" id="dept"><%= @xrd.user.department%></td>
+            <td class="fw-bold" id="dept"><%= @equipment_table.dept%></td>
           </tr>
           <tr>
             <td>4.</td>
@@ -93,17 +93,17 @@
           <tr>
             <td>5.</td>
             <td >Total Sample Charges</td>
-            <td class="fw-bold"id="sample-charge" >Rs. <%= @xrd.amount%>/-</td>
+            <td class="fw-bold"id="sample-charge" >Rs. <%= @equipment_table.pay%>/-</td>
           </tr>
           <tr>
             <td>6.</td>
             <td >Debit Head</td>
-            <td class="fw-bold" id="debit-head"><%= @xrd.debit%></td>
+            <td class="fw-bold" id="debit-head"><%= @equipment_table.debit_head%></td>
           </tr>
           <tr>
             <td>7.</td>
             <td >Appl No</td>
-            <td class="fw-bold" id="appl-no">CRF/XRD/<%= @xrd.id%></td>
+            <td class="fw-bold" id="appl-no"><%= @equipment_table.app_no%></td>
           </tr>
         </table>
         <br>
@@ -118,7 +118,7 @@
                       <span>HOD</span>
                   </div>
                   <div>
-                      <span class="fw-bold"><%= @xrd.user.department%></span>
+                      <span class="fw-bold"><%= @equipment_table.dept%></span>
                   </div>
                   <div>
                       <span id="seals">With Seal & Signature</span>

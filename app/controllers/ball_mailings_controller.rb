@@ -45,11 +45,7 @@ class BallMailingsController < ApplicationController
     @ball_mailing.build_equipment_table
     respond_to do |format|
       if @ball_mailing.update(ball_mailing_params)
-        if @ball_mailing.amount == nil
         BallMailingAllotedMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentBallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_ball_path(@ball_mailing), notice: "Ball mailing was successfully updated." }
         format.json { render :show, status: :ok, location: @ball_mailing }
       else
@@ -77,6 +73,6 @@ class BallMailingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ball_mailing_params
-      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

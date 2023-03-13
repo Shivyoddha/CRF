@@ -33,7 +33,7 @@ class FrictionsController < ApplicationController
     respond_to do |format|
       if @friction.save
         FrictionMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to friction_url(@friction), notice: "Friction was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Friction was successfully created." }
         format.json { render :show, status: :created, location: @friction }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,11 +48,7 @@ class FrictionsController < ApplicationController
       @friction.build_equipment_table
     respond_to do |format|
       if @friction.update(friction_params)
-        if @friction.amount == nil
         FrictionAllotedMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentFrictionMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_fric_path(@friction), notice: "Friction was successfully updated." }
         format.json { render :show, status: :ok, location: @friction }
       else
@@ -80,6 +76,6 @@ class FrictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friction_params
-      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

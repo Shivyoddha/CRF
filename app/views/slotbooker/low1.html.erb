@@ -112,107 +112,114 @@
                       <% else %>
                         <td>NA</td>
                       <% end %>
-                       <td id="assign-btn">
-                           <!-- Button trigger modal -->
-                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{low1.id}" }, id: "ani" %>
-                            <div id="<%= low1.id%>" class="modal">
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{low1.id}" }, id: "ani" %>
+                           <div id="<%= low1.id%>" class="modal">
 
-                            <div class="modal-dialog">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= low1.user.name %></b></h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                       </div>
-                                        <div class="modal-body">
-                                          <%= form_with(model: low1,local:true) do |form| %>
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= low1.user.name %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                       <div class="modal-body">
+                                         <%= form_with(model: low1,local:true) do |form| %>
 
-                                              <div class="input-group mb-3">
-                                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                              <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                            </div>
-
-                                            <div class="input-group mb-3">
-                                            <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                            <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                                          </div>
-
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                            <div class="input-group mb-3">
-                                               <%= f.hidden_field :app_no, value:"CRF/XRD/#{low1.id}"%>
-                                             </div>
-
-                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :username, value:"#{low1.user.name}"%>
+                                             <div class="input-group mb-3">
+                                             <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                             <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
                                            </div>
 
+                                           <div class="input-group mb-3">
+                                           <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                           <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                         </div>
 
-                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :dummy, value:"alloted"%>
+                                          <%=form.fields_for :equipment_table do |f| %>
+                                           <div class="input-group mb-3">
+                                              <%= f.hidden_field :app_no, value:"CRF/LOW/#{low1.id}"%>
                                             </div>
 
                                            <div class="input-group mb-3">
-                                             <%= f.hidden_field :debit_head, value:"#{low1.debit}" %>
+                                             <%= f.hidden_field :username, value:"#{low1.user.name}"%>
                                           </div>
 
-                                           <%end%>
 
+                                           <div class="input-group mb-3">
+                                             <%= f.hidden_field :dummy, value:"alloted"%>
+                                           </div>
 
-                                           <%=low1.id%>
+                                          <div class="input-group mb-3">
+                                            <%= f.hidden_field :debit_head, value:"#{low1.debit}" %>
+                                         </div>
 
-                                            <div class="actions">
-                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-                                            </div>
-                                          <% end %>
+                                         <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{low1.user.department}" %>
+                                     </div>
 
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                        </div>
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{low1.user.email}" %>
                                     </div>
-                                </div>
 
-                          </div>
-
-                                                </td>
-
-                                            </tr>
-                          <%end%>
-
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                                </div>
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"low" %>
+                                    </div>
 
 
-                            </div>
+
+                                          <%end%>
+
+                                           <div class="actions">
+                                             <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                           </div>
+                                         <% end %>
 
 
-                          </div>
-                          <script>
-                          // Get the modals and buttons
-                          var modal1 = document.getElementByClass("modal");
-                          var btn1 = document.getElementById("ani");
 
-                          // Add event listeners to the buttons
-                          btn1.addEventListener("click", function() {
-                            modal1.style.display = "block";
-                          });
+                                       </div>
+                                   </div>
+                               </div>
 
-                          btn2.addEventListener("click", function() {
-                            modal2.style.display = "block";
-                          });
+                         </div>
 
-                          // Close the modal when the user clicks anywhere outside of it
-                          window.addEventListener("click", function(event) {
-                            if (event.target == modal1) {
-                              modal1.style.display = "none";
-                            }
-                            if (event.target == modal2) {
-                              modal2.style.display = "none";
-                            }
-                          });
-                          </script>
+                                               </td>
+
+                                           </tr>
+                         <%end%>
+
+                                       </tbody>
+                                   </table>
+
+                               </div>
+                               </div>
+
+
+                           </div>
+
+
+                         </div>
+                         <script>
+                         // Get the modals and buttons
+                         var modal1 = document.getElementByClass("modal");
+                         var btn1 = document.getElementById("ani");
+
+                         // Add event listeners to the buttons
+                         btn1.addEventListener("click", function() {
+                           modal1.style.display = "block";
+                         });
+
+                         btn2.addEventListener("click", function() {
+                           modal2.style.display = "block";
+                         });
+
+                         // Close the modal when the user clicks anywhere outside of it
+                         window.addEventListener("click", function(event) {
+                           if (event.target == modal1) {
+                             modal1.style.display = "none";
+                           }
+                           if (event.target == modal2) {
+                             modal2.style.display = "none";
+                           }
+                         });
+                         </script>

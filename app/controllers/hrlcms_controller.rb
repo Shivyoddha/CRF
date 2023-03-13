@@ -47,11 +47,7 @@ class HrlcmsController < ApplicationController
 
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
-        if @hrlcm.amount == nil
         HrlcmAllotedMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentHrlcmMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_lcms_path(@hrlcm), notice: "Hrlcm was successfully updated." }
         format.json { render :show, status: :ok, location: @hrlcm }
       else
@@ -79,6 +75,6 @@ class HrlcmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hrlcm_params
-      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :health, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
+      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :health, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

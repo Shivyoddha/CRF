@@ -46,11 +46,7 @@ class GasSensingsController < ApplicationController
     @gas_sensing.build_equipment_table
     respond_to do |format|
       if @gas_sensing.update(gas_sensing_params)
-        if @gas_sensing.amount == nil
         GasSensingAllotedMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentGasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_gassensing_path(@gas_sensing), notice: "Gas sensing was successfully updated." }
         format.json { render :show, status: :ok, location: @gas_sensing }
       else
@@ -78,6 +74,6 @@ class GasSensingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gas_sensing_params
-      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

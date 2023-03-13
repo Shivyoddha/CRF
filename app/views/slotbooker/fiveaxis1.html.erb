@@ -162,10 +162,19 @@
                                         <%= f.hidden_field :debit_head, value:"#{fiveaxis.debit}" %>
                                      </div>
 
+                                     <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{fiveaxis.user.department}" %>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{fiveaxis.user.email}" %>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"five" %>
+                                    </div>
+
                                       <%end%>
-
-
-                                      <%=fiveaxis.id%>
 
                                        <div class="actions">
                                          <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

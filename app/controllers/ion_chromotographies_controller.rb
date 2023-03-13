@@ -48,11 +48,7 @@ class IonChromotographiesController < ApplicationController
 
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
-        if @ion_chromotography.amount == nil
         IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentIonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_ionc_path(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else
@@ -80,6 +76,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

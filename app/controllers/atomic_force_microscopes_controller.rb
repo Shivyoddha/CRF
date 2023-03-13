@@ -46,11 +46,7 @@ class AtomicForceMicroscopesController < ApplicationController
     @atomic_force_microscope.build_equipment_table
     respond_to do |format|
       if @atomic_force_microscope.update(atomic_force_microscope_params)
-        if @atomic_force_microscope.amount == nil
         AtomicForceMicroscopeAllotedMailer.with(id@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentAtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_atomic_path(@atomic_force_microscope), notice: "Atomic force microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @atomic_force_microscope }
       else
@@ -78,6 +74,6 @@ class AtomicForceMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atomic_force_microscope_params
-      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
+      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

@@ -29,5 +29,14 @@ class EquipmentTable < ApplicationRecord
   belongs_to :micro_edm, optional: true
   belongs_to :milli_q, optional: true
   belongs_to :multi_impact_tester, optional: true
-
+  belongs_to :probe_sonicator, optional: true
+  belongs_to :raman_microscope, optional: true
+  belongs_to :scratch_indentation, optional: true
+  belongs_to :three_d_scanner, optional: true
+  belongs_to :spark_o, optional: true
+  belongs_to :spectro_radio_meter, optional: true
+  belongs_to :tribometer, optional: true
+  belongs_to :ultra_centrifuge, optional: true
+  belongs_to :uv_vis_nir, optional: true
+  belongs_to :zeta_potential_size, optional: true
 end

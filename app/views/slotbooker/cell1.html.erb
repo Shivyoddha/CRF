@@ -167,10 +167,19 @@
                                           <%= f.hidden_field :debit_head, value:"#{cell.debit}" %>
                                        </div>
 
+                                       <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{cell.user.department}" %>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{cell.user.email}" %>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"cell" %>
+                                    </div>
+
                                         <%end%>
-
-
-                                        <%=cell.id%>
 
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

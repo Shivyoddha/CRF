@@ -73,6 +73,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

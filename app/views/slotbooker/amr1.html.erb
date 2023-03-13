@@ -167,22 +167,28 @@
                                             <%= f.hidden_field :debit_head, value:"#{amr1.debit}" %>
                                          </div>
 
+                                         <div class="input-group mb-3">
+                                           <%= f.hidden_field :dept, value:"#{amr1.user.department}" %>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{amr1.user.department}" %>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{amr1.user.email}" %>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"amr" %>
+                                    </div>
+
                                           <%end%>
-
-
-                                          <%=amr1.id%>
 
                                            <div class="actions">
                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                                            </div>
                                          <% end %>
-
-
-
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                           <button type="button" class="btn btn-primary">Cancel Slot</button>
                                        </div>
                                    </div>
                                </div>

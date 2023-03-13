@@ -48,11 +48,7 @@ class GlowsController < ApplicationController
 
     respond_to do |format|
       if @glow.update(glow_params)
-        if @glow.amount == nil
         GlowsAllotedMailer.with(id:@glow.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentGlowsMailer.with(id:@glow.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_glow_path(@glow), notice: "Glow was successfully updated." }
         format.json { render :show, status: :ok, location: @glow }
       else
@@ -80,6 +76,6 @@ class GlowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glow_params
-      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
+      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

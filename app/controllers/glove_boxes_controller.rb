@@ -47,11 +47,7 @@ class GloveBoxesController < ApplicationController
 
     respond_to do |format|
       if @glove_box.update(glove_box_params)
-        if @glove_box.amount == nil
         GloveBoxAllotedMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentGloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_glove_path(@glove_box), notice: "Glove box was successfully updated." }
         format.json { render :show, status: :ok, location: @glove_box }
       else
@@ -79,6 +75,6 @@ class GloveBoxesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glove_box_params
-      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end
