@@ -177,6 +177,7 @@ h5 {
 
 .card-footer {
   display: flex;
+  height: 2.55em;
 }
 
 .card-footer-express {
