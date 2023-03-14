@@ -47,4 +47,5 @@ has_many:laser
 has_many:micro_edms
 has_many:ft_nms
 has_many:ansies
+belongs_to:faculty, optional:true
 end

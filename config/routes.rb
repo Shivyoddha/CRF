@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'mainpage#landing'
   resources :ft_nms
   resources :ansies
   resources :equipment_tables
