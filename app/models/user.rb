@@ -44,5 +44,7 @@ has_many:impedance_analy
 has_many:zeta_potential_size
 has_many:high_temp_vaccum
 has_many:laser
-belongs_to:faculty, optional:true
+has_many:micro_edms
+has_many:ft_nms
+has_many:ansies
 end

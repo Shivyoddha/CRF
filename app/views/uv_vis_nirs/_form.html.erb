@@ -44,21 +44,12 @@
 
       <div>
         <div>
-          <%= form.label :reflectance, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
-          <div class="form-check">
-          <%= form.check_box :reflectance,{:class=>'form-check-input'}, true, false%>
-          <%= form.label "Reflectance", class:"form-check-label", for:"flexCheckChecked"%>
-
-          </div>
-          <div class="form-check">
-            <%= form.check_box :absorbance,{:checked=> true, :class=>'form-check-input'}, true, false%>
-            <%= form.label "Absorbance", class:"form-check-label", for:"flexCheckChecked"%>
-          </div>
-
-          <div class="form-check">
-            <%= form.check_box :transmittance,{:class=>'form-check-input'}, true, false%>
-            <%= form.label "Transmittance", class:"form-check-label", for:"flexCheckChecked"%>
-          </div>
+          <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+          <% options = ['Reflectance', 'Absorbance','Transmittance'] %>
+          <% options.each do |option| %>
+            <%= check_box_tag 'uv_vis_nir[measurement][]', option, @uv_vis_nir.measurement.include?(option) %>
+            <%= label_tag "uv_vis_nir_measurement_#{option}", option %><br>
+          <% end %>
       </div>
 
 
@@ -113,7 +104,7 @@
 
 
 
-  
+
 
 
 <% end %>

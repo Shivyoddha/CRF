@@ -15,46 +15,51 @@
           <h2 class="text-center" id="equip-heading"><u>UV-Vis-NIR Form</u></h2>
       </div>
 
-      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/UV/<%@uv_vis_nir.id%></span>
-      <div class="element">
-          <span>Applicant Name:</span>
-          <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
-      </div>
-      <div class="element">
-          <span>Applicant Email:</span>
-          <span class="fw-bold data"> <%= @user.email %></span>
-      </div>
-      <div class="element">
-          <span>Department:</span>
-          <span class="fw-bold data"> <%= @user.department %></span>
-      </div>
-    </div>
-    <div class = "right">
-          <div class="element">
-
-              <span>Contact No:</span>
-              <span class="fw-bold data"> <%= @user.contact %></span>
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/UV/<%=@uv_vis_nir.id%></span>
+      <div class = "user-info" >
+          <div class="left">
+            <div class="element">
+                <span>Applicant Name:</span>
+                <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+            </div>
+            <div class="element">
+                <span>Applicant Email:</span>
+                <span class="fw-bold data"> <%= @user.email %></span>
+            </div>
+            <div class="element">
+                <span>Department:</span>
+                <span class="fw-bold data"> <%= @user.department %></span>
+            </div>
           </div>
+          <div class = "right">
+                <div class="element">
 
-      <div class="element">
-          <span>Course:</span>
-          <span class="fw-bold data"> <%= @user.course %></span>
-      </div>
+                    <span>Contact No:</span>
+                    <span class="fw-bold data"> <%= @user.contact %></span>
+                </div>
+
+            <div class="element">
+                <span>Course:</span>
+                <span class="fw-bold data"> <%= @user.course %></span>
+            </div>
 
           </div>
       </div>
 
-        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+
+
+
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
         <div id="sample-details">
             <div class="left-uv">
                 <div class="element">
-                    <span>No. of Samples:<span><span class="fw-bold data"><%@uv_vis_nir.sample%><span>
+                    <span>No. of Samples:<span><span class="fw-bold data"><%=@uv_vis_nir.sample%><span>
                 </div>
                 <div class="element">
-                    <span>Start Range:<span><span class="fw-bold data"><%@uv_vis_nir.srange%><span>
+                    <span>Start Range:<span><span class="fw-bold data"><%=@uv_vis_nir.srange%><span>
                 </div>
                 <div class="element">
-                    <span>Measurement required:<span><span class="fw-bold data">Transmittance:<%@uv_vis_nir.transmittance%>, Absorbance:<%@uv_vis_nir.absorbance%>, Reflectance:<%@uv_vis_nir.reflectance%><span>
+                    <span>Measurement required:<span><span class="fw-bold data">Transmittance:<%=@uv_vis_nir.transmittance%>, Absorbance:<%=@uv_vis_nir.absorbance%>, Reflectance:<%=@uv_vis_nir.reflectance%><span>
                 </div>
 
 
@@ -63,13 +68,13 @@
 
             <div class="right-uv">
                 <div class="element">
-                    <span>Sample composition:<span><span class="fw-bold data"><%@uv_vis_nir.composition%><span>
+                    <span>Sample composition:<span><span class="fw-bold data"><%=@uv_vis_nir.composition%><span>
                 </div>
                 <div class="element">
-                    <span>End Range:<span><span class="fw-bold data"><%@uv_vis_nir.erange%><span>
+                    <span>End Range:<span><span class="fw-bold data"><%=@uv_vis_nir.erange%><span>
                 </div>
                 <div class="element">
-                    <span>Sample Type:<span><span class="fw-bold data"><%@uv_vis_nir.stype%><span>
+                    <span>Sample Type:<span><span class="fw-bold data"><%=@uv_vis_nir.sampletype%><span>
                 </div>
 
             </div>
@@ -80,11 +85,11 @@
 
 
 
-        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></p>
         <div id="safety-info">
             <div class="left-lcms">
                 <div id="hazard" class="element">
-                    <span>Toxicity:<span><span class="fw-bold data"><%@uv_vis_nir.toxicity%><span>
+                    <span>Toxicity:<span><span class="fw-bold data"><%=@uv_vis_nir.toxicity%><span>
                 </div>
 
             </div>
@@ -100,7 +105,7 @@
 
         <div id="testing-req-div">
             <div id="sample-description" class="element">
-                <span>Additional Information:<span><span class="fw-bold data"><%@uv_vis_nir.more%><span>
+                <span>Additional Information:<span><span class="fw-bold data"><%=@uv_vis_nir.more%><span>
             </div>
 
         </div>
@@ -115,7 +120,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                    <span class="text-muted element"><i>Debit Head:<%=@uv_vis_nir.debit%> </i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -167,10 +172,8 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i><%@uv_vis_nir.created_at%></i>
+                <i>Generated at:<%=@uv_vis_nir.created_at%></i>
             </div>
 
         </div>
-
 </div>
-        </div>

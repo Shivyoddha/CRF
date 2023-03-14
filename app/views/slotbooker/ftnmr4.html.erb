@@ -1,0 +1,150 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-slot-booker">
+
+    <div id="navigation" class="font-quiucksand">
+        <!--below is the button of Nitk CRF logo-->
+        <div id="navigation-logo">
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+        </div>
+
+        <div class="sidelinks">
+
+            <h2 class="fw-bold text-center">Navigation</h2>
+            <ul class="sidelinks-model-list">
+                <%# below are code to get items on the navigation pane %>
+                <li class="nav-item">
+                        <%= link_to 'All Slots',slotbooker_gait_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to 'Pending Slots',slotbooker_gait1_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Alloted Slots',slotbooker_gait2_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Completed Slots',slotbooker_gait3_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                      <%= link_to 'Cancelled Slots',slotbooker_gait4_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<%# the content section is coded here %>
+    <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold font-unbounded" id="tab-name">FtNmr:Cancelled Slots</h2>
+        </div>
+
+
+        <div id="slot-details">
+        <div>
+            <table class="table table-hover font-quicksand">
+                <thead>
+                    <tr class="table-head font-unbounded">
+                      <th scope="col">Appl No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Institute</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Contact No:</th>
+                      <th scope="col">No of Samples</th>
+                      <th scope="col">Nature of Sample</th>
+                      <th scope="col">Sample Phase</th>
+                      <th scope="co">Solvent 1</th>
+                      <th scope="co">Measurement 1</th>
+                      <th scope="co">Solvent 2</th>
+                      <th scope="co">Measurement 2</th>
+                      <th scope="co">Solvent 3</th>
+                      <th scope="co">Measurement 3</th>
+                      <th scope="co">Solvent 4</th>
+                      <th scope="co">Measurement 4</th>
+                      <th scope="co">Solvent 5</th>
+                      <th scope="co">Measurement 5</th>
+                      <th scope="col">Toxicity</th>
+                      <th scope="col">Health Hazard</th>
+                      <th scope="col">Health hazard Method</th>
+                      <th scope="col">Customisied Tempertaure</th>
+                      <th scope="col">More Information</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Reference Paper</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        <% @ft4.where(status:'cancelled').each do |ftnmr|%>
+                      <tr>
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/ftnmr/<%=ftnmr.id %>	</th>
+                        <td> <%= ftnmr.user.name%> </td>
+                        <td> <%= ftnmr.user.orgname%> </td>
+                        <td> <%= ftnmr.user.department%> </td>
+                        <td> <%= ftnmr.user.contact%> </td>
+                        <td> <%= ftnmr.sample%> </td>
+                        <td> <%= ftnmr.nature%> </td>
+                        <td> <%= ftnmr.phase%> </td>
+                        <td> <%= ftnmr.solvent1%> </td>
+                        <td> <%= Array(ftnmr.measurement1).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent2%> </td>
+                        <td> <%= Array(ftnmr.measurement2).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent3%> </td>
+                        <td> <%= Array(ftnmr.measurement3).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent4%> </td>
+                        <td> <%= Array(ftnmr.measurement4).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent5%> </td>
+                        <td> <%= Array(ftnmr.measurement5).join(", ") %> </td>
+                        <td> <%= ftnmr.toxicity%> </td>
+                        <td> <%= ftnmr.health%> </td>
+                        <td> <%= Array(ftnmr.hazardmethod).join(", ") %> </td>
+                        <td> <%= ftnmr.temp%> </td>
+                        <td> <%= ftnmr.more%> </td>
+                        <td>Booked</td>
+
+                        <td> <%= ftnmr.slotdate %></td>
+
+                        <td> <%= ftnmr.slottime %></td>
+
+                          <td><%= ftnmr.status%></td>
+                          <%if ftnmr.references.attached? %>
+                    <%ftnmr.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
+                    </tr>
+                      <%end%>
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+
+    </div>
+
+
+</div>

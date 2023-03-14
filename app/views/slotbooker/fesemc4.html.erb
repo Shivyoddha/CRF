@@ -74,6 +74,7 @@
                         <th scope="col">Sample Phase</th>
                         <th scope="col">Measurement</th>
                         <th scope="col">EDS/EDAX Required</th>
+                        <th scope="col">EDS/EDAX Method</th>
                         <th scope="col">Sample is Toxic</th>
                         <th scope="col">Sample is Conducting</th>
                         <th scope="col">More Information</th>
@@ -98,8 +99,9 @@
                           <td> <%= fesemcs.stype%> </td>
                           <td> <%= fesemcs.composition%> </td>
                           <td> <%= fesemcs.sphase%> </td>
-                          <td> <%= fesemcs.measurement%> </td>
+                          <td> <%= fesemc.measuring.join(', ') %> </td>
                           <td> <%= fesemcs.eds_required%> </td>
+                          <td> <%= fesemcs.eds%> </td>
                           <td> <%= fesemcs.conducting%> </td>
                           <td> <%= fesemcs.toxic%> </td>
                           <td> <%= fesemcs.more%> </td>

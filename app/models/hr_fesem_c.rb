@@ -3,4 +3,5 @@ class HrFesemC < ApplicationRecord
   belongs_to :user
   has_one :equipment_table, :dependent => :destroy
   accepts_nested_attributes_for :equipment_table
+   serialize :measuring
 end

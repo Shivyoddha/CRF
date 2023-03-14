@@ -24,9 +24,8 @@ class LiquidNitrogensController < ApplicationController
     @liquid_nitrogen = LiquidNitrogen.new(liquid_nitrogen_params)
     @liquid_nitrogen.user = current_user
 
-    @liquid_nitrogen.status="pending"
 
-    if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='Faculty'
+    if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='faculty'
          @liquid_nitrogen.amount = (60.0)*@liquid_nitrogen.quantity
     end
     if @liquid_nitrogen.user.role=='external'

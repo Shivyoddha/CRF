@@ -15,6 +15,7 @@ class XRayDiffractionMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
+            
             to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
@@ -23,4 +24,5 @@ class XRayDiffractionMailer < ApplicationMailer
           )
 
   end
+
 end

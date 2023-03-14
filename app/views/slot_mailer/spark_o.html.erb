@@ -15,7 +15,7 @@
           <h2 class="text-center" id="equip-heading"><u>Spark OES</u></h2>
       </div>
 
-      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/OES/<%@spark_o.id%></span>
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/OES/<%=@spark_o.id%></span>
       <div class = "user-info" >
           <div class="left">
             <div class="element">
@@ -46,11 +46,11 @@
           </div>
       </div>
 
-        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
         <div id="sample-details">
             <div class="left">
                 <div id="no-of-sample" class="element">
-                    <span>No. of Samples:<span><span class="fw-bold data"><%@spark_o.sample%><span>
+                    <span>No. of Samples:<span><span class="fw-bold data"><%=@spark_o.sample%><span>
                 </div>
 
 
@@ -58,7 +58,7 @@
 
             <div class="right">
                 <div id="sample-type" class="element">
-                    <span>Sample Composition:<span><span class="fw-bold data"><%@spark_o.composition%><span>
+                    <span>Sample Composition:<span><span class="fw-bold data"><%=@spark_o.composition%><span>
                 </div>
 
 
@@ -68,42 +68,40 @@
 
         </div>
 
-        <p class="text-center" id="sample-details-heading"><u>Base Material & No. of sample of each base type</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>Base Material & No. of sample of each base type</u></p>
         <div id="safety-info">
             <div class="left">
                 <div id="measurement" class="element">
-                    <span>Fe:<span><span class="fw-bold data"><%@spark_o.samplefe%><span>
+                    <span>Fe:<span><span class="fw-bold data"><%=@spark_o.samplefe%><span>
+                </div>
+
+                <div id="measurement" class="element">
+                    <span>Ni:<span><span class="fw-bold data"><%=@spark_o.sampleni%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Co:<span><span class="fw-bold data"><%@spark_o.sampleco%><span>
+                    <span>Zn:<span><span class="fw-bold data"><%=@spark_o.samplezn%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Ni:<span><span class="fw-bold data"><%@spark_o.sampleni%><span>
-                </div>
-                <div id="measurement" class="element">
-                    <span>Zn:<span><span class="fw-bold data"><%@spark_o.samplezn%><span>
-                </div>
-                <div id="measurement" class="element">
-                    <span>Sn:<span><span class="fw-bold data"><%@spark_o.samplesn%><span>
+                    <span>Sn:<span><span class="fw-bold data"><%=@spark_o.samplesn%><span>
                 </div>
             </div>
 
             <div class="right">
 
                 <div id="measurement" class="element">
-                    <span>Cu:<span><span class="fw-bold data"><%@spark_o.samplecu%><span>
+                    <span>Cu:<span><span class="fw-bold data"><%=@spark_o.samplecu%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Ti:<span><span class="fw-bold data"><%@spark_o.sampleti%><span>
+                    <span>Ti:<span><span class="fw-bold data"><%=@spark_o.sampleti%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Al:<span><span class="fw-bold data"><%@spark_o.sampleal%><span>
+                    <span>Al:<span><span class="fw-bold data"><%=@spark_o.sampleal%><span>
                 </div>
                 <div id="measurement" class="element">
                     <span>Pb:<span><span class="fw-bold data"><%@spark_o.samplepb%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Mg:<span><span class="fw-bold data"><%@spark_o.samplemg%><span>
+                    <span>Mg:<span><span class="fw-bold data"><%=@spark_o.samplemg%><span>
                 </div>
 
             </div>
@@ -117,7 +115,7 @@
 
         <div id="testing-req-div">
             <div id="testing-req" class="element">
-                <span>Testing Requirement:<span><span class="fw-bold data"><%@spark_o.more%><span>
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@spark_o.more%><span>
             </div>
         </div>
 
@@ -131,7 +129,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i><%@spark_o.debit%></i></span>
+                    <span class="text-muted element"><i><%=@spark_o.debit%></i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -187,7 +185,7 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i><%@spark_o.created_at%></i>
+                <i>generated at:<%=@spark_o.created_at%></i>
             </div>
 
         </div>

@@ -1,0 +1,301 @@
+
+
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1>FT-NMR</h1>
+    </div>
+    <div class='hero'>
+     <%= form_with(model: ft_nm) do |form| %>
+        <% if ft_nm.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(ft_nm.errors.count, "error") %> prohibited this ft_nmr from being saved:</h2>
+
+            <ul>
+              <% ft_nm.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+    <h6 class="text-danger">Note: Currently <sup>1</sup>H and <sup>13</sup>C based analysis are only available in liquid mode</h6>
+    <hr>
+    <div class="input-group mb-3">
+    <%= form.label :sample, class:"input-group-text", for:"no-of-sample-ft-nmr"%>
+    <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample-ft-nmr",:required => true}) %>
+    </div>
+
+    <div class="mb-3">
+          <%= form.label :nature, "Sample Nature",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :nature, 'Organic', class:"form-check-input", type:"radio", id:"organic-ft-nmr",:checked => true  %> Organic
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :nature, 'In-organic', class:"form-check-input", type:"radio", id:"inorganic-ft-nmr"  %> Inorganic
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+        <%= form.label :phase , "Sample Phase", class:"input-group-text", for:"sample-phase" %>
+        <%= form.text_field :phase , type:"text", class:"form-control", id:"sample-phase",value:"liquid", readonly: true %>
+      </div>
+
+
+    <div>
+        <p class="Measurement Inofrmation">
+    </div>
+
+      <div id="solvent-1" class="vis">
+        <%= form.label :solvent1, class:"input-group-text", id:"solvent-select-1"%>
+        <%= form.select(:solvent1, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-1",:required => true}) %>
+            </div>
+
+            <div class="input-group mb-3">
+
+                <div class="form-check form-check-inline">
+                  <div class="input-group mb-3">
+                      <div class="form-check form-check-inline">
+                    <% options = ['1H', '13C','1 H-D₂O','DEPT','2D-COSY','2D-HSQC','X-Nuclei'] %>
+                    <% options.each do |option| %>
+                      <%= check_box_tag 'ft_nm[measurement1][]', option, @ft_nm.measurement1.include?(option) %>
+                      <%= label_tag "ft_nm_measurement1_#{option}", option %><br>
+                    <% end %>
+
+                </div>
+
+
+            </div>
+
+
+    <div id="solvent-2" class="vis">
+      <%= form.label :solvent2, class:"input-group-text", id:"solvent-select-2"%>
+      <%= form.select(:solvent2, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-2"}) %>
+
+          <div class="input-group mb-3">
+
+              <div class="form-check form-check-inline">
+                <% options = ['1H', '13C','1 H-D₂O','DEPT','2D-COSY','2D-HSQC','X-Nuclei'] %>
+                <% options.each do |option| %>
+                  <%= check_box_tag 'ft_nm[measurement2][]', option, @ft_nm.measurement2.include?(option) %>
+                  <%= label_tag "ft_nm_measurement2_#{option}", option %><br>
+                <% end %>
+
+              </div>
+
+
+          </div>
+    </div>
+
+    <div id="solvent-3" class="vis">
+      <%= form.label :solvent3, class:"input-group-text", id:"solvent-select-3"%>
+      <%= form.select(:solvent3, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-3"}) %>
+
+
+          <div class="input-group mb-3">
+
+              <div class="form-check form-check-inline">
+                <% options = ['1H', '13C','1 H-D₂O','DEPT','2D-COSY','2D-HSQC','X-Nuclei'] %>
+                <% options.each do |option| %>
+                  <%= check_box_tag 'ft_nm[measurement3][]', option, @ft_nm.measurement3.include?(option) %>
+                  <%= label_tag "ft_nm_measurement3_#{option}", option %><br>
+                <% end %>
+
+              </div>
+
+
+          </div>
+    </div>
+
+    <div id="solvent-4" class="vis">
+      <%= form.label :solvent4, class:"input-group-text", id:"solvent-select-4"%>
+      <%= form.select(:solvent4, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-4"}) %>
+
+
+          <div class="input-group mb-3">
+
+              <div class="form-check form-check-inline">
+                <% options = ['1H', '13C','1 H-D₂O','DEPT','2D-COSY','2D-HSQC','X-Nuclei'] %>
+                <% options.each do |option| %>
+                  <%= check_box_tag 'ft_nm[measurement4][]', option, @ft_nm.measurement4.include?(option) %>
+                  <%= label_tag "ft_nm_measurement4_#{option}", option %><br>
+                <% end %>
+
+              </div>
+
+
+          </div>
+      </div>
+
+    <div id="solvent-5" class="vis">
+      <%= form.label :solvent5, class:"input-group-text", id:"solvent-select-5"%>
+      <%= form.select(:solvent5, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-5"}) %>
+
+
+          <div class="input-group mb-3">
+            <div class="form-check form-check-inline">
+            <% options = ['1H', '13C','1 H-D₂O','DEPT','2D-COSY','2D-HSQC','X-Nuclei'] %>
+            <% options.each do |option| %>
+              <%= check_box_tag 'ft_nm[measurement5][]', option, @ft_nm.measurement5.include?(option) %>
+              <%= label_tag "ft_nm_measurement5_#{option}", option %><br>
+            <% end %>
+
+              </div>
+
+
+          </div>
+        </div>
+
+
+
+
+        <div>
+            <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
+        </div>
+        <div>
+          <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :toxicity, 'toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :toxicity, 'Non-Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <%= form.label :health,"Helath Hazard", class:"input-group-text", for:"health_hazard"%>
+          <%= form.select(:health, ['Yes', 'No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "health_hazard",:required => true}) %>
+        </div>
+        <% options = ['Irritant to skin/eyes', 'harmful to skin','Toxic if inhaled'] %>
+            <% options.each do |option| %>
+              <%= check_box_tag 'ft_nm[hazardmethod][]', option, @ft_nm.hazardmethod.include?(option) %>
+              <%= label_tag "ft_nm_hazardmethod_#{option}", option %><br>
+            <% end %>
+    <div class="input-group mb-3 vis" id="health-hazard-yes">
+        <div class="form-check form-check-inline">
+
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
+            <label class="form-check-label" for="inlineCheckbox1">Irritant to skin/eyes</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">Harmful to skin</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Toxic if inhaled</label>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <label class="input-group-text" for="store_handle">Storage & handling condition</label>
+        <select class="form-select" id="store_handle">
+            <option selected>Choose...</option>
+            <option value="room_temp">Room temperature</option>
+            <option value="spec_temp">Specific Tempeature</option>
+        </select>
+        <div class="input-group mb-3 vis" id="spec-temp-val">
+          <%= form.text_field :temp , type:"text", class:"form-control", id:"spec-temp-field",placeholder:"Ex: 2°C, Store in Dark" %>
+        </div>
+    </div>
+
+
+    <div class="input-group mb-3" id="ref-file">
+    <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
+    <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
+  </div>
+
+
+
+  <div class="input-group mb-3">
+  <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+  <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+</div>
+<div id="instruct">
+<p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+ </div>
+
+
+  <div class="mb-3">
+    <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
+    <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+  </div>
+
+  <div class="actions">
+      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+  </div>
+
+    <p class="text-danger mt-3" >*Please attach the details regarding characteristic proton shift for a sample along with this application.</p>
+    <p class="text-danger">#NMR analysis of Paramagnetic and Ferromagnetic compounds cannot be done.</p>
+  </div>
+</div>
+
+
+<%=render "partials/footer" %>
+<%end %>
+
+<script>
+    let sampleNumber = document.getElementById('no-of-sample-ft-nmr');
+    let healthHazard = document.getElementById('health_hazard');
+    let healthHazardYes = document.getElementById('health-hazard-yes');
+    let storageHandle = document.getElementById('store_handle');
+    let specTemp = document.getElementById('spec-temp-val');
+    let solvent1 = document.getElementById('solvent-1');
+    let solvent2 = document.getElementById('solvent-2');
+    let solvent3 = document.getElementById('solvent-3');
+    let solvent4 = document.getElementById('solvent-4');
+    let solvent5 = document.getElementById('solvent-5');
+
+    sampleNumber.addEventListener('click', () => {
+        solvent1.classList.add('vis');
+        solvent2.classList.add('vis');
+        solvent3.classList.add('vis');
+        solvent4.classList.add('vis');
+        solvent5.classList.add('vis');
+
+        if(sampleNumber.value == '1'){
+          solvent1.classList.toggle('vis')
+        }
+        if(sampleNumber.value == '2'){
+          solvent1.classList.toggle('vis')
+          solvent2.classList.toggle('vis')
+        }
+        if(sampleNumber.value == '3'){
+          solvent1.classList.toggle('vis')
+          solvent2.classList.toggle('vis')
+          solvent3.classList.toggle('vis')
+        }
+        if(sampleNumber.value == '4'){
+          solvent1.classList.toggle('vis')
+          solvent2.classList.toggle('vis')
+          solvent3.classList.toggle('vis')
+          solvent4.classList.toggle('vis')
+        }
+        if(sampleNumber.value == '5'){
+          solvent1.classList.toggle('vis')
+          solvent2.classList.toggle('vis')
+          solvent3.classList.toggle('vis')
+          solvent4.classList.toggle('vis')
+          solvent5.classList.toggle('vis')
+        }
+    })
+
+    healthHazard.addEventListener('click', () => {
+        healthHazardYes.classList.add('vis');
+
+        if(healthHazard.value == 'yes'){
+          healthHazardYes.classList.toggle('vis')
+        }
+    })
+
+    storageHandle.addEventListener('click', () => {
+        specTemp.classList.add('vis');
+
+        if(storageHandle.value == 'spec_temp'){
+          specTemp.classList.toggle('vis')
+        }
+    })
+</script>

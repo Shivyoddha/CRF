@@ -22,7 +22,7 @@
 <div class="container-slot-booker">
 
     <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
+        <!--below2 is the button of Nitk CRF logo-->
         <div id="navigation-logo">
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
@@ -31,7 +31,7 @@
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
+                <%# below2 are code to get items on the navigation pane %>
                 <li class="nav-item">
                         <%= link_to 'All Slots',slotbooker_low_path,class:"nav-link active sidelink-wrap" %>
                 </li>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">low:Alloted Slots</h2>
         </div>
 
 
@@ -86,161 +86,165 @@
                 </thead>
                 <tbody>
 
-                  <% @xrd2.where(status:'alloted').each do |xrds|%>
+                  <% @low2.where(status:'alloted').each do |low2|%>
 
                   <tr>
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                    <th scope="row">CRF/low2/<%=low2.id %>	</th>
+                    <td> <%= low2.user.name%> </td>
+                    <td> <%= low2.user.orgname%> </td>
+                    <td> <%= low2.user.department%> </td>
+                    <td> <%= low2.user.contact%> </td>
 
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.measurement%> </td>
-                    <td> <%= xrds.composition%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                    <td> <%= xrds.more%> </td>
+                    <td> <%= low2.sample%> </td>
+                    <td> <%= low2.sc1%>
+                         <%= low2.sc2%> <br>
+                         <%= low2.sc3%> <br>
+                         <%= low2.sc4%><br>
+                         <%= low2.sc5%></td>
+                    <td> <%= low2.st1%>
+                         <%= low2.st2%>
+                         <%= low2.st3%>
+                         <%= low2.st4%>
+                         <%= low2.st5%></td>
+                     <td> <%= low2.tt1%>
+                          <%= low2.tt2%>
+                          <%= low2.tt3%>
+                          <%= low2.tt4%>
+                          <%= low2.tt5%></td>
+                    <td> <%= low2.m1%>
+                         <%= low2.m2%>
+                         <%= low2.m3%>
+                         <%= low2.m4%>
+                         <%= low2.m5%></td>
+                    <td> <%= low2.tf1%>
+                         <%= low2.tf2%>
+                         <%= low2.tf3%>
+                         <%= low2.tf4%>
+                         <%= low2.tf5%></td>
+                    <td> <%= low2.more%> </td>
                     <td>Booked</td>
-                    <td><%= xrds.slotdate %></td>
-                    <td><%= xrds.slottime %></td>
 
-                    <td> <%= xrds.status %></td>
-                    <%if xrds.references.attached? %>
-                    <%xrds.references.each do |file|%>
-                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                       <% end %>
-                  <% else %>
-                    <td>NA</td>
-                  <% end %>
-                        <td id="assign-btn">
-                            <!-- Button trigger modal -->
-                             <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-                             <div id="<%= xrds.id%>" class="modal">
+                    <td> <%= low2.slotdate %></td>
 
-                           <div class="modal-dialog">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                   </div>
-                                   <div class="modal-body">
-                                     <%= form_with(model: xrds,local:true) do |form| %>
+                    <td> <%= low2.slottime %></td>
 
-                                         <div class="input-group mb-3">
-                                         <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                         <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                       </div>
+                      <td><%= low2.status%></td>
+                      <%if low2.references.attached? %>
+                      <%low2.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                    <td id="assign-btn">
+                        <!-- Button trigger modal -->
+                         <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{low2.id}" }, id: "ani" %>
+                         <div id="<%= low2.id%>" class="modal">
 
-                                       <div class="input-group mb-3">
-                                       <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                                     </div>
-
-                                     <%=form.fields_for :equipment_table do |f| %>
-                                      <div class="input-group mb-3">
-                                         <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                       </div>
-
-                                      <div class="input-group mb-3">
-                                        <%= f.hidden_field :username, value:"#{xrds.user.name}"%>
-                                     </div>
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= low2.user.name %></b></h1>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body">
+                                 <%= form_with(model: low2,local:true) do |form| %>
 
                                      <div class="input-group mb-3">
-                                       <%= f.hidden_field :dummy, value:"#{xrds.status}"%>
-                                    </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                    </div>
-
-                                     <%end%>
-                                      <%=xrds.id%>
-
-                                       <div class="actions">
-                                         <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-
-                                       </div>
-                                     <% end %>
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
                                    </div>
-                                   <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                       <button type="button" class="btn btn-primary">Cancel Slot</button>
+
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+                                  <%=low2.id%>
+
+                                   <div class="actions">
+                                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
                                    </div>
+                                 <% end %>
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Cancel Slot</button>
                                </div>
                            </div>
                        </div>
-                         </td>
+                   </div>
+                     </td>
 
 
-                         <td id="cancel-btn">
-                            <!-- Button trigger modal -->
-                              <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+                     <td id="cancel-btn">
+                        <!-- Button trigger modal -->
+                          <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{low2.id}" }, id: "anish" %>
 
-                             <!-- Modal -->
-                              <div id="ani<%= xrds.id%>" class="modal">
-                               <div class="modal-dialog">
-                                     <div class="modal-content">
-                                         <div class="modal-header">
-                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
-                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                         </div>
-                                         <div class="modal-body">
-                                           <%= form_for xrds do |f| %>
-                                             <p> Are you sure you want to cancel the slot ?</p>
-                                             <%= f.hidden_field :status, value: 'cancelled' %>
-                                         <div class="actions">
-
-
-                                         </div>
-
-                                          </div>
-                                         <div class="modal-footer">
-                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                               <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
-                                         </div>
-                                         <% end %>
+                         <!-- Modal -->
+                          <div id="ani<%= low2.id%>" class="modal">
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= low2.user.name %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                      </div>
+                                     <div class="modal-body">
+                                       <%= form_for low2 do |f| %>
+                                         <p> Are you sure you want to cancel the slot ?</p>
+                                         <%= f.hidden_field :status, value: 'cancelled' %>
+                                     <div class="actions">
+
+
+                                     </div>
+
+                                      </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                           <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                     </div>
+                                     <% end %>
                                  </div>
                              </div>
-                         </td>
+                         </div>
+                     </td>
 
 <%end%>
-                    </tr>
+                </tr>
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-        </div>
-        </div>
-
-
+    </div>
     </div>
 
 
 </div>
+
+
+</div>
 <script>
-  // Get the modals and buttons
-  var modal1 = document.getElementByClass("modal");
-  var btn1 = document.getElementById("ani");
-  var modal2 = document.getElementByClass("modal2");
-  var btn2 = document.getElementById("anish");
-  // Add event listeners to the buttons
-  btn1.addEventListener("click", function() {
-    modal1.style.display = "block";
-  });
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal");
+var btn1 = document.getElementById("ani");
+var modal2 = document.getElementByClass("modal2");
+var btn2 = document.getElementById("anish");
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+modal1.style.display = "block";
+});
 
-  btn2.addEventListener("click", function() {
-    modal2.style.display = "block";
-  });
+btn2.addEventListener("click", function() {
+modal2.style.display = "block";
+});
 
-  // Close the modal when the user clicks anywhere outside of it
-  window.addEventListener("click", function(event) {
-    if (event.target == modal1) {
-      modal1.style.display = "none";
-    }
-    if (event.target == modal2) {
-      modal2.style.display = "none";
-    }
-  });
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+if (event.target == modal1) {
+  modal1.style.display = "none";
+}
+if (event.target == modal2) {
+  modal2.style.display = "none";
+}
+});
 </script>

@@ -73,6 +73,6 @@ class ImpedanceAnaliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id, references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id, references: [],measurement: [])
     end
 end

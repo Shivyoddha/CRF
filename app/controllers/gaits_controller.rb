@@ -75,6 +75,6 @@ class GaitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gait_params
-      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id,ethicals: [], prescrptions: [],clinicals: [], references: [])
+      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id,ethicals: [], prescrptions: [],clinicals: [], references: [],output_format: [])
     end
 end

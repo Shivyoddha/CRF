@@ -39,16 +39,13 @@
 
 
           <div>
+            <% options = ['Contact', 'Tapping'] %>
+            <% options.each do |option| %>
+              <%= check_box_tag 'atomic_force_microscope[technique][]', option, @atomic_force_microscope.technique.include?(option) %>
+              <%= label_tag "atomic_force_microscope_technique_#{option}", option %><br>
+            <% end %>
               <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"technique" %>
-              <div class="form-check">
-              <%= form.check_box :technique,{:class=>'form-check-input',id:"contact"} %>
-              <%= form.label :technique, "Contact", class:"form-check-label", for:"contact"%>
-
-              </div>
-              <div class="form-check">
-                <%= form.check_box :technique,{:checked=> true, :class=>'form-check-input',id:"tapping"}%>
-                <%= form.label :technique, "Tapping", class:"form-check-label", for:"tapping"%>
-              </div>
+            
 
           </div>
 
@@ -137,7 +134,7 @@
           <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
       </div>
 
-        
+
 
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>

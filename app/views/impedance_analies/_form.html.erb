@@ -39,22 +39,12 @@
 
     <div class="input-group mb-3">
       <div class="input-group mb-3">
-        <div class="form-check form-check-inline">
-              <%= form.check_box :capacitance,{:class=>'form-check-input'}, true, false%>
-              <%= form.label :capacitance,"Capacitance" ,class:"form-check-label",for:"capacitance"%>
-        </div>
-        <div class="form-check form-check-inline">
-            <%= form.check_box :impedance,{:class=>'form-check-input'}, true, false%>
-          <%= form.label :impedance,"Impedance" ,class:"form-check-label",for:"impedance"%>
-        </div>
-        <div class="form-check form-check-inline">
-              <%= form.check_box :dielectric,{:class=>'form-check-input'}, true, false%>
-                <%= form.label :dielectric,"Dielectric" ,class:"form-check-label",for:"dielectric"%>
-        </div>
-        <div class="form-check form-check-inline">
-              <%= form.check_box :iv,{:class=>'form-check-input'}, true, false%>
-                <%= form.label :iv,"I-V" ,class:"form-check-label",for:"i-v"%>
-        </div>
+        <% options = ['Capacitance', 'Impedance','Dielectric','I-V'] %>
+        <% options.each do |option| %>
+          <%= check_box_tag 'impedance_analy[measurement][]', option, @impedance_analy.measurement.include?(option) %>
+          <%= label_tag "impedance_analy_measurement_#{option}", option %><br>
+        <% end %>
+        
     </div>
     </div>
 
