@@ -54,12 +54,16 @@ Rails.application.routes.draw do
     get 'mainportal/adminModelEquip'
     get 'mainportal/adminModelPayment'
     get 'mainportal/adminStats'
+    get 'mainportal/chairmanDashboard'
+    get 'mainportal/chairmanStats'
+    get 'mainportal/chairmanEquip'
+    get 'mainportal/chairmanPayment'
+    get 'mainportal/chairmanUsers'
+    get 'mainpage/landing'
     get 'home/index'
     get 'home/anish'
     get 'know/xrd'
     get 'records/record'
-    get 'admin_portal/admindashboard'
-    get 'admin_portal/slotdashboard'
 
     get 'home/mainPage'
 
@@ -333,9 +337,9 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
-    devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  #   devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
   devise_scope :user do
      get '/users/sign_out' => 'devise/sessions#destroy'
   end

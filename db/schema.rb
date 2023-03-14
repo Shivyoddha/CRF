@@ -945,12 +945,9 @@ ActiveRecord::Schema.define(version: 2023_03_14_144244) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
-    t.string "encrypted_otp_secret"
-    t.string "encrypted_otp_secret_iv"
-    t.string "encrypted_otp_secret_salt"
-    t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
+    t.integer "faculty_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -1072,6 +1069,7 @@ ActiveRecord::Schema.define(version: 2023_03_14_144244) do
   add_foreign_key "three_d_scanners", "users"
   add_foreign_key "tribometers", "users"
   add_foreign_key "ultra_centrifuges", "users"
+  add_foreign_key "users", "faculties"
   add_foreign_key "uv_vis_nirs", "users"
   add_foreign_key "xrds", "users"
   add_foreign_key "zeta_potential_sizes", "users"

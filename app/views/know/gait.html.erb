@@ -2,7 +2,6 @@
 <%= stylesheet_link_tag "knowEquipment"%>
 <%=render "partials/loginHeading"%>
 <%=render "partials/formsBackbtn"%>
-<%=render "partials/formsBackbtn"%>
 
 <div class="container">
     <div id="equipment-name">
@@ -11,25 +10,25 @@
     </div>
     <div class="hero">
 
-      <div class="equipment-img-wrap" >
+     <div class="equipment-img-wrap" >
         <div class="equipment-img">
-            <div id="gait-images" class="carousel slide">
+            <div id="fsw-images" class="carousel slide">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
+                  <div class="carousel-item">
                       <%=image_tag 'gait-images/Gait_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                   </div>
-                  <div class="carousel-item active">
+                  <div class="carousel-item ">
                       <%=image_tag 'gait-images/Gait_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                   </div>
                   <div class="carousel-item active">
                       <%=image_tag 'gait-images/Gait_3.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                   </div>
                 </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#gait-images" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#fsw-images" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#gait-images" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#fsw-images" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -37,11 +36,10 @@
         </div>
      </div>
 
-
-        <div id="content">
+        <div id="content" style="margin-top:8em">    <!--Added inline styles here to add margin between pic and para -->
 
             <div class="mb-3 fw-bold text-warning">
-              <p >A  [Mocap Camera-Miqus M3, Qualisys, Sweden}</p>
+              <p >[A  Mocap Camera-Miqus M3, Qualisys, Sweden]</p>
               <p>[Lode Valiant 2 rehab, Lode, Netherland]</p>
               <p>[AMTI-BMS 400600, AMTI, US]</p>
             </div>
