@@ -48,6 +48,11 @@
 
     <div class="grit-paper">
        <h5 class="text-warning fw-text">Grit Paper required</h5>
+       <% options = ['80', '120','180','220','320','400','600','800','1000','3200'] %>
+       <% options.each do |option| %>
+         <%= check_box_tag 'grinding[grit][]', option, @grinding.grit.include?(option) %>
+         <%= label_tag "grinding_grit_#{option}", option %><br>
+       <% end %>
         <div class="input-group mb-3">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="80">
@@ -94,6 +99,11 @@
 
     <div class="diamond-grit-paper">
        <h5 class="text-warning fw-text">Diamond Grit Paper required</h5>
+       <% options = ['80', '220','600'] %>
+       <% options.each do |option| %>
+         <%= check_box_tag 'grinding[diamond][]', option, @grinding.diamond.include?(option) %>
+         <%= label_tag "grinding_diamond_#{option}", option %><br>
+       <% end %>
         <div class="input-group mb-3">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="80">
@@ -112,6 +122,11 @@
 
     <div class="diamond-grit-paper">
        <h5 class="text-warning fw-text">Suspension Solution</h5>
+       <% options = ['Collidal Silica', 'Collidal-Alumina'] %>
+       <% options.each do |option| %>
+         <%= check_box_tag 'grinding[suspension][]', option, @grinding.suspension.include?(option) %>
+         <%= label_tag "grinding_suspension_#{option}", option %><br>
+       <% end %>
         <div class="input-group mb-3">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="colloidal-silica">
@@ -188,20 +203,6 @@
 
 
 
-  <div class="field">
-    <%= form.label :grit %>
-    <%= form.text_field :grit %>
-  </div>
-
-  <div class="field">
-    <%= form.label :diamond %>
-    <%= form.text_field :diamond %>
-  </div>
-
-  <div class="field">
-    <%= form.label :suspension %>
-    <%= form.text_field :suspension %>
-  </div>
 
 
 

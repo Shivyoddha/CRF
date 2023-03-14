@@ -27,7 +27,7 @@
 
     <div class="input-group mb-3">
       <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no" %>
-      <%= form.select(:sample, ["1","2"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+      <%= form.select(:sample, ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
     </div>
 
 
@@ -126,9 +126,14 @@
 
             <p class="fw-bold">Testing required</p>
             <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+              <% options = ['UPLC', 'MS','UPLC-MS (+ve)','UPLC-MS (-ve)','UPLC-MS-MS (+ve)','UPLC-MS-MS (-ve)','MS-MS'] %>
+              <% options.each do |option| %>
+                <%= check_box_tag 'hrlcm[testing_required][]', option, @hrlcm.testing_required.include?(option) %>
+                <%= label_tag "hrlcm_testing_required_#{option}", option %><br>
+              <% end %>
 
-              <div class="form-check form-check-inline">
-            
+
                 </div>
 
               </div>
@@ -179,21 +184,14 @@
         </div>
 
         <div class="input-group mb-3 vis" id="health-hazard-radio">
+
            <div class="form-check form-check-inline">
-               <input class="form-check-input" type="checkbox" id="skin-eyes" value="option1" checked>
-               <label class="form-check-label" for="skin-eyes">Irritant to skin/eyes</label>
-           </div>
-           <div class="form-check form-check-inline">
-               <input class="form-check-input" type="checkbox" id="skin" value="option2">
-               <label class="form-check-label" for="skin">Harmful to skin</label>
-           </div>
-           <div class="form-check form-check-inline">
-               <input class="form-check-input" type="checkbox" id="inhale" value="option3">
-               <label class="form-check-label" for="inhale">Toxic if inhaled</label>
-           </div>
-           <div class="form-check form-check-inline">
-               <input class="form-check-input" type="checkbox" id="ingest" value="option3">
-               <label class="form-check-label" for="ingest">Toxic if ingested</label>
+             <% options = ['Irritant to skin/eyes', 'Harmful to skin','Toxic if inhaled','Toxic if ingested'] %>
+             <% options.each do |option| %>
+               <%= check_box_tag 'hrlcm[hazard_method][]', option, @hrlcm.hazard_method.include?(option) %>
+               <%= label_tag "hrlcm_hazard_method_#{option}", option %><br>
+             <% end %>
+
            </div>
    </div>
 
@@ -290,10 +288,6 @@
 
 
 
-  <div>
-    <%= form.label :testing_required, style: "display: block" %>
-    <%= form.text_field :testing_required %>
-  </div>
 
 
 <% end %>

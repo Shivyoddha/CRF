@@ -27,35 +27,10 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
-        <div class="sidelinks">
-
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_milli_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
-                </li>
-                <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_milli1_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_milli2_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_milli3_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_milli4_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-            </ul>
-        </div>
     </div>
 
 <%# the content section is coded here %>
     <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">MILLI:All Slots</h2>
-        </div>
 
 
         <div id="slot-details">
@@ -72,10 +47,6 @@
                         <th scope="col" id="composition">Volume One</th>
                         <th scope="col" id="composition">Volume Two</th>
                         <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
                     </tr>
                 </thead>
@@ -90,16 +61,9 @@
                         <td> <%= milli.user.department%> </td>
                         <td> <%= milli.user.contact%> </td>
                         <td> <%= milli.typewater%> </td>
-                        <td> <%= milli.volumeone%> </td>
-                        <td> <%= milli.volumetwo%> </td>
+                        <td> <%= milli.volumeone%>L </td>
+                        <td> <%= milli.volumetwo%>L</td>
                         <td> <%= milli.more%> </td>
-                        <td>Booked</td>
-
-                        <td> <%= milli.slotdate %></td>
-
-                        <td> <%= milli.slottime %></td>
-
-                          <td><%= milli.status%></td>
                           <%if milli.references.attached? %>
                           <%milli.references.each do |file|%>
                           <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>

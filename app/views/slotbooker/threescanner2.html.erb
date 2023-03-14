@@ -94,19 +94,11 @@
                         <td> <%= three.sample%> </td>
                         <td> <%= three.size%> </td>
                         <td> <%= three.texture%></td>
-                        <td>  Stl:<nobr><%= three.stt%> <br>
-                          Ply:<%= three.ply%><br>
-                          Wrl:<%= three.wrl%> <br>
-                          Obj: <%= three.obj%> <br>
-                          Asc: <%= three.asc%> <br>
-                          Aop: <%= three.aop%> <br>
-                          Ptx: <%= three.ptx%> <br>
-                          Xyzrgb: <%= three.xyzrgb%>
-                        </td>
+                        <td> <%= Array(three.output_format).join(", ") %> </td>
                         <td> <%= three.more%> </td>
                         <td>Booked</td>
                         <td> <%= three.slotdate %> </td>
-                      
+
                         <td> <%= three.slottime %> </td>
                           <td> <%= three.status%> </td>
                         <%if three.references.attached? %>

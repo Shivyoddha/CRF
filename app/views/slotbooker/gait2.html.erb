@@ -72,6 +72,7 @@
                          <th scope="col" id="measure">Measurement Type</th>
                          <th scope="col" id="trails">No of Trails</th>
                          <th scope="col" id="force-plate">Whether Force Plate included</th>
+                         <th scope="col" id="force-plate">Output Format</th>
                          <th scope="col" id="range">Clincal Trail</th>
                            <th scope="col" id="reference-paper">Ethical  Prescription Paper</th>
                         <th scope="col" id="reference-paper">Physician Prescription Paper</th>
@@ -101,6 +102,7 @@
                         <td> <%= gait.measurement%> </td>
                         <td> <%= gait.trials%> </td>
                         <td> <%= gait.force_plate%> </td>
+                        <td> <%= Array(gait.output_format).join(", ") %> </td>
                         <td> <%= gait.clinical_trial%> </td>
                         <td> <%gait.ethicals.each do |file|%>
                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>

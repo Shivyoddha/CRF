@@ -37,20 +37,12 @@
 
     <div>
         <p class="fw-bold">Sample Material</p>
-        <div class="input-group mb-3">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="aluminium" value="Aluminium">
-                        <label class="form-check-label" for="aluminium">Aluminium</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="copper" value="Copper">
-                        <label class="form-check-label" for="copper">Copper</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="metal-matrix" value="Metal matrix composition">
-                        <label class="form-check-label" for="metal-matrix">Metal matrix composition</label>
-                    </div>
-        </div>
+        <% options = ['Aluiminium', 'Copper','Metal matrix composition'] %>
+        <% options.each do |option| %>
+          <%= check_box_tag 'friction[material][]', option, @friction.material.include?(option) %>
+          <%= label_tag "friction_material_#{option}", option %><br>
+        <% end %>
+      
     </div>
 
     <div class="input-group mb-3">
@@ -98,7 +90,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <%= form.label :measurement,"Welding Temp (IR type)", class:"input-group-text", for:"acoustic-measure"%>
+          <%= form.label :measurement,"Aucostic Measurement", class:"input-group-text", for:"acoustic-measure"%>
           <%= form.select(:measurement, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "acoustic-measure",:required => true}) %>
         </div>
 

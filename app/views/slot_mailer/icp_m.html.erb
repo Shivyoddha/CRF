@@ -42,7 +42,8 @@
                 <span>Course:</span>
                 <span class="fw-bold data"> <%= @user.course %></span>
             </div>
-
+          </div>
+        </div>
         <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
         <div id="sample-details">
             <div class="left">
@@ -81,7 +82,7 @@
               <span>Analysis Required:<span><span class="fw-bold data"><%= @icp_m.temp %><span>
           </div>
             <div id="testing-req" class="element">
-                <span>Testing Requirement:<span><span class="fw-bold data"><%= @icp_m %><span>
+                <span>Testing Requirement:<span><span class="fw-bold data"><%= @icp_m.testing %><span>
             </div>
         </div>
 
@@ -89,7 +90,7 @@
         <div id="safety-info">
             <div class="left">
               <div id="hazard" class="element">
-                  <span>Storage & handling conditions:<span><span class="fw-bold data"><%= @icp_m %><span>
+                  <span>Storage & handling conditions:<span><span class="fw-bold data"><%= @icp_m.storage_condition %><span>
               </div>
               <div id="hazard" class="element">
                   <span>Toxicity:<span><span class="fw-bold data"><%= @icp_m.toxicity %><span>

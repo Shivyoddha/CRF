@@ -12,6 +12,18 @@
     <h1>Ansys System Lab</h1>
   </div>
   <div class='hero'>
+    <%= form_with(model: ansy) do |form| %>
+      <% if ansy.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(ansy.errors.count, "error") %> prohibited this ansy from being saved:</h2>
+
+          <ul>
+            <% ansy.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <div class="input-group mb-3">
       <label class="input-group-text" for="select-date">Select Dates</label>
       <select class="form-select" id="select-date">
@@ -56,97 +68,47 @@
         <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="no-Days" readonly>
       </div>
       <div class="input-group mb-3">
-        <label class="input-group-text" for="select-date">No of System Required</label>
-        <select class="form-select" id="select-date">
-          <option selected>Choose...</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-        </select>
+        <%= form.label :sysno,"No of System Required", class:"input-group-text", for:"select-date"%>
+        <%= form.select(:sysno, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "select-date",:required => true}) %>
       </div>
       <div class="input-group mb-3">
-        <label class="input-group-text" for="amount">Bill Amount</label>
-        <label class="input-group-text" for="amount">₹</label>
-        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" id="amount" readonly>
+        <%= form.label :amount,"Bill Amount",class:"input-group-text",for:"amount" %>
+        <%= form.text_field :amount ,class:"form-control" ,for:"amount"%>
+        <%= form.label :amount,"₹",class:"input-group-text",for:"amount" %>
       </div>
       <div class="input-group mb-3">
-        <input type="text-area" class="form-control" placeholder="Purpose of System" aria-label="Username" aria-describedby="basic-addon1" id="tell-more" rows="3">
+        <%= form.text_area :purpose ,class:"form-control",placeholder:"Purpose of System"%>
+        <!-- <input type="text-area" class="form-control" placeholder="Purpose of System" aria-label="Username" aria-describedby="basic-addon1" id="tell-more" rows="3"> -->
       </div>
     </div>
+    <div class="input-group mb-3">
+    <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+    <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+  </div>
+  <div class="actions">
+     <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
 
+    </div>
   </div>
 
 </div>
 
 <%=render "partials/footer" %>
-
-          
-
-          
-
-
-
-
-
-
-
-
-
-
-<%= form_with(model: ansy) do |form| %>
-  <% if ansy.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ansy.errors.count, "error") %> prohibited this ansy from being saved:</h2>
-
-      <ul>
-        <% ansy.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :sysno %>
-    <%= form.number_field :sysno %>
-  </div>
-
-  <div class="field">
-    <%= form.label :slotdate %>
-    <%= form.text_field :slotdate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :purpose %>
-    <%= form.text_area :purpose %>
-  </div>
-
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :debit %>
-    <%= form.text_field :debit %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script>
@@ -162,7 +124,7 @@
 
         if(selectDate.value == "Customized") {
           custom.classList.toggle('vis');
-          standardDate.classList.add('vis');        
+          standardDate.classList.add('vis');
         }
         if(selectDate.value =! "Customized") {
           standardDate.classList.remove('vis');

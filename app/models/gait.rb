@@ -4,4 +4,5 @@ class Gait < ApplicationRecord
   has_many_attached :prescrptions
   has_many_attached :clinicals
   belongs_to :user
+  serialize :output_format
 end

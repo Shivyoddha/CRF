@@ -95,15 +95,7 @@
                         <td> <%= threes.sample%> </td>
                         <td> <%= threes.size%> </td>
                         <td> <%= threes.texture%></td>
-                        <td>  Stl:<nobr><%= threes.stt%> <br>
-                          Ply:<%= threes.ply%><br>
-                          Wrl:<%= threes.wrl%> <br>
-                          Obj: <%= threes.obj%> <br>
-                          Asc: <%= threes.asc%> <br>
-                          Aop: <%= threes.aop%> <br>
-                          Ptx: <%= threes.ptx%> <br>
-                          Xyzrgb: <%= threes.xyzrgb%>
-                        </td>
+                        <td> <%= Array(three.output_format).join(", ") %> </td>
                         <td> <%= threes.more%> </td>
                         <td>Booked</td>
                         <td><%= threes.slotdate %></td>

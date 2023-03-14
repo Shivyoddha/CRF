@@ -95,9 +95,9 @@
                         <td> <%= uv.composition%> </td>
                         <td> <%= uv.sampletype%> </td>
                         <td> <%= uv.srange%>nm-<%= uv.erange%>nm</td>
-                        <td><b>Transmittance:<nobr></b><%= uv.transmittance%><br><b>Absorbance:</b><%= uv.absorbance%><br><b>Reflectance:</b><%= uv.reflectance%></td>
+                        <td> <%= Array(uv.measurement).join(", ") %> </td>
                         <td> <%= uv.toxicity%> </td>
-                    
+
                         <td> <%= uv.more%> </td>
                         <td>Booked</td>
                         <td><%= uv.slotdate %> </td>

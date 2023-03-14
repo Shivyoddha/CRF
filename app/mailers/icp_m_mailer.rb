@@ -15,7 +15,7 @@ class IcpMMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "nikeshs129@gmail.com",
+              to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",

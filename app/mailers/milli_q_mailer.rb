@@ -14,17 +14,17 @@ class MilliQMailer < ApplicationMailer
     # attachments["milli_q_payment.pdf"] = WickedPdf.new.pdf_from_string(
     # render_to_string(template: 'slot_mailer/milli_q_payment.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     # )
-    attachments["liquid_nitrogen.pdf"] = WickedPdf.new.pdf_from_string(
+    attachments["milli_q.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/milli_q.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
-    attachments["liquid_nitrogenpayment.pdf"] = WickedPdf.new.pdf_from_string(
+    attachments["milli_q_payment.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'slot_mailer/milli_q_payment.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
     )
 
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "#{@user.email}",
+            to: "bangaloreameen@gmail.com",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",

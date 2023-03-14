@@ -363,18 +363,7 @@ end
 def nitrogen
   @nitrogen=LiquidNitrogen.all
 end
-      def nitrogen1
-        @nitrogen1=LiquidNitrogen.all
-      end
-      def nitrogen2
-        @nitrogen2=LiquidNitrogen.all
-      end
-      def nitrogen3
-        @nitrogen3=LiquidNitrogen.all
-      end
-      def nitrogen4
-        @nitrogen4=LiquidNitrogen.all
-      end
+
 
 def centrifuge
   @centrifuge=UltraCentrifuge.all
@@ -425,18 +414,7 @@ end
 def milli
   @milli=MilliQ.all
 end
-      def milli1
-        @milli1=MilliQ.all
-      end
-      def milli2
-        @milli2=MilliQ.all
-      end
-      def milli3
-        @milli3=MilliQ.all
-      end
-      def milli4
-        @milli4=MilliQ.all
-      end
+    
 
 def impdeance
   @imped=ImpedanceAnaly.all
@@ -617,22 +595,36 @@ end
 
 
 def ftnmr
+  @ft=FtNm.all
 
 end
 def ftnmr1
-
+ @ft1=FtNm.all
 end
 def ftnmr2
-
+ @ft2=FtNm.all
 end
 def ftnmr3
-
+  @ft3=FtNm.all
 end
 def ftnmr4
-
+  @ft4=FtNm.all
 end
-
-
+def microedm
+  @micro=MicroEdm.all
+end
+    def microedm1
+      @micro1=MicroEdm.all
+    end
+    def microedm2
+      @micro2=MicroEdm.all
+    end
+    def microedm3
+      @micro3=MicroEdm.all
+    end
+    def microedm4
+    @micro4=MicroEdm.all
+    end
  def low
    @low = LowFatigue.all
  end
@@ -648,5 +640,7 @@ end
  def low4
    @low4 = LowFatigue.all
  end
-
+ def ansy
+   @ansy=Ansy.all
+ end
 end

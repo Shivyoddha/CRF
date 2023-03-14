@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ft_nms
   resources :ansies
   resources :equipment_tables
   resources :lasers
@@ -151,10 +152,6 @@ Rails.application.routes.draw do
     get 'slotbooker/elctro3'
     get 'slotbooker/elctro4'
     get 'slotbooker/nitrogen'
-    get 'slotbooker/nitrogen1'
-    get 'slotbooker/nitrogen2'
-    get 'slotbooker/nitrogen3'
-    get 'slotbooker/nitrogen4'
     get 'slotbooker/gassensing'
     get 'slotbooker/gassensing1'
     get 'slotbooker/gassensing2'
@@ -181,10 +178,6 @@ Rails.application.routes.draw do
     get 'slotbooker/bet3'
     get 'slotbooker/bet4'
     get 'slotbooker/milli'
-    get 'slotbooker/milli1'
-    get 'slotbooker/milli2'
-    get 'slotbooker/milli3'
-    get 'slotbooker/milli4'
     get 'slotbooker/integrated'
     get 'slotbooker/integrated1'
     get 'slotbooker/integrated2'
@@ -276,6 +269,17 @@ Rails.application.routes.draw do
     get 'slotbooker/low2'
     get 'slotbooker/low3'
     get 'slotbooker/low4'
+    get 'slotbooker/microedm'
+    get 'slotbooker/microedm1'
+    get 'slotbooker/microedm2'
+    get 'slotbooker/microedm3'
+    get 'slotbooker/microedm4'
+    get 'slotbooker/ftnmr'
+    get 'slotbooker/ftnmr1'
+    get 'slotbooker/ftnmr2'
+    get 'slotbooker/ftnmr3'
+    get 'slotbooker/ftnmr4'
+    get 'slotbooker/ansy'
     get 'know/hr_fesem_carl'
     get 'know/hr_fesem_jeol'
     get 'know/three'

@@ -96,9 +96,9 @@
                 <td> <%= grind.sample%> </td>
                 <td> <%= grind.diameter%> </td>
                 <td> <%= grind.mould%> </td>
-                <td> <%= grind.grit%> </td>
-                <td> <%= grind.diamond%> </td>
-                <td> <%= grind.suspension%> </td>
+                <td> <%= Array(grind.grit).join(", ") %> </td>
+                <td> <%= Array(grind.diamond).join(", ") %> </td>
+                <td> <%= Array(grind.suspension).join(", ") %> </td>
                 <td> <%= grind.lapping%> </td>
                 <td> <%= grind.more%> </td>
                 <td>Booked</td>

@@ -368,7 +368,7 @@
               <div class="card-footer-express">
                   <small class="text-muted card-footer-express">Express Slot:</small>
                   <div class="badge badge-success badge-outlined">Available</div>
-                  
+
               </div>
           </div>
       </div>
@@ -854,8 +854,8 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_ft_nmr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_ft_nmr_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Regular Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2545,10 +2545,10 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                              <li> <a href="Regular Slots" class="book-dropdown dropdown-item"></a>
-                              <%= link_to "Regular Slot", new_ansy_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li><a href="Express Slots" class="book-dropdown dropdown-item"></a>
-                              <%= link_to "Express Slot", new_ansy_path, class:"book-dropdown dropdown-item" %> </li>
+
+                              <%= link_to "Regular Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %>
+
+                              <%= link_to "Express Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %> 
                         </ul>
                     </div>
                 </div>

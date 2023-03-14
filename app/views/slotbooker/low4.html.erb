@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">low:Cancelled Slots</h2>
         </div>
 
 
@@ -84,27 +84,57 @@
                 </thead>
                 <tbody>
 
-                      <% @xrd4.where(status:'cancelled').each do |xrds|%>
+                      <% @low4.where(status:'cancelled').each do |low4|%>
                       <tr>
-                        <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                        <th scope="row">CRF/low/<%=low4.id %>	</th>
 
-                        <td> <%= xrds.user.name%> </td>
-                        <td> <%= xrds.user.orgname%> </td>
-                        <td> <%= xrds.user.department%> </td>
-                        <td> <%= xrds.user.contact%> </td>
-                        <td> <%= xrds.sample%> </td>
-                        <td> <%= xrds.measurement%> </td>
-                        <td> <%= xrds.composition%> </td>
-                        <td> <%= xrds.stype%> </td>
-                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                        <td> <%= xrds.more%> </td>
+                      
+                        <td> <%= low4.user.name%> </td>
+                        <td> <%= low4.user.orgname%> </td>
+                        <td> <%= low4.user.department%> </td>
+                        <td> <%= low4.user.contact%> </td>
+
+                        <td> <%= low4.sample%> </td>
+                        <td> <%= low4.sc1%>
+                             <%= low4.sc2%> <br>
+                             <%= low4.sc3%> <br>
+                             <%= low4.sc4%><br>
+                             <%= low4.sc5%></td>
+                        <td> <%= low4.st1%>
+                             <%= low4.st2%>
+                             <%= low4.st3%>
+                             <%= low4.st4%>
+                             <%= low4.st5%></td>
+                         <td> <%= low4.tt1%>
+                              <%= low4.tt2%>
+                              <%= low4.tt3%>
+                              <%= low4.tt4%>
+                              <%= low4.tt5%></td>
+                        <td> <%= low4.m1%>
+                             <%= low4.m2%>
+                             <%= low4.m3%>
+                             <%= low4.m4%>
+                             <%= low4.m5%></td>
+                        <td> <%= low4.tf1%>
+                             <%= low4.tf2%>
+                             <%= low4.tf3%>
+                             <%= low4.tf4%>
+                             <%= low4.tf5%></td>
+                        <td> <%= low4.more%> </td>
                         <td>Booked</td>
-                        <td><%= xrds.slotdate %> </td>
-                        <td> <%= xrds.slottime %> </td>
-  <td> <%= xrds.status %></td>
-  <%xrds.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-<%end%>
+
+                        <td> <%= low4.slotdate %></td>
+
+                        <td> <%= low4.slottime %></td>
+
+                          <td><%= low4.status%></td>
+                          <%if low4.references.attached? %>
+                          <%low4.references.each do |file|%>
+                          <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                             <% end %>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

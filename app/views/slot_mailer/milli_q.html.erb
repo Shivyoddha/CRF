@@ -16,7 +16,7 @@
             <h2 class="text-center" id="equip-heading"><u>Milli-Q Water Request Form</u></h2>
         </div>
 
-        <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/WPS/<%= @milli_q.id%></span>
+        <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/MILLI/<%= @milli_q.id%></span>
         <div class = "user-info" >
             <div class="left">
                 <div class="element">
@@ -142,7 +142,7 @@
               </div>
 
               <div class="generated-on mt-3">
-                  <i>Generated on: <%= @user.id%></i>
+                  <i>Generated on: <%= @milli_q.created_at%></i>
               </div>
 
           </div>

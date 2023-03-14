@@ -1,0 +1,148 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-slot-booker">
+
+    <div id="navigation" class="font-quiucksand">
+        <!--below is the button of Nitk CRF logo-->
+        <div id="navigation-logo">
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+        </div>
+
+        <div class="sidelinks">
+
+            <h2 class="fw-bold text-center">Navigation</h2>
+            <ul class="sidelinks-model-list">
+                <%# below are code to get items on the navigation pane %>
+                <li class="nav-item">
+                        <%= link_to 'All Slots',slotbooker_microedm_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to 'Pending Slots',slotbooker_microedm1_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Alloted Slots',slotbooker_microedm2_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                        <%= link_to 'Completed Slots',slotbooker_microedm3_path,class:"nav-link active sidelink-wrap" %>
+                        </li>
+                <li class="nav-item">
+                      <%= link_to 'Cancelled Slots',slotbooker_microedm4_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<%# the content section is coded here %>
+    <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold font-unbounded" id="tab-name">MICRO:Cancelled Slots</h2>
+        </div>
+
+
+        <div id="slot-details">
+        <div>
+            <table class="table table-hover font-quicksand">
+                <thead>
+                    <tr class="table-head font-unbounded">
+                      <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="name">Name</th>
+                      <th scope="col" id="institute">Institute</th>
+                      <th scope="col" id="department">Department</th>
+                      <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="institute">Sample</th>
+                      <th scope="col" id="department">Composition</th>
+                      <th scope="col" id="department">Measurement</th>
+                      <th scope="col" id="contact-no">Toll Electrode</th>
+                      <th scope="col" id="sample-no">Toll Material </th>
+                        <th scope="col" id="sample-no">Milling Feed</th>
+                      <th scope="col" id="sample-no">Milling Speed</th>
+                      <th scope="col" id="composition">Turning Feed</th>
+                      <th scope="col" id="composition">Turning Speed</th>
+                      <th scope="col" id="composition">Drilling Depth</th>
+                      <th scope="col" id="composition">Drilling Speed</th>
+                      <th scope="col" id="composition">Edm voltage</th>
+                      <th scope="col" id="composition">Edm Capacitance</th>
+                      <th scope="col" id="composition">Edg Polarity</th>
+                      <th scope="col" id="composition">Edg Wire Tension</th>
+                      <th scope="col" id="composition">Edg Feed</th>
+                      <th scope="col" id="request">More info</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col" id="slot-time">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" id="reference-paper">Reference Paper</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                      <% @micro4.where(status:'cancelled').each do |micro|%>
+                      <tr>
+                        <th scope="row">CRF/micro/<%=micro.id %>	</th>
+                        <td> <%= micro.user.name%> </td>
+                        <td> <%= micro.user.orgname%> </td>
+                        <td> <%= micro.user.department%> </td>
+                        <td> <%= micro.user.contact%> </td>
+
+                        <td> <%= micro.sample%> </td>
+                        <td> <%= micro.composition%> </td>
+                        <td> <%= Array(micro.measuerment).join(", ") %> </td>
+                        <td> <%= micro.toolelectrode%> </td>
+                        <td> <%= micro.toolmaterial%> </td>
+                        <td> <%= micro.millingfeed%> </td>
+                        <td> <%= micro.millingspeed%> </td>
+                        <td> <%= micro.turningfeed%> </td>
+                        <td> <%= micro.turningspeed%> </td>
+                        <td> <%= micro.drillingdepth%> </td>
+                        <td> <%= micro.drillingspeed%> </td>
+                        <td> <%= micro.edmvoltage%> </td>
+                        <td> <%= micro.edmcapacitance%> </td>
+                        <td> <%= micro.edgpolarity%> </td>
+                        <td> <%= micro.edgwire%> </td>
+                        <td> <%= micro.edgfeed%> </td>
+                        <td> <%= micro.more%> </td>
+                        <td>Booked</td>
+
+                        <td> <%= micro.slotdate %></td>
+
+                        <td> <%= micro.slottime %></td>
+
+                          <td><%= micro.status%></td>
+                          <%if micro.references.attached? %>
+                        <%micro.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <%end%>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                    </tr>
+                      <%end%>
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+
+    </div>
+
+
+</div>

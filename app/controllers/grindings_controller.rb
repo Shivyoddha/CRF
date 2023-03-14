@@ -72,6 +72,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould, :grit, :diamond, :suspension, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould,  :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,grit: [],diamond: [],suspension: [],references: [])
     end
 end

@@ -46,7 +46,7 @@
           </div>
       </div>
 
-        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>Sample Details</u></p>
         <div id="sample-details">
             <div class="left">
                 <div id="no-of-sample" class="element">
@@ -79,14 +79,14 @@
 
 
 
-        <p class="text-center" id="sample-details-heading"><u>TGA Specification</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>TGA Specification</u></p>
         <div id="safety-info">
             <div class="left">
                 <div id="measurement" class="element">
-                    <span>Measurement Range:<span><span class="fw-bold data"><%=@tga_fttr.measuerment%><span>
+                    <span>Measurement Range:<span><span class="fw-bold data"><%=@tga_fttr.measurement%><span>
                 </div>
                 <div id="compatibilty" class="element">
-                    <span>Compatibilty:<span><span class="fw-bold data"><%=@tga_fttr.compatibilty%><span>
+                    <span>Compatibilty:<span><span class="fw-bold data"><%=@tga_fttr.compatability%><span>
                 </div>
                 <div id="scan-rate" class="element">
                     <span>Scan Rate:<span><span class="fw-bold data"><%=@tga_fttr.scan_rate%><span>
@@ -99,13 +99,13 @@
             <div class="right">
 
                 <div id="laser-to-be-used:" class="element">
-                    <span>Carcinogenic:<span><span class="fw-bold data"><%=@tga_fttr.nature%><span>
+                    <span>Carcinogenic:<span><span class="fw-bold data"><%=@tga_fttr.carcinogenic%><span>
                 </div>
                 <div id="explosi" class="element">
-                    <span>Explosive:<span><span class="fw-bold data">Yes<span>
+                    <span>Explosive:<span><span class="fw-bold data"><%=@tga_fttr.explosive%><span>
                 </div>
                 <div id="atmosphere" class="element">
-                    <span>Atmosphere:<span><span class="fw-bold data">Oxygen<span>
+                    <span>Atmosphere:<span><span class="fw-bold data"><%=@tga_fttr.atmosphere%><span>
                 </div>
 
                 </div>
@@ -113,11 +113,11 @@
 
             </div>
 
-        <p class="text-center" id="sample-details-heading"><u>FTIR Method</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>FTIR Method</u></p>
         <div id="safety-info">
             <div class="left">
                 <div id="measurement" class="element">
-                    <span>FTIR Method:<span><span class="fw-bold data">ATR, KBR<span>
+                    <span>FTIR Method:<span><span class="fw-bold data">FTR:<%=@tga_fttr.atr%>,KBR:<%=@tga_fttr.kbr%><span>
                 </div>
 
             </div>
@@ -125,7 +125,7 @@
             <div class="right">
 
                 <div id="compatibilty" class="element">
-                    <span>Y-ordinate:<span><span class="fw-bold data">Transmittance<span>
+                    <span>Y-ordinate:<span><span class="fw-bold data"><%=@tga_fttr. yordinate%><span>
                 </div>
             </div>
 
@@ -133,14 +133,14 @@
             </div>
 
 
-        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></h3>
+        <p class="text-center" id="sample-details-heading"><u>Safety Information</u></p>
         <div id="safety-info">
             <div class="left">
                 <div id="hazard" class="element">
-                    <span>Hazard:<span><span class="fw-bold data">Non-Hazardous<span>
+                    <span>Hazard:<span><span class="fw-bold data"><%=@tga_fttr.hazard%><span>
                 </div>
                 <div id="compatibilty" class="element">
-                    <span>Compatibilty:<span><span class="fw-bold data">Non-Corrossive<span>
+                    <span>Compatibilty:<span><span class="fw-bold data"><%=@tga_fttr.compatability%><span>
                 </div>
 
             </div>
@@ -148,10 +148,10 @@
             <div class="right">
 
                 <div id="laser-to-be-used:" class="element">
-                    <span>Carcinogenic:<span><span class="fw-bold data">Yes<span>
+                    <span>Carcinogenic:<span><span class="fw-bold data"><%=@tga_fttr.carcinogenic%><span>
                 </div>
                 <div id="explosive" class="element">
-                    <span>Explosive:<span><span class="fw-bold data">Yes<span>
+                    <span>Explosive:<span><span class="fw-bold data"><%=@tga_fttr.explosive%><span>
                 </div>
 
                 </div>
@@ -163,7 +163,7 @@
 
         <div id="testing-req-div">
             <div id="sample-description" class="element">
-                <span>Testing Requirement:<span><span class="fw-bold data">N/A<span>
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@tga_fttr.more%><span>
             </div>
 
         </div>
@@ -178,7 +178,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i>Debit Head: Department Operating Cost</i></span>
+                    <span class="text-muted element"><i>Debit Head:<%=@tga_fttr.debit%></i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -227,7 +227,7 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i>Generated on: December 23,2022/ 1:18PM</i>
+                <i>Generated on:<%=@tga_fttr.created_at%></i>
             </div>
 
         </div>
