@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ft Nms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Nature</th>
+      <th>Phase</th>
+      <th>Solvent1</th>
+      <th>Measurement1</th>
+      <th>Solvent2</th>
+      <th>Measurement2</th>
+      <th>Solvent3</th>
+      <th>Measurement3</th>
+      <th>Solvent4</th>
+      <th>Measurement4</th>
+      <th>Measurement5</th>
+      <th>Solvent5</th>
+      <th>Toxicity</th>
+      <th>Health</th>
+      <th>More</th>
+      <th>Debit</th>
+      <th>Slotdate</th>
+      <th>Slottime</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ft_nms.each do |ft_nm| %>
+      <tr>
+        <td><%= ft_nm.sample %></td>
+        <td><%= ft_nm.nature %></td>
+        <td><%= ft_nm.phase %></td>
+        <td><%= ft_nm.solvent1 %></td>
+        <td><%= ft_nm.measurement1 %></td>
+        <td><%= ft_nm.solvent2 %></td>
+        <td><%= ft_nm.measurement2 %></td>
+        <td><%= ft_nm.solvent3 %></td>
+        <td><%= ft_nm.measurement3 %></td>
+        <td><%= ft_nm.solvent4 %></td>
+        <td><%= ft_nm.measurement4 %></td>
+        <td><%= ft_nm.measurement5 %></td>
+        <td><%= ft_nm.solvent5 %></td>
+        <td><%= ft_nm.toxicity %></td>
+        <td><%= ft_nm.health %></td>
+        <td><%= ft_nm.more %></td>
+        <td><%= ft_nm.debit %></td>
+        <td><%= ft_nm.slotdate %></td>
+        <td><%= ft_nm.slottime %></td>
+        <td><%= ft_nm.status %></td>
+        <td><%= link_to 'Show', ft_nm %></td>
+        <td><%= link_to 'Edit', edit_ft_nm_path(ft_nm) %></td>
+        <td><%= link_to 'Destroy', ft_nm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ft Nm', new_ft_nm_path %>

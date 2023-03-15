@@ -47,17 +47,18 @@
 
       <div>
         <div>
+    <% options = ['SEM', 'ESBD'] %>
+    <% options.each do |option| %>
+      <%= check_box_tag 'hr_fesem_c[measuring][]', option, @hr_fesem_c.measuring.include?(option) %>
+      <%= label_tag "hr_fesem_c_measuring_#{option}", option %><br>
+    <% end %>
 
-          <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
-          <div class="form-check">
-          <%= form.check_box :measurement,{:class=>'form-check-input'}, "SEM", "-"%>
-          <%= form.label "SEM", class:"form-check-label", for:"flexCheckChecked"%>
 
-          </div>
-          <div class="form-check">
-            <%= form.check_box :measurement,{:class=>'form-check-input'}, "EBSD", "-"%>
-            <%= form.label "EBSD", class:"form-check-label", for:"flexCheckChecked"%>
-          </div>
+
+
+
+ 
+
           <div><p class="text-warning">Max. 1 Sample</p></div>
       </div>
       </div>
@@ -66,27 +67,19 @@
          <%= form.label :eds_required, "EDX/EDAX required:",class:"input-group-text text-info", for:"inputGroupSelect04" %>
           <%= form.select(:eds_required, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "edx-edax-reqd",:required => true}) %>
       </div>
-
       <div id="edx-edax-req-yes-radio" class="vis mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="eds-edax" id="map-line">
-                <label class="form-check-label" for="map-line">
-                    Mapping/Line
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="eds-edax" id="area-point">
-                <label class="form-check-label" for="area-point">
-                    Area/Point
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="eds-edax" id="both">
-                <label class="form-check-label" for="both">
-                    Both
-                </label>
-            </div>
-      </div>
+           <div class="form-check">
+               <%= form.radio_button :eds, 'Mapping/Line', class:"form-check-input", type:"radio", id:"map-line"  %> Mapping/Line
+           </div>
+           <div class="form-check">
+                 <%= form.radio_button :eds, 'Area/Point', class:"form-check-input", type:"radio", id:"area-point"  %>   Area/Point
+           </div>
+           <div class="form-check">
+                 <%= form.radio_button :eds, 'Both', class:"form-check-input", type:"radio", id:"both"  %>   Both
+           </div>
+       </div>
+
+
 
         <div class="input-group mb-3">
             <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"inputGroupSelect04" %>

@@ -50,56 +50,12 @@
 
         <div>
             <label class="input-group-text" for="final-op">Final output format required</label>
-            <div class="form-check">
-                 <%= form.check_box :ply,{:class=>'form-check-input'},"ply", nil%>
-
-                <label class="form-check-label" for="ply">
-                     ply
-                </label>
-            </div>
-            <div class="form-check">
-                 <%= form.check_box :asc,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="asc">
-                    asc
-                </label>
-            </div>
-            <div class="form-check">
-               <%= form.check_box :stt,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="stl">
-                    stl
-                </label>
-            </div>
-            <div class="form-check">
-                <%= form.check_box :aop,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="aop">
-                     aop
-                </label>
-            </div>
-            <div class="form-check">
-               <%= form.check_box :wrl,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="wrl">
-                    wrl
-                </label>
-            </div>
-            <div class="form-check">
-               <%= form.check_box :ptx,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="ptx">
-                    ptx
-                </label>
-            </div>
-            <div class="form-check">
-                 <%= form.check_box :obj,{:class=>'form-check-input'}, true, false%>
-
-                <label class="form-check-label" for="obj">
-                    obj
-                </label>
-            </div>
-            <div class="form-check">
-              <%= form.check_box :xyzrgb,{:class=>'form-check-input'}, true, false%>
-                <label class="form-check-label" for="xyzrgb">
-                    xyzrgb
-                </label>
-            </div>
+            <% options = ['ply', 'asc','stl','aop','wrl','ptx','obj','xyzrgb'] %>
+            <% options.each do |option| %>
+              <%= check_box_tag 'three_d_scanner[output_format][]', option, @three_d_scanner.output_format.include?(option) %>
+              <%= label_tag "three_d_scanner_output_format_#{option}", option %><br>
+            <% end %>
+          
         </div>
 
 

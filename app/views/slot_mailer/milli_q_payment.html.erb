@@ -41,7 +41,7 @@
 
       <div id="proforma-inv">
         <div class="left">
-          <span id="app-no-tag">Proforma Invoice No:</span><span class="app-no fw-bold element data">NITK/CRF/LFA/123</span>
+          <span id="app-no-tag">Proforma Invoice No:</span><span class="app-no fw-bold element data">CRF/MILLI/<%= @milli_q.id%></span>
         </div>
         <div class="right">
           <span>Date: </span><span class="fw-bold data">01/03/2023</span>
@@ -67,20 +67,20 @@
 
       <div class = "user-info" >
         <p>With Reference to the above, the following testing was made as detailed below:</p>
-          <div class="left">
-              <div class="element">
-                  <span>Applicant Name:</span>
-                  <span class="fw-bold data">Akash Gupta</span>
-              </div>
-              <div class="element">
-                  <span>Applicant Email:</span>
-                  <span class="fw-bold data">akash.182nt002@nitk.edu.in</span>
-              </div>
-              <div class="element">
-                  <span>Department:</span>
-                  <span class="fw-bold data">Metallurgy & Materials</span>
-              </div>
-          </div>
+        <div class="left">
+            <div class="element">
+                <span>Applicant Name:</span>
+                <span class="fw-bold data"> <%=@user.name %> <%= @user.lastname %> </span>
+            </div>
+            <div class="element">
+                <span>Applicant Email:</span>
+                <span class="fw-bold data"> <%=@user.email %></span>
+            </div>
+            <div class="element">
+                <span>Department:</span>
+                <span class="fw-bold data"> <%=@user.department %></span>
+            </div>
+        </div>
           <div class = "right">
                 <div class="element">
 
@@ -95,8 +95,16 @@
             <div class="left">
 
               <div class="element">
+                  <span>Amount for Type I Water</span>
+                  <span class="fw-bold data"><%= @milli_q.amount1%> </span>
+              </div>
+                <div class="element">
+                  <span>Amount for Type II  Water</span>
+                  <span class="fw-bold data"><%= @milli_q.amount2%> </span>
+                  </div>
+                  <div class="element">
                   <span>Total Amount</span>
-                  <span class="fw-bold data"> hi</span>
+                  <span class="fw-bold data"><%= @milli_q.amounttotal%> </span>
               </div>
 
             </div>

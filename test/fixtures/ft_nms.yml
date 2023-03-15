@@ -1,0 +1,45 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample: 1
+  nature: MyString
+  phase: MyString
+  solvent1: MyString
+  measurement1: MyString
+  solvent2: MyString
+  measurement2: MyString
+  solvent3: MyString
+  measurement3: MyString
+  solvent4: MyString
+  measurement4: MyString
+  measurement5: MyString
+  solvent5: MyString
+  toxicity: MyString
+  health: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-03-11
+  slottime: 2023-03-11 00:21:38
+  status: MyString
+
+two:
+  sample: 1
+  nature: MyString
+  phase: MyString
+  solvent1: MyString
+  measurement1: MyString
+  solvent2: MyString
+  measurement2: MyString
+  solvent3: MyString
+  measurement3: MyString
+  solvent4: MyString
+  measurement4: MyString
+  measurement5: MyString
+  solvent5: MyString
+  toxicity: MyString
+  health: MyString
+  more: MyString
+  debit: MyString
+  slotdate: 2023-03-11
+  slottime: 2023-03-11 00:21:38
+  status: MyString

@@ -3,6 +3,10 @@
     font-family: "Quicksand", "sans-serif";
 }
 
+.margin-top {
+    margin-top: 4em;
+ }  /*Added in turn to get a small amount of margin between knowmore content and image for some equipments*/
+
 #equipment-name {
     display: flex;
     justify-content: center;

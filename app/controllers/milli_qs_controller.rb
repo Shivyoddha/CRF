@@ -23,12 +23,11 @@ class MilliQsController < ApplicationController
   def create
     @milli_q = MilliQ.new(milli_q_params)
     @milli_q.user=current_user
-    @milli_q.status="pending"
 
      # @milli_q.amount1=0
      # @milli_q.amount2=0
     # 'Student','Faculty','R & D Professional','Industry Professional','Entrepreneur'
-    if @milli_q.user.profession=='student'||@milli_q.user.profession=='Faculty'
+    if @milli_q.user.role=='student'||@milli_q.user.role=='Faculty'
          if @milli_q.volumeone.present?
          @milli_q.amount1 = (300.0)*@milli_q.volumeone
        end
@@ -36,7 +35,7 @@ class MilliQsController < ApplicationController
         @milli_q.amount2= (200.0)*@milli_q.volumetwo
       end
     end
-    if @milli_q.user.profession=='R & D Professional'
+    if @milli_q.user.profession=='R & D Professional'|| @milli_q.user.profession=='student'||@milli_q.user.profession=='Faculty'
         if @milli_q.volumeone.present?
          @milli_q.amount1 = (450.0)*@milli_q.volumeone
        end

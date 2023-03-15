@@ -74,6 +74,6 @@ class UvVisNirsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:reflectance,:absorbance,:transmittance,:user_id,references: [])
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id,references: [],measurement: [])
     end
 end

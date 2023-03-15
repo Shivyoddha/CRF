@@ -55,7 +55,7 @@
                 </div>
 
                 <div id="measurement" class="element">
-                    <span>Moulding Requirement:<span><span class="fw-bold data">#<span>
+                    <span>Moulding Requirement:<span><span class="fw-bold data"><%= @grinding.mould%><span>
                 </div>
                 <div id="measurement" class="element">
                     <span>Grit Paper Required:<span><span class="fw-bold data">80, 120,180,220,320,400,600,800,1000,3200<span>
@@ -152,7 +152,7 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i>Generated on: <%= @user.created_at%></i>
+                <i>Generated on: <%= @grinding.created_at%></i>
             </div>
 
         </div>

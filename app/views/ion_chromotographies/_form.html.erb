@@ -60,7 +60,7 @@
     </div>
 
     <div>
-        <p class="fw-bold text-primary">Measurement Information</p>
+        <p class="fw-bold text-primary">hazardmethod Information</p>
     </div>
 
     <div class="input-group mb-3">
@@ -120,17 +120,12 @@
 
     <div class="input-group mb-3 vis" id="health-hazard-checkbox">
         <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="irritate-skin-eyes" value="option1" checked>
-            <label class="form-check-label" for="irritate-skin-eyes">Irritant to skin/eyes</label>
+          <% options = ['Irritant to skin/eyes', 'Harmful to skin','Toxic if inhaled'] %>
+          <% options.each do |option| %>
+            <%= check_box_tag 'ion_chromotography[hazard_method][]', option, @ion_chromotography.hazard_method.include?(option) %>
+            <%= label_tag "ion_chromotography_hazard_method_#{option}", option %><br>
+          <% end %>
             </div>
-            <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="harm-skin" value="option2">
-            <label class="form-check-label" for="harm-skin">Harmful to skin</label>
-            </div>
-            <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inhale" value="option3">
-            <label class="form-check-label" for="inhale">Toxic if inhaled</label>
-        </div>
     </div>
 
     <div class="input-group mb-3">

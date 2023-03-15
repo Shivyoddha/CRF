@@ -70,10 +70,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="composition">Capacitance</th>
-                        <th scope="col" id="phase">Dielectric</th>
-                        <th scope="col" id="range">I-V</th>
-                        <th scope="col" id="composition">Impedance</th>
+                        <th scope="col" id="composition">Measuerment</th>
                         <th scope="col" id="composition">Frequency Range</th>
                         <th scope="col" id="phase">Voltage Range</th>
                         <th scope="col" id="range">Current Range</th>
@@ -98,10 +95,7 @@
                         <td> <%= imped.user.contact%> </td>
                         <td> <%= imped.sample%> </td>
                         <td> <%= imped.composition%> </td>
-                        <td> <%= imped.capacitance%> </td>
-                        <td> <%= imped.dielectric%> </td>
-                        <td> <%= imped.iv%> </td>
-                        <td> <%= imped.impedance%> </td>
+                        <td> <%= Array(imped.measurement).join(", ") %> </td>
                         <td> <%= imped.freqrange%> </td>
                         <td> <%= imped.voltagerange%> </td>
                         <td> <%= imped.currentrange%> </td>

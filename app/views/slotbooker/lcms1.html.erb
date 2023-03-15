@@ -84,6 +84,7 @@
                         <th scope="col" id="range">Toxicity</th>
                         <th scope="col" id="phase"> Disposal</th>
                         <th scope="col" id="range">Health</th>
+                        <th scope="col" id="range">Hazard method</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -114,11 +115,12 @@
                         <td> <%= lcms.sample_salts%> </td>
                         <td> <%= lcms.sample_contains%> </td>
                         <td> <%= lcms.storage%> </td>
-                        <td> <%= lcms.testing_required%> </td>
+                        <td> <%= Array(lcms.testing_required).join(", ") %> </td>
                         <td> <%= lcms.incompatible%> </td>
                         <td> <%= lcms.toxicity%> </td>
                         <td> <%= lcms.disposal%> </td>
                         <td> <%= lcms.health%> </td>
+                        <td> <%= Array(lcms.hazard_method).join(", ") %> </td>
                         <td> <%= lcms.more%> </td>
                         <td>Booked</td>
 

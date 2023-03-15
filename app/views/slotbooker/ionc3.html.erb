@@ -82,7 +82,8 @@
                         <th scope="col" id="range">Detector</th>
                         <th scope="col" id="phase">Toxicity</th>
                         <th scope="col" id="range">Hazards</th>
-                        <th scope="col" id="range">/disposal</th>
+                        <th scope="col" id="range">Hazard Method</th>
+                        <th scope="col" id="range">disposal</th>
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -114,7 +115,8 @@
                         <td> <%= ionc.temperature%> </td>
                         <td> <%= ionc.detector%> </td>
                         <td> <%= ionc.toxicity%> </td>
-                        <td>Hazards:<nobr> <%= ionc.hazards%> <br>Hazrds yes:<%= ionc.hazard_yes%></td>
+                        <td> <%= ionc.hazards%> </td>
+                        <td> <%= Array(ionc.hazard_method).join(", ") %> </td>
                         <td> Specific Disposal:<nobr><%= ionc.disposal%><br>Disposal Method :<%= ionc.disposal_yes%></td>
                         <td> <%= ionc.more%> </td>
                         <td>Booked</td>

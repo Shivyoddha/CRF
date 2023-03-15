@@ -33,19 +33,19 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_milli_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'All Slots',slotbooker_ftnmr_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_milli1_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Pending Slots',slotbooker_ftnmr1_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_milli2_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
+                        <%= link_to 'Alloted Slots',slotbooker_ftnmr2_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_milli3_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Completed Slots',slotbooker_ftnmr3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_milli4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_ftnmr4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">milli:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FTNmr:Alloted Slots</h2>
         </div>
 
 
@@ -63,65 +63,94 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">Type Water</th>
-                        <th scope="col" id="composition">Volume One</th>
-                        <th scope="col" id="composition">Volume Two</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="reference-paper">Reassign</th>
-                        <th scope="col" id="reference-paper">Cancel</th>
+                      <th scope="col">Appl No</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Institute</th>
+                      <th scope="col">Department</th>
+                      <th scope="col">Contact No:</th>
+                      <th scope="col">No of Samples</th>
+                      <th scope="col">Nature of Sample</th>
+                      <th scope="col">Sample Phase</th>
+                      <th scope="co">Solvent 1</th>
+                      <th scope="co">Measurement 1</th>
+                      <th scope="co">Solvent 2</th>
+                      <th scope="co">Measurement 2</th>
+                      <th scope="co">Solvent 3</th>
+                      <th scope="co">Measurement 3</th>
+                      <th scope="co">Solvent 4</th>
+                      <th scope="co">Measurement 4</th>
+                      <th scope="co">Solvent 5</th>
+                      <th scope="co">Measurement 5</th>
+                      <th scope="col">Toxicity</th>
+                      <th scope="col">Health Hazard</th>
+                      <th scope="col">Health hazard Method</th>
+                      <th scope="col">Customisied Tempertaure</th>
+                      <th scope="col">More Information</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Reference Paper</th>
+
+                          <th scope="col" id="reference-paper">Reassign</th>
+                    <th scope="col" id="reference-paper">Cancel</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                        <% @milli2.where(status:'alloted').each do |milli|%>
+                      <% @ft2.where(status:'alloted').each do |ftnmr|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/milli/<%=milli.id %>	</th>
-                        <td> <%= milli.user.name%> </td>
-                        <td> <%= milli.user.orgname%> </td>
-                        <td> <%= milli.user.department%> </td>
-                        <td> <%= milli.user.contact%> </td>
-                        <td> <%= milli.typewater%> </td>
-                        <td> <%= milli.volumeone%> </td>
-                        <td> <%= milli.volumetwo%> </td>
-                        <td> <%= milli.more%> </td>
+                        <th scope="row">CRF/ftnmr/<%=ftnmr.id %>	</th>
+                        <td> <%= ftnmr.user.name%> </td>
+                        <td> <%= ftnmr.user.orgname%> </td>
+                        <td> <%= ftnmr.user.department%> </td>
+                        <td> <%= ftnmr.user.contact%> </td>
+                        <td> <%= ftnmr.sample%> </td>
+                        <td> <%= ftnmr.nature%> </td>
+                        <td> <%= ftnmr.phase%> </td>
+                        <td> <%= ftnmr.solvent1%> </td>
+                        <td> <%= Array(ftnmr.measurement1).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent2%> </td>
+                        <td> <%= Array(ftnmr.measurement2).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent3%> </td>
+                        <td> <%= Array(ftnmr.measurement3).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent4%> </td>
+                        <td> <%= Array(ftnmr.measurement4).join(", ") %> </td>
+                        <td> <%= ftnmr.solvent5%> </td>
+                        <td> <%= Array(ftnmr.measurement5).join(", ") %> </td>
+                        <td> <%= ftnmr.toxicity%> </td>
+                        <td> <%= ftnmr.health%> </td>
+                        <td> <%= Array(ftnmr.hazardmethod).join(", ") %> </td>
+                        <td> <%= ftnmr.temp%> </td>
+                        <td> <%= ftnmr.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= milli.slotdate %></td>
+                        <td> <%= ftnmr.slotdate %></td>
 
-                        <td> <%= milli.slottime %></td>
+                        <td> <%= ftnmr.slottime %></td>
 
-                          <td><%= milli.status%></td>
-                          <%if milli.references.attached? %>
-                        <%milli.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
-                     <% else %>
-                       <td>NA</td>
-                     <% end %>
+                          <td><%= ftnmr.status%></td>
+                          <%if ftnmr.references.attached? %>
+                    <%ftnmr.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
                      <td id="assign-btn">
                          <!-- Button trigger modal -->
-                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{milli.id}" }, id: "ani" %>
-                          <div id="<%= milli.id%>" class="modal">
+                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{ftnmr.id}" }, id: "ani" %>
+                          <div id="<%= ftnmr.id%>" class="modal">
 
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= milli.user.name %></b></h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ftnmr.user.name %></b></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                  <%= form_with(model: milli,local:true) do |form| %>
+                                  <%= form_with(model: ftnmr,local:true) do |form| %>
 
                                       <div class="input-group mb-3">
                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -132,7 +161,7 @@
                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                   </div>
-                                   <%=milli.id%>
+                                   <%=ftnmr.id%>
 
                                     <div class="actions">
                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -152,18 +181,18 @@
 
                       <td id="cancel-btn">
                          <!-- Button trigger modal -->
-                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{milli.id}" }, id: "anish" %>
+                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{ftnmr.id}" }, id: "anish" %>
 
                           <!-- Modal -->
-                           <div id="ani<%= milli.id%>" class="modal">
+                           <div id="ani<%= ftnmr.id%>" class="modal">
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= milli.user.name %></b></h1>
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= ftnmr.user.name %></b></h1>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">
-                                        <%= form_for milli do |f| %>
+                                        <%= form_for ftnmr do |f| %>
                                           <p> Are you sure you want to cancel the slot ?</p>
                                           <%= f.hidden_field :status, value: 'cancelled' %>
                                       <div class="actions">
