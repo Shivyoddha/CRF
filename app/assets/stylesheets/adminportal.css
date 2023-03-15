@@ -255,24 +255,6 @@ ul {
     text-align: center;
 }
 
-#chart {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    background-color: #ddf1fb;
-    flex-direction: column;
-    margin: 3em;
-}
-
-#myChart {
-    width: 100%;
-    max-width: 70em;
-    display: block;
-    background-color: #f9fdff;
-    padding: 2em;
-    border-radius: 2em;
-}
 
 /* the slots page element stylings are done below */
 #slots {
@@ -330,6 +312,103 @@ ul {
     border-radius: 11px;
     width: 100%;
 }
+
+/*Styling of the view all button in  statistics section of admindashboard */
+    #btn-announcement-wrap {
+        display: flex;
+    justify-content: center;
+}
+
+  #btn-announcement {
+      position: relative;
+      padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid rgb(61, 106, 255);
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: #3d6aff;
+    overflow: hidden;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+  #btn-announcement:hover {
+    background: rgb(61, 106, 255);
+    color: #fbfcff;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+  
+  #btn-announcement:hover::before {
+    -webkit-animation: sh02 0.5s 0s linear;
+    -moz-animation: sh02 0.5s 0s linear;
+    animation: sh02 0.5s 0s linear;
+  }
+  
+  #btn-announcement::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 0 0 50px 30px #fff;
+    -webkit-transform: skewX(-20deg);
+    -moz-transform: skewX(-20deg);
+    -ms-transform: skewX(-20deg);
+    -o-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+  }
+  
+  
+  #btn-announcement:active {
+    box-shadow: 0 0 0 0 transparent;
+    -webkit-transition: box-shadow 0.2s ease-in;
+    -moz-transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease-in;
+  }
+  /* Styling of button ends */
+
+  
+/* Styling of chart done here */
+#chart {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #ddf1fb;
+    flex-direction: column;
+    margin: 3em;
+}
+
+#myChart {
+    width: 100%;
+    max-width: 70em;
+    display: block;
+    background-color: #f9fdff;
+    padding: 2em;
+    border-radius: 2em;
+}
+
+#piechart {
+    margin-bottom: 2em;
+}
+
+/* Styling of chart ends */
+
+
+
+
+
+
 
 
 @media only screen and (max-width: 1430px) {

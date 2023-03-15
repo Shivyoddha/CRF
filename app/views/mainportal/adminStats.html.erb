@@ -48,55 +48,35 @@
             <div id="stats">
                 <h2 class="fw-bold">Statistics</h2>
             </div>
-                <canvas id="myChart" class="">  </canvas>
+                
+                <!--Script tag to fetch data to the chart-->
+                <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
 
-                <script>
-                    function myFunction() {
-                        var array=[]
-                        for(let i=1; i<2; i++){
-                            "<%@equipment=EquipmentTable.all.each do |equip|%> "
-                            "<%end%>"
-                        }
-                    return array;
+                    function drawChart() {
+
+                        var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                        ['Work',     11],
+                        ['Eat',      2],
+                        ['Commute',  2],
+                        ['Watch TV', 2],
+                        ['Sleep',    7]
+                        ]);
+
+                        var options = {
+                        title: 'My Daily Activities'
+                        };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                        chart.draw(data, options);
                     }
-                    var xValues = myFunction();
-                    var yValues = [55, 49, 44, 70, 65];
-                    var barColors = [
-                    "#b91d47",
-                    "#00aba9",
-                    "#2b5797",
-                    "#e8c3b9",
-                    "#1e7145"
-                    ];
-
-                    new Chart("myChart", {
-                    type: "pie",
-                    data: {
-                        labels: xValues,
-                        datasets: [{
-                        backgroundColor: barColors,
-                        data: yValues
-                        }]
-                    },
-                        options: {
-
-                            title: {
-                            display: true,
-                            text: "World Wide Wine Production 2018",
-                            plugins: {
-                                legend: {
-                                    labels: {
-                                        // This more specific font property overrides the global property
-                                        font: {
-                                            size: 16
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
                 </script>
+
+                <div id="piechart" style="width: 900px; height: 500px;"></div>
+
         </div>
 
     </div>
@@ -105,8 +85,10 @@
 </div>
 
 
-<script>
 
+
+<!--This script tag is added to add toggle feature to model button-->
+<script>
     let model = document.getElementById('model');
     let modellist = document.getElementById('model-list');
 

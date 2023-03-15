@@ -508,9 +508,10 @@ transition: var(--transition);
 }
 
 a:hover {
-color: var(--c-brand-light);
+  color: var(--c-brand-light);
 }
 
+/*Styling of the view all button in announcment section*/
 #btn-announcement {
   position: relative;
   padding: 10px 20px;
@@ -528,6 +529,10 @@ color: var(--c-brand-light);
   transition: all 0.2s ease-in;
 }
 
+#btn-announcement-wrap {
+  display: flex;
+  justify-content: center;
+}
 #btn-announcement:hover {
   background: rgb(61, 106, 255);
   color: #fbfcff;
@@ -567,11 +572,8 @@ color: var(--c-brand-light);
   -moz-transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in;
 }
+/* Styling of button ends */
 
-#btn-announcement-wrap {
-  display: flex;
-  justify-content: center;
-}
 
 @keyframes sh02 {
   from {
