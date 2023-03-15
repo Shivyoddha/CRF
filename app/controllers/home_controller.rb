@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
+    PaymentXrdMailer.with(id:1, userid:1).Mail.deliver_later
     @user=User.find(current_user.id)
     if @user.slotbooker == 'xrd'
     redirect_to slotbooker_xrd_path(current_user.id)
