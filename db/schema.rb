@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_14_144244) do
+ActiveRecord::Schema.define(version: 2023_03_16_091224) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,13 +65,16 @@ ActiveRecord::Schema.define(version: 2023_03_14_144244) do
 
   create_table "ansies", force: :cascade do |t|
     t.integer "sysno"
-    t.string "slotdate"
     t.text "purpose"
     t.float "amount"
     t.string "debit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.date "startdate"
+    t.date "enddate"
+    t.date "customstart"
+    t.date "customend"
     t.index ["user_id"], name: "index_ansies_on_user_id"
   end
 
@@ -945,6 +948,11 @@ ActiveRecord::Schema.define(version: 2023_03_14_144244) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.integer "faculty_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["faculty_id"], name: "index_users_on_faculty_id"
