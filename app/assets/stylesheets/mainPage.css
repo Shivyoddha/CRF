@@ -728,6 +728,12 @@ a:hover {
 
 /* video section styling ends */
 
+/* extra css */
+  .f-size{
+    font-size: 0.9em;
+  }
+/* extra css ends */
+
 
 /* media queries */
 @media (max-width:992px) {
