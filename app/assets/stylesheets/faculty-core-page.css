@@ -1,0 +1,173 @@
+body{
+    margin: auto;
+    background-color: #ddf1fb;
+    padding:0%;
+    font-family: 'quicksand';
+}
+
+/* .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+
+
+.chair-head{
+    font-family: 'unbounded';
+}
+
+.chair-pr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.patron-head{
+    text-align: center;
+    font-family: 'unbounded';
+    
+}
+
+.adv-head{
+    text-align: center;
+    margin: 1em;
+    font-family: 'unbounded';
+}
+
+.core-head{
+    font-family: 'unbounded';
+    text-align: center;
+    margin: 1em;
+}
+
+#patron{
+    text-align: center;
+    margin-right: 15em;
+}
+
+.director{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em;
+}
+
+.advisory-comitte{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em;
+}
+
+.chairman{
+    display: flex;
+    justify-content: center;
+    /* margin: 1em; */
+    background-color: #fff;
+}
+
+.core-committe{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* margin: 1em; */
+    background-color: #fff;
+}
+
+.card{
+    margin: 1%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .container{
+        display: flex; 
+        flex-direction: column;  
+        align-items: center;
+    }
+    .advisory-comitte{
+        flex-direction: column; 
+        align-items: center;   
+    }
+
+    .core-committe{
+        flex-direction: column;    
+        align-items: center; 
+    }
+    
+  }
+
+
+  /* extra */
+  .info-parent{
+    background-color: aliceblue;
+    
+  }
+  
+  .info-cards{
+      margin: 2em;
+      align-items: center;
+      width: 33%;
+      
+      border-radius: 9%;
+      /* display: block; */
+  }
+  
+  .info-cards:hover{
+      box-shadow: 0 0 0 0px #676464;
+      background-color: aliceblue;
+      transition: linear 0.5s transform;
+      transform: scale(1.05);
+  }
+  
+  .info-children{
+      display: flex;
+      justify-content: center;
+  }
+  
+  .info-img{
+      display: flex;
+      justify-content: center;
+      margin: 2em;
+  }
+
+  /* switcher */
+
+#switcher-div {
+    display: flex;
+    width: 60%;
+    margin: 1em auto;
+    border: 2px solid;
+    border-radius: 1em;
+    padding: 0.5em;
+    background-color: #fff;
+}
+
+  #core {
+    width: 50%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+  }
+
+  #staff{
+    width: 50%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+  }
+
+
+
+
+  /* special */
+  .vis {
+    display: none;
+  }
+
+  .backcolor {
+    background: #3f5ac9;
+    color: #ddf1fb;
+  }

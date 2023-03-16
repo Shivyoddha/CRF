@@ -67,6 +67,13 @@ Rails.application.routes.draw do
     get 'records/record'
 
     get 'home/mainPage'
+    get 'mainpage/staff'
+    get 'mainpage/people'
+    get 'mainpage/user_type'
+    get 'mainpage/about_us'
+    get 'mainpage/gallery'
+
+
 
 
     get 'slotbooker/xrd'
