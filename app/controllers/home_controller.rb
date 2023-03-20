@@ -1,8 +1,24 @@
 class HomeController < ApplicationController
+  def verifsent
+    @user = User.find(params[:id])
+    FacultyVerifMailer.with(id:@user.id).verify.deliver_later
+  end
+  def maithu
+    @user=User.find(params[:id])
+    @user.update(status:'Active')
+    @user.save
+    redirect_to root_path
+  end
+  def faculty_verif
+    @user=User.find(params[:id])
+  end
 
   def index
-    PaymentXrdMailer.with(id:1, userid:1).Mail.deliver_later
-    @user=User.find(current_user.id)
+      @user=User.find(current_user.id)
+    if @user.status==nil
+      redirect_to home_faculty_verif_path(id:current_user.id)
+    end
+
     if @user.slotbooker == 'xrd'
     redirect_to slotbooker_xrd_path(current_user.id)
     end

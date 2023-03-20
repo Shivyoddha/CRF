@@ -16,7 +16,7 @@ class AnsysMailer < ApplicationMailer
      )
       mail(
             from:"crfnitk@gmail.com" ,
-              to: "#{@user.email}",
+              to: "bangaloreameen@gmail.com",
             # to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",

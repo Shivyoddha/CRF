@@ -6,6 +6,7 @@ def xrd
 
  end
 
+
 def xrd1
 @xrd=Xrd.all
 EquipmentTable.new
@@ -414,7 +415,7 @@ end
 def milli
   @milli=MilliQ.all
 end
-    
+
 
 def impdeance
   @imped=ImpedanceAnaly.all
@@ -642,5 +643,9 @@ end
  end
  def ansy
    @ansy=Ansy.all
- end
+
+
+end
+
+
 end

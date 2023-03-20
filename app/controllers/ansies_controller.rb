@@ -12,6 +12,141 @@ class AnsiesController < ApplicationController
 
   # GET /ansies/new
   def new
+    today=Date.parse("2022-03-29")
+
+if today.wday==0||today.wday==1
+batches = [
+
+  { name: " #{(today.end_of_week(:wednesday)).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) ), end_date: (today.end_of_week(:wednesday) + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:friday)).strftime('%B %d')} to #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday) ), end_date: (today.end_of_week(:friday)  + 2.days), dates: [] },
+  { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday)+1.weeks ), end_date: (today.end_of_week(:monday)+1.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks), end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
+  { name: " #{(today.end_of_week(:monday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day), dates: [] },
+]
+elsif today.wday==2||today.wday==3
+batches = [
+  { name: " #{(today.end_of_week(:friday)).strftime('%B %d')} to #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday) ), end_date: (today.end_of_week(:friday)  + 2.days), dates: [] },
+  { name: " #{(today.end_of_week(:monday)).strftime('%B %d')} to #{(today.end_of_week(:monday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) ), end_date: (today.end_of_week(:monday) + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.weeks+1.days).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)+1.weeks ), end_date: (today.end_of_week(:wednesday) + 1.weeks+1.days), dates: [] },
+  { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
+  { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:wednesday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 2.weeks), end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day), dates: [] },
+]
+else
+  batches = [
+    { name: " #{(today.end_of_week(:monday)).strftime('%B %d')}   to    #{(today.end_of_week(:monday)+1.day).strftime('%B %d')}    ", start_date: (today.end_of_week(:monday) ), end_date: (today.end_of_week(:monday) + 1.day), dates: [] },
+    { name: " #{(today.end_of_week(:wednesday)).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) ), end_date: (today.end_of_week(:wednesday) + 1.day), dates: [] },
+    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday)+1.weeks + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
+    { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] },
+    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks), end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
+    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+2.weeks  + 2.days), dates: [] },
+
+
+
+]
+    # { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] }
+
+end
+#   today = Date.today
+# week_start = today.beginning_of_week(:friday)
+# week_end = today.end_of_week(:friday)
+
+
+# You can then use the `batches` array to display the available batches in your view
+
+
+# Populate the dates array for each batch
+batches.each do |batch|
+  date = batch[:start_date]
+  while date <= batch[:end_date]
+    batch[:dates] << date
+    date += 1.day
+  end
+end
+if today.wday == 0 || today.wday == 1
+  customisedbatches = [
+    { name: "#{(today.end_of_week(:wednesday)).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)) },
+    { name: "#{(today.end_of_week(:friday)).strftime('%B %d')}", start_date: (today.end_of_week(:friday)) },
+    { name: "#{(today.end_of_week(:monday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:wednesday) + 1.weeks).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:friday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:monday) + 2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks) }
+  ]
+elsif today.wday == 2 || today.wday == 3
+  customisedbatches = [
+    { name: "#{(today.end_of_week(:friday)).strftime('%B %d')}", start_date: (today.end_of_week(:friday)) },
+    { name: "#{(today.end_of_week(:monday)).strftime('%B %d')} ", start_date: (today.end_of_week(:monday)) },
+    { name: "#{(today.end_of_week(:wednesday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:friday) + 1.weeks).strftime('%B %d')} ", start_date: (today.end_of_week(:friday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:monday) + 1.weeks).strftime('%B %d')} ", start_date: (today.end_of_week(:monday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:wednesday) + 2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 2.weeks) }
+  ]
+else
+  customisedbatches = [
+    { name: "#{(today.end_of_week(:monday)).strftime('%B %d')}", start_date: (today.end_of_week(:monday)) },
+    { name: "#{(today.end_of_week(:wednesday)).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)) },
+    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ) },
+    { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} ", start_date: (today.end_of_week(:monday) + 1.weeks) },
+
+    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks)},
+    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+2.weeks ) },
+  ]
+
+end
+
+if today.wday==0||today.wday==1
+customisedend = [
+
+  { name: "  #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.day) },
+  { name: " #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", end_date: (today.end_of_week(:friday)  + 2.days) },
+  { name: "  #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+1.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
+  { name: "  #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day) },
+]
+elsif today.wday==2||today.wday==3
+customisedend = [
+  { name: " #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)  + 2.days) },
+  { name: "  #{(today.end_of_week(:monday) + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday) + 1.day)},
+  { name: " #{(today.end_of_week(:wednesday) + 1.weeks+1.days).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.weeks+1.days) },
+  { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
+  { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day) },
+]
+else
+  customisedend = [
+    { name: "  #{(today.end_of_week(:monday)+1.day).strftime('%B %d')}    ",  end_date: (today.end_of_week(:monday) + 1.day) },
+    { name: " #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.day)},
+    { name: "  #{(today.end_of_week(:friday)+1.weeks + 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
+    { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
+    { name: " #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}",  end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
+    { name: "  #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+2.weeks  + 2.days) },
+
+]
+    # { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] }
+
+end
+
+
+
+
+
+
+
+
+
+customisedbatches.each do |customisedbatch|
+  date = customisedbatch[:startdate]
+  customisedbatch[:dates] = [date]
+end
+customisedend.each do |customisedend|
+  date = customisedend[:endate]
+  customisedend[:dates] = [date]
+end
+@customisedbatches=customisedbatches
+@customisedend=customisedend
+  @batches = batches
     @ansy = Ansy.new
   end
 
@@ -23,6 +158,16 @@ class AnsiesController < ApplicationController
   def create
     @ansy = Ansy.new(ansy_params)
     @ansy.user=current_user
+    if @ansy.startdate.present? and ( @ansy.startdate.wday==0 || @ansy.startdate.wday==2)
+      @ansy.amount=@ansy.sysno*200*2
+    elsif @ansy.startdate.present? and (@ansy.startdate.wday==4)
+      @ansy.amount=@ansy.sysno*200*3
+    end
+    # if @ansy.customstart.present? and @ansy.customend.present?
+    # #
+    # #     @ansy.amount=(@ansy.customend - @ansy.customend).to_i*@ansy.sysno*200
+    # #
+    # # end
     respond_to do |format|
       if @ansy.save
         AnsysMailer.with(id:@ansy.id, userid:current_user.id).Mail.deliver_later
@@ -66,6 +211,6 @@ class AnsiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ansy_params
-      params.require(:ansy).permit(:sysno, :slotdate, :purpose, :amount, :debit,:user_id)
+      params.require(:ansy).permit(:sysno, :slotdate,:startdate,:enddate,:customstart,:customend, :purpose, :amount, :debit,:user_id)
     end
 end
