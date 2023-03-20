@@ -74,13 +74,16 @@ ActiveRecord::Schema.define(version: 2023_03_14_184352) do
 
   create_table "ansies", force: :cascade do |t|
     t.integer "sysno"
-    t.string "slotdate"
     t.text "purpose"
     t.float "amount"
     t.string "debit"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.date "startdate"
+    t.date "enddate"
+    t.date "customstart"
+    t.date "customend"
     t.index ["user_id"], name: "index_ansies_on_user_id"
   end
 
@@ -97,11 +100,11 @@ ActiveRecord::Schema.define(version: 2023_03_14_184352) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.date "slotdate"
-    t.time "slottime"
-    t.string "debit"
     t.integer "user_id"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -954,6 +957,11 @@ ActiveRecord::Schema.define(version: 2023_03_14_184352) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.integer "faculty_id"
     t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true

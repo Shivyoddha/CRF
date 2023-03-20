@@ -24,32 +24,27 @@
           </ul>
         </div>
       <% end %>
+
+
+
+
+
+     <div class="input-group mb-3">
+       <% batch = @batches.find { |b| b[:start_date] > Date.today } || @batches.last %>
+     </div>
+      <!-- <select id="date-select"></select> -->
     <div class="input-group mb-3">
-      <label class="input-group-text" for="select-date">Select Dates</label>
-      <select class="form-select" id="select-date">
-        <option selected>Choose...</option>
-        <option value="2">1 March to 3 March</option>
-        <option value="Customized">Customized</option>
-      </select>
+      <%=form.label :startdate,"Select Date", class:"input-group-text" ,for:"start-date"%>
+      <%= form.select :startdate, options_for_select(@batches.map { |batch| [batch[:name], batch[:dates].map { |date| [date.strftime('%Y-%m-%d'), date.to_s] }.flatten] }.to_h), { class: 'form-select', id: 'date-select', required: true } %>
     </div>
     <div id="custom">
       <div class="input-group mb-3">
-        <label class="input-group-text" for="start-date">Start Date</label>
-        <select class="form-select" id="start-date">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+          <%=form.label :customstart,"Start Date", class:"input-group-text" ,for:"start-date"%>
+        <%= form.select :customstart, options_for_select(@customisedbatches.map{ |batch| [batch[:name], batch[:start_date].strftime('%Y-%m-%d')] }) %>
       </div>
       <div class="input-group mb-3">
-        <label class="input-group-text" for="end-date">End Date</label>
-        <select class="form-select" id="end-date">
-          <option selected>Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
+        <%=form.label :customend,"End Date", class:"input-group-text" ,for:"end-date"%>
+          <%= form.select :customend, options_for_select(@customisedend.map{ |batch| [batch[:name], batch[:end_date].strftime('%Y-%m-%d')] }) %>
       </div>
       <button type="button" class="btn btn-success mb-3" id="confirm">Confirm</button>
     </div>
@@ -109,9 +104,7 @@
 
 
 
-
-
-<script>
+ <!-- <script>
     let selectDate = document.getElementById('select-date');
     let confirm = document.getElementById('confirm');
     let standardDate = document.getElementById('standard-date');
@@ -134,4 +127,4 @@
         standardDate.classList.toggle('vis');
     })
 
-</script>
+</script>  -->

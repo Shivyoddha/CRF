@@ -50,6 +50,12 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+
+    
+
+
+
+    get 'slotbooker/hi'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
@@ -84,7 +90,7 @@ Rails.application.routes.draw do
 
 
 
-
+    get 'home/developer'
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'
