@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "developer"%>
+
+<div id="home" class="first_page">
+<%=render "partials/loginHeading" %>
+
+
+ 
+  <div class="section1">
+    <div class="wrapper1">
+      <div class="nav">
+        <ul class="navbar">
+          <li><a href="https://github.com/Shivyoddha">Github</a></li>
+          <li><a href="https://www.linkedin.com/in/anish-kumbhar-465980223/">LinkedIn</a></li>
+          <li><a href="mailto:anishkumbhar.211cs229@nitk.edu.in">Contact</a></li>
+        </ul>
+      </div>
+      <div class="header header_home">Anish Kumbhar</div>
+      <div class="content content_home">Full Stack Developer<br>Project Lead
+      </div>
+      <div class="image" id="im1"></div>
+    </div>
+  </div>
+
+ 
+  
+
+  <div class="section2">
+      <h1 class="team-squads">Front End Team</h1>
+      <div class="wrapper2 ">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/PreethamNaik12">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/preetham-naik-aa4652229">LinkedIn</a></li>
+            <li><a href="mailto:preethamg.211me337@nitk.edu.in">Contact</a></li>
+          </ul>
+        </div>
+        <div class="header header_home">Preetham G</div>
+        <div class="content content_home">Front End Developer <br>Front End Lead</div>
+        <div class="image" id="im2"></div>
+      </div>
+
+      <div class="wrapper2">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/SANJAYV10">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/sanjay-v-061b41226">LinkedIn</a></li>
+            <li><a href="mailto:">Contact</a></li>
+          </ul>
+        </div>
+        <div class="header header_home">Sanjay V</div>
+        <div class="content content_home">Front End Developer<br></div>
+        <div class="image" id="im3"></div>
+      </div>
+      
+      
+      
+    <div class="wrapper2">
+      <div class="nav">
+        <ul class="navbar">
+          <li><a href="https://github.com/medha03">Github</a></li>
+          <li><a href="https://www.linkedin.com/in/medha-nethicallu-20318a261">LinkedIn</a></li>
+          <li><a href="mailto:medhanethicallu.211me328@nitk.edu.in">Contact</a></li>
+        </ul>
+      </div>
+      <div class="header header_home">Medha Nethicallu</div>
+      <div class="content content_home">Front End Developer <br></div>
+      <div class="image" id="im4"></div>
+    </div>
+  </div>
+
+
+
+<h1 class="team-squads">Back End Team</h1>
+
+  <div class="section1">
+      <div class="wrapper1">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/Nikeshshetty2303">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/nikesh-shetty-629b11227">LinkedIn</a></li>
+            <li><a href="mailto:">Contact</a></li>
+          </ul>
+        </div>
+        <div class="header header_home">Nikesh Shetty</div>
+        <div class="content content_home">Back End Lead<br>Back End Developer</div>
+        <div class="image" id="im5"></div>
+      </div>
+
+
+      <div class="wrapper1">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/ameen-11">Github</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="mailto:">Contact</a></li>
+          </ul>
+        </div>
+        <div class="header header_home">Syed Ameen</div>
+        <div class="content content_home">Back End Developer<br></div>
+        <div class="image" id="im6"></div>
+      </div>
+
+
+      <div class="wrapper1">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/Rjshri">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/rajashri-varadaraj-6b375b232">LinkedIn</a></li>
+            <li><a href="mailto:">Contact</a></li>
+          </ul>
+        </div>
+      
+          <div class="header header_home">Rajashri Varadaraj</div>
+          <div class="content content_home">Back End Developer
+          </div>
+          <div class="image" id="im7"></div> 
+  </div>
+
+
+
+  
+  <div class="section2">
+    <h1 class="team-squads">Media Team</h1>
+    <div class="wrapper2">
+      <div class="nav">
+        <ul class="navbar">
+          <li><a href="#">Github</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="header header_home">xoxo</div>
+      <div class="content content_home">Media<br>
+      </div>
+      <div class="image" id="im8"></div>
+    </div>
+  </div>
+
+<%=render "partials/footer" %>
+
+</div>
+<script>
+      const observer=new IntersectionObserver((entries)=>{
+          entries.forEach((entry)=>{
+              console.log(entry)
+                  if( entry.isIntersecting){
+                      entry.target.classList.add('show');
+                  }
+                  else{
+                      entry.target.classList.remove('show');
+                  }
+          });
+      });
+
+      const hiddenElements = document.querySelectorAll('.wrapper2,.wrapper1');
+      hiddenElements.forEach((el)=>observer.observe(el));
+  </script>

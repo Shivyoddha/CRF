@@ -1,18 +1,12 @@
-<p>Dear <%= @user.name %>,</p>
-<p>Your Slot Date-Time for IcpM Application No: CRF/SEM/<%= @icp_m.id%>.</p>
-<% if @icp_m.status == "alloted" %>
-<p>Has been assigned for Date (YYYY-MM-DD): 2023-03-03 ; Time (24 hr format): 14:00 <%= @icp_m.slotdate %> <%= @icp_m.slottime %></p>
+<p style="margin:0;padding:0">Dear <b>Vachan Kamath</b>,</p>
+<p style="margin:0;padding:0">Your Slot Date-Time for XRD Application No: <b>CRF/XRD/714.</b></p>
+<% if @xrd.status = "alloted" %>
+<p style="margin:0;padding:0">Has been assigned for Date :<b> 18-04-2023 </b>; Time : <b> 9:30 am </b></p>
 <%end%>
-<% if @icp_m.status == "cancelled" %>
-<p>The slot with AppNo  CRF/icp_m/<%= @icp_m.id%> has been cancelled</p>
-<%end%>
-<p>Important Note : Submission of samples prior to minimum 1 day is mandatory. otherwise the slot/form will be cancelled. No
-excuses/ permissions will be considered. And also we will not analyse the samples which brought on the same date of
-analysis even if it is/was in the desiccator. Samples must be submitted before 4pm-(Monday - Friday). Late submission of
-samples will not be considered.
-Cancellation/ Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for
-experiment after booking slot, penalty of Rs. 100/- is charged per slot. Slots Date is tentative, Depending on M/C
-avaliability. In case slot date is pre/postponed applicant will get e-mail for same.
-Regards,
-SEM Lab CRF.
-office.crf@nitk.edu.in</p>
+<br>
+<p style="margin:0;padding:0">Cancellation/Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for experiment after booking slot, penalty of Rs. 100/- is charged per slot. </p>
+<p style="margin:0;padding:0;color:red">Slots Date is tentative, Depending on M/C
+avaliability. In case slot date is pre/postponed applicant will get e-mail for same.</p>
+<p style="margin:0;padding:0">Regards,</p>
+<p style="margin:0;padding:0">XRD Lab CRF.</p>
+<p style="margin:0;padding:0">office.crf@nitk.edu.in</p>

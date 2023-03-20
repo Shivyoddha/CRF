@@ -124,7 +124,7 @@ Rails.application.routes.draw do
 
 
 
-
+    get 'home/developer'
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'
