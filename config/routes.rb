@@ -87,6 +87,32 @@ Rails.application.routes.draw do
     get 'mainpage/hvaf_hvof'
     get 'mainpage/hollow_fibre'
     
+    get 'mainpage/fesem_c'
+    get 'mainpage/hr_fesem_jeol'
+    get 'mainpage/hr_lcms'
+    get 'mainpage/xrd'
+    get 'mainpage/three'
+    get 'mainpage/bet'
+    get 'mainpage/uv_vis'
+    get 'mainpage/rheometer'
+    get 'mainpage/raman'
+    get 'mainpage/scanner_3d'
+    get 'mainpage/tribometer'
+    get 'mainpage/icp_ms'
+    get 'mainpage/gas_sensing'
+    get 'mainpage/atomic'
+    get 'mainpage/tga'
+    get 'mainpage/cell_imaging'
+    get 'mainpage/spark_oes'
+    get 'mainpage/scratch_indentation'
+    get 'mainpage/glow_discharge'
+    get 'mainpage/zeta'
+    get 'mainpage/pressure_plate'
+    get 'mainpage/impedance'
+    
+
+    
+    
 
 
 

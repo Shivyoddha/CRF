@@ -1,0 +1,102 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Pressure Plate Membrane Apparatus</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="pressure" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'pressure_plate\PPMA_full (1).jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#pressure" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#pressure" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">Soilmoisture Equipment Corp. USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - S02</span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Facilities</u>:</h3>
+                      <p>Water relationships are among the most important physical phenomena that affect the use of soils for agricultural and environmental purposes. For studying the physical relationships in the laboratory as well as the extraction of soil solution for chemical analysis and even for contaminated soil, pressure plate membrane extractors have become prominent successful research tools. Pressure plate apparatus is used to establish moisture retention for any soil type. It is a reliable means of removing soil moisture, under controlled conditions from the soil samples throughout the plant growth range, without disturbing the soil structure. It consists of pressure plate extractor, porous ceramic plates and pressure regulation setup. Pressure plate extractor consists of a triangular support at the bottom, pressure plate cells, outflow tube assemblies, plug bolts and plastic spacers. A wetted porous ceramic plate is backed by a fine mesh screen which provides a passage way for the extracted solution, and is further sealed by a rubber membrane backing. Undisturbed soil samples are usually used for determining potential failure (pF)-curves, because of the major influences of both pore size distribution and soil structure on moisture retention. Disturbed soil samples are also acceptable for analyses with the pressure membrane analyses - provided that the soil is not compressed or deformed.</p>
+
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications of Pressure Plate Membrane Apparatus</u>:</h3>
+                    <ol type='a'>
+                      <li>Environmental and Geological samples</li>
+                      <li>Geotechnical Aspects</li>
+                      <li>Irrigation and Drainage</li>
+                      <li>Agricultural Engineering</li>
+                    </ol>
+                </div>
+              </div>
+
+      <div class="regular-charges">
+            <h3 class="text-danger"><u>Machining Charges (per hour)</u></h3>
+            <table class="table table-hover">
+               <tbody>
+                  <tr>
+                    <th>NITK users</th>
+
+                    <th>Per hour Rs. 2000/- </th>
+                  </tr>
+
+
+                  <tr>
+                    <th>Other academic institutions and Research and Development organizations</th>
+                    <th>Per hour Rs. 3000/- </th>
+
+                  </tr>
+                  <tr>
+                    <th>Industry personnel</th>
+                    <th>Per hour Rs. 5000/- </th>
+
+                  </tr>
+
+
+                </tbody>
+              </table>
+        </div>
+
+
+        <div class="text-danger">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. C. P. Devatha (Faculty in-charge) ,  Email:<span class="text-info"> devathafce@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

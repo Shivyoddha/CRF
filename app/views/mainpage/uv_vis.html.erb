@@ -1,0 +1,116 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">UV-Vis-NIR </h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="uv-vis-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'uv-vis-images/UV1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#uv-vis-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#uv-vis-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+          <div class="mb-3">
+              <span class="fw-bold text-warning" >[Lambda 950, Perkin Elmer, Singapore]</span>
+          </div>
+            <div class="mb-3">
+                <span class="fw-bold">Features:</span><span class="data">2D detector, 150 mm Integrating sphere</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Specification:</span><span class="data"> 175 to 3300 nm wavelength range</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G01</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Facilities:</span><span class="data">Tungsten-halogen and Deuterium lamps, Universal Reflectance Accessory (URA): Angles 8-65° with a 0.5° step size, Spot size up to 5x5 mm, Sample size up to 150mm2</span>
+            </div>
+
+            <p class="fw-bold">Applications of UV-Vis-NIR:</p>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                <li>Glancing reflectance of glass and other optical components</li>
+                <li>Quantification of colored materials</li>
+                <li> Identification of material concentration using the Beer-Lambert law</li>
+                <li>Find the time-of-reaction for certain chemical changes</li>
+                <li>Determine the band-gap of certain semi-conductors</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">Thin Film Sample	</th>
+                  <th scope="col" id="p-xrd">Powder Sample</th>
+                  <th scope="col" id="gixrd">	Liquid Sample</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK users <span class="text-warning">[per measurement]</span></th>
+                <td>Rs. 200/-</td>
+                <td>Rs. 250/-</td>
+                <td>Rs. 300/-</td>
+
+                </tr>
+                <tr>
+                  <th scope="row">Other academic institutions and Research and Development organizations <span class="text-warning">[per measurement]</span></th>
+                    <td>Rs. 300/-</td>
+                    <td>Rs. 375/-</td>
+                    <td>Rs. 450/-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Industry personnel:<span class="text-warning">[per measurement]</span></th>
+                  <td>Rs. 800/-</td>
+                  <td>Rs. 1000/-</td>
+                  <td>Rs. 1200/-</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger">
+            <p>*Sample preparation charges is not included, GST(18%) extra.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5> Lab Email:<span class="text-info">crf_synlab@nitk.edu.in</span></h5>
+            <h5>Dr. Rizwanur Rahman (Uv-Vis-NIR Faculty in-charge) , Email:<span class="text-info">rizwan@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
