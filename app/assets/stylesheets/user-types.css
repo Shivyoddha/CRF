@@ -1,0 +1,230 @@
+*{
+    margin: auto;
+    padding: 0;
+}
+
+body{
+    font-family: 'quicksand';
+    background-color: #ddf1fb;
+}
+
+.container{
+    padding: 1em;
+}
+
+.user-btns{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 1.5em;
+}
+
+#button{
+    padding: 1.1em;
+    /* width: 20% */
+}
+
+.internal-user{
+    font-size: 1rem;
+}
+
+.internal-user-def{
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.external-user-def{
+    font-size: 1rem;
+    background-color: #fff;
+    padding: 0.8em;
+    border-radius: 1em;
+}
+
+.steps-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+    margin: 1em;
+    overflow-x: auto;
+}
+
+.int-procedure{
+    font-size: 1rem;
+    background-color: #fff;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.ext-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+    margin: 1em;
+}
+
+.ext-procedure{
+    font-size: 1rem;
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+
+/* switcher */
+
+#switcher-div {
+  display: flex;
+  width: 90%;
+  margin: 1em auto;
+  border: 2px solid;
+  border-radius: 1em;
+  padding: 0.5em;
+  background-color: #fff;
+  cursor: default;
+}
+
+#nitk {
+  width: 33%;
+  text-align: center;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#ext-acad {
+  width: 33%;
+  text-align: center;
+  padding: 1em;
+  border-radius: 1em;
+}
+#ext-indus {
+  width: 33%;
+  text-align: center;
+  padding: 1em;
+  border-radius: 1em;
+}
+/* Switcher ends */
+
+  /* special= used for the purpose of JS */
+  .vis {
+      display: none;
+    }
+  
+    .backcolor {
+      background: #3f5ac9;
+      color: #ddf1fb;
+    }
+
+@media  (max-width: 612px) {
+    
+    .user-btns{
+        display: flex;
+        flex-direction: column;
+        padding: 1.2em;
+    }
+
+    #IntFlowDigram{
+        height: 212x;
+        width: 400px;
+    }
+
+    
+
+    #external-acad{
+        height: 212x;
+        width: 400px;
+    }
+
+    #external-industry{
+        height: 212x;
+        width: 400px;
+    }
+
+    .int-procedure{
+        font-size: 1em;
+    }
+
+    .internal-user{
+        font-size: 1em;
+    }
+
+    .external-user-def{
+        font-size: 1em;
+    }
+
+    .ext-procedure{
+        font-size: 1em;
+    }
+
+    .btn{
+        padding: 1.1em;
+        width: 60%
+    }
+
+    #button{
+        /* width: 60%; */
+        margin: 1em;
+    }
+    
+    #switcher-div {
+        width: 95%;
+        font-size: small;
+
+    }
+
+    
+}
+
+@media  (max-width: 411px) {
+    
+    .user-btns{
+        display: flex;
+        flex-direction: column;
+        padding: 1.2em;
+    }
+
+    #IntFlowDigram{
+        height: 212x;
+        width: 400px;
+    }
+
+    #external-acad{
+        height: 212x;
+        width: 400px;
+    }
+
+    #external-industry{
+        height: 212x;
+        width: 400px;
+    }
+
+    .int-procedure{
+        font-size: 1em;
+        border-radius: 1em;
+    }
+
+    .internal-user{
+        font-size: 1em;
+    }
+    
+    .btn{
+        padding: 1.1em;
+        width: 60%
+    }
+
+    #button{
+        /* width: 60%; */
+        margin: 1em;
+    }
+    
+    .steps-img{
+        display: block;
+    }
+    
+    
+}
+
+
+

@@ -86,7 +86,7 @@
     let billNitro = document.getElementById('bill-nitro');
 
     quantNitro.addEventListener('keyup', () => {
-        billNitro.setAttribute('placeholder', '`${}`')
+        billNitro.setAttribute('value', `${quantNitro*60}`)
 
 
     })

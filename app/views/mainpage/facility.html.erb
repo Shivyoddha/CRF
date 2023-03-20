@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "loginFeatures"%> <!--this stylesheet is of login feature -->
+<%= stylesheet_link_tag "dashboard"%>     <!--this stylesheet is of dashboard -->
+<%=render "partials/loginHeading"%>
+
+<div class="equipments-container container mt-3">
+     <div class="equipment">
+
+        <div class="card">
+           <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="XRD-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                              <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                        <div class="carousel-item">
+                            <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                        <div class="carousel-item">
+                            <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+            <div class="card-body">
+                <div id="more">
+                    <h5 class="card-title fw-bold">XRD</h5>
+                </div>
+
+                <span class="fw-bold">Located At</span>
+                <p class="card-text text-muted"> CRF Annexe - G01</p>
+
+                <div class="wrap-action">
+                    <%= link_to "Know More", mainpage_know_xrd_path ,class:"btn btn-primary know-more"%>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

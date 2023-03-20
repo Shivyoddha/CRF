@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0%;
+}
+
+body{
+    background-color: #ddf1fb;
+    font-family: "Quicksand", "sans-serif";
+}
+
+.working-head{
+    margin: 1em;
+}
+
+.staff-parent{
+    /* background-color: aliceblue; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(20em,1fr));
+    grid-gap: 1em;
+    background-color:white;
+    padding: 1em;
+    
+  }
+  
+  .staff-cards{
+      margin: auto;
+      /* padding: 0.5em; */
+      align-items: center;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      /* background-color:white; */
+      /* border-radius: 8%; */
+      border: 1px solid rgb(198, 198, 202);
+      /* display: block; */
+  }
+
+  /* .staff-set{
+    display: flex;
+    flex-direction: row;
+  } */
+  
+  .staff-cards:hover{
+      /* box-shadow: 0 0 0 0px #676464; */
+      background-color: white;
+      transition: linear 0.5s transform;
+      transform: scale(1.05);
+  }
+
+  #faculities{
+    margin: 0.5em;
+  }
+  
+  /* .staff{
+      display: flex;
+      justify-content: center;
+      
+  } */
+
+  .set{
+    display: flex;
+    flex-direction: row;
+  }
+
+  /* faculty starts */
+
+  img{
+    border-radius: 0.5em;
+  }
+
+  
+  
+  .fac-cards{
+      margin: 2em;
+      
+      align-items: center;
+      width: 33%;
+      background-color: aliceblue;
+      border-radius: 9%;
+      /* display: block; */
+  }
+  
+  .fac-children{
+      display: flex;
+      justify-content: center;
+  }
+
+  /* faculty ends */
+
+  @media screen and (max-width:576px){
+
+    .staff-parent{
+        flex-direction: column;
+    }
+
+    .set{
+        flex-direction: column;
+    }
+    
+  }
+
+
+  /*  */
+  .info-parent{
+    /* background-color: aliceblue; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(20em,1fr));
+    grid-row-gap: 2.5em;
+    
+  }
+  
+  .info-cards{
+      /* margin: 0.1em; */
+      align-items: center;
+      width: 19em;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 9%;
+      /* display: block; */
+  }
+
+  .info-children{
+      display: flex;
+      justify-content: center;
+  }
+  
+  .info-img{
+      display: flex;
+      justify-content: center;
+      margin: 2em;
+  }
+
+  /* #equip-no{
+    margin-bottom: 0%;
+    background-color: aqua;
+  } */
+
+
+  /* media */
+  @media (max-width:992px) {
+    
+    .info-children{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-cards{
+        width: 85%;
+        border-radius: 10%;
+    }
+
+
+}
+  
+  
+  

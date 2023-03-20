@@ -1,46 +1,40 @@
 
-<!-- HTML code for heading -->
-<div class="" id="heading">
- <a href="https://crf.nitk.ac.in/">
-  <%=image_tag 'logoT.png' , height:75 %>
- </a>
-    <h1>Central Research Facility NITK</h1>
-</div>
-
-<!-- HTML code for navigation bar -->
 <div id="navigation">
-  <nav class="navbar navbar-expand-lg ">
-    <div class="container-fluid">
-      <a id="logo" class="navbar-brand" href="#">
-        <%=image_tag 'logoT.png' , height:75 %>
-      </a>
-      <button id="togle" class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse center" id="navbarSupportedContent">
-        <ul class="navbar-nav ">
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#container">Home</a>
-          </li>
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#">People</a>
-          </li>
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#">Facilities</a>
-          </li>
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#">Users</a>
-          </li>
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#">Gallery</a>
-          </li>
-          <li class="nav-item coolBeans spacing nav-btn">
-            <a class="nav-link" href="#links">About Us</a>
-          </li>
-        </ul>
+        <nav class="navbar navbar-expand-lg ">
+          <div class="container-fluid">
+                <!--this appears after fire of media qyuery at 990px-->
+                <a id="logo-up" class="navbar-brand" href="#">
+                    <%= image_tag 'logoT.png' , height:75 %>
+                </a>
+            <button id="togle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse center" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <!--this disappears after fire of media qyuery at 990px-->
+                <a id="logo-down" class="navbar-brand" href="#">
+                <%= image_tag 'logoT.png' , height:75 %>
+                </a>
+                <li class="nav-item coolBeans spacing">
+                  <a class="nav-link" href="#container">Home</a>
+                </li>
+                <li class="nav-item coolBeans spacing" id="people-li">
+                  <%=link_to 'People', mainpage_people_path, class:"nav-link"%>
+                </li>
+                <li class="nav-item coolBeans spacing ">
+                  <a class="nav-link" href="#" id="facility">Facilities</a>
+                </li>
+                <li class="nav-item coolBeans spacing ">
+                  <a class="nav-link" href="https://www.nitk.ac.in/">Users</a>
+                </li>
+                <li class="nav-item coolBeans spacing ">
+                  <%=link_to 'Gallery',mainpage_gallery_path,class:"nav-link"%>
+                </li>
+                <li class="nav-item coolBeans spacing">
+                    <%=link_to 'Book Slot',new_user_session_path,class:"nav-link"%>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
       </div>
-    </div>
-  </nav>
-</div>
