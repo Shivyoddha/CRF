@@ -1,0 +1,109 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Convertible HVAF+HVOF</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'axis-5-images\CNC_Full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'axis-5-images\CNC.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">C-01 Convertible HVAF/ HVOF Equipment, Kermetico, USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">Foundry Lab </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>About</u>:</h3>
+                      <p class="fs-smlr">HVAF is one of the latest technologies in the thermal spray coatings area for coating metals and ceramets. The technique employs inexpensive LPG and compressed air to soften and accelerate particles so as to deposited a dense coating onto a substrate. High velocity oxygen fuel (HVOF), and cold spray are other technologies which can produce comparable coatings however, HVAF has many advantageous. HVAF produces much denser coatings with lesser oxidation than HVOF in which it is comparable to the expensive cold spray techniques.”</p>
+                      <p class="fs-smlr">“The Gun is where combustion of fuel and acceleration happen which is the most complex and important part of system. We currently have two guns C7 and S5, C7 is used for coating high temperature materials like Nickel, iron, Cobalt, Chromium based alloys and ceramets based on tungsten carbide. The other gun is for coating low melting metals like, Aluminium, Copper and Tin.”</p>
+
+                </div>
+
+
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature</u>:</h3>
+                      <ul class="fs-smlr">
+                        <li>System is capable of working under HVAF or HVOF mode to spray particles of size range -53/+5 (5 to 60 µm) microns at high supersonic velocities upto 1000 m/s while heating the particles up to 1800 - 2000 °C.</li>
+                        <li> An auxiliary supersonic HVAF (80 kw or above) torch is capable of spraying low melting point metals and alloys such as Copper, Aluminium alloys etc.</li>
+                        <li>The deposited coatings exhibit lowest porosity (less than 0.5%) and high hardness for typical cermet coatings.</li>
+                      </ul>
+                </div>
+
+                <div class="mb-3">
+                  <h3 class="fw-bold"><u>Specification</u>:</h3>
+                    <p class="fs-smlr">The facility will include a supersonic HVOF (200 kW or above) and HVAF (80 kW) torch, a PLC-controlled console unit for operating the torch as well as powder feeding, and other accessories for generating a wide range of coatings including metals, alloys, and cermets of micron-sized particles.</p>
+                </div>
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>List of Facilities</u>:</h3>
+                      <ul class="fs-smlr">
+                        <li> Facility includes High Velocity Air Fuel (HVAF) Spray System convertible to High Velocity Oxy-Fuel (HVOF) mode to deposit dry powders.</li>
+                        <li>The facility includes supersonic HVAF (200 kW or above) torch, PLC-controlled console unit for operating the torch as well as powder feeding, and other accessories used for generating wide range of coatings including metals, alloys and cermets of micron-sized particles.</li>
+                        <li>Currently, we have two guns C7 general purpose gun and AK5 for lower melting point materials.</li>
+                        <li>Hot grit blaster consisting of grit canister, with all pressure air + grit mixing unit controlled and smooth grit flow to the gun with a pneumatic vibrator.</li>
+                        <li> Equipped with ABB IRB 2600 six-axis robotic manipulator.</li>
+                      </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>List of Applications</u>:</h3>
+                      <ul class="fs-smlr">
+                        <li>Heavy abrasion and erosion resistance of pump impellers, piping etc.</li>
+                        <li>Sliding wear resistance of shafts, hydraulic rods, centrifugal screens etc.</li>
+                        <li>Cavitation resistance of impellers and hydro turbine blades and vanes.</li>
+                      </ul>
+                </div>
+
+
+
+              </div>
+
+              <div class="regular-charges">
+                  <h3 class="text-danger"><u>Testing charges</u></h3>
+                  <h6>Varies from case to case depending on the consumables. It will be decided after discussing the requirements with faculty in-charge.</h4>
+              </div>
+
+              <br>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+
+            <h6>Dr. Sudhakar C Jambagi (HVAF & HVOF Facility, Faculty in-charge),   Email:<span class="text-info"> sudhakar@nitk.edu.in</span> , Mob:<span class="text-info"> +91-9449422408</span></h6>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

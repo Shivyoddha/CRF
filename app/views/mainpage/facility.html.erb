@@ -1,49 +1,546 @@
 <%= stylesheet_link_tag "loginFeatures"%> <!--this stylesheet is of login feature -->
-<%= stylesheet_link_tag "dashboard"%>     <!--this stylesheet is of dashboard -->
+<%= stylesheet_link_tag "dashboard"%><!--this stylesheet is of dashboard -->
+<%= stylesheet_link_tag "facility" %>
 <%=render "partials/loginHeading"%>
 
-<div class="equipments-container container mt-3">
-     <div class="equipment">
-
-        <div class="card">
-           <div class="equipment-img-wrap" >
-            <div class="equipment-img">
-                <div id="XRD-images" class="carousel slide">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                              <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                        <div class="carousel-item">
-                            <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                        <div class="carousel-item">
-                            <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                        </div>
-                    </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                </div>
-            </div>
-         </div>
-            <div class="card-body">
-                <div id="more">
-                    <h5 class="card-title fw-bold">XRD</h5>
-                </div>
-
-                <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
-
-                <div class="wrap-action">
-                    <%= link_to "Know More", mainpage_know_xrd_path ,class:"btn btn-primary know-more"%>
-                </div>
-            </div>
-            
-        </div>
-    </div>
+<!--switcher is given here-->
+<div id="switcher-div">
+  <div id="manu" class="backcolor">
+    <span>Manufacturing</span>
+  </div>
+  <div id="char">
+    <span>Characterization</span>
+  </div>
+  <div id="process">
+    <span>Material Processing</span>
+  </div>
 </div>
+<!--switcher ends-->
+
+<!--headings-->
+<h1 class="font-unbounded text-center mb-3" id="manu-h">Manufacturing</h1>
+<h1 class="font-unbounded text-center vis mb-3" id="char-h">Characterization</h1>
+<h1 class="font-unbounded text-center vis mb-3" id="process-h">Material Processing</h1>
+
+
+<div class="font-quicksand">
+
+<!-- manufacturing starts -->
+
+     <div id="manufacturing" class="grid">
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="micromachine" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'micromachine/micromachining-1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'micromachine/micromachining-2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'micromachine/micromachining-3.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#micromachine" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#micromachine" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Micromachining Facility</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G06</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_micromachining_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+
+        <!--#2 Metal 3D printer-->
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="metal3d" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'metal3D/3D_Printer_1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'metal3D/3D_Printer_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#metal3d" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#metal3d" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Metal 3D Printer</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF New Building</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_metal_3D_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+        <!--#3Five Axes CNC-->
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="5axes-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'axis-5-images\CNC_Full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'axis-5-images\CNC.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#5axes-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#5axes-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">5-Axis CNC Facility</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF Mechanical Workshop</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_axes_5_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+
+        <!--#4 Friction Stir-->
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="fsw-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'fsw-images/FSP.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'fsw-images/FSW_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#fsw-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#fsw-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Friction Stir Processing / Welding System</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF (Mechanical Workshop)</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_friction_stir_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+        
+        <!--#5  HVAF+HVOF Coating Facility-->
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="HVAF-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'Convertible_HVAF_HVOF\HVOF_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'Convertible_HVAF_HVOF\HVAF.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#HVAF-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#HVAF-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">HVAF+HVOF Coating Facility</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF Foundry Shop</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_hvaf_hvof_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+
+        <!--#6 Hollow fibre-->
+        <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="hollow" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'hollow_fiber_memb_ spin/HFMSS.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#hollow" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#hollow" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Hollow Fiber Membrane Spinning System</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF Hollow Fiber Membrane Spinning System</p>
+                    <div class="wrap-action">
+                       
+                        <%= link_to "Know More", mainpage_hollow_fibre_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+
+        </div>
+
+
+        
+
+<!-- manufacturing ends -->
+
+
+
+
+
+
+<!-- characterisation -->
+     <div id="characterization" class="vis">
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="axis5" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">XRD</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <div class="wrap-action">
+                        
+                    </div>
+                </div>
+         
+            </div>
+             </div>
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="XRD-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">XRD</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <div class="wrap-action">
+                       
+                    </div>
+                </div>
+         
+            </div>
+             </div>
+     </div>
+<!-- characterisation ends -->
+
+<!-- processing starts -->
+     <div id="processing" class="vis">
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="XRD-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">XRD</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <div class="wrap-action">
+                       
+                    </div>
+                </div>
+         
+            </div>
+             </div>
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="XRD-images" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">XRD</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <div class="wrap-action">
+                    </div>
+                </div>
+         
+            </div>
+             </div>
+     </div>
+
+<!-- processing ends>
+
+-->
+</div>
+
+
+<!--JS code for the switcher-->
+<script>
+    let manuSec = document.getElementById('manufacturing');
+    let charSec = document.getElementById('characterization');
+    let processSec = document.getElementById('processing');
+    let process = document.getElementById('process');
+    let char = document.getElementById('char');
+    let manu = document.getElementById('manu');
+    let proHead = document.getElementById('process-h');
+    let charHead = document.getElementById('char-h');
+    let manuHead = document.getElementById('manu-h');
+
+    manu.addEventListener('click', ()=> {
+        // make the manufacturing section visible
+        manuSec.classList.remove('vis');
+
+        //rest of the sections hidden
+        charSec.classList.add('vis');
+        processSec.classList.add('vis');
+
+        //add grid property accordingly
+        manuSec.classList.add('grid');
+        processSec.classList.remove('grid');
+        charSec.classList.remove('grid');
+
+        //make the manufacturing heading visible
+        manuHead.classList.remove('vis');
+        //rest of the headings hidden
+        proHead.classList.add('vis');
+        charHead.classList.add('vis');
+
+        //add background color to button of manufacturing
+        manu.classList.add('backcolor');
+
+        //remove background color to button of manufacturing
+        char.classList.remove('backcolor');
+        process.classList.remove('backcolor');
+
+    })
+    char.addEventListener('click', ()=> {
+        // make the char section visible
+        charSec.classList.remove('vis');
+        //rest of the sections hidden
+        processSec.classList.add('vis');
+        manuSec.classList.add('vis');
+
+        //add grid property accordingly
+        charSec.classList.add('grid');
+        manuSec.classList.remove('grid');
+        processSec.classList.remove('grid');
+
+        //make the char heading visible
+        charHead.classList.remove('vis');
+        //rest of the headings hidden
+        proHead.classList.add('vis');
+        manuHead.classList.add('vis');
+
+        //add background color to button of char
+        char.classList.add('backcolor');
+        //remove background color to button of manufacturing
+        process.classList.remove('backcolor');
+        manu.classList.remove('backcolor');
+    })
+    process.addEventListener('click', ()=> {
+        // make the process section visible
+        processSec.classList.remove('vis');
+        //rest of the sections hidden
+        charSec.classList.add('vis');
+        manuSec.classList.add('vis');
+
+        //add grid property accordingly
+        manuSec.classList.remove('grid');
+        processSec.classList.add('grid');
+        charSec.classList.remove('grid');
+        
+        //make the char heading visible
+        proHead.classList.remove('vis');
+        //rest of the headings hidden
+        charHead.classList.add('vis');
+        manuHead.classList.add('vis');
+
+        //add background color to button of process
+        process.classList.add('backcolor');
+        //remove background color to button of manufacturing
+        char.classList.remove('backcolor');
+        manu.classList.remove('backcolor');
+    })
+</script>
+<!--switcher JS code ends here-->

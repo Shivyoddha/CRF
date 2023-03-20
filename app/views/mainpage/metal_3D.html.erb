@@ -1,0 +1,138 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Metal 3D Printer</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="metal3d" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'metal3D/3D_Printer_1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                        <div class="carousel-item">
+                            <%=image_tag 'metal3D/3D_Printer_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#metal3d" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#metal3d" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">L-Series, FORMALLOY, USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF (New building) </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u> Features</u>:</h3>
+                    <li> <b> Laser power : </b> 1kW</li>
+                    <li> <b>Spot size</b>: 0.6 mm</li>
+                    <li><b>• 2 Powder feeders, 5-axis motion</b></li>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u> Capabilities</u>:</h3>
+                    <ul>
+                      <li>Laser Metal Deposition</li>
+                      <li> Laser Cladding</li>
+                      <li>Laser Surface Melting</li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications of Metal 3-D Printer</u>:</h3>
+                    <ul>
+                      <li>Repair of components</li>
+                      <li>Deposition of Metallic components</li>
+                      <li> Fabrication of Functionally Graded Materials (FGM’s)</li>
+                      <li>Processing of Metal-Matrix Composites</li>
+                      <li>Laser Surface Melting, Laser Cladding</li>
+                    </ul>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <p class="text-warning fw-bold "> Machining charges as per actuals (Machine time x cost per hour)</p>
+                <p  class="text-warning fw-bold">Raw material and consumables charges will be as per the requirement, if any.</p>
+
+              </div>
+
+                <br>
+
+              <div class="regular-charges">
+                <!-- <h3 class="text-danger text-center">Testing charges (Cost/Hour)</h3> -->
+                <!-- <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Job order type</th>
+                      <th><b>Turning</b></th>
+                       <th><b>Milling/Drilling</b></th>
+                        <th><b>EDM</b> </th>
+                         <th><b>WEDG</b> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <th style="color:#0094BB">NITK users</th>
+                           <th>Rs. 250/- </th>
+                           <th>Rs. 300/- </th>
+                           <th>Rs. 350/- </th>
+                           <th>Rs. 450/- </th>
+
+                      </tr>
+                    <tr>
+                      <th style="color:#0094BB">Other academic institutions / Research and Development organizations*</th>
+                     <th>Rs. 550/- </th>
+                           <th>Rs. 600/- </th>
+                           <th>Rs. 650/- </th>
+                           <th>Rs. 750/- </th>
+
+                    </tr>
+                    <tr>
+                      <th style="color:#0094BB">Industry personnel*</th>
+                      <th>Rs. 850/- </th>
+                           <th>Rs. 900/- </th>
+                           <th>Rs. 950/- </th>
+                           <th>Rs. 1050/- </th>
+
+                    </tr>
+
+
+                  </tbody>
+                </table> -->
+
+                <h4 class="text-center text-danger ">Note: Charges will be based on the time of deposition and whether the deposition will be conducted in open or inert atmosphere.</h4>
+              </div>
+
+              <br>
+              
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Srikanth Bontha (Faculty in-charge) ,  Email:<span class="text-info"> srikanth.bontha@nitk.edu.in</span> </h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>
