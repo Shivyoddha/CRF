@@ -247,7 +247,7 @@
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#hollow" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#hollow " data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
@@ -282,28 +282,32 @@
 
 
 <!-- characterisation -->
-     <div id="characterization" class="vis">
+    <div id="characterization" class="vis">
+    <!--#1 fesem-carl-->
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >
                 <div class="equipment-img">
-                    <div id="axis5" class="carousel slide">
+                    <div id="fesem-c" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                <%=image_tag 'hr-fesem-images/Fesem1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                             </div>
                             <div class="carousel-item">
-                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                <%=image_tag 'hr-fesem-images/FESEM-2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                             </div>
                             <div class="carousel-item">
-                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                <%=image_tag 'hr-fesem-images/FESEM-3.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                            </div>
+                            <div class="carousel-item">
+                                <%=image_tag 'hr-fesem-images/FESEM-4.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                             </div>
                         </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#fesem-c" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#fesem-c" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
@@ -312,38 +316,37 @@
              </div>
                 <div class="card-body">
                     <div id="more">
-                        <h5 class="card-title fw-bold">XRD</h5>
+                        <h5 class="card-title fw-bold">HR-FESEM </h5>
                     </div>
                     <span class="fw-bold">Located At</span>
                     <p class="card-text text-muted"> CRF Annexe - G01</p>
                     <div class="wrap-action">
-                        
+                        <%= link_to "Know More", mainpage_fesem_c_path ,class:"btn btn-primary know-more"%>
                     </div>
                 </div>
          
             </div>
-             </div>
+        </div>
+
+        <!-- #2 fesem-jeol-->
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >
                 <div class="equipment-img">
-                    <div id="XRD-images" class="carousel slide">
+                    <div id="jeol-images" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                <%=image_tag 'hr-fesem-jeol-images/jeol-1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                             </div>
                             <div class="carousel-item">
-                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                            <div class="carousel-item">
-                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                <%=image_tag 'hr-fesem-jeol-images/jeol-2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                             </div>
                         </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#jeol-images" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#jeol-images" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
@@ -352,22 +355,898 @@
              </div>
                 <div class="card-body">
                     <div id="more">
-                        <h5 class="card-title fw-bold">XRD</h5>
+                        <h5 class="card-title fw-bold">FESEM (Jeol)</h5>
                     </div>
                     <span class="fw-bold">Located At</span>
-                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <p class="card-text text-muted">CRF Annexe - G05</p>
                     <div class="wrap-action">
-                       
+                       <%= link_to "Know More", mainpage_hr_fesem_jeol_path ,class:"btn btn-primary know-more"%>
                     </div>
                 </div>
          
             </div>
              </div>
-     </div>
+        
+
+            <!-- #3 hr-lcms-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="lcms-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'lcms-images/HRLCMS.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#lcms-images" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#lcms-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">HR-LCMS</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - G01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_hr_lcms_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #4 xrd-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="xrd-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'xrd_images\XRD1.png' , class:"equipment-img-tag d-block w-100 card-img active", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'xrd_images\XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'xrd_images\RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#xrd-images" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#xrd-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">XRD</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - G01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_hr_lcms_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+           
+
+            <!-- #5 three -->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="three" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'contact-3d-images/3d-1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%=image_tag 'contact-3d-images/Depth Profile.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%=image_tag 'contact-3d-images/Profilelo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%=image_tag 'contact-3d-images/Profilelo2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#three" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#three" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">3D NonContact Profilometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_three_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+
+            <!-- #6 BET-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="bet-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'bet-images/BET1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#bet-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#bet-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">BET Surface Area Analyser</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F04</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_bet_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #7 UV-Vis-NIR-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="uv-vis-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'uv-vis-images/UV1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#uv-vis-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#uv-vis-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S03</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_uv_vis_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!--#8 Rheometer -->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="Rheometer-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'rheometer-images/Rheo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#Rheometer-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#Rheometer-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Rheometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F04</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_rheometer_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #9 Raman-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="raman-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'raman-images\Raman-1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#raman-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#raman-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Raman Spectrometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_raman_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #10 3D Scanner-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="scan-3d-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'scan-3d-images/3D Leg1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                <div class="carousel-item active">
+                                    <%=image_tag 'scan-3d-images/3D Leg2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#scan-3d-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#scan-3d-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">3D Scanner</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - Lab 3</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_scanner_3d_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #11 Tribometer -->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="tribometer-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'tribometer-images/Tribo1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'tribometer-images/Tribo_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#tribometer-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#tribometer-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Tribometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F05</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_scanner_3d_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+
+            <!-- #12 ICP MS -->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="icp-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'icp_ms-images\ICP_main.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#icp-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#icp-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">ICP Mass Spectrometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_icp_ms_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!--#13 Gas Sensing -->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="gas-sense-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'gas-sense-images/GasSensing.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#gas-sense-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#gas-sense-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Gas Sensing Unit</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S03</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_gas_sensing_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!--#14 Atomic Force Microscope-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                        <div class="equipment-img">
+                            <div id="atomic-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                     <%=image_tag 'atomic-images/AFM_1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#atomic-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#atomic-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_atomic_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #15 TGA-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="tga-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'tga-images/tga-1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%=image_tag 'tga-images/tga-2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%=image_tag 'tga-images/TGA_IR_Hyphenation.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#tga-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#tga-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">TGA-FTIR</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F04</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_tga_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #16 Cell Imaging Multi-Mode Reader-->
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="cell-images" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'cell-imaging-images/Cell_imaging_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#cell-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#cell-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Cell Imaging Multi-Mode Reader</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_cell_imaging_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #17 Fourier Transform NMR Spectrometer-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="cell-images" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'cell-imaging-images/Cell_imaging_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#cell-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#cell-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Fourier Transform NMR Spectrometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - G02</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_cell_imaging_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #18 MultiRole Mechanical Test System-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="cell-images" class="carousel slide">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'cell-imaging-images/Cell_imaging_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#cell-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#cell-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">MultiRole Mechanical Test System</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F05</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_cell_imaging_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+
+            <!-- #19 Spark Optical Emission Spectrometer-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="spark_oes-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'spark-oes-images/OES_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#spark_oes-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#spark_oes-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Spark Optical Emission Spectrometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F03</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_spark_oes_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #20 Multi-purpose Impact testing Machine with SHPB-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="spark_oes-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%=image_tag 'spark-oes-images/OES_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                </div>
+                                </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#spark_oes-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#spark_oes-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Multi-purpose Impact testing Machine with SHPB</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Workshop</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_spark_oes_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            
+            <!-- #21 Multi-purpose Impact testing Machine with SHPB-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="scratch-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'scratch-images/ST_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#scratch-images" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#scratch-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Universal Scratch Testing Platform</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F05</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_scratch_indentation_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #22 Multi-purpose Impact testing Machine with SHPB-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="glow-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'glow-oes-images/GDOES_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#glow-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#glow-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Glow Discharge Optical Emission Spectrometer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F03</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_glow_discharge_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+
+            <!-- #23 Multi-purpose Impact testing Machine with SHPB-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="glow-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'glow-oes-images/GDOES_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#glow-images" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#glow-images" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Particle Size & Zeta Potential Analyzer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - F01</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_zeta_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            <!-- #24 Pressure Plate Membrane Apparatus-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="glow-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'pressure_plate\PPMA_full (1).jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#glow-images" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#glow-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Pressure Plate Membrane Apparatus</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S02</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_pressure_plate_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+            <!-- #25 Impedance Analyzer-->
+            
+            <div class="equipment">
+                <div class="card">
+                    <div class="equipment-img-wrap" >
+                       <div class="equipment-img">
+                            <div id="impedance-images" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%=image_tag 'impedance-images/Impedance_1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#impedance-images" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#impedance-images" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="more">
+                            <h5 class="card-title fw-bold">Impedance Analyzer</h5>
+                        </div>
+                            <span class="fw-bold">Located At</span>
+                            <p class="card-text text-muted">CRF Annexe - S03</p>
+                        <div class="wrap-action">
+                            <%= link_to "Know More", mainpage_impedance_path ,class:"btn btn-primary know-more"%>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+
+
+            </div>
+
+
+        
+
 <!-- characterisation ends -->
 
 <!-- processing starts -->
-     <div id="processing" class="vis">
+    <div id="processing" class="vis">
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >
@@ -407,7 +1286,8 @@
                 </div>
          
             </div>
-             </div>
+        </div>
+             
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >

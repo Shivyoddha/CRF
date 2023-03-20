@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_14_184352) do
+ActiveRecord::Schema.define(version: 2023_03_16_091224) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -100,11 +100,11 @@ ActiveRecord::Schema.define(version: 2023_03_14_184352) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "status"
-    t.time "slottime"
     t.date "slotdate"
+    t.time "slottime"
     t.string "debit"
+    t.integer "user_id"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -957,11 +957,6 @@ ActiveRecord::Schema.define(version: 2023_03_14_184352) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
-    t.string "encrypted_otp_secret"
-    t.string "encrypted_otp_secret_iv"
-    t.string "encrypted_otp_secret_salt"
-    t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
     t.integer "faculty_id"
     t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
