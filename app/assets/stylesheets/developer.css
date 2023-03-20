@@ -5,17 +5,15 @@ html {
   height: 100%;
     
 }
-.navi{
-  background-color: red;
-  
-
+#home{
+  background-color: aliceblue;
+  padding-top:2px;
 }
+
 body {
   font-family: 'Staatliches', cursive;
-  margin: 0;
-  padding: 0;
+  
   box-sizing: border-box;
-  background-color: #55acee;
 }
 a {
   color: black;
@@ -25,30 +23,8 @@ a {
   position: relative;  
   text-align:center;
   margin-bottom:50px;
-  margin-top:50px;
-  
- 
-  
+  margin-top:50px;  
 }
-.wrapper {
-
-  position: relative;
-  margin-left:auto;
-  margin-right:auto;
-  margin-bottom:50px;
-  margin-top:50px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 900px;
-  height: 450px;
-
-  background: hsl(0,0%,95%);
-  box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
-}
-
 
 /*****/
 .nav {
@@ -58,7 +34,7 @@ a {
   width: max-content;
 }
 .navbar {
-  padding-top: 2%;
+  padding-top: 5%;
 }
 .navbar li {
   position: relative;
@@ -66,7 +42,7 @@ a {
   display:inline;
   margin-right: 1vw;
 
-  font-size: 1.225rem;
+  font-size: 1.7rem;
 }
 .navbar li::after {
   content:"";
@@ -89,22 +65,30 @@ a {
 
   box-shadow: 0px 4px 5px 2px rgba(0,0,0,.1);
 }
+.section2{
+  background-color: rgb(209, 226, 242);
+  padding-bottom: 0.1vw;
+  padding-top: 0.1vw;
+}
+h1{
+  font-size: 3em;
+}
 
 
 /*****/
 .header{
   position: absolute;
   width: max-content;
-  font-size: 2.875rem;
-
+  font-size: 2.875em;
   white-space: nowrap;
+  text-decoration: underline;
 
   top: 25%;
   left: 7%;
 }
 .header::after {
   content:'';
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -117,7 +101,7 @@ a {
 /*****/
 .content {
   position: absolute;
-  font-size: 1.525rem;
+  font-size: 2.3em;
   width: 40%;
 
   top: 45%;
@@ -127,12 +111,136 @@ a {
   position: absolute;
   top: 0;
   right: 0;
-
   width: 50%;
   height: 100%;
-  background-image: url(https://raw.githubusercontent.com/Shivyoddha/CRF/main/app/assets/images/anish2.jpg?token=GHSAT0AAAAAAB7CXSKW5X4Q4LG7MAP3LXA2ZARLO6Q);
   clip-path: polygon(35% 0%, 100% 0, 100% 100%, 8% 100%);
-
+  
   background-repeat: no-repeat;
   background-size: cover;
+}
+#im1{
+  background-image: url(app/assets/images/anish2.jpg);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+
+@keyframes slide-out {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.wrapper1 {
+
+  position: relative;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:3%;
+  margin-top:3%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  width: 57em;
+  height: 28em;
+  
+  background: hsl(0,0%,95%);
+  box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
+  
+  
+}
+
+.wrapper2{
+  position: relative;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:3%;
+  margin-top:3%;
+  top: 0 px;
+  right: 0;
+  bottom: 10;
+  left: 0;
+
+  width: 57em;
+  height: 28em;
+
+  background: hsl(0,0%,95%);
+  box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
+    
+}
+.wrapper1.show{
+  animation: slide-in 1s;
+  
+}
+.wrapper2.show{
+  animation: slide-out 1s;
+}
+
+
+
+@media only screen and (max-width: 668px) {
+  .wrapper1,
+  .wrapper2 {
+    
+    height: 34vw;
+    width:75vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .header{
+    font-size: 2em;
+    width: 50%;
+    line-height:1.8;
+  }
+  .navbar li{
+    font-size: large;
+    
+  }
+  .content{
+    font-size: 1.3em;
+    line-height: 1.8;
+  }
+
+  
+  
+  
+}
+@media only screen and (min-width: 668px) and (max-width: 1024px) {
+  .wrapper1, .wrapper2 {
+    width:80vw;
+    height:40vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    font-size: 2.5em;
+    width: 40%
+
+
+    
+  }
+  
+  .content {
+    font-size: 1.5em;
+    width: 60%;
+   
+    
+  }
+  .navbar li{
+    font-size: large;
+    top: 1%;
+  }  
 }
