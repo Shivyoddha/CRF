@@ -1,0 +1,235 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Low-Force Fatigue Testing with DMA</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap">
+        <div class="equipment-img">
+            <div id="low-force-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'low-force-images/LFM.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#low-force-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#low-force-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Electroforce 3310, TA Instruments, USA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - F05</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <ul>
+                    <li><span class="fw-bold">Maximum Load Allowable to be applied on the Material: </span> +850.00N to -850.00N</li>
+                    <li><span class="fw-bold">Maximum Displacement Allowable to be applied on the Material: </span>+10.00mm to -10.00mm</li>
+                    <li><span class="fw-bold"> Frequency Range:</span> 0.0001Hz to 100Hz</li>
+                    <li><span class="fw-bold">Temperature Range of Hot and Cold Chamber: </span>-150°C to 350°C</li>
+                    <li><span class="fw-bold">Suitable Material/Sample for Testing:</span> Polymers, Rubber and Soft Materials</li>
+                    <li><span class="fw-bold">Available Fixtures:</span> Tension, Compression and Three-Point Bending</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Sample Dimension:</u></h4>
+                  <ol type="a">
+                    <li><span class="fw-bold">Tension or Compression [Rectangular Sample] based test: Length: 70 to 60mm, Width:</span> 22 to 18mm; Thickness: 4 to 0.5mm</li>
+                    <li><span class="fw-bold">Compression [Cylindrical Sample] based test: Dia: 30 to 20mm, Length/Thickness:</span> 30 to 5mm,</li>
+                    <li><span class="fw-bold">Three-Point bending [Rectangular Sample] based test: Length:</span>  60 to 100mm, Width: 20 to 10mm, Thickness: 12 to 8mm</li>
+                  </ol>
+            </div>
+
+            <p>Further, Sample dimension customization as per preferences/standards such as ASTM can be prepared by discussing with Faculty in charge <span class="fw-bold">Dr. Poornesh Kumar Koorata</span>, Dept of Mechanical Engg, NITK.</p>
+            <br>
+            <p class="text-success">Note: Additional Test Input Parameters shall be provided as per the selection of test along with the sample for either DMA, Fatigue and Creep test.</p>
+            <br>
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges</u></h3>
+            <table class="table" style="font-size:17px">
+                <thead>
+                  <tr style="border-bottom: 2.5px solid #000;">
+                    <th>Test Description</th>
+                    <th style="color:#0094BB">Operating Temperature</th>
+                    <th>NITK</th>
+                    <th>Academia &amp; Research Institutes*</th>
+                    <th>Industry*</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                    <th rowspan="4" style="vertical-align: middle;"> <b>DMA Tensile Test</b><span style="color:  orange;">(Cost Per Sample)</span></th>
+                    <th style="color:#0094BB">At Room Temperature (RT)</th>
+                    <th> Rs. 1000/- </th>
+                    <th style="text-align: center;"> Rs. 1200/- </th>
+                    <th> Rs. 2400/- </th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low Temperature Range (-150°C to RT)</th>
+                     <th> Rs. 3000/- </th>
+                    <th style="text-align: center;"> Rs. 3600/- </th>
+                     <th> Rs. 7200/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">High Temperature Range (RT to 350°C)</th>
+                     <th> Rs. 2000/- </th>
+                    <th style="text-align: center;"> Rs. 2400/- </th>
+                     <th> Rs. 4800/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low to High Temperature Range (-150°C to 350°C)</th>
+                     <th> Rs. 3500/- </th>
+                    <th style="text-align: center;"> Rs. 4200/- </th>
+                     <th> Rs. 8400/- </th>
+                  </tr>
+
+                  <tr>
+                    <th rowspan="4" style="vertical-align: middle;"> <b>DMA Compression Test</b><span style="color:  orange;">(Cost Per Sample)</span></th>
+                   <th style="color:#0094BB">At Room Temperature (RT)</th>
+                    <th> Rs. 1000/- </th>
+                    <th style="text-align: center;"> Rs. 1200/- </th>
+                    <th> Rs. 2400/- </th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low Temperature Range (-150°C to RT)</th>
+                     <th> Rs. 3000/- </th>
+                    <th style="text-align: center;"> Rs. 3600/- </th>
+                     <th> Rs. 7200/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">High Temperature Range (RT to 350°C)</th>
+                     <th> Rs. 2000/- </th>
+                    <th style="text-align: center;"> Rs. 2400/- </th>
+                     <th> Rs. 4800/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low to High Temperature Range (-150°C to 350°C)</th>
+                     <th> Rs. 3500/- </th>
+                    <th style="text-align: center;"> Rs. 4200/- </th>
+                     <th> Rs. 8400/- </th>
+                  </tr>
+
+                  <tr>
+                    <th rowspan="4" style="vertical-align: middle;"> <b>DMA Three-Point Bending Test</b><span style="color:  orange;">(Cost Per Sample)</span></th>
+                    <th style="color:#0094BB">At Room Temperature (RT)</th>
+                    <th> Rs. 1000/- </th>
+                    <th style="text-align: center;"> Rs. 1200/- </th>
+                    <th> Rs. 2400/- </th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low Temperature Range (-150°C to RT)</th>
+                     <th> Rs. 3000/- </th>
+                    <th style="text-align: center;"> Rs. 3600/- </th>
+                     <th> Rs. 7200/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">High Temperature Range (RT to 350°C)</th>
+                     <th> Rs. 2000/- </th>
+                    <th style="text-align: center;"> Rs. 2400/- </th>
+                     <th> Rs. 4800/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low to High Temperature Range (-150°C to 350°C)</th>
+                     <th> Rs. 3500/- </th>
+                    <th style="text-align: center;"> Rs. 4200/- </th>
+                     <th> Rs. 8400/- </th>
+                  </tr>
+
+                  <tr>
+                    <th rowspan="4" style="vertical-align: middle;"> <b>Fatigue Test [Fixed Temperature]</b> <b>(Tension/Compression/Three-Point Bending)</b><span style="color:  orange;">(Cost Per hour)</span></th>
+                    <th style="color:#0094BB">At Room Temperature (RT)</th>
+                    <th> Rs. 700/- </th>
+                    <th style="text-align: center;"> Rs. 840/- </th>
+                    <th> Rs. 1680/- </th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low Temperature Range (-150°C to RT)</th>
+                     <th> Rs. 1600/- </th>
+                    <th style="text-align: center;"> Rs. 1920/- </th>
+                     <th> Rs. 3840/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">High Temperature Range (RT to 350°C)</th>
+                     <th> Rs. 1200/- </th>
+                    <th style="text-align: center;"> Rs. 1440/- </th>
+                     <th> Rs. 2880/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low to High Temperature Range (-150°C to 350°C)</th>
+                     <th> ----- </th>
+                     <th style="text-align: center;"> ----- </th>
+                     <th> ----- </th>
+                  </tr>
+
+                  <tr>
+                    <th rowspan="4" style="vertical-align: middle;"> <b>Creep Test [Fixed Temperature]</b><b> (Tension/Compression/Three-Point Bending)</b><span style="color:  orange;">(Cost Per hour)</span></th>
+                    <th style="color:#0094BB">At Room Temperature (RT)</th>
+                    <th> Rs. 700/- </th>
+                    <th style="text-align: center;"> Rs. 840/- </th>
+                    <th> Rs. 1680/- </th>
+                  </tr>
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low Temperature Range (-150°C to RT)</th>
+                     <th> Rs. 1600/- </th>
+                    <th style="text-align: center;"> Rs. 1920/- </th>
+                     <th> Rs. 3840/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">High Temperature Range (RT to 350°C)</th>
+                     <th> Rs. 1200/- </th>
+                    <th style="text-align: center;"> Rs. 1440/- </th>
+                     <th> Rs. 2880/- </th>
+                  </tr>
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Low to High Temperature Range (-150°C to 350°C)</th>
+                     <th> ----- </th>
+                     <th style="text-align: center;"> ----- </th>
+                     <th> ----- </th>
+                  </tr>
+
+
+
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST (18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Poornesh Kumar Koorata (Faculty in-charge),   Email: <span class="text-info"> kpkoorata@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
