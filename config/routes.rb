@@ -73,8 +73,61 @@ Rails.application.routes.draw do
     get 'records/record'
 
     get 'home/mainPage'
+    get 'mainpage/people'
+    get 'mainpage/user_type'
+    get 'mainpage/about_us'
+    get 'mainpage/gallery'
+    get 'mainpage/facility'
+
+    get 'mainpage/micromachining'
+    get 'mainpage/xrd'
+    get 'mainpage/axes_5'
+    get 'mainpage/metal_3D'
+    get 'mainpage/friction_stir'
+    get 'mainpage/hvaf_hvof'
+    get 'mainpage/hollow_fibre'
+
+    get 'mainpage/fesem_c'
+    get 'mainpage/hr_fesem_jeol'
+    get 'mainpage/hr_lcms'
+    get 'mainpage/xrd'
+    get 'mainpage/three'
+    get 'mainpage/bet'
+    get 'mainpage/uv_vis'
+    get 'mainpage/rheometer'
+    get 'mainpage/raman'
+    get 'mainpage/scanner_3d'
+    get 'mainpage/tribometer'
+    get 'mainpage/icp_ms'
+    get 'mainpage/gas_sensing'
+    get 'mainpage/atomic'
+    get 'mainpage/tga'
+    get 'mainpage/cell_imaging'
+    get 'mainpage/spark_oes'
+    get 'mainpage/scratch_indentation'
+    get 'mainpage/glow_discharge'
+    get 'mainpage/zeta'
+    get 'mainpage/pressure_plate'
+    get 'mainpage/impedance'
+    get 'mainpage/laser'
+    get 'mainpage/ion_chromatography'
+    get 'mainpage/spectro'
+    get 'mainpage/low_force_fatigue'
+    get 'mainpage/chemisorption'
+    get 'mainpage/instrumented_impact'
+    get 'mainpage/gas_chromatography'
+    get 'mainpage/proton_transfer'
+    get 'mainpage/servo_hydraulic'
+    get 'mainpage/gait'
 
 
+
+
+
+
+
+
+    get 'home/developer'
     get 'slotbooker/xrd'
     get 'slotbooker/xrd1'
     post 'slotbooker/xrd1'

@@ -1,0 +1,119 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">3D Scanner</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="scan-3d-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'scan-3d-images/3D Leg1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'scan-3d-images/3D Leg2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#scan-3d-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#scan-3d-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data fw-bold text-warning">Artec Space Spider, Artec3D, Luxembourg</span>
+            </div>
+
+            <div class="mb-3">
+              <h5 class="features fw-bold"><u>Features:</u></h5>
+                <p>High precision, portable metrological 3D scanning solution based on blue-light technology, perfect for capturing small objects (human ear, fingers etc.) with intricate details.</p>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - Lab 3</span>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold"><u>Facilities:</u></h5>
+                <ul>
+                  <li><span class="fw-bold"> This machine have 3D resolution:</span> upto 0.1mm<</li>
+                  <li><span class="fw-bold">3D point accuracy: </span>upto 0.05 mm</li>
+                  <li><span class="fw-bold"> 3D accuracy over distance: </span>upto 0.03% over 100 cm</li>
+                  <li><span class="fw-bold">Texture resolution: </span>1.3 MP</li>
+                  <li><span class="fw-bold">Light source:</span> Blue LED</li>
+                  <li><span class="fw-bold">Calibration:</span> 0.1 mm</li>
+                  <li><span class="fw-bold">Colors: </span>24bpp</li>
+                  <li><span class="fw-bold">Working distance: </span>upto 0.5m</li>
+                  <li><span class="fw-bold"> Video frame rate:</span> upto 7.5 fps</li>
+                  <li><span class="fw-bold">Power consumption:</span> 12V, 24W</li>
+                  <li><span class="fw-bold">Output Formats: </span>OBJ, PLY, WRL, STL, AOP, ASCII, PTX, E57, and XYZRGB</li>
+                  <li><span class="fw-bold">Output format for measurement:</span> CSV, DXF, XML</li>
+                </ul>
+            </div>
+
+            <div class="mb-3">
+              <h5 class="fw-bold"><u>Applications of 3D Scanner:</u></h5>
+              <ul>
+                <li>Archaeology</li>
+                <li>Reverse engineering</li>
+                <li>Scanning of body parts (for orthosis and prosthesis)</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Measurement Charges</u></h3>
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <th>NITK users <span style="font-family: monospace; color:orange">[per hour]</span></th>
+
+                  <th style="color:#0094BB">Rs. 500/- </th>
+                </tr>
+
+
+                <tr>
+                  <th>Academic institutions and R &amp; D organizations* <span style="font-family: monospace; color:orange">[per hour]</span></th>
+                  <th style="color:#0094BB">Rs. 1000/- </th>
+
+                </tr>
+                <tr>
+                  <th>Industry personnel* <span style="font-family: monospace; color:orange">[per hour]</span></th>
+                  <th style="color:#0094BB">Rs. 1500/- </th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Email: <span class="text-info">crf_3dscanner@nitk.edu.in</span></h5>
+            <h5>Dr. Somasekhara Rao Todeti (3D Scanner, Faculty in-charge), Email:<span class="text-info">ssrao@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

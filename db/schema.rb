@@ -948,11 +948,6 @@ ActiveRecord::Schema.define(version: 2023_03_16_091224) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
-    t.string "encrypted_otp_secret"
-    t.string "encrypted_otp_secret_iv"
-    t.string "encrypted_otp_secret_salt"
-    t.integer "consumed_timestep"
-    t.boolean "otp_required_for_login"
     t.integer "faculty_id"
     t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true
