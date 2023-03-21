@@ -1,0 +1,149 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Chemisorption Analyzer with Integrated Mass Spectrometers</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="chemisorption" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'chemisorption-images\Chemi_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#chemisorption" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#chemisorption" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">BELCAT II, M/s Microtrac, Japan</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Block - F02 </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature</u>:</h3>
+                      <ul>
+                        <li>Optimized gas flow path</li>
+                        <li>High resolution TCD detector</li>
+                        <li>Triple sample tube</li>
+                        <li>Unique gas flow design and standardized gas mixing function</li>
+                      </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Application of BELCAT Chemisorption</u>:</h3>
+                    <ul >
+                      <li><span class="fw-bold">Metal Dispersion Measurement: </span>
+                        <p>To study qualitative analogy for a catalyst. There is a metal dispersion measurement by the use of CO and H2 gas. Once the chemisorption saturation happens metal surface area of the sample is measured from total gas chemisorbed. The metal dispersion and size of metal particles can be calculated from metal surface area and metal weight of the sample. ChemMaster is a software analysis tool for BELCAT to evaluate and characterize the catalyst.</p>
+                      </li>
+                      <li><span class="fw-bold">Pulse Injection Measurement: </span>
+                        <p>This helps us to study the reaction in the reactor between the inlet and column of gas chromatography. Basically the sample is subjected to different gas intermittently and measure characteristics (interactions) of the sample. This is a part of chemisorption measurement. Here NH3 can be used to measure the volume and distribution of acidic points while CO2 is used to find basic points. Also, chemisorption gases (CO,H2, Hydrocarbons etc) can be used to obtain the information about characteristics of adsorption during the reaction. The desorption of gas here is detected by Thermal Conductivity Detector (TCD) sensor.</p>
+                      </li>
+                      <li><span class="fw-bold">Temperature Programmed Desorption Measurement: </span>
+                        <p>It is used to study the status of physical adsorption and chemisorption. It can be obtained by measuring desorption or decomposition of adsorbed molecules from the surface while continually heated. By TPD you can determine the number of desorption peaks (type of adsorption active sites) from the spectrum of desorbed molecules, desorption temperature (activation energy of desorption) and volume of desorption (no. of adsorption active sites)</p>
+                      </li>
+                      <li><span class="fw-bold">Temperature Programmed Reaction: </span>
+                        <p>It can be used to subject the sample in temperature dependent oxidation (TPO), temperature dependent reduction (TPR) and reactivity of absorbed molecules. This can be detected by measuring consumption volume of reactive gas or the formation volume of the reaction products. By this method from its spectrum, the reaction component- detection, qualitative and quantitative reaction product distribution and volume of non-reactive gases (reactivity) can be known.</p>
+                         <p>This machine is also used to find specific surface area measurement by single point BET analysis.</p>
+                      </li>
+                      <li><span class="fw-bold">Calibration pulse injection measurement: </span>
+                        <p>The data obtained by TPx or single point BET measurement can be quantified by conversion factor (CF) value obtained from calibration pulse injection measurement. CF value is to convert the detected TCD (Tungsten Rhenium coil) peak area to the number of moles.</p>
+                        <p>CF = Injected Gas Amount / Peak Area</p>
+                      </li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Application of BELMASS mass spectroscopy</u>:</h3>
+                      <p>It is a quadrupole mass spectroscopy with high precision of gas consumption rate less than 1 ml/min. A capillary tube is set at inlet of analyser to ionize the gas with selective nature. It has a high response speed with great sensitivity that a delay of 1 sec between input and output result at 1500C. The secondary electron multiplier which is 106 times higher sensitive than regular Faraday Cup. For safety precautions if vacuum pump fails quadrupole analyser will stop automatically. In case of heater fails, the system will stop automatically. BELMASS software is used analyse results of mass spectroscopy.</p>
+                      <p>N<sub>2</sub>O Pulse Measurement: N<sub>2</sub>O pulse measurement is an analytical method to calculate the metal surface area of a sample by quantifying the N<sub>2</sub>O consumption or N<sub>2</sub> generation by oxidation reaction on the metal surface. N<sub>2</sub>O and N<sub>2</sub> are separated in the separation column located downstream and metal surface area is calculated from the amount of N<sub>2</sub>O consumption.</p>
+                </div>
+
+              </div>
+
+      <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges)</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th></th>
+                  <th style="color:#0094BB">TPD(Ammonia)</th>
+                  <th style="color:#0094BB">TPO(Oxygen)</th>
+                  <th style="color:#0094BB">TPR(Hydrogen)</th>
+                  <th style="color:#0094BB">Pulse Chemisorption(O<sub>2</sub>, H<sub>2</sub>)</th>
+                  <th style="color:#0094BB">Single point BET</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+
+                  <tr>
+                      <th>NITK <span style="font-family: monospace; color:orange">[per sample]</span></th>
+                      <th> Rs. 1500/- </th>
+                      <th> Rs. 1500/- </th>
+                      <th> Rs. 1500/- </th>
+                      <th> Rs. 1500/- </th>
+                      <th> Rs. 1500/- </th>
+                </tr>
+
+                <tr>
+                   <th>Academic &amp; Research Institute* <span style="font-family: monospace; color:orange">[per sample]</span></th>
+                   <th> Rs. 2500/- </th>
+                   <th> Rs. 2500/- </th>
+                   <th> Rs. 2500/- </th>
+                   <th> Rs. 2500/- </th>
+                   <th> Rs. 2500/- </th>
+                </tr>
+
+                 <tr>
+                  <th>Industry* <span style="font-family: monospace; color:orange">[per sample]</span></th>
+                   <th> Rs. 5000/- </th>
+                  <th> Rs. 5000/- </th>
+                  <th> Rs. 5000/- </th>
+                  <th> Rs. 5000/- </th>
+                  <th> Rs. 5000/- </th>
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-danger">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Ms. Thrithila Shetty (Technical Staff, CRF), Email:<span class="text-info"> office.crf@nitk.edu.in</span> </h5>
+            <h5>Prof. Rajmohan B. (Faculty in-charge) ,  Email:<span class="text-info"> rajmohan.che@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

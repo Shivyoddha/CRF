@@ -63,15 +63,6 @@ ActiveRecord::Schema.define(version: 2023_03_16_091224) do
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
-  create_table "announcements", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.date "dating"
-    t.string "types"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "ansies", force: :cascade do |t|
     t.integer "sysno"
     t.text "purpose"
@@ -100,10 +91,6 @@ ActiveRecord::Schema.define(version: 2023_03_16_091224) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.date "slotdate"
-    t.time "slottime"
-    t.string "debit"
     t.integer "user_id"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
