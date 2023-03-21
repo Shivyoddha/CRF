@@ -1,0 +1,83 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">250kN Servo-Hydraulic Fatigue Testing System</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="servo-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'servo-images\250kNFatigue.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#servo-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#servo-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">MTS Systems, USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF New Building </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u> Specification:</u>:</h3>
+                    <ul>
+                      <li>Unit has two load frames, 250kN and 25kN load capacity and both load frames have axial direction of loading with static and cyclic nature.</li>
+                      <li>In static tests, tensile and compression, and bending loading are possible.</li>
+                      <li>In Cyclic or fatigue tests, Tensile-Tensile, Compression-Compression and Tensile-Compression loading and bending loading are possible.</li>
+                      <li>Materials type: ferrous/non ferrous metals, Metal alloys, composite materials, ceramics, polymers, etc.</li>
+                      <li>Geometry of specimens: round type, flat type, CT, SENB, bending specimen, wire-type, etc.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications</u>:</h3>
+                    <ul>
+                      <li>High & Low cycle fatigue</li>
+                      <li>Fatigue crack growth</li>
+                      <li>Fracture toughness</li>
+                      <li>Crack propagation</li>
+                      <li>Component strength and durability</li>
+                      <li>Environmental testing</li>
+                      <li>Tension, Compression, Bending</li>
+                      <li> Stress relaxation</li>
+                    </ul>
+                </div>
+              </div>
+
+              <div class="regular-charges">
+                <h3 class="text-danger text-center">Testing Charges</h3>
+                <h4 class="text-center text-danger ">Charges are customizable depending upon experiment feasibility, kindly contact Faculty In-charge for more details.</h4>
+              </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Prof. S. M. Murigendrappa (Faculty in-charge), Mob: <span class="text-info">+91-9343889072</span>  Email:<span class="text-info"> smm@nitk.edu.in</span> </h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

@@ -1,0 +1,118 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Gait Analysis Equipment</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="gait-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'gait-images/Gait_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'gait-images/Gait_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'gait-images/Gait_3.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#gait-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#gait-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+
+            <div class="mb-3 fw-bold text-warning">
+              <p >A  [Mocap Camera-Miqus M3, Qualisys, Sweden}</p>
+              <p>[Lode Valiant 2 rehab, Lode, Netherland]</p>
+              <p>[AMTI-BMS 400600, AMTI, US]</p>
+            </div>
+
+            <div class="mb-3">
+              <h5 class="features fw-bold"><u>Features:</u></h5>
+              <p>12 Motion Capture Cameras, 2 Video Camera, Treadmill, and 2 Force Plates.</p>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">Science Block</span>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="fw-bold"><u>Resolution/Specification:</u></h5>
+                <ol type="1">
+                  <li>Motion capture cameras of 2MP, 340 fps.</li>
+                  <li>High Speed Video of 85 fps</li>
+                  <li>Treadmill 0.1 to 12 km/hr.</li>
+                  <li>Force Plates for gait, balance, and sport analysis.</li>
+                </ol>
+            </div>
+
+            <div class="mb-3">
+              <h5 class="fw-bold"><u>Applications of Gait Analysis Equipment:</u></h5>
+              <ul>
+                <li>Body Mechanics (upper limb and lower limb)</li>
+                <li>Sports biomechanics (running, jumping, squat jumping)</li>
+                <li>Rehabilitation of patients with gait disabilities</li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Charges (per run)</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th style="color: cadetblue;">NITK users </th>
+                  <th> Rs. 2,000/- </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th style="color: cadetblue;">Other academic institution/ Research/ Development organizations </th>
+                  <th> Rs. 6,000/- </th>
+
+                </tr>
+
+
+               <tr>
+                  <th style="color: cadetblue;">Industry personnel </th>
+                  <th> Rs. 6,000/- </th>
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-danger fw-bold">
+            <p>Estimated charges, GST(18%) extra.<p>
+              <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Somasekhara Rao Todeti (Gait Analysis Equipment, Faculty in-charge), Email:<span class="text-info">ssrao@nitk.edu.in</span></h5>
+        </div>
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

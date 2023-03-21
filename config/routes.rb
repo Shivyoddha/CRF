@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    
+
 
 
 
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
     get 'mainpage/about_us'
     get 'mainpage/gallery'
     get 'mainpage/facility'
-    
+
     get 'mainpage/micromachining'
     get 'mainpage/xrd'
     get 'mainpage/axes_5'
@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     get 'mainpage/friction_stir'
     get 'mainpage/hvaf_hvof'
     get 'mainpage/hollow_fibre'
-    
+
     get 'mainpage/fesem_c'
     get 'mainpage/hr_fesem_jeol'
     get 'mainpage/hr_lcms'
@@ -109,10 +109,21 @@ Rails.application.routes.draw do
     get 'mainpage/zeta'
     get 'mainpage/pressure_plate'
     get 'mainpage/impedance'
-    
+    get 'mainpage/laser'
+    get 'mainpage/ion_chromatography'
+    get 'mainpage/spectro'
+    get 'mainpage/low_force_fatigue'
+    get 'mainpage/chemisorption'
+    get 'mainpage/instrumented_impact'
+    get 'mainpage/gas_chromatography'
+    get 'mainpage/proton_transfer'
+    get 'mainpage/servo_hydraulic'
+    get 'mainpage/gait'
 
-    
-    
+
+
+
+
 
 
 
