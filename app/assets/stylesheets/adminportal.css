@@ -331,6 +331,12 @@ ul {
     width: 100%;
 }
 
+.fixedbutton{
+  position:fixed;
+  right:1.5%;
+  bottom: 2%;
+}
+
 
 @media only screen and (max-width: 1430px) {
     #myChart {

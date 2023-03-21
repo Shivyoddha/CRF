@@ -3,7 +3,6 @@ load_and_authorize_resource :class => false
 
 def xrd
   @xrd=Xrd.all
-
  end
 
 def xrd1
@@ -414,7 +413,7 @@ end
 def milli
   @milli=MilliQ.all
 end
-    
+
 
 def impdeance
   @imped=ImpedanceAnaly.all
