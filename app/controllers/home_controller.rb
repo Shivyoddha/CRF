@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def verifsent
     @user = User.find(params[:id])
+
     FacultyVerifMailer.with(id:@user.id).verify.deliver_later
   end
   def maithu
@@ -14,8 +15,11 @@ class HomeController < ApplicationController
   end
 
   def index
+
       @user=User.find(current_user.id)
+      
     if @user.status==nil
+      @user.update(status:'Inactive')
       redirect_to home_faculty_verif_path(id:current_user.id)
     end
 

@@ -92,6 +92,10 @@ ActiveRecord::Schema.define(version: 2023_03_16_091224) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
