@@ -58,11 +58,6 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-     match "*path", to: "application#render_404", via: :all
-
-
-
-
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
