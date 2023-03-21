@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::InvalidAuthenticityToken do
     render plain: 'Invalid Authenticity Token', status: :unprocessable_entity
   end
-   rescue_from Net::ReadTimeout, with: :network_error
-   rescue_from Net::OpenTimeout, with: :network_error
-   rescue_from SocketError, with: :network_error
+  rescue_from Net::ReadTimeout, with: :network_error
+  rescue_from Net::OpenTimeout, with: :network_error
+  rescue_from SocketError, with: :network_error
   rescue_from Errno::ECONNRESET, with: :network_error
   rescue_from StandardError, with: :render_error
   rescue_from CanCan::AccessDenied do |exception|
@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
     end
     def render_error
     # logger.error(exception) # Log the exception
- end
+
+    # Render an error template with a user-friendly message
+    render file: "#{Rails.root}/public/500.html", status: :internal_server_error
+  end
 
   def after_sign_in_path_for(resource)
     stored_location = session[:return_to]
@@ -32,12 +35,32 @@ class ApplicationController < ActionController::Base
   #   flash[:error] = "Sorry, we couldn't find that record."
   #
   # end
+  def handle_routing_error
+    respond_to do |format|
+     format.html { render template: 'errors/404', status: :internal_server_error }
+     format.json { render json: { error: 'network_error' }, status: :internal_server_error }
+   end
+     render file: "#{Rails.root}/public/404.html", status: 404
+
+  end
   def handle_name_error
 
     render file: "#{Rails.root}/public/500.html", status: 500
 
-end
 
+  end
+  def render_404
+    render home_developer
+    render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+  end
+
+  def network_error(exception)
+    respond_to do |format|
+      format.html { render template: 'errors/505.html.erb', status: :internal_server_error }
+      format.json { render json: { error: 'network_error' }, status: :internal_server_error }
+    end
+
+  end
   private
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
@@ -46,7 +69,12 @@ end
   def store_user_location!
     session[:return_to] = request.original_url
   end
-
+  # def render_error(exception)
+  #    logger.error(exception) # Log the exception
+  #
+  #    # Render an error template with a user-friendly message
+  #    render file: "#{Rails.root}/public/500.html", status: :internal_server_error
+  #  end
   protected
 
   def configure_permitted_parameters
