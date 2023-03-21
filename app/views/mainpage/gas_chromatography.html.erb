@@ -1,0 +1,94 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Gas Chromatography ToF Mass Spectrometry</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="gas-chromato" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'gas-chromato-images\GC_Full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#gas-chromato" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#gas-chromato" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">Pegasus BT 4D, Leco Corporation, USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G05 </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>About</u>:</h3>
+                    <p>The GC x GC ToFMS are two very powerful analytical techniques used for separation of volatile and semi volatile components in chemical mixture without decomposition and detection of mass and quantity of the ions. It involves two columns for better separation of the analytes and uses a very non - traditional type of mass spectrometer, a Tof (Time of flight) mass spectrometer. There are four modes of injection available using the autosampler</p>
+                    <ol type="1">
+                      <li>Liquid Injection mode</li>
+                      <li>Headspace</li>
+                      <li>SPME (Solid Phase Micro Extraction)</li>
+                      <li>Pyrolysis Mode</li>
+                    </ol>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature:</u>:</h3>
+                      <p>Split injection mode and agitator for the better analysis of complicated samples. It includes a NIST library for comparing the mass spectra of unknown samples.</p>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Technical Specification:</u>:</h3>
+                      <p>The LECO Pegasus BT 4D provides a GC column oven with an operating temperature range from 5°C to 400°C with a heating rate of 40°C per minute. The mass spectrometer has a detection mass range from 30 - 1500 with spectral acquisition rate of 500 spectra/sec.</p>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications</u>:</h3>
+                      <ul>
+                        <li>Pharmaceutical drug analysis</li>
+                        <li>biofuel analysis</li>
+                        <li>aromatic analysis</li>
+                        <li> natural products analysis</li>
+                        <li>Polymer analysis etc</li>
+                        <li>Such as, the analysis of esters , fatty acids, alcohols, aldehydes, terpenes etc.</li>
+                      </ul>
+                </div>
+              </div>
+
+              <div class="regular-charges">
+                <h3 class="text-danger text-center">
+                  <u> Testing Charges </u>
+                </h3>
+                <h4 class="text-center text-danger ">Charges are customizable depending upon experiment feasibility, kindly contact Faculty In-charge for more details.</h4>
+              </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mrs. Suraksha S Shetty (Technical Staff, CRF), Email:<span class="text-info">crf_gcgc@nitk.edu.in</span> </h5>
+            <h5>Dr. Vasudeva Madav (GCxGC Faculty in-charge),  Email:<span class="text-info"> vasu@nitk.edu.in</span> , Mob:<span class="text-info"> +91-9449422408</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

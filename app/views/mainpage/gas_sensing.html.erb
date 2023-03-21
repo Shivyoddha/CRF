@@ -1,0 +1,97 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Gas Sensing System</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="gas-sense-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'gas-sense-images/GasSensing.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#gas-sense-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#gas-sense-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[SCITRON (IEE), INDIA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - S03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features:</u></h4>
+                <p>
+                  Conductive and semiconductive material can be used to sense gases such as CO, and methane. It can measure the sensitivity of the material with faster response and recovery speed. The good sensitive material is used for the application of detection of series of a corrosive and non-corrosive gases.
+                </p>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+
+          <!-- charges below -->
+            <h3 class="text-danger"><u>Testing Charges (per sweep).</u></h3>
+            <table class="table table-hover">
+                <thead>
+                  <tr style="border-bottom: 2.5px solid #000;">
+
+                    <th></th>
+                    <th style="color:#0094BB">Per sample-Per Gas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th>NITK</th>
+                      <th>Rs. 1000/-</th>
+                  </tr>
+
+                  <tr>
+                    <th>Academic &amp; Research Institute*</th>
+                   <th>Rs. 1500/-</th>
+                  </tr>
+
+                   <tr>
+                    <th>Industry*</th>
+                    <th>Rs. 2000/-</th>
+                  </tr>
+
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Email: <span class="text-info">crf_synlab@nitk.edu.in</span></h5>
+            <h5>Dr. Rizwanur Rahman  (Gas-Sensing, Faculty in-charge) Mob: <span class="text-info">+91-9620169801</span>, Email:<span class="text-info">rizwan@nitk.edu.in</span></h5>
+
+        </div>
+    </div>
+  </div>
+
+<%=render "partials/footer" %>

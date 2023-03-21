@@ -27,7 +27,7 @@
         <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
       </div>
 
-      
+
   </div>
 
 <%# the content section is coded here %>
@@ -45,13 +45,15 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="institute">Slot Date</th>
+                        <th scope="col" id="institute"> Standard Slot Date </th>
+                        <th scope="col" id="institute">Customised Slot Date</th>
                         <th scope="col" id="department">Purpose</th>
                         <th scope="col" id="contact-no">Amount</th>
                         <th scope="col" id="contact-no">Debit Head</th>
                     </tr>
                 </thead>
                 <tbody>
+
 
                       <% @ansy.all.each do |ansy|%>
                       <tr>
@@ -61,7 +63,19 @@
                         <td> <%= ansy.user.orgname%> </td>
                         <td> <%= ansy.user.department%> </td>
                         <td> <%= ansy.user.contact%> </td>
-                        <td> <%= ansy.slotdate%> </td>
+                        <% if ansy.startdate.present? && (ansy.startdate.wday == 0 || ansy.startdate.wday == 2) %>
+                                <td> <%= ansy.startdate.strftime('%B%e')%> to <%= (ansy.startdate+1.day).strftime('%B%e')%></td>
+
+                        <% elsif ansy.startdate.present? && (ansy.startdate.wday == 4) %>
+                                <td> <%= ansy.startdate.strftime('%B%e')%> to <%= (ansy.startdate+2.days).strftime('%B%e')%></td>
+                        <%else%>
+                        <td> NA</td>
+                        <%end%>
+                        <% if ansy.customstart.present? && ansy.customend.present?%>
+                                <td> <%= ansy.customstart.strftime('%B%e')%> to <%= ansy.customend.strftime('%B%e')%></td>
+                       <%else%>
+                          <td> NA</td>
+                        <%end%>
                         <td> <%= ansy.purpose%> </td>
                         <td> <%= ansy.amount%> </td>
                         <td> <%= ansy.debit%> </td>

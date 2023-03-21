@@ -1,0 +1,161 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">High Resolution Liquid Chromatography Mass Spectrometer (HR-LCMS)</h1>
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="lcms-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'lcms-images/HRLCMS.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#lcms-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#lcms-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Xevo QToF, Waters, USA]</span>
+            </div>
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                <ul>
+                  <li><span class="fw-bold">Settable flow rate range:  </span><span>  0.010 to 2.000 mL/min, in 0.001 mL increments</span></li>
+                  <li><span class="fw-bold"> Operating pressure:   </span><span> 15,000 psi up to 1.0 mL/min, 9000 psi up to 2.0 mL/min</span></li>
+                  <li><span class="fw-bold">pH range:   </span><span>2 to 12</span></li>
+                </ul>
+                <p>
+                  With its flow through needle injector and robust, quaternary solvent delivery system, the ACQUITY UPLC H -Class PLUS Bio System has been specially engineered with a bio-inert flow path and Auto-Blend Plus Technology to address your most challenging bio separations. The complete flow path is engineered with iron-free, Bio inert materials, helping your laboratory extend the lifetime of your instrument and maintain optimal bio separations performance. The flexibility of multi-solvent blending with the Quaternary Solvent Manager (QSM), and blend four solvents in any combination or proportion. High-precision injections with direct inject sampling. The needle-in-flow path design ensures an accurate needle seal at high pressure. Injection volumes from 0.1 μL up to 1 mL are supported.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G01</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Specification of MS</u>:</h4>
+                <p>Mass Range: The instrument has a high mass filter (quadrupole) for efficient transmission of ions having mass range atleast ≤ 30 to ≥ 32,000 m/z in resolving mode & ≤ 30 to ≥ 1,00,000 m/z in non-resolving mode. The mass range of the Time of Flight analyser is ≤ 30 to ≥ 1,00,000 m/z.</p>
+                <p>The resolution of the TOF mass analyser is more than 40,000 FWHM between m/z 950-960 and more than 35,000 FWHM at around 200 m/z. The mass accuracy of the system is minimum of less than 0.5 ppm, with both internal & external calibration standards for both MS & MS/MS modes on 10 consecutive repeat measurements on column analysis.</p>
+
+            </div>
+
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution/Specification:</u></h4>
+                <ul>
+                  <li>The ACQUITY UPLC H-Class PLUS Bio System provides the same high resolution, high sensitivity separations you have come to expect from UPLC Technology, with the flexibility and ruggedness to run all the chromatographic modes one can require:</li>
+                  <li><span class="fw-bold">Flow accuracy: </span><span>±1.0% at 0.5 to 2.0 mL/min using 100% A (with i2 Valve).</span></li>
+                  <li><span class="fw-bold">Flow precision: </span><span> 0.075% RSD or ±0.020 min SD, based on six replicates (with i2 Valve).</li>
+                  <li>Degassed ACN/H2O (90:10), ACN/H2O (90:10) with caffeine at 12 mg/L concentration, backpressure 2000 psi, step gradient method, UV at 273 nm</li>
+                  <li><span class="fw-bold">Composition precision: </span><span> < 0.15% RSD or ±0.04 min SD, based on six replicate injections Compressibility compensation: Automatic and continuous</span></li>
+                  <li><span class="fw-bold">Priming:  </span><span>  Wet priming can run at flow rates up to 4 mL/min</span></li>
+                  <li><span class="fw-bold">Pump seal wash:  </span><span>  Equipped with an automated wash system to flush the rear of the high pressure seal and the plunger</span></li>
+                  <li><span class="fw-bold">Flow ramping Range:  </span><span>  0.01 to 30.00 min to reach 2.00 mL/min</span></li>
+                  <li><span class="fw-bold">Default  </span><span>  Default: 0.45 min to reach 2.00 mL/min</span></li>
+                </ul>
+            </div>
+
+            <h4 class="fw-bold"><u>Applications</u>:</h4>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                  <li>Metabolic phenotyping of cells/tissues</li>
+                  <li>Identification and quantification of organic & chiral chemicals</li>
+                  <li> Detection of API in liquid/solid samples</li>
+                  <li> Micro pollutants detection</li>
+                  <li>Detection of cancer markers</li>
+                  <li>Detection of alkaloids in plant extracts</li>
+                  <li>Extractable and leachable screening in e-cigarettes, food, cosmetics, and pharmaceutical packaging</li>
+                  <li>Proteomics and protein sequence identification and analysis</li>
+                  <li>Detection of chemical contaminants</li>
+                  <li> Detection of Pesticides in Drinking Wate</li>
+                </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges per sample</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">Details</th>
+                  <th scope="col" id="gixrd">	NITK</th>
+                  <th scope="col" id="residual-stress">Academic & Research Institutes</th>
+                  <th scope="col" id="texture">Industries</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">UPLC</th>
+                  <td>Rs. 650/-</td>
+                  <td>Rs. 950/- </td>
+                  <td>Rs. 5500/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">UPLC-MS <span class="text-warning">[For any one mode]</span></th>
+                  <td>Rs. 900/-</td>
+                  <td>Rs. 1350/- </td>
+                  <td>Rs. 7500/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">UPLC-MS-MS<span class="text-warning">[For any one mode]</span></th>
+                  <td>Rs. 1400/-</td>
+                  <td>Rs. 2100/- </td>
+                  <td>Rs. 10000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">MS</th>
+                  <td>Rs. 550/-</td>
+                  <td>Rs. 850/- </td>
+                  <td>Rs. 5500/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">MS-MS</th>
+                  <td>Rs. 900/-</td>
+                  <td>Rs. 1350/- </td>
+                  <td>Rs. 7000/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges is not included, GST(18%) extra. Compund identification and analysis charges will be extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+
+
+            <h5>Ms. Thrithila Shetty (Technical Staff, CRF), Email:<span class="text-info"> crf_hrlcms@nitk.edu.in</span></h5>
+            <h5>Dr. Keyur Raval (HR-LCMS Faculty in-charge), Email:<span class="text-info"> keyurnraval@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

@@ -1,0 +1,112 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Friction Stir Processing / Welding System</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="fsw-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'fsw-images/FSP.gif' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'fsw-images/FSW_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#fsw-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#fsw-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[V.1.0, Interface design associates Pvt. Ltd, India]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF (Mechanical Workshop)</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <p>Friction Stir Processing, Friction Stir Welding</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Specification:</u></h4>
+                  <p>High power spindle: 22 kW, 4-axis digital numerical control, G and M Code support, Multiple opreation modes.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Facilities:</u></h4>
+                <p>Friction stir welding, friction stir processing, friction surfacing with 3-axis movement. Frame capacity 50 kN, Max stroke along X- and Y- axis: 500 mm, Max stroke along Z-axis: 300 mm. Different clamping mechanism and temperature measurement at working zone, Cryogenic processing available.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Applications</u>:</h4>
+                  <ul>
+                    <li>Surface modification</li>
+                    <li>Aerospace applications</li>
+                    <li>Automotive applications</li>
+                    <li>Bio-medical applications</li>
+                    <li>Marine structures applications</li>
+                  </ul>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h4 class="text-danger"><u>Machine Charges[per 100mm]</u></h4>
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <th>NITK users<sup>#</sup></th>
+                    <th style="color:#0094BB"> Rs. 600/- </th>
+                  </tr>
+
+                  <tr>
+                    <th>Other academic institutions and Research and Development organizations<sup>#</sup>*</th>
+                    <th style="color:#0094BB"> Rs. 1000/- </th>
+                  </tr>
+                  <tr>
+                    <th>Industry personnel<sup>#</sup>*</th>
+                    <th style="color:#0094BB"> Rs. 1420/- </th>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p class="fs-smlr">#Coding/Modelling chargeable</p>
+            <p class="fs-smlr">*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h6>Mr. Vikram Suvarna (Technical Staff, CRF ), Email: <span class="text-info">crf_fsp@nitk.edu.in</span></h6>
+            <h6>Prof. Srikantha Rao (FSP Faculty in-charge),  Email: <span class="text-info"> sthg@nitk.edu.in</span></h6>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

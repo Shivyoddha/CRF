@@ -1,0 +1,89 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Proton Transfer Reaction – Mass Spectrometry</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="ptr-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'ptr-images\PTR_1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#ptr-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#ptr-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">[PTR TOF<sub>1000</sub> , IONICON, Austria</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Annexe -  F02 </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>About</u>:</h3>
+                    <p>PTR TOF MS (Proton-Transfer-Reaction Time-of-flight Mass Spectrometer) is a versatile tool for fast and sensitive measurements of trace Volatile Organic Compounds (VOCs) at a high time resolution.</p>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature:</u>:</h3>
+                    <ul>
+                      <li> Real time quantitative analysis of the entire mass range of Volatile organic compounds (VOCs)</li>
+                      <li>Detection of all compounds with higher proton affinity than water using H<sub>3</sub>O<sup>+</sup>, as Primary ion. Hence N<sub>2</sub>, O<sub>2</sub> , Ar, CO<sub>2</sub> etc in air are not detected.</li>
+                      <li>Option to use Kr<sup>+</sup>, which has higher Ionization potential than H<sub>3</sub>O<sup>+</sup>, as Primary ion</li>
+                      <li> Detection and quantification of substances (including inorganic) such as NO<sub>2</sub>, SO<sub>2</sub>, CO<sub>2</sub>, CO are also possible using Kr<sup>+</sup> as Primary ion.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u> Specification:</u>:</h3>
+                    <ul>
+                      <li>Mass range: 1-10,000 amu</li>
+                      <li> Detects upto 1000ppbv</li>
+                      <li>Mass resolution: > 2000 m/Δm (FWHM) for m/z > 79</li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications</u>:</h3>
+                      <p>Real time analysis of gases in situations such as ambient air monitoring, food flavour and fragrances, breath analysis, geological analysis, forensic investigation, waste incineration etc.</p>
+                </div>
+              </div>
+
+              <div class="regular-charges">
+                <h3 class="text-danger text-center">
+                  <u> Testing Charges </u>
+                </h3>
+                <h4 class="text-center text-danger ">To be updated...</h4>
+              </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Vasudeva Madav (GCxGC Faculty in-charge),  Email:<span class="text-info"> vasu@nitk.edu.in</span> , Mob:<span class="text-info"> +91-9449422408</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

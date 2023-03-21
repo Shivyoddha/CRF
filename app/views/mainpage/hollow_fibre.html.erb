@@ -1,0 +1,254 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Hollow Fiber Membrane Spinning System</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="hollow" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'hollow_fiber_memb_ spin/HFMSS.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#hollow" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#hollow" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">Prova Technotrade, INDIA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature</u>:</h3>
+                      <ul>
+                        <li> <b>Dope/Bore Tank Size</b>: 2L</li>
+                        <li><b>Dope transfer</b>: Polymeric Gear Metering Pump</li>
+                        <li><b>Bore Transfer:</b> Pressurized transfer and controlled through Gear Pump Mass flow controller </li>
+                        <li>Temperature-controlled Coagulation Bath Capacity up to 120-150 L equipped with idle rollers for fiber guiding</li>
+                        <li>Draw Roller Unit for Initial draw.</li>
+                        <li>Wash Bath for additional treatment of fiber equipped with final take-up winder</li>
+                        <li>Storage Tank for excess bobbin storage</li>
+                        <li>Linear Guide for adjusting air-gap</li>
+                        <li>Smooth control through touch control panel</li>
+                      </ul>
+                </div>
+
+                <div class="mb-3">
+                  <h3 class="fw-bold"><u>Specification</u>:</h3>
+                      <p><b>Dope Solution Tank and Accessories</b></p>
+                        <ul>
+                          <li>Capacity of Dope Tank: 2L</li>
+                          <li>MOC: SS 316</li>
+                          <li>Operating Pressure: 0-5 bar</li>
+                          <li>1⁄4" BSP SS 316 Bottom Valve</li>
+                          <li>Pressurized Nitrogen Gas Port with 1⁄4” BSP SS 316 Needle valve</li>
+                          <li>Vacuum Port for degassing of the dope 1⁄4” BSP SS 316 Needle valve</li>
+                          <li>Auto agitator for dope agitation to maintain concentration and viscosity</li>
+                        </ul>
+
+                      <p><b>Dope Solution Feed Pump</b></p>
+                        <ul>
+                          <li>MOC: SS 316</li>
+                          <li>Pump type: Polymer Dope Metering Gear Pump</li>
+                          <li>Pumping volume per revolution: 0.3 cc/rev</li>
+                          <li>Max operating temperature: 180 °C</li>
+                          <li>Maximum operating pressure: 1400 psi</li>
+                          <li>Coupled to a synchronous motor, infinitely variable</li>
+                          <li>Compatible for working with high temperature viscous fluids (up to 10000 cP) at great precision.</li>
+                        </ul>
+
+                        <p><b>Motor Controller & Inverter</b></p>
+                          <ul>
+                            <li>Drive to control a static AC motor with a gear box</li>
+                            <li>Gear rotation range: 0-40 rpm</li>
+                            <li>Supply Power: 230 V/50 Hz</li>
+                          </ul>
+
+                        <p><b>Spinneret Assembly</b></p>
+                          <ul>
+                            <li>Dope Entry: Lateral</li>
+                            <li>Bore Entry: Top</li>
+                            <li>End ports: 1/8" OD</li>
+                            <li>Linear Actuator</li>
+                            <li>Adjustable Air Gap - 0-1000 mm</li>
+                            <li>Actuated through PLC</li>
+                          </ul>
+
+                        <p><b>Spinneret 1:</b></p>
+                          <ul>
+                            <li>Suitable for fiber size (ODxID): 0.6x0.3 mm</li>
+                            <li>Precision: 0.001 mm</li>
+                            <li>Concentricity: + 0.05 mm</li>
+                            <li>MOC SS 316</li>
+                          </ul>
+
+                        <p><b>Spinneret 2</b></p>
+                            <ul>
+                              <li>Suitable for fiber size (ODxID): 0.8x0.4 mm</li>
+                              <li>Precision: 0.001 mm</li>
+                              <li>Concentricity: + 0.05 mm</li>
+                              <li>MOC SS 316  </li>
+                            </ul>
+
+                          <p><b>Spinneret 3:</b></p>
+                          <ul>
+                            <li>Spinneret orifice size: 0.8/1.2/2.6/3.0/3.5 mm</li>
+                            <li>Precision: 0.001 mm</li>
+                            <li>Concentricity: + 0.05 mm</li>
+                            <li>MOC SS 316</li>
+                          </ul>
+
+                          <p><b>Water Bath Unit</b></p>
+                          <ul>
+                            <li>MOC: SS 316</li>
+                            <li>Initial V shape followed by a flat design</li>
+                            <li>Vertical dipping length: 0.8 m</li>
+                            <li>Horizontal dipping length: 1.5 m</li>
+                            <li>Ports for connection with heater/chiller unit for heating and chilling</li>
+                            <li>Instrumentation for temperature measurement and transmission</li>
+                            <li>Equipped with 4-roller up-down arrangement</li>
+                            <li>Provision for water drain</li>
+                          </ul>
+
+                          <p><b>Water Heating/ Cooling System</b></p>
+                            <ul>
+                              <li>Working temperature range: -30 to 150 °C</li>
+                              <li>Setting temperature resolution on display: 0.1 °C</li>
+                              <li>Temperature Stability: ± 0.03 °C</li>
+                              <li> Dimension: (WxLxH): 33x47x69 cm</li>
+                              <li>Recirculating pump capacity: 15 lpm</li>
+                              <li>Model: CORIO CD-600F</li>
+                            </ul>
+
+                          <p><b>Solvent Bath Unit</b></p>
+                            <ul>
+                              <li>MOC: SS 316</li>
+                              <li>Bobbin size: 180-220 mm</li>
+                              <li>Bobbin width: 40-80 mm</li>
+                              <li>Coupled to a synchronous speed adjustable AC motor controlled with a motor controller</li>
+                            </ul>
+
+                          <p><b>Draw Roller</b></p>
+                          <ul>
+                            <li>MOC: SS 316</li>
+                            <li>Maximum Dimensions (LxWxH): 300x300x500 mm</li>
+                            <li>Tank attached with Wash Bath</li>
+                            <li>Provision for water drain</li>
+                            <li>Equipped with a take up winder assembly </li>
+                          </ul>
+
+
+                        <p><b>Bore Fluid Pump</b></p>
+                        <ul>
+                          <li> Pump type: Auto-refill Syringe Pump</li>
+                          <li>Syringe Capacity: 250 mm</li>
+                          <li>MOC: SS 316</li>
+                          <li>Flow rate: 0.4 ml/min to 215.803 ml/min</li>
+                        </ul>
+
+                        <p><b>  Instrumentation:</b></p>
+                        <ul>
+                          <li>Pressure Sensor</li>
+                          <li>Measuring principle: thick film diaphragm type.</li>
+                          <li>Range: 0-10 bar</li>
+                          <li>Accuracy: +-0.5%</li>
+                          <li>Process Connection: 4" BSP</li>
+                          <li>Response time:  3 ms</li>
+                          <li>Temperature Transmitter</li>
+                          <li>Element Type: PT-100</li>
+                          <li>Range: 0-100 °C</li>
+                          <li>Sheath Diameter: 4.5mm</li>
+                          <li>Sheath MOC: SS316</li>
+                          <li>Length: 250 mm</li>
+                          <li>Process Connection: 1⁄2” BSP </li>
+                        </ul>
+
+                        <p><b>Piping</b></p>
+                          <ul>
+                            <li>All solvent/water wetted piping inflexible SS316 hose Size 1⁄4”, 1⁄2”</li>
+                            <li>All polymer dope wetted piping in PTFE , Size DN 1⁄6”, 1⁄2” (ID/OD)</li>
+                          </ul>
+
+                        <p><b>Skid</b></p>
+                        <ul>
+                          <li>SS skid for water wash and solvent bath unit, with proper ventilation, storage</li>
+                        </ul>
+                </div>
+
+
+              </div>
+
+              <div class="regular-charges">
+                  <h3 class="text-danger"><u>Testing charges per hour</u></h3>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr style="border-bottom: 2.5px solid #000;">
+                        <th>Details</th>
+                         <th>Charge</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                        <th style="color:#0094BB"> NITK</th>
+                         <th> Rs. 750/-</th>
+
+                      </tr>
+                      <tr>
+                        <th style="color:#0094BB"> Academia / R&amp;D (Externals)<sup>*</sup></th>
+                         <th> Rs. 2000/-</th>
+
+                      </tr>
+
+                      <tr>
+                        <th style="color:#0094BB"> Industry<sup>*</sup></th>
+                        <th> Rs. 4000/-</th>
+
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+
+              </div>
+
+              <div class="mb-3 text-danger">
+                <h6>*GST(18%) extra.</h6>
+              </div>
+
+              <br>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. P. Satishkumar , <span class="text-info">+91-8660394475</span></h5>
+            <h5>Prof. Arun M. Isloor (Faculty in-charge),   Email:<span class="text-info"> isloor@yahoo.com</span> , Mob:<span class="text-info"> 91-9448523990</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

@@ -5,6 +5,7 @@ def xrd
   @xrd=Xrd.all
  end
 
+
 def xrd1
 @xrd=Xrd.all
 EquipmentTable.new
@@ -641,5 +642,9 @@ end
  end
  def ansy
    @ansy=Ansy.all
- end
+
+
+end
+
+
 end
