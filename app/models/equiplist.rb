@@ -1,0 +1,2 @@
+class Equiplist < ApplicationRecord
+end

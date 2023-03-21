@@ -343,13 +343,13 @@ ul {
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
-  
+
   #btn-announcement:hover::before {
     -webkit-animation: sh02 0.5s 0s linear;
     -moz-animation: sh02 0.5s 0s linear;
     animation: sh02 0.5s 0s linear;
   }
-  
+
   #btn-announcement::before {
     content: '';
     display: block;
@@ -367,8 +367,8 @@ ul {
     -o-transform: skewX(-20deg);
     transform: skewX(-20deg);
   }
-  
-  
+
+
   #btn-announcement:active {
     box-shadow: 0 0 0 0 transparent;
     -webkit-transition: box-shadow 0.2s ease-in;
@@ -377,7 +377,7 @@ ul {
   }
   /* Styling of button ends */
 
-  
+
 /* Styling of chart done here */
 #chart {
     display: flex;
@@ -466,5 +466,3 @@ ul {
         display: none;
     }
 }
-
-
