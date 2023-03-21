@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :equiplists
+  get 'equips/index'
+  get 'equips/show'
+  get 'equips/new'
+  get 'equips/create'
+  get 'equips/destroy'
+  post 'mainportal/adminModelEquip'
   root 'mainpage#landing'
   resources :ft_nms
   resources :ansies

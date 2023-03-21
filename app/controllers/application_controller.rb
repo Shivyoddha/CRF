@@ -18,10 +18,7 @@ class ApplicationController < ActionController::Base
     end
     def render_error
     # logger.error(exception) # Log the exception
-
-    # Render an error template with a user-friendly message
-    render file: "#{Rails.root}/public/500.html", status: :internal_server_error
-  end
+ end
 
   def after_sign_in_path_for(resource)
     stored_location = session[:return_to]
@@ -39,19 +36,8 @@ class ApplicationController < ActionController::Base
 
     render file: "#{Rails.root}/public/500.html", status: 500
 
+end
 
-  end
-  def render_404
-    render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
-  end
-
-  def network_error(exception)
-    respond_to do |format|
-      format.html { render template: 'errors/505.html.erb', status: :internal_server_error }
-      format.json { render json: { error: 'network_error' }, status: :internal_server_error }
-    end
-
-  end
   private
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
@@ -60,12 +46,7 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     session[:return_to] = request.original_url
   end
-  # def render_error(exception)
-  #    logger.error(exception) # Log the exception
-  #
-  #    # Render an error template with a user-friendly message
-  #    render file: "#{Rails.root}/public/500.html", status: :internal_server_error
-  #  end
+
   protected
 
   def configure_permitted_parameters
