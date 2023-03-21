@@ -12,7 +12,7 @@ class AnsiesController < ApplicationController
 
   # GET /ansies/new
   def new
-    today=Date.parse("2022-03-29")
+    today=Date.parse("2022-03-20")
 
 if today.wday==0||today.wday==1
 batches = [
@@ -20,9 +20,9 @@ batches = [
   { name: " #{(today.end_of_week(:wednesday)).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) ), end_date: (today.end_of_week(:wednesday) + 1.day), dates: [] },
   { name: " #{(today.end_of_week(:friday)).strftime('%B %d')} to #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday) ), end_date: (today.end_of_week(:friday)  + 2.days), dates: [] },
   { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday)+1.weeks ), end_date: (today.end_of_week(:monday)+1.weeks + 1.day), dates: [] },
-  { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks), end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks), end_date: (today.end_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
   { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
-  { name: " #{(today.end_of_week(:monday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:monday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 2.weeks), end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day), dates: [] }
 ]
 elsif today.wday==2||today.wday==3
 batches = [
@@ -31,19 +31,16 @@ batches = [
   { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.weeks+1.days).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)+1.weeks ), end_date: (today.end_of_week(:wednesday) + 1.weeks+1.days), dates: [] },
   { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
   { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] },
-  { name: " #{(today.end_of_week(:wednesday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 2.weeks), end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day), dates: [] },
+  { name: " #{(today.end_of_week(:wednesday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 2.weeks), end_date: (today.end_of_week(:wednesday) + 2.weeks + 1.day), dates: [] }
 ]
 else
   batches = [
     { name: " #{(today.end_of_week(:monday)).strftime('%B %d')}   to    #{(today.end_of_week(:monday)+1.day).strftime('%B %d')}    ", start_date: (today.end_of_week(:monday) ), end_date: (today.end_of_week(:monday) + 1.day), dates: [] },
     { name: " #{(today.end_of_week(:wednesday)).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) ), end_date: (today.end_of_week(:wednesday) + 1.day), dates: [] },
-    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday)+1.weeks + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
+    { name: " #{(today.end_of_week(:friday)).strftime('%B %d')} to #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)), end_date: (today.end_of_week(:friday)  + 2.days), dates: [] },
     { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] },
-    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks), end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
-    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+2.weeks  + 2.days), dates: [] },
-
-
-
+    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks), end_date: (today.end_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
+    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] }
 ]
     # { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] }
 
@@ -69,7 +66,7 @@ if today.wday == 0 || today.wday == 1
     { name: "#{(today.end_of_week(:wednesday)).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)) },
     { name: "#{(today.end_of_week(:friday)).strftime('%B %d')}", start_date: (today.end_of_week(:friday)) },
     { name: "#{(today.end_of_week(:monday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks) },
-    { name: "#{(today.end_of_week(:wednesday) + 1.weeks).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks) },
+    { name: "#{(today.end_of_week(:wednesday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks) },
     { name: "#{(today.end_of_week(:friday) + 1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday) + 1.weeks) },
     { name: "#{(today.end_of_week(:monday) + 2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks) }
   ]
@@ -88,9 +85,8 @@ else
     { name: "#{(today.end_of_week(:wednesday)).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)) },
     { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ) },
     { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} ", start_date: (today.end_of_week(:monday) + 1.weeks) },
-
     { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks)},
-    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+2.weeks ) },
+    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+2.weeks ) }
   ]
 
 end
@@ -103,7 +99,7 @@ customisedend = [
   { name: "  #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+1.weeks + 1.day) },
   { name: "  #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
   { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
-  { name: "  #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day) }
 ]
 elsif today.wday==2||today.wday==3
 customisedend = [
@@ -112,7 +108,7 @@ customisedend = [
   { name: " #{(today.end_of_week(:wednesday) + 1.weeks+1.days).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.weeks+1.days) },
   { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
   { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
-  { name: "  #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day) }
 ]
 else
   customisedend = [
@@ -121,7 +117,7 @@ else
     { name: "  #{(today.end_of_week(:friday)+1.weeks + 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
     { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
     { name: " #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}",  end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
-    { name: "  #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+2.weeks  + 2.days) },
+    { name: "  #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+2.weeks  + 2.days) }
 
 ]
     # { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] }
@@ -158,6 +154,10 @@ end
   def create
     @ansy = Ansy.new(ansy_params)
     @ansy.user=current_user
+   #  if @ansy.customstart < @ansy.customend
+   # flash[:alert] = "Custom start date should be less than custom end date."
+   # redirect_to home_index_path and return
+   # end
     if @ansy.startdate.present? and ( @ansy.startdate.wday==0 || @ansy.startdate.wday==2)
       @ansy.amount=@ansy.sysno*200*2
     elsif @ansy.startdate.present? and (@ansy.startdate.wday==4)
