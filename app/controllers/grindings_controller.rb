@@ -28,7 +28,11 @@ class GrindingsController < ApplicationController
 
     respond_to do |format|
       if @grinding.save
-        GrindingMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
+        if @grinding.user.role=='student'||@grinding.user.role=='faculty'
+          GrindingMailer.with(id:@grinding.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GrindingMailer.with(id:@grinding.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to grinding_url(@grinding), notice: "Grinding was successfully created." }
         format.json { render :show, status: :created, location: @grinding }
       else

@@ -27,7 +27,11 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.status="pending"
     respond_to do |format|
       if @uv_vis_nir.save
-        UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+        if @uv_vis_nir.user.role=='student'||@uv_vis_nir.user.role=='faculty'
+          UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
         format.json { render :show, status: :created, location: @uv_vis_nir }
       else

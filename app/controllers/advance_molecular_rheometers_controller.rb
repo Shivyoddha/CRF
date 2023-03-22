@@ -32,8 +32,11 @@ class AdvanceMolecularRheometersController < ApplicationController
     respond_to do |format|
 
       if @advance_molecular_rheometer.save
-
-        AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
+        if @advance_molecular_rheometer.user.role=='student'||@advance_molecular_rheometer.user.role=='faculty'
+          AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Advance molecular rheometer was successfully created." }
         format.json { render :show, status: :created, location: @advance_molecular_rheometer }
       else

@@ -26,7 +26,11 @@ class HighTempVaccumsController < ApplicationController
       @high_temp_vaccum.status="pending"
     respond_to do |format|
       if @high_temp_vaccum.save
-        HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).Mail.deliver_later
+        if @high_temp_vaccum.user.role=='student'||@high_temp_vaccum.user.role=='faculty'
+          HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully created." }
         format.json { render :show, status: :created, location: @high_temp_vaccum }
       else

@@ -28,7 +28,11 @@ class GaitsController < ApplicationController
 
     respond_to do |format|
       if @gait.save
-        GaitMailer.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
+        if @gait.user.role=='student'||@gait.user.role=='faculty'
+          GaitMailer.with(id:@gait.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GaitMailer.with(id:@gait.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to gait_url(@gait), notice: "Gait was successfully created." }
         format.json { render :show, status: :created, location: @gait }
       else

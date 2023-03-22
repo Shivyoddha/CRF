@@ -28,7 +28,11 @@ class MultiImpactTestersController < ApplicationController
 
     respond_to do |format|
       if @multi_impact_tester.save
-        MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).Mail.deliver_later
+        if @multi_impact_tester.user.role=='student'||@multi_impact_tester.user.role=='faculty'
+          MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to multi_impact_tester_url(@multi_impact_tester), notice: "Multi impact tester was successfully created." }
         format.json { render :show, status: :created, location: @multi_impact_tester }
       else

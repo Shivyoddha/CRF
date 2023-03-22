@@ -78,7 +78,8 @@ Rails.application.routes.draw do
     get 'mainpage/about_us'
     get 'mainpage/gallery'
     get 'mainpage/facility'
-    
+    post 'home/developer'
+
     get 'mainpage/know/hr_fesem_carl'
     get 'mainpage/know/xrd'
     get 'mainpage/know/hr_fesem_jeol'
