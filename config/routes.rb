@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :equiplists
+  get 'equips/index'
+  get 'equips/show'
+  get 'equips/new'
+  get 'equips/create'
+  get 'equips/destroy'
+  post 'mainportal/adminModelEquip'
   root 'mainpage#landing'
   resources :ft_nms
   resources :ansies
@@ -51,11 +58,6 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-
-
-
-
-    get 'slotbooker/hi'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
@@ -418,8 +420,9 @@ Rails.application.routes.draw do
   #   root to: "devise/sessions#new"
   # end
   devise_scope :user do
-     get '/users/sign_out' => 'devise/sessions#destroy'
+    get '/users/sign_out' => 'devise/sessions#destroy'
+    match '*unmatched', to: 'application#render_404', via: :all
   end
-
+# 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

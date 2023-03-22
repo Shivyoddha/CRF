@@ -87,8 +87,8 @@
 
                 <% options = options_from_collection_for_select(Faculty.all,'id' ,'name')%>
                 <div class="input-group mb-3" id="course-input">
-                  <%= f.label :faculty ,"Faculty" ,for:"exampleInputEmail1", class:"input-group-text "%>
-                  <%= f.select(:faculty , options ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type"}) %>
+                  <%= f.label :faculty_id ,"Faculty" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.select(:faculty_id ,Faculty.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => true}) %>
                 </div>
 
                 <div class="input-group mb-3" id="collegeid-input">

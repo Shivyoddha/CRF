@@ -38,7 +38,7 @@ p {
 .equipment-img-wrap {
     display: flex;
     justify-content: center;
-    height: 47vh;
+    height: auto;
 }
 
 .equipment-img {
