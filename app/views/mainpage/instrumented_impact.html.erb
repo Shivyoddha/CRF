@@ -1,0 +1,83 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Instrumented Impact Tester</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+            <div class="equipment-img">
+                <div id="instrument" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'instrumented-images\IIT_Full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#instrument" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#instrument" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">HIT450P/HIT300P, ZwickRoell, Germany</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Workshop </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>About</u>:</h3>
+                      <p>Instrumented impact test is a versatile tool to study the energy related to fracture phenomena in engineering materials. Here the mode of fracture is Charpy impact. With the help of instrumentation attached to the impacting tips, force associated with different stages of fracture, namely crack initiation, propagation and final fracture is collected and plotted as force versus distance or fracture time. With the help of this plot various parameters, namely, maximum force during fracture (F<sub>max</sub>), force during initiation of fracture, force at the end of fracture and corresponding energy values are extracted. It can also draw the conclusion on the type of the fracture. We can operate the machine according to <b>ASTM E23</b> and <b>ISO 14556</b> standards. We have two pendulums corresponding to 300 and 450 J. It can offer a force upto 50 kN during pendulum swinging.”
+“The sample dimension is 56x10mm. Two varieties of notches namely A <b>type notch</b> with 45° angle (2 mm depth) and <b>U type notch</b> (2 mm width). We have a notch broaching unit for the said notch preparation. We have temperature bath both for high temperature (upto 200⁰C) and low temperature sample preparation (upto –50⁰C).</p>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Specifications</u>:</h3>
+                      <ul>
+                        <li>Charpy impact test, Sample size 56x10 mm with standard V notch (type A) or U notch.</li>
+                        <li>ASTM 23 and ISO 14556 standards. Temperature range -50⁰C to + 200⁰C.</li>
+                        <li>Data can be exported in Excel/ASCII/Text/Pdf forms.</li>
+                      </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Applications</u>:</h3>
+                      <ul>
+                        <li>Understanding of fracture behaviour in metals and alloys, whose load bearing capacity is less than 50 kN, on 10 mm x 10 mm cross section sample.</li>
+                        <li> Useful for foundries, steel processing units, non-ferrous alloys, etc.</li>
+                        <li>Impact bending tests on metals (Charpy, Izod–conventional and instrumented)</li>
+                        <li>Impact tensile tests on metals</li>
+                        <li>Brugger tests to verify the wear-behavior of transmission gears</li>
+                        <li>Wedge impact test to determine the strength proper‐ ties of structural adhesives</li>
+                      </ul>
+                </div>
+
+
+              </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Vikram Suvarna: (Technical Staff, CRF), Email:<span class="text-info"> office.crf@nitk.edu.in</span> </h5>
+            <h5>Dr. Preetham Kumar G. V. (Impact Tester, Faculty in-charge),  Email:<span class="text-info"> preethamk11@nitk.edu.in</span> , Mob:<span class="text-info"> +91-9449422408</span></h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>

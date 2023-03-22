@@ -1,0 +1,61 @@
+  /* switcher */
+
+  #switcher-div {
+    display: flex;
+    width: 60%;
+    margin: 1em auto;
+    border: 2px solid;
+    border-radius: 1em;
+    padding: 0.5em;
+    background-color: #fff;
+    cursor: default;
+    margin-bottom: 5em;
+}
+  
+  #char {
+    width: 33%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  
+  #manu {
+    width: 33%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  #process {
+    width: 33%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+  }
+
+  /* special == comes hanndy while applying JS features*/
+  .vis {
+    display: none;
+  }
+  .grid {
+    display: grid;
+  }
+
+  .backcolor {
+    background: #3f5ac9;
+    color: #ddf1fb;
+  }
+  /*  */
+
+  #manufacturing, #characterization, #processing {
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    grid-row-gap: 1em;
+  }
+
+  .equipment{
+    margin: auto;
+  }
+
+
+
+
+
