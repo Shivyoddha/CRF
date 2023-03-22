@@ -1,0 +1,98 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">UV Ozone Cleaning System</h1>
+    </div>
+    <div class="hero">
+
+        <div class="equipment-img-wrap">
+          <div class="equipment-img">
+              <div id="uv-images" class="carousel slide">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'uv-images\UV_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                  </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#uv-images" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#uv-images" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                      </button>
+              </div>
+          </div>
+        </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold">Make:</span><span class="data text-warning fw-bold">Novascan, PSD Pro, USA</span>
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                  <span class="fw-bold">Located at:</span><span class="data">CRF Annexe -G03 </span>
+              </div>
+                </div>
+
+                <div class="mb-3">
+                    <h3 class="fw-bold"><u>Feature</u>:</h3>
+                      <p>185 nm and 254 nm ultraviolet light with surface heating.</p>
+                </div>
+
+                <div class="mb-3">
+                  <h3 class="fw-bold">Applications</h3>
+                    <p>Atomically cleaning Semiconductor Silicon Wafers using UV Ozone. Make Hydrophobic surfaces more Hydrophilic Fast & Simple method to clean AFM, SEM and TEM samples, surfaces and probes UV Ozone Atomically clean glass sides and coverslips Cell culture and cell adhesion surface preparation Preparation for Force Spectroscopy studies Semiconductor Surface UV Oxidation and Preparation For manufacturing of LED displays Cleaning sensitive Lenses and Optics Increased Surface Wettability after UV Ozone cleaning Enhance adhesion of paints, coatings, glues and adhesives UV Ozone Cleaning Quartz and Ceramic Surfaces Improved Thin Film Deposition Quality with UV Ozone Ultraviolet (UV) Curing and crosslinking of polymers and adhesives UV Surface Patterning UV Etching and Surface UV Oxidation An effective, non-destructive, non-vacuum alternative to plasma cleaning UV Ozone Cleaner preparation for Alkanethiol, APTES, silanization and other surface chemistry UV Ozone heat treatment</p>
+                </div>
+
+
+              </div>
+
+              <div class="regular-charges">
+                  <h3 class="text-danger"><u>Testing charges(Per sample-Per hour)</u></h3>
+                  <h5 class="text-warning">Note: [Preliminary surface must be clean]</h5>
+
+                  <table class="table table-hover">
+                    <thead>
+                      <tr style="border-bottom: 2.5px solid #000;">
+
+                        <th style="color:#0094BB">NITK </th>
+                        <th style="color:#0094BB">Academia / R&amp;D (Externals)*</th>
+                        <th style="color:#0094BB">Industry*</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+
+                        <th> Rs. 300/-  </th>
+                         <th> Rs. 450/- </th>
+                         <th> Rs. 1200/- </th>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+              </div>
+
+              <div class="mb-3 text-danger">
+                <h6>*GST(18%) extra.</h6>
+              </div>
+
+              <br>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Mohammad Rizwanur Rahman (UV-ozone Faculty-Incharge),   Email:<span class="text-info"> rizwan_crf@nitk.edu.in</span> </h5>
+        </div>
+
+    </div>
+  </div>
+
+
+<%=render "partials/footer" %>
