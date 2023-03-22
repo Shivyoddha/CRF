@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :equiplists
+  get 'equips/index'
+  get 'equips/show'
+  get 'equips/new'
+  get 'equips/create'
+  get 'equips/destroy'
+  post 'mainportal/adminModelEquip'
   root 'mainpage#landing'
   resources :ft_nms
   resources :ansies
@@ -51,11 +58,6 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    
-
-
-
-    get 'slotbooker/hi'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
@@ -78,50 +80,52 @@ Rails.application.routes.draw do
     get 'mainpage/about_us'
     get 'mainpage/gallery'
     get 'mainpage/facility'
-    post 'home/developer'
 
-    get 'mainpage/know/hr_fesem_carl'
-    get 'mainpage/know/xrd'
-    get 'mainpage/know/hr_fesem_jeol'
-    get 'mainpage/know/three'
-    get 'mainpage/know/raman'
-    get 'mainpage/know/tga'
-    get 'mainpage/know/bet'
-    get 'mainpage/know/hr_lcms'
-    get 'mainpage/know/uv_vis'
-    get 'mainpage/know/cell_imaging'
-    get 'mainpage/know/atomic'
-    get 'mainpage/know/ft_nmr'
-    get 'mainpage/know/icp_ms'
-    get 'mainpage/know/advance_mod_rheo'
-    get 'mainpage/know/ion_chromatography'
-    get 'mainpage/know/integ_multirole'
-    get 'mainpage/know/scratch_indentation'
-    get 'mainpage/know/zeta'
-    get 'mainpage/know/high_temp_vac'
-    get 'mainpage/know/impedance'
-    get 'mainpage/know/tribometer'
-    get 'mainpage/know/scanner_3d'
-    get 'mainpage/know/gait'
-    get 'mainpage/know/spectro'
-    get 'mainpage/know/spark_oes'
-    get 'mainpage/know/glow_discharge'
-    get 'mainpage/know/ball_milling'
-    get 'mainpage/know/low_force_fatigue'
-    get 'mainpage/know/micro_edm'
-    get 'mainpage/know/axes_5'
-    get 'mainpage/know/multi_impact_test'
-    get 'mainpage/know/friction_stir'
-    get 'mainpage/know/electro_chem'
-    get 'mainpage/know/milli_q'
-    get 'mainpage/know/glove_box'
-    get 'mainpage/know/probe_sonicator'
-    get 'mainpage/know/ultra_centrifuge'
-    get 'mainpage/know/gas_sensing'
-    get 'mainpage/know/liq_nitrogen'
-    get 'mainpage/know/ansys'
-    get 'mainpage/know/laser'
-    get 'mainpage/know/auto_multi_speci_polish'
+    get 'mainpage/micromachining'
+    get 'mainpage/xrd'
+    get 'mainpage/axes_5'
+    get 'mainpage/metal_3D'
+    get 'mainpage/friction_stir'
+    get 'mainpage/hvaf_hvof'
+    get 'mainpage/hollow_fibre'
+
+    get 'mainpage/fesem_c'
+    get 'mainpage/hr_fesem_jeol'
+    get 'mainpage/hr_lcms'
+    get 'mainpage/xrd'
+    get 'mainpage/three'
+    get 'mainpage/bet'
+    get 'mainpage/uv_vis'
+    get 'mainpage/rheometer'
+    get 'mainpage/raman'
+    get 'mainpage/scanner_3d'
+    get 'mainpage/tribometer'
+    get 'mainpage/icp_ms'
+    get 'mainpage/gas_sensing'
+    get 'mainpage/atomic'
+    get 'mainpage/tga'
+    get 'mainpage/cell_imaging'
+    get 'mainpage/spark_oes'
+    get 'mainpage/scratch_indentation'
+    get 'mainpage/glow_discharge'
+    get 'mainpage/zeta'
+    get 'mainpage/pressure_plate'
+    get 'mainpage/impedance'
+    get 'mainpage/laser'
+    get 'mainpage/ion_chromatography'
+    get 'mainpage/spectro'
+    get 'mainpage/low_force_fatigue'
+    get 'mainpage/chemisorption'
+    get 'mainpage/instrumented_impact'
+    get 'mainpage/gas_chromatography'
+    get 'mainpage/proton_transfer'
+    get 'mainpage/servo_hydraulic'
+    get 'mainpage/gait'
+
+
+
+
+
 
 
 
@@ -404,6 +408,7 @@ Rails.application.routes.draw do
   #   root to: "devise/sessions#new"
   # end
   devise_scope :user do
+    match '*unmatched', to: 'application#render_404', via: :all
      get '/users/sign_out' => 'devise/sessions#destroy'
   end
 

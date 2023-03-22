@@ -6,7 +6,7 @@ class FacultyVerifMailer < ApplicationMailer
     mail(
           from:"crfnitk@gmail.com" ,
 
-          to: "champalika2018@gmail.com",
+          to: "#{@user.faculty.email}",
           #cc: User.all.pluck(:email),
           #bcc: "ok@gmail",
           subject: "Verficiation for faculty"

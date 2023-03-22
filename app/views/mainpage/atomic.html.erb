@@ -1,0 +1,157 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Atomic Force Microscope </h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="atomic-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'atomic-images/AFM_1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#atomic-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#atomic-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content" class="margin-top">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Flex-Axiom AFM, M/s Nanosurf, Switzerland]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Block - F01</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                <ol type="a" class="fw-bold">
+                  <li><span class="fw-bold">Flat and linear scanning</li>
+                  <li><span class="fw-bold">Measurement versatility - scanning in liquid and a multitude of measurement modes</li>
+                  <li><span class="fw-bold">Flexible stage and exchangeable cantilever holders</li>
+                </ol>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution/Specification</u>:</h4>
+                <ol type="a" class="fw-bold">
+                  <li><span class="fw-bold">Scan head type (Max. scan range): 100 μm and 10 μm </li>
+                  <li><span class="fw-bold">Sample size: 100 mm on sample stage</li>
+                  <li><span class="fw-bold"> Manual height adjustment range: 6 mm</li>
+                  <li><span class="fw-bold">Motorized approach range (at tip position): 2 mm</li>
+                </ol>
+            </div>
+
+
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u> List of Facilities</u>:</h4>
+                <p class="fw-bold"><u>a) Operating modes</u> </p>
+                <ol type="i">
+                  <li>Static Force, Lateral Force, Dynamic Force, Piezo Force, Force modulation</li>
+                  <li> Phase contrast</li>
+                  <li> Magnetic Force Microscope</li>
+                  <li> Electrostatic force microscopy</li>
+                  <li> Lithography and manipulation modes</li>
+                </ol>
+                <br>
+                <p class="fw-bold"><u> b) Spectroscopy modes</u></p>
+                <ol type="i">
+                  <li>Force-distance</li>
+                  <li>Amplitude-distance</li>
+                  <li>Phase-distance</li>
+                  <li>Tip current-tip voltage</li>
+                </ol>
+            </div>
+
+            <h4 class="fw-bold"><u>Applications Domain:</u></h4>
+            <div class="mb-3" id="applications-div">
+                <div>
+                <ul>
+                  <li> Biomaterials</li>
+                  <li>Lithography</li>
+                  <li>Tribology</li>
+                  <li>Nanomechanical and nanoelectrical characterization</li>
+                  <li>Thin films and coatings</li>
+                  <li>Polymers</li>
+                  <li>Graphene and 2D materials</li>
+                </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="user-type">User Type</th>
+                  <th scope="col" id="p-xrd">Tapping </th>
+                  <th scope="col" id="gixrd">Contact </th>
+                  <th scope="col" id="gixrd">EFM </th>
+                  <th scope="col" id="gixrd">MFM </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">NITK Users   <span class="text-warning"> [per hour]</span></th>
+                  <td>Rs. 300/- </td>
+                  <td>Rs. 600/- </td>
+                  <td>Rs. 1000/- </td>
+                  <td>Rs. 1000/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Academic & Research Institute* </th>
+                  <td>Rs. 450/- </td>
+                  <td>Rs. 750/- </td>
+                  <td>Rs. 1250/- </td>
+                  <td>Rs. 1250/- </td>
+                </tr>
+                <tr>
+                  <th scope="row">Industry*</th>
+                  <td>Rs. 1000/- </td>
+                  <td>Rs. 2000/- </td>
+                  <td>Rs. 3000/- </td>
+                  <td>Rs. 3000/- </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Pradeep S. P (Technical Staff, CRF) , Email:<span class="text-info"> crf_afm@nitk.edu.in</span></h5>
+            <h5>Prof. M.N. Satyanarayan (Faculty in-charge), Email:<span class="text-info"> satya_mn@nitk.edu.in</span> ,Mob: <span class="text-info">+91-9686146138</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

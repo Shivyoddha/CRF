@@ -1,0 +1,133 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Particle Size and Zeta Potential Analyzer</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="zeta-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'zeta-images/ZP_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#zeta-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#zeta-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+        <div id="content" class="margin-top">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[3 LitesizerTM 500, Anton-Paar, Austria]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Block - F01</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                <ol type="a">
+                  <li>The instrument chooses the ideal measurement angle for your sample to ensure the highest data quality.</li>
+                  <li>Particle characterization from the nano- to the micrometer range</li>
+                  <li> Particle size measurements via dynamic light scattering at three different measurement angles</li>
+                  <li>Molecular mass and refractive index measurements.</li>
+                  </ol>
+            </div>
+
+
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution/Specification</u>:</h4>
+                  <h5 class="fw-bold">Particle size specifications</h5>
+                <ol type="i">
+                  <li>Measurement principle: Dynamic Light Scattering (DLS)</li>
+                  <li>Measuring range: 0.3 nm to 10 μm (particle diameter)</li>
+                  <li>Measurement angles (in degrees): 15, 90 and 175</li>
+                  <li>Minimum sample volume: 12 μL</li>
+                </ol>
+                <h5 class="fw-bold">Zeta potential specifications</h5>
+                  <ol type="i">
+                    <li>Measuring principle: Electrophoretic Light Scattering (ELS)</li>
+                    <li> Measuring range: >= +/- 1000 mV</li>
+                    <li>Size range 3.8 nm to 100 μm (diameter)</li>
+                    <li> Minimum sample volume: 50 μL</li>
+                    <li> Maximum sample conductivity: 200 mS/cm</li>
+                    <li>Measuring principle: Static light Scattering (SLS)</li>
+                    <li> Measuring range (mass): 980 Da to 20 MDa</li>
+                    <li>Measuring range (particle size): upto 40 nm (diameter)</li>
+                  </ol>
+            </div>
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+              <table class="table table-hover">
+                <thead>
+                  <tr style="border-bottom: 2.5px solid #000;">
+                    <th></th>
+                    <th style="color:#0094BB">Particle Size</th>
+                    <th style="color:#0094BB">Zeta Potential</th>
+                    <th style="color:#0094BB">Particle Size + Zeta Potential</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>NITK</th>
+                    <th>Rs. 200/-</th>
+                    <th>Rs. 200/-</th>
+                    <th>Rs. 300/-</th>
+                  </tr>
+
+                  <tr>
+                    <th>Academic &amp; Research Institute*</th>
+                    <th>Rs. 300/-</th>
+                    <th>Rs. 300/-</th>
+                   <th>Rs. 400/-</th>
+                  </tr>
+
+
+
+                   <tr>
+                      <th>Industry*</th>
+                      <th>Rs. 450/-</th>
+                      <th>Rs. 450/-</th>
+                      <th>Rs. 550/-</th>
+                    </tr>
+                  </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Ms. Disha Shetty (Technical Operator CRF) , Email: <span class="text-info">crf_zp@nitk.edu.in</span></h5>
+            <h5>Prof. Arun M. Isloor (Faculty in-charge), Mob: <span class="text-info"> +91-9448523990</span> Email:<span class="text-info">  rshankar983@gmail.com</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

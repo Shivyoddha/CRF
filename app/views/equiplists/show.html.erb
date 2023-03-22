@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @equiplist.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @equiplist.status %>
+</p>
+
+<p>
+  <strong>Calibrate:</strong>
+  <%= @equiplist.calibrate %>
+</p>
+
+<%= link_to 'Edit', edit_equiplist_path(@equiplist) %> |
+<%= link_to 'Back', equiplists_path %>

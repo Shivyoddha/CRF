@@ -38,7 +38,7 @@ p {
 .equipment-img-wrap {
     display: flex;
     justify-content: center;
-    height: 47vh;
+    height: auto;
 }
 
 .equipment-img {
@@ -108,4 +108,9 @@ p {
     ul {
         padding: 0;
     }
+}
+
+/* font size of knowmore in main page reduced using this class */
+.fs-smlr {
+    font-size: 16px;
 }

@@ -1,0 +1,132 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Spark Optical Emission Spectrometer</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="spark_oes-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'spark-oes-images/OES_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#spark_oes-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#spark_oes-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Q4 Tasman, Bruker, Germany]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - F03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features:</u></h4>
+                <p>
+                 Table top 10 bases with standards;
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution:</u></h4>
+                <p>
+                  0.001-0.01% (depends on the element and base)
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Facilities:</u></h4>
+                <p>Fe, Cu, Al, Mg, Ti, Zn, Pb, Sn, Ni, Co bases Upto 36 elements including C, O etc.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Application of Spark Optical Emission Spectrometer (OES):</u></h4>
+                <p>Composition analysis of metallic samples and metal identification</p>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+
+          <!-- charges below -->
+            <h3 class="text-danger"><u>Testing Charges (per sweep).</u></h3>
+            <table class="table">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th>Details</th>
+                  <th>NITK</th>
+                  <th>Academia / R&amp;D (Externals)*</th>
+                  <th>Industry*</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+                  <th style="color:#0094BB"> For Iron base (Fe) </th>
+                  <th> Rs. 200/- </th>
+                  <th> Rs. 400/- </th>
+                  <th> Rs. 1200/- </th>
+                </tr>
+
+                <tr>
+                  <th style="color:#0094BB"> For other base (Al,Cu,Zn,Ti,Co,Ni,Mg,Pb,Sn) </th>
+                  <th> Rs. 300/- </th>
+                  <th> Rs. 600/- </th>
+                  <th> Rs. 1800/- </th>
+                </tr>
+
+               <tr>
+                  <th style="color:#0094BB"> Base identification (extra) </th>
+                  <th> Rs. 200/- </th>
+                  <th> Rs. 300/- </th>
+                  <th> Rs. 400/- </th>
+                </tr>
+
+                <tr>
+                  <th style="color:#0094BB"> Sample grinding charges </th>
+                  <th> Rs. 200/- </th>
+                  <th> Rs. 300/- </th>
+                  <th> Rs. 400/- </th>
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Nishanth and Ms. Disha (Technical Staff, CRF) ,Mob: <span class="text-info"> +91-9632493401</span>, Email: <span class="text-info">office.crf@nitk.edu.in</span></h5>
+            <h5>Dr. Sumanth Govindarajan (OES Faculty in-charge),  Email: <span class="text-info"> sumanthg@nitk.edu.in</span>, Mob: <span class="text-info">+91-9742222282</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
