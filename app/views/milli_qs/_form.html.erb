@@ -32,30 +32,30 @@
     <h5 class="text-danger">Note: User needs to bring own Container</h5>
 
     <div class="input-group mb-3">
-      <div class="field">
-        <%= form.label :typewater,"Type of water",class:"input-group-text", for:"inputGroupSelect01" %>
-          <%= form.select(:typewater, ['Type-I','Type-II','Type-I & Type-II'], {:include_blank => 'Choose...'},{  class:"form-select", id:"inputGroupSelect01",:required => true}) %>
-      </div>
+      
+        <%= form.label :typewater,"Type of water",class:"input-group-text", for:"w-type" %>
+          <%= form.select(:typewater, ['Type-I','Type-II','Type-I & Type-II'], {:include_blank => 'Choose...'},{  class:"form-select", id:"w-type",:required => true}) %>
+      
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text " for="amount">Amount</label>
       <label class="input-group-text fw-bold" for="amount"  >₹</label>
-      <input type="text" class="form-control" id="amount" placeholder="" disabled>
+      <input type="text" class="form-control" id="amount" placeholder="" value= "" readonly>
     </div>
 
     <div class="volume">
         <p class="text-warning">Volume</p>
-            <div class="input-group mb-3">
-              <%= form.label :volumeone,"Type-1",class:"input-group-text fw-bold" ,for:"type-1" %>
-              <%= form.text_field :volumeone,class:"form-control" ,id:"type-1", placeholder:"" %>
-              <%= form.label :volumeone,"Litre",class:"input-group-text fw-bold" ,for:"type-1" %>
+            <div class="input-group mb-3 vis" id="type-1">
+              <%= form.label :volumeone,"Type-1",class:"input-group-text fw-bold" ,for:"type-1-f" %>
+              <%= form.text_field :volumeone,class:"form-control", placeholder:"",id:"type-1-f", value:"" %>
+              <%= form.label :volumeone,"Litre",class:"input-group-text fw-bold" ,for:"type-1-f" %>
             </div>
 
-            <div class="input-group mb-3">
-              <%= form.label :volumetwo,"Type-2",class:"input-group-text fw-bold" ,for:"type-2" %>
-              <%= form.text_field :volumetwo,class:"form-control" ,id:"type-2", placeholder:"" %>
-              <%= form.label :volumetwo,"Litre",class:"input-group-text fw-bold" ,for:"type-2" %>
+            <div class="input-group mb-3 vis" id="type-2">
+              <%= form.label :volumetwo,"Type-2",class:"input-group-text fw-bold" ,for:"type-2-f" %>
+              <%= form.text_field :volumetwo,class:"form-control" ,placeholder:"",id:"type-2-f", value:"" %>
+              <%= form.label :volumetwo,"Litre",class:"input-group-text fw-bold" ,for:"type-2-f" %>
             </div>
     </div>
 
@@ -92,3 +92,56 @@
 </div>
 
 <%=render "partials/footer" %>
+
+
+<script>
+  let wType = document.getElementById('w-type');
+  let type1 = document.getElementById('type-1')
+  let type2 = document.getElementById('type-2');
+  let type1f = document.getElementById('type-1-f');
+  let type2f = document.getElementById('type-2-f');
+  let amount = document.getElementById('amount');
+    
+ 
+  amount.setAttribute('display', 'none')
+  wType.addEventListener('click', ()=> {
+    type1.classList.add('vis');
+    type2.classList.add('vis');
+
+    if ( wType.value == 'Type-I') {
+      type1.classList.toggle('vis');
+    }
+    if ( wType.value == 'Type-II') {
+      type2.classList.toggle('vis');
+    }
+    if ( wType.value == 'Type-I & Type-II') {
+      type1.classList.toggle('vis');
+      type2.classList.toggle('vis');
+    }
+  })
+
+
+  type1f.addEventListener('keyup', ()=> {
+    console.log(type1f.value*60);
+    amount.value = (type1f.value*60);
+  })
+    
+
+  type2f.addEventListener('keyup', ()=> {
+    console.log(type1f.value*60);
+    amount.value =  (type2f.value*60);
+  })
+    
+  
+
+  if (wType.value = 'Type-I & Type-II') {
+
+  }
+
+  
+
+    
+
+
+    
+</script>
