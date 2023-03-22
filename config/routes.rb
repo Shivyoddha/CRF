@@ -120,6 +120,18 @@ Rails.application.routes.draw do
     get 'mainpage/servo_hydraulic'
     get 'mainpage/gait'
 
+    get 'mainpage/auto_multi_speci_polish'
+    get 'mainpage/electro_chem'
+    get 'mainpage/ultra_centrifuge'
+    get 'mainpage/milli_q'
+    get 'mainpage/glove_box'
+    get 'mainpage/probe_sonicator'
+    get 'mainpage/uv_ozone'
+    get 'mainpage/high_temp_vac'
+    get 'mainpage/liq_nitrogen'
+    get 'mainpage/ball_milling'
+
+
 
 
 

@@ -1,0 +1,135 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Lab Water Purification System – Type I & II Water Quality</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="milli-q-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'milli-q-images/WPS.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#milli-q-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#milli-q-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Ultra Clear RO EDI 10, Evoqua Water Technologies, USA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - S03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <p>These units deliver RNase, DNase and DNA-free water</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Specification:</u></h4>
+                  <h5 class="fw-bold">a) Type I Water Specification</h5>
+                  <ul>
+                    <li>Resistivity >18.2 MΩ.cm</li>
+                    <li>TOC (Total Organic Carbon) < 2ppb</li>
+                    <li>Bacteria < 0.005 CFU (colony forming unit)/mL</li>
+                  </ul>
+                  <h5 class="fw-bold">b) Type II Water Specification</h5>
+                  <ul>
+                    <li> Conductivity 0.2 µS/cm to 0.066 µS/cm [5-15 MΩ.cm resistivity]</li>
+                    <li>TOC < 2 ppb</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Application domains</u>:</h4>
+                  <ul>
+                    <li>Feed for laboratory ultrapure water systems</li>
+                    <li>General chemistry</li>
+                    <li>Laboratory washing machines including final rinse</li>
+                    <li>Feed for autoclaves and environmental chambers</li>
+                    <li>Buffer preparation</li>
+                    <li>Photometry, spectrophotometry, general chemical analysis, media preparation</li>
+                    <li>Protein electrophoreses, microbiological media preparation, cytology and histology work, electrophoreses</li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th></th>
+                  <th style="color:#0094BB">Type I</th>
+                  <th style="color:#0094BB">Type II</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+
+
+                  <tr>
+                       <th>NITK</th>
+                  <th> Rs. 300/- </th>
+                  <th> Rs. 200/- </th>
+
+                </tr>
+
+                <tr>
+                  <th>Academic &amp; Research Institute*</th>
+                  <th> Rs. 450/- </th>
+                  <th> Rs. 300/- </th>
+
+                </tr>
+
+                 <tr>
+                  <th>Industry*</th>
+                  <th> Rs. 1200/- </th>
+                  <th> Rs. 800/- </th>
+
+                </tr>
+
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+          Toxic if ingested
+
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Dr. Rizwanur Rahman (Faculty in-charge) Mob: <span class="text-info">+91-9620169801</span>, Email: <span class="text-info">crf_synlab@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

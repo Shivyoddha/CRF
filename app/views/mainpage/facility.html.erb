@@ -1628,88 +1628,397 @@
 <!-- characterisation ends -->
 
 <!-- processing starts -->
+
+
     <div id="processing" class="vis">
+
+        <!-- #1 automatic multi -->
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >
-                <div class="equipment-img">
-                    <div id="XRD-images" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                            <div class="carousel-item">
-                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                            <div class="carousel-item">
-                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                        </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                    </div>
-                </div>
+                 <div class="equipment-img">
+                     <div id="multi-speci-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'multi-speci-images/MSP_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#multi-speci-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#multi-speci-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
              </div>
                 <div class="card-body">
                     <div id="more">
-                        <h5 class="card-title fw-bold">XRD</h5>
+                        <h5 class="card-title fw-bold">Automatic Multi Specimen Polishing</h5>
                     </div>
                     <span class="fw-bold">Located At</span>
-                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <p class="card-text text-muted"> CRF Annexe - G03</p>
                     <div class="wrap-action">
-
+                      <%= link_to "Know More", mainpage_auto_multi_speci_polish_path ,class:"btn btn-primary know-more"%>
                     </div>
                 </div>
 
             </div>
         </div>
 
+        <!-- #2 eletcro chem -->
+
          <div class="equipment">
             <div class="card">
                <div class="equipment-img-wrap" >
-                <div class="equipment-img">
-                    <div id="XRD-images" class="carousel slide">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                  <%=image_tag 'xrd_images/XRD1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                            <div class="carousel-item">
-                                <%=image_tag 'xrd_images/XRDCompare.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                            <div class="carousel-item">
-                                <%=image_tag 'xrd_images/RS_Result.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
-                            </div>
-                        </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#XRD-images" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#XRD-images" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                    </div>
-                </div>
+                 <div class="equipment-img">
+                     <div id="electro-chem-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'electro-chem-images/ECM1.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#electro-chem-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#electro-chem-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
              </div>
                 <div class="card-body">
                     <div id="more">
-                        <h5 class="card-title fw-bold">XRD</h5>
+                        <h5 class="card-title fw-bold">Electrolytic Polishing Machine</h5>
                     </div>
                     <span class="fw-bold">Located At</span>
-                    <p class="card-text text-muted"> CRF Annexe - G01</p>
+                    <p class="card-text text-muted"> CRF Annexe - G03</p>
                     <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_electro_chem_path ,class:"btn btn-primary know-more"%>
                     </div>
                 </div>
 
             </div>
+         </div>
+
+         <!-- #3 ultracentrifuge -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="ultracentrifuge-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'ultracentrifuge-images/centrifuge_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                           <div class="carousel-item active">
+                               <%=image_tag 'ultracentrifuge-images/centrifuge_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#ultracentrifuge-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#ultracentrifuge-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
              </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Ultracentrifugee</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - S03</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_ultra_centrifuge_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+
+         <!-- #4 ultra pure water -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="milli-q-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'milli-q-images/WPS.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#milli-q-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#milli-q-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Ultra Pure water Purification</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - S03</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_milli_q_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #5 glove box -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="glove-box-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'glove-box-images/GloveBox_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#glove-box-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#glove-box-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Glove Box</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - S03</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_glove_box_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #6 Probe Sonication-->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="probe-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'probe-images/Probe_1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#probe-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#probe-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+             </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Probe Sonication</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - S03</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_probe_sonicator_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #7 uv ozone -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="uv-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'uv-images\UV_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#uv-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#uv-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+               </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">UV Ozone Cleaning System</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G03</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_uv_ozone_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #8 High Temperature -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="high-temp-images" class="carousel slide">
+                         <div class="carousel-inner">
+                             <div class="carousel-item active">
+                                 <%=image_tag 'high-temperature-vacc-images/HTVAF.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                             </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#high-temp-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#high-temp-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+               </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">High Temperature Vacuum Assisted Furnace</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G07</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_high_temp_vac_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #9 ball milling -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="ball-mill-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'ball-mill-images/Ball_Milling.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#ball-mill-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#ball-mill-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+               </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Ball Milling Unit</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted"> CRF Annexe - G07</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_ball_milling_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+         <!-- #10 Nitrogen -->
+
+         <div class="equipment">
+            <div class="card">
+               <div class="equipment-img-wrap" >
+                 <div class="equipment-img">
+                     <div id="nitrogen-images" class="carousel slide">
+                         <div class="carousel-inner">
+                           <div class="carousel-item active">
+                               <%=image_tag 'nitrogen-images/LN_3.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                           </div>
+                         </div>
+                             <button class="carousel-control-prev" type="button" data-bs-target="#nitrogen-images" data-bs-slide="prev">
+                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Previous</span>
+                             </button>
+                             <button class="carousel-control-next" type="button" data-bs-target="#nitrogen-images" data-bs-slide="next">
+                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                 <span class="visually-hidden">Next</span>
+                             </button>
+                     </div>
+                 </div>
+               </div>
+                <div class="card-body">
+                    <div id="more">
+                        <h5 class="card-title fw-bold">Liquid Nitrogen Plant</h5>
+                    </div>
+                    <span class="fw-bold">Located At</span>
+                    <p class="card-text text-muted">CRF New Building - G05</p>
+                    <div class="wrap-action">
+                      <%= link_to "Know More", mainpage_liq_nitrogen_path ,class:"btn btn-primary know-more"%>
+                    </div>
+                </div>
+
+            </div>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
      </div>
+
+
+
 
 <!-- processing ends>
 
