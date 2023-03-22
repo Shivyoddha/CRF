@@ -50,7 +50,6 @@ class ApplicationController < ActionController::Base
 
   end
   def render_404
-    render home_developer
     render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
   end
 
