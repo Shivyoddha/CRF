@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
-
+    post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
