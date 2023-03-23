@@ -26,7 +26,11 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester.status="pending"
     respond_to do |format|
       if @integrated_multi_role_tester.save
-        IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+        if @integrated_multi_role.user.role=='student'||@integrated_multi_role.user.role=='faculty'
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully created." }
         format.json { render :show, status: :created, location: @integrated_multi_role_tester }
       else

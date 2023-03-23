@@ -5,7 +5,24 @@ class ImpedanceAnalyzerMailer < ApplicationMailer
   #
   #   en.impedance_analies_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
+    @impedance_analies=ImpedanceAnaly.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["impedence_analyzer.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/impedence_analyzer.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+              to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{impedance_analies:@impedance_analies,user:@user}
+        )
+  end
+  def ExternalMail
     @impedance_analies=ImpedanceAnaly.find(params[:id])
     @user=User.find(params[:userid])
     attachments["impedence_analyzer.pdf"] = WickedPdf.new.pdf_from_string(

@@ -29,7 +29,11 @@ class BallMailingsController < ApplicationController
 
     respond_to do |format|
       if @ball_mailing.save
-        BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
+        if @ball_mailing.user.role=='student'||@ball_mailing.user.role=='faculty'
+          BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Ball mailing was successfully created." }
         format.json { render :show, status: :created, location: @ball_mailing }
       else
