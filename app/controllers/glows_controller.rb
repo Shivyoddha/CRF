@@ -28,7 +28,11 @@ class GlowsController < ApplicationController
 
     respond_to do |format|
       if @glow.save
-        GlowMailer.with(id:@glow.id, userid:current_user.id).Mail.deliver_later
+        if @glow.user.role=='student'||@glow.user.role=='faculty'
+          GlowMailer.with(id:@glow.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GlowMailer.with(id:@glow.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to glow_url(@glow), notice: "Glow was successfully created." }
         format.json { render :show, status: :created, location: @glow }
       else

@@ -28,7 +28,11 @@ class CellImagingsController < ApplicationController
     @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.save
-        CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
+        if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
       else

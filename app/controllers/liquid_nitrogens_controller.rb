@@ -33,7 +33,11 @@ class LiquidNitrogensController < ApplicationController
     end
     respond_to do |format|
       if @liquid_nitrogen.save
-        LiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).Mail.deliver_later
+        if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='faculty'
+          LiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          LiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to liquid_nitrogen_url(@liquid_nitrogen), notice: "Liquid nitrogen was successfully created." }
         format.json { render :show, status: :created, location: @liquid_nitrogen }
       else

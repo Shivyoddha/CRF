@@ -29,7 +29,11 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.build_equipment_table
     respond_to do |format|
       if @electro_chemical.save
-        ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
+        if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to home_index_path, notice: "Electro chemical was successfully created." }
         format.json { render :show, status: :created, location: @electro_chemical }
       else

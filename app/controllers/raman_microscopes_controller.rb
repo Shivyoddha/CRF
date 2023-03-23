@@ -27,7 +27,11 @@ class RamanMicroscopesController < ApplicationController
     @raman_microscope.status="pending"
     respond_to do |format|
       if @raman_microscope.save
-        RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).Mail.deliver_later
+        if @raman_microscope.user.role=='student'||@raman_microscope.user.role=='faculty'
+          RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully created." }
         format.json { render :show, status: :created, location: @raman_microscope }
       else

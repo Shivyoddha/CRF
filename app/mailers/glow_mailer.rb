@@ -5,7 +5,24 @@ class GlowMailer < ApplicationMailer
   #
   #   en.glow_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
+    @glow=Glow.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["glow.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/glow.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+              to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{glow:@glow,user:@user}
+        )
+  end
+  def ExternalMail
     @glow=Glow.find(params[:id])
     @user=User.find(params[:userid])
     attachments["glow.pdf"] = WickedPdf.new.pdf_from_string(

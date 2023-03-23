@@ -29,7 +29,11 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact.build_equipment_table
     respond_to do |format|
       if @three_d_non_contact.save
-        ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).Mail.deliver_later
+        if @three_d_non_contact.user.role=='student'||@three_d_non_contact.user.role=='faculty'
+          ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to home_index_path, notice: "Three d non contact was successfully created." }
         format.json { render :show, status: :created, location: @three_d_non_contact }
       else
