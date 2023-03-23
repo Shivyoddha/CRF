@@ -5,7 +5,24 @@ class AdvanceMolecularRheometerMailer < ApplicationMailer
   #
   #   en.advance_molecular_rheometer_mailer.mail.subject
   #
-  def Mail
+  def InternalMail
+    @advance_molecular_rheometer=AdvanceMolecularRheometer.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["advanceslotbooking.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/advance_molecular_rheometer.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+              to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{advance_molecular_rheometer:@advance_molecular_rheometer,user:@user}
+          )
+  end
+  def ExternalMail
     @advance_molecular_rheometer=AdvanceMolecularRheometer.find(params[:id])
     @user=User.find(params[:userid])
     attachments["advanceslotbooking.pdf"] = WickedPdf.new.pdf_from_string(

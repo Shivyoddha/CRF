@@ -26,7 +26,11 @@ class LasersController < ApplicationController
     @laser.status="pending"
     respond_to do |format|
       if @laser.save
-        LaserMailer.with(id:@laser.id, userid:current_user.id).Mail.deliver_later
+        if @laser.user.role=='student'||@laser.user.role=='faculty'
+          LaserMailer.with(id:@laser.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
         format.json { render :show, status: :created, location: @laser }
       else

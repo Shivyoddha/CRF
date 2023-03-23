@@ -5,7 +5,7 @@ class ScratchIndentationMailer < ApplicationMailer
   #
   #   en.scratch_indentation_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
     @scratch_indentation=ScratchIndentation.find(params[:id])
     @user=User.find(params[:userid])
     attachments["scratch_indentation.pdf"] = WickedPdf.new.pdf_from_string(
@@ -22,4 +22,22 @@ class ScratchIndentationMailer < ApplicationMailer
             locals:{scratch_indentation:@scratch_indentation,user:@user}
         )
   end
+  def ExternalMail
+    @scratch_indentation=ScratchIndentation.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["scratch_indentation.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/scratch_indentation.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+            to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{scratch_indentation:@scratch_indentation,user:@user}
+        )
+  end
+
 end

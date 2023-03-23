@@ -32,10 +32,10 @@ class XrdsController < ApplicationController
     respond_to do |format|
       if @xrd.save
         if @xrd.user.role=='student'||@xrd.user.role=='faculty'
-        XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).InternalMail.deliver_later
-      else
-        XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).ExternalMail.deliver_later
-      end
+          XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
       else
