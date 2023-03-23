@@ -1,27 +1,27 @@
 class ApplicationController < ActionController::Base
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  rescue_from NameError, with: :handle_name_error
-  protect_from_forgery with: :exception
-  rescue_from ActionController::InvalidAuthenticityToken do
-    render plain: 'Invalid Authenticity Token', status: :unprocessable_entity
-  end
-  rescue_from Net::ReadTimeout, with: :network_error
-  rescue_from Net::OpenTimeout, with: :network_error
-  rescue_from SocketError, with: :network_error
-  rescue_from Errno::ECONNRESET, with: :network_error
-  rescue_from StandardError, with: :render_error
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  # rescue_from NameError, with: :handle_name_error
+  # protect_from_forgery with: :exception
+  # rescue_from ActionController::InvalidAuthenticityToken do
+  #   render plain: 'Invalid Authenticity Token', status: :unprocessable_entity
+  # end
+  # rescue_from Net::ReadTimeout, with: :network_error
+  # rescue_from Net::OpenTimeout, with: :network_error
+  # rescue_from SocketError, with: :network_error
+  # rescue_from Errno::ECONNRESET, with: :network_error
+  # rescue_from StandardError, with: :render_error
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden }
         format.html { redirect_to root_path, alert: exception.message }
       end
     end
-    def render_error
-    # logger.error(exception) # Log the exception
+  #   def render_error
+  #   # logger.error(exception) # Log the exception
 
-    # Render an error template with a user-friendly message
-    render file: "#{Rails.root}/public/500.html", status: :internal_server_error
-  end
+  #   # Render an error template with a user-friendly message
+  #   render file: "#{Rails.root}/public/500.html", status: :internal_server_error
+  # end
 
   def after_sign_in_path_for(resource)
     stored_location = session[:return_to]
@@ -43,23 +43,23 @@ class ApplicationController < ActionController::Base
      render file: "#{Rails.root}/public/404.html", status: 404
 
   end
-  def handle_name_error
+  # def handle_name_error
 
-    render file: "#{Rails.root}/public/500.html", status: 500
+  #   render file: "#{Rails.root}/public/500.html", status: 500
 
 
-  end
+  # end
   def render_404
     render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
   end
 
-  def network_error(exception)
-    respond_to do |format|
-      format.html { render template: 'errors/505.html.erb', status: :internal_server_error }
-      format.json { render json: { error: 'network_error' }, status: :internal_server_error }
-    end
+  # def network_error(exception)
+  #   respond_to do |format|
+  #     format.html { render template: 'errors/505.html.erb', status: :internal_server_error }
+  #     format.json { render json: { error: 'network_error' }, status: :internal_server_error }
+  #   end
 
-  end
+  # end
   private
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
