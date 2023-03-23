@@ -30,7 +30,11 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.save
-        HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
+        if @hr_fesem_c.user.role=='student'||@hr_fesem_c.user.role=='faculty'
+          HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
         format.json { render :show, status: :created, location: @hr_fesem_c }
       else

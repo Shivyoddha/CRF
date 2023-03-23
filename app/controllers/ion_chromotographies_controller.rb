@@ -28,7 +28,11 @@ class IonChromotographiesController < ApplicationController
 
     respond_to do |format|
       if @ion_chromotography.save
-        IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+        if @ion_chromotography.user.role=='student'||@ion_chromotography.user.role=='faculty'
+          IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to ion_chromotography_url(@ion_chromotography), notice: "Ion chromotography was successfully created." }
         format.json { render :show, status: :created, location: @ion_chromotography }
       else

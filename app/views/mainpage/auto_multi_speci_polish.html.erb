@@ -1,0 +1,112 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Automatic Multi Specimen Polisher/Grinder</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="multi-speci-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'multi-speci-images/MSP_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#multi-speci-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#multi-speci-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Autopol-II, Metatech Industries, INDIA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - G03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <ul>
+                    <li>Automatic grinder/polisher improves the productivity, quality of preparation with much lesser operator dependence</li>
+                    <li> Offering completely scratchless specimen</li>
+                    <li>Six specimens can be polished simultaneously</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Applications</u>:</h4>
+                  <ul>
+                    <li>Microscopy Study</li>
+                    <li>SEM/EBSD sample preperation</li>
+                    <li>XRD Texture/Stress sample preperation</li>
+                  </ul>
+            </div>
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Machine Charges (per sample)</u></h3>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th></th>
+
+                    <th> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th>NITK users<sup>#</sup></th>
+
+                    <th><span style="color:orange"> Rs. 100/-</span></th>
+                  </tr>
+
+                  <tr>
+                    <th>Other academic institutions and Research and Development organizations<sup>#</sup>*</th>
+
+                    <th><span style="color:orange"> Rs. 150/-</span></th>
+                  </tr>
+                  <tr>
+                    <th>Industry personnel<sup>#</sup>*</th>
+
+                    <th> <span style="color:orange">Rs. 400/-</span></th>
+                  </tr>
+
+
+                </tbody>
+              </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>#Grit Paper, Grinding Suspension or other consumable charged extra.</p>
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mrs. Suraksha Shetty, Email: <span class="text-info">crf_ecm@nitk.edu.in</span></h5>
+            <h5>Dr. M R Rahman (ECM, Faculty in-charge), Email: <span class="text-info"> rizwan@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

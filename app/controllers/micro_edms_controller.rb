@@ -26,7 +26,11 @@ class MicroEdmsController < ApplicationController
     @micro_edm.status="pending"
     respond_to do |format|
       if @micro_edm.save
-        MicroEdMailer.with(id:@micro_edm.id, userid:current_user.id).Mail.deliver_later
+        if @micro_edm.user.role=='student'||@micro_edm.user.role=='faculty'
+          MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully created." }
         format.json { render :show, status: :created, location: @micro_edm }
       else

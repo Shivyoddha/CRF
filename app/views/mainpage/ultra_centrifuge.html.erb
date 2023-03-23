@@ -1,0 +1,109 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Ultracentrifuge</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="ultracentrifuge-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'ultracentrifuge-images/centrifuge_1.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                  <div class="carousel-item active">
+                      <%=image_tag 'ultracentrifuge-images/centrifuge_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#ultracentrifuge-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#ultracentrifuge-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Optima<sup>TM</sup> MAX-XP, Beckman Coulter, USA]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - S03</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features</u>:</h4>
+                  <p> Ultracentrifuge is a power-packed solution that delivers fast, efficient separations from samples.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Resolution:</u></h4>
+                  <p> Max. Speed: 50000 rpm, Bio Safe Max. Capacity Volume Range: 0 - 194.4 mL, Set temperature range: 0 to 40°C in 1°C increments, Solid state (thermoelectric temperature control system with forced air; no coolant; no CFCs/ODCs)</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Facilities:</u></h4>
+                  <p>Facilities: MLA-50, MLS-50.</p>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Applications of Ultracentrifuge</u>:</h4>
+                  <ul>
+                    <li>Fractionation, affinity purification, separation of components</li>
+                  </ul>
+            </div>
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing charges (sample basis).</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th style="color:#0094BB">NITK<sup>#</sup> </th>
+                  <th style="color:#0094BB">Academia / R&amp;D (Externals)<sup>#</sup>*</th>
+                  <th style="color:#0094BB">Industry<sup>#</sup>*</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+
+                  <th> Rs. 300/-  </th>
+                   <th> Rs. 450/- </th>
+                   <th> Rs. 1200/- </th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>#Consumable/Sample Preparation charges is not included.</p>
+            <p>*GST (18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+          <h5>Dr. Mohammad Rizwanur Rahman (Ultracentrifuge Faculty in-charge) ,Email: <span class="text-info"> crf_synlab@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

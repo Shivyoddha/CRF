@@ -29,7 +29,11 @@ class FrictionsController < ApplicationController
 
     respond_to do |format|
       if @friction.save
-        FrictionMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
+        if @friction.user.role=='student'||@friction.user.role=='faculty'
+          FrictionMailer.with(id:@friction.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          FrictionMailer.with(id:@friction.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to friction_url(@friction), notice: "Friction was successfully created." }
         format.json { render :show, status: :created, location: @friction }
       else
