@@ -25,7 +25,6 @@ class GrindingsController < ApplicationController
     @grinding = Grinding.new(grinding_params)
     @grinding.user=current_user
     @grinding.status="pending"
-
     respond_to do |format|
       if @grinding.save
         GrindingMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
@@ -59,7 +58,7 @@ class GrindingsController < ApplicationController
     @grinding.destroy
 
     respond_to do |format|
-      format.html { redirect_to grindings_url, notice: "Grinding was successfully destroyed." }
+      format.html { redirect_to home_index_path, notice: "Grinding was successfully destroyed." }
       format.json { head :no_content }
     end
   end

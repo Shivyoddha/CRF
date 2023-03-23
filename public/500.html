@@ -1,66 +1,141 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <title>We're sorry, but something went wrong (500)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <style>
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+        * {
+        margin: 0%;
+        padding: 0%;
+        text-decoration: none;
+        }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+        body {
+        background-color: #ddf1fb;
+        }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+        #heading {
+          width: 50%;
+          font-family: 'Kanit', sans-serif;
+          margin: 1em 0 0 1em;
+        }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+        .dialog {
+          display: flex;
+          height: auto;
+          margin: auto;
+          width: 100%;
+          font-family: "kanit","sans-serif";
+        }
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.kindly excuse us</h1>
+        #text {
+          width: 40%;
+          font-family: 'Kanit', sans-serif;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+        }
+
+        #digit {
+          font-size: 18em;
+        }
+
+        #couldnt {
+          font-size: 6em;
+          color: #295050;
+        }
+        
+        #digit-div {
+          width: 60%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        #redirect {
+          text-align: center;
+          font-size: 2em;
+          font-family: kanit;
+        }
+
+        #mistake {
+          align-self: flex-start;
+        }
+
+        #gohome:hover {
+          color: #db19db;
+        }
+
+        @media only screen and (max-width: 950px) {
+          #heading {
+            width: 98%;
+            text-align: center;
+            margin: auto;
+
+          }
+          .dialog {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          #digit {
+          font-size: 9em;
+        }
+
+          #redirect {
+            margin-bottom: 3em;
+            font-size:1.5em;
+          }
+
+          #text {
+          width: 90%;
+        }
+
+        #digit-div {
+          width: 90%
+        }
+
+        #couldnt {
+          font-size: 4em;
+          text-align: center;
+        }
+
+
+        }
+
+      </style>
+  </head>
+
+  <body class="rails-default-error-page">
+    <!-- This file lives in public/404.html -->
+
+    <!-- HTML code for heading -->
+    <div class="" id="heading">
+        <!-- <img src="https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/logoT.png" alt=""> -->
+
+        <h1>Central Research Facility NITK</h1>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+
+    <div class="dialog">
+      <div id="digit-div">
+        <h1 id="digit">500</h1>
+      </div>
+      <div id="text">
+      
+        <h1 id="couldnt">OOPS! Internal server error.</h1>
+      </div>
+      <!-- <p>If you are the application owner check the logs for more information.</p> -->
+    </div>
+
+    <div id="redirect">
+      <span>There seems to be a problem. Here is </span>
+      <a href="#" id="gohome">a way out</a>
+    </div>
+  </body>
 </html>
