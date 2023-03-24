@@ -35,7 +35,7 @@ class XrdsController < ApplicationController
           XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).InternalMail.deliver_later
         else
           XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
+        end
         format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
       else
@@ -52,11 +52,7 @@ class XrdsController < ApplicationController
 
     respond_to do |format|
       if @xrd.update(xrd_params)
-        if @xrd.amount == nil
         XrdAllotedMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentXrdMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_xrd_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else
@@ -84,6 +80,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay] ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end

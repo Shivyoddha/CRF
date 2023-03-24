@@ -13,6 +13,8 @@ class LasersController < ApplicationController
   # GET /lasers/new
   def new
     @laser = Laser.new
+    @laser.build_equipment_table
+
   end
 
   # GET /lasers/1/edit
@@ -24,13 +26,15 @@ class LasersController < ApplicationController
     @laser = Laser.new(laser_params)
     @laser.user=current_user
     @laser.status="pending"
+    @laser.build_equipment_table
+
     respond_to do |format|
       if @laser.save
         if @laser.user.role=='student'||@laser.user.role=='faculty'
           LaserMailer.with(id:@laser.id, userid:current_user.id).InternalMail.deliver_later
         else
           LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
+        end
         format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
         format.json { render :show, status: :created, location: @laser }
       else
@@ -43,6 +47,8 @@ class LasersController < ApplicationController
   # PATCH/PUT /lasers/1 or /lasers/1.json
   def update
     @laser.status="alloted"
+    @laser.build_equipment_table
+
     respond_to do |format|
       if @laser.update(laser_params)
         format.html { redirect_to slotbooker_laser_path(@laser), notice: "Laser was successfully updated." }
@@ -72,6 +78,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end
