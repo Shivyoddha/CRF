@@ -114,12 +114,16 @@
                        <td id="assign-btn">
                            <!-- Button trigger modal -->
                             <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
-
                             <div id="<%= xrds.id%>" class="modal">
+
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
+<<<<<<< HEAD
                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Assignment to <b><%= xrds.user.name %></b></h1>
+=======
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= xrds.user.name %></b></h1>
+>>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                        </div>
                                         <div class="modal-body">
@@ -153,22 +157,28 @@
                                              <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
                                           </div>
 
-                                           <%end%>
+                                          <div class="input-group mb-3">
+                                            <%= f.hidden_field :dept, value:"#{xrds.user.department}" %>
+                                         </div>
 
+                                         <div class="input-group mb-3">
+                                           <%= f.hidden_field :email, value:"#{xrds.user.email}" %>
+                                        </div>
 
+<<<<<<< HEAD
                                            <%# <%=xrds.id%>
+=======
+                                         <div class="input-group mb-3">
+                                           <%= f.hidden_field :equipname, value:"xrd" %>
+                                        </div>
+
+                                           <%end%>
+>>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
 
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                                             </div>
                                           <% end %>
-
-
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Cancel Slot</button>
                                         </div>
                                     </div>
                                 </div>

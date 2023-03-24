@@ -12,7 +12,7 @@ class AnsiesController < ApplicationController
 
   # GET /ansies/new
   def new
-    today=Date.parse("2022-03-20")
+    today=Date.parse("2022-03-23")
 
 if today.wday==0||today.wday==1
 batches = [
@@ -37,10 +37,11 @@ else
   batches = [
     { name: " #{(today.end_of_week(:monday)).strftime('%B %d')}   to    #{(today.end_of_week(:monday)+1.day).strftime('%B %d')}    ", start_date: (today.end_of_week(:monday) ), end_date: (today.end_of_week(:monday) + 1.day), dates: [] },
     { name: " #{(today.end_of_week(:wednesday)).strftime('%B %d')} to #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) ), end_date: (today.end_of_week(:wednesday) + 1.day), dates: [] },
-    { name: " #{(today.end_of_week(:friday)).strftime('%B %d')} to #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)), end_date: (today.end_of_week(:friday)  + 2.days), dates: [] },
+    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] },
     { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] },
     { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks), end_date: (today.end_of_week(:wednesday) + 1.weeks + 1.day), dates: [] },
-    { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ), end_date: (today.end_of_week(:friday)+1.weeks  + 2.days), dates: [] }
+    { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')} to #{(today.end_of_week(:friday)+2.weeks + 2.day).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+2.weeks), end_date: (today.end_of_week(:friday) +2.weeks + 2.days), dates: [] }
+
 ]
     # { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} to #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", start_date: (today.end_of_week(:monday) + 1.weeks), end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day), dates: [] }
 
@@ -85,7 +86,7 @@ else
     { name: "#{(today.end_of_week(:wednesday)).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday)) },
     { name: " #{(today.end_of_week(:friday)+1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+1.weeks ) },
     { name: " #{(today.end_of_week(:monday)+1.weeks).strftime('%B %d')} ", start_date: (today.end_of_week(:monday) + 1.weeks) },
-    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')}", start_date: (today.beginning_of_week(:wednesday) + 1.weeks)},
+    { name: " #{(today.end_of_week(:wednesday)+1.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:wednesday) + 1.weeks)},
     { name: " #{(today.end_of_week(:friday)+2.weeks).strftime('%B %d')}", start_date: (today.end_of_week(:friday)+2.weeks ) }
   ]
 
@@ -97,7 +98,7 @@ customisedend = [
   { name: "  #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.day) },
   { name: " #{(today.end_of_week(:friday) + 2.day).strftime('%B %d')}", end_date: (today.end_of_week(:friday)  + 2.days) },
   { name: "  #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+1.weeks + 1.day) },
-  { name: "  #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
+  { name: "  #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.weeks + 1.day) },
   { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
   { name: "  #{(today.end_of_week(:monday)+2.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 2.weeks + 1.day) }
 ]
@@ -108,7 +109,7 @@ customisedend = [
   { name: " #{(today.end_of_week(:wednesday) + 1.weeks+1.days).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.weeks+1.days) },
   { name: "  #{(today.end_of_week(:friday) +1.weeks+ 2.day).strftime('%B %d')}", end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
   { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
-  { name: "  #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", end_date: (today.beginning_of_week(:wednesday) + 2.weeks + 1.day) }
+  { name: "  #{(today.end_of_week(:wednesday) +2.weeks+ 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 2.weeks + 1.day) }
 ]
 else
   customisedend = [
@@ -116,7 +117,7 @@ else
     { name: " #{(today.end_of_week(:wednesday) + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:wednesday) + 1.day)},
     { name: "  #{(today.end_of_week(:friday)+1.weeks + 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+1.weeks  + 2.days) },
     { name: " #{(today.end_of_week(:monday)+1.weeks + 1.day).strftime('%B %d')}", end_date: (today.end_of_week(:monday)+ 1.weeks + 1.day) },
-    { name: " #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}",  end_date: (today.beginning_of_week(:wednesday) + 1.weeks + 1.day) },
+    { name: " #{(today.end_of_week(:wednesday) +1.weeks+ 1.day).strftime('%B %d')}",  end_date: (today.end_of_week(:wednesday) + 1.weeks + 1.day) },
     { name: "  #{(today.end_of_week(:friday) +2.weeks+ 2.day).strftime('%B %d')}",  end_date: (today.end_of_week(:friday)+2.weeks  + 2.days) }
 
 ]
@@ -154,20 +155,18 @@ end
   def create
     @ansy = Ansy.new(ansy_params)
     @ansy.user=current_user
-   #  if @ansy.customstart < @ansy.customend
-   # flash[:alert] = "Custom start date should be less than custom end date."
-   # redirect_to home_index_path and return
-   # end
+
+
     if @ansy.startdate.present? and ( @ansy.startdate.wday==0 || @ansy.startdate.wday==2)
       @ansy.amount=@ansy.sysno*200*2
     elsif @ansy.startdate.present? and (@ansy.startdate.wday==4)
       @ansy.amount=@ansy.sysno*200*3
     end
-    # if @ansy.customstart.present? and @ansy.customend.present?
-    # #
-    # #     @ansy.amount=(@ansy.customend - @ansy.customend).to_i*@ansy.sysno*200
-    # #
-    # # end
+    if @ansy.customstart.present? and @ansy.customend.present?
+
+        @ansy.amount=(@ansy.customend - @ansy.customend).to_i*@ansy.sysno*200
+
+    end
     respond_to do |format|
       if @ansy.save
         AnsysMailer.with(id:@ansy.id, userid:current_user.id).Mail.deliver_later
@@ -177,7 +176,7 @@ end
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ansy.errors, status: :unprocessable_entity }
       end
-    end
+
   end
 
   # PATCH/PUT /ansies/1 or /ansies/1.json
@@ -191,6 +190,7 @@ end
         format.json { render json: @ansy.errors, status: :unprocessable_entity }
       end
     end
+  end
   end
 
   # DELETE /ansies/1 or /ansies/1.json

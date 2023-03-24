@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
-
+    post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
@@ -411,6 +411,7 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
+    post 'payment/paymentU'
     get 'home/faculty_verif'
     post 'home/faculty_verif'
     get 'home/verifsent'
@@ -419,10 +420,11 @@ Rails.application.routes.draw do
   #   devise_scope :user do
   #   root to: "devise/sessions#new"
   # end
+
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-    match '*unmatched', to: 'application#render_404', via: :all
+     get '/users/sign_out' => 'devise/sessions#destroy'
+      match '*unmatched', to: 'application#render_404', via: :all,constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
   end
-# 
+#
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

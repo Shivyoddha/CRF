@@ -14,6 +14,7 @@ class HrlcmsController < ApplicationController
   def new
     @hrlcm = Hrlcm.new
     @user=User.find(params[:id])
+    @hrlcm.build_equipment_table
   end
 
   # GET /hrlcms/1/edit
@@ -25,13 +26,17 @@ class HrlcmsController < ApplicationController
     @hrlcm = Hrlcm.new(hrlcm_params)
     @hrlcm.user=current_user
     @hrlcm.status="pending"
-
+    @hrlcm.build_equipment_table
     respond_to do |format|
       if @hrlcm.save
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
-          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
         else
+<<<<<<< HEAD
           HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+=======
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+>>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
         end
         format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
@@ -45,13 +50,11 @@ class HrlcmsController < ApplicationController
   # PATCH/PUT /hrlcms/1 or /hrlcms/1.json
   def update
     @hrlcm.status="alloted"
+    @hrlcm.build_equipment_table
+
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
-        if @hrlcm.amount == nil
         HrlcmAllotedMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentHrlcmMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_lcms_path(@hrlcm), notice: "Hrlcm was successfully updated." }
         format.json { render :show, status: :ok, location: @hrlcm }
       else
@@ -79,6 +82,6 @@ class HrlcmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hrlcm_params
-      params.require(:hrlcm).permit(:sample,:health, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity, :disposal, :more, :status, :slotdate, :slottime, :debit,:user_id,references: [],hazard_method: [],testing_required: [])
+      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity,:health,  :disposal, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,hazard_method: [], testing_required: [], references: [])
     end
 end
