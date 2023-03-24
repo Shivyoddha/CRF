@@ -28,18 +28,17 @@ class HighTempVaccumsController < ApplicationController
     @high_temp_vaccum.status="pending"
     @high_temp_vaccum.build_equipment_table
     respond_to do |format|
-        if @high_temp_vaccum.save
-          if @high_temp_vaccum.user.role=='student'||@high_temp_vaccum.user.role=='faculty'
-            HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully created." }
-          format.json { render :show, status: :created, location: @high_temp_vaccum }
+      if @high_temp_vaccum.save
+        if @high_temp_vaccum.user.role=='student'||@high_temp_vaccum.user.role=='faculty'
+          HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @high_temp_vaccum.errors, status: :unprocessable_entity }
+          HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully created." }
+        format.json { render :show, status: :created, location: @high_temp_vaccum }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @high_temp_vaccum.errors, status: :unprocessable_entity }
       end
     end
 

@@ -28,20 +28,20 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact.status="pending"
     @three_d_non_contact.build_equipment_table
     respond_to do |format|
-     if @three_d_non_contact.save
-       if @three_d_non_contact.user.role=='student'||@three_d_non_contact.user.role=='faculty'
-         ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to home_index_path, notice: "Three d non contact was successfully created." }
-       format.json { render :show, status: :created, location: @three_d_non_contact }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @three_d_non_contact.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @three_d_non_contact.save
+        if @three_d_non_contact.user.role=='student'||@three_d_non_contact.user.role=='faculty'
+          ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Three d non contact was successfully created." }
+        format.json { render :show, status: :created, location: @three_d_non_contact }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @three_d_non_contact.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /three_d_non_contacts/1 or /three_d_non_contacts/1.json
   def update

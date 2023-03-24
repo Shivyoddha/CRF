@@ -25,6 +25,11 @@ class EquipmentTablesController < ApplicationController
 
     respond_to do |format|
       if @equipment_table.save
+        if @equipment_table.user.role=='student'||@equipment_table.user.role=='faculty'
+          EquipmentTableMailer.with(id:@equipment_table.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          EquipmentTableMailer.with(id:@equipment_table.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to equipment_table_url(@equipment_table), notice: "Equipment table was successfully created." }
         format.json { render :show, status: :created, location: @equipment_table }
       else

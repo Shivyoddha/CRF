@@ -29,20 +29,20 @@ class GasSensingsController < ApplicationController
     @gas_sensing.build_equipment_table
 
     respond_to do |format|
-     if @gas_sensing.save
-       if @gas_sensing.user.role=='student'||@gas_sensing.user.role=='faculty'
-         GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to gas_sensing_url(@gas_sensing), notice: "Gas sensing was successfully created." }
-       format.json { render :show, status: :created, location: @gas_sensing }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @gas_sensing.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @gas_sensing.save
+        if @gas_sensing.user.role=='student'||@gas_sensing.user.role=='faculty'
+          GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to gas_sensing_url(@gas_sensing), notice: "Gas sensing was successfully created." }
+        format.json { render :show, status: :created, location: @gas_sensing }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @gas_sensing.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /gas_sensings/1 or /gas_sensings/1.json
   def update

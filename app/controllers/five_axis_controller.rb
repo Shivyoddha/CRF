@@ -27,18 +27,17 @@ class FiveAxisController < ApplicationController
     @five_axi.status="pending"
     @five_axi.build_equipment_table
     respond_to do |format|
-        if @five_axi.save
-          if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'
-            FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to five_axi_url(@five_axi), notice: "Five axi was successfully created." }
-          format.json { render :show, status: :created, location: @five_axi }
+      if @five_axi.save
+        if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'
+          FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @five_axi.errors, status: :unprocessable_entity }
+          FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to five_axi_url(@five_axi), notice: "Five axi was successfully created." }
+        format.json { render :show, status: :created, location: @five_axi }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @five_axi.errors, status: :unprocessable_entity }
       end
     end
   # PATCH/PUT /five_axis/1 or /five_axis/1.json

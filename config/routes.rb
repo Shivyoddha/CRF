@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
-
+    post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
@@ -121,6 +121,18 @@ Rails.application.routes.draw do
     get 'mainpage/proton_transfer'
     get 'mainpage/servo_hydraulic'
     get 'mainpage/gait'
+
+    get 'mainpage/auto_multi_speci_polish'
+    get 'mainpage/electro_chem'
+    get 'mainpage/ultra_centrifuge'
+    get 'mainpage/milli_q'
+    get 'mainpage/glove_box'
+    get 'mainpage/probe_sonicator'
+    get 'mainpage/uv_ozone'
+    get 'mainpage/high_temp_vac'
+    get 'mainpage/liq_nitrogen'
+    get 'mainpage/ball_milling'
+
 
 
 
@@ -407,10 +419,12 @@ Rails.application.routes.draw do
   #   devise_scope :user do
   #   root to: "devise/sessions#new"
   # end
-  devise_scope :user do
-    match '*unmatched', to: 'application#render_404', via: :all
-     get '/users/sign_out' => 'devise/sessions#destroy'
-  end
 
+  devise_scope :user do
+
+     get '/users/sign_out' => 'devise/sessions#destroy'
+   get  '*unmatched', to: 'application#render_404', via: :all
+  end
+#
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

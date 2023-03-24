@@ -104,9 +104,13 @@
                         <td> <%= xrds.slottime %></td>
 
                           <td><%= xrds.status%></td>
-                        <%xrds.references.each do |file|%>
-                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                     <%end%>
+                          <%if xrds.references.attached? %>
+                        <td><%xrds.references.each do |file|%>
+                           <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                             <% end %></td>
+                        <% else %>
+                          <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

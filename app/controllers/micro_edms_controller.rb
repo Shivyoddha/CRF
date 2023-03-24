@@ -27,18 +27,17 @@ class MicroEdmsController < ApplicationController
     @micro_edm.build_equipment_table
 
     respond_to do |format|
-        if @micro_edm.save
-          if @micro_edm.user.role=='student'||@micro_edm.user.role=='faculty'
-            MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully created." }
-          format.json { render :show, status: :created, location: @micro_edm }
+      if @micro_edm.save
+        if @micro_edm.user.role=='student'||@micro_edm.user.role=='faculty'
+          MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @micro_edm.errors, status: :unprocessable_entity }
+          MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully created." }
+        format.json { render :show, status: :created, location: @micro_edm }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @micro_edm.errors, status: :unprocessable_entity }
       end
     end
 

@@ -29,20 +29,20 @@ class GloveBoxesController < ApplicationController
     @glove_box.build_equipment_table
 
     respond_to do |format|
-     if @glove_box.save
-       if @glove_box.user.role=='student'||@glove_box.user.role=='faculty'
-         GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to glove_box_url(@glove_box), notice: "Glove box was successfully created." }
-       format.json { render :show, status: :created, location: @glove_box }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @glove_box.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @glove_box.save
+        if @glove_box.user.role=='student'||@glove_box.user.role=='faculty'
+          GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to glove_box_url(@glove_box), notice: "Glove box was successfully created." }
+        format.json { render :show, status: :created, location: @glove_box }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @glove_box.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /glove_boxes/1 or /glove_boxes/1.json
   def update

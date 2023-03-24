@@ -119,7 +119,7 @@ h1{
   background-size: cover;
 }
 #im1{
-  background-image: url(app/assets/images/anish2.jpg);
+  background-image: url(https://raw.githubusercontent.com/medha03/CRF/main/app/assets/images/anish2.jpg?token=GHSAT0AAAAAAB7CXSKXWNLSXLWM2JIOFVG4ZAYRS2A);
 }
 
 @keyframes slide-in {

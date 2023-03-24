@@ -83,27 +83,29 @@ body{
   border-radius: 1em;
   padding: 0.5em;
   background-color: #fff;
-  cursor: default;
 }
 
 #nitk {
-  width: 33%;
-  text-align: center;
-  padding: 1em;
-  border-radius: 1em;
+    width: 33%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+    cursor: pointer;
 }
 
 #ext-acad {
-  width: 33%;
-  text-align: center;
-  padding: 1em;
-  border-radius: 1em;
+    width: 33%;
+    text-align: center;
+    padding: 1em;
+    border-radius: 1em;
+    cursor: pointer;
 }
 #ext-indus {
   width: 33%;
   text-align: center;
   padding: 1em;
   border-radius: 1em;
+  cursor: pointer;
 }
 /* Switcher ends */
 

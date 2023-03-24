@@ -28,20 +28,20 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.status="pending"
     @electro_chemical.build_equipment_table
     respond_to do |format|
-     if @electro_chemical.save
-       if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
-         ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to home_index_path, notice: "Electro chemical was successfully created." }
-       format.json { render :show, status: :created, location: @electro_chemical }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @electro_chemical.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @electro_chemical.save
+        if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Electro chemical was successfully created." }
+        format.json { render :show, status: :created, location: @electro_chemical }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @electro_chemical.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /electro_chemicals/1 or /electro_chemicals/1.json
   def update

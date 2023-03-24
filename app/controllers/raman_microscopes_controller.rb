@@ -30,20 +30,20 @@ class RamanMicroscopesController < ApplicationController
     @raman_microscope.build_equipment_table
 
     respond_to do |format|
-       if @raman_microscope.save
-         if @raman_microscope.user.role=='student'||@raman_microscope.user.role=='faculty'
-           RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).InternalMail.deliver_later
-         else
-           RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).ExternalMail.deliver_later
-         end
-         format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully created." }
-         format.json { render :show, status: :created, location: @raman_microscope }
-       else
-         format.html { render :new, status: :unprocessable_entity }
-         format.json { render json: @raman_microscope.errors, status: :unprocessable_entity }
-       end
-     end
-   end
+      if @raman_microscope.save
+        if @raman_microscope.user.role=='student'||@raman_microscope.user.role=='faculty'
+          RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully created." }
+        format.json { render :show, status: :created, location: @raman_microscope }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @raman_microscope.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /raman_microscopes/1 or /raman_microscopes/1.json
   def update

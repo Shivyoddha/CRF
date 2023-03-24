@@ -31,20 +31,21 @@ class FrictionsController < ApplicationController
 
 
     respond_to do |format|
-     if @friction.save
-       if @friction.user.role=='student'||@friction.user.role=='faculty'
-         FrictionMailer.with(id:@friction.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         FrictionMailer.with(id:@friction.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to friction_url(@friction), notice: "Friction was successfully created." }
-       format.json { render :show, status: :created, location: @friction }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @friction.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @friction.save
+        if @friction.user.role=='student'||@friction.user.role=='faculty'
+          FrictionMailer.with(id:@friction.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          FrictionMailer.with(id:@friction.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to friction_url(@friction), notice: "Friction was successfully created." }
+        format.json { render :show, status: :created, location: @friction }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @friction.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /frictions/1 or /frictions/1.json
   def update
       @friction.status="alloted"

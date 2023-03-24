@@ -29,20 +29,18 @@ class LowFatiguesController < ApplicationController
     @low_fatigue.status="pending"
     @low_fatigue.build_equipment_table
 
-        respond_to do |format|
-          if @low_fatigue.save
-            if @low_fatigue.user.role=='student'||@low_fatigue.user.role=='faculty'
-              LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).InternalMail.deliver_later
-            else
-              LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).ExternalMail.deliver_later
-            end
-            format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully created." }
-            format.json { render :show, status: :created, location: @low_fatigue }
-          else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @low_fatigue.errors, status: :unprocessable_entity }
-          end
+    respond_to do |format|
+      if @low_fatigue.save
+        if @low_fatigue.user.role=='student'||@low_fatigue.user.role=='faculty'
+          LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully created." }
+        format.json { render :show, status: :created, location: @low_fatigue }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @low_fatigue.errors, status: :unprocessable_entity }
       end
 
   # PATCH/PUT /low_fatigues/1 or /low_fatigues/1.json

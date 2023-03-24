@@ -5,7 +5,24 @@ class ProbeSonicatorMailer < ApplicationMailer
   #
   #   en.probe_sonicator_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
+    @probe_sonicator=ProbeSonicator.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["probe_sonicator.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/probe_sonicator.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+            to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{probe_sonicator:@probe_sonicator,user:@user}
+        )
+  end
+  def ExternalMail
     @probe_sonicator=ProbeSonicator.find(params[:id])
     @user=User.find(params[:userid])
     attachments["probe_sonicator.pdf"] = WickedPdf.new.pdf_from_string(

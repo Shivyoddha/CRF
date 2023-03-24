@@ -31,18 +31,17 @@ class IcpMsController < ApplicationController
 
 
     respond_to do |format|
-        if @icp_m.save
-          if @icp_m.user.role=='student'||@icp_m.user.role=='faculty'
-            IcpMsMailer.with(id:@icp_m.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            IcpMsMailer.with(id:@icp_m.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully created." }
-          format.json { render :show, status: :created, location: @icp_m }
+      if @icp_m.save
+        if @icp_m.user.role=='student'||@icp_m.user.role=='faculty'
+          IcpMsMailer.with(id:@icp_m.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @icp_m.errors, status: :unprocessable_entity }
+          IcpMsMailer.with(id:@icp_m.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to icp_m_url(@icp_m), notice: "Icp m was successfully created." }
+        format.json { render :show, status: :created, location: @icp_m }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @icp_m.errors, status: :unprocessable_entity }
       end
     end
 

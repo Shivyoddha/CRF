@@ -29,20 +29,20 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter.build_equipment_table
 
     respond_to do |format|
-     if @spectro_radio_meter.save
-       if @spectro_radio_meter.user.role=='student'||@spectro_radio_meter.user.role=='faculty'
-         SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully created." }
-       format.json { render :show, status: :created, location: @spectro_radio_meter }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @spectro_radio_meter.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @spectro_radio_meter.save
+        if @spectro_radio_meter.user.role=='student'||@spectro_radio_meter.user.role=='faculty'
+          SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully created." }
+        format.json { render :show, status: :created, location: @spectro_radio_meter }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @spectro_radio_meter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /spectro_radio_meters/1 or /spectro_radio_meters/1.json
   def update

@@ -31,20 +31,20 @@ class GaitsController < ApplicationController
 
 
     respond_to do |format|
-       if @gait.save
-         if @gait.user.role=='student'||@gait.user.role=='faculty'
-           GaitMailer.with(id:@gait.id, userid:current_user.id).InternalMail.deliver_later
-         else
-           GaitMailer.with(id:@gait.id, userid:current_user.id).ExternalMail.deliver_later
-         end
-         format.html { redirect_to gait_url(@gait), notice: "Gait was successfully created." }
-         format.json { render :show, status: :created, location: @gait }
-       else
-         format.html { render :new, status: :unprocessable_entity }
-         format.json { render json: @gait.errors, status: :unprocessable_entity }
-       end
-     end
-   end
+      if @gait.save
+        if @gait.user.role=='student'||@gait.user.role=='faculty'
+          GaitMailer.with(id:@gait.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GaitMailer.with(id:@gait.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to gait_url(@gait), notice: "Gait was successfully created." }
+        format.json { render :show, status: :created, location: @gait }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @gait.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /gaits/1 or /gaits/1.json
   def update

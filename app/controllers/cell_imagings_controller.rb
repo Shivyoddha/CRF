@@ -27,20 +27,20 @@ class CellImagingsController < ApplicationController
     @cell_imaging.status="pending"
     @cell_imaging.build_equipment_table
     respond_to do |format|
-       if @cell_imaging.save
-         if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
-           CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).InternalMail.deliver_later
-         else
-           CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).ExternalMail.deliver_later
-         end
-         format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
-         format.json { render :show, status: :created, location: @cell_imaging }
-       else
-         format.html { render :new, status: :unprocessable_entity }
-         format.json { render json: @cell_imaging.errors, status: :unprocessable_entity }
-       end
-     end
-   end
+      if @cell_imaging.save
+        if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
+        format.json { render :show, status: :created, location: @cell_imaging }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @cell_imaging.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /cell_imagings/1 or /cell_imagings/1.json
   def update

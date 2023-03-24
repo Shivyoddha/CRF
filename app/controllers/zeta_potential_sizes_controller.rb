@@ -29,18 +29,17 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.build_equipment_table
 
     respond_to do |format|
-        if @zeta_potential_size.save
-          if @zeta_potential_size.user.role=='student'||@zeta_potential_size.user.role=='faculty'
-            ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully created." }
-          format.json { render :show, status: :created, location: @zeta_potential_size }
+      if @zeta_potential_size.save
+        if @zeta_potential_size.user.role=='student'||@zeta_potential_size.user.role=='faculty'
+          ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @zeta_potential_size.errors, status: :unprocessable_entity }
+          ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully created." }
+        format.json { render :show, status: :created, location: @zeta_potential_size }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @zeta_potential_size.errors, status: :unprocessable_entity }
       end
     end
 

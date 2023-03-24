@@ -29,11 +29,18 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.build_equipment_table
 
     respond_to do |format|
-  if @impedance_analy.save
-    if @impedance_analy.user.role=='student'||@impedance_analy.user.role=='faculty'
-      ImpedanceAnalyMailer.with(id:@impedance_analy.id, userid:current_user.id).InternalMail.deliver_later
-    else
-      ImpedanceAnalyMailer.with(id:@impedance_analy.id, userid:current_user.id).ExternalMail.deliver_later
+      if @impedance_analy.save
+        if @impedance_analy.user.role=='student'||@impedance_analy.user.role=='faculty'
+          ImpedanceAnalyMailer.with(id:@impedance_analy.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ImpedanceAnalyMailer.with(id:@impedance_analy.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to impedance_analy_url(@impedance_analy), notice: "Impedance analy was successfully created." }
+        format.json { render :show, status: :created, location: @impedance_analy }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @impedance_analy.errors, status: :unprocessable_entity }
+      end
     end
     format.html { redirect_to impedance_analy_url(@impedance_analy), notice: "Impedance analy was successfully created." }
     format.json { render :show, status: :created, location: @impedance_analy }

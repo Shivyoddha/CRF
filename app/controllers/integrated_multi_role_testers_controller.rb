@@ -29,20 +29,20 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester.build_equipment_table
 
     respond_to do |format|
-     if @integrated_multi_role_tester.save
-       if @integrated_multi_role.user.role=='student'||@integrated_multi_role.user.role=='faculty'
-         IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully created." }
-       format.json { render :show, status: :created, location: @integrated_multi_role_tester }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @integrated_multi_role_tester.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @integrated_multi_role_tester.save
+        if @integrated_multi_role.user.role=='student'||@integrated_multi_role.user.role=='faculty'
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully created." }
+        format.json { render :show, status: :created, location: @integrated_multi_role_tester }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @integrated_multi_role_tester.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /integrated_multi_role_testers/1 or /integrated_multi_role_testers/1.json
   def update

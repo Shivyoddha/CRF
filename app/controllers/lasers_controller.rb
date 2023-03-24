@@ -29,20 +29,20 @@ class LasersController < ApplicationController
     @laser.build_equipment_table
 
     respond_to do |format|
-     if @laser.save
-       if @laser.user.role=='student'||@laser.user.role=='faculty'
-         LaserMailer.with(id:@laser.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
-       format.json { render :show, status: :created, location: @laser }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @laser.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @laser.save
+        if @laser.user.role=='student'||@laser.user.role=='faculty'
+          LaserMailer.with(id:@laser.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
+        format.json { render :show, status: :created, location: @laser }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @laser.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /lasers/1 or /lasers/1.json
   def update

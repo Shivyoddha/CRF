@@ -29,21 +29,18 @@ class TribometersController < ApplicationController
     @tribometer.status="pending"
     @tribometer.build_equipment_table
 
-
-
-      respond_to do |format|
-        if @tribometer.save
-          if @tribometer.user.role=='student'||@tribometer.user.role=='faculty'
-            TribometerMailer.with(id:@tribometer.id, userid:current_user.id).InternalMail.deliver_later
-          else
-            TribometerMailer.with(id:@tribometer.id, userid:current_user.id).ExternalMail.deliver_later
-          end
-          format.html { redirect_to tribometer_url(@tribometer), notice: "Tribometer was successfully created." }
-          format.json { render :show, status: :created, location: @tribometer }
+    respond_to do |format|
+      if @tribometer.save
+        if @tribometer.user.role=='student'||@tribometer.user.role=='faculty'
+          TribometerMailer.with(id:@tribometer.id, userid:current_user.id).InternalMail.deliver_later
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @tribometer.errors, status: :unprocessable_entity }
+          TribometerMailer.with(id:@tribometer.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to tribometer_url(@tribometer), notice: "Tribometer was successfully created." }
+        format.json { render :show, status: :created, location: @tribometer }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @tribometer.errors, status: :unprocessable_entity }
       end
     end
 

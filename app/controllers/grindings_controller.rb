@@ -67,7 +67,7 @@ class GrindingsController < ApplicationController
     @grinding.destroy
 
     respond_to do |format|
-      format.html { redirect_to grindings_url, notice: "Grinding was successfully destroyed." }
+      format.html { redirect_to home_index_path, notice: "Grinding was successfully destroyed." }
       format.json { head :no_content }
     end
   end

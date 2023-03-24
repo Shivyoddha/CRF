@@ -29,7 +29,11 @@ class ProbeSonicatorsController < ApplicationController
 
     respond_to do |format|
       if @probe_sonicator.save
-        ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).Mail.deliver_later
+        if @probe_sonicator.user.role=='student'||@probe_sonicator.user.role=='faculty'
+          ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).ExternalMail.deliver_later
+        end 
         format.html { redirect_to probe_sonicator_url(@probe_sonicator), notice: "Probe sonicator was successfully created." }
         format.json { render :show, status: :created, location: @probe_sonicator }
       else

@@ -29,19 +29,17 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.build_equipment_table
 
     respond_to do |format|
-          if @ultra_centrifuge.save
-            if @ultra_centrifuge.user.role=='student'||@ultra_centrifuge.user.role=='faculty'
-              UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).InternalMail.deliver_later
-            else
-              UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).ExternalMail.deliver_later
-            end
-            format.html { redirect_to ultra_centrifuge_url(@ultra_centrifuge), notice: "Ultra centrifuge was successfully created." }
-            format.json { render :show, status: :created, location: @ultra_centrifuge }
-          else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @ultra_centrifuge.errors, status: :unprocessable_entity }
-          end
+      if @ultra_centrifuge.save
+        if @ultra_centrifuge.user.role=='student'||@ultra_centrifuge.user.role=='faculty'
+          UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        format.html { redirect_to ultra_centrifuge_url(@ultra_centrifuge), notice: "Ultra centrifuge was successfully created." }
+        format.json { render :show, status: :created, location: @ultra_centrifuge }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @ultra_centrifuge.errors, status: :unprocessable_entity }
       end
 
   # PATCH/PUT /ultra_centrifuges/1 or /ultra_centrifuges/1.json

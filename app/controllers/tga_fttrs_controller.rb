@@ -27,20 +27,20 @@ class TgaFttrsController < ApplicationController
     @tga_fttr.status="pending"
     @tga_fttr.build_equipment_table
     respond_to do |format|
-     if @tga_fttr.save
-       if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'
-         TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).InternalMail.deliver_later
-       else
-         TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).ExternalMail.deliver_later
-       end
-       format.html { redirect_to home_index_path, notice: "Tga fttr was successfully created." }
-       format.json { render :show, status: :created, location: @tga_fttr }
-     else
-       format.html { render :new, status: :unprocessable_entity }
-       format.json { render json: @tga_fttr.errors, status: :unprocessable_entity }
-     end
-   end
- end
+      if @tga_fttr.save
+        if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'
+          TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Tga fttr was successfully created." }
+        format.json { render :show, status: :created, location: @tga_fttr }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @tga_fttr.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /tga_fttrs/1 or /tga_fttrs/1.json
   def update
