@@ -34,13 +34,13 @@
           <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
           <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
-         
+
         <div class="input-group mb-3">
-          <%= form.label :laser, "Laser to ne used",class:"input-group-text", for:"measurement"%>
+          <%= form.label :laser, "Laser to be used",class:"input-group-text", for:"measurement"%>
           <%= form.select(:laser, ['Visible-532nm','Near Ir-785nm','Both(400-785nm)',], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
 
-        
+
         <div class="input-group mb-3 vis" id="photo-select">
             <label class="input-group-text text-primary" for="inputGroupSelect01">Laser To Be Used</label>
             <select class="form-select" id="inputGroupSelect01">
@@ -118,7 +118,7 @@
       <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
        </div>
 
-        
+
         <div class="mb-3">
           <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
           <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>

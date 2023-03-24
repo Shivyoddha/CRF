@@ -31,8 +31,8 @@ class UvVisNirsController < ApplicationController
           UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).InternalMail.deliver_later
         else
           UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
-        format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
+        end
+        format.html { redirect_to home_index_path, notice: "Uv vis nir was successfully created." }
         format.json { render :show, status: :created, location: @uv_vis_nir }
       else
         format.html { render :new, status: :unprocessable_entity }
