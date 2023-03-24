@@ -33,7 +33,11 @@ class HrlcmsController < ApplicationController
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
         else
 <<<<<<< HEAD
+<<<<<<< HEAD
           HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+=======
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+>>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
 =======
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
 >>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b

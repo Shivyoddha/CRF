@@ -29,36 +29,6 @@
           <%= form.label :sample,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
           <%= form.select(:sample, ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type"}) %>
         </div>
-<<<<<<< HEAD
-
-        <div class="input-group mb-3">
-          <%= form.label :measurement, "Measurement",class:"input-group-text", for:"measurement"%>
-          <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
-        </div>
-
-        <div class="input-group mb-3">
-          <%= form.label :laser, "Laser to be used",class:"input-group-text", for:"measurement"%>
-          <%= form.select(:laser, ['Visible-532nm','Near Ir-785nm','Both(400-785nm)',], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
-        </div>
-
-
-        <div class="input-group mb-3 vis" id="photo-select">
-            <label class="input-group-text text-primary" for="inputGroupSelect01">Laser To Be Used</label>
-            <select class="form-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="visi-photo">Visible(532nm-1000nm)</option>
-                <option value="NIR-photo">NIR(785nm-1400nm)</option>
-            </select>
-        </div>
-        <div class="input-group mb-3 vis" id="both-select">
-            <label class="input-group-text for="inputGroupSelect01">Laser To Be Used</label>
-            <select class="form-select" id="inputGroupSelect01">
-                <option selected>Choose...</option>
-                <option value="visi-both">Visible(532nm-1000nm)</option>
-                <option value="NIR-both">NIR(785nm-1400nm)</option>
-            </select>
-        </div>
-=======
         <div class="input-group mb-3">
           <%= form.label :measurement, "Measurement",class:"input-group-text",for:"measurement"%>
           <%= form.select(:measurement, ['raman','photoluminescence','both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement"}) %>
@@ -75,7 +45,6 @@
          <%= form.label :laser, "Laser to be used",class:"input-group-text", for:"inputGroupSelect01"%>
        <%= form.select(:laser, ['Visible(532nm-1000nm)','NIR(785nm-1400nm)'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "inputGroupSelect01"}) %>
        </div>
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
 
         <div class="input-group mb-3">
           <%= form.label :stype, "Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
