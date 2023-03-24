@@ -41,13 +41,6 @@ class ImpedanceAnaliesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @impedance_analy.errors, status: :unprocessable_entity }
       end
-    end
-    format.html { redirect_to impedance_analy_url(@impedance_analy), notice: "Impedance analy was successfully created." }
-    format.json { render :show, status: :created, location: @impedance_analy }
-  else
-    format.html { render :new, status: :unprocessable_entity }
-    format.json { render json: @impedance_analy.errors, status: :unprocessable_entity }
-  end
 end
 end
 
@@ -86,6 +79,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , measurement: [],references: [])
     end
 end

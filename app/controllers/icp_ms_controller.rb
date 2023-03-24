@@ -44,6 +44,7 @@ class IcpMsController < ApplicationController
         format.json { render json: @icp_m.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # PATCH/PUT /icp_ms/1 or /icp_ms/1.json
   def update

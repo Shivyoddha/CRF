@@ -43,6 +43,7 @@ class TribometersController < ApplicationController
         format.json { render json: @tribometer.errors, status: :unprocessable_entity }
       end
     end
+  end
 
 
   # PATCH/PUT /tribometers/1 or /tribometers/1.json

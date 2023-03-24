@@ -33,11 +33,6 @@ class BetsController < ApplicationController
           BetMailer.with(id:@bet.id, userid:current_user.id).InternalMail.deliver_later
         else
           BetMailer.with(id:@bet.id, userid:current_user.id).ExternalMail.deliver_later
-        end
-        format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
-        format.json { render :show, status: :created, location: @bet }
-      else
-        BetMailer.with(id:@bet.id, userid:current_user.id).ExternalMail.deliver_later
       end
       format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
       format.json { render :show, status: :created, location: @bet }

@@ -41,6 +41,7 @@ class HighTempVaccumsController < ApplicationController
         format.json { render json: @high_temp_vaccum.errors, status: :unprocessable_entity }
       end
     end
+  end
 
   # PATCH/PUT /high_temp_vaccums/1 or /high_temp_vaccums/1.json
   def update

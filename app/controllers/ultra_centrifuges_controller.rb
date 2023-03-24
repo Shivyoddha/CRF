@@ -41,6 +41,8 @@ class UltraCentrifugesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ultra_centrifuge.errors, status: :unprocessable_entity }
       end
+    end
+  end
 
   # PATCH/PUT /ultra_centrifuges/1 or /ultra_centrifuges/1.json
   def update

@@ -42,6 +42,8 @@ class LowFatiguesController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @low_fatigue.errors, status: :unprocessable_entity }
       end
+    end
+  end
 
   # PATCH/PUT /low_fatigues/1 or /low_fatigues/1.json
   def update

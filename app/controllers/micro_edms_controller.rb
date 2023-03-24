@@ -40,6 +40,7 @@ class MicroEdmsController < ApplicationController
         format.json { render json: @micro_edm.errors, status: :unprocessable_entity }
       end
     end
+  end
 
 
   # PATCH/PUT /micro_edms/1 or /micro_edms/1.json
@@ -75,6 +76,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :milling, :turning, :drilling, :edm, :edg, :more, :debit, :slotdate, :slottime, :status,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] )
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [],measuerment: [] )
     end
 end

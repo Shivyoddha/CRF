@@ -42,6 +42,7 @@ class ZetaPotentialSizesController < ApplicationController
         format.json { render json: @zeta_potential_size.errors, status: :unprocessable_entity }
       end
     end
+  end
 
 
   # PATCH/PUT /zeta_potential_sizes/1 or /zeta_potential_sizes/1.json

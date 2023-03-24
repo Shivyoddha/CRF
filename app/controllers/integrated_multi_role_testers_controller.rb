@@ -12,6 +12,7 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
   # GET /integrated_multi_role_testers/new
   def new
+    @user=User.find(params[:id])
     @integrated_multi_role_tester = IntegratedMultiRoleTester.new
     @integrated_multi_role_tester.build_equipment_table
 

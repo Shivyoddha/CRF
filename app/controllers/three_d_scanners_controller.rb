@@ -80,6 +80,6 @@ class ThreeDScannersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_scanner_params
-      params.require(:three_d_scanner).permit(:sample, :size, :texture, :ply, :stt, :wrl, :obj, :asc, :aop, :ptx, :xyzrgb, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],output_format: [], references: [])
     end
 end

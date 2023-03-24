@@ -40,6 +40,7 @@ class FiveAxisController < ApplicationController
         format.json { render json: @five_axi.errors, status: :unprocessable_entity }
       end
     end
+  end
   # PATCH/PUT /five_axis/1 or /five_axis/1.json
   def update
       @five_axi.status="alloted"

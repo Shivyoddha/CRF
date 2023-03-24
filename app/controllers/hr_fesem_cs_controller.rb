@@ -15,7 +15,6 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c = HrFesemC.new
     @user=User.find(params[:id])
     @hr_fesem_c.build_equipment_table
-
   end
 
   # GET /hr_fesem_cs/1/edit
@@ -37,7 +36,7 @@ class HrFesemCsController < ApplicationController
         end
         format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
         format.json { render :show, status: :created, location: @hr_fesem_c }
-      else
+        else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @hr_fesem_c.errors, status: :unprocessable_entity }
       end
@@ -78,6 +77,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :eds,:measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,measuring: [], references: [])
     end
 end

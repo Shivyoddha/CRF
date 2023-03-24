@@ -36,11 +36,6 @@ class UvVisNirsController < ApplicationController
         else
           UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
-        format.json { render :show, status: :created, location: @uv_vis_nir }
-      else
-        UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).ExternalMail.deliver_later
-      end
       format.html { redirect_to uv_vis_nir_url(@uv_vis_nir), notice: "Uv vis nir was successfully created." }
       format.json { render :show, status: :created, location: @uv_vis_nir }
     else
@@ -86,6 +81,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:reflectance,:absorbance,:transmittance,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],measurement: [],references: [])
     end
 end
