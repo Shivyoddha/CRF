@@ -422,9 +422,8 @@ Rails.application.routes.draw do
   # end
 
   devise_scope :user do
-
      get '/users/sign_out' => 'devise/sessions#destroy'
-   get  '*unmatched', to: 'application#render_404', via: :all
+      match '*unmatched', to: 'application#render_404', via: :all,constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
   end
 #
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
