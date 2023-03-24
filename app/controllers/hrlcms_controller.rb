@@ -27,13 +27,12 @@ class HrlcmsController < ApplicationController
     @hrlcm.user=current_user
     @hrlcm.status="pending"
     @hrlcm.build_equipment_table
-
     respond_to do |format|
       if @hrlcm.save
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
-          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
         else
-          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
         end
         format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
