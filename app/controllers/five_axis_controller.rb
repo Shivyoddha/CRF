@@ -12,7 +12,8 @@ class FiveAxisController < ApplicationController
 
   # GET /five_axis/new
   def new
-    @five_axi = FiveAxi.new
+    @five_axi = FiveAxi.new()
+    @five_axi.build_equipment_table
   end
 
   # GET /five_axis/1/edit
@@ -24,6 +25,7 @@ class FiveAxisController < ApplicationController
     @five_axi = FiveAxi.new(five_axi_params)
     @five_axi.user=current_user
     @five_axi.status="pending"
+    @five_axi.build_equipment_table
     respond_to do |format|
       if @five_axi.save
         if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'
@@ -39,17 +41,13 @@ class FiveAxisController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /five_axis/1 or /five_axis/1.json
   def update
       @five_axi.status="alloted"
+      @five_axi.build_equipment_table
     respond_to do |format|
       if @five_axi.update(five_axi_params)
-        if @five_axi.amount == nil
         FiveAxiAllotedMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentFiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_fiveaxis_path(@five_axi), notice: "Five axi was successfully updated." }
         format.json { render :show, status: :ok, location: @five_axi }
       else
@@ -77,6 +75,6 @@ class FiveAxisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def five_axi_params
-      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

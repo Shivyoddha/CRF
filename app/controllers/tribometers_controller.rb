@@ -14,6 +14,7 @@ class TribometersController < ApplicationController
   def new
     @user=User.find(params[:id])
     @tribometer = Tribometer.new
+    @tribometer.build_equipment_table
 
   end
 
@@ -26,6 +27,7 @@ class TribometersController < ApplicationController
     @tribometer = Tribometer.new(tribometer_params)
     @tribometer.user=current_user
     @tribometer.status="pending"
+    @tribometer.build_equipment_table
 
     respond_to do |format|
       if @tribometer.save
@@ -33,7 +35,7 @@ class TribometersController < ApplicationController
           TribometerMailer.with(id:@tribometer.id, userid:current_user.id).InternalMail.deliver_later
         else
           TribometerMailer.with(id:@tribometer.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
+        end
         format.html { redirect_to tribometer_url(@tribometer), notice: "Tribometer was successfully created." }
         format.json { render :show, status: :created, location: @tribometer }
       else
@@ -43,16 +45,15 @@ class TribometersController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /tribometers/1 or /tribometers/1.json
   def update
     @tribometer.status="alloted"
+    @tribometer.build_equipment_table
+
     respond_to do |format|
       if @tribometer.update(tribometer_params)
-        if @tribometer.amount == nil
         TribometerAllotedMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentTribometerMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
-      end
           @tribometer.status="alloted"
         format.html { redirect_to slotbooker_trib_path(@tribometer), notice: "Tribometer was successfully updated." }
         format.json { render :show, status: :ok, location: @tribometer }
@@ -81,6 +82,6 @@ class TribometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tribometer_params
-      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,references: [])
+      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
     end
 end

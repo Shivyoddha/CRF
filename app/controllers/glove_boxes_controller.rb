@@ -13,6 +13,8 @@ class GloveBoxesController < ApplicationController
   # GET /glove_boxes/new
   def new
     @glove_box = GloveBox.new
+    @glove_box.build_equipment_table
+
   end
 
   # GET /glove_boxes/1/edit
@@ -24,13 +26,15 @@ class GloveBoxesController < ApplicationController
     @glove_box = GloveBox.new(glove_box_params)
     @glove_box.user=current_user
     @glove_box.status="pending"
+    @glove_box.build_equipment_table
+
     respond_to do |format|
       if @glove_box.save
         if @glove_box.user.role=='student'||@glove_box.user.role=='faculty'
           GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).InternalMail.deliver_later
         else
           GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
+        end
         format.html { redirect_to glove_box_url(@glove_box), notice: "Glove box was successfully created." }
         format.json { render :show, status: :created, location: @glove_box }
       else
@@ -43,13 +47,11 @@ class GloveBoxesController < ApplicationController
   # PATCH/PUT /glove_boxes/1 or /glove_boxes/1.json
   def update
       @glove_box.status="alloted"
+      @glove_box.build_equipment_table
+
     respond_to do |format|
       if @glove_box.update(glove_box_params)
-        if @glove_box.amount == nil
         GloveBoxAllotedMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentGloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_glove_path(@glove_box), notice: "Glove box was successfully updated." }
         format.json { render :show, status: :ok, location: @glove_box }
       else
@@ -77,6 +79,6 @@ class GloveBoxesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glove_box_params
-      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

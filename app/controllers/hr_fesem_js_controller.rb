@@ -23,25 +23,26 @@ class HrFesemJsController < ApplicationController
 
   # POST /hr_fesem_js or /hr_fesem_js.json
   def create
-    @hr_fesem_j = HrFesemJ.new(hr_fesem_j_params)
-     @hr_fesem_j.user=current_user
-     @hr_fesem_j.status="pending"
-     @hr_fesem_j.build_equipment_table
+   @hr_fesem_j = HrFesemJ.new(hr_fesem_j_params)
+    @hr_fesem_j.user=current_user
+    @hr_fesem_j.status="pending"
+    @hr_fesem_j.build_equipment_table
     respond_to do |format|
-      if @hr_fesem_j.save
-        if @hr_fesem_j.user.role=='student'||@hr_fesem_j.user.role=='faculty'
-          HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).InternalMail.deliver_later
-        else
-          HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
-        format.html { redirect_to home_index_path, notice: "Hr fesem j was successfully created." }
-        format.json { render :show, status: :created, location: @hr_fesem_j }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @hr_fesem_j.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+     if @hr_fesem_j.save
+       if @hr_fesem_j.user.role=='student'||@hr_fesem_j.user.role=='faculty'
+         HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).InternalMail.deliver_later
+       else
+         HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).ExternalMail.deliver_later
+       end
+       format.html { redirect_to home_index_path, notice: "Hr fesem j was successfully created." }
+       format.json { render :show, status: :created, location: @hr_fesem_j }
+     else
+       format.html { render :new, status: :unprocessable_entity }
+       format.json { render json: @hr_fesem_j.errors, status: :unprocessable_entity }
+     end
+   end
+ end
+ 
 
   # PATCH/PUT /hr_fesem_js/1 or /hr_fesem_js/1.json
   def update
@@ -49,11 +50,7 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.build_equipment_table
     respond_to do |format|
       if @hr_fesem_j.update(hr_fesem_j_params)
-        if @hr_fesem_j.amount == nil
         HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentHrFesemJMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_fesemj_path, notice: "Hr fesem j was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_j }
       else
@@ -81,6 +78,6 @@ class HrFesemJsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_j_params
-      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
+      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
     end
 end
