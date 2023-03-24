@@ -31,17 +31,20 @@ class AdvanceMolecularRheometersController < ApplicationController
 
     respond_to do |format|
 
-      if @advance_molecular_rheometer.save
-
-        AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to home_index_path, notice: "Advance molecular rheometer was successfully created." }
-        format.json { render :show, status: :created, location: @advance_molecular_rheometer }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @advance_molecular_rheometer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+     if @advance_molecular_rheometer.save
+       if @advance_molecular_rheometer.user.role=='student'||@advance_molecular_rheometer.user.role=='faculty'
+         AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).InternalMail.deliver_later
+       else
+         AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).ExternalMail.deliver_later
+       end
+       format.html { redirect_to home_index_path, notice: "Advance molecular rheometer was successfully created." }
+       format.json { render :show, status: :created, location: @advance_molecular_rheometer }
+     else
+       format.html { render :new, status: :unprocessable_entity }
+       format.json { render json: @advance_molecular_rheometer.errors, status: :unprocessable_entity }
+     end
+   end
+ end
 
   # PATCH/PUT /advance_molecular_rheometers/1 or /advance_molecular_rheometers/1.json
   def update
@@ -49,12 +52,7 @@ class AdvanceMolecularRheometersController < ApplicationController
     @advance_molecular_rheometer.build_equipment_table
     respond_to do |format|
       if @advance_molecular_rheometer.update(advance_molecular_rheometer_params)
-        if @advance_molecular_rheometer.amount == nil
-        AdvanceMolecularRheometerAllotedMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentAdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
-      end
-         @advance_molecular_rheometer.status="alloted"
+         AdvanceMolecularRheometerAllotedMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_amr_path(@advance_molecular_rheometer), notice: "Advance molecular rheometer was successfully updated." }
         format.json { render :show, status: :ok, location: @advance_molecular_rheometer }
       else
@@ -82,6 +80,6 @@ class AdvanceMolecularRheometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def advance_molecular_rheometer_params
-      params.require(:advance_molecular_rheometer).permit(:sample, :stype, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more,:status,:debit,:slotdate, :slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:advance_molecular_rheometer).permit(:sample, :stype, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more,:status,:debit,:slotdate, :slottime,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
     end
 end

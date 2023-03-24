@@ -54,7 +54,8 @@ class PaymentController < ApplicationController
   end
   def paymentU
       @xrd = Xrd.all
+      @entry = params[:entry]
       @equipment = EquipmentTable.all
-      @equipment = EquipmentTable.order(updated_at: :desc)
+
   end
 end

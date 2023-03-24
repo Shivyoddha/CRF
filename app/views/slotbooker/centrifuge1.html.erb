@@ -116,47 +116,47 @@
                   <% else %>
                     <td>NA</td>
                   <% end %>
-                         <td id="assign-btn">
-                             <!-- Button trigger modal -->
-                              <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: centrifuge.id %>
-                              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
-                              Assign
-                              </button> -->
+                  <td id="assign-btn">
+                       <!-- Button trigger modal -->
+                        <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: centrifuge.id %>
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                        Assign
+                        </button> -->
 
-                              <!-- Modal -->
-                              <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                  <div class="modal-dialog">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                          </div>
-                                          <div class="modal-body">
+                        <!-- Modal -->
+                        <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b>Preetham Naik</b></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
 
-                                      <%= render partial: "form_xrd",locals: { xrd:centrifuge } %>
-                                      <p>You are assigning XRD with ID <%= Xrd.find(centrifuge.id) %> to Preetham Naik.</p>
-                                          </div>
+                                <%= render partial: "form_xrd",locals: { xrd:centrifuge } %>
+                                <p>You are assigning XRD with ID <%= Xrd.find(centrifuge.id) %> to Preetham Naik.</p>
+                                    </div>
 
-                                          <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                          </div>
-  <%end%>
-                                      </div>
-                                  </div>
+                                    </div>
+<%end%>
+                                </div>
+                            </div>
+</div>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
     </div>
-                          </td>
-
-                      </tr>
-
-                  </tbody>
-              </table>
-
-          </div>
-          </div>
+    </div>
 
 
-      </div>
+</div>
 
 
-  </div>
+</div>

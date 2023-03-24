@@ -29,16 +29,20 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.status="pending"
     @hr_fesem_c.build_equipment_table
     respond_to do |format|
-      if @hr_fesem_c.save
-        HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
-        format.json { render :show, status: :created, location: @hr_fesem_c }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @hr_fesem_c.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+     if @hr_fesem_c.save
+       if @hr_fesem_c.user.role=='student'||@hr_fesem_c.user.role=='faculty'
+         HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).InternalMail.deliver_later
+       else
+         HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).ExternalMail.deliver_later
+       end
+       format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
+       format.json { render :show, status: :created, location: @hr_fesem_c }
+     else
+       format.html { render :new, status: :unprocessable_entity }
+       format.json { render json: @hr_fesem_c.errors, status: :unprocessable_entity }
+     end
+   end
+ end
 
   # PATCH/PUT /hr_fesem_cs/1 or /hr_fesem_cs/1.json
   def update
@@ -46,11 +50,7 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.update(hr_fesem_c_params)
-        if @hr_fesem_c.amount == nil
       HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
-      else
-      PaymentHrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_fesemc_path(@hr_fesem_c), notice: "Hr fesem c was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_c }
       else
@@ -78,6 +78,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement,:eds, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],measuring: [], references: [])
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

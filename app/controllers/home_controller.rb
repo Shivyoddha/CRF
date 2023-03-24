@@ -17,7 +17,7 @@ class HomeController < ApplicationController
   def index
 
       @user=User.find(current_user.id)
-      
+
     if @user.status==nil
       @user.update(status:'Inactive')
       redirect_to home_faculty_verif_path(id:current_user.id)
