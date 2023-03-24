@@ -28,8 +28,12 @@ class HrlcmsController < ApplicationController
 
     respond_to do |format|
       if @hrlcm.save
-        HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to home_index_path, notice: "Hrlcm was successfully created." }
+        if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
+          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
       else
         format.html { render :new, status: :unprocessable_entity }
