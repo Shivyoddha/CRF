@@ -60,12 +60,19 @@
       <div>
       <div class="fw-bold"><p></p>
       </div>
+      <div class="input-group mb-3">
+          <label class="input-group-text fw-bold" for="incompatibile">Whether incompatible with any material </label>
+          <select class="form-select" id="incompatibile">
+            <option selected>Choose...</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
 
- <div class="input-group mb-3">
-       <%= form.label :incompatible, "Whether incompatible with any material ", class:"input-group-text fw-bold", for:"incompatibile" %>
-       <%= form.select(:incompatible, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "incompatibile",:required => true}) %>
+        <div class="input-group mb-3 vis"  id="mention-compability" >
+            <input type="text" class="form-control" placeholder="Name of Incompatible material">
+        </div>
 
-    </div>
     <div class="input-group mb-3">
     <%= form.label :toxicity, "ScanType", class:"input-group-text", for:"inputGroupSelect01"%>
     <%= form.select(:toxicity, ['yes', 'No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>

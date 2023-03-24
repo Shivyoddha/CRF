@@ -885,16 +885,14 @@ a:hover {
   .footer-1{
     display: grid;
     grid-template-columns: repeat(1,2fr);
-    text-align: left;
-    
+    place-items: center ;
   }
 
   .footer-img{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: auto;
-    width:40% ;
+    margin: auto auto 5px auto;
   }
 
   .footer-left{
@@ -905,6 +903,7 @@ a:hover {
 
   .footer-address{
     margin: 2%;
+    text-align: center;
   }
 
   .footer-middle{
@@ -917,6 +916,7 @@ a:hover {
 
   .footer-social{
     margin: 2%;
+    width: 95%;
   }
   
 }

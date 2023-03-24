@@ -45,8 +45,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="institute"> Standard Slot Date </th>
-                        <th scope="col" id="institute">Customised Slot Date</th>
+                        <th scope="col" id="institute">  Slot Date </th>
                         <th scope="col" id="department">Purpose</th>
                         <th scope="col" id="contact-no">Amount</th>
                         <th scope="col" id="contact-no">Debit Head</th>
@@ -68,13 +67,9 @@
 
                         <% elsif ansy.startdate.present? && (ansy.startdate.wday == 4) %>
                                 <td> <%= ansy.startdate.strftime('%B%e')%> to <%= (ansy.startdate+2.days).strftime('%B%e')%></td>
-                        <%else%>
-                        <td> NA</td>
                         <%end%>
                         <% if ansy.customstart.present? && ansy.customend.present?%>
                                 <td> <%= ansy.customstart.strftime('%B%e')%> to <%= ansy.customend.strftime('%B%e')%></td>
-                       <%else%>
-                          <td> NA</td>
                         <%end%>
                         <td> <%= ansy.purpose%> </td>
                         <td> <%= ansy.amount%> </td>
