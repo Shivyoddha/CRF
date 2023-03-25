@@ -8,7 +8,6 @@
     border-radius: 1em;
     padding: 0.5em;
     background-color: #fff;
-    cursor: default;
     margin-bottom: 5em;
 }
   
@@ -17,6 +16,7 @@
     text-align: center;
     padding: 1em;
     border-radius: 1em;
+    cursor: pointer;
   }
   
   #manu {
@@ -24,12 +24,14 @@
     text-align: center;
     padding: 1em;
     border-radius: 1em;
+    cursor: pointer;
   }
   #process {
     width: 33%;
     text-align: center;
     padding: 1em;
     border-radius: 1em;
+    cursor: pointer;
   }
 
   /* special == comes hanndy while applying JS features*/

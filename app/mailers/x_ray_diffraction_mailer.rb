@@ -15,6 +15,25 @@ class XRayDiffractionMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
+            
+            to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "Slot Form filled",
+            locals:{xrd:@xrd,user:@user}
+          )
+
+  end
+  def ExternalMail
+    @xrd=Xrd.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["xrdslotbooking.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/xrd.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
 
             to: "#{@user.email}",
             #cc: User.all.pluck(:email),

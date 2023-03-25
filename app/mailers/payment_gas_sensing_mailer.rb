@@ -6,7 +6,7 @@ class PaymentGasSensingMailer < ApplicationMailer
   #   en.payment_gas_sensing_mailer.Mail.subject
   #
   def Mail
-    @gas_sensing=GasSensing.find(params[:id])
+    @equipment_table=EquipmentTable.find(params[:id])
     @user=User.find(params[:userid])
     attachments["Payment.pdf"] = WickedPdf.new.pdf_from_string(
     render_to_string(template: 'payment_pdf/payment_xrd.html.erb', layout: 'pay.html.erb', pdf: 'filename')
@@ -15,11 +15,11 @@ class PaymentGasSensingMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "#{@user.email}",
+            to: "#{@equipment_table.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "Payment Details",
-            locals:{gas_sensing:@gas_sensing,user:@user}
+            locals:{equipment_table:@equipment_table,user:@user}
           )
   end
 end

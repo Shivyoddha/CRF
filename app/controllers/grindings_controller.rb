@@ -14,6 +14,8 @@ class GrindingsController < ApplicationController
   def new
     @grinding = Grinding.new
     @user=User.find(params[:id])
+    @grinding.build_equipment_table
+
   end
 
   # GET /grindings/1/edit
@@ -25,10 +27,15 @@ class GrindingsController < ApplicationController
     @grinding = Grinding.new(grinding_params)
     @grinding.user=current_user
     @grinding.status="pending"
+    @grinding.build_equipment_table
 
     respond_to do |format|
       if @grinding.save
-        GrindingMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
+        if @grinding.user.role=='student'||@grinding.user.role=='faculty'
+          GrindingMailer.with(id:@grinding.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          GrindingMailer.with(id:@grinding.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to grinding_url(@grinding), notice: "Grinding was successfully created." }
         format.json { render :show, status: :created, location: @grinding }
       else
@@ -41,6 +48,7 @@ class GrindingsController < ApplicationController
   # PATCH/PUT /grindings/1 or /grindings/1.json
   def update
       @grinding.status="alloted"
+      @grinding.build_equipment_table
     respond_to do |format|
       if @grinding.update(grinding_params)
          GrindingAllotedMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
@@ -59,7 +67,7 @@ class GrindingsController < ApplicationController
     @grinding.destroy
 
     respond_to do |format|
-      format.html { redirect_to grindings_url, notice: "Grinding was successfully destroyed." }
+      format.html { redirect_to home_index_path, notice: "Grinding was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,6 +80,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould,  :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,grit: [],diamond: [],suspension: [],references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,grit: [],diamond: [],suspension: [], references: [])
     end
 end

@@ -13,6 +13,8 @@ class SpectroRadioMetersController < ApplicationController
   # GET /spectro_radio_meters/new
   def new
     @spectro_radio_meter = SpectroRadioMeter.new
+    @spectro_radio_meter.build_equipment_table
+
   end
 
   # GET /spectro_radio_meters/1/edit
@@ -24,10 +26,16 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter = SpectroRadioMeter.new(spectro_radio_meter_params)
     @spectro_radio_meter.user=current_user
     @spectro_radio_meter.status="pending"
+    @spectro_radio_meter.build_equipment_table
+
     respond_to do |format|
       if @spectro_radio_meter.save
-        SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully created." }
+        if @spectro_radio_meter.user.role=='student'||@spectro_radio_meter.user.role=='faculty'
+          SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Spectro radio meter was successfully created." }
         format.json { render :show, status: :created, location: @spectro_radio_meter }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,6 +47,8 @@ class SpectroRadioMetersController < ApplicationController
   # PATCH/PUT /spectro_radio_meters/1 or /spectro_radio_meters/1.json
   def update
     @spectro_radio_meter.status="alloted"
+    @spectro_radio_meter.build_equipment_table
+
     respond_to do |format|
       if @spectro_radio_meter.update(spectro_radio_meter_params)
         if @spectro_radio_meter.amount == nil
@@ -73,6 +83,6 @@ class SpectroRadioMetersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spectro_radio_meter_params
-      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
     end
 end

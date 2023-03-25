@@ -5,7 +5,24 @@ class IonChromotographyMailer < ApplicationMailer
   #
   #   en.ion_chromotography_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
+    @ion_chromotography=IonChromotography.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["ion_chromotography.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/ion_chromotography.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+              to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{ion_chromotography:@ion_chromotography,user:@user}
+        )
+  end
+  def ExternalMail
     @ion_chromotography=IonChromotography.find(params[:id])
     @user=User.find(params[:userid])
     attachments["ion_chromotography.pdf"] = WickedPdf.new.pdf_from_string(

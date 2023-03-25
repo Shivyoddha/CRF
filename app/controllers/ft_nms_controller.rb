@@ -26,7 +26,11 @@ class FtNmsController < ApplicationController
     @ft_nm.status="pending"
     respond_to do |format|
       if @ft_nm.save
-        FtNmrMailer.with(id:@ft_nm.id, userid:current_user.id).Mail.deliver_later
+        if @ft_nm.user.role=='student'||@ft_nm.user.role=='faculty'
+          FtNmsMailer.with(id:@ft_nm.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          FtNmsMailer.with(id:@ft_nm.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to ft_nm_url(@ft_nm), notice: "Ft nm was successfully created." }
         format.json { render :show, status: :created, location: @ft_nm }
       else

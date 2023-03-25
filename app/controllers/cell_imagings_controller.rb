@@ -28,7 +28,11 @@ class CellImagingsController < ApplicationController
     @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.save
-        CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
+        if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
       else
@@ -44,11 +48,7 @@ class CellImagingsController < ApplicationController
       @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.update(cell_imaging_params)
-        if @cell_imaging.amount == nil
         CellImagingAllotedMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentCellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_cell_path(@cell_imaging), notice: "Cell imaging was successfully updated." }
         format.json { render :show, status: :ok, location: @cell_imaging }
       else
@@ -76,6 +76,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [] )
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [] )
     end
 end

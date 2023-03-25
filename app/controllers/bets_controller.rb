@@ -29,15 +29,19 @@ class BetsController < ApplicationController
 
     respond_to do |format|
       if @bet.save
-        BetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
-        format.json { render :show, status: :created, location: @bet }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bet.errors, status: :unprocessable_entity }
+        if @bet.user.role=='student'||@bet.user.role=='faculty'
+          BetMailer.with(id:@bet.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          BetMailer.with(id:@bet.id, userid:current_user.id).ExternalMail.deliver_later
       end
+      format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
+      format.json { render :show, status: :created, location: @bet }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @bet.errors, status: :unprocessable_entity }
     end
   end
+end
 
   # PATCH/PUT /bets/1 or /bets/1.json
   def update
@@ -46,11 +50,7 @@ class BetsController < ApplicationController
 
     respond_to do |format|
       if @bet.update(bet_params)
-        if @xrd.amount == nil
         BetAllotedMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
-       else
-        PaymentBetMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
-       end
         format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else
@@ -78,6 +78,6 @@ class BetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end
