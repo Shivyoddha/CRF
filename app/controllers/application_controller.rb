@@ -1,13 +1,16 @@
 class ApplicationController < ActionController::Base
   # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # rescue_from NameError, with: :handle_name_error
-  skip_before_action :verify_authenticity_token
-
+  # rescue_from ActionController::InvalidAuthenticityToken ,with: :render_422
   # rescue_from Net::ReadTimeout, with: :network_error
   # rescue_from Net::OpenTimeout, with: :network_error
   # rescue_from SocketError, with: :network_error
   # rescue_from Errno::ECONNRESET, with: :network_error
   # rescue_from StandardError, with: :render_error
+  skip_before_action :verify_authenticity_token
+
+  
+
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden }
@@ -29,10 +32,9 @@ class ApplicationController < ActionController::Base
   end
   before_action :configure_permitted_parameters, if: :devise_controller?
   # before_action :store_user_location!, if: :storable_location?
-  # def record_not_found
-  #   flash[:error] = "Sorry, we couldn't find that record."
-  #
-  # end
+  def record_not_found
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+  end
   def handle_routing_error
     respond_to do |format|
      format.html { render template: 'errors/404', status: :internal_server_error }
@@ -53,7 +55,9 @@ class ApplicationController < ActionController::Base
   # else
   #   head :not_found
   # end
-
+  def render_422
+    render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+  end
   def network_error(exception)
     respond_to do |format|
       format.html { render template: 'errors/505.html.erb', status: :internal_server_error }
@@ -62,6 +66,7 @@ class ApplicationController < ActionController::Base
 
   end
   private
+
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
@@ -69,6 +74,7 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     session[:return_to] = request.original_url
   end
+
   # def render_error(exception)
   #    logger.error(exception) # Log the exception
   #

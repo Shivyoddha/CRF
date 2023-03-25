@@ -93,7 +93,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/AMR/<%=amr.id %>	</th>
-                    <td> <%= amr.user.name%> </td>
+                    <td> <%= amr.user.firstname%><nobr><%= amr.user.lastname%> </td>
                     <td> <%= amr.user.orgname%> </td>
                     <td> <%= amr.user.department%> </td>
                     <td> <%= amr.user.contact%> </td>
@@ -109,12 +109,8 @@
                     <td> <%= amr.analysis%> </td>
                     <td> <%= amr.toxicity%> </td>
                     <td> <%= amr.more%> </td>
-
-
-                    <td> <%= amr.slotdate %></td>
-
-                    <td> <%= amr.slottime %></td>
-
+                    <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
+                         <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
                       <td><%= amr.status%></td>
                       <%if amr.references.attached? %>
                     <td><%amr.references.each do |file|%>
