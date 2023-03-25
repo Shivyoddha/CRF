@@ -33,8 +33,8 @@ class SparkOsController < ApplicationController
           SparkOMailer.with(id:@spark_o.id, userid:current_user.id).InternalMail.deliver_later
         else
           SparkOMailer.with(id:@spark_o.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
-        format.html { redirect_to spark_o_url(@spark_o), notice: "Spark o was successfully created." }
+        end
+        format.html { redirect_to home_index_path, notice: "Spark o was successfully created." }
         format.json { render :show, status: :created, location: @spark_o }
       else
         format.html { render :new, status: :unprocessable_entity }

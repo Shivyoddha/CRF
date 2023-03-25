@@ -35,7 +35,7 @@ class ZetaPotentialSizesController < ApplicationController
         else
           ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to zeta_potential_size_url(@zeta_potential_size), notice: "Zeta potential size was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Zeta potential size was successfully created." }
         format.json { render :show, status: :created, location: @zeta_potential_size }
       else
         format.html { render :new, status: :unprocessable_entity }

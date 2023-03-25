@@ -34,8 +34,8 @@ class ScratchIndentationsController < ApplicationController
           ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).InternalMail.deliver_later
         else
           ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
-        format.html { redirect_to scratch_indentation_url(@scratch_indentation), notice: "Scratch indentation was successfully created." }
+        end
+        format.html { redirect_to home_index_path, notice: "Scratch indentation was successfully created." }
         format.json { render :show, status: :created, location: @scratch_indentation }
       else
         format.html { render :new, status: :unprocessable_entity }
