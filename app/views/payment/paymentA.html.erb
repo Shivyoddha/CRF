@@ -35,7 +35,7 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'All Payments',payment_payment_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                 <%= link_to 'All Payments',payment_payment_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
                         <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap" %>
@@ -59,7 +59,7 @@
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'Performa Generated',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Performa Generated',payment_paymentA_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
             </ul>
         </div>
@@ -80,57 +80,17 @@
                         <th scope="col" id="application-no">Appl No</th>
                         <th scope="col" id="name">Name</th>
                         <th scope="col" id="debit-head">Debit Head</th>
-                        <th scope="col" id="proforma-col">Proforma</th>
+                        <th scope="col" id="amount">Amount</th>
                     </tr>
                 </thead>
                 <tbody>
-                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
+                          <% @equipment.where(dummy:'done').each do |equipment|%>
                         <tr>
                           <th scope="row"><%= equipment.app_no%></th>
                           <td> <%= equipment.username%> </td>
                           <td> <%= equipment.debit_head%> </td>
-                          <td id="assign-btn">
-                              <!-- Button trigger modal -->
-                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                               <div id="<%= equipment.app_no%>" class="modal">
+                          <td> <%= equipment.pay%> </td>
 
-     <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                   </div>
-                   <div class="modal-body">
-
-                        <%= form_with(model:equipment ,local:true) do |form| %>
-                         <div class="input-group mb-3">
-                           <%= form.label :x, "Apllication No.", class:"input-group-text"%>
-                           <%= form.text_field :x, class:"form-control", id:"composition", placeholder: equipment.app_no , readonly: true%>
-                       </div>
-                       <div class="input-group mb-3">
-                         <%= form.label :x, "Applicant Name", class:"input-group-text"%>
-                         <%= form.text_field :x, class:"form-control", id:"composition", placeholder:equipment.username, readonly: true%>
-                     </div>
-                       <div class="input-group mb-3">
-                       <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
-                       <%= form.text_field :pay, class:"form-control", id:"amount"%>
-                     </div>
-                     <div class="input-group mb-3">
-                     <%= form.hidden_field :dummy, value: 'done' %>
-                   </div>
-
-                       <div class="actions">
-                         <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
-
-                       </div>
-                     <% end %>
-                   </div>
-               </div>
-           </div>
-
-   </div>
-
-                           </td>
 
                        </tr>
    <%end%>
@@ -145,27 +105,3 @@
 
 
    </div>
-   <script>
-     // Get the modals and buttons
-     var modal1 = document.getElementByClass("modal");
-     var btn1 = document.getElementById("ani");
-
-     // Add event listeners to the buttons
-     btn1.addEventListener("click", function() {
-       modal1.style.display = "block";
-     });
-
-     btn2.addEventListener("click", function() {
-       modal2.style.display = "block";
-     });
-
-     // Close the modal when the user clicks anywhere outside of it
-     window.addEventListener("click", function(event) {
-       if (event.target == modal1) {
-         modal1.style.display = "none";
-       }
-       if (event.target == modal2) {
-         modal2.style.display = "none";
-       }
-     });
-   </script>

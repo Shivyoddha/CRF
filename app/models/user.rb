@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # before_save :set_default_parameters
+  before_save :set_default_parameters
 
 
 has_one_attached :file
@@ -50,9 +50,9 @@ has_many:micro_edms
 has_many:ft_nms
 has_many:ansies
 belongs_to:faculty, optional:true
-# def set_default_parameters
-#   if self.role=='student'||self.role=='faculty'
-#     self.orgname = "NITK" if orgname.blank?
-#   end
-# end
+def set_default_parameters
+  if self.role=='student'||self.role=='faculty'
+    self.orgname = "NITK" if orgname.blank?
+  end
+end
 end

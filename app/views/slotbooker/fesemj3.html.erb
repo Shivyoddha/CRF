@@ -90,7 +90,7 @@
                       <tr>
                         <th scope="row">CRF/FESEMJ/<%=fesemj3.id %>	</th>
 
-                        <td> <%= fesemj3.user.name%> </td>
+                          <td> <%=fesemj3.user.firstname%><nobr><%=fesemj3.user.lastname%> </td>
                         <td> <%= fesemj3.user.orgname%> </td>
                         <td> <%=fesemj3.user.department%> </td>
                         <td> <%= fesemj3.user.contact%> </td>
@@ -104,8 +104,8 @@
                             <td> <%= fesemj3.conducting%></td>
                         <td> <%= fesemj3.more%> </td>
                         <td>Booked</td>
-                        <td> <%= fesemj3.slotdate %> </td>
-                        <td> <%= fesemj3.slottime %> </td>
+                        <td><span style="white-space: nowrap;"><%= fesemj3.slotdate.strftime('%d-%m-%Y')if fesemj3.slotdate.present? %></td>
+                        <td><%= fesemj3.slottime.strftime('%H:%M:%S') if fesemj3.slottime.present? %></td>
   <td> <%= fesemj3.status %></td>
   <%if fesemj3.references.attached? %>
   <%fesemj3.references.each do |file|%>
