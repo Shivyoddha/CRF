@@ -38,8 +38,7 @@ class PaymentController < ApplicationController
   end
   def paymentM
       @xrd = Xrd.all
-      @equipment = EquipmentTable.all
-      @equipment = EquipmentTable.order(updated_at: :desc)
+      @equipment = EquipmentTable.new
   end
   def paymentP
       @xrd = Xrd.all
