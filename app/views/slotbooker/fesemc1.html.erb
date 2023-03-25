@@ -78,7 +78,6 @@
                         <th scope="col">Sample is Toxic</th>
                         <th scope="col">Sample is Conducting</th>
                         <th scope="col">More Information</th>
-                        <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col">Slot Time</th>
                         <th scope="col">Status</th>
@@ -106,7 +105,6 @@
                           <td> <%= fesemc.conducting%> </td>
                           <td> <%= fesemc.toxic%> </td>
                           <td> <%= fesemc.more%> </td>
-                          <td>Booked</td>
                           <td> <%= fesemc.slotdate %></td>
 
                           <td> <%= fesemc.slottime %></td>
@@ -132,15 +130,15 @@
              <div class="modal-body">
                <%= form_with(model: fesemc,local:true) do |form| %>
 
-                   <div class="input-group mb-3">
-                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                   <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                 </div>
-
-                 <div class="input-group mb-3">
-                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+               <div class="input-group mb-3">
+                 <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                 <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
                </div>
+
+               <div class="input-group mb-3">
+               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+               <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+             </div>
 
                 <%=form.fields_for :equipment_table do |f| %>
                  <div class="input-group mb-3">

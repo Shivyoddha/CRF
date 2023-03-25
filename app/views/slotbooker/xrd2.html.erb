@@ -74,7 +74,6 @@
                         <th scope="col" id="phase">Type</th>
                         <th scope="col" id="range">Range</th>
                         <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
@@ -90,7 +89,7 @@
                   <tr>
                     <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
-                    <td> <%= xrds.user.name%> </td>
+                    <td> <%= xrds.user.firstname%><nobr><%= xrds.user.lastname%></td>
                     <td> <%= xrds.user.orgname%> </td>
                     <td> <%= xrds.user.department%> </td>
                     <td> <%= xrds.user.contact%> </td>
@@ -100,11 +99,9 @@
                     <td> <%= xrds.stype%> </td>
                     <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
                     <td> <%= xrds.more%> </td>
-                    <td>Booked</td>
-                    <td><%= xrds.slotdate %></td>
-                    <td><%= xrds.slottime %></td>
-
-                    <td> <%= xrds.status %></td>
+                    <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
+                    <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
+                      <td><%= xrds.status%></td>
                     <%if xrds.references.attached? %>
                     <%xrds.references.each do |file|%>
                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
@@ -126,15 +123,15 @@
                                    <div class="modal-body">
                                      <%= form_with(model: xrds,local:true) do |form| %>
 
-                                         <div class="input-group mb-3">
-                                         <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                         <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                       </div>
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                   </div>
 
-                                       <div class="input-group mb-3">
-                                       <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                                     </div>
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                 </div>
 
                                      <%=form.fields_for :equipment_table do |f| %>
                                       <div class="input-group mb-3">

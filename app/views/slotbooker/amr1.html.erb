@@ -95,7 +95,7 @@
                     <!-- Button trigger modal -->
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/amr1/<%=amr1.id %>	</th>
-                      <td> <%= amr1.user.name%> </td>
+                      <td> <%= amr1.user.firstname%><nobr><%= amr1.user.lastname%></td>
                       <td> <%= amr1.user.orgname%> </td>
                       <td> <%= amr1.user.department%> </td>
                       <td> <%= amr1.user.contact%> </td>
@@ -111,12 +111,8 @@
                       <td> <%= amr1.analysis%> </td>
                       <td> <%= amr1.toxicity%> </td>
                       <td> <%= amr1.more%> </td>
-
-
-                      <td> <%= amr1.slotdate %></td>
-
-                      <td> <%= amr1.slottime %></td>
-
+                      <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
+                        <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
                         <td><%= amr1.status%></td>
                         <%if amr1.references.attached? %>
                         <%amr1.references.each do |file|%>
@@ -139,15 +135,15 @@
                                         <div class="modal-body">
                                           <%= form_with(model: amr1,local:true) do |form| %>
 
-                                              <div class="input-group mb-3">
-                                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                              <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                            </div>
+                                          <div class="input-group mb-3">
+                                          <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                          <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                        </div>
 
-                                            <div class="input-group mb-3">
-                                            <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                            <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                                          </div>
+                                        <div class="input-group mb-3">
+                                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                        <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                      </div>
 
                                            <%=form.fields_for :equipment_table do |f| %>
                                             <div class="input-group mb-3">

@@ -78,7 +78,6 @@
                       <th scope="col">Sample is Toxic</th>
                       <th scope="col">Sample is Conducting</th>
                       <th scope="col">More Information</th>
-                      <th scope="col" id="booked-on">Booked On</th>
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
                       <th scope="col">Status</th>
@@ -100,15 +99,16 @@
                       <td> <%= fesemc2.stype%> </td>
                       <td> <%= fesemc2.composition%> </td>
                       <td> <%= fesemc2.sphase%> </td>
-                        <td> <%= fesemc.measuring.join(', ') %> </td>
+                        <td> <%= fesemc2.measuring.join(', ') %> </td>
                       <td> <%= fesemc2.eds_required%> </td>
                       <td> <%= fesemc2.eds%> </td>
                       <td> <%= fesemc2.toxic%> </td>
                       <td> <%= fesemc2.conducting%> </td>
                         <td> <%= fesemc2.more%> </td>
-                        <td><%= fesemc2.status%></td>
+
                         <td> <%= fesemc2.slotdate %> </td>
                         <td> <%= fesemc2.slottime %> </td>
+                          <td><%= fesemc2.status%></td>
                         <%if fesemc2.references.attached? %>
                       <td><%fesemc2.references.each do |file|%>
                          <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
@@ -130,15 +130,15 @@
                                  <div class="modal-body">
                                    <%= form_with(model: fesemc2,local:true) do |form| %>
 
-                                       <div class="input-group mb-3">
-                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                       <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                     </div>
-
-                                     <div class="input-group mb-3">
-                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                     <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                   <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
                                    </div>
+
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                 </div>
 
                                    <%=form.fields_for :equipment_table do |f| %>
                                     <div class="input-group mb-3">

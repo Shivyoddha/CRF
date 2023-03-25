@@ -31,7 +31,7 @@ class MilliQsController < ApplicationController
      # @milli_q.amount1=0
      # @milli_q.amount2=0
     # 'Student','Faculty','R & D Professional','Industry Professional','Entrepreneur'
-    if @milli_q.user.profession=='student'||@milli_q.user.profession=='Faculty'
+    if @milli_q.user.role=='student'||@milli_q.user.role=='faculty'
          if @milli_q.volumeone.present?
          @milli_q.amount1 = (300.0)*@milli_q.volumeone
        end
@@ -39,7 +39,7 @@ class MilliQsController < ApplicationController
         @milli_q.amount2= (200.0)*@milli_q.volumetwo
       end
     end
-    if @milli_q.user.profession=='R & D Professional'
+    if @milli_q.user.profession=='R & D Professional'||@milli_q.user.profession=='Student'||@milli_q.user.profession=='Faculty'
         if @milli_q.volumeone.present?
          @milli_q.amount1 = (450.0)*@milli_q.volumeone
        end
@@ -51,24 +51,31 @@ class MilliQsController < ApplicationController
          if @milli_q.volumeone.present?
          @milli_q.amount1 = ( 1200.0)*@milli_q.volumeone
        end
-          if @milli_q.volumeone.present?
+          if @milli_q.volumetwo.present?
          @milli_q.amount2= (800)*@milli_q.volumetwo
        end
     end
-       # @milli_q.amounttotal=0
-       #
-         if @milli_q.volumeone.blank?
+        @milli_q.amounttotal=0
+
+         if @milli_q.volumeone.nil?
            @milli_q.amount1=0
          end
-         if @milli_q.volumeone.blank?
+         if @milli_q.volumetwo.nil?
            @milli_q.amount2=0
          end
-         @milli_q.amounttotal = @milli_q.amount1 + @milli_q.amount2
+         if @milli_q.amounttotal.nil?
+           @milli_q.amounttotal=0
+        end
+             @milli_q.amounttotal = @milli_q.amount1 + @milli_q.amount2
 
 
     respond_to do |format|
       if @milli_q.save
-        MilliQMailer.with(id:@milli_q.id, userid:current_user.id).Mail.deliver_later
+        if @milli_q.user.role=='student'||@milli_q.user.role=='faculty'
+          MilliQMailer.with(id:@milli_q.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          MilliQMailer.with(id:@milli_q.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to milli_q_url(@milli_q), notice: "Milli q was successfully created." }
         format.json { render :show, status: :created, location: @milli_q }
       else
@@ -81,7 +88,6 @@ class MilliQsController < ApplicationController
   # PATCH/PUT /milli_qs/1 or /milli_qs/1.json
   def update
     @milli_q.build_equipment_table
-
       @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)
