@@ -133,6 +133,8 @@ Rails.application.routes.draw do
     get 'mainpage/liq_nitrogen'
     get 'mainpage/ball_milling'
 
+    get 'mainpage/instrument_list'
+
 
 
 
@@ -423,6 +425,6 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     match '*unmatched', to: 'application#render_404', via: :all
   end
-# 
+#
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

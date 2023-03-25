@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: #ddf1fb;
+  font-family: "Quicksand", "sans-serif";
+}
+
+#heading {
+  color: darkslategray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  letter-spacing: 5px;
+  text-align: center;
+  font-family: "Unbounded", 'cursive';
+}
+
+.instrument-head{
+  margin: 1em;
+    font-family: "Unbounded", 'cursive';
+}
+
+tbody{
+  background-color: #fff;
+}
+
+.spacing{
+  margin: 1rem 3.7em;
+}
