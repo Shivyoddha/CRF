@@ -79,7 +79,7 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reasssign</th>
+                        <th scope="col" id="reassign-col">Reassign</th>
                         <th scope="col" id="cancel-col">Cancel Slot</th>
                     </tr>
                 </thead>
@@ -154,7 +154,7 @@
                                     </div>
 
                                      <%end%>
-                                      <%=xrds.id%>
+                                      <%# <%=xrds.id%>
 
                                        <div class="actions">
                                          <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -192,7 +192,7 @@
                                           </div>
                                          <div class="modal-footer">
                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                               <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                               <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
                                          </div>
                                          <% end %>
                                      </div>
