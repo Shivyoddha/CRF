@@ -89,7 +89,7 @@
                     <tr>
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/THREESCAN/<%=threes.id %>	</th>
-                      <td> <%= threes.user.name%> </td>
+                      <td> <%= threes.user.firstname%><nobr><%= threes.user.lastname%> </td>
                       <td> <%= threes.user.orgname%> </td>
                       <td> <%= threes.user.department%> </td>
                       <td> <%= threes.user.contact%> </td>
@@ -102,8 +102,8 @@
                       <td> <%= threes.toxicity%> </td>
 
                       <td> <%= threes.more%> </td>
-                      <td> <%=threes.slotdate %></td>
-                        <td> <%=threes.slottime %></td>
+                      <td><span style="white-space: nowrap;"><%= threes.slotdate.strftime('%d-%m-%Y')if threes.slotdate.present? %></td>
+                      <td><%= threes.slottime.strftime('%H:%M:%S') if threes.slottime.present? %></td>
                       <td> <%= threes.status %></td>
                       <%if threes.references.attached? %>
                       <%threes.references.each do |file|%>

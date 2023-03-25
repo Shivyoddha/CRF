@@ -91,7 +91,7 @@
                       <% @fesemc2.where(status:'alloted').each do |fesemc2|%>
                       <tr>
                         <th scope="row">CRF/fesemc/<%=fesemc2.id %>	</th>
-                          <td> <%= fesemc2.user.name%> </td>
+                          <td> <%=fesemc2.user.firstname%><nobr><%=fesemc2.user.lastname%> </td>
                       <td> <%= fesemc2.user.orgname%> </td>
                       <td> <%= fesemc2.user.department%> </td>
                       <td> <%= fesemc2.user.contact%> </td>
@@ -106,8 +106,8 @@
                       <td> <%= fesemc2.conducting%> </td>
                         <td> <%= fesemc2.more%> </td>
 
-                        <td> <%= fesemc2.slotdate %> </td>
-                        <td> <%= fesemc2.slottime %> </td>
+                        <td><span style="white-space: nowrap;"><%= fesemc2.slotdate.strftime('%d-%m-%Y')if fesemc2.slotdate.present? %></td>
+                        <td><%= fesemc2.slottime.strftime('%H:%M:%S') if fesemc2.slottime.present? %></td>
                           <td><%= fesemc2.status%></td>
                         <%if fesemc2.references.attached? %>
                       <td><%fesemc2.references.each do |file|%>
