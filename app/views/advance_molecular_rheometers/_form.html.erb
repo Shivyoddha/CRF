@@ -4,8 +4,8 @@
 
 
 
-<%=render "partials/loginHeading"%>
-<%=render "partials/formsBackbtn"%>
+<%=render "partials/loginHeading" %>
+<%=render "partials/formsBackbtn" %>
 
 
 
@@ -14,7 +14,6 @@
       <h1>Advance Modular Rheometer</h1>
     </div>
     <div class='hero'>
-
       <%= form_with(model: advance_molecular_rheometer) do |form| %>
         <% if advance_molecular_rheometer.errors.any? %>
           <div style="color: red">
@@ -27,7 +26,6 @@
             </ul>
           </div>
         <% end %>
-
 
     <div class="input-group mb-3">
       <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>

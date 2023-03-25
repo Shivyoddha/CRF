@@ -15,7 +15,6 @@ class AdvanceMolecularRheometersController < ApplicationController
     @user=User.find(params[:id])
     @advance_molecular_rheometer = AdvanceMolecularRheometer.new
     @advance_molecular_rheometer.build_equipment_table
-
   end
 
   # GET /advance_molecular_rheometers/1/edit
