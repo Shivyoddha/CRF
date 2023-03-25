@@ -7,7 +7,7 @@
 <%=render "partials/loginHeading"%>
 <%=render "partials/formsBackbtn"%>
 
- 
+
 
 <div class="container">
     <div id="equipment-name">
@@ -18,7 +18,7 @@
       <% if cell_imaging.errors.any? %>
         <div style="color: red">
           <h2><%= pluralize(cell_imaging.errors.count, "error") %> prohibited this cell_imaging from being saved:</h2>
-    
+
           <ul>
             <% cell_imaging.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -30,24 +30,24 @@
         <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no" %>
         <%= form.select(:sample, ['1','2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sampe-no",:required => true}) %>
       </div>
-    
+
     <div class="input-group mb-3">
         <%= form.label :stype,"sample-nature", class:"input-group-text", for:"sample-nature" %>
         <%= form.select(:stype, ['biological','chemical'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-nature",:required => true}) %>
       </div>
-   
+
 
     <div class="input-group mb-3">
         <%= form.label :plate , "Plate Format", class:"input-group-text", for:"plate-format" %>
         <%= form.text_field :plate , type:"text", class:"form-control", id:"plate-format"%>
       </div>
-    
+
     <div class="input-group mb-3">
     <%= form.label :expected_wavelenght,"Expected Wavelength", class:"input-group-text", for:"wavelength-expected" %>
     <%= form.select(:expected_wavelenght, ['Fluoresence','Absorbance'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "wavelength-expected",:required => true}) %>
      </div>
-    
-    
+
+
     <div class="measure-info">
         <h5 class="fw-bold">Measurement Info</h5>
     </div>
@@ -55,23 +55,23 @@
         <%= form.label :assay_type,"Assay Type", class:"input-group-text", for:"assay-type" %>
         <%= form.select(:assay_type, ['Kinectic','2endpoint','spectral'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "assay-type",:required => true}) %>
       </div>
-    
+
     <div class="input-group mb-3">
         <%= form.label :detection,"Detection Mode", class:"input-group-text", for:"detection-mode" %>
-        <%= form.select(:detection, ['fluoro','adsorb','lumines','time_resol_fluoro'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "detection-mode",:required => true}) %>
+        <%= form.select(:detection, ['Fluoro','Adsorb','Lumines','Time Resol Fluoro'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "detection-mode",:required => true}) %>
       </div>
-    
+
     <div class="input-group mb-3">
         <%= form.label :image_filter,"Image Filter Cube", class:"input-group-text", for:"image-filter" %>
         <%= form.select(:image_filter, ['DAPI','GFP','TEXAS RED'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "image-filter",:required => true}) %>
       </div>
-    
+
     <div class="input-group mb-3">
     <%= form.label :image_mode,"Imaging Mode", class:"input-group-text", for:"imaging-mode" %>
-    <%= form.select(:image_mode, ['Fluorescence','Bright-field','Clr-Bright-Field','wavelength_contrast'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "imaging-mode",:required => true}) %>
+    <%= form.select(:image_mode, ['Fluorescence','Bright-field','Color Bright-Field','Wavelength Contrast'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "imaging-mode",:required => true}) %>
     </div>
 
-    
+
 
     <div>
             <h2 class="text-warning text-center">SAFETY INFORMATION</h2>
@@ -85,7 +85,7 @@
             <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"non-hazardous"  %> Non-Hazardous
       </div>
   </div>
-  
+
     <div>
           <%= form.label :compatibility, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
@@ -95,7 +95,7 @@
                   <%= form.radio_button :compatibility, 'Non -Corrossive', class:"form-check-input", type:"radio", id:"non-corrosive"  %> Non -Corrossive
             </div>
         </div>
-    
+
     <div>
           <%= form.label :hazard, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
@@ -105,7 +105,7 @@
                   <%= form.radio_button :hazard, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
             </div>
         </div>
-       
+
 
         <div class="input-group mb-3" id="ref-file">
           <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
@@ -129,7 +129,7 @@
 </div>
   </div>
   </div>
-  
+
 
 
 
@@ -138,19 +138,3 @@
 </div>
 <%end%>
 <%=render "partials/footer" %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

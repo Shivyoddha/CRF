@@ -131,15 +131,15 @@
                             <div class="modal-body">
                               <%= form_with(model: glow,local:true) do |form| %>
 
-                                  <div class="input-group mb-3">
-                                  <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                  <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                              <div class="input-group mb-3">
+                                <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
                               </div>
+
+                              <div class="input-group mb-3">
+                              <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                              <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                            </div>
 
                               <%=form.fields_for :equipment_table do |f| %>
                                <div class="input-group mb-3">

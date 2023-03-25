@@ -422,11 +422,17 @@ Rails.application.routes.draw do
     get 'home/maithu'
   #   devise_scope :user do
   #   root to: "devise/sessions#new"
-  # end
+  # end/
+
+  resources :equiplists do
+  collection do
+    post :import
+  end
+end
 
   devise_scope :user do
      get '/users/sign_out' => 'devise/sessions#destroy'
-      match '*unmatched', to: 'application#render_404', via: :all,constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
+      # match '*unmatched', to: 'application#render_404', via: :all,constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
   end
 #
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

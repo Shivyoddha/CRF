@@ -33,7 +33,7 @@ class AtomicForceMicroscopesController < ApplicationController
         if @atomic_force_microscope.user.role=='student'||@atomic_force_microscope.user.role=='faculty'
           AtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).InternalMail.deliver_later
         else
-          AtomicForceMicroscopeMailer.with(id:@atomic_forcemicroscope.id, userid:current_user.id).ExternalMail.deliver_later
+          AtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).ExternalMail.deliver_later
         end
         format.html { redirect_to home_index_path, notice: "Atomic force microscope was successfully created." }
         format.json { render :show, status: :created, location: @atomic_force_microscope }
