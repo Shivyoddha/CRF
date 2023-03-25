@@ -29,7 +29,11 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.build_equipment_table
     respond_to do |format|
       if @electro_chemical.save
-        ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
+        if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Electro chemical was successfully created." }
         format.json { render :show, status: :created, location: @electro_chemical }
       else
@@ -45,11 +49,7 @@ class ElectroChemicalsController < ApplicationController
       @electro_chemical.build_equipment_table
     respond_to do |format|
       if @electro_chemical.update(electro_chemical_params)
-        if @electro_chemical.amount == nil
         ElectroChemicalAllotedMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_elctro_path(@electro_chemical), notice: "Electro chemical was successfully updated." }
         format.json { render :show, status: :ok, location: @electro_chemical }
       else
@@ -77,6 +77,6 @@ class ElectroChemicalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def electro_chemical_params
-      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay], references: [])
+      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
     end
 end

@@ -28,7 +28,11 @@ class TgaFttrsController < ApplicationController
     @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.save
-        TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
+        if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'
+          TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).ExternalMail.deliver_later
+        end
         format.html { redirect_to home_index_path, notice: "Tga fttr was successfully created." }
         format.json { render :show, status: :created, location: @tga_fttr }
       else
@@ -44,11 +48,7 @@ class TgaFttrsController < ApplicationController
       @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.update(tga_fttr_params)
-        if @tga_fttr.amount == nil
         TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentTgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_tga_path(@tga_fttr), notice: "Tga fttr was successfully updated." }
         format.json { render :show, status: :ok, location: @tga_fttr }
       else
@@ -76,6 +76,6 @@ class TgaFttrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay],references: [])
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
     end
 end

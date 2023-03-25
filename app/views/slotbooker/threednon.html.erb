@@ -107,7 +107,7 @@
                       <td> <%= threes.status %></td>
                       <%if threes.references.attached? %>
                       <%threes.references.each do |file|%>
-                <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary"%></td>
                 <%end%>
                   <% else %>
                     <td>NA</td>

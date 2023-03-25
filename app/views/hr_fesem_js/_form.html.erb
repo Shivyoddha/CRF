@@ -63,32 +63,22 @@
             <option value="no">No</option>
           </select>
         </div>
-         <div id="eds-radio" class="vis">
-              <label class="form-check-label fw-bold text-success" for="flexRadioDefault2">EDS:</label>
-              <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="map" checked>
-                  <label class="form-check-label" for="map">
-                      Mapping/Line
-                  </label>
-              </div>
-              <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="area">
-                  <label class="form-check-label" for="area">
-                      Area/Point
-                  </label>
-              </div>
-
-              <div class="form-check">
-                  <input class="form-check-input" type="radio" name="eds" id="both">
-                  <label class="form-check-label" for="both">
-                      Both
-                  </label>
-              </div>
-                <div>
-                  <p class="text-warning">Max. 3 sample for EDS - Mapping</p>
-                </div>
-
-          </div>
+        <div id="eds-radio" class="vis">
+          <%= form.label :eds_required, "EDS:",class:"form-check-label fw-bold text-success", for:"flexRadioDefault2" %>
+            <div class="form-check">
+                <%= form.radio_button :eds_required, ' Mapping Line', class:"form-check-input", type:"radio", id:"map",:checked => true  %> Mapping Line
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :eds_required, 'Area/Point', class:"form-check-input", type:"area", id:"area"  %> Area/Point
+            </div>
+            <div class="form-check">
+                  <%= form.radio_button :eds_required, 'Both', class:"form-check-input", type:"area", id:"both"  %> Both
+            </div>
+            <div>
+              <p class="text-warning">Max. 3 sample for EDS - Mapping</p>
+            </div>
+        </div>
+        
 
           <div class="input-group mb-3">
               <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"toxic" %>
@@ -132,7 +122,7 @@
 
     let edsRequired = document.getElementById('eds-reqd');
     let edsRadio = document.getElementById('eds-radio');
-    
+
     edsRequired.addEventListener('click', () => {
         edsRadio.classList.add('vis');
 

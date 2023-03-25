@@ -5,7 +5,24 @@ class FrictionMailer < ApplicationMailer
   #
   #   en.friction_mailer.Mail.subject
   #
-  def Mail
+  def InternalMail
+    @friction=Friction.find(params[:id])
+    @user=User.find(params[:userid])
+    attachments["friction.pdf"] = WickedPdf.new.pdf_from_string(
+    render_to_string(template: 'slot_mailer/friction.html.erb', layout: 'pdf.html.erb', pdf: 'filename')
+    )
+
+
+      mail(
+            from:"crfnitk@gmail.com" ,
+              to: "#{@user.email}",
+            #cc: User.all.pluck(:email),
+            #bcc: "ok@gmail",
+            subject: "form submitted",
+            locals:{friction:@friction,user:@user}
+          )
+  end
+  def ExternalMail
     @friction=Friction.find(params[:id])
     @user=User.find(params[:userid])
     attachments["friction.pdf"] = WickedPdf.new.pdf_from_string(

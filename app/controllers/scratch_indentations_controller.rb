@@ -13,6 +13,8 @@ class ScratchIndentationsController < ApplicationController
   # GET /scratch_indentations/new
   def new
     @scratch_indentation = ScratchIndentation.new
+    @scratch_indentation.build_equipment_table
+
   end
 
   # GET /scratch_indentations/1/edit
@@ -24,10 +26,16 @@ class ScratchIndentationsController < ApplicationController
     @scratch_indentation = ScratchIndentation.new(scratch_indentation_params)
     @scratch_indentation.user=current_user
     @scratch_indentation.status="pending"
+    @scratch_indentation.build_equipment_table
+
     respond_to do |format|
       if @scratch_indentation.save
-        ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to scratch_indentation_url(@scratch_indentation), notice: "Scratch indentation was successfully created." }
+        if @scratch_indentation.user.role=='student'||@scratch_indentation.user.role=='faculty'
+          ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).InternalMail.deliver_later
+        else
+          ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).ExternalMail.deliver_later
+        end
+        format.html { redirect_to home_index_path, notice: "Scratch indentation was successfully created." }
         format.json { render :show, status: :created, location: @scratch_indentation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,6 +47,8 @@ class ScratchIndentationsController < ApplicationController
   # PATCH/PUT /scratch_indentations/1 or /scratch_indentations/1.json
   def update
     @scratch_indentation.status="alloted"
+    @scratch_indentation.build_equipment_table
+
     respond_to do |format|
       if @scratch_indentation.update(scratch_indentation_params)
         if @scratch_indentation.amount == nil
@@ -73,6 +83,6 @@ class ScratchIndentationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scratch_indentation_params
-      params.require(:scratch_indentation).permit(:sample, :stype, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more,:debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:scratch_indentation).permit(:sample, :stype, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more,:debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
     end
 end

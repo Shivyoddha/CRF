@@ -39,7 +39,7 @@
                         <%= link_to 'Pending Slots',slotbooker_fesemc1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted SLots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted Slots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"nav-link active sidelink-wrap" %>
@@ -126,7 +126,7 @@
 <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemc.user.name %></b></h1>
+                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= fesemc.user.name %></b></h1>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
@@ -159,6 +159,18 @@
                 <div class="input-group mb-3">
                   <%= f.hidden_field :debit_head, value:"#{fesemc.debit}" %>
                </div>
+
+               <div class="input-group mb-3">
+                    <%= f.hidden_field :dept, value:"#{fesemc.user.department}" %>
+                 </div>
+
+                 <div class="input-group mb-3">
+                   <%= f.hidden_field :email, value:"#{fesemc.user.email}" %>
+                </div>
+
+                 <div class="input-group mb-3">
+                   <%= f.hidden_field :equipname, value:"fesemc" %>
+                </div>
 
                 <%end%>
 

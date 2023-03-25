@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FIVE AXIS:Alloted Slots</h2>
         </div>
 
 
@@ -123,114 +123,133 @@
                     <td>NA</td>
                   <% end %>
                   <td id="assign-btn">
-                      <!-- Button trigger modal -->
-                       <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fiveaxis2.id}" }, id: "ani" %>
-                       <div id="<%= fiveaxis2.id%>" class="modal">
+                        <!-- Button trigger modal -->
+                         <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{fiveaxis2.id}" }, id: "ani" %>
+                         <div id="<%= fiveaxis2.id%>" class="modal">
 
-                     <div class="modal-dialog">
-                         <div class="modal-content">
-                             <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fiveaxis2.user.name %></b></h1>
-                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                             </div>
-                             <div class="modal-body">
-                               <%= form_with(model: fiveaxis2,local:true) do |form| %>
+                       <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fiveaxis2.user.name %></b></h1>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                               </div>
+                               <div class="modal-body">
+                                 <%= form_with(model: fiveaxis2,local:true) do |form| %>
+
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                   </div>
 
                                    <div class="input-group mb-3">
-                                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                   <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+
+                                 <%=form.fields_for :equipment_table do |f| %>
+                                  <div class="input-group mb-3">
+                                     <%= f.hidden_field :app_no, value:"CRF/FIVE/#{fiveaxis2.id}"%>
+                                   </div>
+
+                                  <div class="input-group mb-3">
+                                    <%= f.hidden_field :username, value:"#{fiveaxis2.user.name}"%>
                                  </div>
 
                                  <div class="input-group mb-3">
-                                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                               </div>
-                                <%=fiveaxis2.id%>
+                                   <%= f.hidden_field :dummy, value:"#{fiveaxis2.status}"%>
+                                </div>
 
-                                 <div class="actions">
-                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                 <div class="input-group mb-3">
+                                   <%= f.hidden_field :debit_head, value:"#{fiveaxis2.debit}" %>
+                                </div>
 
-                                 </div>
-                               <% end %>
-                             </div>
-                             <div class="modal-footer">
-                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                 <button type="button" class="btn btn-primary">Cancel Slot</button>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                   </td>
+                                 <%end%>
+                                  <%=fiveaxis2.id%>
 
-
-                   <td id="cancel-btn">
-                      <!-- Button trigger modal -->
-                        <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{fiveaxis2.id}" }, id: "anish" %>
-
-                       <!-- Modal -->
-                        <div id="ani<%= fiveaxis2.id%>" class="modal">
-                         <div class="modal-dialog">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= fiveaxis2.user.name %></b></h1>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                   </div>
-                                   <div class="modal-body">
-                                     <%= form_for fiveaxis2 do |f| %>
-                                       <p> Are you sure you want to cancel the slot ?</p>
-                                       <%= f.hidden_field :status, value: 'cancelled' %>
                                    <div class="actions">
-
+                                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
 
                                    </div>
-
-                                    </div>
-                                   <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                         <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
-                                   </div>
-                                   <% end %>
+                                 <% end %>
+                               </div>
+                               <div class="modal-footer">
+                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-primary">Cancel Slot</button>
                                </div>
                            </div>
                        </div>
-                   </td>
+                   </div>
+                     </td>
 
-<%end%>
-              </tr>
 
-          </tbody>
-      </table>
+                     <td id="cancel-btn">
+                        <!-- Button trigger modal -->
+                          <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{fiveaxis2.id}" }, id: "anish" %>
+
+                         <!-- Modal -->
+                          <div id="ani<%= fiveaxis2.id%>" class="modal">
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= fiveaxis2.user.name %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                     </div>
+                                     <div class="modal-body">
+                                       <%= form_for fiveaxis2 do |f| %>
+                                         <p> Are you sure you want to cancel the slot ?</p>
+                                         <%= f.hidden_field :status, value: 'cancelled' %>
+                                     <div class="actions">
+
+
+                                     </div>
+
+                                      </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                           <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                     </div>
+                                     <% end %>
+                                 </div>
+                             </div>
+                         </div>
+                     </td>
+
+  <%end%>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+
 
   </div>
+
+
   </div>
+  <script>
+  // Get the modals and buttons
+  var modal1 = document.getElementByClass("modal");
+  var btn1 = document.getElementById("ani");
+  var modal2 = document.getElementByClass("modal2");
+  var btn2 = document.getElementById("anish");
+  // Add event listeners to the buttons
+  btn1.addEventListener("click", function() {
+  modal1.style.display = "block";
+  });
 
+  btn2.addEventListener("click", function() {
+  modal2.style.display = "block";
+  });
 
-</div>
-
-
-</div>
-<script>
-// Get the modals and buttons
-var modal1 = document.getElementByClass("modal");
-var btn1 = document.getElementById("ani");
-var modal2 = document.getElementByClass("modal2");
-var btn2 = document.getElementById("anish");
-// Add event listeners to the buttons
-btn1.addEventListener("click", function() {
-modal1.style.display = "block";
-});
-
-btn2.addEventListener("click", function() {
-modal2.style.display = "block";
-});
-
-// Close the modal when the user clicks anywhere outside of it
-window.addEventListener("click", function(event) {
-if (event.target == modal1) {
-modal1.style.display = "none";
-}
-if (event.target == modal2) {
-modal2.style.display = "none";
-}
-});
-</script>
+  // Close the modal when the user clicks anywhere outside of it
+  window.addEventListener("click", function(event) {
+  if (event.target == modal1) {
+  modal1.style.display = "none";
+  }
+  if (event.target == modal2) {
+  modal2.style.display = "none";
+  }
+  });
+  </script>

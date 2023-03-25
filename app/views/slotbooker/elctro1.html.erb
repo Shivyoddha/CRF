@@ -152,10 +152,19 @@
                                           <%= f.hidden_field :debit_head, value:"#{elctro.debit}" %>
                                        </div>
 
+                                       <div class="input-group mb-3">
+                                        <%= f.hidden_field :dept, value:"#{electro.user.department}" %>
+                                     </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :email, value:"#{electro.user.email}" %>
+                                    </div>
+
+                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :equipname, value:"electro" %>
+                                    </div>
+
                                         <%end%>
-
-
-                                        <%=elctro.id%>
 
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -164,10 +173,6 @@
 
 
 
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                         <button type="button" class="btn btn-primary">Cancel Slot</button>
                                      </div>
                                  </div>
                              </div>
