@@ -35,7 +35,7 @@ class SpectroRadioMetersController < ApplicationController
         else
           SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to spectro_radio_meter_url(@spectro_radio_meter), notice: "Spectro radio meter was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Spectro radio meter was successfully created." }
         format.json { render :show, status: :created, location: @spectro_radio_meter }
       else
         format.html { render :new, status: :unprocessable_entity }
