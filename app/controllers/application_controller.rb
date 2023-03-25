@@ -9,11 +9,7 @@ class ApplicationController < ActionController::Base
   # rescue_from StandardError, with: :render_error
   skip_before_action :verify_authenticity_token
 
-  def set_current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  helper_method :current_user
+  
 
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
