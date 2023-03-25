@@ -411,6 +411,7 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
+    post 'payment/paymentU'
     get 'home/faculty_verif'
     post 'home/faculty_verif'
     get 'home/verifsent'

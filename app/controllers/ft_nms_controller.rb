@@ -30,7 +30,7 @@ class FtNmsController < ApplicationController
           FtNmsMailer.with(id:@ft_nm.id, userid:current_user.id).InternalMail.deliver_later
         else
           FtNmsMailer.with(id:@ft_nm.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
+        end
         format.html { redirect_to ft_nm_url(@ft_nm), notice: "Ft nm was successfully created." }
         format.json { render :show, status: :created, location: @ft_nm }
       else

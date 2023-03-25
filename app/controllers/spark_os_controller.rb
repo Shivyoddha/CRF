@@ -13,6 +13,7 @@ class SparkOsController < ApplicationController
   # GET /spark_os/new
   def new
     @spark_o = SparkO.new
+    @spark_o.build_equipment_table
   end
 
   # GET /spark_os/1/edit
@@ -24,6 +25,8 @@ class SparkOsController < ApplicationController
     @spark_o = SparkO.new(spark_o_params)
     @spark_o.user=current_user
     @spark_o.status="pending"
+    @spark_o.build_equipment_table
+
     respond_to do |format|
       if @spark_o.save
         if @spark_o.user.role=='student'||@spark_o.user.role=='faculty'
@@ -43,6 +46,8 @@ class SparkOsController < ApplicationController
   # PATCH/PUT /spark_os/1 or /spark_os/1.json
   def update
       @spark_o.status="alloted"
+      @spark_o.build_equipment_table
+
     respond_to do |format|
       if @spark_o.update(spark_o_params)
         if @spark_o.amount == nil
@@ -77,6 +82,6 @@ class SparkOsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spark_o_params
-      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id, references: [])
+      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
     end
 end
