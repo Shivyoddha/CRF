@@ -25,12 +25,7 @@ class EquipmentTablesController < ApplicationController
 
     respond_to do |format|
       if @equipment_table.save
-        if @equipment_table.user.role=='student'||@equipment_table.user.role=='faculty'
-          EquipmentTableMailer.with(id:@equipment_table.id, userid:current_user.id).InternalMail.deliver_later
-        else
-          EquipmentTableMailer.with(id:@equipment_table.id, userid:current_user.id).ExternalMail.deliver_later
-        end 
-        format.html { redirect_to equipment_table_url(@equipment_table), notice: "Equipment table was successfully created." }
+        format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully created." }
         format.json { render :show, status: :created, location: @equipment_table }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -186,6 +181,6 @@ class EquipmentTablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipment_table_params
-      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry)
+      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide)
     end
 end
