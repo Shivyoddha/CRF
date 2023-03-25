@@ -82,7 +82,7 @@
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
                       <th scope="col">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reassign</th>
+                        <th scope="col" id="reassign-col">Reasssign</th>
                         <th scope="col" id="cancel-col">Cancel Slot</th>
                     </tr>
                 </thead>
@@ -91,7 +91,7 @@
                       <% @fesemj2.where(status:'alloted').each do |fesemj2|%>
                       <tr>
                         <th scope="row">CRF/FESEMJ/<%=fesemj2.id %>	</th>
-                          <td> <%= fesemj2.user.name%> </td>
+                      <td> <%=fesemjs.user.firstname%><nobr><%=fesemjs.user.lastname%> </td>
                       <td> <%= fesemj2.user.orgname%> </td>
                       <td> <%= fesemj2.user.department%> </td>
                       <td> <%= fesemj2.user.contact%> </td>
@@ -106,8 +106,8 @@
                       <td> <%= fesemj2.conducting%> </td>
                         <td> <%= fesemj2.more%> </td>
                         <td><%= fesemj2.status%></td>
-                        <td> <%= fesemj2.slotdate %> </td>
-                        <td> <%= fesemj2.slottime %> </td>
+                        <td><span style="white-space: nowrap;"><%= fesemj2.slotdate.strftime('%d-%m-%Y')if fesemj2.slotdate.present? %></td>
+                        <td><%= fesemj2.slottime.strftime('%H:%M:%S') if fesemj2.slottime.present? %></td>
                         <%if fesemj2.references.attached? %>
                       <td><%fesemj2.references.each do |file|%>
                          <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>

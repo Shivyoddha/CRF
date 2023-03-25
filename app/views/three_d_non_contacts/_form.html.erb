@@ -35,19 +35,19 @@
 
     <div class="input-group mb-3">
         <%= form.label :xrange,"X Range", class:"input-group-text", for:"x_range"%>
-        <%= form.text_field :xrange, type:"text", class:"form-control", id:"x_range", placeholder:"Possible Elements" %>
+        <%= form.text_field :xrange, type:"text", class:"form-control", id:"x_range" %>
         <%= form.label :xrange,"mm", class:"input-group-text", for:"x_range"%>
     </div>
 
     <div class="input-group mb-3 vis"  id="y_range" >
       <%= form.label :yrange,"Y Range", class:"input-group-text", for:"y_range-f"%>
-      <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range-f", placeholder:"Possible Elements" %>
+      <%= form.text_field :yrange, type:"text", class:"form-control", id:"y_range-f" %>
       <%= form.label :yrange,"mm", class:"input-group-text", for:"y_range-f" %>
     </div>
 
       <div class="input-group mb-3">
         <%= form.label :stepinterval,"Step Interval", class:"input-group-text", for:"step_interval" %>
-        <%= form.text_field :stepinterval, type:"text", class:"form-control", id:"step_interval", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
+        <%= form.text_field :stepinterval, type:"text", class:"form-control", id:"step_interval" %>
         <%= form.label :stepinterval,"µm", class:"input-group-text", for:"step_interval" %>
       </div>
 
@@ -70,15 +70,15 @@
       </div>
 
       <div class="text-success mb-3 vis" id="incompatible-mention">
-          <%= form.text_field :incompatibe, type:"text", class:"form-control", id: "incompatible-mention-field", placeholder:"Name The Incompatible Material" %>
+          <%= form.text_field :incompatible, type:"text", class:"form-control", id: "incompatible-mention-field", placeholder:"Name The Incompatible Material" %>
       </div>
         <div>
               <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
                 <div class="form-check">
-                    <%= form.radio_button :toxicity, 'Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+                    <%= form.radio_button :toxicity, 'Hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
                 </div>
                 <div class="form-check">
-                      <%= form.radio_button :toxicity, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
+                      <%= form.radio_button :toxicity, 'Non Hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non Hazardous
                 </div>
             </div>
 

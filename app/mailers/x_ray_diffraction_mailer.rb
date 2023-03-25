@@ -15,8 +15,8 @@ class XRayDiffractionMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to:"bangaloreameen@gmail.com",
-            # to: "#{@user.email}",
+            
+            to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "Slot Form filled",

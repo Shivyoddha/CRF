@@ -89,7 +89,7 @@
                       <% @fesemj4.where(status:'cancelled').each do |fesemj4|%>
                       <tr>
                         <th scope="row">CRF/XRD/<%=fesemj4.id %>	</th>
-                        <td> <%= fesemj4.user.name%> </td>
+                          <td> <%=fesemj4.user.firstname%><nobr><%=fesemj4.user.lastname%> </td>
                         <td> <%= fesemj4.user.orgname%> </td>
                         <td> <%=fesemj4.user.department%> </td>
                         <td> <%= fesemj4.user.contact%> </td>
@@ -103,8 +103,8 @@
                             <td> <%= fesemj4.conducting%></td>
                         <td> <%= fesemj4.more%> </td>
                         <td>Booked</td>
-                        <td><%= fesemj4.slotdate %> </td>
-                        <td> <%= fesemj4.slottime %> </td>
+                        <td><span style="white-space: nowrap;"><%= fesemj4.slotdate.strftime('%d-%m-%Y')if fesemj4.slotdate.present? %></td>
+                        <td><%= fesemj4.slottime.strftime('%H:%M:%S') if fesemj4.slottime.present? %></td>
   <td> <%= fesemj4.status %></td>
   <%if fesemj4.references.attached? %>
   <%fesemj4.references.each do |file|%>
