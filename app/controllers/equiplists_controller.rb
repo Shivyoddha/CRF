@@ -1,6 +1,13 @@
 class EquiplistsController < ApplicationController
   before_action :set_equiplist, only: %i[ show edit update destroy ]
+  def import
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
 
+    CsvImportService.new.call(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
   # GET /equiplists or /equiplists.json
   def index
     @equiplists = Equiplist.all

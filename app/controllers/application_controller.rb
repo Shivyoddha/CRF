@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # rescue_from NameError, with: :handle_name_error
-  # protect_from_forgery with: :exception
-  # rescue_from ActionController::InvalidAuthenticityToken do
-  #   render plain: 'Invalid Authenticity Token', status: :unprocessable_entity
-  # end
+  skip_before_action :verify_authenticity_token
+
   # rescue_from Net::ReadTimeout, with: :network_error
   # rescue_from Net::OpenTimeout, with: :network_error
   # rescue_from SocketError, with: :network_error
