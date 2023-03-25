@@ -27,6 +27,7 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.user=current_user
     @hr_fesem_j.status="pending"
     @hr_fesem_j.build_equipment_table
+    
     respond_to do |format|
      if @hr_fesem_j.save
        if @hr_fesem_j.user.role=='student'||@hr_fesem_j.user.role=='faculty'
@@ -42,7 +43,7 @@ class HrFesemJsController < ApplicationController
      end
    end
  end
- 
+
 
   # PATCH/PUT /hr_fesem_js/1 or /hr_fesem_js/1.json
   def update
