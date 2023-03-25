@@ -30,9 +30,9 @@ class HrlcmsController < ApplicationController
     respond_to do |format|
       if @hrlcm.save
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
-          HrLcmsMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
         else
-          HrLcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
+          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
         end
         format.html { redirect_to  home_index_path, notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
