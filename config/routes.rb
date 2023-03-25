@@ -406,6 +406,7 @@ Rails.application.routes.draw do
     get 'payment/paymentP'
     get 'payment/paymentM'
     get 'payment/paymentU'
+    get 'payment/paymentA'
     get 'payment/paymentExt'
     get 'payment/paymentExtR'
     get 'payment/paymentExtM'
