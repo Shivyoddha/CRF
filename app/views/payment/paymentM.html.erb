@@ -68,14 +68,18 @@
         </div>
 
         <div id="wrap">
+          <%= form_with(model: @equipment,local:true) do |form| %>
             <div class="mb-3">
                 <div class="input-group">
-                  <label class="input-group-text" for="user-name">Application No.</label>
-                  <input type="text" class="form-control" id="user-name" aria-describedby="basic-addon3">
+                  <%= form.label :app_no, "Apllication No.", class:"input-group-text", id:"app"%>
+                  <%= form.text_field :app_no, class:"form-control", id:"app"%>
                 </div>
             </div>
 
             <div class="input-group mb-3">
+              div class="input-group mb-3">
+                <%= form.label :equipname,"Equipment", class:"input-group-text", for:"sample-no"%>
+                <%= form.select(:equipname, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no"}) %>
                 <label class="input-group-text" for="inputGroupSelect01">Equipment</label>
                 <select class="form-select" id="inputGroupSelect01">
                     <option selected>Choose...</option>
@@ -126,6 +130,7 @@
             <div class="actions">
                 <button type="submit" class="btn btn-success" id="sbt">Submit</button>
             </div>
+            <%end%>
 
         </div>
 

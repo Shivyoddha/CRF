@@ -33,7 +33,7 @@ class FiveAxisController < ApplicationController
         else
           FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to five_axi_url(@five_axi), notice: "Five axi was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Five axi was successfully created." }
         format.json { render :show, status: :created, location: @five_axi }
       else
         format.html { render :new, status: :unprocessable_entity }

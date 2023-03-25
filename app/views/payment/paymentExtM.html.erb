@@ -59,6 +59,7 @@
         </div>
 
         <div id="wrap">
+          <%= form_with(model: @equipment,local:true) do |form| %>
             <div class="mb-3">
                 <div class="input-group">
                     <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>

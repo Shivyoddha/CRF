@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   # rescue_from SocketError, with: :network_error
   # rescue_from Errno::ECONNRESET, with: :network_error
   # rescue_from StandardError, with: :render_error
-  protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
 
   def set_current_user

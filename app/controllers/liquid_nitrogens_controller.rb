@@ -41,7 +41,7 @@ class LiquidNitrogensController < ApplicationController
         else
           LiquidNitrogenMailer.with(id:@liquid_nitrogen.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to liquid_nitrogen_url(@liquid_nitrogen), notice: "Liquid nitrogen was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Liquid nitrogen was successfully created." }
         format.json { render :show, status: :created, location: @liquid_nitrogen }
       else
         format.html { render :new, status: :unprocessable_entity }

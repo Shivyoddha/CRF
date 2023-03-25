@@ -35,7 +35,7 @@ class LasersController < ApplicationController
         else
           LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to laser_url(@laser), notice: "Laser was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Laser was successfully created." }
         format.json { render :show, status: :created, location: @laser }
       else
         format.html { render :new, status: :unprocessable_entity }

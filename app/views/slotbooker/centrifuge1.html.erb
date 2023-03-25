@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">centrifuge-Imaging Multimode Reader Pending Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">CENTRIFUGE: Pending Slots</h2>
     </div>
 
 
@@ -118,6 +118,7 @@
                   <% end %>
                   <td id="assign-btn">
                        <!-- Button trigger modal -->
+<<<<<<< HEAD
                         <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{centrifuge.id}" }, id: "ani" %>
                         <div id="<%= centrifuge.id%>" class="modal">
 
@@ -127,12 +128,31 @@
                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= centrifuge.user.name %></b></h1>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
+=======
+                        <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target: "#assign-diaolgue-box" }, id: centrifuge.id %>
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#assign-diaolgue-box">
+                        Assign
+                        </button> -->
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="assign-diaolgue-box" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to:</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+>>>>>>> 3ada1639bafde4dd55ae4d05dabc34d9f420b6e7
                                     <div class="modal-body">
                                       <%= form_with(model: centrifuge,local:true) do |form| %>
 
+<<<<<<< HEAD
                                       <div class="input-group mb-3">
                                       <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
                                       <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+=======
+                                <%= render partial: "form_xrd",locals: { xrd:centrifuge } %>
+>>>>>>> 3ada1639bafde4dd55ae4d05dabc34d9f420b6e7
                                     </div>
 
                                     <div class="input-group mb-3">

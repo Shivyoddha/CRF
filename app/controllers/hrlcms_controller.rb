@@ -34,7 +34,7 @@ class HrlcmsController < ApplicationController
         else
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully created." }
+        format.html { redirect_to  home_index_path, notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
       else
         format.html { render :new, status: :unprocessable_entity }
