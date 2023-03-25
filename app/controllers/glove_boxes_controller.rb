@@ -35,7 +35,7 @@ class GloveBoxesController < ApplicationController
         else
           GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to glove_box_url(@glove_box), notice: "Glove box was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Glove box was successfully created." }
         format.json { render :show, status: :created, location: @glove_box }
       else
         format.html { render :new, status: :unprocessable_entity }

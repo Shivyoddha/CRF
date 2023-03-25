@@ -35,7 +35,7 @@ class GasSensingsController < ApplicationController
         else
           GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to gas_sensing_url(@gas_sensing), notice: "Gas sensing was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Gas sensing was successfully created." }
         format.json { render :show, status: :created, location: @gas_sensing }
       else
         format.html { render :new, status: :unprocessable_entity }

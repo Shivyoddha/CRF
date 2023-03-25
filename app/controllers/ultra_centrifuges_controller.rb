@@ -35,7 +35,7 @@ class UltraCentrifugesController < ApplicationController
         else
           UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to ultra_centrifuge_url(@ultra_centrifuge), notice: "Ultra centrifuge was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Ultra centrifuge was successfully created." }
         format.json { render :show, status: :created, location: @ultra_centrifuge }
       else
         format.html { render :new, status: :unprocessable_entity }
