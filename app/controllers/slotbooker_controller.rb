@@ -616,22 +616,21 @@ end
 
 
 
-def ftnmr
-
-end
-def ftnmr1
-
-end
-def ftnmr2
-
-end
-def ftnmr3
-
-end
-def ftnmr4
-
-end
-
+        def ftnmr
+          @ft=FtNm.all
+        end
+        def ftnmr1
+          @ft1=FtNm.all
+        end
+        def ftnmr2
+          @ft2=FtNm.all
+        end
+        def ftnmr3
+          @ft3=FtNm.all
+        end
+        def ftnmr4
+          @ft4=FtNm.all
+        end
 
  def low
    @low = LowFatigue.all

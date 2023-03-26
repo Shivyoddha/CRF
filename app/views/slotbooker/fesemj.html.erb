@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'HR-FESEM-JEOL Slotbooker', slotbooker_fesemj_path, class:"navbar-brand", id:'title' %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -88,8 +88,8 @@
                     <tr>
                         <% @fesemj.each do |fesemjs|%>
                           <tr>
-                        <th scope="row">CRF/XRD/<%= fesemjs.id%>	</th>
-                          <td> <%=fesemjs.user.firstname%><nobr><%=fesemjs.user.lastname%> </td>
+                        <th scope="row">CRF/FESEMJ/<%= fesemjs.id%>	</th>
+                          <td> <%=fesemjs.user.firstname%><nobr> <%=fesemjs.user.lastname%> </td>
                           <td> <%= fesemjs.user.orgname%> </td>
                           <td> <%=fesemjs.user.department%> </td>
                           <td> <%= fesemjs.user.contact%> </td>
@@ -98,15 +98,15 @@
                           <td> <%= fesemjs.composition%> </td>
                           <td> <%=fesemjs.sphase%> </td>
                           <td> <%= fesemjs.measurement%></td>
-                            <td> <%= fesemjs.eds_required%></td>
-                            <td> <%= fesemjs.toxic%></td>
-                              <td> <%= fesemjs.conducting%></td>
+                          <td> <%= fesemjs.eds_required%></td>
+                          <td> <%= fesemjs.toxic%></td>
+                          <td> <%= fesemjs.conducting%></td>
                           <td> <%= fesemjs.more%> </td>
                           <td> <%= fesemjs.slotdate%> </td>
                           <td>  <%= fesemjs.slottime%> </td>
-    <td> <%= fesemjs.status %></td>
-  <%fesemjs.references.each do |file|%>
-<td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <td> <%= fesemjs.status %></td>
+                        <%fesemjs.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 <%end%>
   <%end%>
                     </tr>
