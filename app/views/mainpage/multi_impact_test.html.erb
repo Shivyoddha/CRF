@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "knowEquipment"%>
 <%=render "partials/loginHeading"%>
-<%=render "partials/formsBackbtn"%>
+<%=render "partials/formsBackbtnmain"%>
 
 <div class="container">
     <div id="equipment-name">
@@ -15,7 +15,10 @@
             <div id="raman-images" class="carousel slide">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <%=image_tag 'raman-images/Raman-1.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        <%=image_tag 'shpb-images/SHPB_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                    <div class="carousel-item active">
+                        <%=image_tag 'shpb-images/MPIT_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
                     </div>
                 </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#raman-images" data-bs-slide="prev">
