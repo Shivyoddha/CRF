@@ -429,7 +429,6 @@ transform: translateX(3px);
   padding: 0 .25rem;
   background-color: whitesmoke;
   border-radius: 1em;
-  margin: 0 auto 1em auto;
 }
 
 .crf-stats:hover {

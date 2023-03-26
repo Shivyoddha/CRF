@@ -3,6 +3,9 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "equipmentQuestion"%>
 
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
 
 
 <div class="container">
@@ -49,7 +52,7 @@
         <p class="Measurement Inofrmation">
     </div>
 
-      <div id="solvent-1" class="vis">
+      <div id="solvent-1" class="">
         <%= form.label :solvent1, class:"input-group-text", id:"solvent-select-1"%>
         <%= form.select(:solvent1, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-1",:required => true}) %>
             </div>
@@ -224,6 +227,8 @@
     <p class="text-danger">#NMR analysis of Paramagnetic and Ferromagnetic compounds cannot be done.</p>
   </div>
 </div>
+</div>
+</div>
 
 
 <%=render "partials/footer" %>
@@ -235,39 +240,30 @@
     let healthHazardYes = document.getElementById('health-hazard-yes');
     let storageHandle = document.getElementById('store_handle');
     let specTemp = document.getElementById('spec-temp-val');
-    let solvent1 = document.getElementById('solvent-1');
     let solvent2 = document.getElementById('solvent-2');
     let solvent3 = document.getElementById('solvent-3');
     let solvent4 = document.getElementById('solvent-4');
     let solvent5 = document.getElementById('solvent-5');
 
     sampleNumber.addEventListener('click', () => {
-        solvent1.classList.add('vis');
         solvent2.classList.add('vis');
         solvent3.classList.add('vis');
         solvent4.classList.add('vis');
         solvent5.classList.add('vis');
 
-        if(sampleNumber.value == '1'){
-          solvent1.classList.toggle('vis')
-        }
         if(sampleNumber.value == '2'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
         }
         if(sampleNumber.value == '3'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
         }
         if(sampleNumber.value == '4'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
           solvent4.classList.toggle('vis')
         }
         if(sampleNumber.value == '5'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
           solvent4.classList.toggle('vis')
