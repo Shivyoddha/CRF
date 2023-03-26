@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">BET Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -91,7 +91,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/BET/<%=bet.id %>	</th>
-                    <td> <%= bet.user.firstname%><nobr><%= bet.user.lastname%> </td>
+                    <td> <%= bet.user.firstname%><nobr> <%= bet.user.lastname%></td>
                     <td> <%= bet.user.orgname%> </td>
                     <td> <%= bet.user.department%> </td>
                     <td> <%= bet.user.contact%> </td>
@@ -122,7 +122,7 @@
                        <div class="modal-dialog">
                            <div class="modal-content">
                                <div class="modal-header">
-                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= bet.user.name %></b></h1>
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= bet.user.firstname %></b></h1>
                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                </div>
                                <div class="modal-body">
@@ -156,7 +156,7 @@
                                 </div>
 
                                  <%end%>
-                                  <%=bet.id%>
+                                  
 
                                    <div class="actions">
                                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -183,7 +183,7 @@
                            <div class="modal-dialog">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= bet.user.name %></b></h1>
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= bet.user.firstname %></b></h1>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                      </div>
                                      <div class="modal-body">

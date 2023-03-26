@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">Ball Milling Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">Ball:Pending Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">Ball Milling:Pending Slots</h2>
     </div>
 
 
@@ -94,7 +94,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/BALL/<%=ball.id %>	</th>
-                    <td> <%= ball.user.firstname%><nobr><%= ball.user.lastname%> </td>
+                    <td> <%= ball.user.firstname%><nobr> <%= ball.user.lastname%></td>
                     <td> <%= ball.user.orgname%> </td>
                     <td> <%= ball.user.department%> </td>
                     <td> <%= ball.user.contact%> </td>
@@ -128,7 +128,7 @@
                            <div class="modal-dialog">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ball.user.name %></b></h1>
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ball.user.firstname %></b></h1>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                        <div class="modal-body">
