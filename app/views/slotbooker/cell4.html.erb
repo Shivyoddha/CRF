@@ -114,8 +114,8 @@
                       <td> <%= cell.more%> </td>
                       <td>Booked</td>
 
-                      <td>  <%= cell.slotdate%> </td>
-                     <td>   <%= cell.slottime%></td>
+                      <td><span style="white-space: nowrap;"><%= cell.slotdate.strftime('%d-%m-%Y')if cell.slotdate.present? %></td>
+                       <td><%= cell.slottime.strftime('%H:%M:%S') if cell.slottime.present? %></td>
 
                         <td><%= cell.status%></td>
                         <%if cell.references.attached? %>

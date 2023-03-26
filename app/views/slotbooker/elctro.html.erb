@@ -96,11 +96,8 @@
                         <td> <%= elctro.application%> </td>
                         <td> <%= elctro.more%> </td>
                         <td>Booked</td>
-
-                        <td> <%= elctro.slotdate %></td>
-
-                        <td> <%= elctro.slottime %></td>
-
+                        <td><span style="white-space: nowrap;"><%= elctro.slotdate.strftime('%d-%m-%Y')if elctro.slotdate.present? %></td>
+                        <td><%= elctro.slottime.strftime('%H:%M:%S') if elctro.slottime.present? %></td>
                           <td><%= elctro.status%></td>
                           <%if elctro.references.attached? %>
                         <%elctro.references.each do |file|%>

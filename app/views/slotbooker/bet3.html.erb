@@ -103,11 +103,8 @@
                     <td> <%= bet.disposal%></td>
                     <td> <%= bet.more%> </td>
                     <td>Booked</td>
-
-                    <td> <%= bet.slotdate %></td>
-
-                    <td> <%= bet.slottime %></td>
-
+                    <td><span style="white-space: nowrap;"><%= bet.slotdate.strftime('%d-%m-%Y')if bet.slotdate.present? %></td>
+                    <td><%= bet.slottime.strftime('%H:%M:%S') if bet.slottime.present? %></td>
                       <td><%= bet.status%></td>
                       <%if bet.references.attached? %>
                       <%bet.references.each do |file|%>

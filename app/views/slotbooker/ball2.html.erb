@@ -113,9 +113,8 @@
                     <td> <%= ball.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= ball.slotdate %></td>
-
-                    <td> <%= ball.slottime %></td>
+                    <td><span style="white-space: nowrap;"><%= ball.slotdate.strftime('%d-%m-%Y')if ball.slotdate.present? %></td>
+                        <td><%= ball.slottime.strftime('%H:%M:%S') if ball.slottime.present? %></td>
 
                       <td><%= ball.status%></td>
                       <%if ball.references.attached? %>

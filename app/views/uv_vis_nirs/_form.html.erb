@@ -8,7 +8,7 @@
 
 <div class="container">
     <div id="equipment-name">
-      <h1>UV-Vis-NIR Slot</h1>
+      <h1>UV-Vis-NIR </h1>
     </div>
     <div class='hero'>
       <%= form_with(model: uv_vis_nir) do |form| %>
@@ -44,7 +44,7 @@
 
       <div>
         <div>
-          <%= form.label :measurement, "Measurement Required", class:"input-group-text", for:"inputGroupSelect02" %>
+          <h6 class="fw-bold">Measurement Required</h6>
           <% options = ['Reflectance', 'Absorbance','Transmittance'] %>
           <% options.each do |option| %>
             <%= check_box_tag 'uv_vis_nir[measurement][]', option, @uv_vis_nir.measurement.include?(option) %>
@@ -60,7 +60,7 @@
 
 
         <div class="input-group mb-3">
-          <%= form.label :sampletype,"No of Samples", class:"input-group-text", for:"inputGroupSelect01" %>
+          <%= form.label :sampletype,"Sample Type", class:"input-group-text", for:"inputGroupSelect01" %>
           <%= form.select(:sampletype, ['Solid','Powder','Fabric/Polymer','Liquid Gel','Thin Film'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "u-type",:required => true}) %>
         </div>
 
@@ -68,10 +68,10 @@
         <div>
           <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Hazardous
             </div>
             <div class="form-check">
-                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true  %> Non-Hazardous
             </div>
         </div>
 

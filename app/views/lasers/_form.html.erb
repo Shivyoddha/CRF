@@ -59,10 +59,10 @@
       <div>
         <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
           <div class="form-check">
-              <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+              <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Toxic
           </div>
           <div class="form-check">
-                <%= form.radio_button :toxicity, 'non-toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+                <%= form.radio_button :toxicity, 'non-toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true %> Non-Toxic
           </div>
       </div>
     </div>
@@ -74,10 +74,10 @@
       <div>
         <%= form.label :compatibility, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
           <div class="form-check">
-              <%= form.radio_button :compatibility, 'Explosive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Explosive
+              <%= form.radio_button :compatibility, 'Explosive', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Explosive
           </div>
           <div class="form-check">
-                <%= form.radio_button :compatibility, 'Non-Explosive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Explosive
+                <%= form.radio_button :compatibility, 'Non-Explosive', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true  %> Non-Explosive
           </div>
     </div>
 
@@ -100,9 +100,10 @@
       <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
     </div>
 
-    <div class="actions">
-      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
-    </div>
+
+  </div>
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
   </div>
 </div>
 <%end%>

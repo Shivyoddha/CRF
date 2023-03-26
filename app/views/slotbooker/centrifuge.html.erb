@@ -103,9 +103,8 @@
                         <td> <%= centrifuge.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= centrifuge.slotdate %></td>
-
-                        <td> <%= centrifuge.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= centrifuge.slotdate.strftime('%d-%m-%Y')if centrifuge.slotdate.present? %></td>
+                       <td><%= centrifuge.slottime.strftime('%H:%M:%S') if centrifuge.slottime.present? %></td>
 
                           <td><%= centrifuge.status%></td>
                           <%if centrifuge.references.attached? %>

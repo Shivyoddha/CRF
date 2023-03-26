@@ -109,8 +109,8 @@
                     <td> <%= atomic.more%> </td>
                     <td>Booked</td>
                     <td> <%= atomic.slotdate%></td>
-                    <td> <%= atomic.slottime%></td>
-                    <td> <%= atomic.status %></td>
+                    <td><span style="white-space: nowrap;"><%= atomic.slotdate.strftime('%d-%m-%Y')if atomic.slotdate.present? %></td>
+                    <td><%= atomic.slottime.strftime('%H:%M:%S') if atomic.slottime.present? %></td>
                     <%if atomic.references.attached? %>
                     <%atomic.references.each do |file|%>
                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
