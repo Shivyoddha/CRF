@@ -1,7 +1,7 @@
-<p style="margin:0;padding:0">Dear <b>Vachan Kamath</b>,</p>
-<p style="margin:0;padding:0">Your Slot Date-Time for XRD Application No: <b>CRF/XRD/714.</b></p>
+<p style="margin:0;padding:0">Dear <b><%=@user.firstname%></b>,</p>
+<p style="margin:0;padding:0">Your Slot Date-Time for XRD Application No: <b>CRF/XRD/<%=@xrd.id%>.</b></p>
 <% if @xrd.status = "alloted" %>
-<p style="margin:0;padding:0">Has been assigned for Date :<b> 18-04-2023 </b>; Time : <b> 9:30 am </b></p>
+<p style="margin:0;padding:0">Has been assigned for Date :<b><%=@xrd.slotdate%> </b>; Time : <b> <%=@xrd.slottime%> </b></p>
 <%end%>
 <br>
 <p style="margin:0;padding:0">Cancellation/Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for experiment after booking slot, penalty of Rs. 100/- is charged per slot. </p>
