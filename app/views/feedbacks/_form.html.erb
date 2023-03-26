@@ -12,14 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, value:(current_user.firstname+" "+current_user.lastname), disabled:true %>
+  <%= form.hidden_field :username, value:(@user.firstname+" "+@user.lastname)%>
 
   </div>
 
   <div class="field">
-    <%= form.label :email%>
-    <%= form.text_field :email, value:current_user.email, disabled:true%>
+    <%= form.hidden_field :email, value:@user.email%>
   </div>
 
   <div class="field">

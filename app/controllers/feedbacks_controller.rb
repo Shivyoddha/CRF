@@ -12,6 +12,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/new
   def new
+    @user=User.find(params[:id])
     @feedback = Feedback.new
   end
 
@@ -25,7 +26,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to home_index_path, notice: "Feedback was successfully created." }
+        format.html { redirect_to new_user_session_path, notice: "Feedback was successfully created." }
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new, status: :unprocessable_entity }
