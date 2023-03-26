@@ -82,7 +82,7 @@
                       <th scope="col" id="slot-date">Slot Date</th>
                       <th scope="col">Slot Time</th>
                       <th scope="col">Reference Paper</th>
-                        <th scope="col" id="assign-col">Assign</th>
+                        <th scope="col" id="assign-col">Asssign</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +91,7 @@
                       <tr>
                         <th scope="row">CRF/FESMJ/<%=fesemjs.id %>	</th>
 
-                        <td> <%= fesemjs.user.name%> </td>
+                          <td> <%=fesemjs.user.firstname%><nobr><%=fesemjs.user.lastname%> </td>
                         <td> <%= fesemjs.user.orgname%> </td>
                         <td> <%=fesemjs.user.department%> </td>
                         <td> <%= fesemjs.user.contact%> </td>
@@ -105,8 +105,8 @@
                             <td> <%= fesemjs.conducting%></td>
                         <td> <%= fesemjs.more%> </td>
                         <td>Booked</td>
-                        <td><%= fesemjs.slotdate %></td>
-                        <td><%= fesemjs.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= fesemjs.slotdate.strftime('%d-%m-%Y')if fesemjs.slotdate.present? %></td>
+                        <td><%= fesemjs.slottime.strftime('%H:%M:%S') if fesemjs.slottime.present? %></td>
 
                         <td> <%= fesemjs.status %></td>
                         <%if fesemjs.references.attached? %>
@@ -130,15 +130,15 @@
               <div class="modal-body">
                 <%= form_with(model: fesemjs,local:true) do |form| %>
 
-                    <div class="input-group mb-3">
-                    <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                    <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                  </div>
-
-                  <div class="input-group mb-3">
-                  <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                <div class="input-group mb-3">
+                  <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                  <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
                 </div>
+
+                <div class="input-group mb-3">
+                <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+              </div>
 
                  <%=form.fields_for :equipment_table do |f| %>
                   <div class="input-group mb-3">

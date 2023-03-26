@@ -24,7 +24,7 @@ class MilliQMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "bangaloreameen@gmail.com",
+            to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",
@@ -50,7 +50,7 @@ class MilliQMailer < ApplicationMailer
 
       mail(
             from:"crfnitk@gmail.com" ,
-            to: "bangaloreameen@gmail.com",
+            to: "#{@user.email}",
             #cc: User.all.pluck(:email),
             #bcc: "ok@gmail",
             subject: "form submitted",

@@ -27,7 +27,7 @@
     <div class='hero'>
         <div class="input-group mb-3">
           <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
-          <%= form.select(:sample, ['One', 'Two','Three','Four','Five'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
+          <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
         </div>
 
         <div class="input-group mb-3">
@@ -78,7 +78,7 @@
               <p class="text-warning">Max. 3 sample for EDS - Mapping</p>
             </div>
         </div>
-        
+
 
           <div class="input-group mb-3">
               <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"toxic" %>

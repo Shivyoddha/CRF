@@ -75,11 +75,9 @@
                         <th scope="col">Measurement</th>
                         <th scope="col">EDS/EDAX Required</th>
                         <th scope="col">EDS/EDAX Method</th>
-
                         <th scope="col">Sample is Toxic</th>
                         <th scope="col">Sample is Conducting</th>
                         <th scope="col">More Information</th>
-                        <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col">Slot Time</th>
                         <th scope="col">Status</th>
@@ -92,7 +90,7 @@
                         <tr>
                           <th scope="row">CRF/fesemc/<%=fesemc.id %>	</th>
 
-                          <td> <%=fesemc.user.name%> </td>
+                          <td> <%=fesemc.user.firstname%><nobr><%=fesemc.user.lastname%> </td>
                           <td> <%=fesemc.user.orgname%> </td>
                           <td> <%=fesemc.user.department%> </td>
                           <td> <%=fesemc.user.contact%> </td>
@@ -106,10 +104,8 @@
                           <td> <%= fesemc.conducting%> </td>
                           <td> <%= fesemc.toxic%> </td>
                           <td> <%= fesemc.more%> </td>
-                          <td>Booked</td>
-                          <td> <%= fesemc.slotdate %></td>
-
-                          <td> <%= fesemc.slottime %></td>
+                          <td><span style="white-space: nowrap;"><%= fesemc.slotdate.strftime('%d-%m-%Y')if fesemc.slotdate.present? %></td>
+                          <td><%= fesemc.slottime.strftime('%H:%M:%S') if fesemc.slottime.present? %></td>
                         <td> <%= fesemc.status %></td>
                         <%if fesemc.references.attached? %>
                         <%fesemc.references.each do |file|%>
