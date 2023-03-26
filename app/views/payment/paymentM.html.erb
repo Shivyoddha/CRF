@@ -56,6 +56,9 @@
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
+                <li class="nav-item">
+                    <%= link_to 'Performa Generated',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
+                </li>
             </ul>
         </div>
     </div>
@@ -68,64 +71,63 @@
         </div>
 
         <div id="wrap">
+          <%= form_with(model: @equipment,local:true) do |form| %>
             <div class="mb-3">
                 <div class="input-group">
-                  <label class="input-group-text" for="user-name">Application No.</label>
-                  <input type="text" class="form-control" id="user-name" aria-describedby="basic-addon3">
+                  <%= form.label :app_no, "Apllication No.", class:"input-group-text", id:"app"%>
+                  <%= form.text_field :app_no, class:"form-control", id:"app"%>
                 </div>
             </div>
 
+              <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
             <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Equipment</label>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                </select>
+              <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+              <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
             </div>
 
             <div class="input-group mb-3">
-                <label class="input-group-text" for="user-name">User Name</label>
-                <input type="text" class="form-control" id="user-name" aria-describedby="basic-addon3">
+              <%= form.label :username, "User Name", class:"input-group-text", id:"user_name"%>
+              <%= form.text_field :username, class:"form-control", id:"user_name"%>
             </div>
 
             <div class="input-group mb-3">
-                <label class="input-group-text" id="reg-id-label" for="reg-id">Reg ID</label>
-                <input type="text" class="form-control" id="reg-id" aria-describedby="basic-addon3" placeholder="Optional">
+              <%= form.label :reg_no, "Reg ID", class:"input-group-text", id:"user_name"%>
+              <%= form.text_field :reg_no, class:"form-control", id:"user_name",placeholder:"Optional"%>
             </div>
 
             <div class="input-group mb-3">
-                <label class="input-group-text" for="department">Department</label>
-                <select class="form-select" id="department">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                </select>
+              <%= form.label :dept ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
+               <%= form.select(:dept, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
             </div>
 
             <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="guide">Guide</label>
-                <input type="text" class="form-control" id="guide" aria-describedby="basic-addon3" placeholder="Optional">
+              <%= form.label :guide, "Guide", class:"input-group-text", id:"guide"%>
+              <%= form.text_field :guide, class:"form-control", id:"guide",placeholder:"Optional"%>
             </div>
 
 
             <div class="input-group mb-3">
-                <label class="input-group-text" for="position">Course/Position</label>
-                <select class="form-select" id="position">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                </select>
+              <%= form.label :course ,"Course" ,for:"course", class:"input-group-text "%>
+              <%= form.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "course"}) %>
             </div>
 
             <div class="mb-3">
                 <div class="input-group mb-3">
-                    <label class="input-group-text" id="amount-lanbel" for="amount">Amount</label>
-                    <label class="input-group-text" for="amount">₹</label>
-                    <input type="text" class="form-control" id="amount" aria-describedby="basic-addon3">
+                  <%= form.label :pay, "Amount", class:"input-group-text", id:"amount"%>
+                  <%= form.label :pay, "User Name", class:"input-group-text", id:"amount"%>
+                    <%= form.text_field :pay, class:"form-control", id:"amount"%>
                 </div>
             </div>
 
-            <div class="actions">
-                <button type="submit" class="btn btn-success" id="sbt">Submit</button>
-            </div>
+            <div class="input-group mb-3">
+            <%= form.hidden_field :dummy, value: 'done' %>
+          </div>
+
+              <div class="actions">
+                <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
+
+              </div>
+            <%end%>
 
         </div>
 

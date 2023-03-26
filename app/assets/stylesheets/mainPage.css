@@ -720,6 +720,7 @@ a:hover {
   align-items: center;
   width: 50%;
   justify-content: center;
+  padding: 1em;
 }
 .btn-youtube {
     background-color: #ff0000ba !important;

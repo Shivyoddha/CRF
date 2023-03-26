@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_22_152422) do
+ActiveRecord::Schema.define(version: 2023_03_25_190522) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -238,12 +238,17 @@ ActiveRecord::Schema.define(version: 2023_03_22_152422) do
     t.integer "ultra_centrifuge_id"
     t.integer "uv_vis_nir_id"
     t.integer "zeta_potential_size_id"
+    t.integer "equiplist_id"
+    t.string "reg_no"
+    t.string "guide"
+    t.string "course"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
     t.index ["bet_id"], name: "index_equipment_tables_on_bet_id"
     t.index ["cell_imaging_id"], name: "index_equipment_tables_on_cell_imaging_id"
     t.index ["electro_chemical_id"], name: "index_equipment_tables_on_electro_chemical_id"
+    t.index ["equiplist_id"], name: "index_equipment_tables_on_equiplist_id"
     t.index ["five_axi_id"], name: "index_equipment_tables_on_five_axi_id"
     t.index ["friction_id"], name: "index_equipment_tables_on_friction_id"
     t.index ["gait_id"], name: "index_equipment_tables_on_gait_id"
@@ -1100,6 +1105,7 @@ ActiveRecord::Schema.define(version: 2023_03_22_152422) do
   add_foreign_key "equipment_tables", "bets"
   add_foreign_key "equipment_tables", "cell_imagings"
   add_foreign_key "equipment_tables", "electro_chemicals"
+  add_foreign_key "equipment_tables", "equiplists"
   add_foreign_key "equipment_tables", "five_axis"
   add_foreign_key "equipment_tables", "frictions"
   add_foreign_key "equipment_tables", "gaits"
