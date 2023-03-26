@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -89,7 +89,7 @@
                   <tr>
                     <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
-                    <td> <%= xrds.user.firstname%><nobr><%= xrds.user.lastname%></td>
+                    <td> <%= xrds.user.firstname%><nobr> <%= xrds.user.lastname%></td>
                     <td> <%= xrds.user.orgname%> </td>
                     <td> <%= xrds.user.department%> </td>
                     <td> <%= xrds.user.contact%> </td>
@@ -117,7 +117,7 @@
                            <div class="modal-dialog">
                                <div class="modal-content">
                                    <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.name %></b></h1>
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.firstname %></b></h1>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
                                    <div class="modal-body">
@@ -174,7 +174,7 @@
                                <div class="modal-dialog">
                                      <div class="modal-content">
                                          <div class="modal-header">
-                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= xrds.user.name %></b></h1>
+                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= xrds.user.firstname %></b></h1>
                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                          <div class="modal-body">

@@ -1,4 +1,9 @@
 <%= stylesheet_link_tag "gallery" %>
+<%= stylesheet_link_tag "mainPage" %>
+
+<%= stylesheet_link_tag "loginFeatures" %>
+
+<%=render "partials/loginHeading"%>
 
 
 <div class="container">
@@ -10,22 +15,22 @@
 
               <%= image_tag 'mainGallery/gallery/2.jpg' ,class:"w-100 shadow-1-strong rounded mb-4" %>
 
-        
-             
+
+
               <%= image_tag 'mainGallery/gallery/3.jpg' ,class:"w-100 shadow-1-strong rounded mb-4" %>
             </div>
-        
+
             <div class="col-lg-4 mb-4 mb-lg-0">
                <%= image_tag 'mainGallery/gallery/AMCT_22.jpg' ,class:"w-100 shadow-1-strong rounded mb-4" %>
 
               <%= image_tag 'mainGallery/gallery/Ayudha Puja.jpg' ,class:"w-100 shadow-1-strong rounded mb-4" %>
             </div>
-        
+
             <div class="col-lg-4  mb-4 mb-lg-0">
               <%= image_tag 'mainGallery/gallery/Chairman Presentation.jpg' ,class:"w-100 shadow-1-strong rounded mb-4" %>
-    
+
               <%= image_tag 'mainGallery/gallery/CRF Brochure Launch.png' ,class:"w-100 shadow-1-strong rounded mb-4" %>
-              
+
             </div>
             <div class="col-lg-4  mb-4 mb-lg-0">
                 <%= image_tag 'mainGallery/gallery/CRF Brochure Launch.png' ,class:"w-100 shadow-1-strong rounded mb-4" %>
@@ -37,6 +42,9 @@
               </div>
 
           </div>
-        
+
         </div>
 
+        <!-- footer sections -->
+
+        <%=render "partials/mainpage_footer" %>
