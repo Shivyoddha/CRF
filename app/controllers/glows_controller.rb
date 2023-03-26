@@ -37,7 +37,7 @@ class GlowsController < ApplicationController
         else
           GlowMailer.with(id:@glow.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to glow_url(@glow), notice: "Glow was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Glow was successfully created." }
         format.json { render :show, status: :created, location: @glow }
       else
         format.html { render :new, status: :unprocessable_entity }
