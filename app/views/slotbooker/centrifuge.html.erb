@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">Ultra-Centrifuge Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -89,7 +89,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
-                        <td> <%= centrifuge.user.name%> </td>
+                        <td> <%= centrifuge.user.firstname%><nobr> <%= centrifuge.user.firstname%></td>
                         <td> <%= centrifuge.user.orgname%> </td>
                         <td> <%= centrifuge.user.department%> </td>
                         <td> <%= centrifuge.user.contact%> </td>

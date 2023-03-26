@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">Atomic Force Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">All Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">Atomic Force Microscope:Alloted Slots</h2>
     </div>
 
 
@@ -84,6 +84,8 @@
                     <th scope="col" id="slot-time">Slot Time</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="reference-paper">Reference Paper</th>
+                    <th scope="col" id="reassign-col">Reassign</th>
+                    <th scope="col" id="cancel-col">Cancel Slot</th>
                 </tr>
             </thead>
             <tbody>
@@ -92,7 +94,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/ATOMIC/<%=atomic.id %>	</th>
-                    <td> <%= atomic.user.name%> </td>
+                    <td> <%= atomic.user.firstname%><nobr> <%= atomic.user.lastname%></td>
                     <td> <%= atomic.user.orgname%> </td>
                     <td> <%= atomic.user.department%> </td>
                     <td> <%= atomic.user.contact%> </td>
@@ -126,7 +128,7 @@
                      <div class="modal-dialog">
                          <div class="modal-content">
                              <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= atomic.user.name %></b></h1>
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= atomic.user.firstname %></b></h1>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                              </div>
                              <div class="modal-body">
@@ -187,7 +189,7 @@
                          <div class="modal-dialog">
                                <div class="modal-content">
                                    <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= atomic.user.name %></b></h1>
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to<b><%= atomic.user.firstname %></b></h1>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
                                    <div class="modal-body">

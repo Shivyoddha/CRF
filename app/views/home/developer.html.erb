@@ -6,21 +6,32 @@
 
  
   <div class="section1">
+  
     <div class="wrapper1">
-      <div class="nav">
-        <ul class="navbar">
-          <li><a href="https://github.com/Shivyoddha">Github</a></li>
-          <li><a href="https://www.linkedin.com/in/anish-kumbhar-465980223/">LinkedIn</a></li>
-          <li><a href="mailto:anishkumbhar.211cs229@nitk.edu.in">Contact</a></li>
-        </ul>
+    
+      <div class="text">
+        <div class="nav">
+          <ul class="navbar">
+            <li><a href="https://github.com/Shivyoddha">Github</a></li>
+            <li><a href="https://www.linkedin.com/in/anish-kumbhar-465980223/">LinkedIn</a></li>
+            <li><a href="mailto:anishkumbhar.211cs229@nitk.edu.in">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="header header_home">Anish Kumbhar</div>
+          <div class="content content_home">
+            <div>Full Stack Developer </div>
+            <div>Project Lead</div>
+          </div>
+        </div>
       </div>
-      <div class="header header_home">Anish Kumbhar</div>
-      <div class="content content_home">Full Stack Developer<br>Project Lead
-      </div>
+
       <div class="image"  id="im1">
         <%=image_tag 'anish2.jpg' , class:"equipment-img-tag d block w-100 card-img", alt:"..."%>
       </div>
+
     </div>
+
   </div>
 
  
@@ -142,7 +153,11 @@
 
 <%=render "partials/footer" %>
 
-</div>
+
+
+
+
+
 <script>
       const observer=new IntersectionObserver((entries)=>{
           entries.forEach((entry)=>{
