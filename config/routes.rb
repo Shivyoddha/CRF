@@ -80,6 +80,7 @@ Rails.application.routes.draw do
     get 'mainpage/about_us'
     get 'mainpage/gallery'
     get 'mainpage/facility'
+    get 'mainpage/announcement_admin'
 
     get 'mainpage/micromachining'
     get 'mainpage/xrd'
