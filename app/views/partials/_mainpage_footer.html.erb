@@ -16,7 +16,7 @@
     <div class="footer-middle">
   <h5 class="fw-bold">Quick Links</h5>
   <p><a href="#">Brochure</a></p>
-  <%=link_to 'Instrument List',mainpage_instrument_list_path,class:"btn btn-light ms-2"%>
+  <%=link_to 'Instrument List',mainpage_instrument_list_path%>
     </div>
     <div class="footer-right">
   <h5 class="fw-bold">General Links</h5>
@@ -33,6 +33,6 @@
     </div>
 </div>
 <hr>
-<p class="text-center">Copyright All Rights Reserved 2023. CRF Web Team</p>
+<p class="text-center">Copyright All Rights Reserved 2023. <%= link_to 'CRF Web Team', home_developer_path, id:"button" %></p>
 
 </footer>
