@@ -59,7 +59,7 @@
                     <span>Start Range:<span><span class="fw-bold data"><%=@uv_vis_nir.srange%><span>
                 </div>
                 <div class="element">
-                    <span>Measurement required:<span><span class="fw-bold data">Transmittance:<%=@uv_vis_nir.transmittance%>, Absorbance:<%=@uv_vis_nir.absorbance%>, Reflectance:<%=@uv_vis_nir.reflectance%><span>
+                    <span>Measurement required:<span><span class="fw-bold data"><%= Array(@uv_vis_nir.measurement).join(", ") %><span>
                 </div>
 
 

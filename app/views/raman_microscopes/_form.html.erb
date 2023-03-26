@@ -31,7 +31,7 @@
         </div>
         <div class="input-group mb-3">
           <%= form.label :measurement, "Measurement",class:"input-group-text",for:"measurement"%>
-          <%= form.select(:measurement, ['raman','photoluminescence','both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement"}) %>
+          <%= form.select(:measurement, ['Raman','Photoluminescence','Both'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement"}) %>
        </div>
        <div class="input-group mb-3 vis" id="raman-select">
          <%= form.label :laser, "Laser to be used",class:"input-group-text", for:"laser-to-use"%>
@@ -64,21 +64,21 @@
         <div>
           <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Hazardous
             </div>
             <div class="form-check">
-                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
+                  <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true %> Non-Hazardous
             </div>
         </div>
 
 
         <div>
-          <%= form.label :Compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <%= form.label :Compatability, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :Compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Corrossive
+                <%= form.radio_button :Compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Corrossive
             </div>
             <div class="form-check">
-                  <%= form.radio_button :Compatability, 'non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %>Non-Corrossive
+                  <%= form.radio_button :Compatability, 'Non-Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true %>Non-Corrossive
             </div>
         </div>
 

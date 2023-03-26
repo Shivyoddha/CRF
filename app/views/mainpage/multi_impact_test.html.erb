@@ -1,0 +1,285 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Multi-purpose Impact testing Machine with SHPB</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="raman-images" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <%=image_tag 'shpb-images/SHPB_full.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                    <div class="carousel-item active">
+                        <%=image_tag 'shpb-images/MPIT_2.png' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                    </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#raman-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#raman-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Artis Technologies & Services, Bangalore]</span>
+            </div>
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Mechanical Workshop</span>
+            </div>
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features:</u></h4>
+                <p class="fw-bold">Drop Weight Testing System</p>
+                  <ul>
+                    <li>Automated Operation</li>
+                    <li> Range of height (0-1.5 meters free fall + spring based)</li>
+                    <li> High data throughput</li>
+                    <li>Robust sensor suite</li>
+                    <li>Data analysis (Force/Deformation (uniaxial)</li>
+                    <li>Variable geometry indentation (hemispherical, conical, flat etc.)</li>
+                    <li>High accuracy velocity measurement</li>
+                    <li>High Accuracy Force and Displacement measurement</li>
+                    <li>Oblique impact facility with 10 degree accuracy</li>
+                  </ul>
+                    <p class="fw-bold"><u>Bullet Impact System<</u>/p>
+                        <ul>
+                          <li>Automated Operation</li>
+                          <li>Range of firing velocities (200 - 1500+ m/s)</li>
+                          <li>High data throughput</li>
+                          <li>Robust sensor suite</li>
+                          <li>Variable size projectile fit (adjustable based on sleeve for 5.5 mm, 6.5 mm and 7.62 mm bullets)</li>
+                          <li>High accuracy velocity measurement</li>
+                          <li>High resolution, high frame rate video capture through Chronos 1.4 High Speed</li>
+                          <li>Camera accessory</li>
+                        </ul>
+                    <p class="fw-bold"><u>SHPB System</u></p>
+                    <ul>
+                      <li>Automated Operation</li>
+                      <li>High data sampling rate (upto 125Msps) and 15 bit resolution</li>
+                      <li>Robust signal amplification with gain control and dynamic response with high band width 500Mhz</li>
+                      <li>Robust sensor suite</li>
+                      <li>Proprietary design Momentum Trap for preventing multiple reflections.</li>
+                      <li>Data analysis (Strain, Strain Rate and Stress)</li>
+                      <li>Provision for variation of striker bar length up to 800 mm (150 mm provided)</li>
+                      <li>High precision Pico-scope based data acquisition and software based filtering.</li>
+                      <li>High Strain rate achievable (depending on material) of order of 10<sup>4</sup></li>
+                    </ul>
+                    <p class="fw-bold"><u>Bird Strike System</u></p>
+                        <ul>
+                          <li>Automated Operation</li>
+                          <li>Range of firing velocities (0 - 50+ m/s)</li>
+                          <li>High data throughput</li>
+                          <li>Robust sensor suite</li>
+                          <li>Variable size projectile fit (adjustable based on sleeve)</li>
+                          <li>High accuracy velocity measurement</li>
+                          <li>High resolution, high frame rate video capture through Chronos 1.4 High Speed</li>
+                          <li>Camera accessory</li>
+                        </ul>
+            </div>
+            <div class="mb-3">
+              <span class="fw-bold"><u>a) Drop Weight Impact Testing at Ambient Temperature</u> :</span>
+                  <p class="fw-bold">Sample details: 150 X 150 X 20 (max) mm</p>
+                  <p class="fw-bold">  Input details required</p>
+                  <ul>
+                    <li>Required Payload mass is added to the Tupper mass max upto 18.09 kg(net).</li>
+                    <li>Mount the required indenter TUP to be tested.</li>
+                    <li>Based on the programmed height of drop (0-1500 mm) and spring compression required (0-100 mm) the main motor and spring motor operate to reach target height.</li>
+                    <li>In order to achieve drops from heights that are beyond 1.5 mm (gravity fall) we have the option of spring loading.</li>
+                    <li>As the mass drops on to the target specimen we can have different types of impact depending on the nature of the material (elastic, plastic or brittle). For example, in an elastic material we may have multiple rebound impacts. These rebounds will progressively decay and damp out to zero.</li>
+                    <li>In order to ensure that we have only one impact and no rebound (when necessitated) there is a provision of a rebound actuator that when enabled will capture the drop system to prevent further rebounds after one hit.</li>
+                    <li>Parameters measured in the DWT include velocity of impact, impact force and deformation of specimen (displacement based).</li>
+                    <li> All the parameters are directly observable as time series in the DWT software.</li>
+                    <li>The DWT system is designed to accelerate a mass of 18.09 kgs upto 20 m/s or equivalently achieve a impact energy if approximately 1700 Joules (maximum)</li>
+                  </ul>
+                  <p class="fw-bold">Output Results</p>
+                  <ul>
+                      <li>Maximum contact force</li>
+                      <li> Force vs. Time graph</li>
+                      <li> Force vs. deformation graph</li>
+                      <li>Stress vs. Strain graph</li>
+                      <li>Damage area</li>
+                      <li>Total Energy Absorption Value, Graphs, High resolution Pictures</li>
+                  </ul>
+            </div>
+
+
+            <div class="mb-3">
+              <span class="fw-bold"><u>b) Drop Weight Impact Testing with Temperature Chamber (30°C - 150°C)</u> :</span>
+                  <p class="fw-bold">Sample details: 150 X 150 X 20 (max) mm</p>
+                  <p class="fw-bold">  Input details required</p>
+                  <ul>
+                    <li>Required Payload mass is added to the Tupper mass max upto 18.09 kg(net).</li>
+                    <li>Mount the required indenter TUP to be tested.</li>
+                    <li>Based on the programmed height of drop (0-1500 mm) and spring compression required (0-100 mm) the main motor and spring motor operate to reach target height.</li>
+                    <li>In order to achieve drops from heights that are beyond 1.5 mm (gravity fall) we have the option of spring loading.</li>
+                    <li>As the mass drops on to the target specimen we can have different types of impact depending on the nature of the material (elastic, plastic or brittle). For example, in an elastic material we may have multiple rebound impacts. These rebounds will progressively decay and damp out to zero.</li>
+                    <li>In order to ensure that we have only one impact and no rebound (when necessitated) there is a provision of a rebound actuator that when enabled will capture the drop system to prevent further rebounds after one hit.</li>
+                    <li>Parameters measured in the DWT include velocity of impact, impact force and deformation of specimen (displacement based).</li>
+                    <li> All the parameters are directly observable as time series in the DWT software.</li>
+                    <li>The DWT system is designed to accelerate a mass of 18.09 kgs upto 20 m/s or equivalently achieve a impact energy if approximately 1700 Joules (maximum)</li>
+                  </ul>
+                  <p class="fw-bold">Output Results</p>
+                  <ul>
+                      <li>Maximum contact force</li>
+                      <li> Force vs. Time graph</li>
+                      <li> Force vs. deformation graph</li>
+                      <li>Stress vs. Strain graph</li>
+                      <li>Damage area</li>
+                      <li>Total Energy Absorption Value, Graphs, High resolution Pictures</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+              <span class="fw-bold"><u>c) Impact Testing with SHPB</u> :</span>
+                  <p class="fw-bold">Sample details: Solid cylinder with flat and parallel faces; Diameter should be 10 mm (less than 12.0mm acceptable). The thickness of the specimen is 5mm.</p>
+                  <p class="fw-bold">  Input details required</p>
+                  <ul>
+                    <li>The data acquisition system is highly responsive and can handle data rates from 15.6 MS per sec to 125 MS per sec at 8,12,14 and 16 bit resolution for each individual channel</li>
+                    <li>The GAS Gun striker bar firing system is designed for a wide pressure range from 2 bars to 4.3 bars of air pressure.</li>
+                    <li>The system is designed for three types of striker bar materials(Carbon steel, Maraging Steel and Aluminium) with sizes ranging from 200 mm to 800 mm.</li>
+                    <li>Velocity capture in the system is highly precise with a fiber optic amplifier based measurement system with a response speed range from 10 μs to 2000 μs.</li>.
+                    <li>Data acquisition, analysis and reporting is automated using the LAB VIEW framework.</li>
+                  </ul>
+                  <p class="fw-bold">Output Results</p>
+                  <ul>
+                      <li>Strain Rate, Stress vs. Strain, Time vs. Stress, and Time vs. Strain Graphs.</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+              <span class="fw-bold"><u>d)  Impact Testing with SHPB Temperature Chamber (30°C - 700°C)</u> :</span>
+                  <p class="fw-bold">Sample details: Solid cylinder with flat and parallel faces; Diameter should be 10 mm (less than 12.0mm acceptable). The thickness of the specimen is 5mm.</p>
+                  <p class="fw-bold">  Input details required</p>
+                  <ul>
+                    <li>There is provision to experiment at a wide range of temperatures from room temperature to 800°C.</li>
+                    <li> Acquisition system is highly responsive and can handle data rates from 15.6 MS per sec to 125 MS per sec at 8,12,14 and 16 bit resolution for each individual channel.</li>
+                    <li>The GAS Gun striker bar firing system is designed for a wide pressure range from 2 bars to 4.3 bars of air pressure.</li>
+                    <li>The system is designed for three types of striker bar materials(Carbon steel, Maraging Steel and Aluminium) with sizes ranging from 200 mm to 800 mm.</li>
+                    <li>Velocity capture in the system is highly precise with a fiber optic amplifier based measurement system with a response speed range from 10 μs to 2000 μs.</li>
+                    <li>Data acquisition, analysis and reporting is automated using the LAB VIEW framework.</li>
+                  </ul>
+                  <p class="fw-bold">Output Results</p>
+                  <ul>
+                      <li>Strain Rate, Stress vs. Strain, Time vs. Stress, and Time vs. Strain Graphs.</li>
+                  </ul>
+            </div>
+
+            <div class="mb-3">
+              <span class="fw-bold"><u>e)  High velocity Impact Testing with Bird/bullet strike</u> :</span>
+                  <p class="fw-bold"> Sample details: 450 x 450 x 100 (max) mm</p>
+                  <p class="fw-bold">  Input details required</p>
+                  <ul>
+                    <li>Gas gun design is similar to SHPB gas gun design with only varying element is front chamber with 70-litre volume.</li>
+                    <li>Strain Rate, Stress vs. Strain, Time vs. Stress, and Time vs. Strain Graphs.</li>
+                    <li>The maximum size bullet that can be tested in the barrel is 25mm in diameter.</li>
+                    <li>The test rig also consists of Bird strike attachment wherein a bird or dummy of mass 500 grams can be fired upto a velocity of 50m/sec. The bird/dummy has be mounted on to a canister and inserted into the barrel and fired.</li>
+                  </ul>
+                  <p class="fw-bold">Output Results</p>
+                  <ul>
+                    <li> Total Energy Absorption Value, Graphs, High resolution Pictures.</li>
+                  </ul>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="regular-charges">
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th>S.No</th>
+                  <th>Details</th>
+                  <th style="color:#0094BB">NITK*</th>
+                  <th style="color:#0094BB">External-Academic Institute*<sup>#</sup></th>
+                  <th style="color:#0094BB">Industry/ R&amp;D Institute*<sup>#</sup> </th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+                       <th>1)</th>
+                  <th> Drop Weight Impact Testing at Ambient Temperature: </th>
+                  <th> Rs. 800/- </th>
+                  <th style="text-align: center;"> Rs. 1000/- </th>
+                  <th> Rs. 1200/- </th>
+                </tr>
+
+                <tr>
+                  <th>2)</th>
+                  <th> Drop Weight Impact Testing with Temperature Chamber <span style=" color:orange">[30°C - 150°C]: </span></th>
+                  <th> Rs. 1000/- </th>
+                  <th style="text-align: center;"> Rs. 1250/- </th>
+                  <th> Rs. 1500/- </th>
+                </tr>
+
+                <tr>
+                  <th>3)</th>
+                  <th> Impact Testing with SHPB:  </th>
+                  <th> Rs. 1000/- </th>
+                  <th style="text-align: center;"> Rs. 1250/- </th>
+                  <th> Rs. 1500/- </th>
+                </tr>
+
+                 <tr>
+                  <th>4)</th>
+                  <th> Impact Testing with SHPB Temperature Chamber <span style=" color:orange">[30°C - 700°C]:</span> </th>
+                  <th> Rs. 1500/- </th>
+                  <th style="text-align: center;"> Rs. 1875/- </th>
+                  <th> Rs. 2250/- </th>
+                </tr>
+
+                <tr>
+                  <th>5)</th>
+                  <th> High velocity Impact Testing with Bird/bullet strike:   </th>
+                  <th> Rs. 1500/- </th>
+                  <th style="text-align: center;"> Rs. 1875/- </th>
+                  <th> Rs. 2250/- </th>
+                </tr>
+
+
+
+
+
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger">
+            <p>*Sample preparation charges extra.</p>
+            <p>18% GST extra</p>
+            <p>The above charges are for providing raw data.</p>
+            <br>
+            <h5>Note: The Fund which is payed cannot be reimbursed in any circumstances</h5>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Vikram Suvarna (Technical Staff, CRF ),  Email:<span class="text-info">crf_shpb@nitk.edu.in</span></h5>
+            <h5>Dr. Sharnappa J (Multi-purpose Impact machine, Faculty in-charge), Email:<span class="text-info"> sharnappaj@nitk.edu.in</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>

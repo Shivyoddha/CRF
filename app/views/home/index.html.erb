@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "dashboard"%>
+
 <%=render "partials/loginHeading"%>
+
+
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <div id="search-div">
@@ -26,6 +29,9 @@
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Media Team's Announce", announcements_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Fill a feedback", new_feedback_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "View feedbacks as admin", feedbacks_path(id:current_user.id),class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
               <% link_to "Download", home_index_path(format: :pdf)%>
 
@@ -73,6 +79,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">XRD</h5>
+                    <% @equip1=Equiplist.find(1)%>
+                    <% if @equip1.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip1.status%></span>
+
+                    <% elsif @equip1.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip1.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip1.status%></span>
+                    <% end %>
 
 
                     <!--for time being active state is set -->
@@ -94,7 +110,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -143,12 +159,18 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">HR-FESEM [Carl Zeiss]</h5>
+                  <% @equip2=Equiplist.find(2)%>
+                  <% if @equip2.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip2.status%></span>
+
+                  <% elsif @equip2.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip2.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip2.status%></span>
+                  <% end %>
                    <!--for time being active state is set -->
 
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -163,7 +185,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -209,6 +231,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-FESEM [Jeol]</h5>
+                    <% @equip3=Equiplist.find(3)%>
+                    <% if @equip3.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip3.status%></span>
+
+                    <% elsif @equip3.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip3.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip3.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -217,7 +249,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_hr_fesem_jeol_path ,class:"btn btn-primary know-more"%>
@@ -228,7 +260,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -278,6 +310,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3-D Non Contact Profilometer</h5>
+                    <% @equip4=Equiplist.find(4)%>
+                    <% if @equip4.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip4.status%></span>
+
+                    <% elsif @equip4.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip4.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip4.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -286,7 +328,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_three_path ,class:"btn btn-primary know-more"%>
@@ -297,7 +339,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -338,6 +380,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Raman Spectrometer with PL</h5>
+                  <% @equip5=Equiplist.find(5)%>
+                  <% if @equip5.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip5.status%></span>
+
+                  <% elsif @equip5.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip5.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip5.status%></span>
+                  <% end %>
 
                   <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                 status-active is for avtive state
@@ -346,7 +398,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F01</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_raman_path ,class:"btn btn-primary know-more"%>
@@ -357,7 +409,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -404,6 +456,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">TGA-FTIR</h5>
+                  <% @equip6=Equiplist.find(6)%>
+                  <% if @equip6.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip6.status%></span>
+
+                  <% elsif @equip6.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip6.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip6.status%></span>
+                  <% end %>
 
                   <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                 status-active is for avtive state
@@ -412,7 +474,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F04</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_tga_path ,class:"btn btn-primary know-more"%>
@@ -423,7 +485,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -463,15 +525,20 @@
              <div class="card-body">
                  <div id="more">
                      <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
+                     <% @equip7=Equiplist.find(7)%>
+                     <% if @equip7.status == "Active"%>
+                     <span class="badge rounded-pill status-active"><%=@equip7.status%></span>
 
-                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                   status-active is for avtive state
-                                                   status-undermaintainance is for maintainance state
-                                                   status-unavailable for unavailable state -->
+                     <% elsif @equip7.status == "Under Maintenance"%>
+                     <span class="badge rounded-pill status-undermaintainance"><%=@equip7.status%></span>
+
+                     <% else %>
+                     <span class="badge rounded-pill status-unavailable"><%=@equip7.status%></span>
+                     <% end %>
                  </div>
 
                  <span class="fw-bold">Located At</span>
-                 <p class="card-text text-muted"> CRF Annexe - G01</p>
+                 <p class="card-text text-muted"> CRF Annexe - F04</p>
 
                  <div class="wrap-action">
                      <%= link_to "Know More", know_bet_path ,class:"btn btn-primary know-more"%>
@@ -482,7 +549,7 @@
 
                          <ul class="dropdown-menu">
                                <li> <%= link_to "Regular Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                               <li> <%= link_to "Express Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                               <li> <%= link_to "Express Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item disabled" %> </li>
                          </ul>
                      </div>
                  </div>
@@ -522,6 +589,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-LCMS</h5>
+                    <% @equip8=Equiplist.find(8)%>
+                    <% if @equip8.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip8.status%></span>
+
+                    <% elsif @equip8.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip8.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip8.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -541,7 +618,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -579,6 +655,16 @@
            <div class="card-body">
                <div id="more">
                    <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
+                   <% @equip9=Equiplist.find(9)%>
+                   <% if @equip9.status == "Active"%>
+                   <span class="badge rounded-pill status-active"><%=@equip9.status%></span>
+
+                   <% elsif @equip9.status == "Under Maintenance"%>
+                   <span class="badge rounded-pill status-undermaintainance"><%=@equip9.status%></span>
+
+                   <% else %>
+                   <span class="badge rounded-pill status-unavailable"><%=@equip9.status%></span>
+                   <% end %>
 
                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                  status-active is for avtive state
@@ -587,7 +673,7 @@
                </div>
 
                <span class="fw-bold">Located At</span>
-               <p class="card-text text-muted"> CRF Annexe - G01</p>
+               <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                <div class="wrap-action">
                    <%= link_to "Know More", know_uv_vis_path ,class:"btn btn-primary know-more"%>
@@ -598,7 +684,6 @@
 
                        <ul class="dropdown-menu">
                              <li> <%= link_to "Regular Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                             <li> <%= link_to "Express Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                        </ul>
                    </div>
                </div>
@@ -635,11 +720,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Laser Flash Analyser</h5>
+                  <% @equip10=Equiplist.find(10)%>
+                  <% if @equip10.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip10.status%></span>
 
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
+                  <% elsif @equip10.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip10.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip10.status%></span>
+                  <% end %>
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -654,7 +744,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -693,15 +782,20 @@
                <div class="card-body">
                    <div id="more">
                        <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
+                       <% @equip11=Equiplist.find(11)%>
+                       <% if @equip11.status == "Active"%>
+                       <span class="badge rounded-pill status-active"><%=@equip11.status%></span>
 
-                       <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                     status-active is for avtive state
-                                                     status-undermaintainance is for maintainance state
-                                                     status-unavailable for unavailable state -->
+                       <% elsif @equip11.status == "Under Maintenance"%>
+                       <span class="badge rounded-pill status-undermaintainance"><%=@equip11.status%></span>
+
+                       <% else %>
+                       <span class="badge rounded-pill status-unavailable"><%=@equip11.status%></span>
+                       <% end %>
                    </div>
 
                    <span class="fw-bold">Located At</span>
-                   <p class="card-text text-muted"> CRF Annexe - G01</p>
+                   <p class="card-text text-muted"> CRF Annexe - S01</p>
 
                    <div class="wrap-action">
                        <%= link_to "Know More", know_cell_imaging_path ,class:"btn btn-primary know-more"%>
@@ -712,7 +806,6 @@
 
                            <ul class="dropdown-menu">
                                  <li> <%= link_to "Regular Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                                 <li> <%= link_to "Express Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                            </ul>
                        </div>
                    </div>
@@ -750,6 +843,17 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
+                    <% @equip12=Equiplist.find(12)%>
+                    <% if @equip12.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip12.status%></span>
+
+                    <% elsif @equip12.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip12.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip12.status%></span>
+                    <% end %>
+
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -758,7 +862,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_atomic_path ,class:"btn btn-primary know-more"%>
@@ -769,7 +873,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -805,6 +908,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">FT-NMR</h5>
+                    <% @equip13=Equiplist.find(13)%>
+                    <% if @equip13.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip13.status%></span>
+
+                    <% elsif @equip13.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip13.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip13.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -813,7 +926,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ft_nmr_path ,class:"btn btn-primary know-more"%>
@@ -824,7 +937,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -861,6 +973,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">ICP-MS</h5>
+                  <% @equip14=Equiplist.find(14)%>
+                  <% if @equip14.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip14.status%></span>
+
+                  <% elsif @equip14.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip14.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip14.status%></span>
+                  <% end %>
 
                   <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                 status-active is for avtive state
@@ -869,7 +991,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - S01</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_icp_ms_path ,class:"btn btn-primary know-more"%>
@@ -880,7 +1002,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -916,15 +1037,20 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
+                  <% @equip15=Equiplist.find(15)%>
+                  <% if @equip15.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip15.status%></span>
 
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
+                  <% elsif @equip15.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip15.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip15.status%></span>
+                  <% end %>
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F04</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_advance_mod_rheo_path ,class:"btn btn-primary know-more"%>
@@ -935,7 +1061,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -972,15 +1097,20 @@
         <div class="card-body">
             <div id="more">
                 <h5 class="card-title fw-bold">Ion Chromatography</h5>
+                <% @equip16=Equiplist.find(16)%>
+                <% if @equip16.status == "Active"%>
+                <span class="badge rounded-pill status-active"><%=@equip16.status%></span>
 
-                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                              status-active is for avtive state
-                                              status-undermaintainance is for maintainance state
-                                              status-unavailable for unavailable state -->
+                <% elsif @equip16.status == "Under Maintenance"%>
+                <span class="badge rounded-pill status-undermaintainance"><%=@equip16.status%></span>
+
+                <% else %>
+                <span class="badge rounded-pill status-unavailable"><%=@equip16.status%></span>
+                <% end %>
             </div>
 
             <span class="fw-bold">Located At</span>
-            <p class="card-text text-muted"> CRF Annexe - G01</p>
+            <p class="card-text text-muted"> CRF Annexe - S02</p>
 
             <div class="wrap-action">
                 <%= link_to "Know More", know_ion_chromatography_path ,class:"btn btn-primary know-more"%>
@@ -991,7 +1121,6 @@
 
                     <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                     </ul>
                 </div>
             </div>
@@ -1027,6 +1156,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
+                    <% @equip17=Equiplist.find(17)%>
+                    <% if @equip17.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip17.status%></span>
+
+                    <% elsif @equip17.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip17.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip17.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1035,7 +1174,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_integ_multirole_path ,class:"btn btn-primary know-more"%>
@@ -1046,7 +1185,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1082,6 +1220,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
+                    <% @equip18=Equiplist.find(18)%>
+                    <% if @equip18.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip18.status%></span>
+
+                    <% elsif @equip18.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip18.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip18.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1090,7 +1238,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scratch_indentation_path ,class:"btn btn-primary know-more"%>
@@ -1101,7 +1249,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1137,15 +1284,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
+                    <% @equip19=Equiplist.find(19)%>
+                    <% if @equip19.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip19.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip19.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip19.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip19.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_zeta_path ,class:"btn btn-primary know-more"%>
@@ -1156,7 +1308,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1192,15 +1343,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
+                    <% @equip20=Equiplist.find(20)%>
+                    <% if @equip20.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip20.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip20.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip20.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip20.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G07</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_high_temp_vac_path ,class:"btn btn-primary know-more"%>
@@ -1211,7 +1367,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1247,15 +1402,21 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Impedance Analyzer</h5>
+                    <% @equip21=Equiplist.find(21)%>
+                    <% if @equip21.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip21.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip21.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip21.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip21.status%></span>
+                    <% end %>
+
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_impedance_path ,class:"btn btn-primary know-more"%>
@@ -1266,7 +1427,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1305,15 +1465,21 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Tribometer	</h5>
+                    <% @equip22=Equiplist.find(22)%>
+                    <% if @equip22.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip22.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip22.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip22.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip22.status%></span>
+                    <% end %>
+
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_tribometer_path ,class:"btn btn-primary know-more"%>
@@ -1324,7 +1490,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                     </div>
                 </div>
             </div>
@@ -1362,15 +1527,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3D-Scanner</h5>
+                    <% @equip23=Equiplist.find(23)%>
+                    <% if @equip23.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip23.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip23.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip23.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip23.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - Lab 3</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scanner_3d_path ,class:"btn btn-primary know-more"%>
@@ -1381,7 +1551,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1423,15 +1592,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">GAIT Analysis</h5>
+                    <% @equip24=Equiplist.find(24)%>
+                    <% if @equip24.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip24.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip24.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip24.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip24.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> Science Block</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gait_path ,class:"btn btn-primary know-more"%>
@@ -1442,7 +1616,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1478,15 +1651,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spectro-Radiometer</h5>
+                    <% @equip25=Equiplist.find(25)%>
+                    <% if @equip25.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip25.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip25.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip25.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip25.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S02</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spectro_path ,class:"btn btn-primary know-more"%>
@@ -1497,7 +1675,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1533,15 +1710,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spark-OES</h5>
+                    <% @equip26=Equiplist.find(26)%>
+                    <% if @equip26.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip26.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip26.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip26.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip26.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spark_oes_path ,class:"btn btn-primary know-more"%>
@@ -1552,7 +1734,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1588,15 +1769,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glow Discharges-OES</h5>
+                    <% @equip27=Equiplist.find(27)%>
+                    <% if @equip27.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip27.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip27.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip27.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip27.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glow_discharge_path ,class:"btn btn-primary know-more"%>
@@ -1607,7 +1793,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                     <li> <%= link_to "Express Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1643,15 +1828,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ball Milling Unit</h5>
+                    <% @equip28=Equiplist.find(28)%>
+                    <% if @equip28.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip28.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip28.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip28.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip28.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G07</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ball_milling_path ,class:"btn btn-primary know-more"%>
@@ -1662,7 +1852,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1698,6 +1887,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Low Force Fatigue with DMA</h5>
+                    <% @equip29=Equiplist.find(29)%>
+                    <% if @equip29.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip29.status%></span>
+
+                    <% elsif @equip29.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip29.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip29.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1706,7 +1905,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_low_force_fatigue_path ,class:"btn btn-primary know-more"%>
@@ -1716,8 +1915,7 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        <li> <%= link_to "Express Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %>
                         </ul>
                     </div>
                 </div>
@@ -1761,15 +1959,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Micro-EDM</h5>
+                    <% @equip30=Equiplist.find(30)%>
+                    <% if @equip30.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip30.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip30.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip30.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip30.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G06</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_micro_edm_path ,class:"btn btn-primary know-more"%>
@@ -1780,7 +1983,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1819,15 +2021,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">5-Axes CNC</h5>
+                    <% @equip31=Equiplist.find(31)%>
+                    <% if @equip31.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip31.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip31.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip31.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip31.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_axes_5_path ,class:"btn btn-primary know-more"%>
@@ -1838,7 +2045,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1875,15 +2081,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Multi Purpose Impact Testing (SHPB)</h5>
+                    <% @equip32=Equiplist.find(32)%>
+                    <% if @equip32.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip32.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip32.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip32.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip32.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_multi_impact_test_path ,class:"btn btn-primary know-more"%>
@@ -1894,7 +2105,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                         <li> <%= link_to "Express Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1933,15 +2143,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Friction Stir Welding/Surfacing(FSW)</h5>
+                    <% @equip33=Equiplist.find(33)%>
+                    <% if @equip33.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip33.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip33.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip33.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip33.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_friction_stir_path ,class:"btn btn-primary know-more"%>
@@ -1952,7 +2167,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1988,15 +2202,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Electro Chemical Polishing</h5>
+                    <% @equip34=Equiplist.find(34)%>
+                    <% if @equip34.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip34.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip34.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip34.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip34.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_electro_chem_path ,class:"btn btn-primary know-more"%>
@@ -2007,7 +2226,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2043,15 +2261,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Milli-Q water</h5>
+                    <% @equip35=Equiplist.find(35)%>
+                    <% if @equip35.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip35.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip35.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip35.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip35.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_milli_q_path ,class:"btn btn-primary know-more"%>
@@ -2062,7 +2285,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2098,15 +2320,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glove Box</h5>
+                    <% @equip36=Equiplist.find(36)%>
+                    <% if @equip36.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip36.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip36.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip36.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip36.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glove_box_path ,class:"btn btn-primary know-more"%>
@@ -2117,7 +2344,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2153,15 +2379,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Probe Sonicator</h5>
+                    <% @equip37=Equiplist.find(37)%>
+                    <% if @equip37.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip37.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip37.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip37.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip37.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_probe_sonicator_path ,class:"btn btn-primary know-more"%>
@@ -2172,7 +2403,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2211,15 +2441,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ultra-Centrifuge</h5>
+                    <% @equip38=Equiplist.find(38)%>
+                    <% if @equip38.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip38.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip38.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip38.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip38.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ultra_centrifuge_path ,class:"btn btn-primary know-more"%>
@@ -2230,7 +2465,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                    <li> <%= link_to "Express Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2266,6 +2500,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Gas Sensing</h5>
+                    <% @equip39=Equiplist.find(39)%>
+                    <% if @equip39.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip39.status%></span>
+
+                    <% elsif @equip39.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip39.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip39.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -2274,7 +2518,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gas_sensing_path ,class:"btn btn-primary know-more"%>
@@ -2285,7 +2529,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        <li> <%= link_to "Express Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2321,15 +2564,20 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Liquid Nitrogen</h5>
+                    <% @equip40=Equiplist.find(40)%>
+                    <% if @equip40.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip40.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip40.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip40.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip40.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF New Building</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_liq_nitrogen_path ,class:"btn btn-primary know-more"%>
@@ -2340,7 +2588,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_liquid_nitrogen_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                       <li> <%= link_to "Express Slot", new_liquid_nitrogen_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2354,19 +2601,48 @@
     <div class="equipment">
         <%# card-41 Ansys System Lab%>
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+            <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="ansys-images" class="carousel slide">
+                        <div class="carousel-inner">
+                        <div class="carousel-item active">
+                             <img src="https://images.ansys.com/is/image/ansys/2021-09-ansys-og?wid=1200" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        <div class="carousel-item">
+                             <img src="https://images.ansys.com/is/image/ansys/2020-12-ansys-academic-ls-dyna?wid=668&op_usm=0.9,1.0,20,0&fit=constrain,0" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        <div class="carousel-item">
+                             <img src="https://img.directindustry.com/images_di/photo-g/9123-2557503.jpg" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#ansys-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#ansys-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ansys System Lab</h5>
+                    <% @equip41=Equiplist.find(41)%>
+                    <% if @equip41.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip41.status%></span>
 
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
+                    <% elsif @equip41.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip41.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip41.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - Ansys Lab</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ansys_path ,class:"btn btn-primary know-more"%>
@@ -2379,7 +2655,6 @@
 
                               <%= link_to "Regular Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %>
 
-                              <%= link_to "Express Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %>
                         </ul>
                     </div>
                 </div>
@@ -2415,15 +2690,26 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
-                    
+                    <% @equip42=Equiplist.find(42)%>
+                    <% if @equip42.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip42.status%></span>
+
+                    <% elsif @equip42.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip42.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip42.status%></span>
+                    <% end %>
+
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
                                                   status-undermaintainance is for maintainance state
                                                   status-unavailable for unavailable state -->
+
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_auto_multi_speci_polish_path ,class:"btn btn-primary know-more"%>
@@ -2434,7 +2720,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>

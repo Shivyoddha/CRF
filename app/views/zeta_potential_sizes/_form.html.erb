@@ -9,7 +9,7 @@
 
 <div class="container">
     <div id="equipment-name">
-      <h1>ZetaPotential / Particle</h1>
+      <h1>ZetaPotential /Particle Size</h1>
     </div>
     <div class='hero'>
       <%= form_with(model: zeta_potential_size) do |form| %>
@@ -34,16 +34,16 @@
 
         <div class="input-group mb-3">
              <%= form.label :stype,"Sample-type", class:"input-group-text", for:"sample-type" %>
-             <%= form.select(:stype, ['solid','liquid'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+             <%= form.select(:stype, ['Solid','Liquid'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
         </div>
 
         <div>
             <%= form.label :toxicity, "Sample toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
               <div class="form-check">
-                  <%= form.radio_button :toxicity, 'toxic-yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+                  <%= form.radio_button :toxicity, 'toxic-yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %> Toxic
               </div>
               <div class="form-check">
-                    <%= form.radio_button :toxicity, 'toxic-no', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non Toxic
+                    <%= form.radio_button :toxicity, 'toxic-no', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true  %> Non Toxic
               </div>
           </div>
 
@@ -85,7 +85,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :soluteknown,"Solute Known", class:"input-group-text", for:"solute-known" %>
-         <%= form.select(:solutename, ['yes','no'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solute-known",:required => true}) %>
+         <%= form.select(:solutename, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solute-known",:required => true}) %>
         </div>
 
         <div class="mt-1 mb-3 vis" id="solute-info">
@@ -108,7 +108,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :angle,"Measurement Angle", class:"input-group-text", for:"measure-angle" %>
-         <%= form.select(:angle, ['Back-scatter','Front-scatter','Side-scatter'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measure-angle",:required => true}) %>
+         <%= form.select(:angle, ['Back Scatter','Front Scatter','Side Scatter'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measure-angle",:required => true}) %>
         </div>
         <div class="input-group mb-3">
           <%= form.label :analysis_type,"Type of Analysis Required", class:"input-group-text", for:"analysis-type" %>

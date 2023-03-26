@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_113550) do
+ActiveRecord::Schema.define(version: 2023_03_26_091805) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2023_03_26_113550) do
     t.string "stype"
     t.integer "user_id"
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
+  end
+
+  create_table "announcements", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "heading"
   end
 
   create_table "ansies", force: :cascade do |t|
@@ -306,6 +314,15 @@ ActiveRecord::Schema.define(version: 2023_03_26_113550) do
     t.string "name"
     t.string "department"
     t.string "email"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.text "feedback"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "five_axis", force: :cascade do |t|

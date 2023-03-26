@@ -34,24 +34,20 @@
 
     <div class="input-group mb-3">
       <%= form.label :stype,"Sample Type", class:"input-group-text", for:"sample-type"%>
-      <%= form.select(:stype, ["gel","liquid"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+      <%= form.select(:stype, ["Gel","Liquid"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
     </div>
 
     <div>
       <p class="text-info vis" id="gel-info">(For Gel, Sample size must be less than 20mm dia)</p>
     </div>
 
-    <div class="input-group mb-3">
-    <%= form.label :size, "Sample Size(dia)", class:"input-group-text",for:"sample-size"%>
-    <%= form.text_field :size, class:"form-control", id:"sample-size", placeholder:"Sample size"%>
-    <%= form.label :size, "mm", class:"input-group-text",for:"sample-size"%>
-    </div>
+    
 
 
 
     <div class="input-group mb-3">
       <%= form.label :nature,"Nature of Test", class:"input-group-text", for:"test_nature-type"%>
-      <%= form.select(:nature, ["Magnetic","Non-Magnetic"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "test_nature-type",:required => true}) %>
+      <%= form.select(:nature, ["Magnetic","Non-Magnetic","Both"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "test_nature-type",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -124,8 +120,7 @@
         </div>
 
     <div class="mb-3">
-      <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
-      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3",placeholder: "Tell us more about testing requirement"%>
     </div>
 
   <div class="actions">

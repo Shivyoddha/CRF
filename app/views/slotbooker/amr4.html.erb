@@ -109,8 +109,8 @@
                     <td> <%= amr.analysis%> </td>
                     <td> <%= amr.toxicity%> </td>
                     <td> <%= amr.more%> </td>
-                    <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
-                         <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
+                    <td><span style="white-space: nowrap;"><%= amr.slotdate.strftime('%d-%m-%Y')if amr.slotdate.present? %></td>
+                         <td><%= amr.slottime.strftime('%H:%M:%S') if amr.slottime.present? %></td>
                       <td><%= amr.status%></td>
                       <%if amr.references.attached? %>
                     <td><%amr.references.each do |file|%>

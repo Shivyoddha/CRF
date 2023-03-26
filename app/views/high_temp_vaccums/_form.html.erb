@@ -37,16 +37,16 @@
         <div>
           <%= form.label :toxicity, "Sample Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+                <%= form.radio_button :toxicity, 'Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Toxic
             </div>
             <div class="form-check">
-                  <%= form.radio_button :toxicity, 'Non Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+                  <%= form.radio_button :toxicity, 'Non Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true %> Non-Toxic
             </div>
         </div>
 
         <div class="input-group mb-3">
           <%= form.label :req_atoms,"Required Atmosphere", class:"input-group-text", for:"atmosphere-req" %>
-          <%= form.select(:req_atoms, ['with-vaccum','without-vaccum','gaseous-atmosphere'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere-req",:required => true}) %>
+          <%= form.select(:req_atoms, ['With Vaccum','Without Vaccum','Gaseous Atmosphere'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "atmosphere-req",:required => true}) %>
         </div>
         <div class="vis mb-3" id="gas-type-list">
           <%= form.label :gas, "Specify the type of gas",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>

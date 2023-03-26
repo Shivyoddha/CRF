@@ -95,7 +95,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/BALL/<%=ball.id %>	</th>
-                    <td> <%= ball.user.name%> </td>
+                    <td> <%= ball.user.firstname%><nobr><%= ball.user.lastname%> </td>
                     <td> <%= ball.user.orgname%> </td>
                     <td> <%= ball.user.department%> </td>
                     <td> <%= ball.user.contact%> </td>
@@ -113,9 +113,8 @@
                     <td> <%= ball.more%> </td>
                     <td>Booked</td>
 
-                    <td> <%= ball.slotdate %></td>
-
-                    <td> <%= ball.slottime %></td>
+                    <td><span style="white-space: nowrap;"><%= ball.slotdate.strftime('%d-%m-%Y')if ball.slotdate.present? %></td>
+                        <td><%= ball.slottime.strftime('%H:%M:%S') if ball.slottime.present? %></td>
 
                       <td><%= ball.status%></td>
                       <%if ball.references.attached? %>

@@ -95,7 +95,7 @@
                         <tr>
                           <!-- Button trigger modal -->
                           <th scope="row">CRF/CELL/<%=cells.id %>	</th>
-                          <td> <%= cells.user.name%> </td>
+                          <td> <%= cells.user.firstname%><nobr><%= cells.user.lastname%> </td>
                           <td> <%= cells.user.orgname%> </td>
                           <td> <%= cells.user.department%> </td>
                           <td> <%= cells.user.contact%> </td>
@@ -113,10 +113,8 @@
 
                           <td> <%= cells.more%> </td>
                           <td>Booked</td>
-
-                          <td>  <%= cells.slotdate%> </td>
-                         <td>   <%= cells.slottime%></td>
-
+                          <td><span style="white-space: nowrap;"><%= cells.slotdate.strftime('%d-%m-%Y')if cells.slotdate.present? %></td>
+                        <td><%= cells.slottime.strftime('%H:%M:%S') if cells.slottime.present? %></td>
                             <td><%= cells.status%></td>
                             <%if cells.references.attached? %>
                             <%cells.references.each do |file|%>
@@ -128,7 +126,7 @@
                       </tr>
 
                         <%end%>
-                  
+
                 </tbody>
             </table>
 

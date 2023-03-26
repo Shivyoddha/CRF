@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'XRD Slotbooker',slotbooker_xrd_path,class:"navbar-brand", id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">XRD: Cancelled Slots</h2>
         </div>
 
 
@@ -86,7 +86,7 @@
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
-                        <td> <%= xrds.user.firstname%><nobr><%= xrds.user.lastname%></td>
+                        <td> <%= xrds.user.firstname%><nobr> <%= xrds.user.lastname%></td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>

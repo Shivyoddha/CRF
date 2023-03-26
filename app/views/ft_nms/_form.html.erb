@@ -3,6 +3,9 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "equipmentQuestion"%>
 
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
 
 
 <div class="container">
@@ -32,7 +35,7 @@
     <div class="mb-3">
           <%= form.label :nature, "Sample Nature",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :nature, 'Organic', class:"form-check-input", type:"radio", id:"organic-ft-nmr",:checked => true  %> Organic
+                <%= form.radio_button :nature, 'Organic', class:"form-check-input", type:"radio", id:"organic-ft-nmr"  %> Organic
             </div>
             <div class="form-check">
                   <%= form.radio_button :nature, 'In-organic', class:"form-check-input", type:"radio", id:"inorganic-ft-nmr"  %> Inorganic
@@ -46,10 +49,10 @@
 
 
     <div>
-        <p class="Measurement Inofrmation">
+        <p class="Measurement Inofrmation"><h6 class="fw-bold">Measurement Required</h6>
     </div>
 
-      <div id="solvent-1" class="vis">
+      <div id="solvent-1" class="">
         <%= form.label :solvent1, class:"input-group-text", id:"solvent-select-1"%>
         <%= form.select(:solvent1, ['CDCl3', 'DMSO-d6','D2O'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "solvent-select-1",:required => true}) %>
             </div>
@@ -158,28 +161,28 @@
         <div>
           <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :toxicity, 'toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Toxic
+                <%= form.radio_button :toxicity, 'toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %> Toxic
             </div>
             <div class="form-check">
-                  <%= form.radio_button :toxicity, 'Non-Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Toxic
+                  <%= form.radio_button :toxicity, 'Non-Toxic', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true%> Non-Toxic
             </div>
         </div>
 
         <div class="input-group mb-3">
-          <%= form.label :health,"Helath Hazard", class:"input-group-text", for:"health_hazard"%>
+          <%= form.label :health,"Health Hazard", class:"input-group-text", for:"health_hazard"%>
           <%= form.select(:health, ['Yes', 'No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "health_hazard",:required => true}) %>
         </div>
-        
+
     <div class="input-group mb-3 vis" id="health-hazard-yes">
         <div class="form-check form-check-inline">
-            <% options = ['Irritant to skin/eyes', 'harmful to skin','Toxic if inhaled'] %>
+            <% options = ['Irritant to skin/eyes', 'Harmful to skin','Toxic if inhaled'] %>
             <% options.each do |option| %>
               <%= check_box_tag 'ft_nm[hazardmethod][]', option, @ft_nm.hazardmethod.include?(option) %>
               <%= label_tag "ft_nm_hazardmethod_#{option}", option %><br>
             <% end %>
-            
+
             </div>
-            
+
     </div>
 
     <div class="input-group mb-3">
@@ -224,6 +227,8 @@
     <p class="text-danger">#NMR analysis of Paramagnetic and Ferromagnetic compounds cannot be done.</p>
   </div>
 </div>
+</div>
+</div>
 
 
 <%=render "partials/footer" %>
@@ -235,39 +240,30 @@
     let healthHazardYes = document.getElementById('health-hazard-yes');
     let storageHandle = document.getElementById('store_handle');
     let specTemp = document.getElementById('spec-temp-val');
-    let solvent1 = document.getElementById('solvent-1');
     let solvent2 = document.getElementById('solvent-2');
     let solvent3 = document.getElementById('solvent-3');
     let solvent4 = document.getElementById('solvent-4');
     let solvent5 = document.getElementById('solvent-5');
 
     sampleNumber.addEventListener('click', () => {
-        solvent1.classList.add('vis');
         solvent2.classList.add('vis');
         solvent3.classList.add('vis');
         solvent4.classList.add('vis');
         solvent5.classList.add('vis');
 
-        if(sampleNumber.value == '1'){
-          solvent1.classList.toggle('vis')
-        }
         if(sampleNumber.value == '2'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
         }
         if(sampleNumber.value == '3'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
         }
         if(sampleNumber.value == '4'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
           solvent4.classList.toggle('vis')
         }
         if(sampleNumber.value == '5'){
-          solvent1.classList.toggle('vis')
           solvent2.classList.toggle('vis')
           solvent3.classList.toggle('vis')
           solvent4.classList.toggle('vis')
