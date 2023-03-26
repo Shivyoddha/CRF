@@ -1,6 +1,9 @@
 <%= stylesheet_link_tag "loginFeatures"%>
 <%= stylesheet_link_tag "dashboard"%>
+
 <%=render "partials/loginHeading"%>
+
+
   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <div id="search-div">
@@ -104,7 +107,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_xrd_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -165,10 +168,6 @@
                   <% end %>
                    <!--for time being active state is set -->
 
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -183,7 +182,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -247,7 +246,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_hr_fesem_jeol_path ,class:"btn btn-primary know-more"%>
@@ -258,7 +257,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -326,7 +325,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_three_path ,class:"btn btn-primary know-more"%>
@@ -337,7 +336,7 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                              <li> <%= link_to "Express Slot", new_three_d_non_contact_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -396,7 +395,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F01</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_raman_path ,class:"btn btn-primary know-more"%>
@@ -407,7 +406,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_raman_microscope_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -472,7 +471,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F04</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_tga_path ,class:"btn btn-primary know-more"%>
@@ -483,7 +482,7 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item" %> </li>
+                            <li> <%= link_to "Express Slot", new_tga_fttr_path, class:"book-dropdown dropdown-item disabled" %> </li>
                       </ul>
                   </div>
               </div>
@@ -523,15 +522,10 @@
              <div class="card-body">
                  <div id="more">
                      <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
-
-                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                   status-active is for avtive state
-                                                   status-undermaintainance is for maintainance state
-                                                   status-unavailable for unavailable state -->
                  </div>
 
                  <span class="fw-bold">Located At</span>
-                 <p class="card-text text-muted"> CRF Annexe - G01</p>
+                 <p class="card-text text-muted"> CRF Annexe - F04</p>
 
                  <div class="wrap-action">
                      <%= link_to "Know More", know_bet_path ,class:"btn btn-primary know-more"%>
@@ -542,7 +536,7 @@
 
                          <ul class="dropdown-menu">
                                <li> <%= link_to "Regular Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                               <li> <%= link_to "Express Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                               <li> <%= link_to "Express Slot", new_bet_path(id:current_user), class:"book-dropdown dropdown-item disabled" %> </li>
                          </ul>
                      </div>
                  </div>
@@ -601,7 +595,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hrlcm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -647,7 +640,7 @@
                </div>
 
                <span class="fw-bold">Located At</span>
-               <p class="card-text text-muted"> CRF Annexe - G01</p>
+               <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                <div class="wrap-action">
                    <%= link_to "Know More", know_uv_vis_path ,class:"btn btn-primary know-more"%>
@@ -658,7 +651,6 @@
 
                        <ul class="dropdown-menu">
                              <li> <%= link_to "Regular Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                             <li> <%= link_to "Express Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                        </ul>
                    </div>
                </div>
@@ -695,11 +687,6 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Laser Flash Analyser</h5>
-
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -714,7 +701,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -753,15 +739,10 @@
                <div class="card-body">
                    <div id="more">
                        <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
-
-                       <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                     status-active is for avtive state
-                                                     status-undermaintainance is for maintainance state
-                                                     status-unavailable for unavailable state -->
                    </div>
 
                    <span class="fw-bold">Located At</span>
-                   <p class="card-text text-muted"> CRF Annexe - G01</p>
+                   <p class="card-text text-muted"> CRF Annexe - S01</p>
 
                    <div class="wrap-action">
                        <%= link_to "Know More", know_cell_imaging_path ,class:"btn btn-primary know-more"%>
@@ -772,7 +753,6 @@
 
                            <ul class="dropdown-menu">
                                  <li> <%= link_to "Regular Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                                 <li> <%= link_to "Express Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                            </ul>
                        </div>
                    </div>
@@ -818,7 +798,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_atomic_path ,class:"btn btn-primary know-more"%>
@@ -829,7 +809,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -873,7 +852,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ft_nmr_path ,class:"btn btn-primary know-more"%>
@@ -884,7 +863,6 @@
 
                         <ul class="dropdown-menu">
                               <li> <%= link_to "Regular Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -929,7 +907,7 @@
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - S01</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_icp_ms_path ,class:"btn btn-primary know-more"%>
@@ -940,7 +918,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -976,15 +953,10 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
-
-                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                status-active is for avtive state
-                                                status-undermaintainance is for maintainance state
-                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
-              <p class="card-text text-muted"> CRF Annexe - G01</p>
+              <p class="card-text text-muted"> CRF Annexe - F04</p>
 
               <div class="wrap-action">
                   <%= link_to "Know More", know_advance_mod_rheo_path ,class:"btn btn-primary know-more"%>
@@ -995,7 +967,6 @@
 
                       <ul class="dropdown-menu">
                             <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                       </ul>
                   </div>
               </div>
@@ -1032,15 +1003,10 @@
         <div class="card-body">
             <div id="more">
                 <h5 class="card-title fw-bold">Ion Chromatography</h5>
-
-                <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                              status-active is for avtive state
-                                              status-undermaintainance is for maintainance state
-                                              status-unavailable for unavailable state -->
             </div>
 
             <span class="fw-bold">Located At</span>
-            <p class="card-text text-muted"> CRF Annexe - G01</p>
+            <p class="card-text text-muted"> CRF Annexe - S02</p>
 
             <div class="wrap-action">
                 <%= link_to "Know More", know_ion_chromatography_path ,class:"btn btn-primary know-more"%>
@@ -1051,7 +1017,6 @@
 
                     <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                     </ul>
                 </div>
             </div>
@@ -1095,7 +1060,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_integ_multirole_path ,class:"btn btn-primary know-more"%>
@@ -1106,7 +1071,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1150,7 +1114,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scratch_indentation_path ,class:"btn btn-primary know-more"%>
@@ -1161,7 +1125,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1197,15 +1160,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F01</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_zeta_path ,class:"btn btn-primary know-more"%>
@@ -1216,7 +1174,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1252,15 +1209,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G07</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_high_temp_vac_path ,class:"btn btn-primary know-more"%>
@@ -1271,7 +1223,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1307,15 +1258,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Impedance Analyzer</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_impedance_path ,class:"btn btn-primary know-more"%>
@@ -1326,7 +1272,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1365,15 +1310,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Tribometer	</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_tribometer_path ,class:"btn btn-primary know-more"%>
@@ -1384,7 +1324,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                     </div>
                 </div>
             </div>
@@ -1422,15 +1361,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3D-Scanner</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - Lab 3</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scanner_3d_path ,class:"btn btn-primary know-more"%>
@@ -1441,7 +1375,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1483,15 +1416,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">GAIT Analysis</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> Science Block</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gait_path ,class:"btn btn-primary know-more"%>
@@ -1502,7 +1430,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1538,15 +1465,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spectro-Radiometer</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S02</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spectro_path ,class:"btn btn-primary know-more"%>
@@ -1557,7 +1479,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1593,15 +1514,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spark-OES</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spark_oes_path ,class:"btn btn-primary know-more"%>
@@ -1612,7 +1528,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1648,15 +1563,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glow Discharges-OES</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glow_discharge_path ,class:"btn btn-primary know-more"%>
@@ -1667,7 +1577,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                     <li> <%= link_to "Express Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1703,15 +1612,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ball Milling Unit</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G07</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ball_milling_path ,class:"btn btn-primary know-more"%>
@@ -1722,7 +1626,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1766,7 +1669,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - F05</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_low_force_fatigue_path ,class:"btn btn-primary know-more"%>
@@ -1776,8 +1679,7 @@
                         </button>
 
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        <li> <%= link_to "Express Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %>
                         </ul>
                     </div>
                 </div>
@@ -1821,15 +1723,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Micro-EDM</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G06</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_micro_edm_path ,class:"btn btn-primary know-more"%>
@@ -1840,7 +1737,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1879,15 +1775,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">5-Axes CNC</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_axes_5_path ,class:"btn btn-primary know-more"%>
@@ -1898,7 +1789,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1935,15 +1825,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Multi Purpose Impact Testing (SHPB)</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_multi_impact_test_path ,class:"btn btn-primary know-more"%>
@@ -1954,7 +1839,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                         <li> <%= link_to "Express Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -1993,15 +1877,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Friction Stir Welding/Surfacing(FSW)</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF Mechanical Workshop</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_friction_stir_path ,class:"btn btn-primary know-more"%>
@@ -2012,7 +1891,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2048,15 +1926,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Electro Chemical Polishing</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_electro_chem_path ,class:"btn btn-primary know-more"%>
@@ -2067,7 +1940,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2103,15 +1975,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Milli-Q water</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More",know_milli_q_path ,class:"btn btn-primary know-more"%>
@@ -2122,7 +1989,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_milli_q_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2158,15 +2024,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glove Box</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glove_box_path ,class:"btn btn-primary know-more"%>
@@ -2177,7 +2038,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2213,15 +2073,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Probe Sonicator</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_probe_sonicator_path ,class:"btn btn-primary know-more"%>
@@ -2232,7 +2087,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                          <li> <%= link_to "Express Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2271,15 +2125,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ultra-Centrifuge</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ultra_centrifuge_path ,class:"btn btn-primary know-more"%>
@@ -2290,7 +2139,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                    <li> <%= link_to "Express Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2334,7 +2182,7 @@
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - S03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gas_sensing_path ,class:"btn btn-primary know-more"%>
@@ -2345,7 +2193,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        <li> <%= link_to "Express Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2381,15 +2228,10 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Liquid Nitrogen</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted">CRF New Building</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_liq_nitrogen_path ,class:"btn btn-primary know-more"%>
@@ -2400,7 +2242,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_liquid_nitrogen_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                       <li> <%= link_to "Express Slot", new_liquid_nitrogen_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
@@ -2414,19 +2255,38 @@
     <div class="equipment">
         <%# card-41 Ansys System Lab%>
         <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Freezed_XRD.jpg" class="card-img-top" alt="...">
+            <div class="equipment-img-wrap" >
+                <div class="equipment-img">
+                    <div id="ansys-images" class="carousel slide">
+                        <div class="carousel-inner">
+                        <div class="carousel-item active">
+                             <img src="https://images.ansys.com/is/image/ansys/2021-09-ansys-og?wid=1200" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        <div class="carousel-item">
+                             <img src="https://images.ansys.com/is/image/ansys/2020-12-ansys-academic-ls-dyna?wid=668&op_usm=0.9,1.0,20,0&fit=constrain,0" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        <div class="carousel-item">
+                             <img src="https://img.directindustry.com/images_di/photo-g/9123-2557503.jpg" class="equipment-img-tag d-block w-100 card-img" alt="..." %>
+                        </div>
+                        </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#ansys-images" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#ansys-images" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ansys System Lab</h5>
-
-                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
-                                                  status-active is for avtive state
-                                                  status-undermaintainance is for maintainance state
-                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - Ansys Lab</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ansys_path ,class:"btn btn-primary know-more"%>
@@ -2439,7 +2299,6 @@
 
                               <%= link_to "Regular Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %>
 
-                              <%= link_to "Express Slot", new_ansy_path(id:current_user), class:"book-dropdown dropdown-item" %>
                         </ul>
                     </div>
                 </div>
@@ -2475,15 +2334,18 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
+<<<<<<< HEAD
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
                                                   status-undermaintainance is for maintainance state
                                                   status-unavailable for unavailable state -->
+=======
+>>>>>>> 6dea2bcee7c19fe66d75aeee09d6835c8e65a34c
                 </div>
 
                 <span class="fw-bold">Located At</span>
-                <p class="card-text text-muted"> CRF Annexe - G01</p>
+                <p class="card-text text-muted"> CRF Annexe - G03</p>
 
                 <div class="wrap-action">
                     <%= link_to "Know More", know_auto_multi_speci_polish_path ,class:"btn btn-primary know-more"%>
@@ -2494,7 +2356,6 @@
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      <li> <%= link_to "Express Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
                         </ul>
                     </div>
                 </div>
