@@ -38,7 +38,7 @@
     </div>
 
     <div class="input-group mb-3">
-      <%= form.label :mould,"Mould Required", class:"input-group-text", for:"mould-required"%>
+      <%= form.label :mould,"Moulding Required", class:"input-group-text", for:"mould-required"%>
       <%= form.select(:mould, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "mould-required",:required => true}) %>
     </div>
 
@@ -66,7 +66,7 @@
 
     <div class="diamond-grit-paper">
        <h5 class="text-warning fw-text">Suspension Solution</h5>
-       <% options = ['Collidal Silica', 'Collidal-Alumina'] %>
+       <% options = ['Collidal Silica', 'Collidal Alumina'] %>
        <% options.each do |option| %>
          <%= check_box_tag 'grinding[suspension][]', option, @grinding.suspension.include?(option) %>
          <%= label_tag "grinding_suspension_#{option}", option %><br>
@@ -106,12 +106,12 @@
 
     <div class="mb-3">
       <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
-      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+      <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3",placeholder:"Testing Requirement.. (max 120 chairs)"%>
     </div>
 
 
     <div class="actions">
-        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
     </div>
 
     </div>

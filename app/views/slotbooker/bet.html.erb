@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">BET Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">BET Surface Area Analyzer Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">BET Surface Area Analyzer:All Slots</h2>
         </div>
 
 
@@ -90,24 +90,21 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/BET/<%=bet.id %>	</th>
-                        <td> <%= bet.user.name%> </td>
+                        <td> <%= bet.user.firstname%><nobr> <%= bet.user.lastname%></td>
                         <td> <%= bet.user.orgname%> </td>
                         <td> <%= bet.user.department%> </td>
                         <td> <%= bet.user.contact%> </td>
                         <td> <%= bet.sample%> </td>
                         <td> <%= bet.degassing%> </td>
-                        <td> <%= bet.analysiscustom%> </td>
                         <td> <%= bet.analysisstandard%> </td>
+                        <td> <%= bet.analysiscustom%> </td>
                         <td> <%= bet.incompatibe%> </td>
                         <td> <%= bet.toxicity%> </td>
                         <td> <%= bet.disposal%></td>
                         <td> <%= bet.more%> </td>
                         <td>Booked</td>
-
-                        <td> <%= bet.slotdate %></td>
-
-                        <td> <%= bet.slottime %></td>
-
+                        <td><span style="white-space: nowrap;"><%= bet.slotdate.strftime('%d-%m-%Y')if bet.slotdate.present? %></td>
+                          <td><%= bet.slottime.strftime('%H:%M:%S') if bet.slottime.present? %></td>
                           <td><%= bet.status%></td>
                           <%if bet.references.attached? %>
                           <%bet.references.each do |file|%>

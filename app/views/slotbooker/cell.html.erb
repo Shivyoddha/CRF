@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">Cell Imaging Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -95,7 +95,7 @@
                         <tr>
                           <!-- Button trigger modal -->
                           <th scope="row">CRF/CELL/<%=cells.id %>	</th>
-                          <td> <%= cells.user.name%> </td>
+                          <td> <%= cells.user.firstname%><nobr>  <%= cells.user.lastname%></td>
                           <td> <%= cells.user.orgname%> </td>
                           <td> <%= cells.user.department%> </td>
                           <td> <%= cells.user.contact%> </td>
@@ -113,10 +113,8 @@
 
                           <td> <%= cells.more%> </td>
                           <td>Booked</td>
-
-                          <td>  <%= cells.slotdate%> </td>
-                         <td>   <%= cells.slottime%></td>
-
+                          <td><span style="white-space: nowrap;"><%= cells.slotdate.strftime('%d-%m-%Y')if cells.slotdate.present? %></td>
+                        <td><%= cells.slottime.strftime('%H:%M:%S') if cells.slottime.present? %></td>
                             <td><%= cells.status%></td>
                             <%if cells.references.attached? %>
                             <%cells.references.each do |file|%>
@@ -128,7 +126,7 @@
                       </tr>
 
                         <%end%>
-                  
+
                 </tbody>
             </table>
 

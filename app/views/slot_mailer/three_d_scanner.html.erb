@@ -56,7 +56,7 @@
                     <span>Sample size:<span><span class="fw-bold data"><%= @three_d_scanner.size%><span>
                 </div>
                 <div id="laser-to-be-used:" class="element">
-                    <span>Final output format required:<span><span class="fw-bold data">ply,stl,wrl,obj,asc,aop,ptx,xyzgrb<span>
+                    <span>Final output format required:<span><span class="fw-bold data"><%= Array(@three_d_scanner.ouptut_format).join(", ") %><span>
                 </div>
 
             </div>

@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'Friction Stir Welding Slotbooker', slotbooker_fric_path, class:'navbar-brand', id:'title' %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -94,12 +94,12 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/FRIC/<%=fric.id %>	</th>
-                        <td> <%= fric.user.name%> </td>
+                        <td> <%= fric.user.firstname%><nobr> <%= fric.user.lastname%></td>
                         <td> <%= fric.user.orgname%> </td>
                         <td> <%= fric.user.department%> </td>
                         <td> <%= fric.user.contact%> </td>
                         <td> <%= fric.sample%> </td>
-                      <td> <%= Array(fric.material).join(", ") %> </td>
+                        <td> <%= Array(fric.material).join(", ") %> </td>
                         <td> <%= fric.pstype%> </td>
                         <td> <%= fric.tool%> </td>
                         <td> <%= fric.toolnom%> </td>

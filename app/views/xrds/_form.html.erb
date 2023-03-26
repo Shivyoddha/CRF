@@ -33,13 +33,13 @@
 
 
           <div class="input-group mb-3">
-          <%= form.label :measurement,"measurement", class:"input-group-text", for:"measurement" %>
+          <%= form.label :measurement,"Measurement Required", class:"input-group-text", for:"measurement" %>
           <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
         </div>
 
 
           <div class="input-group mb-3">
-          <%= form.label :composition, "Composition", class:"input-group-text",for:"composition"%>
+          <%= form.label :composition, " Sample Composition", class:"input-group-text",for:"composition"%>
           <%= form.text_field :composition, class:"form-control", id:"composition", placeholder:"(Ex: ZnO, GO)"%>
         </div>
 

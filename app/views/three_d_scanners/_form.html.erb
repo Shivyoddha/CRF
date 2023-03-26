@@ -31,7 +31,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :size,"Sample Size", class:"input-group-text", for:"sample-size"%>
-          <%= form.select(:size, ['small','medium','large','huge'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-size",:required => true}) %>
+          <%= form.select(:size, ['Small(1-5cm)','Medium(5-20cm)','Large(20-50cm)','Huge(>50cm)'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-size",:required => true}) %>
         </div>
 
 
@@ -52,10 +52,10 @@
             <label class="input-group-text" for="final-op">Final output format required</label>
             <% options = ['ply', 'asc','stl','aop','wrl','ptx','obj','xyzrgb'] %>
             <% options.each do |option| %>
-              <%= check_box_tag 'three_d_scanner[output_format][]', option, @three_d_scanner.output_format.include?(option) %>
+              <%= check_box_tag 'three_d_scanner[output_format][]', option, @three_d_scanner.output_format.include?(option),checked: option == 'stl' || option == 'aop' %>
               <%= label_tag "three_d_scanner_output_format_#{option}", option %><br>
             <% end %>
-          
+
         </div>
 
 

@@ -40,12 +40,13 @@
 
           <div>
             <% options = ['Contact', 'Tapping'] %>
+              <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"technique" %>
             <% options.each do |option| %>
-              <%= check_box_tag 'atomic_force_microscope[technique][]', option, @atomic_force_microscope.technique.include?(option) %>
+              <%= check_box_tag 'atomic_force_microscope[technique][]', option, @atomic_force_microscope.technique.include?(option),checked: option == 'Tapping' %>
               <%= label_tag "atomic_force_microscope_technique_#{option}", option %><br>
             <% end %>
-              <%= form.label :technique, "Technique to be used", class:"input-group-text", for:"technique" %>
-            
+
+
 
           </div>
 
@@ -56,11 +57,11 @@
           <%= form.label :x,"XY Scan range(max 100 x 100µm)", class:"input-group-text", for:"inputGroupSelect03" %>
             <div class="input-group">
               <%= form.text_field :x , type:"text", class:"form-control", id:"inputGroupSelect03er", placeholder:"X=" %>
-              <%= form.label :x , "nm", class:"input-group-text", for:"inputGroupSelect03er" %>
+              <%= form.label :x , "µm", class:"input-group-text", for:"inputGroupSelect03er" %>
             </div>
             <div class="input-group">
               <%= form.text_field :y , type:"text", class:"form-control", id:"inputGroupSelect03er", placeholder:"Y=" %>
-              <%= form.label :y , "nm", class:"input-group-text", for:"inputGroupSelect03er" %>
+              <%= form.label :y , "µm", class:"input-group-text", for:"inputGroupSelect03er" %>
             </div>
         </div>
 
@@ -95,7 +96,7 @@
 
 
         <div>
-          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <%= form.label :compatability, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
                 <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %>  Corrossive
             </div>
