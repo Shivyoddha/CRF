@@ -78,7 +78,6 @@
                         <th scope="col">Sample is Toxic</th>
                         <th scope="col">Sample is Conducting</th>
                         <th scope="col">More Information</th>
-                        <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col">Slot Time</th>
                         <th scope="col">Status</th>
@@ -91,7 +90,7 @@
                         <tr>
                           <th scope="row">CRF/FESEMCS/<%=fesemcs.id %>	</th>
 
-                          <td> <%=fesemcs.user.name%> </td>
+                          <td> <%=fesemcs.user.firstname%><nobr><%=fesemcs.user.lastname%> </td>
                           <td> <%=fesemcs.user.orgname%> </td>
                           <td> <%=fesemcs.user.department%> </td>
                           <td> <%=fesemcs.user.contact%> </td>
@@ -105,10 +104,8 @@
                           <td> <%= fesemcs.conducting%> </td>
                           <td> <%= fesemcs.toxic%> </td>
                           <td> <%= fesemcs.more%> </td>
-                          <td>Booked</td>
-                          <td> <%= fesemcs.slotdate %></td>
-
-                          <td> <%= fesemcs.slottime %></td>
+                          <td><span style="white-space: nowrap;"><%= fesemcs.slotdate.strftime('%d-%m-%Y')if fesemcs.slotdate.present? %></td>
+                          <td><%= fesemcs.slottime.strftime('%H:%M:%S') if fesemcs.slottime.present? %></td>
     <td> <%= fesemcs.status %></td>
     <%if fesemcs.references.attached? %>
     <%fesemcs.references.each do |file|%>

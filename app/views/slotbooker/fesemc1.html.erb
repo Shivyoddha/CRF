@@ -39,7 +39,7 @@
                         <%= link_to 'Pending Slots',slotbooker_fesemc1_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Alloted SLots',slotbooker_fesemc2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
                         <%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"nav-link active sidelink-wrap" %>
@@ -78,7 +78,6 @@
                         <th scope="col">Sample is Toxic</th>
                         <th scope="col">Sample is Conducting</th>
                         <th scope="col">More Information</th>
-                        <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
                         <th scope="col">Slot Time</th>
                         <th scope="col">Status</th>
@@ -91,8 +90,7 @@
                       <% @fesemc1.where(status:'pending').each do |fesemc|%>
                         <tr>
                           <th scope="row">CRF/fesemc/<%=fesemc.id %>	</th>
-
-                          <td> <%=fesemc.user.name%> </td>
+                          <td> <%=fesemc.user.firstname%><nobr><%=fesemc.user.lastname%> </td>
                           <td> <%=fesemc.user.orgname%> </td>
                           <td> <%=fesemc.user.department%> </td>
                           <td> <%=fesemc.user.contact%> </td>
@@ -106,10 +104,8 @@
                           <td> <%= fesemc.conducting%> </td>
                           <td> <%= fesemc.toxic%> </td>
                           <td> <%= fesemc.more%> </td>
-                          <td>Booked</td>
-                          <td> <%= fesemc.slotdate %></td>
-
-                          <td> <%= fesemc.slottime %></td>
+                          <td><span style="white-space: nowrap;"><%= fesemc.slotdate.strftime('%d-%m-%Y')if fesemc.slotdate.present? %></td>
+                          <td><%= fesemc.slottime.strftime('%H:%M:%S') if fesemc.slottime.present? %></td>
                           <td> <%= fesemc.status %></td>
                            <%if fesemc.references.attached? %>
                       <%fesemc.references.each do |file|%>
@@ -126,21 +122,21 @@
 <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
-                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= fesemc.user.name %></b></h1>
+                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemc.user.name %></b></h1>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
              </div>
              <div class="modal-body">
                <%= form_with(model: fesemc,local:true) do |form| %>
 
-                   <div class="input-group mb-3">
-                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                   <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                 </div>
-
-                 <div class="input-group mb-3">
-                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+               <div class="input-group mb-3">
+                 <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                 <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
                </div>
+
+               <div class="input-group mb-3">
+               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+               <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+             </div>
 
                 <%=form.fields_for :equipment_table do |f| %>
                  <div class="input-group mb-3">
@@ -174,17 +170,18 @@
 
                 <%end%>
 
-                 <div class="actions">
-                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-                 </div>
-               <% end %>
+                <div class="actions">
+
+                </div>
+
 
 
 
              </div>
              <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary">Cancel Slot</button>
+                 <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                    <% end %>
              </div>
          </div>
      </div>

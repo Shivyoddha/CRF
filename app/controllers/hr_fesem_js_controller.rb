@@ -27,13 +27,13 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.user=current_user
     @hr_fesem_j.status="pending"
     @hr_fesem_j.build_equipment_table
-    
+
     respond_to do |format|
      if @hr_fesem_j.save
        if @hr_fesem_j.user.role=='student'||@hr_fesem_j.user.role=='faculty'
-         HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).InternalMail.deliver_later
+         HrFesemJMailer.with(id:@hr_fesem_j.id, userid:current_user.id).InternalMail.deliver_later
        else
-         HrFesemJsMailer.with(id:@hr_fesem_j.id, userid:current_user.id).ExternalMail.deliver_later
+         HrFesemJMailer.with(id:@hr_fesem_j.id, userid:current_user.id).ExternalMail.deliver_later
        end
        format.html { redirect_to home_index_path, notice: "Hr fesem j was successfully created." }
        format.json { render :show, status: :created, location: @hr_fesem_j }

@@ -36,7 +36,7 @@ class RamanMicroscopesController < ApplicationController
         else
           RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to raman_microscope_url(@raman_microscope), notice: "Raman microscope was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Raman microscope was successfully created." }
         format.json { render :show, status: :created, location: @raman_microscope }
       else
         format.html { render :new, status: :unprocessable_entity }
