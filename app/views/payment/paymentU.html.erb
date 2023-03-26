@@ -85,7 +85,7 @@
                 </div>
                 <%end%>
 
-                <% @equipment.where(dummy:'done').each do |equipment|%>
+                <% @equipment.where(dummy:'done', role:'student').each do |equipment|%>
                <% if @entry == equipment.app_no %>
                <%= equipment.app_no %>
                <br>

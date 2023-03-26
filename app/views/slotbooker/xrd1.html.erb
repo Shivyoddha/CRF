@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <%= link_to 'XRD Slotbooker',slotbooker_xrd_path,class:"navbar-brand", id:"title" %>
+        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">XRD: Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">XRD:Pending Slots</h2>
         </div>
 
 
@@ -88,7 +88,7 @@
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id%></th>
 
-                        <td> <%= xrds.user.firstname%><nobr> <%= xrds.user.lastname%></td>
+                        <td> <%= xrds.user.name%><nobr><%= xrds.user.lastname%></td>
                         <td> <%= xrds.user.orgname%> </td>
                         <td> <%= xrds.user.department%> </td>
                         <td> <%= xrds.user.contact%> </td>
@@ -116,7 +116,7 @@
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= xrds.user.firstname %></b></h1>
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= xrds.user.name %></b></h1>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                        </div>
                                         <div class="modal-body">
@@ -133,35 +133,17 @@
                                           </div>
 
                                            <%=form.fields_for :equipment_table do |f| %>
-                                            <div class="input-group mb-3">
                                                <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                             </div>
-
-                                            <div class="input-group mb-3">
                                               <%= f.hidden_field :username, value:"#{xrds.user.name}"%>
-                                           </div>
-
-
-                                            <div class="input-group mb-3">
                                               <%= f.hidden_field :dummy, value:"alloted"%>
-                                            </div>
-
-                                           <div class="input-group mb-3">
                                              <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                          </div>
-
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :dept, value:"#{xrds.user.department}" %>
-                                         </div>
-
-                                         <div class="input-group mb-3">
                                            <%= f.hidden_field :email, value:"#{xrds.user.email}" %>
-                                        </div>
-
-                                         <div class="input-group mb-3">
+                                           <%= f.hidden_field :role, value:"#{xrds.user.role}" %>
+                                           <%= f.hidden_field :org, value:"#{xrds.user.orgaddress}" %>
+                                           <%= f.hidden_field :profesion, value:"#{xrds.user.profession}" %>
+                                           <%= f.hidden_field :orgname, value:"#{xrds.user.orgname}" %>
                                            <%= f.hidden_field :equipname, value:"xrd" %>
-                                        </div>
-
                                            <%end%>
 
                                             <div class="actions">

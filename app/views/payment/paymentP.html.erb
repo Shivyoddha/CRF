@@ -84,7 +84,7 @@
                         </thead>
                         <tbody>
 
-                                  <% @equipment.where(debit_head:'Project Fund', dummy:'alloted').each do |equipment|%>
+                                  <% @equipment.where(debit_head:'Project Fund', dummy:'alloted',role:'student').each do |equipment|%>
                                   <tr>
                                     <th scope="row"><%=equipment.app_no %>	</th>
                                     <td> <%= equipment.username%> </td>
@@ -127,7 +127,7 @@
                                  </div>
                                <% end %>
                              </div>
-                             
+
                           </div>
                           </div>
 
