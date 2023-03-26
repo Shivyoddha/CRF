@@ -27,148 +27,131 @@
           <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
+        <%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>
+
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                 <li class="nav-item">
-                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
-                </li>
                 <li class="nav-item">
-                        <%= link_to 'Recently Completed',payment_paymentExtR_path,class:"nav-link active sidelink-wrap" %>
+                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap"%>
                 </li>
+
                 <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Manual Entry',payment_paymentExtC_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
     </div>
 
-
-    <div id="hero">
-
-        <div id="manual-heading">
-            <h1>Manual Entry</h1>
+<%# the content section is coded here %>
+    <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold font-unbounded" id="tab-name">Payment Entry Console</h2>
         </div>
 
-        <div id="wrap">
-          <%= form_with(model: @equipment,local:true) do |form| %>
-            <div class="mb-3">
-                <div class="input-group">
-                    <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>
-                    <input type="text" class="form-control" id="app-no" aria-describedby="basic-addon3">
-                </div>
-            </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Equipment</label>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                </select>
-            </div>
+        <div id="slot-details">
+        <div>
+            <table class="table table-hover font-quicksand">
+                <thead>
+                    <tr class="table-head font-unbounded">
+                        <th scope="col" id="application-no">Appl No</th>
+                        <th scope="col" id="name">Name</th>
+                        <th scope="col" id="debit-head">Debit Head</th>
+                        <th scope="col" id="proforma-col">Proforma</th>
+                    </tr>
+                </thead>
+                <tbody>
+                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
+                        <tr>
+                          <th scope="row"><%= equipment.app_no%></th>
+                          <td> <%= equipment.username%> </td>
+                          <td> <%= equipment.debit_head%> </td>
+                          <td id="assign-btn">
+                              <!-- Button trigger modal -->
+                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
+                               <div id="<%= equipment.app_no%>" class="modal">
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="department">Profession</label>
-                <select class="form-select" id="department">
-                    <option selected>Choose...</option>
-                    <option value="academia">Academia</option>
-                    <option value="industry">Industry</option>
-                    <option value="enterpreneur">Enterpreneur</option>
-                </select>
-            </div>
+     <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-name">Invoice Name</label>
-                <input type="text" class="form-control" id="invoice-name" aria-describedby="basic-addon3">
-            </div>
+                        <%= form_with(model:equipment ,local:true) do |form| %>
+                         <div class="input-group mb-3">
+                           <%= form.label :x, "Apllication No.", class:"input-group-text"%>
+                           <%= form.text_field :x, class:"form-control", id:"composition", placeholder: equipment.app_no , readonly: true%>
+                       </div>
+                       <div class="input-group mb-3">
+                         <%= form.label :x, "Applicant Name", class:"input-group-text"%>
+                         <%= form.text_field :x, class:"form-control", id:"composition", placeholder:equipment.username, readonly: true%>
+                     </div>
+                       <div class="input-group mb-3">
+                       <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
+                       <%= form.text_field :pay, class:"form-control", id:"amount"%>
+                     </div>
+                     <div class="input-group mb-3">
+                     <%= form.hidden_field :dummy, value: 'done' %>
+                   </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-add">Invoice Address</label>
-                <input type="text" class="form-control" id="invoice-add" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-add">Invoice Address</label>
-                <input type="text" class="form-control" id="invoice-add" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-gst">Invoice GST No</label>
-                <input type="text" class="form-control" id="invoice-gst" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="app-gst">GST Apllied</label>
-                <select class="form-select" id="app-gst">
-                    <option selected>Choose...</option>
-                    <option value="18%">18%</option>
-                    <option value="16%">16%</option>
-                    <option value="0%">0%</option>
-                </select>
-            </div>
+                       <div class="actions">
+                         <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
 
+                       </div>
+                     <% end %>
+                   </div>
+               </div>
+           </div>
 
-            <hr>
+   </div>
 
+                           </td>
 
+                       </tr>
+   <%end%>
+                   </tbody>
+               </table>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="reg-id-label" for="paid">Amount Paid</label>
-                <label class="input-group-text" id="reg-id-label" for="paid">₹</label>
-                <input type="text" class="form-control" id="paid" aria-describedby="basic-addon3" placeholder="">
-            </div>
-
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="testing">Testing</label>
-                <input type="text" class="form-control" id="testing" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="consultancy">Consultancy</label>
-                <input type="text" class="form-control" id="consultancy" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="read-gst">GST</label>
-                <input type="text" class="form-control" id="read-gst" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
-
-             <div class="input-group mb-3">
-                <label class="input-group-text" for="state">State</label>
-                <select class="form-select" id="state">
-                    <option selected>Choose...</option>
-                </select>
-            </div>
-             <div class="input-group mb-3">
-                <label class="input-group-text" for="district">District</label>
-                <select class="form-select" id="district">
-                    <option selected>Choose...</option>
-                </select>
-            </div>
-
-             <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="deposit-date">Date of Deposit</label>
-                <input type="date" class="form-control" id="deposit-date" aria-describedby="basic-addon3" placeholder="">
-            </div>
-
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="UTR-No">UTR No / CHQ No / DD No:</label>
-                <input type="type" class="form-control" id="UTR-No" aria-describedby="basic-addon3" placeholder="">
-            </div>
+           </div>
+           </div>
 
 
-
-            <div class="actions">
-                <button type="submit" class="btn btn-success" id="sbt">Submit</button>
-            </div>
-
-        </div>
-
-    </div>
+       </div>
 
 
+   </div>
+   <script>
+     // Get the modals and buttons
+     var modal1 = document.getElementByClass("modal");
+     var btn1 = document.getElementById("ani");
 
-</div>
+     // Add event listeners to the buttons
+     btn1.addEventListener("click", function() {
+       modal1.style.display = "block";
+     });
+
+     btn2.addEventListener("click", function() {
+       modal2.style.display = "block";
+     });
+
+     // Close the modal when the user clicks anywhere outside of it
+     window.addEventListener("click", function(event) {
+       if (event.target == modal1) {
+         modal1.style.display = "none";
+       }
+       if (event.target == modal2) {
+         modal2.style.display = "none";
+       }
+     });
+   </script>

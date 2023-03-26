@@ -119,9 +119,10 @@
                 </div>
             </div>
 
-            <div class="input-group mb-3">
             <%= form.hidden_field :dummy, value: 'done' %>
-          </div>
+
+          <%= form.hidden_field :role, value: 'student' %>
+
 
               <div class="actions">
                 <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
