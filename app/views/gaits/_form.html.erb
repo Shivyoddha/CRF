@@ -29,7 +29,7 @@
     <h6 class="text-danger">(*Ethical Clearance mandatory to upload)</h6>
 
     <div class="input-group mb-3">
-      <%= form.label :subject,"Subjects", class:"input-group-text", for:"subject"%>
+      <%= form.label :subject,"Subjects are:", class:"input-group-text", for:"subject"%>
       <%= form.select(:subject, ["Healthy","Patient"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"subject",:required => true}) %>
     </div>
 
@@ -52,11 +52,11 @@
 
         <div class="input-group mb-3">
             <div class="form-check form-check-inline">
-                <%= form.radio_button :force_plate, "Yes", class:"form-check-input", type:"radio", id:"force_plate_yes" %>
+                <%= form.radio_button :force_plate, "Yes", class:"form-check-input", type:"radio", id:"force_plate_yes",:checked => true %>
                 <%= form.label :force_plate, "Yes", class:"form-check-label", for:"force_plate_yes"%>
             </div>
             <div class="form-check form-check-inline">
-                  <%= form.radio_button :force_plate, 'No', class:"form-check-input", type:"radio", id:"force_plate_no",:checked => true  %>
+                  <%= form.radio_button :force_plate, 'No', class:"form-check-input", type:"radio", id:"force_plate_no"  %>
                   <%= form.label :force_plate, "No", class:"form-check-label", for:"force_plate_no"%>
             </div>
         </div>
@@ -67,7 +67,7 @@
     </div>
     <% options = ['.mat', '.tsv','.c3d','.doc'] %>
     <% options.each do |option| %>
-      <%= check_box_tag 'gait[output_format][]', option, @gait.output_format.include?(option) %>
+      <%= check_box_tag 'gait[output_format][]', option, @gait.output_format.include?(option),checked: option=='.tsv' %>
       <%= label_tag "gait_output_format_#{option}", option %><br>
     <% end %>
 
@@ -123,7 +123,7 @@
     </div>
 
     <div class="actions">
-        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
     </div>
 
   </div>

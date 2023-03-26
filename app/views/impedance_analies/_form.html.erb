@@ -38,13 +38,18 @@
     </div>
 
     <div class="input-group mb-3">
+      <h6 class="fw-bold">Measurement Required</h6>
       <div class="input-group mb-3">
+
         <% options = ['Capacitance', 'Impedance','Dielectric','I-V'] %>
         <% options.each do |option| %>
-          <%= check_box_tag 'impedance_analy[measurement][]', option, @impedance_analy.measurement.include?(option) %>
-          <%= label_tag "impedance_analy_measurement_#{option}", option %><br>
-        <% end %>
-        
+  <div style="width: 200px;">
+    <%= check_box_tag 'impedance_analy[measurement][]', option, @impedance_analy.measurement.include?(option) %>
+    <%= label_tag "impedance_analy_measurement_ #{option}",option %>
+  </div>
+<% end %>
+
+
     </div>
     </div>
 
@@ -93,10 +98,11 @@
       <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
     </div>
 
-    <div class="actions">
-      <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
-    </div>
 
+
+  </div>
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
   </div>
 </div>
 <%end%>

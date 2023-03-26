@@ -90,7 +90,7 @@
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/BET/<%=bet.id %>	</th>
-                    <td> <%= bet.user.name%> </td>
+                    <td> <%= bet.user.firstname%><nobr><%= bet.user.lastname%> </td>
                     <td> <%= bet.user.orgname%> </td>
                     <td> <%= bet.user.department%> </td>
                     <td> <%= bet.user.contact%> </td>
@@ -102,12 +102,8 @@
                     <td> <%= bet.toxicity%> </td>
                     <td> <%= bet.disposal%></td>
                     <td> <%= bet.more%> </td>
-
-
-                    <td> <%= bet.slotdate %></td>
-
-                    <td> <%= bet.slottime %></td>
-
+                    <td><span style="white-space: nowrap;"><%= bet.slotdate.strftime('%d-%m-%Y')if bet.slotdate.present? %></td>
+                    <td><%= bet.slottime.strftime('%H:%M:%S') if bet.slottime.present? %></td>
                       <td><%= bet.status%></td>
                       <%if bet.references.attached? %>
                       <%bet.references.each do |file|%>

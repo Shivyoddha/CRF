@@ -89,7 +89,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
-                        <td> <%= centrifuge.user.name%> </td>
+                        <td> <%= centrifuge.user.firstname%><nobr><%= centrifuge.user.lastname%> </td>
                         <td> <%= centrifuge.user.orgname%> </td>
                         <td> <%= centrifuge.user.department%> </td>
                         <td> <%= centrifuge.user.contact%> </td>
@@ -103,9 +103,8 @@
                         <td> <%= centrifuge.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= centrifuge.slotdate %></td>
-
-                        <td> <%= centrifuge.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= centrifuge.slotdate.strftime('%d-%m-%Y')if centrifuge.slotdate.present? %></td>
+                        <td><%= centrifuge.slottime.strftime('%H:%M:%S') if centrifuge.slottime.present? %></td>
 
                           <td><%= centrifuge.status%></td>
                           <%if centrifuge.references.attached? %>

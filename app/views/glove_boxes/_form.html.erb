@@ -47,9 +47,9 @@
 
     <div>
       <div>
-          <%= form.label :toxicity, "SAFETY INFORMATION",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <%= form.label :toxicity, "Toxicity",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Hazardous
+                <%= form.radio_button :toxicity, 'hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Hazardous
             </div>
             <div class="form-check">
                   <%= form.radio_button :toxicity, 'non-hazardous', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Non-Hazardous
@@ -58,7 +58,7 @@
         <div>
           <%= form.label :carcinogenic, "Carcinogenic",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
-                <%= form.radio_button :carcinogenic, 'Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %> Yes
+                <%= form.radio_button :carcinogenic, 'Yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Yes
             </div>
             <div class="form-check">
                   <%= form.radio_button :carcinogenic, 'No', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No

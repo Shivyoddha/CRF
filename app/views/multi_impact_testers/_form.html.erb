@@ -32,7 +32,7 @@
 
     <div class="input-group mb-3">
       <%= form.label :sample,"No of Samples", class:"input-group-text", for:"sample-no"%>
-      <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
+      <%= form.select(:sample, [1, 2,3,4,5,6,7,8,9,10], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-no",:required => true}) %>
         </div>
 
     <div class="input-group mb-3">
@@ -56,7 +56,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :drop_range, "Height Range", class:"input-group-text",for:"height-range"%>
-          <%= form.text_field :drop_range, class:"form-control", id:"height-range", placeholder:"Min 2"%>
+          <%= form.text_field :drop_range, class:"form-control", id:"height-range"%>
           <%= form.label :drop_range, "m", class:"input-group-text",for:"height-range"%>
         </div>
 
@@ -64,7 +64,7 @@
 
         <div class="input-group mb-3">
           <%= form.label :drop_velocity, "Impact Velocity", class:"input-group-text",for:"impact-velocity"%>
-          <%= form.text_field :drop_velocity, class:"form-control", id:"impact-velocity", placeholder:"Min 2"%>
+          <%= form.text_field :drop_velocity, class:"form-control", id:"impact-velocity"%>
           <%= form.label :drop_velocity, "m", class:"input-group-text",for:"impact-velocity"%>
         </div>
 
@@ -160,13 +160,12 @@
 
 
         <div class="mb-3">
-          <%= form.label :more,"Additonal information,if any:", class:"input-group-text", for:"tell-us-more" %>
-          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3",placeholder:"Additonal information,if any:"%>
         </div>
 
 
         <div class="actions">
-            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
         </div>
   </div>
 </div>
