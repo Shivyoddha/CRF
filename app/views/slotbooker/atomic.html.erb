@@ -92,7 +92,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ATOMIC/<%=atomic.id %>	</th>
-                        <td> <%= atomic.user.name%> </td>
+                        <td> <%= atomic.user.firstname%><nobr><%= atomic.user.lastname%> </td>
                         <td> <%= atomic.user.orgname%> </td>
                         <td> <%= atomic.user.department%> </td>
                         <td> <%= atomic.user.contact%> </td>
@@ -108,8 +108,8 @@
                         <td> <%= atomic.carcinogenic%> </td>
                         <td> <%= atomic.more%> </td>
 
-                        <td> <%= atomic.slotdate%></td>
-                        <td> <%= atomic.slottime%></td>
+                        <td><span style="white-space: nowrap;"><%= atomic.slotdate.strftime('%d-%m-%Y')if atomic.slotdate.present? %></td>
+                        <td><%= atomic.slottime.strftime('%H:%M:%S') if atomic.slottime.present? %></td>
                         <td> <%= atomic.status %></td>
                         <%if atomic.references.attached? %>
                         <%atomic.references.each do |file|%>

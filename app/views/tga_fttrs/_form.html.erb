@@ -66,10 +66,12 @@
             <div class="input-group mb-3">
                 <%= form.label :min_temp, "Min", class:"input-group-text", for:"temp_min" %>
                 <%= form.text_field :min_temp, type:"text", class:"form-control", id:"temp_min", placeholder:"Min. 23"%>
+                <%= form.label :min_temp, "°C", class:"input-group-text", for:"temp_min" %>
             </div>
             <div class="input-group mb-3" >
                 <%= form.label :max_temp, "Max", class:"input-group-text", for:"temp_max" %>
                 <%= form.text_field :max_temp, type:"text", class:"form-control", id:"temp_max", placeholder:"Max. 900"%>
+                  <%= form.label :max_temp, "°C", class:"input-group-text", for:"temp_max" %>
             </div>
 
             <div>
@@ -77,8 +79,9 @@
             </div>
 
             <div class="input-group mb-3">
-                <%= form.label :scan_rate,"°C/min", class:"input-group-text", for:"scan_rate" %>
+                <%= form.label :scan_rate," Scan Rate(°C/min)", class:"input-group-text", for:"scan_rate" %>
                 <%= form.text_field :scan_rate, type:"text", class:"form-control", id:"scan_rate", placeholder:"Max. 900"%>
+                <%= form.label :scan_rate,"°C/min", class:"input-group-text", for:"scan_rate" %>
             </div>
 
             <div class="input-group mb-3">
@@ -89,25 +92,25 @@
 
         <div id="ftir" class="vis">
             <p class="fw-bold text-success">FTIR-Method</p>
-         
+
             <div class="input-group mb-3">
                 <div class="form-check form-check-inline">
                 <%= form.check_box :atr,{:class=>'form-check-input',:id=>'fftr'}, true, false%>
-         
-                <label class="form-check-label" for="ftr">FTR</label>
+
+                <label class="form-check-label" for="ftr">ATR</label>
                 </div>
                 <div class="form-check form-check-inline">
                 <%= form.check_box :kbr ,{:class=>'form-check-input',:id=>'kbr'}, true, false%>
-              
+
                 <label class="form-check-label" for="kbr">KBR</label>
                 </div>
             </div>
-            
+
             <div class="y-ordinate">
                 <p class="fw-bold">Y-Ordinate</p>
             </div>
             <div>
- 
+
             <div class="form-check form-check-inline">
                 <%= form.radio_button :yordinate, 'Abosrbance', class:"form-check-input", type:"radio", id:"absorbance",:checked => true  %> Abosrbance
             </div>
@@ -117,7 +120,7 @@
         </div>
 
 
-           
+
         </div>
 
         <div>
@@ -137,7 +140,7 @@
 
 
         <div>
-          <%= form.label :compatability, "Compatability",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
+          <%= form.label :compatability, "Compatibility",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
             <div class="form-check">
                 <%= form.radio_button :compatability, '  Corrossive', class:"form-check-input", type:"radio", id:"flexRadioDefault2",:checked => true  %>  Corrossive
             </div>
@@ -192,7 +195,7 @@
       </div>
 
 
-        
+
       <% end %>
 
 

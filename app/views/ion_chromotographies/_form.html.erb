@@ -34,7 +34,7 @@
 
     <div class="input-group mb-3">
       <%= form.label :nature,"Nature of Sample", class:"input-group-text", for:"select-nature"%>
-      <%= form.select(:nature, ["Organic","In-Organic","Mixture of both", "Peptide / Protein"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"select-nature",:required => true}) %>
+      <%= form.select(:nature, ["Organic","In Organic","Mixture of both", "Peptide / Protein"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"select-nature",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -60,12 +60,12 @@
     </div>
 
     <div>
-        <p class="fw-bold text-primary">hazardmethod Information</p>
+        <p class="fw-bold text-primary">Measurment Information</p>
     </div>
 
     <div class="input-group mb-3">
       <%= form.label :analysis,"Analysis Required", class:"input-group-text", for:"analysis-required"%>
-      <%= form.select(:analysis, ["Qualitative","In-Quantitative","Both"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"analysis-required",:required => true}) %>
+      <%= form.select(:analysis, ["Qualitative","Quantitative","Both"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"analysis-required",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -95,7 +95,7 @@
 
     <div class="input-group mb-3">
       <%= form.label :detector,"Detector", class:"input-group-text", for:"detector"%>
-      <%= form.select(:detector, ["Electrochemical","In-Conductivity","UV-Vis"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"detector",:required => true}) %>
+      <%= form.select(:detector, ["Electrochemical","Conductivity","UV-Vis"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"detector",:required => true}) %>
     </div>
 
     <div>
@@ -161,7 +161,7 @@
 
 
     <div class="actions">
-        <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
+        <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
     </div>
 
 

@@ -30,7 +30,7 @@
 
 
         <div class="input-group mb-3">
-            <label class="input-group-text" for="degrassingTemp">Degrassing Temperature</label>
+            <label class="input-group-text" for="degrassingTemp">Degassing Temperature</label>
             <select class="form-select" id="degrassingTemp">
                 <option value="std" selected>Standard(300°C)</option>
                 <option value="custom">Customized</option>
@@ -59,7 +59,7 @@
                 <%= form.radio_button :analysisstandard, '7 point adsorption', class:"form-check-input", type:"radio", id:"7-point" %> 7 point adsorption
             </div>
             <div class="form-check">
-                <%= form.radio_button :analysisstandard, '10 point adsorption', class:"form-check-input", type:"radio", id:"10-point" %> 10 point adsorption
+                <%= form.radio_button :analysisstandard, '10 point adsorption  and desorption', class:"form-check-input", type:"radio", id:"10-point" %> 10 point adsorption and desorption
             </div>
             <div class="form-check">
                 <%= form.radio_button :analysisstandard, '20 point adsorption and desorption', class:"form-check-input", type:"radio", id:"20-point" %>  20 point adsorption and desorption
@@ -68,7 +68,7 @@
         </div>
         <div id="mention-analysis-required" class="vis">
             <div class="input-group mb-3">
-                <%= form.text_field :analysiscustom, type:"text", class:"form-control", placeholder:"Mention Here" %>
+                <%= form.text_field :analysiscustom, type:"text", class:"form-control", placeholder:"Max 300°C" %>
             </div>
         </div>
 
@@ -78,7 +78,7 @@
         </div>
 
         <div class="input-group mb-3">
-            <label class="input-group-text fw-bold" for="whether-incompatible">Whether incompatible with any material</label>
+            <label class="input-group-text fw-bold" for="whether-incompatible">Whether Incompatible with any material</label>
             <select class="form-select" id="whether-incompatible">
                 <option selected>Choose...</option>
                 <option value="yes">Yes</option>
@@ -163,7 +163,7 @@
     let incompatibleMention = document.getElementById('incompatible-mention');
     let mention_disposal = document.getElementById('mention-disposal');
     let any_disposal_method = document.getElementById('any-disposal-method');
-    
+
 
     degrassingTemp.addEventListener('click', () => {
         customDegrassingTemp.classList.add('vis');
@@ -197,7 +197,7 @@
     })
     any_disposal_method.addEventListener('click', () => {
         mention_disposal.classList.add('vis');
-        
+
 
       if (any_disposal_method.value == 'Yes') {
         mention_disposal.classList.toggle('vis');

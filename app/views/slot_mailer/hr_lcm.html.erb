@@ -96,7 +96,7 @@
 
             </div>
                 <div class="element">
-                    <span>Testing Required<span><span class="fw-bold data"><%=@hrlcm.testing_required%><span>
+                    <span>Testing Required<span><span class="fw-bold data"><%= Array(@hrlcm.testing_required).join(", ") %><span>
                 </div>
 
 
@@ -123,7 +123,7 @@
                 </div>
 
                  <div id="hazard" class="element">
-                    <span>Health Hazards:<span><span class="fw-bold data"><%=@hrlcm.health%><span>
+                    <span>Health Hazards:<span><span class="fw-bold data"><%= Array(@hrlcm.hazard_method).join(", ") %><span>
                 </div>
                 <div class="element">
                     <span>Storage & handling conditions:<span><span class="fw-bold data"><%=@hrlcm.storage%><span>

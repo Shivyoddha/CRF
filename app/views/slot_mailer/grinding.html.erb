@@ -58,7 +58,7 @@
                     <span>Moulding Requirement:<span><span class="fw-bold data"><%= @grinding.mould%><span>
                 </div>
                 <div id="measurement" class="element">
-                    <span>Grit Paper Required:<span><span class="fw-bold data">80, 120,180,220,320,400,600,800,1000,3200<span>
+                    <span>Grit Paper Required:<span><span class="fw-bold data"><%= Array(@grinding.grit).join(", ") %><span>
                 </div>
                 <div id="laser-to-be-used:" class="element">
                     <span>Moulding required:<span><span class="fw-bold data"> <%= @grinding.mould%><span>
@@ -70,10 +70,10 @@
                     <span>Diameter:<span><span class="fw-bold data"><%= @grinding.diameter%> mm<span>
                 </div>
                 <div id="laser-to-be-used:" class="element">
-                    <span>Diamond Grit Paper required:<span><span class="fw-bold data">80, 220, 600<span>
+                    <span>Diamond Grit Paper required:<span><span class="fw-bold data"><%= Array(@grinding.diamond).join(", ") %><span>
                 </div>
                  <div id="laser-to-be-used:" class="element">
-                    <span>Suspension Solution:<span><span class="fw-bold data"> Colloidal Silica,  Colloidal Alumina<span>
+                    <span>Suspension Solution:<span><span class="fw-bold data"><%= Array(@grinding.suspension).join(", ") %><span>
                 </div>
                  <div id="laser-to-be-used:" class="element">
                     <span>Lapping Paper required:<span><span class="fw-bold data"> <%= @grinding.lapping%><span>

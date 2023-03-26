@@ -53,7 +53,7 @@
                 </div>
 
                 <div id="technique-used" class="element">
-                    <span>Technique to be used:<span><span class="fw-bold data"><%=@atomic_force_microscope.technique%><span>
+                    <span>Technique to be used:<span><span class="fw-bold data"><%= Array(@atomic_force_microscope.technique).join(", ") %><span>
                 </div>
 
                 <div id="x-scan-range" class="element">
@@ -92,7 +92,7 @@
         <div id="safety-info">
             <div class="left">
                 <div id="compatibilty" class="element">
-                    <span>Compatibilty:<span><span class="fw-bold data"><%=@atomic_force_microscope.compatibilty%><span>
+                    <span>Compatibilty:<span><span class="fw-bold data"><%=@atomic_force_microscope.compatability%><span>
                 </div>
 
                 <div id="hazard" class="element">
@@ -116,7 +116,7 @@
 
         <div id="testing-req-div">
             <div id="sample-description" class="element">
-                <span>Testing Requirement:<span><span class="fw-bold data">,%=@atomic_force_microscope.more%><span>
+                <span>Testing Requirement:<span><span class="fw-bold data"><%=@atomic_force_microscope.more%><span>
             </div>
 
         </div>
