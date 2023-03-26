@@ -32,17 +32,9 @@ class HrlcmsController < ApplicationController
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).InternalMail.deliver_later
         else
-<<<<<<< HEAD
-<<<<<<< HEAD
-          HrlcmsMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
-=======
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
-=======
-          HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
         end
-        format.html { redirect_to hrlcm_url(@hrlcm), notice: "Hrlcm was successfully created." }
+        format.html { redirect_to  home_index_path, notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
       else
         format.html { render :new, status: :unprocessable_entity }

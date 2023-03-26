@@ -34,7 +34,7 @@ class HighTempVaccumsController < ApplicationController
         else
           HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to high_temp_vaccum_url(@high_temp_vaccum), notice: "High temp vaccum was successfully created." }
+        format.html { redirect_to home_index_path, notice: "High temp vaccum was successfully created." }
         format.json { render :show, status: :created, location: @high_temp_vaccum }
       else
         format.html { render :new, status: :unprocessable_entity }
