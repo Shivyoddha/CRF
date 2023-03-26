@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to '3D Scanner Slotbooker',slotbooker_threescanner_path,class:"navbar-brand",id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">THREESCAN:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">3D Scanner: Pending Slots</h2>
         </div>
 
 
@@ -83,35 +83,35 @@
                 </thead>
                 <tbody>
 
-                      <% @threescan1.where(status:'pending').each do |threes|%>
+                      <% @threescan1.where(status:'pending').each do |three|%>
                       <tr>
 
 
-                        <th scope="row">CRF/THREESCAN/<%=threes.id %>	</th>
-                        <td> <%= threes.user.name%> </td>
-                        <td> <%= threes.user.orgname%> </td>
-                        <td> <%= threes.user.department%> </td>
-                        <td> <%= threes.user.contact%> </td>
-                        <td> <%= threes.sample%> </td>
-                        <td> <%= threes.size%> </td>
-                        <td> <%= threes.texture%></td>
-                        <td>  Stl:<nobr><%= threes.stt%> <br>
-                          Ply:<%= threes.ply%><br>
-                          Wrl:<%= threes.wrl%> <br>
-                          Obj: <%= threes.obj%> <br>
-                          Asc: <%= threes.asc%> <br>
-                          Aop: <%= threes.aop%> <br>
-                          Ptx: <%= threes.ptx%> <br>
-                          Xyzrgb: <%= threes.xyzrgb%>
+                        <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
+                        <td> <%= three.user.firstname%><nobr> <%= three.user.lastname%></td>
+                        <td> <%= three.user.orgname%> </td>
+                        <td> <%= three.user.department%> </td>
+                        <td> <%= three.user.contact%> </td>
+                        <td> <%= three.sample%> </td>
+                        <td> <%= three.size%> </td>
+                        <td> <%= three.texture%></td>
+                        <td>  Stl:<nobr><%= three.stt%> <br>
+                          Ply:<%= three.ply%><br>
+                          Wrl:<%= three.wrl%> <br>
+                          Obj: <%= three.obj%> <br>
+                          Asc: <%= three.asc%> <br>
+                          Aop: <%= three.aop%> <br>
+                          Ptx: <%= three.ptx%> <br>
+                          Xyzrgb: <%= three.xyzrgb%>
                         </td>
-                        <td> <%= threes.more%> </td>
+                        <td> <%= three.more%> </td>
                         <td>Booked</td>
-                        <td><%= threes.slotdate %></td>
-                        <td><%= threes.slottime %></td>
+                        <td><%= three.slotdate %></td>
+                        <td><%= three.slottime %></td>
 
-                        <td> <%= threes.status %></td>
-                        <%if threes.references.attached? %>
-                      <td><%threes.references.each do |file|%>
+                        <td> <%= three.status %></td>
+                        <%if three.references.attached? %>
+                      <td><%three.references.each do |file|%>
                          <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
                            <% end %></td>
                       <% else %>
@@ -119,17 +119,17 @@
                       <% end %>
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
-                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{threes.id}" }, id: "ani" %>
-                           <div id="<%= threes.id%>" class="modal">
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{three.id}" }, id: "ani" %>
+                           <div id="<%= three.id%>" class="modal">
 
                            <div class="modal-dialog">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= threes.user.name %></b></h1>
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= three.user.firstname %></b></h1>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                        <div class="modal-body">
-                                         <%= form_with(model: threes,local:true) do |form| %>
+                                         <%= form_with(model: three,local:true) do |form| %>
 
                                              <div class="input-group mb-3">
                                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -143,11 +143,11 @@
 
                                           <%=form.fields_for :equipment_table do |f| %>
                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :app_no, value:"CRF/XRD/#{threes.id}"%>
+                                              <%= f.hidden_field :app_no, value:"CRF/XRD/#{three.id}"%>
                                             </div>
 
                                            <div class="input-group mb-3">
-                                             <%= f.hidden_field :username, value:"#{threes.user.name}"%>
+                                             <%= f.hidden_field :username, value:"#{three.user.name}"%>
                                           </div>
 
 
@@ -156,19 +156,19 @@
                                            </div>
 
                                           <div class="input-group mb-3">
-                                            <%= f.hidden_field :debit_head, value:"#{threes.debit}" %>
+                                            <%= f.hidden_field :debit_head, value:"#{three.debit}" %>
                                          </div>
 
                                          <div class="input-group mb-3">
-                                           <%= f.hidden_field :dept, value:"#{threes.user.department}" %>
+                                           <%= f.hidden_field :dept, value:"#{three.user.department}" %>
                                         </div>
 
                                         <div class="input-group mb-3">
-                                          <%= f.hidden_field :email, value:"#{threes.user.email}" %>
+                                          <%= f.hidden_field :email, value:"#{three.user.email}" %>
                                        </div>
 
                                         <div class="input-group mb-3">
-                                          <%= f.hidden_field :equipname, value:"threes" %>
+                                          <%= f.hidden_field :equipname, value:"three" %>
                                        </div>
 
                                           <%end%>
