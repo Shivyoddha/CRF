@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'Glow Discharge Slotbooker',slotbooker_glow_path,class:"navbar-brand",id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">glow:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Glow Discharge: Alloted Slots</h2>
         </div>
 
 
@@ -90,7 +90,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
-                        <td> <%= glow.user.name%> </td>
+                        <td> <%= glow.user.firstname%><nobr> <%= glow.user.lastname%></td>
                         <td> <%= glow.user.orgname%> </td>
                         <td> <%= glow.user.department%> </td>
                         <td> <%= glow.user.contact%> </td>
@@ -125,7 +125,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= glow.user.name %></b></h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= glow.user.firstname %></b></h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -178,7 +178,7 @@
                         <div class="modal-dialog">
                               <div class="modal-content">
                                   <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= glow.user.name %></b></h1>
+                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= glow.user.firstname %></b></h1>
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                   </div>
                                   <div class="modal-body">
@@ -192,8 +192,7 @@
 
                                    </div>
                                   <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                        <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
                                   </div>
                                   <% end %>
                               </div>
