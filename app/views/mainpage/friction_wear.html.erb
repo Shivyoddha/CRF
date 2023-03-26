@@ -1,0 +1,160 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtnmain"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Friction and Wear Monitor (Scratch Tester)</h1>
+
+    </div>
+    <div class="hero">
+
+      <div class="equipment-img-wrap" >
+        <div class="equipment-img">
+            <div id="gas-sense-images" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <%=image_tag 'friction-wear-images/ST_2.jpg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                  </div>
+                </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#gas-sense-images" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#gas-sense-images" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+            </div>
+        </div>
+     </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[TR- 101, DUCOM, India]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data"> CRF Annexe - F05</span>
+            </div>
+
+            <div class="mb-3">
+                <h4 class="fw-bold"><u>Features:</u></h4>
+                <li>Compact, benchtop instrument with inline microscope.</li>
+                <li>Automated load control (continuous, fixed and ramp).</li>
+                <li>Automated scratch test profile: Software controlled movement of test specimen along X and Y axis for unidirectional scratch, bidirectional scratches and scratches at different location on the specimen.</li>
+                <li>Acoustic emission sensor to detect early damage of the coating.</li>
+                <li>Environment chamber: Lubricant corrosion cup with temperature control for testing biomaterials at physiological conditions.</li>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <h4 class="fw-bold"><u>Resolution/Specification:</u></h4>
+              <li>Force (normal and tangential) = 2 to 200 N</li>
+              <li>Loading Rate = 0.01 to 20 N/s</li>
+              <li> Multi-axis stage = x-axis, y-axis travel 75 mm (min)</li>
+              <li>Linear stage = travel 75 mm (min)</li>
+              <li>Stroke (X) = 0 to 50 mm (100 micron resolution)</li>
+              <li>Speed = 10 micron/s to 5 mm/s</li>
+              <li>Sample size =</li>
+              <li> Scratch stylus =</li>
+              <li>Indentation stylus =</li>
+              <li>Optical imaging =</li>
+              <li>Acoustic emission</li>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <h4 class="fw-bold"><u>List of Facilities:</u></h4>
+          <li> Scratch loading (constant, progressional, incremental)</li>
+          <li>Scratch motion (single, multiple scratches, bidirectional)</li>
+          <li>Full control of length, speed and loading rate</li>
+          <li>Instrumented indentation</li>
+    </div>
+
+    <div class="mb-3">
+        <h4 class="fw-bold"><u>Application domains:</u></h4>
+          <li>Critical load of hard and brittle coatings like titanium nitride, ceramics</li>
+          <li> Determination of working load limit of soft coatings like PTFE and other polymers</li>
+          <li>Identification of process parameters of heat treatment for best scratch resistance</li>
+          <li>Estimation of bond strength at substrate - coating interface</li>
+          <li>Product development and quality control of surface engineered products</li>
+    </div>
+
+
+
+    </div>
+
+        <div class="regular-charges">
+
+          <!-- charges below -->
+            <h3 class="text-danger"><u>Testing Charges (per sweep).</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+
+                  <th></th>
+                  <th style="color:#0094BB">Normal Scratch Testing</th>
+                  <th style="color:#0094BB">Scratch Testing with Temperature analysis</th>
+                  <th style="color:#0094BB">Indentation only</th>
+                <th style="color:#0094BB">Indentation upto 400℃</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+
+                  <tr>
+                       <th>NITK</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 600/-</th>
+                 <th>Rs. 200/-</th>
+                   <th>Rs. 400/-</th>
+                </tr>
+
+                <tr>
+                  <th>Academic &amp; Research Institute*</th>
+                 <th>Rs. 750/-</th>
+                  <th>Rs. 900/-</th>
+                 <th>Rs. 300/-</th>
+                   <th>Rs. 600/-</th>
+                </tr>
+
+
+
+                 <tr>
+                  <th>Industry*</th>
+                   <th>Rs. 1000/-</th>
+                  <th>Rs. 1200/-</th>
+                 <th>Rs. 400/-</th>
+                   <th>Rs. 800/-</th>
+                </tr>
+
+
+
+
+
+
+
+              </tbody>
+            </table>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*Sample preparation charges, GST(18%) extra. Above charges are for providing raw data.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mr. Kiran(Technical Staff, CRF), Email: <span class="text-info">crf_ustp@nitk.edu.in</span></h5>
+
+            <h5>Dr. Ravishankar K.S (Scratch Tester, Faculty in-charge), Email:<span class="text-info">rshankar983@gmail.com</span></h5>
+
+        </div>
+    </div>
+  </div>
+
+<%=render "partials/footer" %>

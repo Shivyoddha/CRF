@@ -1,7 +1,7 @@
 * {
   margin: 0%;
   padding: 0%;
- 
+
 }
 
 .html{
@@ -45,7 +45,7 @@ body {
   font-family: "Quicksand", "sans-serif";
 }
 .spacing {
-  margin: 1rem 0.7em;
+  margin: 1rem 1.5em;
 }
 .drop-div{
   background-color: #4c60d4;
@@ -163,7 +163,7 @@ animation: slide-left 1s;
 @keyframes slide-left {
 from {
   margin-left: 100%;
-  width: 300%; 
+  width: 300%;
 }
 
 to {
@@ -240,7 +240,7 @@ padding: 1em;
   } */
 
   .vision{
-     
+
       display: flex;
       height: 50vh;
       align-items: center;
@@ -256,7 +256,7 @@ padding: 1em;
      display: block;
      margin-left: auto;
      margin-right: auto;
-     
+
   }
 
   #vision-title{
@@ -268,8 +268,8 @@ padding: 1em;
       filter: blur(5px);
       transform: translateY(-100%);
       transition: all 1s;
-    } 
-  
+    }
+
      .show{
       opacity: 1;
       filter: blur(0);
@@ -280,7 +280,7 @@ padding: 1em;
       .vision-text{
           transition: none;
       }
-    } 
+    }
 
 /* vision ends */
 
@@ -378,7 +378,7 @@ transform: translateX(3px);
   align-items: center;
   justify-content: center;
   height: 60vh;
-  
+
   background-color: aliceblue;
 }
 
@@ -442,7 +442,7 @@ transform: translateX(3px);
 
 .equip-nos{
   width: 50%;
-  
+
 }
 
 .area{
@@ -486,7 +486,7 @@ transform: translateX(3px);
 #area-value {
   animation: animate var(--duration) forwards var(--timing, linear);
   counter-reset: num var(--n);
-  
+
 }
 #area-value::before {
   content: counter(num);
@@ -695,6 +695,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0.9em;
   background-color: #ddf1fb;
 }
 .video-card {
@@ -739,7 +740,7 @@ a:hover {
 
 /* media queries */
 @media (max-width:992px) {
-  
+
   .info-children{
       display: flex;
       flex-direction: column;
@@ -762,7 +763,7 @@ a:hover {
   .vision-text{
     width: 95%;
 }
-  
+
   .mission{
     display: flex;
     flex-direction: column;
@@ -782,7 +783,7 @@ a:hover {
     width: 100%;
     padding: 1em;
   }
-  
+
   .crf-stats{
       font-size: 45px;
       flex-direction: column;
@@ -812,7 +813,7 @@ a:hover {
 }
 /* extra media */
 @media only screen and (max-width: 990px) {
-  
+
   #logo-down { /* hides lower img logo */
     display: none;
 }
@@ -920,7 +921,7 @@ a:hover {
     margin: 2%;
     width: 95%;
   }
-  
+
 }
 
 /* footer media query ends */
@@ -934,3 +935,34 @@ a:hover {
 }
 
 
+/* button css for cfr web team strats */
+
+#button{
+
+
+  width: 10em;;
+  height: 3em;
+  padding: 0.5em;
+  font-weight: bold;
+  text-decoration: none;
+
+  text-align: center;
+  color: #141111;
+  background: #f8f6f6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #1e1919;
+  border-radius: 10em;
+  opacity: 80%;
+}
+
+#button:hover{
+
+  border: 3px solid #0a0a0b;
+  background: transparent;
+  color: #fbfdfe;
+
+  border: 3px solid #f6f7f8;
+}
+
+/* crf web team btn edns  */

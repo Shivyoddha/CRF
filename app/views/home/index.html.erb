@@ -76,6 +76,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">XRD</h5>
+                    <% @equip1=Equiplist.find(1)%>
+                    <% if @equip1.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip1.status%></span>
+
+                    <% elsif @equip1.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip1.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip1.status%></span>
+                    <% end %>
 
 
                     <!--for time being active state is set -->
@@ -146,6 +156,17 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">HR-FESEM [Carl Zeiss]</h5>
+                  <% @equip2=Equiplist.find(2)%>
+                  <% if @equip2.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip2.status%></span>
+
+                  <% elsif @equip2.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip2.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip2.status%></span>
+                  <% end %>
+                   <!--for time being active state is set -->
 
               </div>
 
@@ -207,6 +228,21 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-FESEM [Jeol]</h5>
+                    <% @equip3=Equiplist.find(3)%>
+                    <% if @equip3.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip3.status%></span>
+
+                    <% elsif @equip3.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip3.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip3.status%></span>
+                    <% end %>
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -271,6 +307,21 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3-D Non Contact Profilometer</h5>
+                    <% @equip4=Equiplist.find(4)%>
+                    <% if @equip4.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip4.status%></span>
+
+                    <% elsif @equip4.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip4.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip4.status%></span>
+                    <% end %>
+
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -326,6 +377,21 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Raman Spectrometer with PL</h5>
+                  <% @equip5=Equiplist.find(5)%>
+                  <% if @equip5.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip5.status%></span>
+
+                  <% elsif @equip5.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip5.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip5.status%></span>
+                  <% end %>
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -387,6 +453,21 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">TGA-FTIR</h5>
+                  <% @equip6=Equiplist.find(6)%>
+                  <% if @equip6.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip6.status%></span>
+
+                  <% elsif @equip6.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip6.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip6.status%></span>
+                  <% end %>
+
+                  <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                status-active is for avtive state
+                                                status-undermaintainance is for maintainance state
+                                                status-unavailable for unavailable state -->
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -2253,6 +2334,12 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
+s
+                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
+                                                  status-active is for avtive state
+                                                  status-undermaintainance is for maintainance state
+                                                  status-unavailable for unavailable state -->
+
                 </div>
 
                 <span class="fw-bold">Located At</span>

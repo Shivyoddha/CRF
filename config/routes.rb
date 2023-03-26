@@ -137,6 +137,14 @@ Rails.application.routes.draw do
     get 'mainpage/liq_nitrogen'
     get 'mainpage/ball_milling'
 
+    get 'mainpage/instrument_list'
+    get 'mainpage/ft_nmr'
+    get 'mainpage/xrd'
+    get 'mainpage/hr_fesem_carl'
+    get 'mainpage/friction_wear'
+    get 'mainpage/multi_impact_test'
+    get 'mainpage/multirole_mech'
+
 
 
 
