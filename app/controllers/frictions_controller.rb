@@ -37,7 +37,7 @@ class FrictionsController < ApplicationController
         else
           FrictionMailer.with(id:@friction.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to friction_url(@friction), notice: "Friction was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Friction was successfully created." }
         format.json { render :show, status: :created, location: @friction }
       else
         format.html { render :new, status: :unprocessable_entity }

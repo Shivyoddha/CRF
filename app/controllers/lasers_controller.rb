@@ -51,6 +51,7 @@ class LasersController < ApplicationController
 
     respond_to do |format|
       if @laser.update(laser_params)
+        LaserAllotedMailer.with(id:@laser.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_laser_path(@laser), notice: "Laser was successfully updated." }
         format.json { render :show, status: :ok, location: @laser }
       else

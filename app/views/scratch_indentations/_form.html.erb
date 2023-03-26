@@ -37,12 +37,12 @@
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="sample-type">Sample type</label>
-      <%= form.select(:stype, ['solid','fabric_polymer','thin_film','metal_sheet'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
+      <%= form.select(:stype, ['Solid','Fabric?Polymer','Thin Film','Sheet Metal'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="measurement">Measurement</label>
-      <%= form.select(:measurement, ['scratch','indentation','scratch_indentation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
+      <%= form.select(:measurement, ['Scratch','indentation','Scratch +Indentation'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
     </div>
 
     <div class="input-group mb-3">
@@ -90,7 +90,7 @@
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="analysis_type">Type of analysis required</label>
-      <%= form.text_field :analysis, type:"text", class:"form-control", id:"analysis_type", placeholder:"Possible Requirement" %>
+      <%= form.text_field :analysis, type:"text", class:"form-control", id:"analysis_type", placeholder:"Analysis Required" %>
     </div>
 
       <div class="input-group mb-3" id="ref-file">

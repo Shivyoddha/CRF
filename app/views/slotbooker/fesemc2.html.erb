@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'HR-FESEM-CARL Slotbooker', slotbooker_fesemc_path, class:'navbar-brand', id:'title' %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">FESEMC:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">HR-FESEM [Carl Zeiss]:Alloted Slots</h2>
         </div>
 
 
@@ -82,8 +82,8 @@
                       <th scope="col">Slot Time</th>
                       <th scope="col">Status</th>
                       <th scope="col">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reasssign</th>
-                        <th scope="col" id="cancel-col">Cancel Slot</th>
+                      <th scope="col" id="reassign-col">Reasssign</th>
+                      <th scope="col" id="cancel-col">Cancel Slot</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +91,7 @@
                       <% @fesemc2.where(status:'alloted').each do |fesemc2|%>
                       <tr>
                         <th scope="row">CRF/fesemc/<%=fesemc2.id %>	</th>
-                          <td> <%=fesemc2.user.firstname%><nobr><%=fesemc2.user.lastname%> </td>
+                          <td> <%=fesemc2.user.firstname%><nobr> <%=fesemc2.user.lastname%> </td>
                       <td> <%= fesemc2.user.orgname%> </td>
                       <td> <%= fesemc2.user.department%> </td>
                       <td> <%= fesemc2.user.contact%> </td>
@@ -104,15 +104,10 @@
                       <td> <%= fesemc2.eds%> </td>
                       <td> <%= fesemc2.toxic%> </td>
                       <td> <%= fesemc2.conducting%> </td>
-                        <td> <%= fesemc2.more%> </td>
-                    <td>Booked </td>
-                        <td> <%= fesemc2.slotdate %> </td>
-                        <td> <%= fesemc2.slottime %> </td>
-                        <td><%= fesemc2.status%></td>
-
+                      <td> <%= fesemc2.more%> </td>
                         <td><span style="white-space: nowrap;"><%= fesemc2.slotdate.strftime('%d-%m-%Y')if fesemc2.slotdate.present? %></td>
                         <td><%= fesemc2.slottime.strftime('%H:%M:%S') if fesemc2.slottime.present? %></td>
-                          <td><%= fesemc2.status%></td>
+                        <td><%= fesemc2.status%></td>
                         <%if fesemc2.references.attached? %>
                       <td><%fesemc2.references.each do |file|%>
                          <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
@@ -128,7 +123,7 @@
                          <div class="modal-dialog">
                              <div class="modal-content">
                                  <div class="modal-header">
-                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemc2.user.name %></b></h1>
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fesemc2.user.firstname %></b></h1>
                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                  </div>
                                  <div class="modal-body">
@@ -162,7 +157,6 @@
                                   </div>
 
                                    <%end%>
-                                    <%=fesemc2.id%>
 
                                      <div class="actions">
                                        <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -189,7 +183,7 @@
                              <div class="modal-dialog">
                                    <div class="modal-content">
                                        <div class="modal-header">
-                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= fesemc2.user.name %></b></h1>
+                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to<b><%= fesemc2.user.firstname %></b></h1>
                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                        </div>
                                        <div class="modal-body">

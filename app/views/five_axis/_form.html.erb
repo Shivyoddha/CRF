@@ -38,7 +38,7 @@
 </div>
 
         <div class="input-group mb-3">
-          <%= form.label :depth,"Sample Composition",class:"input-group-text", for:"sample-comp" %>
+          <%= form.label :depth,"Depth",class:"input-group-text", for:"sample-comp" %>
           <%= form.text_field :depth,type:"text" ,class:"form-control", id:"sample-comp" %>
             <label class="input-group-text" for="sample-comp">mm</label>
         </div>
@@ -59,7 +59,7 @@
                   <%= form.radio_button :specimentolerance, 'yes', class:"form-check-input", type:"radio", id:"flexRadioDefault2" %> yes
               </div>
               <div class="form-check">
-                    <%= form.radio_button :specimentolerance, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1" ,:checked => true  %> No
+                    <%= form.radio_button :specimentolerance, 'no', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> No
               </div>
           </div>
 
@@ -69,7 +69,7 @@
                     <%= form.radio_button :cncprogram, 'supplied', class:"form-check-input", type:"radio", id:"flexRadioDefault2"  %> Supplied
                 </div>
                 <div class="form-check">
-                      <%= form.radio_button :cncprogram, 'Generated at Nitk', class:"form-check-input", type:"radio", id:"flexRadioDefault1",:checked => true   %> Generated at Nitk
+                      <%= form.radio_button :cncprogram, 'Generated at Nitk', class:"form-check-input", type:"radio", id:"flexRadioDefault1"  %> Generated at Nitk
                 </div>
             </div>
 
@@ -77,12 +77,12 @@
 
         <div class="input-group mb-3">
             <label class="input-group-text" for="rotaional-speed">Rotational Speed</label>
-            <%= form.text_field :rotationalspeed, class:"form-control", id:"rotaional-speed",placeholder:"Milling, Drilling, Tapping, etc" %>
+            <%= form.text_field :rotationalspeed, class:"form-control", id:"rotaional-speed" %>
             <label class="input-group-text" for="rotaional-speed">rpm</label>
         </div>
         <div class="input-group mb-3">
             <label class="input-group-text" for="feed-rate">Feed Rate</label>
-            <%= form.text_field :feedrate,class:"form-control", id:"feed-rate", placeholder:"Milling, Drilling, Tapping, etc" %>
+            <%= form.text_field :feedrate,class:"form-control", id:"feed-rate"%>
             <label class="input-group-text" for="feed-rate">mm/min</label>
         </div>
 
@@ -106,8 +106,7 @@
 
 
         <div class="mb-3">
-          <%= form.label :more,"Tell us more about testing requirement", class:"input-group-text", for:"tell-us-more" %>
-          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3"%>
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", rows:"3",placeholder:"Tell us more about testing requirement"%>
         </div>
 
         <div class="actions">

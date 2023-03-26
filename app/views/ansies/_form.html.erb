@@ -40,16 +40,16 @@
     [batch[:name], batch[:dates].map { |date| [date.strftime('%Y-%m-%d'), date.to_s] }.flatten]
   }.to_h
   .merge({'Custom' => 'custom'})),
-  { class: 'form-select', id: 'date-select'} %>
+  { class: 'form-select', id: 'date-select'}, class:"input-group-text" %>
     </div>
     <div id="custom">
       <div class="input-group mb-3">
           <%=form.label :customstart,"Start Date", class:"input-group-text" ,for:"start-date"%>
-        <%= form.select :customstart, options_for_select(@customisedbatches.map{ |batch| [batch[:name], batch[:start_date].strftime('%Y-%m-%d')] }),{:include_blank => 'Choose...'} %>
+        <%= form.select :customstart, options_for_select(@customisedbatches.map{ |batch| [batch[:name], batch[:start_date].strftime('%Y-%m-%d')] }),{:include_blank => 'Choose...'}, class:"input-group-text" %>
       </div>
       <div class="input-group mb-3">
         <%=form.label :customend,"End Date", class:"input-group-text" ,for:"end-date"%>
-          <%= form.select :customend, options_for_select(@customisedend.map{ |batch| [batch[:name], batch[:end_date].strftime('%Y-%m-%d')] }),{:include_blank => 'Choose...'} %>
+          <%= form.select :customend, options_for_select(@customisedend.map{ |batch| [batch[:name], batch[:end_date].strftime('%Y-%m-%d')] }),{:include_blank => 'Choose...'}, class:"input-group-text" %>
       </div>
       <button type="button" class="btn btn-success mb-3" id="confirm">Confirm</button>
     </div>
@@ -69,7 +69,7 @@
       </div>
       <div class="input-group mb-3">
         <%= form.label :sysno,"No of System Required", class:"input-group-text", for:"select-date"%>
-        <%= form.select(:sysno, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "select-date",:required => true}) %>
+        <%= form.select(:sysno, [1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "select-date",:required => true}) %>
       </div>
       <div class="input-group mb-3">
         <%= form.label :amount,"Bill Amount",class:"input-group-text",for:"amount" %>
@@ -97,20 +97,8 @@
 <% end %>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- <script>
-    let selectDate = document.getElementById('select-date');
+  <script>
+    let selectDate = document.getElementById('ansy_startdate');
     let confirm = document.getElementById('confirm');
     let standardDate = document.getElementById('standard-date');
     let custom = document.getElementById('custom');
@@ -132,4 +120,4 @@
         standardDate.classList.toggle('vis');
     })
 
-</script> -->
+</script>

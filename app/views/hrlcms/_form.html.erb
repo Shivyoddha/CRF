@@ -47,7 +47,7 @@
               <%= form.label :category, "Crude", class:"form-check-label", for:"crude"%>
           </div>
           <div class="form-check">
-                <%= form.radio_button :category, "Pure", class:"form-check-input", type:"radio", id:"pure",:checked => true  %>
+                <%= form.radio_button :category, "Pure", class:"form-check-input", type:"radio", id:"pure"  %>
                 <%= form.label :category, "Pure", class:"form-check-label", for:"pure"%>
           </div>
       </div>
@@ -61,7 +61,7 @@
               <%= form.label :sample_type, "Synthetic", class:"form-check-label", for:"Synthetic"%>
           </div>
           <div class="form-check">
-                <%= form.radio_button :sample_type, "Biological", class:"form-check-input", type:"radio", id:"Biological",:checked => true  %>
+                <%= form.radio_button :sample_type, "Biological", class:"form-check-input", type:"radio", id:"Biological"  %>
                 <%= form.label :sample_type, "Biological", class:"form-check-label", for:"Biological"%>
           </div>
       </div>
@@ -84,13 +84,13 @@
 
       <div class="input-group mb-3">
         <%= form.label :sample_volume  , "Sample volume: (in mL):", class:"input-group-text", for:"sample_volume" %>
-        <%= form.text_field :sample_volume  , type:"text", class:"form-control", id:"sample_volume", placeholder:"Sample volume" %>
+        <%= form.text_field :sample_volume  , type:"text", class:"form-control", id:"sample_volume", placeholder:"Sample volume Ex :5ml" %>
       </div>
 
 
       <div class="input-group mb-3">
         <%= form.label :sample_concentration  , "Sample concentration: (in ppm)", class:"input-group-text", for:"sample_conc" %>
-        <%= form.text_field :sample_concentration , type:"text", class:"form-control", id:"sample_conc", placeholder:"Sample Conc." %>
+        <%= form.text_field :sample_concentration , type:"text", class:"form-control", id:"sample_conc", placeholder:"Write N/A if unknown" %>
       </div>
 
 
@@ -129,7 +129,7 @@
                 <div class="form-check form-check-inline">
               <% options = ['UPLC', 'MS','UPLC-MS (+ve)','UPLC-MS (-ve)','UPLC-MS-MS (+ve)','UPLC-MS-MS (-ve)','MS-MS'] %>
               <% options.each do |option| %>
-                <%= check_box_tag 'hrlcm[testing_required][]', option, @hrlcm.testing_required.include?(option) %>
+                <%= check_box_tag 'hrlcm[testing_required][]', option, @hrlcm.testing_required.include?(option),checked: option == 'UPLC' %>
                 <%= label_tag "hrlcm_testing_required_#{option}", option %><br>
               <% end %>
 
