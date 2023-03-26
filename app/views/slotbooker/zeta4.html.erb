@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'ZETA Slotbooker',slotbooker_zeta_path,class:"navbar-brand",id:"title"  %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Zeta Potential Sizes:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Zeta Potential Sizes: Cancelled Slots</h2>
         </div>
 
 
@@ -96,7 +96,7 @@
                       <% @zeta4.where(status:'cancelled').each do |zeta|%>
                       <tr>
                         <th scope="row">CRF/Zeta Potential Sizes/<%=zeta.id %>	</th>
-                        <td> <%= zeta.user.name%> </td>
+                        <td> <%= zeta.user.firstname%><nobr> <%= zeta.user.lastname%> </td>
                         <td> <%= zeta.user.orgname%> </td>
                         <td> <%= zeta.user.department%> </td>
                         <td> <%= zeta.user.contact%> </td>

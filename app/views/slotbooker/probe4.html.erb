@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'Probe Sonicator Slotbooker',slotbooker_probe_path,class:"navbar-brand",id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">PROBE:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Probe Sonicator: Cancelled Slots</h2>
         </div>
 
 
@@ -87,7 +87,7 @@
                       <tr>
                         <th scope="row">CRF/PROBE/<%=probe.id %>	</th>
 
-                        <td> <%= probe.user.name%> </td>
+                        <td> <%= probe.user.firstname%><nobr> <%= probe.user.lastname%></td>
                         <td> <%= probe.user.orgname%> </td>
                         <td> <%= probe.user.department%> </td>
                         <td> <%= probe.user.contact%> </td>
