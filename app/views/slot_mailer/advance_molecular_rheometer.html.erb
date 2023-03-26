@@ -1,4 +1,4 @@
-<div id="margin">
+<div id="margin"
     <div class="container-11">
           <div class="logo">
               <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
@@ -15,12 +15,12 @@
           <h2 class="text-center" id="equip-heading"><u>Advance Modular Rheometer</u></h2>
       </div>
 
-      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/CIMR/<%=@cell_imaging.id%></span>
+      <span id="app-no-tag">Application No:</span><span class="app-no fw-bold element data">CRF/RHEO/<%=@advance_molecular_rheometer.id%></span>
       <div class = "user-info" >
           <div class="left">
             <div class="element">
                 <span>Applicant Name:</span>
-                <span class="fw-bold data"> <%= @user.name %> <%= @user.lastname %> </span>
+                <span class="fw-bold data"> <%= @user.firstname %> <%= @user.lastname %> </span>
             </div>
             <div class="element">
                 <span>Applicant Email:</span>
@@ -30,18 +30,18 @@
                 <span>Department:</span>
                 <span class="fw-bold data"> <%= @user.department %></span>
             </div>
-        </div>
-        <div class = "right">
-              <div class="element">
-
-                  <span>Contact No:</span>
-                  <span class="fw-bold data"> <%= @user.contact %></span>
-              </div>
-
-          <div class="element">
-              <span>Course:</span>
-              <span class="fw-bold data"> <%= @user.course %></span>
           </div>
+          <div class = "right">
+                <div class="element">
+
+                    <span>Contact No:</span>
+                    <span class="fw-bold data"> <%= @user.contact %></span>
+                </div>
+
+            <div class="element">
+                <span>Course:</span>
+                <span class="fw-bold data"> <%= @user.course %></span>
+            </div>
 
           </div>
       </div>
@@ -50,35 +50,35 @@
         <div id="sample-details">
             <div class="left-uv">
                 <div class="element">
-                    <span>No. of Samples:<span><span class="fw-bold data"><%=@cell_imaging.sample%><span>
+                    <span>No. of Samples:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.sample%><span>
                 </div>
                 <div id="test-nature" class="element">
-                    <span>Nature of Test<span><span class="fw-bold data">Non-Magnetic<span>
+                    <span>Nature of Test<span><span class="fw-bold data"><%=@advance_molecular_rheometer.nature%><span>
                 </div>
                 <div id="Temperature" class="element">
-                    <span>Temperature<span><span class="fw-bold data">150 °C<span>
+                    <span>Temperature<span><span class="fw-bold data"><%=@advance_molecular_rheometer.temperature%><span>
                 </div>
                 <div id="shear-rate" class="element">
-                    <span>Shear Rate:<span><span class="fw-bold data">134 sec<sup>-1</sup><span>
+                    <span>Shear Rate:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.shear_rate%> sec<sup>-1</sup><span>
                 </div>
                 <div id="analysis-required" class="element">
-                    <span>Analysis Required:<span><span class="fw-bold data">...<span>
+                    <span>Analysis Required:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.analysis%><span>
                 </div>
 
             </div>
 
             <div class="right-uv">
                 <div id="sample-type" class="element">
-                    <span>Sample Type:<span><span class="fw-bold data">Gel<span>
+                    <span>Sample Type:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.stype%><span>
                 </div>
                 <div id="current" class="element">
-                    <span>Current:<span><span class="fw-bold data">2 Amp<span>
+                    <span>Current:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.current%> Amp<span>
                 </div>
                 <div id="shear-type" class="element">
-                    <span>Shear Type:<span><span class="fw-bold data">Constant<span>
+                    <span>Shear Type:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.shear_type%><span>
                 </div>
-                <div id="sweeps class="element">
-                    <span>No of Sweeps:<span><span class="fw-bold data"><%=@cell_imaging.image_mode%><span>
+                <div id="sweeps" class="element">
+                    <span>No of Sweeps:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.sweeps%><span>
                 </div>
 
             </div>
@@ -93,11 +93,11 @@
         <div id="safety-info">
             <div class="left-uv">
                 <div id="hazard" class="element">
-                    <span>Toxicity:<span><span class="fw-bold data"><%=@cell_imaging.toxicity%><span>
+                    <span>Toxicity:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.toxic%><span>
                 </div>
             </div>
 
-            
+
 
 
             </div>
@@ -106,7 +106,7 @@
 
         <div id="testing-req-div">
             <div id="sample-description" class="element">
-                <span>Additional Information:<span><span class="fw-bold data"><%=@cell_imaging.more%><span>
+                <span>Additional Information:<span><span class="fw-bold data"><%=@advance_molecular_rheometer.more%><span>
             </div>
 
         </div>
@@ -121,7 +121,7 @@
                     <span class="fw-bold">Dr. Rizwanur Rahman</span>
                 </div>
                 <div id="debit-head">
-                    <span class="text-muted element"><i><%=@cell_imaging.debit%></i></span>
+                    <span class="text-muted element"><i><%=@advance_molecular_rheometer.debit%></i></span>
                 </div>
 
                     <input id="student" type="textfield"/>
@@ -167,7 +167,7 @@
             </div>
 
             <div class="generated-on mt-3">
-                <i>Generated at:</i>
+                <i>Generated at:<%=@advance_molecular_rheometer.created_at%></i>
             </div>
 
         </div>
