@@ -1,12 +1,14 @@
-<p style="margin:0;padding:0">Dear <b>Vachan Kamath</b>,</p>
-<p style="margin:0;padding:0">Your Slot Date-Time for XRD Application No: <b>CRF/XRD/714.</b></p>
-<% if @xrd.status = "alloted" %>
+<p style="margin:0;padding:0">Dear <b><%=@user.firstname%></b>,</p>
+<p style="margin:0;padding:0">Your Slot Date-Time for atomic force microscope Application No: <b>CRF/AFM/<%=@atomic_force_microscope.id%></b></p>
+<% if @atomic_force_microscope.status = "alloted" %>
 <p style="margin:0;padding:0">Has been assigned for Date :<b> 18-04-2023 </b>; Time : <b> 9:30 am </b></p>
+<% if @hr_fesem_c.status == "cancelled" %>
+<p>The slot with AppNo  CRF/XRD/<%= @hr_fesem_c.id%> has been cancelled</p>
 <%end%>
 <br>
 <p style="margin:0;padding:0">Cancellation/Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for experiment after booking slot, penalty of Rs. 100/- is charged per slot. </p>
 <p style="margin:0;padding:0;color:red">Slots Date is tentative, Depending on M/C
 avaliability. In case slot date is pre/postponed applicant will get e-mail for same.</p>
 <p style="margin:0;padding:0">Regards,</p>
-<p style="margin:0;padding:0">XRD Lab CRF.</p>
-<p style="margin:0;padding:0">office.crf@nitk.edu.in</p>
+<p style="margin:0;padding:0">Atomic Force Microscope Lab CRF.</p>
+<p style="margin:0;padding:0"><a href="mailto:booking.crf@nitk.edu.in">booking.crf@nitk.edu.in</a></p>

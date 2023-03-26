@@ -27,24 +27,25 @@ a {
 }
 
 /*****/
-.nav {
+.nav2 {
   position: relative;
-  left: 2%;
+  left: 1%;
   height: 10%;
   width: max-content;
 }
-.navbar {
-  padding-top: 5%;
+.navbar2 {
+  padding-top: 3%;
+  padding-left: 3%;
 }
-.navbar li {
+.navbar2 li {
   position: relative;
   list-style: none;
   display:inline;
   margin-right: 1vw;
 
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
-.navbar li::after {
+.navbar2 li::after {
   content:"";
   position: absolute;
   bottom: 0;
@@ -59,7 +60,7 @@ a {
   transform-origin: right;
   transition: transform 250ms ease;
 }
-.navbar li:hover::after {
+.navbar2 li:hover::after {
   transform: scaleX(1);
   transform-origin: left;
 
@@ -72,6 +73,7 @@ a {
 }
 h1{
   font-size: 3em;
+  font-family: "Unbounded";
 }
 
 
@@ -79,7 +81,7 @@ h1{
 .header{
   /* position: absolute; */
   width: max-content;
-  font-size: 2.875em;
+  font-size: 2.5em;
   white-space: nowrap;
   text-decoration: underline;
 
@@ -100,8 +102,8 @@ h1{
 
 /*****/
 .content {
-  /* position: absolute; */
-  font-size: 2.3em;
+  position: absolute;
+  font-size: 2em;
   width: 40%;
 
   top: 45%;
@@ -119,7 +121,28 @@ h1{
   background-size: cover;
 }
 #im1{
-  background-image: url(https://raw.githubusercontent.com/medha03/CRF/main/app/assets/images/anish2.jpg?token=GHSAT0AAAAAAB7CXSKXWNLSXLWM2JIOFVG4ZAYRS2A);
+  width: 54%;
+}
+#im2{
+  width: 40%;
+}
+#im3{
+  width: 54%;
+}
+#im4{
+  width: 54%;
+}
+#im5{
+  width: 54%;
+}
+#im6{
+  width: 45%;
+}
+#im7{
+  width: 56%;
+}
+#im8{
+  width: 54%;
 }
 
 @keyframes slide-in {
@@ -153,7 +176,9 @@ h1{
   right: 0;
   bottom: 0;
   left: 0;
-  width: 90%;
+  
+  width: 45em;
+  height: 25em;
   
   background: hsl(0,0%,95%);
   box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
@@ -172,20 +197,16 @@ h1{
   bottom: 10;
   left: 0;
 
-  width: 57em;
-  height: 28em;
+  width: 45em;
+  height: 25em;
 
   background: hsl(0,0%,95%);
   box-shadow: 1px 1px 25px 3px rgba(0,0,0,.3);
+  
     
 }
-.wrapper1.show{
-  animation: slide-in 1s;
-  
-}
-.wrapper2.show{
-  animation: slide-out 1s;
-}
+
+
 
 
 .wrap{
@@ -212,9 +233,8 @@ h1{
     width: 50%;
     line-height:1.8;
   }
-  .navbar li{
-    font-size: large;
-    
+  .navli{
+    font-size: 0.5em;
   }
   .content{
     font-size: 1.3em;
@@ -227,18 +247,21 @@ h1{
 }
 @media only screen and (min-width: 668px) and (max-width: 1024px) {
   .wrapper1, .wrapper2 {
-    width:80vw;
-    height:40vw;
-    /* display: flex;
-    flex-direction: column; */
+    width:50vw;
+    height:25vw;
+    display: flex;
+    flex-direction: column;
   }
   
   .header {
-    font-size: 2.5em;
+    font-size: 1.8em;
     width: 40%
 
 
     
+  }
+  #im1{
+    width: 60%;
   }
   
   .content {
@@ -248,7 +271,44 @@ h1{
     
   }
   .navbar li{
-    font-size: large;
+    font-size: 0.5em;
     top: 1%;
   }  
 }
+@media only screen and (max-width: 632px) {
+  .wrapper1, .wrapper2 {
+    width:70vw;
+    height:25vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    font-size: 1em;
+    width: 40%
+ 
+  }
+  .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 23px;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .content {
+    font-size: 0.8em;
+    width: 60%;
+   
+    
+  }
+  .navbar li{
+    font-size: 0.1em;
+    top: 1%;
+  }  
+}
+

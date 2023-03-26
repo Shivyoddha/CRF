@@ -42,7 +42,7 @@
           <%= check_box_tag 'friction[material][]', option, @friction.material.include?(option) %>
           <%= label_tag "friction_material_#{option}", option %><br>
         <% end %>
-      
+
     </div>
 
     <div class="input-group mb-3">
@@ -90,7 +90,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <%= form.label :measurement,"Aucostic Measurement", class:"input-group-text", for:"acoustic-measure"%>
+          <%= form.label :measurement,"Acoustic Measurement", class:"input-group-text", for:"acoustic-measure"%>
           <%= form.select(:measurement, ["Yes","No"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "acoustic-measure",:required => true}) %>
         </div>
 
