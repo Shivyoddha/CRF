@@ -385,15 +385,18 @@ h2 {
   
   .middle-child{
     display:flex;
-    justify-content:center;
     align-items:flex-end;
+    
     width:auto;
-    margin: 0 0 0 0.5px;
+    margin: 0 0 14px 32px;
     
 
   }
   .icons ul li a{
     margin-left: 10px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
   }
   .right-child{
     display: flex;

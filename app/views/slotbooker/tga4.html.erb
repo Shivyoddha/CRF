@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'TGA-FTIR Slotbooker',slotbooker_tga_path,class:"navbar-brand",id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">TGAFTTR:Cancelled Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">TGA-FTIR: Cancelled Slots</h2>
         </div>
 
 
@@ -94,8 +94,8 @@
             <% @tga4.where(status:'cancelled').each do |tga|%>
                   <tr>
                     <!-- Button trigger modal -->
-                    <th scope="row">CRF/TGAFTTR/<%=tga.id %>	</th>
-                    <td> <%= tga.user.name%> </td>
+                    <th scope="row">CRF/TGAFTIR/<%=tga.id %>	</th>
+                    <td> <%= tga.user.firstname%><nobr> <%= tga.user.lastname%></td>
                     <td> <%= tga.user.orgname%> </td>
                     <td> <%= tga.user.department%> </td>
                     <td> <%= tga.user.contact%> </td>

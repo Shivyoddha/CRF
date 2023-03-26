@@ -29,6 +29,9 @@
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Media Team's Announce", announcements_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Fill a feedback", new_feedback_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "View feedbacks as admin", feedbacks_path(id:current_user.id),class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
               <% link_to "Download", home_index_path(format: :pdf)%>
 
@@ -522,6 +525,16 @@
              <div class="card-body">
                  <div id="more">
                      <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
+                     <% @equip7=Equiplist.find(7)%>
+                     <% if @equip7.status == "Active"%>
+                     <span class="badge rounded-pill status-active"><%=@equip7.status%></span>
+
+                     <% elsif @equip7.status == "Under Maintenance"%>
+                     <span class="badge rounded-pill status-undermaintainance"><%=@equip7.status%></span>
+
+                     <% else %>
+                     <span class="badge rounded-pill status-unavailable"><%=@equip7.status%></span>
+                     <% end %>
                  </div>
 
                  <span class="fw-bold">Located At</span>
@@ -576,6 +589,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-LCMS</h5>
+                    <% @equip8=Equiplist.find(8)%>
+                    <% if @equip8.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip8.status%></span>
+
+                    <% elsif @equip8.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip8.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip8.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -632,6 +655,16 @@
            <div class="card-body">
                <div id="more">
                    <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
+                   <% @equip9=Equiplist.find(9)%>
+                   <% if @equip9.status == "Active"%>
+                   <span class="badge rounded-pill status-active"><%=@equip9.status%></span>
+
+                   <% elsif @equip9.status == "Under Maintenance"%>
+                   <span class="badge rounded-pill status-undermaintainance"><%=@equip9.status%></span>
+
+                   <% else %>
+                   <span class="badge rounded-pill status-unavailable"><%=@equip9.status%></span>
+                   <% end %>
 
                    <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                  status-active is for avtive state
@@ -687,6 +720,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Laser Flash Analyser</h5>
+                  <% @equip10=Equiplist.find(10)%>
+                  <% if @equip10.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip10.status%></span>
+
+                  <% elsif @equip10.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip10.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip10.status%></span>
+                  <% end %>
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -739,6 +782,16 @@
                <div class="card-body">
                    <div id="more">
                        <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
+                       <% @equip11=Equiplist.find(11)%>
+                       <% if @equip11.status == "Active"%>
+                       <span class="badge rounded-pill status-active"><%=@equip11.status%></span>
+
+                       <% elsif @equip11.status == "Under Maintenance"%>
+                       <span class="badge rounded-pill status-undermaintainance"><%=@equip11.status%></span>
+
+                       <% else %>
+                       <span class="badge rounded-pill status-unavailable"><%=@equip11.status%></span>
+                       <% end %>
                    </div>
 
                    <span class="fw-bold">Located At</span>
@@ -790,6 +843,17 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
+                    <% @equip12=Equiplist.find(12)%>
+                    <% if @equip12.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip12.status%></span>
+
+                    <% elsif @equip12.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip12.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip12.status%></span>
+                    <% end %>
+
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -844,6 +908,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">FT-NMR</h5>
+                    <% @equip13=Equiplist.find(13)%>
+                    <% if @equip13.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip13.status%></span>
+
+                    <% elsif @equip13.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip13.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip13.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -899,6 +973,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">ICP-MS</h5>
+                  <% @equip14=Equiplist.find(14)%>
+                  <% if @equip14.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip14.status%></span>
+
+                  <% elsif @equip14.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip14.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip14.status%></span>
+                  <% end %>
 
                   <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                 status-active is for avtive state
@@ -953,6 +1037,16 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
+                  <% @equip15=Equiplist.find(15)%>
+                  <% if @equip15.status == "Active"%>
+                  <span class="badge rounded-pill status-active"><%=@equip15.status%></span>
+
+                  <% elsif @equip15.status == "Under Maintenance"%>
+                  <span class="badge rounded-pill status-undermaintainance"><%=@equip15.status%></span>
+
+                  <% else %>
+                  <span class="badge rounded-pill status-unavailable"><%=@equip15.status%></span>
+                  <% end %>
               </div>
 
               <span class="fw-bold">Located At</span>
@@ -1003,6 +1097,16 @@
         <div class="card-body">
             <div id="more">
                 <h5 class="card-title fw-bold">Ion Chromatography</h5>
+                <% @equip16=Equiplist.find(16)%>
+                <% if @equip16.status == "Active"%>
+                <span class="badge rounded-pill status-active"><%=@equip16.status%></span>
+
+                <% elsif @equip16.status == "Under Maintenance"%>
+                <span class="badge rounded-pill status-undermaintainance"><%=@equip16.status%></span>
+
+                <% else %>
+                <span class="badge rounded-pill status-unavailable"><%=@equip16.status%></span>
+                <% end %>
             </div>
 
             <span class="fw-bold">Located At</span>
@@ -1052,6 +1156,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
+                    <% @equip17=Equiplist.find(17)%>
+                    <% if @equip17.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip17.status%></span>
+
+                    <% elsif @equip17.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip17.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip17.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1106,6 +1220,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
+                    <% @equip18=Equiplist.find(18)%>
+                    <% if @equip18.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip18.status%></span>
+
+                    <% elsif @equip18.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip18.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip18.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1160,6 +1284,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
+                    <% @equip19=Equiplist.find(19)%>
+                    <% if @equip19.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip19.status%></span>
+
+                    <% elsif @equip19.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip19.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip19.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1209,6 +1343,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
+                    <% @equip20=Equiplist.find(20)%>
+                    <% if @equip20.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip20.status%></span>
+
+                    <% elsif @equip20.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip20.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip20.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1258,6 +1402,17 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Impedance Analyzer</h5>
+                    <% @equip21=Equiplist.find(21)%>
+                    <% if @equip21.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip21.status%></span>
+
+                    <% elsif @equip21.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip21.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip21.status%></span>
+                    <% end %>
+
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1310,6 +1465,17 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Tribometer	</h5>
+                    <% @equip22=Equiplist.find(22)%>
+                    <% if @equip22.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip22.status%></span>
+
+                    <% elsif @equip22.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip22.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip22.status%></span>
+                    <% end %>
+
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1361,6 +1527,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3D-Scanner</h5>
+                    <% @equip23=Equiplist.find(23)%>
+                    <% if @equip23.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip23.status%></span>
+
+                    <% elsif @equip23.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip23.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip23.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1416,6 +1592,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">GAIT Analysis</h5>
+                    <% @equip24=Equiplist.find(24)%>
+                    <% if @equip24.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip24.status%></span>
+
+                    <% elsif @equip24.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip24.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip24.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1465,6 +1651,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spectro-Radiometer</h5>
+                    <% @equip25=Equiplist.find(25)%>
+                    <% if @equip25.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip25.status%></span>
+
+                    <% elsif @equip25.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip25.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip25.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1514,6 +1710,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spark-OES</h5>
+                    <% @equip26=Equiplist.find(26)%>
+                    <% if @equip26.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip26.status%></span>
+
+                    <% elsif @equip26.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip26.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip26.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1563,6 +1769,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glow Discharges-OES</h5>
+                    <% @equip27=Equiplist.find(27)%>
+                    <% if @equip27.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip27.status%></span>
+
+                    <% elsif @equip27.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip27.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip27.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1612,6 +1828,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ball Milling Unit</h5>
+                    <% @equip28=Equiplist.find(28)%>
+                    <% if @equip28.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip28.status%></span>
+
+                    <% elsif @equip28.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip28.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip28.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1661,6 +1887,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Low Force Fatigue with DMA</h5>
+                    <% @equip29=Equiplist.find(29)%>
+                    <% if @equip29.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip29.status%></span>
+
+                    <% elsif @equip29.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip29.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip29.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -1723,6 +1959,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Micro-EDM</h5>
+                    <% @equip30=Equiplist.find(30)%>
+                    <% if @equip30.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip30.status%></span>
+
+                    <% elsif @equip30.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip30.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip30.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1775,6 +2021,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">5-Axes CNC</h5>
+                    <% @equip31=Equiplist.find(31)%>
+                    <% if @equip31.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip31.status%></span>
+
+                    <% elsif @equip31.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip31.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip31.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1825,6 +2081,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Multi Purpose Impact Testing (SHPB)</h5>
+                    <% @equip32=Equiplist.find(32)%>
+                    <% if @equip32.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip32.status%></span>
+
+                    <% elsif @equip32.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip32.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip32.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1877,6 +2143,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Friction Stir Welding/Surfacing(FSW)</h5>
+                    <% @equip33=Equiplist.find(33)%>
+                    <% if @equip33.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip33.status%></span>
+
+                    <% elsif @equip33.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip33.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip33.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1926,6 +2202,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Electro Chemical Polishing</h5>
+                    <% @equip34=Equiplist.find(34)%>
+                    <% if @equip34.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip34.status%></span>
+
+                    <% elsif @equip34.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip34.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip34.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -1975,6 +2261,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Milli-Q water</h5>
+                    <% @equip35=Equiplist.find(35)%>
+                    <% if @equip35.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip35.status%></span>
+
+                    <% elsif @equip35.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip35.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip35.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2024,6 +2320,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glove Box</h5>
+                    <% @equip36=Equiplist.find(36)%>
+                    <% if @equip36.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip36.status%></span>
+
+                    <% elsif @equip36.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip36.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip36.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2073,6 +2379,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Probe Sonicator</h5>
+                    <% @equip37=Equiplist.find(37)%>
+                    <% if @equip37.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip37.status%></span>
+
+                    <% elsif @equip37.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip37.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip37.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2125,6 +2441,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ultra-Centrifuge</h5>
+                    <% @equip38=Equiplist.find(38)%>
+                    <% if @equip38.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip38.status%></span>
+
+                    <% elsif @equip38.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip38.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip38.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2174,6 +2500,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Gas Sensing</h5>
+                    <% @equip39=Equiplist.find(39)%>
+                    <% if @equip39.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip39.status%></span>
+
+                    <% elsif @equip39.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip39.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip39.status%></span>
+                    <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
@@ -2228,6 +2564,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Liquid Nitrogen</h5>
+                    <% @equip40=Equiplist.find(40)%>
+                    <% if @equip40.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip40.status%></span>
+
+                    <% elsif @equip40.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip40.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip40.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2283,6 +2629,16 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ansys System Lab</h5>
+                    <% @equip41=Equiplist.find(41)%>
+                    <% if @equip41.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip41.status%></span>
+
+                    <% elsif @equip41.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip41.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip41.status%></span>
+                    <% end %>
                 </div>
 
                 <span class="fw-bold">Located At</span>
@@ -2334,7 +2690,17 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
-s
+                    <% @equip42=Equiplist.find(42)%>
+                    <% if @equip42.status == "Active"%>
+                    <span class="badge rounded-pill status-active"><%=@equip42.status%></span>
+
+                    <% elsif @equip42.status == "Under Maintenance"%>
+                    <span class="badge rounded-pill status-undermaintainance"><%=@equip42.status%></span>
+
+                    <% else %>
+                    <span class="badge rounded-pill status-unavailable"><%=@equip42.status%></span>
+                    <% end %>
+
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
                                                   status-active is for avtive state
                                                   status-undermaintainance is for maintainance state

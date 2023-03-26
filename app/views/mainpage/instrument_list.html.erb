@@ -1,0 +1,470 @@
+<%= stylesheet_link_tag "instruments" %>
+
+<div class="" id="heading">
+ <a href="https://crf.nitk.ac.in/">
+  <%=image_tag 'logoT.png' , height:75 %>
+ </a>
+    <h1>Central Research Facility NITK</h1>
+</div>
+
+<div id="navigation">
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+            <!--this appears after fire of media qyuery at 990px-->
+
+        <button id="togle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse center" id="navbarSupportedContent">
+          <ul class="navbar-nav ">
+            <!--this disappears after fire of media qyuery at 990px-->
+
+            <li class="nav-item coolBeans spacing">
+              <a class="nav-link" href="#show">Home</a>
+            </li>
+            <li class="nav-item coolBeans spacing" id="people-li">
+              <%=link_to 'People', mainpage_people_path, class:"nav-link"%>
+            </li>
+            <li class="nav-item coolBeans spacing ">
+              <%=link_to 'Facilities', mainpage_facility_path, class:"nav-link"%>
+            </li>
+            <li class="nav-item coolBeans spacing ">
+              <%=link_to 'Users', mainpage_user_type_path, class:"nav-link"%>
+            </li>
+            <li class="nav-item coolBeans spacing ">
+              <%=link_to 'Gallery',mainpage_gallery_path,class:"nav-link"%>
+            </li>
+            <li class="nav-item coolBeans spacing">
+                <%=link_to 'Book Slot',new_user_session_path,class:"nav-link"%>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+<h2 class="instrument-head text-center">Instrument List</h2>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Instrument</th>
+              <th scope="col">Manufacturer</th>
+              <th scope="col">Located at</th>
+              <th scope="col">Faculty in-charge</th>
+              <th scope="col">Email address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><%=link_to '250 kN Servo-Hydraulic Fatigue Testing System', mainpage_servo_hydraulic_path, class:"nav-link"%></th>
+              <td>M/s MTS Systems, USA</td>
+              <td>CRF</td>
+              <td>Prof. S. Murugendrappa</td>
+              <td>smm@nitk.edu.in</td>
+            </tr>
+            <tr>
+              <th scope="row"><%=link_to '3D Metal Printer', mainpage_metal_3D_path, class:"nav-link"%></th>
+              <td>M/s Formalloy, USA</td>
+              <td>CRF</td>
+              <td>Dr. Srikanth Bontha</td>
+              <td>srikanth.bontha@nitk.edu.in</td>
+            </tr>
+            <tr>
+              <th scope="row"><%=link_to '3D Noncontact Profilometer', mainpage_three_path, class:"nav-link"%></th>
+              <td>M/s Nanovea, USA</td>
+              <td>CRF</td>
+              <td>Dr. Keyur Raval</td>
+              <td>keyurnraval@nitk.edu.in</td>
+            </tr>
+            <tr>
+              <th scope="row"><%=link_to '3D Scanner', mainpage_scanner_3d_path, class:"nav-link"%></th>
+              <td>M/s Artec3D, Luxembourg</td>
+              <td>CRF</td>
+              <td>Dr. Somasekhara Rao Todeti</td>
+              <td>ssrao@nitk.edu.in</td>
+            </tr>
+            <tr>
+              <th scope="row"><%=link_to '5-axis CNC Vertical Machining Center', mainpage_axes_5_path, class:"nav-link"%></th>
+              <td>M/s Ace Micromatic Group, India</td>
+              <td>CRF</td>
+              <td>Prof. Srikantha Rao</td>
+              <td>sthg@nitk.edu.in</td>
+            </tr>
+            <tr>
+              <th scope="row"><%=link_to 'Advanced Modular Rheometer', mainpage_rheometer_path, class:"nav-link"%></th>
+              <td>M/s Anton Paar</td>
+              <td>CRF</td>
+              <td>Dr. Hemantha Kumar</td>
+              <td>hemantha@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Atomic Force Microscope', mainpage_atomic_path, class:"nav-link"%></th>
+              <td>M/s Nanosurf, Switzerland</td>
+              <td>CRF</td>
+              <td>Prof. M.N. Satyanarayan</td>
+              <td>satya_mn@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Automatic Multispecimen Grinder/Polisher', mainpage_auto_multi_speci_polish_path, class:"nav-link"%></th>
+              <td>M/s Metatech Industries, India</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Ball Milling Unit', mainpage_ball_milling_path, class:"nav-link"%></th>
+              <td>M/s Retsch, Germany</td>
+              <td>CRF</td>
+              <td>Dr. Preetham Kumar G.V</td>
+              <td>preethamk11@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'BET Surface Area Analyzer with Physisorption', mainpage_bet_path, class:"nav-link"%></th>
+              <td>M/s  Anton Paar</td>
+              <td>CRF</td>
+              <td>Dr. Keyur Raval</td>
+              <td>keyurnraval@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Cell Imaging Multimode Reader With Multifluoroscence', mainpage_cell_imaging_path, class:"nav-link"%></th>
+              <td>M/s  Fisher Scieitific, USA</td>
+              <td>CRF</td>
+              <td>Dr. Gangamma S</td>
+              <td>gangamma@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Chemisorption Analyzer with Integrated Mass Spectrometers', mainpage_chemisorption_path, class:"nav-link"%></th>
+              <td>M/s Microtrac, Japan</td>
+              <td>CRF</td>
+              <td>Prof. Rajmohan B.</td>
+              <td>rajmohan.che@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Confocal Raman Microscope', mainpage_raman_path, class:"nav-link"%></th>
+              <td>M/s Renishaw, UK</td>
+              <td>CRF</td>
+              <td>Prof. Anandhan Srinivasan</td>
+              <td>anandhan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Fourier Transform NMR Spectrometer', mainpage_ft_nmr_path, class:"nav-link"%></th>
+              <td>M/s Bruker, Switzerland</td>
+              <td>CRF</td>
+              <td>Dr. Udaya Kumar D</td>
+              <td>udayakumar@nitk.edu.in</td>
+            </tr>
+
+            <!-- changes fsw required-->
+            <tr>
+              <th scope="row"><%=link_to 'Friction and Wear Monitor', mainpage_friction_wear_path, class:"nav-link"%></th>
+              <td>M/s Ducom Instruments, India</td>
+              <td>CRF</td>
+              <td>Dr. K.S. Ravishankar</td>
+              <td>rshankar983@gmail.com</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Friction Stir Welding', mainpage_friction_stir_path, class:"nav-link"%></th>
+              <td>M/s Interface Design Associates, India</td>
+              <td>CRF</td>
+              <td>Prof. Srikantha Rao</td>
+              <td>sthg@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Gait Analysis Equipment', mainpage_gait_path, class:"nav-link"%></th>
+              <td>M/s Qualisys, Sweden; Lode, Netherland; AMTI, US</td>
+              <td>Science Block</td>
+              <td>Dr. Somasekhara Rao Todeti</td>
+              <td>ssrao@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Gas Sensing System', mainpage_gait_path, class:"nav-link"%></th>
+              <td>M/s Scitron (IEE). India</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'GC x GC TOF MS', mainpage_gas_chromatography_path, class:"nav-link"%></th>
+              <td>M/s Leco Corporation, USA</td>
+              <td>CRF</td>
+              <td>Dr. Vasudeva M.</td>
+              <td>vasu@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Glove Box', mainpage_glove_box_path, class:"nav-link"%></th>
+              <td>M/s ProRes Scientific, INDIA</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Glow Discharge OES', mainpage_glow_discharge_path, class:"nav-link"%></th>
+              <td>M/s Horiba, Japan</td>
+              <td>CRF</td>
+              <td>Prof. M.N. Satyanarayan</td>
+              <td>satya_mn@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'HR-FESEM', mainpage_hr_fesem_jeol_path, class:"nav-link"%></th>
+              <td>M/s Jeol, Japan</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <!--hr-fesem-carl absent-->
+            <tr>
+              <th scope="row"><%=link_to 'HR-FESEM', mainpage_hr_fesem_carl_path, class:"nav-link"%></th>
+              <td>M/s Carl Zeiss, Germany</td>
+              <td>CRF</td>
+              <td>Prof. M.N. Satyanarayan</td>
+              <td>satya_mn@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'HR-LCMS', mainpage_hr_lcms_path, class:"nav-link"%></th>
+              <td>M/s Waters GmbH, Austria</td>
+              <td>CRF</td>
+              <td>Dr. Keyur Raval</td>
+              <td>keyurnraval@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'High Temperature Vacuum Assisted Furnace', mainpage_high_temp_vac_path, class:"nav-link"%></th>
+              <td>M/s Waters GmbH, Austria</td>
+              <td>CRF</td>
+              <td>Dr. Ravishankar K.S.</td>
+              <td>rshankar983@gmail.com</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'HVAF/HVOF Coating Facility', mainpage_hvaf_hvof_path, class:"nav-link"%></th>
+              <td>M/s Kermetico, USA</td>
+              <td>CRF</td>
+              <td>Dr. Sudhakar Jambagi</td>
+              <td>sudhakar@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Impedance Analyzer', mainpage_impedance_path, class:"nav-link"%></th>
+              <td>M/s Keysight, USA</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Inductively Coupled Plasma-Mass Spectrometer', mainpage_icp_ms_path, class:"nav-link"%></th>
+              <td>M/s Perkin Elmer, Singapore</td>
+              <td>CRF</td>
+              <td>Dr. I. Regupathi</td>
+              <td>regupathi@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Instrumented Impact Tester', mainpage_instrumented_impact_path, class:"nav-link"%></th>
+              <td>M/s ZwickRoell, Germany</td>
+              <td>CRF</td>
+              <td>Dr. Preetham Kumar G.V</td>
+              <td>preethamk11@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Integrated Lab Scale Hollow Fiber Membrane Spinning System', mainpage_hollow_fibre_path, class:"nav-link"%></th>
+              <td>M/s Prova Technotrade, INDIA</td>
+              <td>CRF</td>
+              <td>Prof. Arun M. Isloor</td>
+              <td>isloor@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Multirole Mechanical Test System', mainpage_multirole_mech_path, class:"nav-link"%></th>
+              <td>M/s Nanatom, Bangalore, India</td>
+              <td>CRF</td>
+              <td>Dr. Preetham Kumar G.V.</td>
+              <td>preethamk11@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Ion Chromatography', mainpage_ion_chromatography_path, class:"nav-link"%></th>
+              <td>M/s Thermo-Fisher, Singapore</td>
+              <td>CRF</td>
+              <td>Dr. Arun Kumar Thalla</td>
+              <td>arunkumar@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Laser Flash Analyzer', mainpage_laser_path, class:"nav-link"%></th>
+              <td>M/s Waters GmbH, Austria</td>
+              <td>CRF</td>
+              <td>Prof. K.N. Prabhu</td>
+              <td>knprabhu@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Liquid Nitrogen Plant', mainpage_liq_nitrogen_path, class:"nav-link"%></th>
+              <td>M/s Stirling Cryogenics, Switzerland</td>
+              <td>CRF</td>
+              <td>Dr. Kumar G N</td>
+              <td>gnkumar33@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Low Force Fatigue Testing Machine', mainpage_low_force_fatigue_path, class:"nav-link"%></th>
+              <td>M/s TA Instruments, USA</td>
+              <td>CRF</td>
+              <td>Dr. Poornesh K</td>
+              <td>kpkoorata@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Micromachining Unit Hybrid Micro EDM', mainpage_micromachining_path, class:"nav-link"%></th>
+              <td>M/s Mikrotools Pte. Ltd., Singapore</td>
+              <td>CRF</td>
+              <td>Dr. Navin Karanth</td>
+              <td>navinkaranth.p@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Multi-Purpose Impact Testing Machine with Split Hopkinson Pressure Bar', mainpage_multi_impact_test_path, class:"nav-link"%></th>
+              <td>M/s Artis Technologies & Services, Bangalore</td>
+              <td>CRF</td>
+              <td>Dr. Sharanappa</td>
+              <td>sharnappaj@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Particle Size and Zeta Potential Analyzer', mainpage_zeta_path, class:"nav-link"%></th>
+              <td>M/s Anton-Paar India</td>
+              <td>CRF</td>
+              <td>Prof. Arun M. Isloor</td>
+              <td>isloor@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Pressure Plate Membrane Apparatus', mainpage_pressure_plate_path, class:"nav-link"%></th>
+              <td>M/s KMV Agrotech Engineering Work, Uttarakhand</td>
+              <td>CRF</td>
+              <td>Dr. Devatha C.P</td>
+              <td>devathafce@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Probe Sonicator', mainpage_probe_sonicator_path, class:"nav-link"%></th>
+              <td>M/s Sonics and Materials, USA</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Proton transfer Reaction Time of Flight Mass Spectrometer', mainpage_proton_transfer_path, class:"nav-link"%></th>
+              <td>M/s Ionicon, Austria</td>
+              <td>CRF</td>
+              <td>Dr. Vasudeva M</td>
+              <td>vasu@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Spark - Optical Emission Spectrometer', mainpage_spark_oes_path, class:"nav-link"%></th>
+              <td>M/s Bruker, USA</td>
+              <td>CRF</td>
+              <td>Dr. Sumanth Govindarajan</td>
+              <td>sumanthg@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Spectro-Radiometer', mainpage_spectro_path, class:"nav-link"%></th>
+              <td>M/s ASD Inc., UK</td>
+              <td>CRF</td>
+              <td>Dr. Shwetha H.R.</td>
+              <td>hrshwetha@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'TGA-FTIR', mainpage_tga_path, class:"nav-link"%></th>
+              <td>M/s Perkin-Elmer, Singapore</td>
+              <td>CRF</td>
+              <td>Prof. Veershetty Gumtapure.</td>
+              <td>veersg@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Tribometer', mainpage_tribometer_path, class:"nav-link"%></th>
+              <td>M/s  Anton-Paar, India</td>
+              <td>CRF</td>
+              <td>Dr. Sumanth Govindarajan</td>
+              <td>sumanthg@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Type I & II Water Purification System', mainpage_milli_q_path, class:"nav-link"%></th>
+              <td>M/s  Evoqua Water Technologies, USA</td>
+              <td>CRF</td>
+              <td>Dr. Sumanth Govindarajan</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'Ultracentrifuge', mainpage_ultra_centrifuge_path, class:"nav-link"%></th>
+              <td>M/s Beckman Coulter, USA</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'UV Ozone Cleaning System', mainpage_uv_ozone_path, class:"nav-link"%></th>
+              <td>M/s Perkin-Elmer, Singapore</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'UV-Vis-NIR Spectrometer', mainpage_uv_vis_path, class:"nav-link"%></th>
+              <td>M/s Perkin-Elmer, Singapore</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+            <tr>
+              <th scope="row"><%=link_to 'XRD', mainpage_xrd_path, class:"nav-link"%></th>
+              <td>M/s Empyrean (Malvern Panalaytical, Netherlands)</td>
+              <td>CRF</td>
+              <td>Dr. Rizwanur Rahman</td>
+              <td>rizwan@nitk.edu.in</td>
+            </tr>
+
+
+
+
+
+
+
+
+          </tbody>
+        </table>
+</div>
+
+
+
+      <%=render "partials/mainpage_footer" %>

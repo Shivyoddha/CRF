@@ -42,8 +42,6 @@
 
 
 
-
-
 <div id="container">
           <div class="background-main" id="show">
             <div class="container">
@@ -70,60 +68,48 @@
                 <div class='wrap'>
                     <h2 class="text-center font-unbounded py-3">Announcements</h2>
                     <div class="announcement">
+                      <% Announcement.all.each do |announce|%>
                         <div class="card">
-                            <h3 class="card__title">Title
+                            <h3 class="card__title"><%= announce.heading%>
                             </h3>
-                            <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <p class="card__content"><%=announce.text%> </p>
                             <div class="card__date">
-                                April 15, 2022
+                                <%=announce.created_on%>
                             </div>
                             <div class="card__arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-                                    <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3 class="card__title">Title
-                            </h3>
-                            <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                            <div class="card__date">
-                                April 15, 2022
-                            </div>
-                            <div class="card__arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-                                    <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3 class="card__title">Title
-                            </h3>
-                            <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                            <div class="card__date">
-                                April 15, 2022
-                            </div>
-                            <div class="card__arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-                                    <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3 class="card__title">Title
-                            </h3>
-                            <p class="card__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                            <div class="card__date">
-                                April 15, 2022
-                            </div>
-                            <div class="card__arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
-                                    <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+                              <%= button_tag "Read", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{announce.id}" }, id: "ani" %>
+                              <div id="<%= announce.id%>" class="modal">
 
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Announcement: <%= announce.heading%><b></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= announce.text%>
+
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                                <svg xmlns=s"http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="15" width="15">
+                                    <path fill="#fff" d="M13.4697 17.9697C13.1768 18.2626 13.1768 18.7374 13.4697 19.0303C13.7626 19.3232 14.2374 19.3232 14.5303 19.0303L20.3232 13.2374C21.0066 12.554 21.0066 11.446 20.3232 10.7626L14.5303 4.96967C14.2374 4.67678 13.7626 4.67678 13.4697 4.96967C13.1768 5.26256 13.1768 5.73744 13.4697 6.03033L18.6893 11.25H4C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75H18.6893L13.4697 17.9697Z"></path>
+                                </svg>
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <%end%>
+                              </div>
                     <!--the see all sectio of announcement has to be developed-->
 
                     <!--
@@ -191,6 +177,31 @@
 
               <!-- vision end -->
 
+              <!-- milestones  sections starts-->
+
+              <div class="crf-stats">
+            <div class="milestone-head">
+                <h2 id="milestones" class="text-center font-unbounded">Milestones</h2>
+            </div>
+            <div class="equip-nos text-center">
+                <h4 id="equip-value" style="--from: 0; --to: 100; --duration:5s;"></h4>
+                <h4>Equipments</h4>
+            </div>
+            <div class="area text-center">
+                <h4 id="area-value" style="--from: 0; --to: 10100; --duration: 5s;"></h4>
+                <h4>Sq. Metres</h4>
+            </div>
+            <div id="projects" class="area text-center">
+                <h4 >200+</h4>
+                <h4>Projects</h4>
+            </div>
+
+              </div>
+
+              <!-- milestones section ends -->
+
+              <!--mission starts-->
+
             <div class="mission">
                 <div class="mission-img">
                     <%=image_tag 'main-img/target.png' , height:165 %>
@@ -214,40 +225,15 @@
                 <div id="more-info-video">
                     <p class="text-small text-center f-size">Explore our Youtube Channel</p>
                     <div id="btn-announcement-wrap">
-            
+
                         <a href="https://www.youtube.com/@crfnitk6770/featured" id="btn-announcement" class= "btn-youtube" target=_blank>Explore</a>
-            
+
                     </div>
                 </div>
             </div>
               <!-- video section ends-->
 
-              <!-- equipment stats sections starts-->
 
-              <div class="crf-stats">
-            <div class="milestone-head">
-                <h2 id="milestones" class="text-center font-unbounded">Milestones</h2>
-            </div>
-            <div class="equip-nos text-center">
-                <h4 id="equip-value" style="--from: 0; --to: 100; --duration:5s;"></h4>
-                <h4>Equipments</h4>
-            </div>
-            <div class="area text-center">
-                <h4 id="area-value" style="--from: 0; --to: 10100; --duration: 5s;"></h4>
-                <h4>Sq. Metres</h4>
-            </div>
-            <div id="projects" class="area text-center">
-                <h4 >200+</h4>
-                <h4>Projects</h4>
-            </div>
-
-              </div>
-
-
-
-
-
-              <!-- equipment stats section ends -->
 
               <!-- sneak-peek starts -->
 
@@ -296,42 +282,7 @@
 
           <!-- footer begins -->
 
-          <footer>
-          <div class="footer-1">
-              <div class="footer-left">
-            <div class="footer-img">
-                <%=image_tag 'logoT.png' , height:80 %>
-            </div>
-            <div class="footer-address">
-                <h5 class="fw-bold">NITK CAMPUS</h5>
-                <p>NH 66, Srinivasnagar</p>
-                <p>Surathkal, Mangalore</p>
-                <p>Karnataka - 575025</p>
-            </div>
-              </div>
-              <div class="footer-middle">
-            <h5 class="fw-bold">Quick Links</h5>
-            <p><a href="#">Brochure</a></p>
-            <p><a href="#">Instrument List</a></p>
-              </div>
-              <div class="footer-right">
-            <h5 class="fw-bold">General Links</h5>
-            <p><a href="#">Feedback</a></p>
-              </div>
-              <div class="footer-social">
-            <h5 class="fw-bold">Social Links</h5>
-            <div class="social-icons">
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true" height="12px"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-            </div>
-              </div>
-          </div>
-          <hr>
-          <p class="text-center">Copyright All Rights Reserved 2023. CRF Web Team</p>
-
-          </footer>
+          <%=render "partials/mainpage_footer" %>
       </div>
     <!-- footer ends -->
 
@@ -391,4 +342,19 @@ window.onload = function() {
   // Scroll to the div
   window.scrollTo(0, divPosition);
 };
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal");
+var btn1 = document.getElementById("ani");
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+modal1.style.display = "block";
+});
+
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+if (event.target == modal1) {
+modal1.style.display = "none";
+}
+
+});
 </script>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :feedbacks
+  resources :announcements
   resources :equiplists
   get 'equips/index'
   get 'equips/show'
@@ -80,6 +82,7 @@ Rails.application.routes.draw do
     get 'mainpage/about_us'
     get 'mainpage/gallery'
     get 'mainpage/facility'
+    get 'mainpage/announcement_admin'
 
     get 'mainpage/micromachining'
     get 'mainpage/xrd'
@@ -135,6 +138,14 @@ Rails.application.routes.draw do
     get 'mainpage/high_temp_vac'
     get 'mainpage/liq_nitrogen'
     get 'mainpage/ball_milling'
+
+    get 'mainpage/instrument_list'
+    get 'mainpage/ft_nmr'
+    get 'mainpage/xrd'
+    get 'mainpage/hr_fesem_carl'
+    get 'mainpage/friction_wear'
+    get 'mainpage/multi_impact_test'
+    get 'mainpage/multirole_mech'
 
 
 
