@@ -1,0 +1,424 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "knowEquipment"%>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+<div class="container">
+    <div id="equipment-name">
+     <h1 class="text-center">Fourier Transform NMR Spectrometer </h1>
+
+    </div>
+    <div class="hero">
+
+
+          <div class="equipment-img-wrap" >
+            <div class="equipment-img">
+                <div id="ft_nmr-images" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <%=image_tag 'ft_nmr-images/NMR_3.jpeg' , class:"equipment-img-tag d-block w-100 card-img", alt:"..." %>
+                        </div>
+                    </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#ft_nmr-images" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#ft_nmr-images" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                </div>
+            </div>
+         </div>
+
+
+        <div id="content">
+            <div class="mb-3">
+                <span class="fw-bold text-warning" >[Avance Neo 400 MHz, Bruker, Switzerland]</span>
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Located at:</span><span class="data">CRF Annexe - G02</span>
+            </div>
+
+            <div class="mb-3">
+                  <span class="fw-bold">Features: </span>Multinuclear ;1D, 2D and 3D NMR
+            </div>
+
+            <div class="mb-3">
+                  <span class="fw-bold">Resolution: </span>400 MHz; 1D, 2D and 3D NMR
+            </div>
+
+            <div class="mb-3">
+                <span class="fw-bold">Facilities: </span>Multinuclear; 1D, 2D and 3D NMR
+            </div>
+
+            <h4 class="fw-bold"><u>Applications Domain:</u></h4>
+            <div class="mb-3" id="applications-div">
+                <p>Structural elucidation of variety of chemical compounds; organic molecules, inorganic complexes, drug molecules, dyes, biomolecules etc.</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="regular-charges">
+
+          <table class="table" id="t-1">
+            <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th></th>
+                  <th><sup>1</sup>H</th>
+                  <th><sup>13</sup>C</th>
+                  <th><sup>1</sup>H- D<sub>2</sub>O Exchange</th>
+                   <th>DEPT</th>
+                   <th>X-Nuclei</th>
+                   <th>2D-COSY</th>
+                   <th>2D-HSQC</th>
+                </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <th><span style="font-style: italic;">Sample weight</span></th>
+              <th>5-10mg</th>
+              <th>≥20mg</th>
+              <th>5-10mg</th>
+              <th>20mg</th>
+              <th>50-100mg</th>
+              <th>10-20mg</th>
+              <th>10-20mg</th>
+          </tr>
+        </tbody>
+          </table>
+
+            <h3 class="text-danger"><u>Testing Charges</u></h3>
+            <table class="table table-hover">
+              <thead>
+                <tr style="border-bottom: 2.5px solid #000;">
+                  <th style="color:#0094BB">Analysis mode/solvent</th>
+                  <th>NITK Users</th>
+                  <th>External Academia</th>
+                  <th>External R&amp;D Labs</th>
+                  <th>Industry</th>
+                  <th style="color:lavenderblush;"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tbody>
+
+                  <tr>
+                  <th style="color:#0094BB"><sup>1</sup>H in CDCl<sub>3</sub></th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 600/-</th>
+                  <th>Rs. 800/-</th>
+                  <th style="color:cadetblue;">Per Sample</th>
+                </tr>
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB"><sup>1</sup>H in DMSO- d<sub>6</sub></th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 600/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 1500/-</th>
+                  <th style="color:cadetblue;">Per Sample</th>
+                </tr>
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB"><sup>1</sup>H in D<sub>2</sub>O</th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 1100/-</th>
+                  <th>Rs. 1300/-</th>
+                  <th style="color:cadetblue;">Per Sample</th>
+                </tr>
+
+                  <tr>
+                  <th style="color:#0094BB"><sup>1</sup>H- D<sub>2</sub>O Exchange</th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 600/-</th>
+                  <th>Rs. 700/-</th>
+                  <th style="color:cadetblue;">Per Sample</th>
+                </tr>
+
+                 <tr>
+                  <th style="color:#0094BB">Analysis at higher temperature (Additional charges)</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 400/-</th>
+                  <th style="color:cadetblue;"></th>
+                </tr>
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB"><sup>13</sup>C in CDCl<sub>3</sub></th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 600/-</th>
+                  <th>Rs. 1000/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                  <tr>
+                  <th style="color:#0094BB"><sup>13</sup>C in CDCl<sub>3</sub></th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 700/-</th>
+                  <th>Rs. 900/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB"><sup>13</sup>C in DMSO</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 2500/-</th>
+                  <th>Rs. 2700/-</th>
+                  <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                 <tr>
+                   <th style="color:#0094BB"><sup>13</sup>C in DMSO</th>
+                  <th>Rs. 150/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 700/-</th>
+                  <th>Rs. 900/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                      <tr style="border-bottom: 2px solid #ddd;">
+                  <th style="color:#0094BB"><sup>13</sup>C in D<sub>2</sub>O</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 2500/-</th>
+                  <th>Rs. 2700/-</th>
+                  <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                 <tr>
+                   <th style="color:#0094BB"><sup>13</sup>C in D<sub>2</sub>O</th>
+                  <th>Rs. 150/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 700/-</th>
+                  <th>Rs. 900/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+
+
+                <tr style="border-bottom: 2px solid #ddd;">
+                   <th style="color:#0094BB">DEPT in CDCl<sub>3</sub></th>
+                <th>Rs. 200/-</th>
+                  <th>Rs. 800/-</th>
+                  <th>Rs. 1500/-</th>
+                  <th>Rs. 2000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                  <th style="color:#0094BB">DEPT in CDCl<sub>3</sub></th>
+               <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1000/-</th>
+                  <th>Rs. 1500/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+               <tr style="border-bottom: 2px solid #ddd;">
+                   <th style="color:#0094BB">DEPT in DMSO-d<sub>6</sub></th>
+                 <th>Rs. 200/-</th>
+                  <th>Rs. 1000/-</th>
+                  <th>Rs. 2000/-</th>
+                  <th>Rs. 2400/-</th>
+                 <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB">DEPT in DMSO-d<sub>6</sub></th>
+                <th>Rs. 100/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 1000/-</th>
+                  <th>Rs. 1500/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+            <tr style="border-bottom: 2px solid #ddd;">
+                   <th style="color:#0094BB">Additional charges for variable temperature</th>
+                 <th>Rs. 250/-</th>
+                  <th>Rs. 500/-</th>
+                  <th>Rs. 1000/-</th>
+                  <th>Rs. 1500/-</th>
+                   <th style="color:cadetblue;">Per Sample</th>
+                </tr>
+
+                  <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB"><sup>19</sup>F</th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 800/-</th>
+                  <th>Rs. 2400/-</th>
+                  <th>Rs. 4000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB"><sup>19</sup>F (Additional hr)</th>
+               <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1700/-</th>
+                  <th>Rs. 2600/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                    <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB"><sup>31</sup>P</th>
+              <th>Rs. 200/-</th>
+                  <th>Rs. 800/-</th>
+                  <th>Rs. 2400/-</th>
+                  <th>Rs. 4000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB"><sup>31</sup>P (Additional hr)</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1700/-</th>
+                  <th>Rs. 2600/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                    <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB"><sup>27</sup>Al</th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 800/-</th>
+                  <th>Rs. 2400/-</th>
+                  <th>Rs. 4000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB"><sup>27</sup>Al (Additional hr)</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1700/-</th>
+                  <th>Rs. 2600/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                    <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB"><sup>11</sup>B</th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 800/-</th>
+                  <th>Rs. 2400/-</th>
+                  <th>Rs. 4000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB"><sup>11</sup>B (Additional hr)</th>
+                <th>Rs. 100/-</th>
+                  <th>Rs. 400/-</th>
+                  <th>Rs. 1700/-</th>
+                  <th>Rs. 2600/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+              <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Other nuclei (x)</th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 3300/-</th>
+                  <th>Rs. 5500/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB">X (Additional hr)</th>
+                <th>Rs. 100/-</th>
+                  <th>Rs. 900/-</th>
+                  <th>Rs. 2300/-</th>
+                  <th>Rs. 3800/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">2D-COSY</th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 3300/-</th>
+                  <th>Rs. 5500/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB">2D-COSY</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 900/-</th>
+                  <th>Rs. 2300/-</th>
+                  <th>Rs. 3800/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                   <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">2D-HSQC</th>
+                  <th>Rs. 300/-</th>
+                  <th>Rs. 1200/-</th>
+                  <th>Rs. 3300/-</th>
+                  <th>Rs. 5500/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB">2D-HSQC</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 900/-</th>
+                  <th>Rs. 2300/-</th>
+                  <th>Rs. 3800/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+
+                 <tr style="border-bottom: 2px solid #ddd;">
+                    <th style="color:#0094BB">Solid State <small style="color: dimgray;"><i>each nuclei will be counted as a sample</i></small></th>
+                  <th>Rs. 200/-</th>
+                  <th>Rs. 1600/-</th>
+                  <th>Rs. 4000/-</th>
+                  <th>Rs. 8000/-</th>
+                   <th style="color:cadetblue;">1<sup>st</sup> Hr</th>
+                </tr>
+
+                <tr>
+                   <th style="color:#0094BB">Solid State</th>
+                  <th>Rs. 100/-</th>
+                  <th>Rs. 1100/-</th>
+                  <th>Rs. 2800/-</th>
+                  <th>Rs. 5600/-</th>
+                  <th style="color:cadetblue;">Additional hr</th>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+
+        <div class="note">
+          <h4 class="fw-bold text-danger text-center">Note: Currently <sup>1</sup>H and <sup>13</sup>C based analysis are only available in liquid mode</h4>
+            <br>
+        </div>
+
+        <div class="text-danger fw-bold">
+            <p>*(Charges given above are for 1H NMR analysis only. Charges for other nuclei are higher depending on the nature of the sample/nuclei/duration of the analysis), GST(18%) extra.</p>
+            <br>
+        </div>
+
+        <div class="queries text-center">
+            <h3>For further Query Contact:</h3>
+            <h5>Mrs. Suraksha S Shetty (Technical Staff, CRF), Email:<span class="text-info"> crf_nmr@nitk.edu.in</span></h5>
+            <h5>Dr. Udaya Kumar D (NMR Spectrometer Faculty in-charge), Email:<span class="text-info"> udayakumar@nitk.edu.in</span> ,Mob: <span class="text-info">+91-824-2473207 (Ext. 3043)</span></h5>
+
+        </div>
+
+
+    </div>
+</div>
+
+<%=render "partials/footer" %>
