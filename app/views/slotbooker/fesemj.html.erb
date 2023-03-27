@@ -102,8 +102,8 @@
                             <td> <%= fesemjs.toxic%></td>
                               <td> <%= fesemjs.conducting%></td>
                           <td> <%= fesemjs.more%> </td>
-                          <td> <%= fesemjs.slotdate%> </td>
-                          <td>  <%= fesemjs.slottime%> </td>
+                          <td><span style="white-space: nowrap;"><%= fesemjs.slotdate.strftime('%d-%m-%Y')if fesemjs.slotdate.present? %></td>
+                          <td><%= fesemjs.slottime.strftime('%H:%M:%S') if fesemjs.slottime.present? %></td>
     <td> <%= fesemjs.status %></td>
   <%fesemjs.references.each do |file|%>
 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>

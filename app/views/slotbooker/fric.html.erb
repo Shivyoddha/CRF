@@ -113,9 +113,8 @@
                         <td> <%= fric.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= fric.slotdate %></td>
-
-                        <td> <%= fric.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= fric.slotdate.strftime('%d-%m-%Y')if fric.slotdate.present? %></td>
+                        <td><%= fric.slottime.strftime('%H:%M:%S') if fric.slottime.present? %></td>
 
                           <td><%= fric.status%></td>
                           <%if fric.references.attached? %>

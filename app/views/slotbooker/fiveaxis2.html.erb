@@ -110,9 +110,8 @@
                         <td> <%= fiveaxis2.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= fiveaxis2.slotdate %></td>
-
-                        <td> <%= fiveaxis2.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= fiveaxis2.slotdate.strftime('%d-%m-%Y')if fiveaxis2.slotdate.present? %></td>
+                        <td><%= fiveaxis2.slottime.strftime('%H:%M:%S') if fiveaxis2.slottime.present? %></td>
 
                           <td><%= fiveaxis2.status%></td>
                         <%if fiveaxis2.references.attached? %>
