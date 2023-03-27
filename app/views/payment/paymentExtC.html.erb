@@ -39,7 +39,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
@@ -63,60 +63,29 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="debit-head">Debit Head</th>
-                        <th scope="col" id="proforma-col">Proforma</th>
+                      <th scope="col" id="Job-no">Job/BillNo:</th>
+                        <th scope="col" id="application-no">ApplNo:</th>
+                        <th scope="col" id="Equipment">Equipment</th>
+                        <th scope="col" id="name">Invoice Name</th>
+                        <th scope="col" id="address">Invoice Address</th>
+                        <th scope="col" id="paid">Paid</th>
+                        <th scope="col" id="GST">GST</th>
+                        <th scope="col" id="Date">Date</th>
+                        <th scope="col" id="View">View</th>
                     </tr>
                 </thead>
                 <tbody>
-                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
+                          <% @equipment.where(dummy:'done', role: 'external').each do |equipment|%>
                         <tr>
-                          <th scope="row"><%= equipment.app_no%></th>
-                          <td> <%= equipment.username%> </td>
-                          <td> <%= equipment.debit_head%> </td>
-                          <td id="assign-btn">
-                              <!-- Button trigger modal -->
-                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                               <div id="<%= equipment.app_no%>" class="modal">
-
-     <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                   </div>
-                   <div class="modal-body">
-
-                        <%= form_with(model:equipment ,local:true) do |form| %>
-                         <div class="input-group mb-3">
-                           <%= form.label :x, "Apllication No.", class:"input-group-text"%>
-                           <%= form.text_field :x, class:"form-control", id:"composition", placeholder: equipment.app_no , readonly: true%>
-                       </div>
-                       <div class="input-group mb-3">
-                         <%= form.label :x, "Applicant Name", class:"input-group-text"%>
-                         <%= form.text_field :x, class:"form-control", id:"composition", placeholder:equipment.username, readonly: true%>
-                     </div>
-                       <div class="input-group mb-3">
-                       <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
-                       <%= form.text_field :pay, class:"form-control", id:"amount"%>
-                     </div>
-                     <div class="input-group mb-3">
-                     <%= form.hidden_field :dummy, value: 'done' %>
-                   </div>
-
-                       <div class="actions">
-                         <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
-
-                       </div>
-                     <% end %>
-                   </div>
-               </div>
-           </div>
-
-   </div>
-
-                           </td>
+                          <th scope="row">donno at present</th>
+                          <td> <%= equipment.app_no%> </td>
+                          <td> <%= equipment.equipname%> </td>'
+                          <td> <%= equipment.innvoice_name%> </td>
+                          <td> <%= equipment.invoice_address%> </td>
+                          <td> <%= equipment.amount_paid%> </td>
+                          <td> <%= equipment.gst%> </td>
+                          <td> <%= equipment.date_of_depo%> </td>
+                          <td> view </td>
 
                        </tr>
    <%end%>
