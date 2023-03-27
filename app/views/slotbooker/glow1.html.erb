@@ -139,34 +139,18 @@
                                    </div>
 
                                       <%=form.fields_for :equipment_table do |f| %>
-                                       <div class="input-group mb-3">
                                           <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
-                                        </div>
-
-                                       <div class="input-group mb-3">
                                          <%= f.hidden_field :username, value:"#{glow.user.name}"%>
-                                      </div>
-
-
-                                       <div class="input-group mb-3">
                                          <%= f.hidden_field :dummy, value:"alloted"%>
-                                       </div>
-
-                                      <div class="input-group mb-3">
                                         <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
-                                     </div>
-
-                                     <div class="input-group mb-3">
                                         <%= f.hidden_field :dept, value:"#{glow.user.department}" %>
-                                     </div>
-
-                                     <div class="input-group mb-3">
                                        <%= f.hidden_field :email, value:"#{glow.user.email}" %>
-                                    </div>
-
-                                     <div class="input-group mb-3">
                                        <%= f.hidden_field :equipname, value:"glow" %>
-                                    </div>
+                                       <%= f.hidden_field :role, value:"#{glow.user.role}" %>
+                                      <%= f.hidden_field :org, value:"#{glow.user.orgaddress}" %>
+                                      <%= f.hidden_field :profesion, value:"#{glow.user.profession}" %>
+                                      <%= f.hidden_field :orgname, value:"#{glow.user.orgname}" %>
+
 
                                       <%end%>
 

@@ -148,34 +148,17 @@
                                     </div>
 
                                          <%=form.fields_for :equipment_table do |f| %>
-                                          <div class="input-group mb-3">
                                              <%= f.hidden_field :app_no, value:"CRF/CELL/#{cell.id}"%>
-                                           </div>
-
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :username, value:"#{cell.user.name}"%>
-                                         </div>
-
-
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :dummy, value:"alloted"%>
-                                          </div>
-
-                                         <div class="input-group mb-3">
                                            <%= f.hidden_field :debit_head, value:"#{cell.debit}" %>
-                                        </div>
-
-                                        <div class="input-group mb-3">
                                          <%= f.hidden_field :dept, value:"#{cell.user.department}" %>
-                                      </div>
-
-                                      <div class="input-group mb-3">
                                         <%= f.hidden_field :email, value:"#{cell.user.email}" %>
-                                     </div>
-
-                                      <div class="input-group mb-3">
                                         <%= f.hidden_field :equipname, value:"cell" %>
-                                     </div>
+                                        <%= f.hidden_field :role, value:"#{cell.user.role}" %>
+                                        <%= f.hidden_field :org, value:"#{cell.user.orgaddress}" %>
+                                        <%= f.hidden_field :profesion, value:"#{cell.user.profession}" %>
+                                        <%= f.hidden_field :orgname, value:"#{cell.user.orgname}" %>
 
                                          <%end%>
 
