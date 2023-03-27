@@ -1,0 +1,80 @@
+html {
+    height: 100%;
+    font-family: "Unbounded";
+    font-weight: bold;
+      
+  }
+.f-container{
+    margin: 6em 0 0 0;
+}
+
+.myslots-heading{
+    text-align:center;
+    font-family:"Unbounded";
+
+}
+.mscard{
+    margin: 0 2em 0 2em;
+    border-radius: 30px;
+    background: whitesmoke;
+}
+.mscontainer{
+    margin: 1em 2em 1em 2em;
+    
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+}
+.msleft-child{
+    font-family: "Quicksand";
+    width:33%;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    text-decoration: underline;
+    
+
+}
+.msmiddle-child{
+    font-family: "Quicksand";
+    width:33%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+.msright-child{
+    font-family: "Quicksand";
+    font-weight:bold;
+    width:33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items:center;
+    padding: 1em;
+
+}
+
+#button2{
+    width: 10em;;
+    height: 3em;
+    font-weight: bold;
+    text-decoration: none;
+    background: #3f5ac9;
+    text-align: center;
+    color: #fbfdfe;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid #fbfdfe;
+    border-radius: 10em;
+  }
+ 
+  #button2:hover{
+    
+    border: 3px solid #3f5ac9;
+    background-color: #f6f7f8;
+    color: #3f5ac9;
+  }
+  

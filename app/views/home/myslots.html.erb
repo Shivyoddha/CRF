@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag "myslots"%>
+<%= stylesheet_link_tag "loginFeatures"%>
+
+<%=render "partials/loginHeading" %>
+<h1 class="myslots-heading">My Slots</h1>
+<div class="mscard"> 
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <h4 class="equip-heading">Equipment</h4>
+      <h4 class="appl-no-heading">Application No</h4>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <h4>Assigned On</h4>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= button_to 'View',home_developer_path,id:"button2"%>
+          </div>
+      </div>
+    </div>
+
+  
+  </div> 
+</div>
+
+<%=render "partials/footer" %>
