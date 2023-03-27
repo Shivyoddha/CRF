@@ -51,6 +51,7 @@ class LasersController < ApplicationController
 
     respond_to do |format|
       if @laser.update(laser_params)
+        LaserAllotedMailer.with(id:@laser.id, userid:current_user.id).Mail.deliver_later
         format.html { redirect_to slotbooker_laser_path(@laser), notice: "Laser was successfully updated." }
         format.json { render :show, status: :ok, location: @laser }
       else
@@ -78,6 +79,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
     end
 end

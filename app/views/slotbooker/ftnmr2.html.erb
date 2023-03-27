@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'FT-NMR Slotbooker', slotbooker_ftnmr_path, class:'navbar-brand', id:'title'%>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">FTNmr:Alloted Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">FT-NMR:Alloted Slots</h2>
         </div>
 
 
@@ -102,7 +102,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ftnmr/<%=ftnmr.id %>	</th>
-                        <td> <%= ftnmr.user.name%> </td>
+                        <td> <%= ftnmr.user.firstname%><nobr> <%= ftnmr.user.lastname%></td>
                         <td> <%= ftnmr.user.orgname%> </td>
                         <td> <%= ftnmr.user.department%> </td>
                         <td> <%= ftnmr.user.contact%> </td>
@@ -146,7 +146,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ftnmr.user.name %></b></h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ftnmr.user.firstname %></b></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -188,7 +188,7 @@
                             <div class="modal-dialog">
                                   <div class="modal-content">
                                       <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= ftnmr.user.name %></b></h1>
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= ftnmr.user.firstname %></b></h1>
                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                       <div class="modal-body">

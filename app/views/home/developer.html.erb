@@ -7,6 +7,7 @@
 
  
   <div class="section1">
+  
     <div class="wrapper1">
       <div class="nav2">
         <ul class="navbar2">
@@ -18,10 +19,13 @@
       <div class="header header_home">Anish Kumbhar</div>
       <div class="content content_home">Full Stack Developer<br>Project Lead
       </div>
+
       <div class="image"  id="im1">
         <%=image_tag 'developer_images/anish2.jpg' , class:"equipment-img-tag d block w-100 card-img", alt:"..."%>
       </div>
+
     </div>
+
   </div>
 
  
@@ -151,7 +155,11 @@
 
 <%=render "partials/footer" %>
 
-</div>
+
+
+
+
+
 <script>
       const observer=new IntersectionObserver((entries)=>{
           entries.forEach((entry)=>{

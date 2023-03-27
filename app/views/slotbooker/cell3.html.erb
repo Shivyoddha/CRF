@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <a class="navbar-brand" id="title" href="#content">Cell Imaging Slotbooker</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
 <div id="slots">
     <div id="current-tab">
-        <h2 class="fw-bold font-unbounded" id="tab-name">Cell-Imaging Multimode Reader Slots</h2>
+        <h2 class="fw-bold font-unbounded" id="tab-name">Cell-Imaging Multimode Reader Completed Slots</h2>
     </div>
 
 
@@ -95,7 +95,7 @@
                     <tr>
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/CELL/<%=cell.id %>	</th>
-                      <td> <%= cells.user.firstname%><nobr><%= cells.user.lastname%> </td>
+                      <td> <%= cell.user.firstname%><nobr>  <%= cell.user.lastname%></td>
                       <td> <%= cell.user.orgname%> </td>
                       <td> <%= cell.user.department%> </td>
                       <td> <%= cell.user.contact%> </td>

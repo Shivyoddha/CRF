@@ -50,9 +50,9 @@
                     <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
@@ -114,14 +114,15 @@
             <div class="mb-3">
                 <div class="input-group mb-3">
                   <%= form.label :pay, "Amount", class:"input-group-text", id:"amount"%>
-                  <%= form.label :pay, "User Name", class:"input-group-text", id:"amount"%>
+                  <%= form.label :pay, "₹", class:"input-group-text", id:"amount"%>
                     <%= form.text_field :pay, class:"form-control", id:"amount"%>
                 </div>
             </div>
 
-            <div class="input-group mb-3">
-            <%= form.hidden_field :dummy, value: 'done' %>
-          </div>
+                <%= form.hidden_field :dummy, value: 'done' %>
+
+              <%= form.hidden_field :role, value: 'student' %>
+
 
               <div class="actions">
                 <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>

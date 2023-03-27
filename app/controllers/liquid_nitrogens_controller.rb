@@ -85,6 +85,6 @@ class LiquidNitrogensController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def liquid_nitrogen_params
-      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] )
+      params.require(:liquid_nitrogen).permit(:quantity, :purpose, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] )
     end
 end
