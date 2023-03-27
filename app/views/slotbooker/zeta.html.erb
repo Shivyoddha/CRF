@@ -119,9 +119,8 @@
                         <td> <%= zeta.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= zeta.slotdate %></td>
-
-                        <td> <%= zeta.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
+                        <td><%= zeta.slottime.strftime('%H:%M:%S') if zeta.slottime.present? %></td>
 
                           <td><%= zeta.status%></td>
                           <%if zeta.references.attached? %>
