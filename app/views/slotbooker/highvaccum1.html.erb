@@ -127,7 +127,7 @@
                              <td>NA</td>
                            <% end %>
 
-                      w
+
                       <td id="assign-btn">
                           <!-- Button trigger modal -->
                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{high.id}" }, id: "ani" %>
@@ -149,7 +149,7 @@
 
                                          <div class="input-group mb-3">
                                          <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                         <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                         <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                        </div>
 
                                           <%=form.fields_for :equipment_table do |f| %>

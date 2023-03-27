@@ -120,9 +120,9 @@
                         <td> <%= zeta.analysis_temperature%> </td>
                         <td> <%= zeta.more%> </td>
                         <td>Booked</td>
-                        <td> <%= zeta.slotdate %> </td>
+                        <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
+                        <td><%= zeta.slottime.strftime('%H:%M:%S') if zeta.slottime.present? %></td>
                         <td> <%= zeta.status %> </td>
-                        <td> <%= zeta.slottime %> </td>
                         <%if zeta.references.attached? %>
                         <%zeta.references.each do |file|%>
                       <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>

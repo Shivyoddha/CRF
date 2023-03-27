@@ -146,11 +146,11 @@ h5 {
 
 @keyframes stretch-active {
   0% {
-    background-color: #159609;
+    background-color: #0c5805;
   }
 
   100% {
-    background-color: #31d034;
+    background-color: #149c17;
   }
 }
 
@@ -229,7 +229,7 @@ h5 {
 
 @media only screen and (max-width: 660px) {
   h5 {
-    width: 84%;
+    width: 73%;
   }
 
   #search {
