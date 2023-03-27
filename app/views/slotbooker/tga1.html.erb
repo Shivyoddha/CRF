@@ -127,32 +127,19 @@
                     <!-- Button trigger modal -->
                      <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{tga.id}" }, id: "ani" %>
                      <div id="<%= tga.id%>" class="modal">
-
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.name %></b></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <%= form_with(model: tga,local:true) do |form| %>
-=======
-=======
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
                      <div class="modal-dialog">
                            <div class="modal-content">
-                               <div class="modal-header">
-                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
+                               
                                  <div class="modal-body">
                                    <%= form_with(model: tga,local:true) do |form| %>
-<<<<<<< HEAD
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
-=======
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
 
                                        <div class="input-group mb-3">
                                        <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -189,21 +176,12 @@
                                   <div class="input-group mb-3">
                                     <%= f.hidden_field :email, value:"#{tga.user.email}" %>
                                  </div>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    <%# <%=tga.id%>
-=======
                                   <div class="input-group mb-3">
                                     <%= f.hidden_field :equipname, value:"tga" %>
                                  </div>
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
-=======
                                   <div class="input-group mb-3">
                                     <%= f.hidden_field :equipname, value:"tga" %>
                                  </div>
->>>>>>> c95eb03bcfaf4f67b061724f5933bb4c21e41a9b
-
                                     <%end%>
 
                                      <div class="actions">
@@ -219,6 +197,7 @@
                                          </td>
 
                                      </tr>
+                   <%end%>
                    <%end%>
 
                                  </tbody>
