@@ -75,6 +75,6 @@ class FiveAxisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def five_axi_params
-      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
     end
 end

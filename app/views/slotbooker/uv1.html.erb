@@ -136,34 +136,18 @@
                                            </div>
 
                                             <%=form.fields_for :equipment_table do |f| %>
-                                             <div class="input-group mb-3">
-                                                <%= f.hidden_field :app_no, value:"CRF/UV/#{uv.id}"%>
-                                              </div>
 
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :username, value:"#{uv.user.name}"%>
-                                            </div>
-
-
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :dummy, value:"alloted"%>
-                                             </div>
-
-                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :debit_head, value:"#{uv.debit}" %>
-                                           </div>
-
-                                           <div class="input-group mb-3">
-                                             <%= f.hidden_field :dept, value:"#{uv.user.department}" %>
-                                          </div>
-
-                                          <div class="input-group mb-3">
+                                            <%= f.hidden_field :app_no, value:"CRF/UV/#{uv.id}"%>
+                                            <%= f.hidden_field :username, value:"#{uv.user.name}"%>
+                                            <%= f.hidden_field :dummy, value:"alloted"%>
+                                            <%= f.hidden_field :debit_head, value:"#{uv.debit}" %>
+                                            <%= f.hidden_field :dept, value:"#{uv.user.department}" %>
                                             <%= f.hidden_field :email, value:"#{uv.user.email}" %>
-                                         </div>
-
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :equipname, value:"uv" %>
-                                         </div>
+                                            <%= f.hidden_field :role, value:"#{uv.user.role}" %>
+                                            <%= f.hidden_field :org, value:"#{uv.user.orgaddress}" %>
+                                            <%= f.hidden_field :profesion, value:"#{uv.user.profession}" %>
+                                            <%= f.hidden_field :orgname, value:"#{uv.user.orgname}" %>
 
                                             <%end%>
 

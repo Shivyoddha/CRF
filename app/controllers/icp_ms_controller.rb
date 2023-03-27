@@ -81,6 +81,6 @@ class IcpMsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def icp_m_params
-      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
+      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] ,references: [])
     end
 end

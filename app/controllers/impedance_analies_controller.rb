@@ -79,6 +79,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , measurement: [],references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , measurement: [],references: [])
     end
 end
