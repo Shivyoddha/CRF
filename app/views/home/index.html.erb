@@ -30,7 +30,7 @@
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Media Team's Announce", announcements_path ,class:"dropdown-item" %></li>
-              <li><%= link_to "Fill a feedback", new_feedback_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Fill a feedback", new_feedback_path(id:current_user.id) ,class:"dropdown-item" %></li>
               <li><%= link_to "View feedbacks as admin", feedbacks_path(id:current_user.id),class:"dropdown-item" %></li>
               <li><a class="dropdown-item" href="#">My Slots</a></li>
               <% link_to "Download", home_index_path(format: :pdf)%>
@@ -79,7 +79,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">XRD</h5>
-                    <% @equip1=Equiplist.find(1)%>
+                    <% @equip1=Equiplist.find_by(name:'XRD')%>
                     <% if @equip1.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip1.status%></span>
 
@@ -159,7 +159,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">HR-FESEM [Carl Zeiss]</h5>
-                  <% @equip2=Equiplist.find(2)%>
+                  <% @equip2=Equiplist.find_by(name:'HR-FESEM [Carl Zeiss]')%>
                   <% if @equip2.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip2.status%></span>
 
@@ -231,7 +231,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-FESEM [Jeol]</h5>
-                    <% @equip3=Equiplist.find(3)%>
+                    <% @equip3=Equiplist.find_by(name:'HR-FESEM [Jeol]')%>
                     <% if @equip3.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip3.status%></span>
 
@@ -310,7 +310,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3-D Non Contact Profilometer</h5>
-                    <% @equip4=Equiplist.find(4)%>
+                    <% @equip4=Equiplist.find_by(name:'3-D Non Contact Profilometer')%>
                     <% if @equip4.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip4.status%></span>
 
@@ -380,7 +380,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Raman Spectrometer with PL</h5>
-                  <% @equip5=Equiplist.find(5)%>
+                  <% @equip5=Equiplist.find_by(name:'Raman Spectrometer with PL')%>
                   <% if @equip5.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip5.status%></span>
 
@@ -456,7 +456,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">TGA-FTIR</h5>
-                  <% @equip6=Equiplist.find(6)%>
+                  <% @equip6=Equiplist.find_by(name:'TGA-FTIR')%>
                   <% if @equip6.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip6.status%></span>
 
@@ -525,7 +525,7 @@
              <div class="card-body">
                  <div id="more">
                      <h5 class="card-title fw-bold">BET Surface Area Analyzer</h5>
-                     <% @equip7=Equiplist.find(7)%>
+                     <% @equip7=Equiplist.find_by(name:'BET Surface Area Analyzer')%>
                      <% if @equip7.status == "Active"%>
                      <span class="badge rounded-pill status-active"><%=@equip7.status%></span>
 
@@ -589,7 +589,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">HR-LCMS</h5>
-                    <% @equip8=Equiplist.find(8)%>
+                    <% @equip8=Equiplist.find_by(name:'HR-LCMS')%>
                     <% if @equip8.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip8.status%></span>
 
@@ -655,7 +655,7 @@
            <div class="card-body">
                <div id="more">
                    <h5 class="card-title fw-bold">UV-Vis-NIR</h5>
-                   <% @equip9=Equiplist.find(9)%>
+                   <% @equip9=Equiplist.find_by(name:'UV-Vis-NIR')%>
                    <% if @equip9.status == "Active"%>
                    <span class="badge rounded-pill status-active"><%=@equip9.status%></span>
 
@@ -720,7 +720,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Laser Flash Analyser</h5>
-                  <% @equip10=Equiplist.find(10)%>
+                  <% @equip10=Equiplist.find_by(name:'Laser Flash Analyser')%>
                   <% if @equip10.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip10.status%></span>
 
@@ -782,7 +782,7 @@
                <div class="card-body">
                    <div id="more">
                        <h5 class="card-title fw-bold">Cell-Imaging MultiMode Reader</h5>
-                       <% @equip11=Equiplist.find(11)%>
+                       <% @equip11=Equiplist.find_by(name:'Cell-Imaging MultiMode Reader')%>
                        <% if @equip11.status == "Active"%>
                        <span class="badge rounded-pill status-active"><%=@equip11.status%></span>
 
@@ -843,7 +843,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Atomic Force Microscope</h5>
-                    <% @equip12=Equiplist.find(12)%>
+                    <% @equip12=Equiplist.find_by(name:'Atomic Force Microscope')%>
                     <% if @equip12.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip12.status%></span>
 
@@ -908,7 +908,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">FT-NMR</h5>
-                    <% @equip13=Equiplist.find(13)%>
+                    <% @equip13=Equiplist.find_by(name:'FT-NMR')%>
                     <% if @equip13.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip13.status%></span>
 
@@ -973,7 +973,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">ICP-MS</h5>
-                  <% @equip14=Equiplist.find(14)%>
+                  <% @equip14=Equiplist.find_by(name:'ICP-MS')%>
                   <% if @equip14.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip14.status%></span>
 
@@ -1037,7 +1037,7 @@
           <div class="card-body">
               <div id="more">
                   <h5 class="card-title fw-bold">Advance Modular Rheometer</h5>
-                  <% @equip15=Equiplist.find(15)%>
+                  <% @equip15=Equiplist.find_by(name:'Advance Modular Rheometer')%>
                   <% if @equip15.status == "Active"%>
                   <span class="badge rounded-pill status-active"><%=@equip15.status%></span>
 
@@ -1097,7 +1097,7 @@
         <div class="card-body">
             <div id="more">
                 <h5 class="card-title fw-bold">Ion Chromatography</h5>
-                <% @equip16=Equiplist.find(16)%>
+                <% @equip16=Equiplist.find_by(name:'Ion Chromatography')%>
                 <% if @equip16.status == "Active"%>
                 <span class="badge rounded-pill status-active"><%=@equip16.status%></span>
 
@@ -1156,7 +1156,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Intergrated MultiRole Tester</h5>
-                    <% @equip17=Equiplist.find(17)%>
+                    <% @equip17=Equiplist.find_by(name:'Intergrated MultiRole Tester')%>
                     <% if @equip17.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip17.status%></span>
 
@@ -1220,7 +1220,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold"> Scratch/Indentation Tester</h5>
-                    <% @equip18=Equiplist.find(18)%>
+                    <% @equip18=Equiplist.find_by(name:'Scratch/Indentation Tester')%>
                     <% if @equip18.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip18.status%></span>
 
@@ -1284,7 +1284,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Zeta Potential/Particle Sizer</h5>
-                    <% @equip19=Equiplist.find(19)%>
+                    <% @equip19=Equiplist.find_by(name:'Zeta Potential/Particle Sizer')%>
                     <% if @equip19.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip19.status%></span>
 
@@ -1343,7 +1343,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">High Temp Vacuum Furnace</h5>
-                    <% @equip20=Equiplist.find(20)%>
+                    <% @equip20=Equiplist.find_by(name:'High Temp Vacuum Furnace')%>
                     <% if @equip20.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip20.status%></span>
 
@@ -1402,7 +1402,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Impedance Analyzer</h5>
-                    <% @equip21=Equiplist.find(21)%>
+                    <% @equip21=Equiplist.find_by(name:'Impedance Analyzer')%>
                     <% if @equip21.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip21.status%></span>
 
@@ -1465,7 +1465,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Tribometer	</h5>
-                    <% @equip22=Equiplist.find(22)%>
+                    <% @equip22=Equiplist.find_by(name:'Tribometer')%>
                     <% if @equip22.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip22.status%></span>
 
@@ -1527,7 +1527,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">3D-Scanner</h5>
-                    <% @equip23=Equiplist.find(23)%>
+                    <% @equip23=Equiplist.find_by(name:'3D-Scanner')%>
                     <% if @equip23.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip23.status%></span>
 
@@ -1592,7 +1592,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">GAIT Analysis</h5>
-                    <% @equip24=Equiplist.find(24)%>
+                    <% @equip24=Equiplist.find_by(name:'GAIT Analysis')%>
                     <% if @equip24.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip24.status%></span>
 
@@ -1651,7 +1651,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spectro-Radiometer</h5>
-                    <% @equip25=Equiplist.find(25)%>
+                    <% @equip25=Equiplist.find_by(name:'Spectro-Radiometer')%>
                     <% if @equip25.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip25.status%></span>
 
@@ -1710,7 +1710,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Spark-OES</h5>
-                    <% @equip26=Equiplist.find(26)%>
+                    <% @equip26=Equiplist.find_by(name:'Spark-OES')%>
                     <% if @equip26.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip26.status%></span>
 
@@ -1769,7 +1769,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glow Discharges-OES</h5>
-                    <% @equip27=Equiplist.find(27)%>
+                    <% @equip27=Equiplist.find_by(name:'Glow Discharges-OES')%>
                     <% if @equip27.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip27.status%></span>
 
@@ -1828,7 +1828,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ball Milling Unit</h5>
-                    <% @equip28=Equiplist.find(28)%>
+                    <% @equip28=Equiplist.find_by(name:'Ball Milling Unit')%>
                     <% if @equip28.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip28.status%></span>
 
@@ -1887,7 +1887,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Low Force Fatigue with DMA</h5>
-                    <% @equip29=Equiplist.find(29)%>
+                    <% @equip29=Equiplist.find_by(name:'Low Force Fatigue with DMA')%>
                     <% if @equip29.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip29.status%></span>
 
@@ -1959,7 +1959,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Micro-EDM</h5>
-                    <% @equip30=Equiplist.find(30)%>
+                    <% @equip30=Equiplist.find_by(name:'Micro-EDM')%>
                     <% if @equip30.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip30.status%></span>
 
@@ -2021,7 +2021,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">5-Axes CNC</h5>
-                    <% @equip31=Equiplist.find(31)%>
+                    <% @equip31=Equiplist.find_by(name:'5-Axes CNC')%>
                     <% if @equip31.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip31.status%></span>
 
@@ -2081,7 +2081,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Multi Purpose Impact Testing (SHPB)</h5>
-                    <% @equip32=Equiplist.find(32)%>
+                    <% @equip32=Equiplist.find_by(name:'Multi Purpose Impact Testing (SHPB)')%>
                     <% if @equip32.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip32.status%></span>
 
@@ -2143,7 +2143,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Friction Stir Welding/Surfacing(FSW)</h5>
-                    <% @equip33=Equiplist.find(33)%>
+                    <% @equip33=Equiplist.find_by(name:'Friction Stir Welding/Surfacing(FSW)')%>
                     <% if @equip33.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip33.status%></span>
 
@@ -2202,7 +2202,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Electro Chemical Polishing</h5>
-                    <% @equip34=Equiplist.find(34)%>
+                    <% @equip34=Equiplist.find_by(name:'Electro Chemical Polishing')%>
                     <% if @equip34.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip34.status%></span>
 
@@ -2261,7 +2261,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Milli-Q water</h5>
-                    <% @equip35=Equiplist.find(35)%>
+                    <% @equip35=Equiplist.find_by(name:'Milli-Q water')%>
                     <% if @equip35.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip35.status%></span>
 
@@ -2320,7 +2320,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Glove Box</h5>
-                    <% @equip36=Equiplist.find(36)%>
+                    <% @equip36=Equiplist.find_by(name:'Glove Box')%>
                     <% if @equip36.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip36.status%></span>
 
@@ -2379,7 +2379,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Probe Sonicator</h5>
-                    <% @equip37=Equiplist.find(37)%>
+                    <% @equip37=Equiplist.find_by(name:'Probe Sonicator')%>
                     <% if @equip37.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip37.status%></span>
 
@@ -2441,7 +2441,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ultra-Centrifuge</h5>
-                    <% @equip38=Equiplist.find(38)%>
+                    <% @equip38=Equiplist.find_by(name:'Ultra-Centrifuge')%>
                     <% if @equip38.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip38.status%></span>
 
@@ -2500,7 +2500,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Gas Sensing</h5>
-                    <% @equip39=Equiplist.find(39)%>
+                    <% @equip39=Equiplist.find_by(name:'Gas Sensing')%>
                     <% if @equip39.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip39.status%></span>
 
@@ -2564,7 +2564,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Liquid Nitrogen</h5>
-                    <% @equip40=Equiplist.find(40)%>
+                    <% @equip40=Equiplist.find_by(name:'Liquid Nitrogen')%>
                     <% if @equip40.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip40.status%></span>
 
@@ -2629,7 +2629,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Ansys System Lab</h5>
-                    <% @equip41=Equiplist.find(41)%>
+                    <% @equip41=Equiplist.find_by(name:'Ansys System Lab')%>
                     <% if @equip41.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip41.status%></span>
 
@@ -2690,7 +2690,7 @@
             <div class="card-body">
                 <div id="more">
                     <h5 class="card-title fw-bold">Automatic MultiSpecimen Polisher</h5>
-                    <% @equip42=Equiplist.find(42)%>
+                    <% @equip42=Equiplist.find_by(name:'Automatic MultiSpecimen Polisher')%>
                     <% if @equip42.status == "Active"%>
                     <span class="badge rounded-pill status-active"><%=@equip42.status%></span>
 

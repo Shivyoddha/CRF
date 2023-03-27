@@ -150,7 +150,7 @@ class EquipmentTablesController < ApplicationController
     if @equipment_table.equipname == "zeta"
       PaymentZetaPotentialSizeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
     end
-
+      FeedbackMailer.with(userid:current_user.id).Mail.deliver_later
     respond_to do |format|
       if @equipment_table.update(equipment_table_params)
         if @equipment_table.role == "student"
