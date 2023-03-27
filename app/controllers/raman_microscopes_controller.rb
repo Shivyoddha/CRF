@@ -80,6 +80,6 @@ class RamanMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def raman_microscope_params
-      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more,:laser,:debit, :slotdate, :slottime, :status,:user_id ,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress],references: [])
+      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more,:laser,:debit, :slotdate, :slottime, :status,:user_id ,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

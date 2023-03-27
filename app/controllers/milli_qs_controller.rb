@@ -76,7 +76,7 @@ class MilliQsController < ApplicationController
         else
           MilliQMailer.with(id:@milli_q.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to milli_q_url(@milli_q), notice: "Milli q was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Milli q was successfully created." }
         format.json { render :show, status: :created, location: @milli_q }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -123,6 +123,6 @@ class MilliQsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def milli_q_params
-      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
+      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end
