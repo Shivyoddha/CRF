@@ -2,7 +2,6 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <%= link_to 'Ion Chromatography Slotbooker',slotbooker_ionc_path,class:"navbar-brand" id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -157,35 +156,17 @@
                                            </div>
 
                                             <%=form.fields_for :equipment_table do |f| %>
-                                             <div class="input-group mb-3">
-                                                <%= f.hidden_field :app_no, value:"CRF/IONC/#{ionc.id}"%>
-                                              </div>
-
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
-                                            </div>
-
-
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :dummy, value:"alloted"%>
-                                             </div>
-
-                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
-                                           </div>
-
-                                           <div class="input-group mb-3">
-                                        <%= f.hidden_field :dept, value:"#{ionc.user.department}" %>
-                                     </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :email, value:"#{ionc.user.email}" %>
-                                    </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :equipname, value:"ionc" %>
-                                    </div>
-
+                                            <%= f.hidden_field :app_no, value:"CRF/IONC/#{ionc.id}"%>
+                                            <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
+                                            <%= f.hidden_field :dummy, value:"alloted"%>
+                                            <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
+                                            <%= f.hidden_field :dept, value:"#{ionc.user.department}" %>
+                                            <%= f.hidden_field :email, value:"#{ionc.user.email}" %>
+                                            <%= f.hidden_field :equipname, value:"ionc" %>
+                                            <%= f.hidden_field :role, value:"#{ionc.user.role}" %>
+                                            <%= f.hidden_field :org, value:"#{ionc.user.orgaddress}" %>
+                                            <%= f.hidden_field :profesion, value:"#{ionc.user.profession}" %>
+                                            <%= f.hidden_field :orgname, value:"#{ionc.user.orgname}" %>
                                             <%end%>
 
                                              <div class="actions">

@@ -77,6 +77,6 @@ class ElectroChemicalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def electro_chemical_params
-      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
+      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

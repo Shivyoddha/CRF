@@ -141,22 +141,11 @@
                      </div>
 
                          <%=form.fields_for :equipment_table do |f| %>
-                          <div class="input-group mb-3">
                              <%= f.hidden_field :app_no, value:"CRF/THREE/#{threes.id}"%>
-                           </div>
-
-                          <div class="input-group mb-3">
                             <%= f.hidden_field :username, value:"#{threes.user.name}"%>
-                         </div>
-
-                         <div class="input-group mb-3">
-                           <%= f.hidden_field :dummy, value:"#{threes.status}"%>
-                        </div>
-
-                         <div class="input-group mb-3">
-                           <%= f.hidden_field :debit_head, value:"#{threes.debit}" %>
-                        </div>
-
+                            <%= f.hidden_field :dummy, value:"#{threes.status}"%>
+                            <%= f.hidden_field :debit_head, value:"#{threes.debit}" %>
+                            
                          <%end%>
                           <%=threes.id%>
 
