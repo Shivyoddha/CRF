@@ -42,6 +42,8 @@
   .merge({'Custom' => 'custom'})),
   { class: 'form-select', id: 'date-select'}, class:"input-group-text" %>
     </div>
+    <div id="dynamic-fields"></div>
+
     <div id="custom">
       <div class="input-group mb-3">
           <%=form.label :customstart,"Start Date", class:"input-group-text" ,for:"start-date"%>
@@ -96,6 +98,66 @@
 <%=render "partials/footer" %>
 <% end %>
 
+<script>
+  const dateSelect = document.getElementById('date-select');
+  const dynamicFields = document.getElementById('dynamic-fields');
+
+  dateSelect.addEventListener('change', () => {
+    // Get the selected batch
+    const selectedBatch = dateSelect.value;
+
+    // Get the fields for the selected batch
+    const fields = getFieldsForBatch(selectedBatch);
+
+    // Clear the dynamicFields div
+    dynamicFields.innerHTML = '';
+
+    // Append the fields to the dynamicFields div
+    fields.forEach(field => {
+      dynamicFields.appendChild(field);
+    });
+  });
+
+  function getFieldsForBatch(batch) {
+    // Define the fields for each batch
+    const fields = {
+      'Batch 1': [
+        createTextField('Field 1', 'field1'),
+        createTextField('Field 2', 'field2')
+      ],
+      'Batch 2': [
+        createTextField('Field 3', 'field3'),
+        createTextField('Field 4', 'field4')
+      ],
+      'Batch 3': [
+        createTextField('Field 5', 'field5'),
+        createTextField('Field 6', 'field6')
+      ]
+      // Add fields for other batches as needed
+    };
+
+    // Return the fields for the selected batch
+    return fields[batch] || [];
+  }
+
+  function createTextField(label, name) {
+    // Create a label element
+    const labelElem = document.createElement('label');
+    labelElem.innerText = label;
+
+    // Create an input element
+    const inputElem = document.createElement('input');
+    inputElem.setAttribute('type', 'text');
+    inputElem.setAttribute('name', name);
+
+    // Create a div element to hold the label and input elements
+    const divElem = document.createElement('div');
+    divElem.appendChild(labelElem);
+    divElem.appendChild(inputElem);
+
+    return divElem;
+  }
+</script>
 
   <script>
     let selectDate = document.getElementById('ansy_startdate');

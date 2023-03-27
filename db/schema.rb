@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_113550) do
+ActiveRecord::Schema.define(version: 2023_03_27_031129) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -104,6 +104,10 @@ ActiveRecord::Schema.define(version: 2023_03_26_113550) do
     t.time "slottime"
     t.string "debit"
     t.integer "user_id"
+    t.string "status"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "debit"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
@@ -269,6 +273,7 @@ ActiveRecord::Schema.define(version: 2023_03_26_113550) do
     t.string "dd_no"
     t.string "role"
     t.string "orgname"
+    t.integer "contact_no"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
@@ -1053,6 +1058,11 @@ ActiveRecord::Schema.define(version: 2023_03_26_113550) do
     t.string "name"
     t.string "slotbooker"
     t.string "firstname"
+    t.string "encrypted_otp_secret"
+    t.string "encrypted_otp_secret_iv"
+    t.string "encrypted_otp_secret_salt"
+    t.integer "consumed_timestep"
+    t.boolean "otp_required_for_login"
     t.integer "faculty_id"
     t.string "status"
     t.index ["email"], name: "index_users_on_email", unique: true

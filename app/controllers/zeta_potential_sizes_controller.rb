@@ -80,6 +80,6 @@ class ZetaPotentialSizesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def zeta_potential_size_params
-      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,references: [])
+      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress],references: [])
     end
 end

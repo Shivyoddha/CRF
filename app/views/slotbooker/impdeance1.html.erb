@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'Impedance Analyser Tester Slotbooker',slotbooker_impdeance_path,class:"navbar-brand",id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">IMPEDEANCE:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Impedance Analyser: Pending Slots</h2>
         </div>
 
 
@@ -63,27 +63,24 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="institute">Institute</th>
-                        <th scope="col" id="department">Department</th>
-                        <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="sample-no">No of Samples</th>
-                        <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="composition">Capacitance</th>
-                        <th scope="col" id="phase">Dielectric</th>
-                        <th scope="col" id="range">I-V</th>
-                        <th scope="col" id="composition">Impedance</th>
-                        <th scope="col" id="composition">Frequency Range</th>
-                        <th scope="col" id="phase">Voltage Range</th>
-                        <th scope="col" id="range">Current Range</th>
-                        <th scope="col" id="phase">Impdeance/Loss Tangent</th>
-                        <th scope="col" id="request">More info</th>
-                        <th scope="col" id="booked-on">Booked On</th>
-                        <th scope="col" id="slot-date">Slot Date</th>
-                        <th scope="col" id="slot-time">Slot Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" id="reference-paper">Reference Paper</th>
+                      <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="name">Name</th>
+                      <th scope="col" id="institute">Institute</th>
+                      <th scope="col" id="department">Department</th>
+                      <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="sample-no">No of Samples</th>
+                      <th scope="col" id="composition">Composition</th>
+                      <th scope="col" id="composition">Measuerment</th>
+                      <th scope="col" id="composition">Frequency Range</th>
+                      <th scope="col" id="phase">Voltage Range</th>
+                      <th scope="col" id="range">Current Range</th>
+                      <th scope="col" id="phase">Impdeance/Loss Tangent</th>
+                      <th scope="col" id="request">More info</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col" id="slot-time">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" id="reference-paper">Reference Paper</th>
                         <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
@@ -93,16 +90,13 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/IMPED/<%=imped.id %>	</th>
-                        <td> <%= imped.user.name%> </td>
+                        <td> <%= imped.user.firstname%><nobr> <%= imped.user.lastname%></td>
                         <td> <%= imped.user.orgname%> </td>
                         <td> <%= imped.user.department%> </td>
                         <td> <%= imped.user.contact%> </td>
                         <td> <%= imped.sample%> </td>
                         <td> <%= imped.composition%> </td>
-                        <td> <%= imped.capacitance%> </td>
-                        <td> <%= imped.dielectric%> </td>
-                        <td> <%= imped.iv%> </td>
-                        <td> <%= imped.impedance%> </td>
+                        <td> <%= Array(imped.measurement).join(", ") %> </td>
                         <td> <%= imped.freqrange%> </td>
                         <td> <%= imped.voltagerange%> </td>
                         <td> <%= imped.currentrange%> </td>
@@ -116,12 +110,12 @@
 
                           <td><%= imped.status%></td>
                           <%if imped.references.attached? %>
-                                 <%imped.references.each do |file|%>
-                                 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                                    <% end %>
-                               <% else %>
-                                 <td>NA</td>
-                               <% end %>
+                                       <%imped.references.each do |file|%>
+                                       <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                          <% end %>
+                                     <% else %>
+                                       <td>NA</td>
+                                     <% end %>
                                <td id="assign-btn">
                                    <!-- Button trigger modal -->
                                     <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{imped.id}" }, id: "ani" %>
@@ -130,7 +124,7 @@
                                     <div class="modal-dialog">
                                           <div class="modal-content">
                                               <div class="modal-header">
-                                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= imped.user.name %></b></h1>
+                                                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= imped.user.firstname %></b></h1>
                                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                </div>
                                                 <div class="modal-body">
@@ -143,7 +137,7 @@
 
                                                   <div class="input-group mb-3">
                                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                                  <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                                 </div>
 
                                                    <%=form.fields_for :equipment_table do |f| %>
