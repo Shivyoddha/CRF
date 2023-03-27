@@ -127,27 +127,19 @@
                     <!-- Button trigger modal -->
                      <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{tga.id}" }, id: "ani" %>
                      <div id="<%= tga.id%>" class="modal">
-
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.name %></b></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <%= form_with(model: tga,local:true) do |form| %>
-
                      <div class="modal-dialog">
                            <div class="modal-content">
-                               <div class="modal-header">
-                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
+                               
                                  <div class="modal-body">
                                    <%= form_with(model: tga,local:true) do |form| %>
-
 
                                        <div class="input-group mb-3">
                                        <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -184,16 +176,12 @@
                                   <div class="input-group mb-3">
                                     <%= f.hidden_field :email, value:"#{tga.user.email}" %>
                                  </div>
-
-      <%# <%=tga.id%>
-=======
                                   <div class="input-group mb-3">
                                     <%= f.hidden_field :equipname, value:"tga" %>
                                  </div>
-                          <div class="input-group mb-3">
+                                  <div class="input-group mb-3">
                                     <%= f.hidden_field :equipname, value:"tga" %>
                                  </div>
-
                                     <%end%>
 
                                      <div class="actions">
@@ -209,6 +197,7 @@
                                          </td>
 
                                      </tr>
+                   <%end%>
                    <%end%>
 
                                  </tbody>

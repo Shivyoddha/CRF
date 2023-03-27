@@ -99,6 +99,10 @@ ActiveRecord::Schema.define(version: 2023_03_27_031129) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.date "slotdate"
+    t.time "slottime"
+    t.string "debit"
     t.integer "user_id"
     t.string "status"
     t.time "slottime"

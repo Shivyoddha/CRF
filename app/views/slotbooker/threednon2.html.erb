@@ -100,10 +100,7 @@
                <td> <%= threes.stepinterval%> </td>
                <td> <%= threes.incompatible%> </td>
                <td> <%= threes.toxicity%> </td>
-                  <td> <%= threes.more%> </td>
-          <td> <%=threes.slotdate %></td>
-              <td> <%=threes.slottime %></td>
-              <td> <%=threes.status %></td>
+              <td> <%= threes.more%> </td>
 
                 <td><span style="white-space: nowrap;"><%= threes.slotdate.strftime('%d-%m-%Y')if threes.slotdate.present? %></td>
                   <td><%= threes.slottime.strftime('%H:%M:%S') if threes.slottime.present? %></td>

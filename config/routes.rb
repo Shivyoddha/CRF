@@ -146,7 +146,8 @@ Rails.application.routes.draw do
     get 'mainpage/friction_wear'
     get 'mainpage/multi_impact_test'
     get 'mainpage/multirole_mech'
-
+    
+    get 'feedbacks/index'
 
 
 
