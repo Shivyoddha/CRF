@@ -80,6 +80,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],hazard_method: [], references: [])
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress],hazard_method: [], references: [])
     end
 end

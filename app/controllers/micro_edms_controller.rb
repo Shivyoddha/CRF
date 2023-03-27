@@ -76,6 +76,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [],measuerment: [] )
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress],references: [],measuerment: [] )
     end
 end

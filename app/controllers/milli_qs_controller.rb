@@ -123,6 +123,6 @@ class MilliQsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def milli_q_params
-      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
     end
 end

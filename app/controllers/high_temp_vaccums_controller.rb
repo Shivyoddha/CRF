@@ -77,6 +77,6 @@ class HighTempVaccumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def high_temp_vaccum_params
-      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
     end
 end

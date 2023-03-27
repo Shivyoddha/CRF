@@ -73,6 +73,6 @@ class FtNmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ft_nm_params
-      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,references: [],hazardmethod: [],measurement1:[],measurement2:[],measurement3:[],measurement4:[],measurement5:[])
+      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,references: [],hazardmethod: [],measurement1: [],measurement2:[],measurement3:[],measurement4:[],measurement5:[])
     end
 end

@@ -81,6 +81,6 @@ class HrFesemJsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_j_params
-      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
+      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] ,references: [])
     end
 end

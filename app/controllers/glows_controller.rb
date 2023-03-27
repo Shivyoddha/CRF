@@ -81,6 +81,6 @@ class GlowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glow_params
-      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
+      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] ,references: [])
     end
 end
