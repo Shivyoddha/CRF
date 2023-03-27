@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_091805) do
+ActiveRecord::Schema.define(version: 2023_03_26_113550) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -99,10 +99,6 @@ ActiveRecord::Schema.define(version: 2023_03_26_091805) do
     t.string "more"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
-    t.date "slotdate"
-    t.time "slottime"
-    t.string "debit"
     t.integer "user_id"
     t.text "technique", default: "--- []\n"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
@@ -254,6 +250,21 @@ ActiveRecord::Schema.define(version: 2023_03_26_091805) do
     t.string "reg_no"
     t.string "guide"
     t.string "course"
+    t.string "org"
+    t.string "profesion"
+    t.string "innvoice_name"
+    t.string "invoice_address"
+    t.string "invoice_gst"
+    t.float "amount_paid"
+    t.float "gst_applied"
+    t.float "testing"
+    t.float "consulting"
+    t.float "gst"
+    t.string "state"
+    t.date "date_of_depo"
+    t.string "dd_no"
+    t.string "role"
+    t.string "orgname"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"

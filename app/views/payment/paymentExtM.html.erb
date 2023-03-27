@@ -32,20 +32,18 @@
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
-                 <li class="nav-item">
+                <li class="nav-item">
                  <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
                 </li>
+
                 <li class="nav-item">
-                        <%= link_to 'Recently Completed',payment_paymentExtR_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -59,112 +57,82 @@
         </div>
 
         <div id="wrap">
-          <%= form_with(model: @equipment,local:true) do |form| %>
-            <div class="mb-3">
-                <div class="input-group">
-                    <label class="input-group-text" id="app-no-label" for="app-no">ApplNo/Ref. No</label>
-                    <input type="text" class="form-control" id="app-no" aria-describedby="basic-addon3">
-                </div>
-            </div>
+          <%= form_with(model:@equipment ,local:true) do |form| %>
+           <div class="input-group mb-3">
+             <%= form.label :app_no, "Apllication No.", class:"input-group-text",id:"app"%>
+             <%= form.text_field :app_no, class:"form-control", id:"app"%>
+         </div>
+         <div class="input-group mb-3">
+           <%= form.label :username, "User Name", class:"input-group-text"%>
+           <%= form.text_field :username, class:"form-control", id:"composition"%>
+       </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Equipment</label>
-                <select class="form-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                </select>
-            </div>
+         <div class="input-group mb-3">
+         <%= form.label :invoice_name, "Innvoice Name", class:"input-group-text", for:"In_names"%>
+         <%= form.text_field :invoice_name, class:"form-control", id:"In_name"%>
+       </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="department">Profession</label>
-                <select class="form-select" id="department">
-                    <option selected>Choose...</option>
-                    <option value="academia">Academia</option>
-                    <option value="industry">Industry</option>
-                    <option value="enterpreneur">Enterpreneur</option>
-                </select>
-            </div>
+       <div class="input-group mb-3">
+       <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:"In_address"%>
+       <%= form.text_field :invoice_address, class:"form-control", id:"In_address"%>
+     </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-name">Invoice Name</label>
-                <input type="text" class="form-control" id="invoice-name" aria-describedby="basic-addon3">
-            </div>
+       <div class="input-group mb-3">
+       <%= form.label :invoice_gst, "Invoice Gst", class:"input-group-text", for:"In_gst"%>
+       <%= form.text_field :invoice_gst, class:"form-control", id:"In_gst"%>
+     </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-add">Invoice Address</label>
-                <input type="text" class="form-control" id="invoice-add" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-add">Invoice Address</label>
-                <input type="text" class="form-control" id="invoice-add" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="invoice-gst">Invoice GST No</label>
-                <input type="text" class="form-control" id="invoice-gst" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="app-gst">GST Apllied</label>
-                <select class="form-select" id="app-gst">
-                    <option selected>Choose...</option>
-                    <option value="18%">18%</option>
-                    <option value="16%">16%</option>
-                    <option value="0%">0%</option>
-                </select>
-            </div>
+       <div class="input-group mb-3">
+       <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
+       <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
 
+       <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
+       <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
+     </div>
 
-            <hr>
+     <div class="input-group mb-3">
+     <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
+      <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
+     <%= form.text_field :testing, class:"form-control", id:"testing"%>
 
+   <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
+    <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
+   <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
 
+     <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
+     <%= form.text_field :gst, class:"form-control", id:"consulting"%>
+   </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="reg-id-label" for="paid">Amount Paid</label>
-                <label class="input-group-text" id="reg-id-label" for="paid">₹</label>
-                <input type="text" class="form-control" id="paid" aria-describedby="basic-addon3" placeholder="">
-            </div>
+   <div class="input-group mb-3">
+     <%= form.label :state,'State',for:"state", class:"input-group-text"%>
+     <%= form.select(:state, ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
+      'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh',
+       'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep', 'Delhi', 'Puducherry', 'Jammu and Kashmir', 'Ladakh'],
+       {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "state"}) %>
+   </div>
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="testing">Testing</label>
-                <input type="text" class="form-control" id="testing" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="consultancy">Consultancy</label>
-                <input type="text" class="form-control" id="consultancy" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="read-gst">GST</label>
-                <input type="text" class="form-control" id="read-gst" aria-describedby="basic-addon3" placeholder="" readonly>
-            </div>
+   <div class="input-group mb-3">
+   <%= form.label :date_of_depo, "Date of Deposit", class:"input-group-text", for:"date_of_depo"%>
+   <%= form.date_field :date_of_depo, class:"form-control", id:"date_of_depo"%>
+  </div>
 
-             <div class="input-group mb-3">
-                <label class="input-group-text" for="state">State</label>
-                <select class="form-select" id="state">
-                    <option selected>Choose...</option>
-                </select>
-            </div>
-             <div class="input-group mb-3">
-                <label class="input-group-text" for="district">District</label>
-                <select class="form-select" id="district">
-                    <option selected>Choose...</option>
-                </select>
-            </div>
-
-             <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="deposit-date">Date of Deposit</label>
-                <input type="date" class="form-control" id="deposit-date" aria-describedby="basic-addon3" placeholder="">
-            </div>
-
-            <div class="input-group mb-3">
-                <label class="input-group-text" id="guide-label" for="UTR-No">UTR No / CHQ No / DD No:</label>
-                <input type="type" class="form-control" id="UTR-No" aria-describedby="basic-addon3" placeholder="">
-            </div>
+  <div class="input-group mb-3">
+  <%= form.label :dd_no, "UTR No/CHQ No/DD No:", class:"input-group-text", for:"dd_no"%>
+  <%= form.text_field :dd_no, class:"form-control", id:"dd_no"%>
+  </div>
 
 
 
-            <div class="actions">
-                <button type="submit" class="btn btn-success" id="sbt">Submit</button>
-            </div>
 
+
+  <%= form.hidden_field :dummy, value: 'done' %>
+
+
+  <div class="actions">
+  <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+
+  </div>
+  <% end %>
         </div>
 
     </div>
