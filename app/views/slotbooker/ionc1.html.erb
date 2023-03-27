@@ -2,7 +2,7 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
+        <%= link_to 'Ion Chromatography Slotbooker',slotbooker_ionc_path,class:"navbar-brand" id:"title" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
         <div class="sidelinks">
@@ -54,7 +54,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">ION:Pending Slots</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Ion Chromatography: Pending Slots</h2>
         </div>
 
 
@@ -98,7 +98,7 @@
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/IONC/<%=ionc.id %>	</th>
-                        <td> <%= ionc.user.name%> </td>
+                        <td> <%= ionc.user.firstname%><nobr> <%= ionc.user.lastname%></td>
                         <td> <%= ionc.user.orgname%> </td>
                         <td> <%= ionc.user.department%> </td>
                         <td> <%= ionc.user.contact%> </td>
@@ -140,7 +140,7 @@
                              <div class="modal-dialog">
                                    <div class="modal-content">
                                        <div class="modal-header">
-                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ionc.user.name %></b></h1>
+                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= ionc.user.firstname %></b></h1>
                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                          <div class="modal-body">
