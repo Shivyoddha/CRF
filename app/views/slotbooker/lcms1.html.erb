@@ -159,34 +159,18 @@
                                            </div>
 
                                             <%=form.fields_for :equipment_table do |f| %>
-                                             <div class="input-group mb-3">
-                                                <%= f.hidden_field :app_no, value:"CRF/LCMS/#{lcms.id}"%>
-                                              </div>
+                                            <%= f.hidden_field :app_no, value:"CRF/LCMS/#{lcms.id}"%>
+                                            <%= f.hidden_field :username, value:"#{lcms.user.name}"%>
+                                            <%= f.hidden_field :dummy, value:"alloted"%>
+                                            <%= f.hidden_field :debit_head, value:"#{lcms.debit}" %>
+                                            <%= f.hidden_field :dept, value:"#{lcms.user.department}" %>
+                                            <%= f.hidden_field :email, value:"#{lcms.user.email}" %>
+                                            <%= f.hidden_field :equipname, value:"lcms" %>
+                                            <%= f.hidden_field :role, value:"#{lcms.user.role}" %>
+                                            <%= f.hidden_field :org, value:"#{lcms.user.orgaddress}" %>
+                                            <%= f.hidden_field :profesion, value:"#{lcms.user.profession}" %>
+                                            <%= f.hidden_field :orgname, value:"#{lcms.user.orgname}" %>
 
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :username, value:"#{lcms.user.name}"%>
-                                            </div>
-
-
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :dummy, value:"alloted"%>
-                                             </div>
-
-                                            <div class="input-group mb-3">
-                                              <%= f.hidden_field :debit_head, value:"#{lcms.debit}" %>
-                                           </div>
-
-                                           <div class="input-group mb-3">
-                                        <%= f.hidden_field :dept, value:"#{lcms.user.department}" %>
-                                     </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :email, value:"#{lcms.user.email}" %>
-                                    </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :equipname, value:"lcms" %>
-                                    </div>
 
                                             <%end%>
 

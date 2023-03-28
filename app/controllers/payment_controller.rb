@@ -22,9 +22,7 @@ class PaymentController < ApplicationController
       @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def payementExtM
-      @equipment = EquipmentTable.all
-      @equipment = EquipmentTable.order(updated_at: :desc)
-
+      @equipment = EquipmentTable.new
   end
   def paymentExtR
       @equipment = EquipmentTable.all

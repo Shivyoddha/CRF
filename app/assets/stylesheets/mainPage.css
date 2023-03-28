@@ -367,6 +367,15 @@ background: #111;
 transform: translateX(3px);
 }
 
+#ani {
+  background-color: #7257fa;
+  border: 0 ;
+}
+
+.card:hover .card__arrow {
+  background: #807bee;
+}
+
 /* announcement ends */
 
 

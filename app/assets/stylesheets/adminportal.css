@@ -218,6 +218,7 @@ ul {
     height: auto;
     font-family: "quicksand", sans-serif;
     background-color: #ddf1fb;
+    padding-bottom: 2em;
 }
 
 #current-tab {
@@ -321,8 +322,8 @@ ul {
 }
 
   #btn-announcement {
-      position: relative;
-      padding: 10px 20px;
+    position: relative;
+    padding: 10px 20px;
     border-radius: 7px;
     border: 1px solid rgb(61, 106, 255);
     font-size: 14px;
@@ -332,14 +333,16 @@ ul {
     background: transparent;
     color: #3d6aff;
     overflow: hidden;
+    text-decoration: none;
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
 
+
   #btn-announcement:hover {
-    background: rgb(61, 106, 255);
-    color: #fbfcff;
+    background: rgb(119, 138, 200);
+    color: #ffffff;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
@@ -376,18 +379,25 @@ ul {
     -moz-transition: box-shadow 0.2s ease-in;
     transition: box-shadow 0.2s ease-in;
   }
+
+  #all-stats {
+    text-decoration: none;
+  }
+  #all-stats:hover {
+    text-decoration:underline;
+    background-color: #ddf1fb;
+  }
   /* Styling of button ends */
 
 
 /* Styling of chart done here */
-#chart {
+#chart, #chart-1, #chart-2 {
     display: flex;
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-    background-color: #ddf1fb;
+    background-color: #ffffff;
     flex-direction: column;
-    margin: 3em;
 }
 
 #myChart {

@@ -10,18 +10,17 @@
         </div>
         <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
 
-
         <div class="sidelinks">
 
             <h2 class="fw-bold text-center">Navigation</h2>
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap"%>
+                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtC_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
@@ -33,107 +32,110 @@
         </div>
     </div>
 
-<%# the content section is coded here %>
-    <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Payment Entry Console</h2>
+
+    <div id="hero">
+
+        <div id="manual-heading">
+            <h1>Manual Entry</h1>
         </div>
 
-
-        <div id="slot-details">
-        <div>
-            <table class="table table-hover font-quicksand">
-                <thead>
-                    <tr class="table-head font-unbounded">
-                        <th scope="col" id="application-no">Appl No</th>
-                        <th scope="col" id="name">Name</th>
-                        <th scope="col" id="debit-head">Debit Head</th>
-                        <th scope="col" id="proforma-col">Proforma</th>
-                    </tr>
-                </thead>
-                <tbody>
-                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
-                        <tr>
-                          <th scope="row"><%= equipment.app_no%></th>
-                          <td> <%= equipment.username%> </td>
-                          <td> <%= equipment.debit_head%> </td>
-                          <td id="assign-btn">
-                              <!-- Button trigger modal -->
-                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                               <div id="<%= equipment.app_no%>" class="modal">
-
-     <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
-                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                   </div>
-                   <div class="modal-body">
-
-                        <%= form_with(model:equipment ,local:true) do |form| %>
-                         <div class="input-group mb-3">
-                           <%= form.label :x, "Apllication No.", class:"input-group-text"%>
-                           <%= form.text_field :x, class:"form-control", id:"composition", placeholder: equipment.app_no , readonly: true%>
-                       </div>
-                       <div class="input-group mb-3">
-                         <%= form.label :x, "Applicant Name", class:"input-group-text"%>
-                         <%= form.text_field :x, class:"form-control", id:"composition", placeholder:equipment.username, readonly: true%>
-                     </div>
-                       <div class="input-group mb-3">
-                       <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
-                       <%= form.text_field :pay, class:"form-control", id:"amount"%>
-                     </div>
-                     <div class="input-group mb-3">
-                     <%= form.hidden_field :dummy, value: 'done' %>
-                   </div>
-
-                       <div class="actions">
-                         <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
-
-                       </div>
-                     <% end %>
-                   </div>
-               </div>
-           </div>
-
-   </div>
-
-                           </td>
-
-                       </tr>
-   <%end%>
-                   </tbody>
-               </table>
-
-           </div>
-           </div>
+        <div id="wrap">
+          <%= form_with(model:@equipment ,local:true) do |form| %>
+           <div class="input-group mb-3">
+             <%= form.label :app_no, "Apllication No.", class:"input-group-text",id:"app"%>
+             <%= form.text_field :app_no, class:"form-control", id:"app"%>
+         </div>
 
 
+         <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
+       <div class="input-group mb-3">
+         <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+         <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
        </div>
 
+       <div class="input-group mb-3" >
+         <%= form.label :profesion ,"Profession" ,for:"profession", class:"input-group-text "%>
+         <%= form.select(:profesion , ['Academia','Industry','Entrepreneur'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "profession"})%>
+         </div>
 
+         <div class="input-group mb-3">
+         <%= form.label :invoice_name, "Innvoice Name", class:"input-group-text", for:"In_names"%>
+         <%= form.text_field :invoice_name, class:"form-control", id:"In_name"%>
+       </div>
+
+       <div class="input-group mb-3">
+       <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:"In_address"%>
+       <%= form.text_field :invoice_address, class:"form-control", id:"In_address"%>
+     </div>
+
+       <div class="input-group mb-3">
+       <%= form.label :invoice_gst, "Invoice Gst No.", class:"input-group-text", for:"In_gst"%>
+       <%= form.text_field :invoice_gst, class:"form-control", id:"In_gst", placeholder:"In case of firm"%>
+     </div>
+
+
+     <div class="input-group mb-3">
+     <%= form.label :contact_no, "Contact No.", class:"input-group-text", for:"contact"%>
+     <%= form.text_field :contact_no, class:"form-control", id:"contact"%>
    </div>
-   <script>
-     // Get the modals and buttons
-     var modal1 = document.getElementByClass("modal");
-     var btn1 = document.getElementById("ani");
 
-     // Add event listeners to the buttons
-     btn1.addEventListener("click", function() {
-       modal1.style.display = "block";
-     });
 
-     btn2.addEventListener("click", function() {
-       modal2.style.display = "block";
-     });
+       <div class="input-group mb-3">
+       <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
+       <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
 
-     // Close the modal when the user clicks anywhere outside of it
-     window.addEventListener("click", function(event) {
-       if (event.target == modal1) {
-         modal1.style.display = "none";
-       }
-       if (event.target == modal2) {
-         modal2.style.display = "none";
-       }
-     });
-   </script>
+       <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
+       <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
+     </div>
+
+     <div class="input-group mb-3">
+     <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
+      <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
+     <%= form.text_field :testing, class:"form-control", id:"testing"%>
+
+   <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
+    <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
+   <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
+
+     <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
+     <%= form.text_field :gst, class:"form-control", id:"consulting"%>
+   </div>
+
+   <div class="input-group mb-3">
+     <%= form.label :state,'State',for:"state", class:"input-group-text"%>
+     <%= form.select(:state, ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
+      'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh',
+       'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep', 'Delhi', 'Puducherry', 'Jammu and Kashmir', 'Ladakh'],
+       {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "state"}) %>
+   </div>
+
+   <div class="input-group mb-3">
+   <%= form.label :date_of_depo, "Date of Deposit", class:"input-group-text", for:"date_of_depo"%>
+   <%= form.date_field :date_of_depo, class:"form-control", id:"date_of_depo"%>
+  </div>
+
+  <div class="input-group mb-3">
+  <%= form.label :dd_no, "UTR No/CHQ No/DD No:", class:"input-group-text", for:"dd_no"%>
+  <%= form.text_field :dd_no, class:"form-control", id:"dd_no"%>
+  </div>
+
+
+
+
+
+  <%= form.hidden_field :dummy, value: 'done' %>
+  <%= form.hidden_field :role, value: 'external' %>
+
+
+  <div class="actions">
+  <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+
+  </div>
+  <% end %>
+        </div>
+
+    </div>
+
+
+
+</div>
