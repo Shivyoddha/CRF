@@ -3,29 +3,29 @@
   margin: 0 0 2em 0;
 }
 
-.nitk-heading{
+.nitk-heading {
   width: 90%;
 }
 
 #margin {
-margin: 3px;
-border: 2px dashed grey;
-padding: 15px;
-border-radius: 2px;
-font-family: 'Montserrat', sans-serif;
+  margin: 3px;
+  border: 2px dashed grey;
+  padding: 15px;
+  border-radius: 2px;
+  font-family: 'Montserrat', sans-serif;
 
-/* height: 150vh; */
+  /* height: 150vh; */
 }
-#pay-details
-{
+
+#pay-details {
   display: -webkit-box;
 }
 
-.date{
+.date {
   margin-left: 5em;
 }
 
-#proforma-inv{
+#proforma-inv {
   display: -webkit-box;
 }
 
@@ -40,41 +40,42 @@ font-family: 'Montserrat', sans-serif;
 }
 
 #lab-return {
-font-family: 'Montserrat', sans-serif;
-font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
 }
 
 .element {
-margin:8px 0;
-font-size: 17px;
-font-family: 'Montserrat', sans-serif;
+  margin: 8px 0;
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #signatures-upper {
-display: -webkit-box;
+  display: -webkit-box;
 }
 
-#signatures-upper-left{
+#signatures-upper-left {
   width: 72%;
 }
-#signatures-upper-left-3d-pro{
-    margin: 5em 0 0 0;
+
+#signatures-upper-left-3d-pro {
+  margin: 5em 0 0 0;
   width: 68%;
 }
 
-#signatures-upper-right-3d-pro{
+#signatures-upper-right-3d-pro {
   margin-top: 5em;
 }
 
-#signatures-upper-right{
+#signatures-upper-right {
   width: 32%;
 }
 
-.crf-heading{
-width: 75%;
+.crf-heading {
+  width: 75%;
 }
 
-.logo{
+.logo {
   /* width: 40%; */
   display: -webkit-box;
   -webkit-box-pack: center;
@@ -82,50 +83,49 @@ width: 75%;
   align-items: center;
 }
 
-.crf{
+.crf {
   margin-top: 5px;
 }
 
-.right{
-  width:35%;
+.right {
+  width: 35%;
   font-family: 'Montserrat', sans-serif;
 }
 
-.tan-no{
+.tan-no {
   margin-left: 4em;
 }
 
-.state-code{
+.state-code {
   margin-left: 4em;
 }
 
-}
-.left{
-  width:67%;
+.left {
+  width: 67%;
   font-family: 'Montserrat', sans-serif;
 }
 
-.left{
-  width:67%;
+.left {
+  width: 67%;
 }
 
 .data {
-margin: 0 0 0 5px;
+  margin: 0 0 0 5px;
 }
 
-.signatures{
-margin-top: 5em;
+.signatures {
+  margin-top: 5em;
 }
 
 .notes {
-font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.font-smaller{
-font-size: 15px;
+.font-smaller {
+  font-size: 15px;
 }
 
-.font-smaller{
+.font-smaller {
   font-size: 15px;
 }
 
