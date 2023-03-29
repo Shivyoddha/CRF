@@ -2,18 +2,12 @@
     margin: 0%;
     padding: 0%;
 }
-#notice{
-    height: 0;
-    position: absolute;
-    top: 0;
-}
-
 #container-ann {
     background-color:aliceblue;
     margin: auto;
-    overflow-x: auto;
-    min-height: 100vh;
-}   
+    width: 90%;
+    padding: 1em;
+}
 #head-new {
     background-color: aliceblue;
     width: 90%;
