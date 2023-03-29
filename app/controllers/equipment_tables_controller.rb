@@ -22,7 +22,6 @@ class EquipmentTablesController < ApplicationController
   # POST /equipment_tables or /equipment_tables.json
   def create
     @equipment_table = EquipmentTable.new(equipment_table_params)
-
     respond_to do |format|
       if @equipment_table.save
         if @equipment_table.role == "student"

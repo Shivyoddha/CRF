@@ -53,7 +53,9 @@
                 <!-- <li class="nav-item">
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li> -->
+
                 <li class="nav-item">
+
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
@@ -119,10 +121,8 @@
                 </div>
             </div>
 
-                <%= form.hidden_field :dummy, value: 'done' %>
-
+              <%= form.hidden_field :dummy, value: 'done' %>
               <%= form.hidden_field :role, value: 'student' %>
-
 
               <div class="actions">
                 <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
