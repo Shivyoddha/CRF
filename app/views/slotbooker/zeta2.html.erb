@@ -155,24 +155,13 @@
                                    </div>
 
                                    <%=form.fields_for :equipment_table do |f| %>
-                                    <div class="input-group mb-3">
+
                                        <%= f.hidden_field :app_no, value:"CRF/ZETA/#{zeta.id}"%>
-                                     </div>
-
-                                    <div class="input-group mb-3">
                                       <%= f.hidden_field :username, value:"#{zeta.user.name}"%>
-                                   </div>
-
-                                   <div class="input-group mb-3">
-                                     <%= f.hidden_field :dummy, value:"#{zeta.status}"%>
-                                  </div>
-
-                                   <div class="input-group mb-3">
-                                     <%= f.hidden_field :debit_head, value:"#{zeta.debit}" %>
-                                  </div>
+                                      <%= f.hidden_field :dummy, value:"#{zeta.status}"%>
+                                      <%= f.hidden_field :debit_head, value:"#{zeta.debit}" %>
 
                                    <%end%>
-                                    <%=zeta.id%>
 
                                      <div class="actions">
                                        <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

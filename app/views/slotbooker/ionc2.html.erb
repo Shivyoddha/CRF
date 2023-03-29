@@ -161,21 +161,11 @@
                                </div>
 
                                <%=form.fields_for :equipment_table do |f| %>
-                                <div class="input-group mb-3">
+
                                    <%= f.hidden_field :app_no, value:"CRF/IONC/#{ionc.id}"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
-                               </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :dummy, value:"#{ionc.status}"%>
-                              </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
-                              </div>
+                                   <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
+                                   <%= f.hidden_field :dummy, value:"#{ionc.status}"%>
+                                   <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
                                <%end%>
                                  <div class="actions">
                                    <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
