@@ -2,8 +2,8 @@
 <p style="margin:0;padding:0">Your Slot Date-Time for advance_molecular_rheometer Application No: <b>CRF/RHEO/<%=@advance_molecular_rheometer.id%></b></p>
 <% if @advance_molecular_rheometer.status = "alloted" %>
 <p style="margin:0;padding:0">Has been assigned for Date :<b> 18-04-2023 </b>; Time : <b> 9:30 am </b></p>
-<% if @hr_fesem_c.status == "cancelled" %>
-<p>The slot with AppNo  CRF/XRD/<%= @hr_fesem_c.id%> has been cancelled</p>
+<% if @advance_molecular_rheometer.status == "cancelled" %>
+<p>The slot with AppNo  CRF/XRD/<%= @advance_molecular_rheometer.id%> has been cancelled</p>
 <%end%>
 <%end%>
 <br>

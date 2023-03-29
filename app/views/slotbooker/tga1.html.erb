@@ -127,27 +127,19 @@
                     <!-- Button trigger modal -->
                      <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{tga.id}" }, id: "ani" %>
                      <div id="<%= tga.id%>" class="modal">
-
-<<<<<<< HEAD
-<<<<<<< HEAD
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.name %></b></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <%= form_with(model: tga,local:true) do |form| %>
-
                      <div class="modal-dialog">
                            <div class="modal-content">
-                               <div class="modal-header">
-                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= tga.user.firstname %></b></h1>
-                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
+
                                  <div class="modal-body">
                                    <%= form_with(model: tga,local:true) do |form| %>
-
 
                                        <div class="input-group mb-3">
                                        <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -160,39 +152,20 @@
                                    </div>
 
                                     <%=form.fields_for :equipment_table do |f| %>
-                                     <div class="input-group mb-3">
-                                        <%= f.hidden_field :app_no, value:"CRF/TGA/#{tga.id}"%>
-                                      </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :username, value:"#{tga.user.name}"%>
-                                    </div>
-
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :dummy, value:"alloted"%>
-                                     </div>
-
-                                    <div class="input-group mb-3">
-                                      <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
-                                   </div>
-
-                                   <div class="input-group mb-3">
-                                     <%= f.hidden_field :dept, value:"#{tga.user.department}" %>
-                                  </div>
-
-                                  <div class="input-group mb-3">
+                                    <%= f.hidden_field :app_no, value:"CRF/TGA/#{tga.id}"%>
+                                    <%= f.hidden_field :username, value:"#{tga.user.name}"%>
+                                    <%= f.hidden_field :dummy, value:"alloted"%>
+                                    <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
+                                    <%= f.hidden_field :dept, value:"#{tga.user.department}" %>
                                     <%= f.hidden_field :email, value:"#{tga.user.email}" %>
-                                 </div>
+                                    <%= f.hidden_field :role, value:"#{trib.user.role}" %>
+                                    <%= f.hidden_field :org, value:"#{trib.user.orgaddress}" %>
+                                    <%= f.hidden_field :profesion, value:"#{trib.user.profession}" %>
+                                    <%= f.hidden_field :orgname, value:"#{trib.user.orgname}" %>
 
-      <%# <%=tga.id%>
-=======
-                                  <div class="input-group mb-3">
+
                                     <%= f.hidden_field :equipname, value:"tga" %>
-                                 </div>
-                          <div class="input-group mb-3">
-                                    <%= f.hidden_field :equipname, value:"tga" %>
-                                 </div>
+
 
                                     <%end%>
 
@@ -209,6 +182,7 @@
                                          </td>
 
                                      </tr>
+                   <%end%>
                    <%end%>
 
                                  </tbody>

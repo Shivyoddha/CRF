@@ -31,12 +31,12 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     respond_to do |format|
       if @integrated_multi_role_tester.save
-        if @integrated_multi_role.user.role=='student'||@integrated_multi_role.user.role=='faculty'
-          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).InternalMail.deliver_later
+        if @integrated_multi_role_tester.user.role=='student'||@integrated_multi_role_tester.user.role=='faculty'
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).InternalMail.deliver_later
         else
-          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).ExternalMail.deliver_later
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to integrated_multi_role_tester_url(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Integrated multi role tester was successfully created." }
         format.json { render :show, status: :created, location: @integrated_multi_role_tester }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,6 +80,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def integrated_multi_role_tester_params
-      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress] , references: [])
+      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

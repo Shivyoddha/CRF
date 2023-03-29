@@ -139,34 +139,18 @@
                              </div>
 
                                  <%=form.fields_for :equipment_table do |f| %>
-                                  <div class="input-group mb-3">
-                                     <%= f.hidden_field :app_no, value:"CRF/BET/#{bet.id}"%>
-                                   </div>
-
-                                  <div class="input-group mb-3">
-                                    <%= f.hidden_field :username, value:"#{bet.user.name}"%>
-                                 </div>
-
-                                 <div class="input-group mb-3">
+                                   <%= f.hidden_field :app_no, value:"CRF/BET/#{bet.id}"%>
+                                   <%= f.hidden_field :username, value:"#{bet.user.name}"%>
                                    <%= f.hidden_field :dummy, value:"#{bet.status}"%>
-                                </div>
-
-                                 <div class="input-group mb-3">
                                    <%= f.hidden_field :debit_head, value:"#{bet.debit}" %>
-                                </div>
-
                                  <%end%>
-                                  
+
 
                                    <div class="actions">
                                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
 
                                    </div>
                                  <% end %>
-                               </div>
-                               <div class="modal-footer">
-                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                   <button type="button" class="btn btn-primary">Cancel Slot</button>
                                </div>
                            </div>
                        </div>
@@ -198,7 +182,7 @@
                                       </div>
                                      <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                           <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                           <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
                                      </div>
                                      <% end %>
                                  </div>

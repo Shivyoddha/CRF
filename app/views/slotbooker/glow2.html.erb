@@ -138,25 +138,15 @@
 
                               <div class="input-group mb-3">
                               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                              <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                              <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                             </div>
 
                               <%=form.fields_for :equipment_table do |f| %>
-                               <div class="input-group mb-3">
+
                                   <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
-                                </div>
-
-                               <div class="input-group mb-3">
                                  <%= f.hidden_field :username, value:"#{glow.user.name}"%>
-                              </div>
-
-                              <div class="input-group mb-3">
-                                <%= f.hidden_field :dummy, value:"#{glow.status}"%>
-                             </div>
-
-                              <div class="input-group mb-3">
-                                <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
-                             </div>
+                                 <%= f.hidden_field :dummy, value:"#{glow.status}"%>
+                                 <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
                               <%end%>
                                 <div class="actions">
                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

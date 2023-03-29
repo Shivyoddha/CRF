@@ -147,6 +147,7 @@ Rails.application.routes.draw do
     get 'mainpage/multi_impact_test'
     get 'mainpage/multirole_mech'
 
+    get 'feedbacks/index'
 
 
 
@@ -427,6 +428,8 @@ Rails.application.routes.draw do
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
     post 'payment/paymentU'
+    post 'payment/paymentExtU'
+    post 'payment/paymentExtM'
     get 'home/faculty_verif'
     post 'home/faculty_verif'
     get 'home/verifsent'

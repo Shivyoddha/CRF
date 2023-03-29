@@ -1,5 +1,14 @@
-<h1>ElectroChemicalAlloted#Mail</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/electro_chemical_alloted_mailer/Mail.html.erb
-</p>
+<p style="margin:0;padding:0">Dear <b><%=@user.firstname%></b>,</p>
+<p style="margin:0;padding:0">Your Slot Date-Time for ball mailing Application No: <b><%=@electro_chemical.id%></b></p>
+<% if @electro_chemical.status = "alloted" %>
+<p style="margin:0;padding:0">Has been assigned for Date :<b><%= @electro_chemical.slotdate%>  </b>; Time : <b> <%= @electro_chemical.slottime%></b></p>
+<% if @electro_chemical.status == "cancelled" %>
+<p>The slot with AppNo  CRF/ELECTRO/<%= @electro_chemical.id%> has been cancelled</p>
+<%end%>
+<br>
+<p style="margin:0;padding:0">Cancellation/Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for experiment after booking slot, penalty of Rs. 100/- is charged per slot. </p>
+<p style="margin:0;padding:0;color:red">Slots Date is tentative, Depending on M/C
+avaliability. In case slot date is pre/postponed applicant will get e-mail for same.</p>
+<p style="margin:0;padding:0">Regards,</p>
+<p style="margin:0;padding:0">ElectroChemical Lab CRF.</p>
+<p style="margin:0;padding:0"><a href="mailto:booking.crf@nitk.edu.in">booking.crf@nitk.edu.in</a></p>

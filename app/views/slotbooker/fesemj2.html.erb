@@ -136,26 +136,14 @@
 
                                    <div class="input-group mb-3">
                                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                   <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                  </div>
 
                                    <%=form.fields_for :equipment_table do |f| %>
-                                    <div class="input-group mb-3">
                                        <%= f.hidden_field :app_no, value:"CRF/FESMJ/#{fesemj2.id}"%>
-                                     </div>
-
-                                    <div class="input-group mb-3">
-                                      <%= f.hidden_field :username, value:"#{fesemj2.user.name}"%>
-                                   </div>
-
-                                   <div class="input-group mb-3">
-                                     <%= f.hidden_field :dummy, value:"#{fesemj2.status}"%>
-                                  </div>
-
-                                   <div class="input-group mb-3">
-                                     <%= f.hidden_field :debit_head, value:"#{fesemj2.debit}" %>
-                                  </div>
-
+                                       <%= f.hidden_field :username, value:"#{fesemj2.user.name}"%>
+                                       <%= f.hidden_field :dummy, value:"#{fesemj2.status}"%>
+                                       <%= f.hidden_field :debit_head, value:"#{fesemj2.debit}" %>
                                    <%end%>
 
                                      <div class="actions">
@@ -164,10 +152,7 @@
                                      </div>
                                    <% end %>
                                  </div>
-                                 <div class="modal-footer">
-                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                     <button type="button" class="btn btn-primary">Cancel Slot</button>
-                                 </div>
+
                              </div>
                          </div>
                      </div>
@@ -198,7 +183,7 @@
                                         </div>
                                        <div class="modal-footer">
                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                             <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                             <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
                                        </div>
                                        <% end %>
                                    </div>
