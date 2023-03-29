@@ -10,6 +10,11 @@
         </div>
 
         <%= link_to "Admin Panel", mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+        <h1 id="mod">Modules<h1>
+        <div id="toggler">
+            <%= link_to "Internal Module",  payment_payment_path, class:"btn btn-outline-primary mt-4", id:"active" %>
+            <%= link_to "External Module",  payment_paymentExt_path, class:"btn btn-outline-primary mt-4" %>
+        </div>
 
         <div class="sidelinks">
 

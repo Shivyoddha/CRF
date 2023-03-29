@@ -1,22 +1,14 @@
-<%= stylesheet_link_tag "announcement"%>
-<%= stylesheet_link_tag "loginFeatures"%>   <!-- this has to be removed during code optimization-->
-<%= stylesheet_link_tag "adminportal"%>   <!-- this has to be removed during code optimization-->
-
-
 <p id="notice"><%= notice %></p>
-
-
+<%= stylesheet_link_tag "announcement"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "loginFeatures"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "adminportal"%> <!-- this has to be removed during code optimization-->
 
 <%=render "partials/announceNav"%>
 
-<div id="container">
-  
- 
-
-
+<div id="container-ann">
   <table class="table">
   <thead id="thead">
-    <tr>
+    <tr class="table-head font-unbounded">
       <th scope="col">ID</th>
           <th scope="col">Heading</th>
           <th scope="col">Text</th>
@@ -36,13 +28,12 @@
           <td><%= announcement.created_on %></td>
           <td><%= link_to 'Show', announcement, class:"btn btn-primary" %>
             
-            </td>
+          </td>
           <td><%= link_to 'Edit', edit_announcement_path(announcement), class:"btn btn-success" %>
                 
           
             </td>
-          <td><%= link_to 'Destroy', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-           
+          <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
           </td>
         </tr>
       <% end %>

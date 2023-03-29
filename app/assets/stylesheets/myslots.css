@@ -8,23 +8,29 @@ html {
     margin: 6em 0 0 0;
 }
 
+
 .myslots-heading{
     text-align:center;
     font-family:"Unbounded";
 
 }
+.equip-heading,appl-no-heading{
+    font-size: 2em;
+}
 .mscard{
+    
     margin: 0 2em 0 2em;
     border-radius: 30px;
     background: whitesmoke;
 }
 .mscontainer{
     margin: 1em 2em 1em 2em;
-    
+    height:29vh;
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
     align-items: center;
+
 }
 .msleft-child{
     font-family: "Quicksand";
@@ -34,6 +40,7 @@ html {
     justify-content: flex-start;
     align-items:center;
     text-decoration: underline;
+    font-size: 1em;
     
 
 }
