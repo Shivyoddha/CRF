@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "announcement"%>  <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "loginFeatures"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "adminportal"%> <!-- this has to be removed during code optimization-->     
+<%= stylesheet_link_tag "dashboard"%> <!-- this has to be removed during code optimization-->
+<%=render "partials/announceNav"%> 
 
 <p>
-  <strong>Text:</strong>
-  <%= @announcement.text %>
+  
 </p>
+<h1 style="margin: 0 10px 0 10px">
+  <strong><%=@announcement.heading %></strong>
+</h1>
+<p style="margin:10px; word-wrap:break-word"><%= @announcement.text %></p>
 
-<p>
-  <strong>Created on:</strong>
-  <%= @announcement.created_on %>
-</p>
+<p style="font-size:1.2em;margin:10px"><strong>Created on: </strong><%= @announcement.created_on %></p>
 
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+
+<div id="back-div">
+  <div style="margin: 10px">
+    <%= link_to "Back",  announcements_path, class:"btn btn-outline-warning profile-dropdown back-btn-forms" %>
+  </div>
+</div>
+
+

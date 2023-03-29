@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+    
     post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
@@ -72,6 +73,7 @@ Rails.application.routes.draw do
     get 'mainportal/chairmanUsers'
     get 'mainpage/landing'
     get 'home/index'
+    get 'home/myslots'
     get 'home/anish'
     get 'know/xrd'
     get 'records/record'

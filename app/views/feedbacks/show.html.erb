@@ -1,24 +1,32 @@
 <p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "announcement"%>  <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "loginFeatures"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "adminportal"%> <!-- this has to be removed during code optimization-->     
+<%= stylesheet_link_tag "dashboard"%> <!-- this has to be removed during code optimization-->
 
-<p>
+<%=render "partials/announceNav"%> 
+
+<p style="margin:10px;font-size:1.3em">
   <strong>Username:</strong>
   <%= @feedback.username %>
 </p>
-
-<p>
+<p style="margin:10px;font-size:1.3em">
   <strong>Email:</strong>
   <%= @feedback.email %>
 </p>
-
-<p>
-  <strong>Feedback:</strong>
-  <%= @feedback.feedback %>
-</p>
-
-<p>
+<p style="margin:10px;font-size:1.3em">
   <strong>Date:</strong>
   <%= @feedback.date %>
 </p>
+<p style="margin:0 10px 0 10px;font-size:1.5em">
+  <strong>Feedback</strong></p>
+<p style="margin:0 10px 0 10px;font-size:1.5em;word-wrap:break-word"><%= @feedback.feedback %></p>
 
 <%# <%= link_to 'Edit', edit_feedback_path(@feedback) %>
-<%= link_to 'Back', feedbacks_path %>
+
+<div id="back-div">
+  <div style="margin: 10px">
+    <%= link_to "Back",  feedbacks_path, class:"btn btn-outline-warning profile-dropdown back-btn-forms" %>
+  </div>
+</div>
+

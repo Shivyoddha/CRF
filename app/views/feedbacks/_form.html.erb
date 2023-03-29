@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "announcement"%>
+
 <%= form_with(model: feedback) do |form| %>
   <% if feedback.errors.any? %>
     <div id="error_explanation">
@@ -11,26 +13,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-  <%= form.hidden_field :username, value:(@user.firstname+" "+@user.lastname)%>
-
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :email, value:@user.email%>
-  </div>
-
-  <div class="field">
-    <%= form.label :feedback %>
-    <%= form.text_area :feedback %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div id="form">
+    <div class="field" >
+    <%= form.hidden_field :username, value:(@user.firstname+" "+@user.lastname)%>
+    </div>
+    <div class="field">
+      <%= form.hidden_field :email, value:@user.email%>
+    </div>
+    
+    <div  class="input-group mb-3 mt-3">
+      <%= form.label :feedback, class:'input-group-text' %>
+      <%= form.text_area :feedback, class:"form-control"%>
+    </div>
+    <div class="input-group mb-3 mt-3">
+      <%= form.label :date, class:'input-group-text' %>
+      <%= form.date_select :date,class:"form-select" %>
+    </div>
+    <div class="input-group mb-3 mt-3">
+      <%= form.submit "Create Feedback", class:"btn btn-primary", id:'sbt' %>
+    </div>
   </div>
 <% end %>
