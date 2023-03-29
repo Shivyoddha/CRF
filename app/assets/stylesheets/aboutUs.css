@@ -17,13 +17,13 @@ body{
 .about-body{
     font-family: Quicksand;
     /* margin: 2%; */
-    padding: 2%;
-    text-align: center;
+    padding: 5%;
+    text-align: justify;
     font-size: large;
     background-color: #fff;
     margin-left:auto;
     margin-right:auto;
-    width:80%;
+    width:92%;
     border-radius: 15px;
     /* border-radius:0% */
 }
@@ -35,22 +35,23 @@ body{
 
 .contacts{
     background-color: #fff;
-    width:70%;
+    width: 70%;
     padding: 1em;
     margin-top: 1em;
-    margin-left:auto;
-    margin-right:auto;
-    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 93%;
     border-radius: 15px;
+    margin-bottom: 2em;
 }
 
 .more-info{
     text-align: center;
     margin-top: 2%;
     background-color: #fff;
-    margin-left:auto;
-    margin-right:auto;
-    width:70%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
     padding: 1em;
     border-radius: 15px;
 }
@@ -61,7 +62,7 @@ body{
     background-color: #fff;
     margin-left:auto;
     margin-right:auto;
-    width:50%;
+    width:95%;
     padding: 1em;
     border-radius: 15px;
 }

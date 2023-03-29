@@ -319,6 +319,12 @@ h2 {
     margin: 0rem 0rem;
     /*edited to make navbar work right */
   }
+
+  
+  .span {
+    width: 100%;
+  }
+  
 }
 
 /* this class will get toggles to make questions appear or disappear in form*/

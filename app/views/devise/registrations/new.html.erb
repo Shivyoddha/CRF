@@ -36,7 +36,7 @@
 
 
                 <div class="mb-3 field" id="email-input">
-                  <%= f.label :email ,for:"exampleInputEmail1", class:"form-label"%>
+                  <%= f.label :email ,for:"exampleInputEmail1 span", class:"form-label"%>
                   <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class:"form-control",
                   id:"exampleInputEmail1" ,placeholder:"Enter Your Email Address"%>
 
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="mb-3 field" id="in-pass">
-                  <%= f.label :password ,for:"exampleInputPassword1" ,class:"form-label"%>
+                  <%= f.label :password ,for:"exampleInputPassword1 span" ,class:"form-label"%>
 
 
                       <%= f.password_field :password, autocomplete: "new-password" , class:"form-control",
@@ -53,33 +53,33 @@
                 </div>
 
                 <div class="mb-3 field" id="conf-pass">
-                  <%= f.label :password_confirmation , for:"exampleInputPassword1", class:"form-label"%>
+                  <%= f.label :password_confirmation , for:"exampleInputPassword1", class:"form-label span"%>
                     <%= f.password_field :password_confirmation, autocomplete: "new-password" ,class:"form-control",
                       id:"exampleInputPassword2", placeholder:"Confirm Password"%>
 
                 </div>
 
                 <div class="input-group mb-3" id="name-input">
-                  <%= f.label :name,"First Name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :name,"First Name" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :name, autofocus: true ,class:"form-control ",id:"exampleInputEmail1",:required => true %>
-                  <%= f.label :lastname ,"Last Name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :lastname ,"Last Name" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :lastname , autofocus: true ,class:"form-control ",id:"exampleInputEmail1" %>
                 </div>
 
                 <div class="input-group mb-3" id="contact-input">
-                  <%= f.label :contact ,"Contact Number" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :contact ,"Contact Number" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :contact , autofocus: true ,class:"form-control ",
                   id:"exampleInputEmail1" %>
                 </div>
 
                 <div class="input-group mb-3" id="department-input">
-                  <%= f.label :department ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :department ,"Department" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                    <%= f.select(:department, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
                 </div>
 
 
                 <div class="input-group mb-3" id="course-input">
-                  <%= f.label :course ,"Course" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :course ,"Course" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type"}) %>
                 </div>
 
@@ -87,38 +87,38 @@
 
                 <% options = options_from_collection_for_select(Faculty.all,'id' ,'name')%>
                 <div class="input-group mb-3" id="course-input">
-                  <%= f.label :faculty_id ,"Faculty" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :faculty_id ,"Faculty" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.select(:faculty_id ,Faculty.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type"}) %>
                 </div>
 
                 <div class="input-group mb-3" id="collegeid-input">
-                  <%= f.label :file ,"College ID" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :file ,"College ID" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.file_field :file ,class:"form-control ",
                   id:"exampleInputEmail1" %>
 
                 </div>
 
                 <div class="input-group mb-3" id="roll-input">
-                  <%= f.label :rollno ,"Roll Number" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :rollno ,"Roll Number" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :rollno , autofocus: true ,class:"form-control ",
                   id:"exampleInputEmail1"%>
                 </div>
 
                 <div class=" input-group mb-3" id="employeeid-input">
-                  <%= f.label :rollno ,"EmployeeId" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :rollno ,"EmployeeId" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :rollno , autofocus: true ,class:"form-control ",
                   id:"exampleInputEmail1"%>
                 </div>
 
                 <div class="input-group mb-3" id="org-name-input">
-                  <%= f.label :orgname ,"Organization name" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :orgname ,"Organization name" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :orgname , autofocus: true ,class:"form-control ",
                   id:"exampleInputEmail1" %>
 
                 </div>
 
                 <div class="input-group mb-3" id="org-add-input">
-                  <%= f.label :orgaddress ,"Organization address" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :orgaddress ,"Organization address" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.text_field :orgaddress, autofocus: true ,class:"form-control ",
                   id:"exampleInputEmail1" %>
                   <!-- <span class="input-group-text">Organization Address</span>
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="input-group mb-3" id="profession-input">
-                  <%= f.label :profession ,"Profession" ,for:"exampleInputEmail1", class:"input-group-text "%>
+                  <%= f.label :profession ,"Profession" ,for:"exampleInputEmail1", class:"input-group-text span"%>
                   <%= f.select(:profession , ['Student','Faculty','R & D Professional','Industry Professional','Entrepreneur','NITK-Alumni'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type"})%>
                   </div>
 
@@ -202,9 +202,90 @@
         employeeIdInput.classList.toggle('vis');
         r.removeAttribute('required');
       }
+      })
+        
+    uType.addEventListener('touchstart', () => {
+      console.log('hello')
+      orgNameInput.classList.remove('vis')
+      orgAddInput.classList.remove('vis');
+      collegeIdInput.classList.remove('vis');
+      professionInput.classList.remove('vis');
+      employeeIdInput.classList.remove('vis');
+      rollInput.classList.remove('vis');
+      courseInput.classList.remove('vis');
+
+
+      if (uType.value == 'student') {
+        console.log('1');
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'faculty') {
+        console.log('2');
+        courseInput.classList.toggle('vis');
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        rollInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'external') {
+        console.log('3')
+        rollInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
 
 
 
     })
+    uType.addEventListener('touchend', () => {
+      console.log('hello-e')
+      orgNameInput.classList.remove('vis')
+      orgAddInput.classList.remove('vis');
+      collegeIdInput.classList.remove('vis');
+      professionInput.classList.remove('vis');
+      employeeIdInput.classList.remove('vis');
+      rollInput.classList.remove('vis');
+      courseInput.classList.remove('vis');
 
+
+    document.getElementById('login').addEventListener('touchstart', ()=>{
+      console.log('yes')
+       if (uType.value == 'student') {
+        console.log('1-e');
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'faculty') {
+        console.log('2-e');
+        courseInput.classList.toggle('vis');
+        orgNameInput.classList.toggle('vis');
+        orgAddInput.classList.toggle('vis');
+        collegeIdInput.classList.toggle('vis');
+        professionInput.classList.toggle('vis');
+        rollInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+      if (uType.value == 'external') {
+        console.log('3-e')
+        rollInput.classList.toggle('vis');
+        employeeIdInput.classList.toggle('vis');
+        r.removeAttribute('required');
+      }
+    })
+
+
+    })
+
+    
   </script>

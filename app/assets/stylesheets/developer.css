@@ -5,6 +5,11 @@ html {
   height: 100%;
     
 }
+
+.roles {
+  list-style: none;
+}
+
 #home{
   background-color: aliceblue;
   padding-top:2px;
@@ -211,13 +216,26 @@ h1{
 
 .wrap{
   display: flex;
-  width: 90%;
+  width: 60%;
+  height: 60vh;
   margin: auto;
   background-color: aqua;
 }
 .text {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 50%;
+}
+
+.social {
+  display: flex;
+}
+.pic {
+  width: 50%;
+}
+.pic-tag {
+  height: 100% !important;
+  width: 100% !important;
 }
 
 
