@@ -89,7 +89,7 @@
                         <% @integrated1.where(status:'pending').each do |integrated|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/INT/<%=integrated.id %>	</th>
+                        <th scope="row">CRF/INTEGRATED/<%=integrated.id %>	</th>
                         <td> <%= integrated.user.name%> </td>
                         <td> <%= integrated.user.orgname%> </td>
                         <td> <%= integrated.user.department%> </td>
@@ -137,7 +137,7 @@
 
                                                       <div class="input-group mb-3">
                                                       <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                                      <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                                      <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                                     </div>
 
                                                        <%=form.fields_for :equipment_table do |f| %>

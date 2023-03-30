@@ -88,13 +88,9 @@
                 <tbody>
 
                       <% @laser2.where(status:'alloted').each do |laser|%>
-                      <tr>
-                        <th scope="row">CRF/LASER/<%=laser.id %>	</th>
-
-
-                        <tr>
+                    
                           <!-- Button trigger modal -->
-                          <th scope="row">CRF/XRD/<%=laser.id %>	</th>
+                          <th scope="row">CRF/LASER/<%=laser.id %>	</th>
                           <td> <%= laser.user.firstname%><nobr> <%= laser.user.lastname%></td>
                       <td> <%= laser.user.orgname%> </td>
                       <td> <%= laser.user.department%> </td>
@@ -142,21 +138,11 @@
                          </div>
 
                          <%=form.fields_for :equipment_table do |f| %>
-                          <div class="input-group mb-3">
+
                              <%= f.hidden_field :app_no, value:"CRF/ICP/#{laser.id}"%>
-                           </div>
-
-                          <div class="input-group mb-3">
-                            <%= f.hidden_field :username, value:"#{laser.user.name}"%>
-                         </div>
-
-                         <div class="input-group mb-3">
-                           <%= f.hidden_field :dummy, value:"#{laser.status}"%>
-                        </div>
-
-                         <div class="input-group mb-3">
-                           <%= f.hidden_field :debit_head, value:"#{laser.debit}" %>
-                        </div>
+                             <%= f.hidden_field :username, value:"#{laser.user.name}"%>
+                             <%= f.hidden_field :dummy, value:"#{laser.status}"%>
+                              <%= f.hidden_field :debit_head, value:"#{laser.debit}" %>
                          <%end%>
                            <div class="actions">
                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
