@@ -81,6 +81,5 @@ class HrlcmsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def hrlcm_params
       params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity,:health,  :disposal, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,] ,hazard_method: [], testing_required: [], references: [])
-
     end
 end
