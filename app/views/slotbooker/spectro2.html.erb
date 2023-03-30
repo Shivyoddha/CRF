@@ -139,24 +139,17 @@
                                  </div>
 
                                  <%=form.fields_for :equipment_table do |f| %>
-                                  <div class="input-group mb-3">
+
                                      <%= f.hidden_field :app_no, value:"CRF/SPECTRO/#{spectro.id}"%>
-                                   </div>
+                                     <%= f.hidden_field :username, value:"#{spectro.user.name}"%>
+                                     <%= f.hidden_field :dummy, value:"#{spectro.status}"%>
+                                     <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
 
-                                  <div class="input-group mb-3">
-                                    <%= f.hidden_field :username, value:"#{spectro.user.name}"%>
-                                 </div>
 
-                                 <div class="input-group mb-3">
-                                   <%= f.hidden_field :dummy, value:"#{spectro.status}"%>
-                                </div>
 
-                                 <div class="input-group mb-3">
-                                   <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
-                                </div>
 
                                  <%end%>
-                                  <%=spectro.id%>
+                                  
 
                                    <div class="actions">
                                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

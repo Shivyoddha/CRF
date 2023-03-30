@@ -1,5 +1,14 @@
-<h1>CellImagingAlloted#Mail</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/cell_imaging_alloted_mailer/Mail.html.erb
-</p>
+<p style="margin:0;padding:0">Dear <b><%=@user.firstname%></b>,</p>
+<p style="margin:0;padding:0">Your Slot Date-Time for ball mailing Application No: <b><%=@cell_imaging.id%></b></p>
+<% if @cell_imaging.status = "alloted" %>
+<p style="margin:0;padding:0">Has been assigned for Date :<b> 18-04-2023 </b>; Time : <b> 9:30 am </b></p>
+<% if @cell_imaging.status == "cancelled" %>
+<p>The slot with AppNo  CRF/CELL/<%= @cell_imaging.id%> has been cancelled</p>
+<%end%>
+<br>
+<p style="margin:0;padding:0">Cancellation/Postpone of booked slot is accepted before 48 hrs from slot timing. If sample is not submitted for experiment after booking slot, penalty of Rs. 100/- is charged per slot. </p>
+<p style="margin:0;padding:0;color:red">Slots Date is tentative, Depending on M/C
+avaliability. In case slot date is pre/postponed applicant will get e-mail for same.</p>
+<p style="margin:0;padding:0">Regards,</p>
+<p style="margin:0;padding:0">CELL Imaging Lab CRF.</p>
+<p style="margin:0;padding:0"><a href="mailto:booking.crf@nitk.edu.in">booking.crf@nitk.edu.in</a></p>

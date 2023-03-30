@@ -101,12 +101,7 @@
                <td> <%= threes.stepinterval%> </td>
                <td> <%= threes.incompatible%> </td>
                <td> <%= threes.toxicity%> </td>
-<<<<<<< HEAD
-                  <td> <%= threes.more%> </td>
-=======
               <td> <%= threes.more%> </td>
-
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
                 <td><span style="white-space: nowrap;"><%= threes.slotdate.strftime('%d-%m-%Y')if threes.slotdate.present? %></td>
                   <td><%= threes.slottime.strftime('%H:%M:%S') if threes.slottime.present? %></td>
               <td> <%= threes.status %></td>
@@ -139,7 +134,7 @@
 
                        <div class="input-group mb-3">
                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                       <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                      </div>
 
                          <%=form.fields_for :equipment_table do |f| %>
@@ -147,7 +142,7 @@
                             <%= f.hidden_field :username, value:"#{threes.user.name}"%>
                             <%= f.hidden_field :dummy, value:"#{threes.status}"%>
                             <%= f.hidden_field :debit_head, value:"#{threes.debit}" %>
-                            
+
                          <%end%>
                           <%=threes.id%>
 

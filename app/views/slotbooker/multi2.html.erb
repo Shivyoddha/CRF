@@ -156,21 +156,11 @@
                                 </div>
 
                                 <%=form.fields_for :equipment_table do |f| %>
-                                 <div class="input-group mb-3">
+
                                     <%= f.hidden_field :app_no, value:"CRF/MULTI/#{multi.id}"%>
-                                  </div>
-
-                                 <div class="input-group mb-3">
-                                   <%= f.hidden_field :username, value:"#{multi.user.name}"%>
-                                </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :dummy, value:"#{multi.status}"%>
-                               </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :debit_head, value:"#{multi.debit}" %>
-                               </div>
+                                    <%= f.hidden_field :username, value:"#{multi.user.name}"%>
+                                    <%= f.hidden_field :dummy, value:"#{multi.status}"%>
+                                    <%= f.hidden_field :debit_head, value:"#{multi.debit}" %>
                                 <%end%>
                                   <div class="actions">
                                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

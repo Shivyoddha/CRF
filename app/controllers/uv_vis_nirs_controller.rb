@@ -83,10 +83,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-<<<<<<< HEAD
       params.require(:uv_vis_nir).permit(:status, :sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],measurement: [],references: [])
-=======
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
+
     end
 end

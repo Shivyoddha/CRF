@@ -91,7 +91,7 @@
                         <% @integrated2.where(status:'alloted').each do |integrated|%>
                       <tr>
                         <!-- Button trigger modal -->
-                        <th scope="row">CRF/integrated/<%=integrated.id %>	</th>
+                        <th scope="row">CRF/INTEGRATED/<%=integrated.id %>	</th>
                         <td> <%= integrated.user.name%> </td>
                         <td> <%= integrated.user.orgname%> </td>
                         <td> <%= integrated.user.department%> </td>
@@ -142,25 +142,15 @@
 
                                        <div class="input-group mb-3">
                                        <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                       <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
 
                                        <%=form.fields_for :equipment_table do |f| %>
-                                        <div class="input-group mb-3">
+
                                            <%= f.hidden_field :app_no, value:"CRF/INT/#{integrated.id}"%>
-                                         </div>
-
-                                        <div class="input-group mb-3">
-                                          <%= f.hidden_field :username, value:"#{integrated.user.name}"%>
-                                       </div>
-
-                                       <div class="input-group mb-3">
-                                         <%= f.hidden_field :dummy, value:"#{integrated.status}"%>
-                                      </div>
-
-                                       <div class="input-group mb-3">
-                                         <%= f.hidden_field :debit_head, value:"#{integrated.debit}" %>
-                                      </div>
+                                           <%= f.hidden_field :username, value:"#{integrated.user.name}"%>
+                                          <%= f.hidden_field :dummy, value:"#{integrated.status}"%>
+                                          <%= f.hidden_field :debit_head, value:"#{integrated.debit}" %>
                                        <%end%>
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

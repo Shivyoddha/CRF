@@ -82,13 +82,8 @@
                         <th scope="col" id="range">Detector</th>
                         <th scope="col" id="phase">Toxicity</th>
                         <th scope="col" id="range">Hazards</th>
-<<<<<<< HEAD
                         <th scope="col" id="range">Hazard method</th>
-                        <th scope="col" id="range">disposal</th>
-=======
-                          <th scope="col" id="range">Hazard method</th>
                         <th scope="col" id="range">/disposal</th>
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
                         <th scope="col" id="request">More info</th>
                         <th scope="col" id="booked-on">Booked On</th>
                         <th scope="col" id="slot-date">Slot Date</th>
@@ -167,21 +162,11 @@
                                </div>
 
                                <%=form.fields_for :equipment_table do |f| %>
-                                <div class="input-group mb-3">
+
                                    <%= f.hidden_field :app_no, value:"CRF/IONC/#{ionc.id}"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
-                               </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :dummy, value:"#{ionc.status}"%>
-                              </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
-                              </div>
+                                   <%= f.hidden_field :username, value:"#{ionc.user.name}"%>
+                                   <%= f.hidden_field :dummy, value:"#{ionc.status}"%>
+                                   <%= f.hidden_field :debit_head, value:"#{ionc.debit}" %>
                                <%end%>
                                  <div class="actions">
                                    <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

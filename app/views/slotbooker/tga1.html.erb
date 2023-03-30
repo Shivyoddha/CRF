@@ -127,10 +127,6 @@
                     <!-- Button trigger modal -->
                      <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{tga.id}" }, id: "ani" %>
                      <div id="<%= tga.id%>" class="modal">
-<<<<<<< HEAD
-
-=======
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
                     <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
@@ -162,20 +158,10 @@
                                     <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
                                     <%= f.hidden_field :dept, value:"#{tga.user.department}" %>
                                     <%= f.hidden_field :email, value:"#{tga.user.email}" %>
-                                    <%= f.hidden_field :role, value:"#{trib.user.role}" %>
-                                    <%= f.hidden_field :org, value:"#{trib.user.orgaddress}" %>
-                                    <%= f.hidden_field :profesion, value:"#{trib.user.profession}" %>
-                                    <%= f.hidden_field :orgname, value:"#{trib.user.orgname}" %>
-
-
-<<<<<<< HEAD
-      <%# <%=tga.id%>
-              <div class="input-group mb-3">
-                                    <%= f.hidden_field :equipname, value:"tga" %>
-                                 </div>
-                          <div class="input-group mb-3">
-=======
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
+                                    <%= f.hidden_field :role, value:"#{tga.user.role}" %>
+                                    <%= f.hidden_field :org, value:"#{tga.user.orgaddress}" %>
+                                    <%= f.hidden_field :profesion, value:"#{tga.user.profession}" %>
+                                    <%= f.hidden_field :orgname, value:"#{tga.user.orgname}" %>
                                     <%= f.hidden_field :equipname, value:"tga" %>
 
 

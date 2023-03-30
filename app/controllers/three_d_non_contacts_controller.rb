@@ -80,10 +80,6 @@ class ThreeDNonContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_non_contact_params
-<<<<<<< HEAD
       params.require(:three_d_non_contact).permit(:status,:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
-=======
-      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end

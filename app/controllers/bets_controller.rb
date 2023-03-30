@@ -80,10 +80,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def bet_params
-<<<<<<< HEAD
       params.require(:bet).permit(:status, :sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
-=======
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
+
     end
 end

@@ -79,10 +79,6 @@ class AtomicForceMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atomic_force_microscope_params
-<<<<<<< HEAD
-      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],technique: [],references: [])
-=======
       params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],technique: [],references: [])
->>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end
