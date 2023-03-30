@@ -52,7 +52,9 @@ class FrictionsController < ApplicationController
       @friction.build_equipment_table
     respond_to do |format|
       if @friction.update(friction_params)
-        FrictionAllotedMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
+        if @friction.status!= 'completed'
+          FrictionAllotedMailer.with(id:@friction.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_fric_path(@friction), notice: "Friction was successfully updated." }
         format.json { render :show, status: :ok, location: @friction }
       else
@@ -80,6 +82,6 @@ class FrictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friction_params
-      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,material: [], references: [])
+      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,material: [], references: [])
     end
 end

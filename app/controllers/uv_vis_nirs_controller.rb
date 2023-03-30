@@ -53,7 +53,9 @@ end
 
     respond_to do |format|
       if @uv_vis_nir.update(uv_vis_nir_params)
-        UvVisNirAllotedMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+        if @uv_vis_nir.status!= 'completed'
+          UvVisNirAllotedMailer.with(id:@uv_vis_nir.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_uv_path(@uv_vis_nir), notice: "Uv vis nir was successfully updated." }
         format.json { render :show, status: :ok, location: @uv_vis_nir }
       else
@@ -81,6 +83,10 @@ end
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],measurement: [],references: [])
+<<<<<<< HEAD
+      params.require(:uv_vis_nir).permit(:status, :sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],measurement: [],references: [])
+=======
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end

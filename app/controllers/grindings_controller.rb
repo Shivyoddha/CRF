@@ -36,7 +36,7 @@ class GrindingsController < ApplicationController
         else
           GrindingMailer.with(id:@grinding.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to grinding_url(@grinding), notice: "Grinding was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Grinding was successfully created." }
         format.json { render :show, status: :created, location: @grinding }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,8 +51,9 @@ class GrindingsController < ApplicationController
       @grinding.build_equipment_table
     respond_to do |format|
       if @grinding.update(grinding_params)
-         GrindingAllotedMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
-          @grinding.status="alloted"
+        if @grinding.status!= 'completed'
+          GrindingAllotedMailer.with(id:@grinding.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_grind_path(@grinding), notice: "Grinding was successfully updated." }
         format.json { render :show, status: :ok, location: @grinding }
       else
@@ -80,6 +81,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,grit: [],diamond: [],suspension: [], references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,grit: [],diamond: [],suspension: [], references: [])
     end
 end

@@ -35,7 +35,7 @@ class ThreeDScannersController < ApplicationController
         else
           ThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to three_d_scanner_url(@three_d_scanner), notice: "Three d scanner was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Three d scanner was successfully created." }
         format.json { render :show, status: :created, location: @three_d_scanner }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,6 +80,6 @@ class ThreeDScannersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_scanner_params
-      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],output_format: [], references: [])
+      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],output_format: [], references: [])
     end
 end

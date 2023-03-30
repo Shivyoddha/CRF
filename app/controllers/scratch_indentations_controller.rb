@@ -52,7 +52,9 @@ class ScratchIndentationsController < ApplicationController
     respond_to do |format|
       if @scratch_indentation.update(scratch_indentation_params)
         if @scratch_indentation.amount == nil
-        ScratchIndentationAllotedMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
+          if @scratch_indentation.status!= 'completed'
+            ScratchIndentationAllotedMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
+          end
       else
         PaymentScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
       end

@@ -87,6 +87,7 @@
                         <th scope="col" id="reference-paper">Reference Paper</th>
                         <th scope="col" id="reference-paper">Reassign</th>
                         <th scope="col" id="reference-paper">Cancel</th>
+                        <th scope="col" id="cancel-col">Complete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,7 +116,7 @@
 
                         <td> <%= icp.slotdate %></td>
 
-                        <td> <%= icp.slottime %></td>
+                        <td><%= icp.slottime.strftime('%H:%M:%S') if icp.slottime.present? %></td>
 
                           <td><%= icp.status%></td>
                           <%if icp.references.attached? %>
@@ -202,6 +203,36 @@
                                     </div>
                                    <div class="modal-footer">
                                          <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                   </div>
+                                   <% end %>
+                               </div>
+                           </div>
+                       </div>
+                   </td>
+                   <td id="complete-btn">
+                      <!-- Button trigger modal -->
+                        <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{icp.id}" }, id: "anish" %>
+
+                       <!-- Modal -->
+                        <div id="mai<%= icp.id%>" class="modal">
+                         <div class="modal-dialog">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= icp.user.firstname %></b></h1>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                     <%= form_for icp do |f| %>
+                                       <p> Are you sure you want to complete the slot ?</p>
+                                       <%= f.hidden_field :status, value: 'completed' %>
+                                   <div class="actions">
+
+
+                                   </div>
+
+                                    </div>
+                                   <div class="modal-footer">
+                                         <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                                    </div>
                                    <% end %>
                                </div>

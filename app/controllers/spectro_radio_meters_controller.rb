@@ -52,7 +52,9 @@ class SpectroRadioMetersController < ApplicationController
     respond_to do |format|
       if @spectro_radio_meter.update(spectro_radio_meter_params)
         if @spectro_radio_meter.amount == nil
-        SpectroRadioMeterAllotedMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
+          if @spectro_radio_meter.status!= 'completed'
+            SpectroRadioMeterAllotedMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
+          end
       else
         PaymentSpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
       end
@@ -83,6 +85,6 @@ class SpectroRadioMetersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spectro_radio_meter_params
-      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

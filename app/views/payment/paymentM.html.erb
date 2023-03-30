@@ -1,31 +1,14 @@
 <%= stylesheet_link_tag "paymentportal" %>
-
-<div id="header">
-    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="btn-head">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="admin-mail">
-                    <a class="nav-link" href="#">admin@mail</a>
-                </li>
-                <li class="nav-item" id="logout">
-                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
+<%=render "partials/paymentNav" %>
 
 <div class="container-payments">
 
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
+        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
 
         <div class="sidelinks">
 
@@ -50,10 +33,12 @@
                     <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
+                </li> -->
+
                 <li class="nav-item">
+
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
@@ -114,15 +99,13 @@
             <div class="mb-3">
                 <div class="input-group mb-3">
                   <%= form.label :pay, "Amount", class:"input-group-text", id:"amount"%>
-                  <%= form.label :pay, "User Name", class:"input-group-text", id:"amount"%>
+                  <%= form.label :pay, "₹", class:"input-group-text", id:"amount"%>
                     <%= form.text_field :pay, class:"form-control", id:"amount"%>
                 </div>
             </div>
 
-            <%= form.hidden_field :dummy, value: 'done' %>
-
-          <%= form.hidden_field :role, value: 'student' %>
-
+              <%= form.hidden_field :dummy, value: 'done' %>
+              <%= form.hidden_field :role, value: 'student' %>
 
               <div class="actions">
                 <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>

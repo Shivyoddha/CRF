@@ -1,51 +1,34 @@
 <%= stylesheet_link_tag "paymentportal" %>
-
-<div id="header">
-    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="btn-head">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="admin-mail">
-                    <a class="nav-link" href="#">admin@mail</a>
-                </li>
-                <li class="nav-item" id="logout">
-                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
+<%=render "partials/paymentNav" %>
 
 <div class="container-payments">
 
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
+        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
 
         <div class="sidelinks">
 
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
-                </li>
+          <h2 class="fw-bold text-center">Navigation</h2>
+          <ul class="sidelinks-model-list">
+              <%# below are code to get items on the navigation pane %>
+              <li class="nav-item">
+               <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
+              </li>
 
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-            </ul>
+              <li class="nav-item">
+                  <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+              </li>
+          </ul>
         </div>
     </div>
 
@@ -57,82 +40,97 @@
         </div>
 
         <div id="wrap">
-          <%= form_with(model:@equipment ,local:true) do |form| %>
-           <div class="input-group mb-3">
-             <%= form.label :app_no, "Apllication No.", class:"input-group-text",id:"app"%>
-             <%= form.text_field :app_no, class:"form-control", id:"app"%>
+          <%= form_with(model:EquipmentTable ,local:true) do |form| %>
+             <div class="input-group mb-3">
+               <%= form.label :app_no, "Apllication No.", class:"input-group-text",id:"app"%>
+               <%= form.text_field :app_no, class:"form-control", id:"app"%>
+           </div>
+
+
+           <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
+         <div class="input-group mb-3">
+           <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+           <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
          </div>
+
+         <div class="input-group mb-3" >
+           <%= form.label :profesion ,"Profession" ,for:"profession", class:"input-group-text "%>
+           <%= form.select(:profesion , ['Academia','Industry','Entrepreneur'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "profession"})%>
+           </div>
+
+           <div class="input-group mb-3">
+           <%= form.label :invoice_name, "Innvoice Name", class:"input-group-text", for:"In_names"%>
+           <%= form.text_field :invoice_name, class:"form-control", id:"In_name"%>
+         </div>
+
          <div class="input-group mb-3">
-           <%= form.label :username, "User Name", class:"input-group-text"%>
-           <%= form.text_field :username, class:"form-control", id:"composition"%>
+         <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:"In_address"%>
+         <%= form.text_field :invoice_address, class:"form-control", id:"In_address"%>
        </div>
 
          <div class="input-group mb-3">
-         <%= form.label :invoice_name, "Innvoice Name", class:"input-group-text", for:"In_names"%>
-         <%= form.text_field :invoice_name, class:"form-control", id:"In_name"%>
+         <%= form.label :invoice_gst, "Invoice Gst No.", class:"input-group-text", for:"In_gst"%>
+         <%= form.text_field :invoice_gst, class:"form-control", id:"In_gst", placeholder:"In case of firm"%>
+       </div>
+
+
+       <div class="input-group mb-3">
+       <%= form.label :contact_no, "Contact No.", class:"input-group-text", for:"contact"%>
+       <%= form.text_field :contact_no, class:"form-control", id:"contact"%>
+     </div>
+
+
+         <div class="input-group mb-3">
+         <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
+         <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
+         <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
+         <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
        </div>
 
        <div class="input-group mb-3">
-       <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:"In_address"%>
-       <%= form.text_field :invoice_address, class:"form-control", id:"In_address"%>
-     </div>
-
-       <div class="input-group mb-3">
-       <%= form.label :invoice_gst, "Invoice Gst", class:"input-group-text", for:"In_gst"%>
-       <%= form.text_field :invoice_gst, class:"form-control", id:"In_gst"%>
-     </div>
-
-       <div class="input-group mb-3">
-       <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
-       <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
-
-       <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
-       <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
+       <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
+        <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
+       <%= form.text_field :testing, class:"form-control", id:"testing"%>
+     <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
+      <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
+     <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
+       <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
+       <%= form.text_field :gst, class:"form-control", id:"consulting"%>
      </div>
 
      <div class="input-group mb-3">
-     <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
-      <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
-     <%= form.text_field :testing, class:"form-control", id:"testing"%>
+       <%= form.label :state,'State',for:"state", class:"input-group-text"%>
+       <%= form.select(:state, ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
+        'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh',
+         'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep', 'Delhi', 'Puducherry', 'Jammu and Kashmir', 'Ladakh'],
+         {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "state"}) %>
+     </div>
 
-   <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
-    <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
-   <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
+     <div class="input-group mb-3">
+     <%= form.label :date_of_depo, "Date of Deposit", class:"input-group-text", for:"date_of_depo"%>
+     <%= form.date_field :date_of_depo, class:"form-control", id:"date_of_depo"%>
+    </div>
 
-     <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
-     <%= form.text_field :gst, class:"form-control", id:"consulting"%>
-   </div>
-
-   <div class="input-group mb-3">
-     <%= form.label :state,'State',for:"state", class:"input-group-text"%>
-     <%= form.select(:state, ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
-      'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh',
-       'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep', 'Delhi', 'Puducherry', 'Jammu and Kashmir', 'Ladakh'],
-       {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "state"}) %>
-   </div>
-
-   <div class="input-group mb-3">
-   <%= form.label :date_of_depo, "Date of Deposit", class:"input-group-text", for:"date_of_depo"%>
-   <%= form.date_field :date_of_depo, class:"form-control", id:"date_of_depo"%>
-  </div>
-
-  <div class="input-group mb-3">
-  <%= form.label :dd_no, "UTR No/CHQ No/DD No:", class:"input-group-text", for:"dd_no"%>
-  <%= form.text_field :dd_no, class:"form-control", id:"dd_no"%>
-  </div>
+    <div class="input-group mb-3">
+    <%= form.label :dd_no, "UTR No/CHQ No/DD No:", class:"input-group-text", for:"dd_no"%>
+    <%= form.text_field :dd_no, class:"form-control", id:"dd_no"%>
+    </div>
 
 
 
 
 
-  <%= form.hidden_field :dummy, value: 'done' %>
+    <%= form.hidden_field :dummy, value: 'done' %>
+    <%= form.hidden_field :role, value:'external' %>
 
 
-  <div class="actions">
-  <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+    <div class="actions">
+    <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
 
-  </div>
-  <% end %>
+    </div>
+    <% end %>
+
+
         </div>
 
     </div>

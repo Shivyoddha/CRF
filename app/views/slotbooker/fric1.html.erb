@@ -114,9 +114,8 @@
                         <td> <%= fric.more%> </td>
                         <td>Booked</td>
 
-                        <td> <%= fric.slotdate %></td>
-
-                        <td> <%= fric.slottime %></td>
+                        <td><span style="white-space: nowrap;"><%= fric.slotdate.strftime('%d-%m-%Y')if fric.slotdate.present? %></td>
+                        <td><%= fric.slottime.strftime('%H:%M:%S') if fric.slottime.present? %></td>
 
                           <td><%= fric.status%></td>
                           <%if fric.references.attached? %>
@@ -134,7 +133,7 @@
                  <div class="modal-dialog">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fric.user.name %></b></h1>
+                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= fric.user.name %></b></h1>
                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                              <div class="modal-body">
@@ -151,34 +150,18 @@
                              </div>
 
                                 <%=form.fields_for :equipment_table do |f| %>
-                                 <div class="input-group mb-3">
                                     <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
-                                  </div>
-
-                                 <div class="input-group mb-3">
                                    <%= f.hidden_field :username, value:"#{fric.user.name}"%>
-                                </div>
-
-
-                                 <div class="input-group mb-3">
                                    <%= f.hidden_field :dummy, value:"alloted"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
                                   <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
-                               </div>
-
-                               <div class="input-group mb-3">
                                   <%= f.hidden_field :dept, value:"#{fric.user.department}" %>
-                               </div>
-
-                               <div class="input-group mb-3">
                                  <%= f.hidden_field :email, value:"#{fric.user.email}" %>
-                              </div>
-
-                               <div class="input-group mb-3">
                                  <%= f.hidden_field :equipname, value:"fric" %>
-                              </div>
+                                 <%= f.hidden_field :role, value:"#{fric.user.role}" %>
+                                <%= f.hidden_field :org, value:"#{fric.user.orgaddress}" %>
+                                <%= f.hidden_field :profesion, value:"#{fric.user.profession}" %>
+                                <%= f.hidden_field :orgname, value:"#{fric.user.orgname}" %>
+
 
                                 <%end%>
 

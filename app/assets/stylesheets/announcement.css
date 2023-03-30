@@ -2,7 +2,32 @@
     margin: 0%;
     padding: 0%;
 }
-#container {
+#notice{
+    height: 0;
+    position: absolute;
+    top: 0;
+}
+
+#container-ann {
+    background-color:aliceblue;
+    margin: auto;
+    overflow-x: auto;
+    min-height: 100vh;
+}   
+#head-new {
+    background-color: aliceblue;
+    width: 90%;
+    margin: 0.2em auto ;
+    border-radius: 10px 10px 0 0;
+}
+
+#form {
+    margin: 2em;
+}
+
+#date {
+    border: 0;
+    border-radius: 5px;
 }
 
 #head {

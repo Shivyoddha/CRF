@@ -1,6 +1,14 @@
-<h1>Editing Announcement</h1>
+<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "loginFeatures"%> <!--imported for the purpose of partial, has to be removed while code optimization -->
+<%= stylesheet_link_tag "announcement"%> 
 
-<%= render 'form', announcement: @announcement %>
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
 
-<%= link_to 'Show', @announcement %> |
-<%= link_to 'Back', announcements_path %>
+<h1 class="text-center font-unbounded" id="head-new">Editing Announcement</h1>
+<div id="container-ann">
+    <%= render 'form', announcement: @announcement %>
+</div>
+
+
+

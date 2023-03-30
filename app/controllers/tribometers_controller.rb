@@ -36,7 +36,7 @@ class TribometersController < ApplicationController
         else
           TribometerMailer.with(id:@tribometer.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to tribometer_url(@tribometer), notice: "Tribometer was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Tribometer was successfully created." }
         format.json { render :show, status: :created, location: @tribometer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -53,8 +53,9 @@ class TribometersController < ApplicationController
 
     respond_to do |format|
       if @tribometer.update(tribometer_params)
-        TribometerAllotedMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
-          @tribometer.status="alloted"
+        if @tribometer.status!= 'completed'
+          TribometerAllotedMailer.with(id:@tribometer.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_trib_path(@tribometer), notice: "Tribometer was successfully updated." }
         format.json { render :show, status: :ok, location: @tribometer }
       else
@@ -82,6 +83,6 @@ class TribometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tribometer_params
-      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

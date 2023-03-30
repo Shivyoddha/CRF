@@ -148,34 +148,18 @@
                                    </div>
 
                                     <%=form.fields_for :equipment_table do |f| %>
-                                     <div class="input-group mb-3">
-                                        <%= f.hidden_field :app_no, value:"CRF/SCRATCH/#{scratch.id}"%>
-                                      </div>
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :username, value:"#{scratch.user.name}"%>
-                                    </div>
-
-
-                                     <div class="input-group mb-3">
-                                       <%= f.hidden_field :dummy, value:"alloted"%>
-                                     </div>
-
-                                    <div class="input-group mb-3">
-                                      <%= f.hidden_field :debit_head, value:"#{scratch.debit}" %>
-                                   </div>
-
-                                   <div class="input-group mb-3">
+                                      <%= f.hidden_field :app_no, value:"CRF/SCRATCH/#{scratch.id}"%>
+                                      <%= f.hidden_field :username, value:"#{scratch.user.name}"%>
+                                      <%= f.hidden_field :dummy, value:"alloted"%>
+                                    <%= f.hidden_field :debit_head, value:"#{scratch.debit}" %>
                                      <%= f.hidden_field :dept, value:"#{scratch.user.department}" %>
-                                  </div>
-
-                                  <div class="input-group mb-3">
                                     <%= f.hidden_field :email, value:"#{scratch.user.email}" %>
-                                 </div>
-
-                                  <div class="input-group mb-3">
+                                    <%= f.hidden_field :role, value:"#{spark.user.role}" %>
+                                    <%= f.hidden_field :org, value:"#{spark.user.orgaddress}" %>
+                                    <%= f.hidden_field :profesion, value:"#{spark.user.profession}" %>
+                                    <%= f.hidden_field :orgname, value:"#{spark.user.orgname}" %>
                                     <%= f.hidden_field :equipname, value:"scratch" %>
-                                 </div>
+
 
                                     <%end%>
 

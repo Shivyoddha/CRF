@@ -51,7 +51,9 @@ class UltraCentrifugesController < ApplicationController
 
     respond_to do |format|
       if @ultra_centrifuge.update(ultra_centrifuge_params)
-        UltraCentrifugeAllotedMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+        if @ultra_centrifuge.status!= 'completed'
+          UltraCentrifugeAllotedMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_centrifuge_path(@ultra_centrifuge), notice: "Ultra centrifuge was successfully updated." }
         format.json { render :show, status: :ok, location: @ultra_centrifuge }
       else
@@ -79,6 +81,6 @@ class UltraCentrifugesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ultra_centrifuge_params
-      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

@@ -50,7 +50,9 @@ end
 
     respond_to do |format|
       if @bet.update(bet_params)
-        BetAllotedMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+        if @bet.status!= 'completed'
+          BetAllotedMailer.with(id:@bet.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_bet_path(@bet), notice: "Bet was successfully updated." }
         format.json { render :show, status: :ok, location: @bet }
       else
@@ -78,6 +80,10 @@ end
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+<<<<<<< HEAD
+      params.require(:bet).permit(:status, :sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+=======
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end

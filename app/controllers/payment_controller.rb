@@ -29,8 +29,8 @@ class PaymentController < ApplicationController
       @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentExtU
+      @entry = params[:entry]
       @equipment = EquipmentTable.all
-      @equipment = EquipmentTable.order(updated_at: :desc)
   end
   def paymentM
       @equipment = EquipmentTable.new

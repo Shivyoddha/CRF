@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
+    
     post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
@@ -72,6 +73,7 @@ Rails.application.routes.draw do
     get 'mainportal/chairmanUsers'
     get 'mainpage/landing'
     get 'home/index'
+    get 'home/myslots'
     get 'home/anish'
     get 'know/xrd'
     get 'records/record'
@@ -147,6 +149,7 @@ Rails.application.routes.draw do
     get 'mainpage/multi_impact_test'
     get 'mainpage/multirole_mech'
 
+    get 'feedbacks/index'
 
 
 
@@ -427,6 +430,8 @@ Rails.application.routes.draw do
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
     post 'payment/paymentU'
+    post 'payment/paymentExtU'
+    post 'payment/paymentExtM'
     get 'home/faculty_verif'
     post 'home/faculty_verif'
     get 'home/verifsent'

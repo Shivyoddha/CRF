@@ -2,7 +2,11 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <%= link_to 'Ion Chromatography Slotbooker',slotbooker_ionc_path,class:"navbar-brand" id:"title" %>
+<<<<<<< HEAD
+        <%= link_to 'Ion Chromatography Slotbooker',slotbooker_ionc_path,class:"navbar-brand" ,id:"title" %>
+=======
+        <%= link_to 'Ion Chromatography Slotbooker',slotbooker_ionc_path,class:"navbar-brand", id:"title" %>
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -123,7 +127,7 @@
 
                         <td> <%= ionc.slotdate %></td>
 
-                        <td> <%= ionc.slottime %></td>
+                        <td><%= ionc.slottime.strftime('%H:%M:%S') if ionc.slottime.present? %></td>
 
                           <td><%= ionc.status%></td>
                           <%if ionc.references.attached? %>

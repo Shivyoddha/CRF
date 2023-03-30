@@ -37,7 +37,7 @@ class GaitsController < ApplicationController
         else
           GaitMailer.with(id:@gait.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to gait_url(@gait), notice: "Gait was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Gait was successfully created." }
         format.json { render :show, status: :created, location: @gait }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,9 @@ class GaitsController < ApplicationController
       @gait.build_equipment_table
     respond_to do |format|
       if @gait.update(gait_params)
-        GaitAllotedMailer.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
+        if @gait.status!= 'completed'
+          GaitAllotedMailer.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_gait_path(@gait), notice: "Gait was successfully updated." }
         format.json { render :show, status: :ok, location: @gait }
       else
@@ -80,6 +82,6 @@ class GaitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gait_params
-      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,ethicals: [], prescrptions: [],clinicals: [],output_format: [], references: [])
+      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,ethicals: [], prescrptions: [],clinicals: [],output_format: [], references: [])
     end
 end

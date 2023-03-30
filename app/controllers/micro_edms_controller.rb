@@ -12,6 +12,7 @@ class MicroEdmsController < ApplicationController
 
   # GET /micro_edms/new
   def new
+    @user=User.find(params[:id])
     @micro_edm = MicroEdm.new
     @micro_edm.build_equipment_table
 
@@ -24,6 +25,8 @@ class MicroEdmsController < ApplicationController
   # POST /micro_edms or /micro_edms.json
   def create
     @micro_edm = MicroEdm.new(micro_edm_params)
+    @micro_edm.user=current_user
+    @micro_edm.status="pending"
     @micro_edm.build_equipment_table
 
     respond_to do |format|
@@ -33,7 +36,7 @@ class MicroEdmsController < ApplicationController
         else
           MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Micro edm was successfully created." }
         format.json { render :show, status: :created, location: @micro_edm }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,11 +48,12 @@ class MicroEdmsController < ApplicationController
 
   # PATCH/PUT /micro_edms/1 or /micro_edms/1.json
   def update
+     @micro_edm.status="alloted"
     @micro_edm.build_equipment_table
 
     respond_to do |format|
       if @micro_edm.update(micro_edm_params)
-        format.html { redirect_to micro_edm_url(@micro_edm), notice: "Micro edm was successfully updated." }
+        format.html { redirect_to slotbooker_microedm_path, notice: "Micro edm was successfully updated." }
         format.json { render :show, status: :ok, location: @micro_edm }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -76,6 +80,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [],measuerment: [] )
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress,:orgname],references: [],measuerment: [] )
     end
 end

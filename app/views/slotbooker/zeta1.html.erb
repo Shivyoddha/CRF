@@ -118,8 +118,12 @@
                         <td> <%= zeta.analysis_temperature%> </td>
                         <td> <%= zeta.more%> </td>
                         <td>Booked</td>
+<<<<<<< HEAD
                         <td><%= zeta.slotdate %></td>
-                        <td><%= zeta.slottime %></td>
+=======
+                        <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
+                        <td><%= zeta.slottime.strftime('%H:%M:%S') if zeta.slottime.present? %></td>
 
                         <td> <%= zeta.status %></td>
                         <%if zeta.references.attached? %>

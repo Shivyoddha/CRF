@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "announcement"%>
+
 <%= form_with(model: announcement) do |form| %>
   <% if announcement.errors.any? %>
     <div id="error_explanation">
@@ -10,22 +12,22 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :heading %>
-    <%= form.text_area :heading %>
-  </div>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div class="field">
-    <%= form.label :created_on %>
-    <%= form.datetime_select :created_on %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div id="form">
+    <div class="input-group mb-3 mt-3">
+      <%= form.label :heading , class:'input-group-text' %>
+      <%= form.text_area :heading, class:"form-control", placeholder:"Heading goes here...."  %>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.label :text , class:'input-group-text' %>
+      <%= form.text_area :text, class:"form-control", placeholder:"Content goes here...." %>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.label :created_on , class:'input-group-text' %>
+      <%= form.datetime :created_on, class:"form-select"%>
+    </div>
+    <div class="input-group mb-3">
+      <%= form.submit "Create", class:"btn btn-primary", id:'sbt' %>
+    </div>
   </div>
 <% end %>

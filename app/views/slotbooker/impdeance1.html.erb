@@ -63,6 +63,7 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
+<<<<<<< HEAD
                         <th scope="col" id="application-no">Appl No</th>
                         <th scope="col" id="name">Name</th>
                         <th scope="col" id="institute">Institute</th>
@@ -70,10 +71,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
-                        <th scope="col" id="composition">Capacitance</th>
-                        <th scope="col" id="phase">Dielectric</th>
-                        <th scope="col" id="range">I-V</th>
-                        <th scope="col" id="composition">Impedance</th>
+                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Frequency Range</th>
                         <th scope="col" id="phase">Voltage Range</th>
                         <th scope="col" id="range">Current Range</th>
@@ -84,6 +82,26 @@
                         <th scope="col" id="slot-time">Slot Time</th>
                         <th scope="col">Status</th>
                         <th scope="col" id="reference-paper">Reference Paper</th>
+=======
+                      <th scope="col" id="application-no">Appl No</th>
+                      <th scope="col" id="name">Name</th>
+                      <th scope="col" id="institute">Institute</th>
+                      <th scope="col" id="department">Department</th>
+                      <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="sample-no">No of Samples</th>
+                      <th scope="col" id="composition">Composition</th>
+                      <th scope="col" id="composition">Measuerment</th>
+                      <th scope="col" id="composition">Frequency Range</th>
+                      <th scope="col" id="phase">Voltage Range</th>
+                      <th scope="col" id="range">Current Range</th>
+                      <th scope="col" id="phase">Impdeance/Loss Tangent</th>
+                      <th scope="col" id="request">More info</th>
+                      <th scope="col" id="booked-on">Booked On</th>
+                      <th scope="col" id="slot-date">Slot Date</th>
+                      <th scope="col" id="slot-time">Slot Time</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" id="reference-paper">Reference Paper</th>
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
                         <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
@@ -99,10 +117,7 @@
                         <td> <%= imped.user.contact%> </td>
                         <td> <%= imped.sample%> </td>
                         <td> <%= imped.composition%> </td>
-                        <td> <%= imped.capacitance%> </td>
-                        <td> <%= imped.dielectric%> </td>
-                        <td> <%= imped.iv%> </td>
-                        <td> <%= imped.impedance%> </td>
+                        <td> <%= Array(imped.measurement).join(", ") %> </td>
                         <td> <%= imped.freqrange%> </td>
                         <td> <%= imped.voltagerange%> </td>
                         <td> <%= imped.currentrange%> </td>
@@ -112,16 +127,16 @@
 
                         <td> <%= imped.slotdate %></td>
 
-                        <td> <%= imped.slottime %></td>
+                        <td><%= imped.slottime.strftime('%H:%M:%S') if imped.slottime.present? %></td>
 
                           <td><%= imped.status%></td>
                           <%if imped.references.attached? %>
-                                 <%imped.references.each do |file|%>
-                                 <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
-                                    <% end %>
-                               <% else %>
-                                 <td>NA</td>
-                               <% end %>
+                                       <%imped.references.each do |file|%>
+                                       <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                          <% end %>
+                                     <% else %>
+                                       <td>NA</td>
+                                     <% end %>
                                <td id="assign-btn">
                                    <!-- Button trigger modal -->
                                     <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{imped.id}" }, id: "ani" %>
@@ -143,38 +158,21 @@
 
                                                   <div class="input-group mb-3">
                                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                                  <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                                 </div>
 
                                                    <%=form.fields_for :equipment_table do |f| %>
-                                                    <div class="input-group mb-3">
-                                                       <%= f.hidden_field :app_no, value:"CRF/IMP/#{imped.id}"%>
-                                                     </div>
-
-                                                    <div class="input-group mb-3">
+                                                       <%= f.hidden_field :app_no, value:"CRF/IMP/#{imped.id}"%>s
                                                       <%= f.hidden_field :username, value:"#{imped.user.name}"%>
-                                                   </div>
-
-
-                                                    <div class="input-group mb-3">
                                                       <%= f.hidden_field :dummy, value:"alloted"%>
-                                                    </div>
-
-                                                   <div class="input-group mb-3">
                                                      <%= f.hidden_field :debit_head, value:"#{imped.debit}" %>
-                                                  </div>
-
-                                                  <div class="input-group mb-3">
                                                      <%= f.hidden_field :dept, value:"#{imped.user.department}" %>
-                                                  </div>
-
-                                                  <div class="input-group mb-3">
                                                     <%= f.hidden_field :email, value:"#{imped.user.email}" %>
-                                                 </div>
-
-                                                  <div class="input-group mb-3">
                                                     <%= f.hidden_field :equipname, value:"imped" %>
-                                                 </div>
+                                                    <%= f.hidden_field :role, value:"#{imped.user.role}" %>
+                                                    <%= f.hidden_field :org, value:"#{imped.user.orgaddress}" %>
+                                                    <%= f.hidden_field :profesion, value:"#{imped.user.profession}" %>
+                                                    <%= f.hidden_field :orgname, value:"#{imped.user.orgname}" %>
 
                                                    <%end%>
 

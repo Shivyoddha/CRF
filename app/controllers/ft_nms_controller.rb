@@ -31,7 +31,7 @@ class FtNmsController < ApplicationController
         else
           FtNmrMailer.with(id:@ft_nm.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to ft_nm_url(@ft_nm), notice: "Ft nm was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Ft nm was successfully created." }
         format.json { render :show, status: :created, location: @ft_nm }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,9 @@ class FtNmsController < ApplicationController
       @ft_nm.status="alloted"
     respond_to do |format|
       if @ft_nm.update(ft_nm_params)
-        FtNmrAllotedMailer.with(id:@ft_nm.id, userid:current_user.id).Mail.deliver_later
+        if @ft_nm.status!= 'completed'
+          FtNmrAllotedMailer.with(id:@ft_nm.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_ftnmr_path(@ft_nm), notice: "Ft nm was successfully updated." }
         format.json { render :show, status: :ok, location: @ft_nm }
       else
@@ -73,6 +75,6 @@ class FtNmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ft_nm_params
-      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,references: [],hazardmethod: [],measurement1:[],measurement2:[],measurement3:[],measurement4:[],measurement5:[])
+      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,references: [],hazardmethod: [],measurement1: [],measurement2:[],measurement3:[],measurement4:[],measurement5:[])
     end
 end

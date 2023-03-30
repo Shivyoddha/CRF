@@ -22,11 +22,15 @@ class EquipmentTablesController < ApplicationController
   # POST /equipment_tables or /equipment_tables.json
   def create
     @equipment_table = EquipmentTable.new(equipment_table_params)
-
     respond_to do |format|
       if @equipment_table.save
+        if @equipment_table.role == "student"
         format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully created." }
         format.json { render :show, status: :created, location: @equipment_table }
+      else
+        format.html { redirect_to payment_paymentExt_path(@equipment_table), notice: "Equipment table was successfully created." }
+        format.json { render :show, status: :created, location: @equipment_table }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @equipment_table.errors, status: :unprocessable_entity }
@@ -186,6 +190,6 @@ class EquipmentTablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipment_table_params
-      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:gst,:state,:date_of_depo,:dd_no, :orgname)
+      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no)
     end
 end

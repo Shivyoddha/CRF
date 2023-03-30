@@ -1,33 +1,20 @@
 <%= stylesheet_link_tag "paymentportal" %>
-
-<div id="header">
-    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" id="title" href="#content">CRF ADMIN</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="btn-head">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="admin-mail">
-                    <a class="nav-link" href="#">admin@mail</a>
-                </li>
-                <li class="nav-item" id="logout">
-                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
+<%=render "partials/paymentNav" %>
 
 <div class="container-payments">
 
     <div id="navigation" class="font-quiucksand">
         <!--below is the button of Nitk CRF logo-->
         <div id="navigation-logo">
-          <a href="#"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
+          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
 
-        <%= link_to "Admin Panel",  :back, class:"btn btn-outline-warning mt-4 back-btn" %>
+        <%= link_to "Admin Panel", mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+        <h1 id="mod">Modules<h1>
+        <div id="toggler">
+            <%= link_to "Internal Module",  payment_payment_path, class:"btn btn-outline-primary mt-4", id:"active" %>
+            <%= link_to "External Module",  payment_paymentExt_path, class:"btn btn-outline-primary mt-4" %>
+        </div>
 
         <div class="sidelinks">
 

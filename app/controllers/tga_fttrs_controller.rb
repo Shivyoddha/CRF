@@ -48,7 +48,9 @@ class TgaFttrsController < ApplicationController
       @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.update(tga_fttr_params)
-        TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
+        if @tga_fttr.status!= 'completed'
+          TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_tga_path(@tga_fttr), notice: "Tga fttr was successfully updated." }
         format.json { render :show, status: :ok, location: @tga_fttr }
       else
@@ -76,6 +78,10 @@ class TgaFttrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+<<<<<<< HEAD
+      params.require(:tga_fttr).permit(:status, :sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],references: [])
+=======
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end

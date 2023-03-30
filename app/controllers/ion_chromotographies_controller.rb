@@ -36,7 +36,7 @@ class IonChromotographiesController < ApplicationController
         else
           IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to ion_chromotography_url(@ion_chromotography), notice: "Ion chromotography was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Ion chromotography was successfully created." }
         format.json { render :show, status: :created, location: @ion_chromotography }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,9 @@ class IonChromotographiesController < ApplicationController
 
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
-        IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+        if @ion_chromotography.status!= 'completed'
+          IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_ionc_path(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else
@@ -80,6 +82,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email],hazard_method: [], references: [])
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],hazard_method: [], references: [])
     end
 end

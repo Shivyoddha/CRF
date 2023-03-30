@@ -50,7 +50,9 @@ class ThreeDNonContactsController < ApplicationController
 
     respond_to do |format|
       if @three_d_non_contact.update(three_d_non_contact_params)
+        if @three_d_non_contact.status!= 'completed'
         ThreeDNonContactAllotedMailer.with(id:@three_d_non_contact.id, userid:current_user.id).Mail.deliver_later
+      end
         format.html { redirect_to slotbooker_threednon_path(@three_d_non_contact), notice: "Three d non contact was successfully updated." }
         format.json { render :show, status: :ok, location: @three_d_non_contact }
       else
@@ -78,6 +80,10 @@ class ThreeDNonContactsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_non_contact_params
-      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+<<<<<<< HEAD
+      params.require(:three_d_non_contact).permit(:status,:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email], references: [])
+=======
+      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+>>>>>>> 3a5c36457abb0bb6b8aaf5f51515b9b17ff1af62
     end
 end

@@ -80,7 +80,7 @@
                       <th scope="col" id="slot-time">Slot Time</th>
                       <th scope="col">Status</th>
                       <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="assign-col">Asssign</th>
+                        <th scope="col" id="assign-col">Assign</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,10 +95,31 @@
                         <td> <%= low1.user.department%> </td>
                         <td> <%= low1.user.contact%> </td>
                         <td> <%= low1.sample%> </td>
-                        <td> <%= low1.measurement%> </td>
-                        <td> <%= low1.composition%> </td>
-                        <td> <%= low1.stype%> </td>
-                        <td> <%= low1.mind%>° to <%= low1.maxd%>°</td>
+                        <td> <%= low1.sc1%>
+                             <%= low1.sc2%> <br>
+                             <%= low1.sc3%> <br>
+                             <%= low1.sc4%><br>
+                             <%= low1.sc5%></td>
+                        <td> <%= low1.st1%>
+                             <%= low1.st2%>
+                             <%= low1.st3%>
+                             <%= low1.st4%>
+                             <%= low1.st5%></td>
+                         <td> <%= low1.tt1%>
+                              <%= low1.tt2%>
+                              <%= low1.tt3%>
+                              <%= low1.tt4%>
+                              <%= low1.tt5%></td>
+                        <td> <%= low1.m1%>
+                             <%= low1.m2%>
+                             <%= low1.m3%>
+                             <%= low1.m4%>
+                             <%= low1.m5%></td>
+                        <td> <%= low1.tf1%>
+                             <%= low1.tf2%>
+                             <%= low1.tf3%>
+                             <%= low1.tf4%>
+                             <%= low1.tf5%></td>
                         <td> <%= low1.more%> </td>
                         <td>Booked</td>
                         <td><%= low1.slotdate %></td>
@@ -137,34 +158,18 @@
                                          </div>
 
                                           <%=form.fields_for :equipment_table do |f| %>
-                                           <div class="input-group mb-3">
-                                              <%= f.hidden_field :app_no, value:"CRF/LOW/#{low1.id}"%>
-                                            </div>
 
-                                           <div class="input-group mb-3">
-                                             <%= f.hidden_field :username, value:"#{low1.user.name}"%>
-                                          </div>
-
-
-                                           <div class="input-group mb-3">
-                                             <%= f.hidden_field :dummy, value:"alloted"%>
-                                           </div>
-
-                                          <div class="input-group mb-3">
-                                            <%= f.hidden_field :debit_head, value:"#{low1.debit}" %>
-                                         </div>
-
-                                         <div class="input-group mb-3">
+                                        <%= f.hidden_field :app_no, value:"CRF/LOW/#{low1.id}"%>
+                                        <%= f.hidden_field :username, value:"#{low1.user.name}"%>
+                                        <%= f.hidden_field :dummy, value:"alloted"%>
+                                        <%= f.hidden_field :debit_head, value:"#{low1.debit}" %>
                                         <%= f.hidden_field :dept, value:"#{low1.user.department}" %>
-                                     </div>
-
-                                     <div class="input-group mb-3">
                                        <%= f.hidden_field :email, value:"#{low1.user.email}" %>
-                                    </div>
-
-                                     <div class="input-group mb-3">
+                                       <%= f.hidden_field :role, value:"#{low1.user.role}" %>
+                                      <%= f.hidden_field :org, value:"#{low1.user.orgaddress}" %>
+                                      <%= f.hidden_field :profesion, value:"#{low1.user.profession}" %>
+                                      <%= f.hidden_field :orgname, value:"#{low1.user.orgname}" %>
                                        <%= f.hidden_field :equipname, value:"low" %>
-                                    </div>
 
 
 

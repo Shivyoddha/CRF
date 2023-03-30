@@ -53,7 +53,9 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.build_equipment_table
     respond_to do |format|
       if @hr_fesem_j.update(hr_fesem_j_params)
-        HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
+        if @hr_fesem_j.status!= 'completed'
+          HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_fesemj_path, notice: "Hr fesem j was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_j }
       else
@@ -81,6 +83,6 @@ class HrFesemJsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_j_params
-      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] ,references: [])
+      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
     end
 end

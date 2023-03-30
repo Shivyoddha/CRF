@@ -13,7 +13,7 @@
                                 <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link active nav-btn main-elements" href="#stats">Statistics</a>
+                            <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
@@ -22,6 +22,7 @@
                                 <%= link_to "Users", mainportal_admindashboard_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Feedbacks", feedbacks_index_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
 
@@ -33,7 +34,7 @@
                             <a class="nav-link" href="#">admin@mail</a>
                         </li>
                         <li class="nav-item" id="logout">
-                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                            <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
                         </li>
                     </ul>
                     </div>
@@ -140,7 +141,7 @@
 
         <div id="btn-announcement-wrap">
                 <button id="btn-announcement">
-                    View All
+                    <%= link_to 'View  All', mainportal_adminStats_path %>
                 </button>
         </div>
 

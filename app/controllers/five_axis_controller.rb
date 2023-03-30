@@ -47,7 +47,9 @@ class FiveAxisController < ApplicationController
       @five_axi.build_equipment_table
     respond_to do |format|
       if @five_axi.update(five_axi_params)
-        FiveAxiAllotedMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
+        if @five_axi.status!= 'completed'
+          FiveAxiAllotedMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_fiveaxis_path(@five_axi), notice: "Five axi was successfully updated." }
         format.json { render :show, status: :ok, location: @five_axi }
       else
@@ -75,6 +77,6 @@ class FiveAxisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def five_axi_params
-      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email] , references: [])
+      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end
