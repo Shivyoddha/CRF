@@ -42,7 +42,7 @@
                         <%= link_to 'Alloted Slots',slotbooker_ftnmr2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_ftnmr3_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
+                        <%= link_to 'Completed Slots',slotbooker_ftnmr3_path,class:"nav-link active sidelink-wrap",id:"active-tab" %>
                         </li>
                 <li class="nav-item">
                       <%= link_to 'Cancelled Slots',slotbooker_ftnmr4_path,class:"nav-link active sidelink-wrap" %>
@@ -125,7 +125,7 @@
 
                         <td> <%= ftnmr.slotdate %></td>
 
-                        <td> <%= ftnmr.slottime %></td>
+                        <td><%= ftnmr.slottime.strftime('%H:%M:%S') if ftnmr.slottime.present? %></td>
 
                           <td><%= ftnmr.status%></td>
                           <%if ftnmr.references.attached? %>

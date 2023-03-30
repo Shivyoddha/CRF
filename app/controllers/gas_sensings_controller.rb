@@ -50,7 +50,9 @@ class GasSensingsController < ApplicationController
     @gas_sensing.build_equipment_table
     respond_to do |format|
       if @gas_sensing.update(gas_sensing_params)
-        GasSensingAllotedMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
+        if @gas_sensing.status!= 'completed'
+          GasSensingAllotedMailer.with(id:@gas_sensing.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_gassensing_path(@gas_sensing), notice: "Gas sensing was successfully updated." }
         format.json { render :show, status: :ok, location: @gas_sensing }
       else

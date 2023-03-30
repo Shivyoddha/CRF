@@ -52,7 +52,9 @@ class XrdsController < ApplicationController
 
     respond_to do |format|
       if @xrd.update(xrd_params)
-        XrdAllotedMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
+        if @xrd.status!= 'completed'
+          XrdAllotedMailer.with(id:@xrd.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_xrd_path, notice: "Xrd was successfully updated."}
         format.json { render :show, status: :ok, location: @xrd }
       else

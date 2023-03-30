@@ -72,7 +72,7 @@
                          <th scope="col" id="measure">Measurement Type</th>
                          <th scope="col" id="trails">No of Trails</th>
                          <th scope="col" id="force-plate">Whether Force Plate included</th>
-                         <th scope="col" id="force-plate">Ouput Format</th>
+                         <th scope="col" id="force-plate">Output Format</th>
                          <th scope="col" id="range">Clincal Trail</th>
                            <th scope="col" id="reference-paper">Ethical  Prescription Paper</th>
                         <th scope="col" id="reference-paper">Physician Prescription Paper</th>
@@ -87,7 +87,7 @@
                 </thead>
                 <tbody>
 
-                      <% @gait3.where(status:'completed').each do |gait3|%>
+                      <% @gait3.where(status:'completed').each do |gait|%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GAIT/<%=gait.id %>	</th>

@@ -100,7 +100,7 @@
                         <td> <%= uv.more%> </td>
                         <td>Booked</td>
                         <td> <%= uv.slotdate %> </td>
-                        <td> <%= uv.slottime %> </td>
+                        <td><%= uv.slottime.strftime('%H:%M:%S') if uv.slottime.present? %></td>
                         <td> <%= uv.status %></td>
                         <%if uv.references.attached? %>
                       <%uv.references.each do |file|%>

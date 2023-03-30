@@ -41,7 +41,7 @@
                 <li class="nav-item">
                         <%= link_to 'Alloted Slots',slotbooker_zeta2_path,class:"nav-link active sidelink-wrap" %>
                         </li>
-                
+
                   <li class="nav-item">
                   <%= link_to 'Completed Slots',slotbooker_zeta3_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
                         </li>
@@ -118,6 +118,7 @@
                         <td> <%= zeta.analysis_temperature%> </td>
                         <td> <%= zeta.more%> </td>
                         <td>Booked</td>
+                        <td> <%= zeta.slotdate %> </td>
                         <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
                         <td><%= zeta.slottime.strftime('%H:%M:%S') if zeta.slottime.present? %></td>
   <td> <%= zeta.status %></td>

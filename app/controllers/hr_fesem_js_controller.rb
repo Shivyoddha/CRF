@@ -53,7 +53,9 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.build_equipment_table
     respond_to do |format|
       if @hr_fesem_j.update(hr_fesem_j_params)
-        HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
+        if @hr_fesem_j.status!= 'completed'
+          HrFesemJAllotedMailer.with(id:@hr_fesem_j.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_fesemj_path, notice: "Hr fesem j was successfully updated." }
         format.json { render :show, status: :ok, location: @hr_fesem_j }
       else

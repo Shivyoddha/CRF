@@ -52,8 +52,10 @@ class LowFatiguesController < ApplicationController
 
     respond_to do |format|
       if @low_fatigue.update(low_fatigue_params)
-        LowFatigueAllotedMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
-        format.html { redirect_to low_fatigue_url(@low_fatigue), notice: "Low fatigue was successfully updated." }
+        if @low_fatigue.status!= 'completed'
+          LowFatigueAllotedMailer.with(id:@low_fatigue.id, userid:current_user.id).Mail.deliver_later
+        end
+        format.html { redirect_to slotbooker_low_path, notice: "Low fatigue was successfully updated." }
         format.json { render :show, status: :ok, location: @low_fatigue }
       else
         format.html { render :edit, status: :unprocessable_entity }

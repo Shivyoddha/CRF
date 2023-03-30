@@ -80,34 +80,56 @@
                       <th scope="col" id="slot-time">Slot Time</th>
                       <th scope="col">Status</th>
                       <th scope="col" id="reference-paper">Reference Paper</th>
-                        <th scope="col" id="reassign-col">Reasssign</th>
+                        <th scope="col" id="reassign-col">Reassign</th>
                         <th scope="col" id="cancel-col">Cancel Slot</th>
+                        <th scope="col" id="cancel-col">Complete</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                  <% @xrd2.where(status:'alloted').each do |xrds|%>
+                  <% @low2.where(status:'alloted').each do |low2|%>
 
                   <tr>
-                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+                    <th scope="row">CRF/XRD/<%=low2.id %>	</th>
 
-                    <td> <%= xrds.user.name%> </td>
-                    <td> <%= xrds.user.orgname%> </td>
-                    <td> <%= xrds.user.department%> </td>
-                    <td> <%= xrds.user.contact%> </td>
-                    <td> <%= xrds.sample%> </td>
-                    <td> <%= xrds.measurement%> </td>
-                    <td> <%= xrds.composition%> </td>
-                    <td> <%= xrds.stype%> </td>
-                    <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
-                    <td> <%= xrds.more%> </td>
+                    <td> <%= low2.user.name%> </td>
+                    <td> <%= low2.user.orgname%> </td>
+                    <td> <%= low2.user.department%> </td>
+                    <td> <%= low2.user.contact%> </td>
+                    <td> <%= low2.sample%> </td>
+                    <td> <%= low2.sc1%>
+                         <%= low2.sc2%> <br>
+                         <%= low2.sc3%> <br>
+                         <%= low2.sc4%><br>
+                         <%= low2.sc5%></td>
+                    <td> <%= low2.st1%>
+                         <%= low2.st2%>
+                         <%= low2.st3%>
+                         <%= low2.st4%>
+                         <%= low2.st5%></td>
+                     <td> <%= low2.tt1%>
+                          <%= low2.tt2%>
+                          <%= low2.tt3%>
+                          <%= low2.tt4%>
+                          <%= low2.tt5%></td>
+                    <td> <%= low2.m1%>
+                         <%= low2.m2%>
+                         <%= low2.m3%>
+                         <%= low2.m4%>
+                         <%= low2.m5%></td>
+                    <td> <%= low2.tf1%>
+                         <%= low2.tf2%>
+                         <%= low2.tf3%>
+                         <%= low2.tf4%>
+                         <%= low2.tf5%></td>
+                    <td> <%= low2.more%> </td>
                     <td>Booked</td>
-                    <td><%= xrds.slotdate %></td>
-                    <td><%= xrds.slottime %></td>
+                    <td><%= low2.slotdate %></td>
+                    <td><%= low2.slottime %></td>
 
-                    <td> <%= xrds.status %></td>
-                    <%if xrds.references.attached? %>
-                    <%xrds.references.each do |file|%>
+                    <td> <%= low2.status %></td>
+                    <%if low2.references.attached? %>
+                    <%low2.references.each do |file|%>
                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
                        <% end %>
                   <% else %>
@@ -115,17 +137,17 @@
                   <% end %>
                   <td id="assign-btn">
                 <!-- Button trigger modal -->
-                 <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{icp.id}" }, id: "ani" %>
-                 <div id="<%= icp.id%>" class="modal">
+                 <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{low2.id}" }, id: "ani" %>
+                 <div id="<%= low2.id%>" class="modal">
 
                <div class="modal-dialog">
                    <div class="modal-content">
                        <div class="modal-header">
-                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= icp.user.firstname %></b></h1>
+                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= low2.user.firstname %></b></h1>
                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                        </div>
                        <div class="modal-body">
-                         <%= form_with(model: icp,local:true) do |form| %>
+                         <%= form_with(model: low2,local:true) do |form| %>
 
                              <div class="input-group mb-3">
                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
@@ -138,11 +160,21 @@
                          </div>
 
                          <%=form.fields_for :equipment_table do |f| %>
+                          <div class="input-group mb-3">
+                             <%= f.hidden_field :app_no, value:"CRF/icp/#{low2.id}"%>
+                           </div>
 
-                             <%= f.hidden_field :app_no, value:"CRF/icp/#{icp.id}"%>
-                             <%= f.hidden_field :username, value:"#{icp.user.name}"%>
-                             <%= f.hidden_field :dummy, value:"#{icp.status}"%>
-                             <%= f.hidden_field :debit_head, value:"#{icp.debit}" %>
+                          <div class="input-group mb-3">
+                            <%= f.hidden_field :username, value:"#{low2.user.name}"%>
+                         </div>
+
+                         <div class="input-group mb-3">
+                           <%= f.hidden_field :dummy, value:"#{low2.status}"%>
+                        </div>
+
+                         <div class="input-group mb-3">
+                           <%= f.hidden_field :debit_head, value:"#{low2.debit}" %>
+                        </div>
                          <%end%>
                            <div class="actions">
                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -157,18 +189,18 @@
 
              <td id="cancel-btn">
                 <!-- Button trigger modal -->
-                  <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{icp.id}" }, id: "anish" %>
+                  <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{low2.id}" }, id: "anish" %>
 
                  <!-- Modal -->
-                  <div id="ani<%= icp.id%>" class="modal">
+                  <div id="ani<%= low2.id%>" class="modal">
                    <div class="modal-dialog">
                          <div class="modal-content">
                              <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= icp.user.firstname %></b></h1>
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= low2.user.firstname %></b></h1>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                              </div>
                              <div class="modal-body">
-                               <%= form_for icp do |f| %>
+                               <%= form_for low2 do |f| %>
                                  <p> Are you sure you want to cancel the slot ?</p>
                                  <%= f.hidden_field :status, value: 'cancelled' %>
                              <div class="actions">
@@ -179,6 +211,36 @@
                               </div>
                              <div class="modal-footer">
                                    <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                             </div>
+                             <% end %>
+                         </div>
+                     </div>
+                 </div>
+             </td>
+             <td id="complete-btn">
+                <!-- Button trigger modal -->
+                  <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{low2.id}" }, id: "anish" %>
+
+                 <!-- Modal -->
+                  <div id="mai<%= low2.id%>" class="modal">
+                   <div class="modal-dialog">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= low2.user.firstname %></b></h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                               <%= form_for low2 do |f| %>
+                                 <p> Are you sure you want to complete the slot ?</p>
+                                 <%= f.hidden_field :status, value: 'completed' %>
+                             <div class="actions">
+
+
+                             </div>
+
+                              </div>
+                             <div class="modal-footer">
+                                   <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                              </div>
                              <% end %>
                          </div>

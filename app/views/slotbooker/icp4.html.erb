@@ -113,7 +113,7 @@
 
                 <td> <%= icp.slotdate %></td>
 
-                <td> <%= icp.slottime %></td>
+                <td><%= icp.slottime.strftime('%H:%M:%S') if icp.slottime.present? %></td>
 
                   <td><%= icp.status%></td>
                   <%if icp.references.attached? %>

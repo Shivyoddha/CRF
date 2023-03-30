@@ -70,6 +70,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
+                        <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Frequency Range</th>
                         <th scope="col" id="phase">Voltage Range</th>
                         <th scope="col" id="range">Current Range</th>
@@ -104,7 +105,7 @@
 
                         <td> <%= imped.slotdate %></td>
 
-                        <td> <%= imped.slottime %></td>
+                        <td><%= imped.slottime.strftime('%H:%M:%S') if imped.slottime.present? %></td>
 
                           <td><%= imped.status%></td>
                           <%if imped.references.attached? %>

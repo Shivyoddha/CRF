@@ -31,7 +31,7 @@ class FtNmsController < ApplicationController
         else
           FtNmrMailer.with(id:@ft_nm.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to ft_nm_url(@ft_nm), notice: "Ft nm was successfully created." }
+        format.html { redirect_to home_index_path, notice: "Ft nm was successfully created." }
         format.json { render :show, status: :created, location: @ft_nm }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,9 @@ class FtNmsController < ApplicationController
       @ft_nm.status="alloted"
     respond_to do |format|
       if @ft_nm.update(ft_nm_params)
-        FtNmrAllotedMailer.with(id:@ft_nm.id, userid:current_user.id).Mail.deliver_later
+        if @ft_nm.status!= 'completed'
+          FtNmrAllotedMailer.with(id:@ft_nm.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_ftnmr_path(@ft_nm), notice: "Ft nm was successfully updated." }
         format.json { render :show, status: :ok, location: @ft_nm }
       else

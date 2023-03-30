@@ -52,7 +52,9 @@ class IonChromotographiesController < ApplicationController
 
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)
-        IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+        if @ion_chromotography.status!= 'completed'
+          IonChromotographyAllotedMailer.with(id:@ion_chromotography.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_ionc_path(@ion_chromotography), notice: "Ion chromotography was successfully updated." }
         format.json { render :show, status: :ok, location: @ion_chromotography }
       else

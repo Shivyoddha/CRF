@@ -52,7 +52,9 @@ class GaitsController < ApplicationController
       @gait.build_equipment_table
     respond_to do |format|
       if @gait.update(gait_params)
-        GaitAllotedMailer.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
+        if @gait.status!= 'completed'
+          GaitAllotedMailer.with(id:@gait.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_gait_path(@gait), notice: "Gait was successfully updated." }
         format.json { render :show, status: :ok, location: @gait }
       else

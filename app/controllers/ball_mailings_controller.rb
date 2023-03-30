@@ -50,7 +50,9 @@ class BallMailingsController < ApplicationController
     @ball_mailing.build_equipment_table
     respond_to do |format|
       if @ball_mailing.update(ball_mailing_params)
-        BallMailingAllotedMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
+        if @ball_mailing.status!= 'completed'
+          BallMailingAllotedMailer.with(id:@ball_mailing.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_ball_path(@ball_mailing), notice: "Ball mailing was successfully updated." }
         format.json { render :show, status: :ok, location: @ball_mailing }
       else

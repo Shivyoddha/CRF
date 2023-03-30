@@ -63,24 +63,24 @@
             <table class="table table-hover font-quicksand">
                 <thead>
                     <tr class="table-head font-unbounded">
-                      <th scope="col" id="application-no">Appl No</th>
-                      <th scope="col" id="name">Name</th>
-                      <th scope="col" id="institute">Institute</th>
-                      <th scope="col" id="department">Department</th>
-                      <th scope="col" id="contact-no">Contact No:</th>
-                      <th scope="col" id="sample-no">No of Samples</th>
-                      <th scope="col" id="composition">Composition</th>
-                      <th scope="col" id="composition">Measuerment</th>
-                      <th scope="col" id="composition">Frequency Range</th>
-                      <th scope="col" id="phase">Voltage Range</th>
-                      <th scope="col" id="range">Current Range</th>
-                      <th scope="col" id="phase">Impdeance/Loss Tangent</th>
-                      <th scope="col" id="request">More info</th>
-                      <th scope="col" id="booked-on">Booked On</th>
-                      <th scope="col" id="slot-date">Slot Date</th>
-                      <th scope="col" id="slot-time">Slot Time</th>
-                      <th scope="col">Status</th>
-                      <th scope="col" id="reference-paper">Reference Paper</th>
+                        <th scope="col" id="application-no">Appl No</th>
+                        <th scope="col" id="name">Name</th>
+                        <th scope="col" id="institute">Institute</th>
+                        <th scope="col" id="department">Department</th>
+                        <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="composition">Composition</th>
+                        <th scope="col" id="composition">Measurement</th>
+                        <th scope="col" id="composition">Frequency Range</th>
+                        <th scope="col" id="phase">Voltage Range</th>
+                        <th scope="col" id="range">Current Range</th>
+                        <th scope="col" id="phase">Impdeance/Loss Tangent</th>
+                        <th scope="col" id="request">More info</th>
+                        <th scope="col" id="booked-on">Booked On</th>
+                        <th scope="col" id="slot-date">Slot Date</th>
+                        <th scope="col" id="slot-time">Slot Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" id="reference-paper">Reference Paper</th>
                         <th scope="col" id="reference-paper">Assign</th>
                     </tr>
                 </thead>
@@ -106,7 +106,7 @@
 
                         <td> <%= imped.slotdate %></td>
 
-                        <td> <%= imped.slottime %></td>
+                        <td><%= imped.slottime.strftime('%H:%M:%S') if imped.slottime.present? %></td>
 
                           <td><%= imped.status%></td>
                           <%if imped.references.attached? %>

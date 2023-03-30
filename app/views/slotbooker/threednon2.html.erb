@@ -80,8 +80,9 @@
               <th scope="col" id="slot-time">Slot Time</th>
               <th scope="col">Status</th>
               <th scope="col" id="reference-paper">Reference Paper</th>
-              <th scope="col" id="reassign-col">Reasssign</th>
+              <th scope="col" id="reassign-col">Reassign</th>
               <th scope="col" id="cancel-col">Cancel Slot</th>
+              <th scope="col" id="cancel-col">Complete</th>
               </tr>
           </thead>
           <tbody>
@@ -101,7 +102,6 @@
                <td> <%= threes.incompatible%> </td>
                <td> <%= threes.toxicity%> </td>
               <td> <%= threes.more%> </td>
-
                 <td><span style="white-space: nowrap;"><%= threes.slotdate.strftime('%d-%m-%Y')if threes.slotdate.present? %></td>
                   <td><%= threes.slottime.strftime('%H:%M:%S') if threes.slottime.present? %></td>
               <td> <%= threes.status %></td>
@@ -188,6 +188,38 @@
                                           </div>
                                       </div>
                                   </td>
+                                  <td id="complete-btn">
+                                                          <!-- Button trigger modal -->
+                                                            <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{threes.id}" }, id: "anish" %>
+
+                                                           <!-- Modal -->
+                                                            <div id="mai<%= threes.id%>" class="modal">
+                                                             <div class="modal-dialog">
+                                                                   <div class="modal-content">
+                                                                       <div class="modal-header">
+                                                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= threes.user.firstname %></b></h1>
+                                                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                       </div>
+                                                                       <div class="modal-body">
+                                                                         <%= form_for threes do |f| %>
+                                                                           <p> Are you sure you want to complete the slot ?</p>
+                                                                           <%= f.hidden_field :status, value: 'completed' %>
+                                                                       <div class="actions">
+
+
+                                                                       </div>
+
+                                                                        </div>
+                                                                       <div class="modal-footer">
+                                                                             <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                                                                       </div>
+                                                                       <% end %>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </td>
+
+
 <%end%>
         </tr>
 

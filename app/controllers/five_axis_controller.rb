@@ -47,7 +47,9 @@ class FiveAxisController < ApplicationController
       @five_axi.build_equipment_table
     respond_to do |format|
       if @five_axi.update(five_axi_params)
-        FiveAxiAllotedMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
+        if @five_axi.status!= 'completed'
+          FiveAxiAllotedMailer.with(id:@five_axi.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_fiveaxis_path(@five_axi), notice: "Five axi was successfully updated." }
         format.json { render :show, status: :ok, location: @five_axi }
       else
