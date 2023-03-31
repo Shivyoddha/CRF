@@ -159,6 +159,7 @@ class EquipmentTablesController < ApplicationController
             end
             FeedbackMailer.with(userid:current_user.id).Mail.deliver_later
       end
+      
         if @equipment_table.role == "student"
         format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
         format.json { render :show, status: :ok, location: @equipment_table }
