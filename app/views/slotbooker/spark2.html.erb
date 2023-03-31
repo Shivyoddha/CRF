@@ -143,24 +143,14 @@
                                </div>
 
                                <%=form.fields_for :equipment_table do |f| %>
-                                <div class="input-group mb-3">
+
                                    <%= f.hidden_field :app_no, value:"CRF/SPARK/#{spark.id}"%>
-                                 </div>
-
-                                <div class="input-group mb-3">
-                                  <%= f.hidden_field :username, value:"#{spark.user.name}"%>
-                               </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :dummy, value:"#{spark.status}"%>
-                              </div>
-
-                               <div class="input-group mb-3">
-                                 <%= f.hidden_field :debit_head, value:"#{spark.debit}" %>
-                              </div>
+                                   <%= f.hidden_field :username, value:"#{spark.user.name}"%>
+                                   <%= f.hidden_field :dummy, value:"#{spark.status}"%>
+                                   <%= f.hidden_field :debit_head, value:"#{spark.debit}" %>
 
                                <%end%>
-                                <%=spark.id%>
+                              
 
                                  <div class="actions">
                                    <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

@@ -133,7 +133,7 @@
                  <div class="modal-dialog">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= fric.user.name %></b></h1>
+                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= fric.user.name %></b></h1>
                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                              <div class="modal-body">
@@ -146,7 +146,7 @@
 
                                <div class="input-group mb-3">
                                <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                               <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                               <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                              </div>
 
                                 <%=form.fields_for :equipment_table do |f| %>
@@ -162,7 +162,6 @@
                                 <%= f.hidden_field :profesion, value:"#{fric.user.profession}" %>
                                 <%= f.hidden_field :orgname, value:"#{fric.user.orgname}" %>
 
-}
 
                                 <%end%>
 

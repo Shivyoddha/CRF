@@ -53,7 +53,9 @@ class GlowsController < ApplicationController
 
     respond_to do |format|
       if @glow.update(glow_params)
-        GlowsAllotedMailer.with(id:@glow.id, userid:current_user.id).Mail.deliver_later
+        if @glow.status!= 'completed'
+          GlowsAllotedMailer.with(id:@glow.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_glow_path(@glow), notice: "Glow was successfully updated." }
         format.json { render :show, status: :ok, location: @glow }
       else

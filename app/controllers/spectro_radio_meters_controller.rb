@@ -52,7 +52,9 @@ class SpectroRadioMetersController < ApplicationController
     respond_to do |format|
       if @spectro_radio_meter.update(spectro_radio_meter_params)
         if @spectro_radio_meter.amount == nil
-        SpectroRadioMeterAllotedMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
+          if @spectro_radio_meter.status!= 'completed'
+            SpectroRadioMeterAllotedMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
+          end
       else
         PaymentSpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).Mail.deliver_later
       end

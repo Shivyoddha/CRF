@@ -94,6 +94,7 @@
 
                           <th scope="col" id="reference-paper">Reassign</th>
                     <th scope="col" id="reference-paper">Cancel</th>
+                    <th scope="col" id="cancel-col">Complete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -128,7 +129,7 @@
 
                         <td> <%= ftnmr.slotdate %></td>
 
-                        <td> <%= ftnmr.slottime %></td>
+                        <td><%= ftnmr.slottime.strftime('%H:%M:%S') if ftnmr.slottime.present? %></td>
 
                           <td><%= ftnmr.status%></td>
                           <%if ftnmr.references.attached? %>
@@ -159,7 +160,7 @@
 
                                   <div class="input-group mb-3">
                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                  <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                 </div>
                                    <%=ftnmr.id%>
 
@@ -204,6 +205,37 @@
                                       <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                             <%= f.submit "Cancelled", class:"btn btn-primary", id:"sbt" %>
+                                      </div>
+                                      <% end %>
+                                  </div>
+                              </div>
+                          </div>
+                      </td>
+                      <td id="complete-btn">
+                         <!-- Button trigger modal -->
+                           <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{ftnmr.id}" }, id: "anish" %>
+
+                          <!-- Modal -->
+                           <div id="mai<%= ftnmr.id%>" class="modal">
+                            <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= ftnmr.user.firstname %></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= form_for ftnmr do |f| %>
+                                          <p> Are you sure you want to complete the slot ?</p>
+                                          <%= f.hidden_field :status, value: 'completed' %>
+                                      <div class="actions">
+
+
+                                      </div>
+
+                                       </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                                       </div>
                                       <% end %>
                                   </div>

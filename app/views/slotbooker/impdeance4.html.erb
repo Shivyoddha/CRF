@@ -105,7 +105,7 @@
 
                         <td> <%= imped.slotdate %></td>
 
-                        <td> <%= imped.slottime %></td>
+                        <td><%= imped.slottime.strftime('%H:%M:%S') if imped.slottime.present? %></td>
 
                           <td><%= imped.status%></td>
                           <%if imped.references.attached? %>

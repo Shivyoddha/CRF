@@ -88,6 +88,7 @@
                       <th scope="col">Reference Paper</th>
                       <th scope="col">Reassign</th>
                       <th scope="col">Cancel</th>
+                      <th scope="col" id="cancel-col">Complete</th>
 
                   </tr>
               </thead>
@@ -152,24 +153,14 @@
                              </div>
 
                              <%=form.fields_for :equipment_table do |f| %>
-                              <div class="input-group mb-3">
+
                                  <%= f.hidden_field :app_no, value:"CRF/TGA/#{tga.id}"%>
-                               </div>
-
-                              <div class="input-group mb-3">
-                                <%= f.hidden_field :username, value:"#{tga.user.name}"%>
-                             </div>
-
-                             <div class="input-group mb-3">
-                               <%= f.hidden_field :dummy, value:"#{tga.status}"%>
-                            </div>
-
-                             <div class="input-group mb-3">
-                               <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
-                            </div>
+                                 <%= f.hidden_field :username, value:"#{tga.user.name}"%>
+                                 <%= f.hidden_field :dummy, value:"#{tga.status}"%>
+                                 <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
 
                              <%end%>
-                              <%=tga.id%>
+                              
 
                                <div class="actions">
                                  <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -207,6 +198,36 @@
                                   </div>
                                  <div class="modal-footer">
                                        <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                 </div>
+                                 <% end %>
+                             </div>
+                         </div>
+                     </div>
+                 </td>
+                 <td id="complete-btn">
+                    <!-- Button trigger modal -->
+                      <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{tga.id}" }, id: "anish" %>
+
+                     <!-- Modal -->
+                      <div id="mai<%= tga.id%>" class="modal">
+                       <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to<b><%= tga.user.firstname %></b></h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+                                   <%= form_for tga do |f| %>
+                                     <p> Are you sure you want to complete the slot ?</p>
+                                     <%= f.hidden_field :status, value: 'completed' %>
+                                 <div class="actions">
+
+
+                                 </div>
+
+                                  </div>
+                                 <div class="modal-footer">
+                                       <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                                  </div>
                                  <% end %>
                              </div>

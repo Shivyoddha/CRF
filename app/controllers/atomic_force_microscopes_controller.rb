@@ -12,7 +12,7 @@ class AtomicForceMicroscopesController < ApplicationController
 
   # GET /atomic_force_microscopes/new
   def new
-
+    @user=User.find(params[:id])
     @atomic_force_microscope = AtomicForceMicroscope.new
     @atomic_force_microscope.build_equipment_table
 
@@ -49,7 +49,9 @@ class AtomicForceMicroscopesController < ApplicationController
     @atomic_force_microscope.build_equipment_table
     respond_to do |format|
       if @atomic_force_microscope.update(atomic_force_microscope_params)
-        AtomicForceMicroscopeAllotedMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
+        if @atomic_force_microscope.status!= 'completed'
+          AtomicForceMicroscopeAllotedMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_atomic_path(@atomic_force_microscope), notice: "Atomic force microscope was successfully updated." }
         format.json { render :show, status: :ok, location: @atomic_force_microscope }
       else
@@ -77,6 +79,6 @@ class AtomicForceMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def atomic_force_microscope_params
-      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],technique: [],references: [])
+      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],technique: [],references: [])
     end
 end

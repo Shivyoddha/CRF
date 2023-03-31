@@ -31,10 +31,10 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     respond_to do |format|
       if @integrated_multi_role_tester.save
-        if @integrated_multi_role.user.role=='student'||@integrated_multi_role.user.role=='faculty'
-          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).InternalMail.deliver_later
+        if @integrated_multi_role_tester.user.role=='student'||@integrated_multi_role_tester.user.role=='faculty'
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).InternalMail.deliver_later
         else
-          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role.id, userid:current_user.id).ExternalMail.deliver_later
+          IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).ExternalMail.deliver_later
         end
         format.html { redirect_to home_index_path, notice: "Integrated multi role tester was successfully created." }
         format.json { render :show, status: :created, location: @integrated_multi_role_tester }
@@ -52,7 +52,9 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     respond_to do |format|
       if @integrated_multi_role_tester.update(integrated_multi_role_tester_params)
-        IntegratedMultiRoleTesterAllotedMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+        if @integrated_multi_role_tester.status!= 'completed'
+          IntegratedMultiRoleTesterAllotedMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_integrated_path(@integrated_multi_role_tester), notice: "Integrated multi role tester was successfully updated." }
         format.json { render :show, status: :ok, location: @integrated_multi_role_tester }
       else

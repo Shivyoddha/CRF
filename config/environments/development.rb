@@ -7,8 +7,7 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
-
+config.hosts << "a331-2401-4900-3767-639f-8c02-1884-9d66-1e32.in.ngrok.io"
   config.active_storage.service = :local
   # Do not eager load code on boot.
   config.eager_load = false

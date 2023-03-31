@@ -48,7 +48,9 @@ class TgaFttrsController < ApplicationController
       @tga_fttr.build_equipment_table
     respond_to do |format|
       if @tga_fttr.update(tga_fttr_params)
-        TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
+        if @tga_fttr.status!= 'completed'
+          TgaFttrAllotedMailer.with(id:@tga_fttr.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_tga_path(@tga_fttr), notice: "Tga fttr was successfully updated." }
         format.json { render :show, status: :ok, location: @tga_fttr }
       else
