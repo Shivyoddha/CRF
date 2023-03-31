@@ -59,7 +59,7 @@ Rails.application.routes.draw do
 
 
     devise_for :users
-    
+
     post 'home/developer'
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
@@ -418,9 +418,13 @@ Rails.application.routes.draw do
     get 'know/auto_multi_speci_polish'
     get 'payment/payment'
     get 'payment/paymentD'
+    get 'payment/paymentDc'
     get 'payment/paymentC'
+    get 'payment/paymentCc'
     get 'payment/paymentS'
+    get 'payment/paymentSc'
     get 'payment/paymentP'
+    get 'payment/paymentPc'
     get 'payment/paymentM'
     get 'payment/paymentU'
     get 'payment/paymentA'
@@ -429,6 +433,8 @@ Rails.application.routes.draw do
     get 'payment/paymentExtM'
     get 'payment/paymentExtC'
     get 'payment/paymentExtU'
+    get 'payment/payment_completed'
+    get 'payment/proforma_confirmation'
     post 'payment/paymentU'
     post 'payment/paymentExtU'
     post 'payment/paymentExtM'

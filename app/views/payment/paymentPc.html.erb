@@ -19,22 +19,24 @@
                  <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Payment Confirmation',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap" %>
+                <%= link_to 'Department Operating Cost Completion',payment_paymentDc_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'CPDA Fund',payment_paymentC_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
+                    <%= link_to 'CPDA Fund Completion',payment_paymentCc_path,class:"nav-link active sidelink-wrap"%>
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Student Contingency',payment_paymentS_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Student Contingency Completion',payment_paymentSc_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Project Fund Completion',payment_paymentPc_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
+
+
             </ul>
         </div>
     </div>
@@ -42,7 +44,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">CPDA Fund</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Proforma Console</h2>
         </div>
 
 
@@ -54,52 +56,45 @@
                       <th scope="col" id="application-no">Appl No</th>
                       <th scope="col" id="name">Name</th>
                       <th scope="col" id="Performa_no">Perfoorma No</th>
-                      <th scope="col" id="proforma-col">Proforma</th>
-                      <th scope="col" id="View">View</th>
-                      <th scope="col" id="clear">Clear</th>
+                      <th scope="col" id="proforma-col">Complete</th>
+                      <th scope="col" id="View">Block</th>
+                      <th scope="col" id="clear">Unblock</th>
 
                   </tr>
                 </thead>
                 <tbody>
 
-                          <% @equipment.where(debit_head:'CPDA Fund', dummy:'generated',role:'student').each do |equipment|%>
-                          <tr>
-                            <th scope="row"><%=equipment.app_no %>	</th>
-                            <td> <%= equipment.username%> </td>
-                            <td> #TO BE UNDERSTOOD </td>
-                            <td> View </td>
-                            <td id="assign-btn">
-                                <!-- Button trigger modal -->
-                                 <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                                 <div id="<%= equipment.app_no%>" class="modal">
+                <% @equipment.where(debit_head:'Project Fund', dummy:'done',role:'student').each do |equipment|%>
+                <tr>
+                  <th scope="row"><%=equipment.app_no %>	</th>
+                  <td> <%= equipment.username%> </td>
+                  <td> #TO BE UNDERSTOOD </td>
 
-                  <div class="modal-dialog">
-                  <div class="modal-content">
-                     <div class="modal-header">
-                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm your action</h1>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
-                          <%= form_with(model: equipment,local:true) do |form| %>
-                          <%= form.hidden_field :dummy, value:'done' %>
-                         <div class="actions">
-                           <%= form.submit "Confirm", class:"btn btn-primary", id:"sbt" %>
-                        </div>
-                       <% end %>
-                     </div>
+                  <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                  <%= form.hidden_field :dummy, value: 'payment_completed' %>
+                  <div class="actions">
+                  <%= form.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                   </div>
-                  </div>
+                  <% end %>
+                  </td>
 
-                  </div>
 
-                             </td>
-                            <td>  <%= form_with(model: equipment,local:true) do |form| %>
-                             <%= form.hidden_field :dummy, value: 'alloted' %>
-                            <div class="actions">
-                              <%= form.submit "Clear", class:"btn btn-primary", id:"sbt" %>
-                           </div>
-                          <% end %>
-                         </td>
+                  <td>
+                  <%= form_with(model: equipment,local:true) do |form| %>
+                  <%= form.hidden_field :dummy, value: 'block' %>
+                  <div class="actions">
+                  <%= form.submit "Block", class:"btn btn-primary", id:"sbt" %>
+                  </div>
+                  <% end %>
+                  </td>
+
+                  <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                  <%= form.hidden_field :dummy, value: 'done' %>
+                  <div class="actions">
+                  <%= form.submit "Unblock", class:"btn btn-primary", id:"sbt" %>
+                  </div>
+                  <% end %>
+                  </td>
 
 
 
