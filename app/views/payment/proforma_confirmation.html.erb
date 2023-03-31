@@ -16,13 +16,13 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap"%>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
+                        <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
                     <%= link_to 'CPDA Fund',payment_paymentC_path,class:"nav-link active sidelink-wrap" %>
@@ -42,7 +42,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Dept. Operating Cost</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Proforma Confirmation</h2>
         </div>
 
 
@@ -63,7 +63,7 @@
                         </thead>
                         <tbody>
 
-                                  <% @equipment.where(debit_head:'Department Operating Cost', dummy:'generated',role:'student').each do |equipment|%>
+                                  <% @equipment.where(dummy:'generated',role:'student').each do |equipment|%>
                                   <tr>
                                     <th scope="row"><%=equipment.app_no %>	</th>
                                     <td> <%= equipment.username%> </td>
