@@ -58,23 +58,23 @@
                               <th scope="col" id="name">Name</th>
                               <th scope="col" id="Performa_no">Perfoorma No</th>
                               <th scope="col" id="proforma-col">Proforma</th>
-                              <th scope="col" id="View">View</th>
+                              <th scope="col" id="send">Action</th>
                               <th scope="col" id="clear">Clear</th>
 
                           </tr>
                         </thead>
                         <tbody>
 
-                                  <% @equipment.where(debit_head:'Project Fund', dummy:'generated',role:'student').each do |equipment|%>
-                                  <tr>
-                                    <th scope="row"><%=equipment.app_no %>	</th>
-                                    <td> <%= equipment.username%> </td>
-                                    <td> #TO BE UNDERSTOOD </td>
-                                    <td> View </td>
-                                    <td id="assign-btn">
-                                        <!-- Button trigger modal -->
-                                         <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                                         <div id="<%= equipment.app_no%>" class="modal">
+                        <% @equipment.where(debit_head:'Project Fund', dummy:'generated',role:'student').each do |equipment|%>
+                        <tr>
+                          <th scope="row"><%=equipment.app_no %>	</th>
+                          <td> <%= equipment.username%> </td>
+                          <td> #TO BE UNDERSTOOD </td>
+                          <td> View </td>
+                          <td id="assign-btn">
+                              <!-- Button trigger modal -->
+                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
+                               <div id="<%= equipment.app_no%>" class="modal">
 
                           <div class="modal-dialog">
                           <div class="modal-content">
@@ -86,7 +86,7 @@
                                   <%= form_with(model: equipment,local:true) do |form| %>
                                   <%= form.hidden_field :dummy, value: 'done' %>
                                  <div class="actions">
-                                   <%= form.submit "Confirm", class:"btn btn-primary", id:"sbt" %>
+                                   <%= form.submit "Send", class:"btn btn-primary", id:"sbt" %>
                                 </div>
                                <% end %>
                              </div>
