@@ -10,6 +10,13 @@
           <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
         <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+        <div id="mod">
+            <h2 class="fw-bold text-center">Modules</h1>
+            <div id="toggler">
+                <%= link_to "Internal Module",  payment_payment_path, class:"btn btn-mod btn-outline-primary mt-4" %>
+                <%= link_to "External Module",  payment_paymentExt_path, class:"btn btn-mod btn-outline-primary mt-4", id:"active" %>
+            </div>
+        </div>
 
         <div class="sidelinks">
 
@@ -27,7 +34,7 @@
                     <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                    <%= link_to 'Completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>

@@ -9,7 +9,14 @@
         <div id="navigation-logo">
           <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
         </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn"" %>
+        <div id="mod">
+            <h2 class="fw-bold text-center">Modules</h1>
+            <div id="toggler">
+                <%= link_to "Internal Module",  payment_payment_path, class:"btn btn-mod btn-outline-primary mt-4", id:"active" %>
+                <%= link_to "External Module",  payment_paymentExt_path, class:"btn btn-mod btn-outline-primary mt-4" %>
+            </div>
+        </div>
 
         <div class="sidelinks">
 
