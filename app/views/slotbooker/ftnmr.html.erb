@@ -125,7 +125,7 @@
 
                         <td> <%= ftnmr.slotdate %></td>
 
-                        <td> <%= ftnmr.slottime %></td>
+                        <td><%= ftnmr.slottime.strftime('%H:%M:%S') if ftnmr.slottime.present? %></td>
 
                           <td><%= ftnmr.status%></td>
                           <%if ftnmr.references.attached? %>

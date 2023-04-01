@@ -115,7 +115,7 @@
 
                         <td> <%= high.slotdate %></td>
 
-                        <td> <%= high.slottime %></td>
+                        <td><%= high.slottime.strftime('%H:%M:%S') if high.slottime.present? %></td>
 
                           <td><%= high.status%></td>
                           <%if high.references.attached? %>

@@ -146,6 +146,56 @@ ActiveRecord::Schema.define(version: 2023_03_27_031129) do
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
+  create_table "calib_bets", force: :cascade do |t|
+    t.string "standard"
+    t.date "date"
+    t.time "time"
+    t.string "status"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calib_hr_fesems", force: :cascade do |t|
+    t.string "standard"
+    t.date "date"
+    t.time "time"
+    t.string "status"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calib_hr_lcms", force: :cascade do |t|
+    t.string "standard"
+    t.date "date"
+    t.time "time"
+    t.string "status"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calib_ramen", force: :cascade do |t|
+    t.string "standard"
+    t.date "date"
+    t.time "time"
+    t.string "status"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "calib_xrds", force: :cascade do |t|
+    t.string "standard"
+    t.date "date"
+    t.time "time"
+    t.string "status"
+    t.text "reason"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "cell_imagings", force: :cascade do |t|
     t.integer "sample"
     t.string "stype"

@@ -50,7 +50,9 @@ class HrlcmsController < ApplicationController
 
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)
-        HrlcmAllotedMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
+        if @hrlcm.status!= 'completed'
+          HrlcmAllotedMailer.with(id:@hrlcm.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_lcms_path(@hrlcm), notice: "Hrlcm was successfully updated." }
         format.json { render :show, status: :ok, location: @hrlcm }
       else

@@ -99,11 +99,11 @@
                         <td> <%= trib.loading%> </td>
                         <td> <%= trib.indenter%> </td>
                         <td> <%= trib.stroke%> </td>
-                    
+
                         <td> <%= trib.more%> </td>
                         <td>Booked</td>
                         <td> <%= trib.slotdate %> </td>
-                        <td> <%= trib.slottime %> </td>
+                        <td><%= trib.slottime.strftime('%H:%M:%S') if trib.slottime.present? %></td>
   <td> <%= trib.status %></td>
   <%if trib.references.attached? %>
   <%trib.references.each do |file|%>

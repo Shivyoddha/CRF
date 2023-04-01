@@ -93,14 +93,15 @@
                         <td> <%= laser.user.department%> </td>
                         <td> <%= laser.user.contact%> </td>
                         <td> <%= laser.sample%> </td>
-                        <td> <%= laser.measurement%> </td>
                         <td> <%= laser.composition%> </td>
                         <td> <%= laser.stype%> </td>
-                        <td> <%= laser.mind%>° to <%= laser.maxd%>°</td>
+                        <td> <%= laser.temp_points%> </td>
+                        <td> <%= laser.toxicity%> </td>
+                        <td> <%= laser.compatibility%> </td>
                         <td> <%= laser.more%> </td>
                         <td>Booked</td>
                         <td> <%= laser.slotdate %> </td>
-                        <td> <%= laser.slottime %> </td>
+                        <td><%= laser.slottime.strftime('%H:%M:%S') if laser.slottime.present? %></td>
   <td> <%= laser.status %></td>
   <%if laser.references.attached? %>
   <%laser.references.each do |file|%>

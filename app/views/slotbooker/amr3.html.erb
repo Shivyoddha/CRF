@@ -78,6 +78,7 @@
                     <th scope="col" id="shear-rate">Shear Rate</th>
                     <th scope="col" id="sweeps">No of Sweeps</th>
                     <th scope="col" id="sweeps">Analysis </th>
+                    <th scope="col" id="toxicity">Toxicity</th>
                     <th scope="col" id="request">More info</th>
                     <th scope="col" id="booked-on">Booked On</th>
                     <th scope="col" id="slot-date">Slot Date</th>
@@ -88,7 +89,7 @@
             </thead>
             <tbody>
 
-                  <% @amr3.where(status:'completed').each do |amr3|%>
+                  <% @amr3.where(status:'completed').each do |amr|%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/AMR/<%=amr.id %>	</th>

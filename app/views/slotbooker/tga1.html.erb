@@ -158,12 +158,10 @@
                                     <%= f.hidden_field :debit_head, value:"#{tga.debit}" %>
                                     <%= f.hidden_field :dept, value:"#{tga.user.department}" %>
                                     <%= f.hidden_field :email, value:"#{tga.user.email}" %>
-                                    <%= f.hidden_field :role, value:"#{trib.user.role}" %>
-                                    <%= f.hidden_field :org, value:"#{trib.user.orgaddress}" %>
-                                    <%= f.hidden_field :profesion, value:"#{trib.user.profession}" %>
-                                    <%= f.hidden_field :orgname, value:"#{trib.user.orgname}" %>
-
-
+                                    <%= f.hidden_field :role, value:"#{tga.user.role}" %>
+                                    <%= f.hidden_field :org, value:"#{tga.user.orgaddress}" %>
+                                    <%= f.hidden_field :profesion, value:"#{tga.user.profession}" %>
+                                    <%= f.hidden_field :orgname, value:"#{tga.user.orgname}" %>
                                     <%= f.hidden_field :equipname, value:"tga" %>
 
 
@@ -176,7 +174,7 @@
                                  </div>
                              </div>
                          </div>
-
+<%end%>
                    </div>
 
                                          </td>

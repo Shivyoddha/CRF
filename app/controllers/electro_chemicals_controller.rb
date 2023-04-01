@@ -49,7 +49,9 @@ class ElectroChemicalsController < ApplicationController
       @electro_chemical.build_equipment_table
     respond_to do |format|
       if @electro_chemical.update(electro_chemical_params)
-        ElectroChemicalAllotedMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
+        if @electro_chemical.status!= 'completed'
+          ElectroChemicalAllotedMailer.with(id:@electro_chemical.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_elctro_path(@electro_chemical), notice: "Electro chemical was successfully updated." }
         format.json { render :show, status: :ok, location: @electro_chemical }
       else

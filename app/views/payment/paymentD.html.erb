@@ -16,7 +16,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'All Payments',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
                 </li>
                 <li class="nav-item">
                         <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
@@ -32,16 +35,6 @@
                 <li class="nav-item">
                     <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Performa Generated',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
-                </li>
             </ul>
         </div>
     </div>
@@ -49,7 +42,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Proforma Console</h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Dept. Operating Cost</h2>
         </div>
 
 
@@ -61,61 +54,37 @@
                             <tr class="table-head font-unbounded">
                                 <th scope="col" id="application-no">Appl No</th>
                                 <th scope="col" id="name">Name</th>
-                                <th scope="col" id="debit-head">Debit Head</th>
+                                <th scope="col" id="Performa_no">Perfoorma No</th>
                                 <th scope="col" id="proforma-col">Proforma</th>
+                                <th scope="col" id="send">Action</th>
+                                <th scope="col" id="clear">Clear</th>
+
                             </tr>
                         </thead>
                         <tbody>
 
-                                  <% @equipment.where(debit_head:'Department Operating Cost', dummy:'alloted',role:'student').each do |equipment|%>
+                                  <% @equipment.where(debit_head:'Department Operating Cost', dummy:'generated',role:'student').each do |equipment|%>
                                   <tr>
                                     <th scope="row"><%=equipment.app_no %>	</th>
                                     <td> <%= equipment.username%> </td>
-                                    <td> <%= equipment.debit_head%> </td>
-                                    <td id="assign-btn">
-                                        <!-- Button trigger modal -->
-                                         <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                                         <div id="<%= equipment.app_no%>" class="modal">
-
-                          <div class="modal-dialog">
-                          <div class="modal-content">
-                             <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= equipment.username %></b></h1>
-                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                             </div>
-                             <div class="modal-body">
-
-                                  <%= form_with(model: equipment,local:true) do |form| %>
-                                   <div class="input-group mb-3">
-                                     <%= form.label :x, "Apllication No.", class:"input-group-text"%>
-                                     <%= form.text_field :x, class:"form-control", id:"composition", placeholder:equipment.app_no, readonly: true%>
-                                 </div>
-                                 <div class="input-group mb-3">
-                                   <%= form.label :y, "Applicant Name", class:"input-group-text"%>
-                                   <%= form.text_field :y, class:"form-control", id:"composition", placeholder:"#{equipment.username}", readonly: true%>
-                               </div>
-
-                                 <div class="input-group mb-3">
-                                 <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
-                                 <%= form.text_field :pay, class:"form-control", id:"amount"%>
-                               </div>
-                               <div class="input-group mb-3">
-                               <%= form.hidden_field :dummy, value: 'done' %>
-                             </div>
+                                    <td> #TO BE UNDERSTOOD </td>
+                                    <td> View </td>
+                                    <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                                    <%= form.hidden_field :dummy, value: 'payment_completed' %>
+                                    <div class="actions">
+                                    <%= form.submit "Send", class:"btn btn-primary", id:"sbt" %>
+                                    </div>
+                                    <% end %>
+                                    <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                                     <%= form.hidden_field :dummy, value: 'alloted' %>
+                                    <div class="actions">
+                                      <%= form.submit "Clear", class:"btn btn-primary", id:"sbt" %>
+                                   </div>
+                                  <% end %>
+                                 </td>
 
 
-                                 <div class="actions">
-                                   <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
 
-                                 </div>
-                               <% end %>
-                             </div>
-                          </div>
-                          </div>
-
-                          </div>
-
-                                     </td>
 
                                  </tr>
                           <%end%>

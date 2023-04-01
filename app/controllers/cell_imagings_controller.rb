@@ -48,7 +48,9 @@ class CellImagingsController < ApplicationController
       @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.update(cell_imaging_params)
-        CellImagingAllotedMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
+        if @cell_imaging.status!= 'completed'
+          CellImagingAllotedMailer.with(id:@cell_imaging.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_cell_path(@cell_imaging), notice: "Cell imaging was successfully updated." }
         format.json { render :show, status: :ok, location: @cell_imaging }
       else

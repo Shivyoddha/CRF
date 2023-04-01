@@ -45,7 +45,7 @@
                         <%= link_to 'Completed Slots',slotbooker_centrifuge3_path,class:"nav-link active sidelink-wrap" %>
                         </li>
                 <li class="nav-item">
-                      <%= link_to 'Cancentrifugeed Slots',slotbooker_centrifuge4_path,class:"nav-link active sidelink-wrap" %>
+                      <%= link_to 'Cancelled Slots',slotbooker_centrifuge4_path,class:"nav-link active sidelink-wrap" %>
                 </li>
             </ul>
         </div>
@@ -136,7 +136,7 @@
 
                                     <div class="input-group mb-3">
                                     <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                    <%= form.time_field :slottime, class:"form-control", id:"composition",min: Time.now.strftime('%H:%M')%>
+                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                   </div>
 
                                        <%=form.fields_for :equipment_table do |f| %>

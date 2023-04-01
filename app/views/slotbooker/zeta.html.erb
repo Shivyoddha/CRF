@@ -120,6 +120,8 @@
                         <td>Booked</td>
 
                         <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
+
+                        <td><span style="white-space: nowrap;"><%= zeta.slotdate.strftime('%d-%m-%Y')if zeta.slotdate.present? %></td>
                         <td><%= zeta.slottime.strftime('%H:%M:%S') if zeta.slottime.present? %></td>
 
                           <td><%= zeta.status%></td>
