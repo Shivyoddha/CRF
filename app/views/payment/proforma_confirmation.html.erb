@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag "paymentportal" %>
 <%=render "partials/paymentNav" %>
 
-
 <div class="container-payments">
 
     <div id="navigation" class="font-quiucksand">
@@ -17,10 +16,10 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap"%>
                 </li>
                 <li class="nav-item">
-                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
+                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
                 <li class="nav-item">
                         <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap" %>
@@ -30,13 +29,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Student Contingency',payment_paymentS_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
+                    <%= link_to 'Student Contingency',payment_paymentS_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
                 <li class="nav-item">
                     <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -44,7 +42,7 @@
 <%# the content section is coded here %>
     <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Student Contigency </h2>
+            <h2 class="fw-bold font-unbounded" id="tab-name">Proforma Confirmation</h2>
         </div>
 
 
@@ -53,24 +51,24 @@
                 <div>
                     <table class="table table-hover font-quicksand">
                         <thead>
-                          <tr class="table-head font-unbounded">
-                              <th scope="col" id="application-no">Appl No</th>
-                              <th scope="col" id="name">Name</th>
-                              <th scope="col" id="Performa_no">Perfoorma No</th>
-                              <th scope="col" id="proforma-col">Proforma</th>
-                              <th scope="col" id="send">Action</th>
-                              <th scope="col" id="clear">Clear</th>
+                            <tr class="table-head font-unbounded">
+                                <th scope="col" id="application-no">Appl No</th>
+                                <th scope="col" id="name">Name</th>
+                                <th scope="col" id="Performa_no">Perfoorma No</th>
+                                <th scope="col" id="proforma-col">Proforma</th>
+                                <th scope="col" id="send">Send</th>
+                                <th scope="col" id="clear">Clear</th>
 
-                          </tr>
+                            </tr>
                         </thead>
                         <tbody>
 
-                                  <% @equipment.where(debit_head:'Student Contingency', dummy:'generated',role:'student').each do |equipment|%>
+                                  <% @equipment.where(dummy:'generated',role:'student').each do |equipment|%>
                                   <tr>
                                     <th scope="row"><%=equipment.app_no %>	</th>
                                     <td> <%= equipment.username%> </td>
                                     <td> #TO BE UNDERSTOOD </td>
-                                    <td><%= link_to "Download PDF", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
+                                    <td><%= link_to "View", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
 
                                     <td>  <%= form_with(model: equipment,local:true) do |form| %>
                                     <%= form.hidden_field :dummy, value: 'done' %>
@@ -79,6 +77,7 @@
                                     </div>
                                     <% end %>
                                     </td>
+
                                     <td>  <%= form_with(model: equipment,local:true) do |form| %>
                                      <%= form.hidden_field :dummy, value: 'alloted' %>
                                     <div class="actions">
@@ -86,6 +85,7 @@
                                    </div>
                                   <% end %>
                                  </td>
+
                                  </tr>
                           <%end%>
                              </tbody>
@@ -99,27 +99,3 @@
 
 
                           </div>
-                          <script>
-                          // Get the modals and buttons
-                          var modal1 = document.getElementByClass("modal");
-                          var btn1 = document.getElementById("ani");
-
-                          // Add event listeners to the buttons
-                          btn1.addEventListener("click", function() {
-                          modal1.style.display = "block";
-                          });
-
-                          btn2.addEventListener("click", function() {
-                          modal2.style.display = "block";
-                          });
-
-                          // Close the modal when the user clicks anywhere outside of it
-                          window.addEventListener("click", function(event) {
-                          if (event.target == modal1) {
-                          modal1.style.display = "none";
-                          }
-                          if (event.target == modal2) {
-                          modal2.style.display = "none";
-                          }
-                          });
-                          </script>

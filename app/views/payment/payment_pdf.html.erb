@@ -1,0 +1,167 @@
+<div id="margin">
+  <div class="container-11">
+        <div class="logo">
+            <%= image_tag wicked_pdf_asset_base64("logoT.png"),style:"height:80px;"%>
+        </div>
+        <div class="nitk-heading text-center">
+            <h2 class="fw-bold text-center" style="font-family: 'Montserrat', sans-serif;">NATIONAL INSTITUTE OF TECHNOLOGY KARNATAKA, SURATHKAL </h2>
+            <p>Srinivasnagar-575 025, D.K</p>
+        </div>
+    </div>
+
+    <div id="pay-details">
+        <div class="left">
+          <div class="pan-no">
+            <span >PAN No</span><span>AAATN4896K</span>
+          </div>
+          <div class="gst-no">
+            <span >GSTIN : </span><span>AAATN4896K-HGSDGF</span>
+          </div>
+
+          <div class="registration-no">
+            <span>Registration No: </span><span>BLRK02818DFGSDXGHE</span>
+          </div>
+        </div>
+        <div class="right">
+            <div class="tan-no">
+              <span>TAN No: </span><span>BLRK02818E</span>
+            </div>
+            <div class="state-code">
+              <span>State Code : </span><span>34F</span>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="crf">
+        <br>
+         <h2 class="text-center" id="crf-heading">CENTRAL RESEARCH FACILITY</h2>
+         <br>
+     </div>
+  <p class="text-center"><u>Demand Note for Book Adjustment</u></p>
+     <div id="proforma-inv">
+        <div class="left">
+          <span id="app-no-tag">Proforma Invoice No:</span><span class="app-no fw-bold element data">NITK/<%= @equipment_table.app_no%></span>
+        </div>
+        <div class="right">
+          <div class="date">
+            <span>Date: </span><span class="fw-bold data"><%= @equipment_table.slotd%></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="letter-format">
+          <br>
+          <p>To:</p>
+
+          <div id="registrar">
+                <span>The Joint Registrar (Accounts)</span>
+          </div>
+          <div id="registrar-addr">
+            <span>NITK, Surathkal</span>
+          </div>
+          <br>
+          <div class="subject text-center">
+              <span class="fw-bold">Sub:  </span><span>Book Transfer through <%= @equipment_table.debit_head%>-reg</span>
+              <hr>
+          </div>
+      </div>
+
+       <p>With Reference to the above, the following testing was made as detailed below:</p>
+      <div class = "user-info" >
+        <table class="center">
+          <tr>
+            <td>1.</td>
+            <td >Name Of Faculty</td>
+            <td class="fw-bold" id="faculty-name">Dr. Rizwanur Rahman</td>
+          </tr>
+          <tr>
+            <td>2.</td>
+            <td >Name of User</td>
+            <td class="fw-bold" id="user-name"><%= @equipment_table.username%></td>
+          </tr>
+          <tr>
+            <td>3.</td>
+            <td >Department</td>
+            <td class="fw-bold" id="dept"><%= @equipment_table.dept%></td>
+          </tr>
+          <tr>
+            <td>4.</td>
+            <td >Name of Testing Name</td>
+            <td class="fw-bold" id="testing-name">X Ray Diffraction</td>
+          </tr>
+          <tr>
+            <td>5.</td>
+            <td >Total Sample Charges</td>
+            <td class="fw-bold"id="sample-charge" >Rs. <%= @equipment_table.pay%>/-</td>
+          </tr>
+          <tr>
+            <td>6.</td>
+            <td >Debit Head</td>
+            <td class="fw-bold" id="debit-head"><%= @equipment_table.debit_head%></td>
+          </tr>
+          <tr>
+            <td>7.</td>
+            <td >Appl No</td>
+            <td class="fw-bold" id="appl-no"><%= @equipment_table.app_no%></td>
+          </tr>
+        </table>
+        <br>
+      </div>
+      <p>The above testing charges may be debited to Department Operating Cost</p>
+
+        <p class="text-center fw-bold" id="lab-return"><u>TO BE RETURNED TO CRF LAB</u></p>
+
+        <div id="signatures-upper">
+            <div id="signatures-upper-left-3d-pro" class="element">
+                  <div id="faculty-incharge">
+                      <span>HOD</span>
+                  </div>
+                  <div>
+                      <span class="fw-bold"><%= @equipment_table.dept%></span>
+                  </div>
+                  <div>
+                      <span id="seals">With Seal & Signature</span>
+                  </div>
+            </div>
+
+            <div id="signatures-upper-right-3d-pro" class="element">
+                <div id="faculty-incharge">
+                    <span>Faculty</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Dr. Rizwanur Rahman</span>
+                </div>
+                <div>
+                    <span id="seals">With Seal & Signature</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="notes ">
+            <p class="fw-bold ">Approval:</p>
+
+            <div class="signatures">
+                <div class="chairman-sign">
+                    <span >Chairman, CRF</span>
+                </div>
+                <div class="chairman-name">
+                    <span class="fw-bold">Prof. M. N. Satyanarayan</span>
+                </div>
+                <hr>
+            </div>
+
+            <div class="forwarded-to">
+              <p>To: </p>
+              <p>Concernded Asst. for information and necessary action.</p>
+              <p><span class="fw-bold">Note: </span> Mode of Payment : Book Transfer</p>
+            </div>
+
+
+            <div class="generated-on mt-3">
+              
+            </div>
+
+        </div>
+
+</div>
