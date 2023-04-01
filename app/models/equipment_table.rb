@@ -40,5 +40,5 @@ class EquipmentTable < ApplicationRecord
   belongs_to :uv_vis_nir, optional: true
   belongs_to :zeta_potential_size, optional: true
   belongs_to :equiplist, optional: true
-
+  has_one_attached :view 
 end

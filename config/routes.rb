@@ -443,6 +443,8 @@ Rails.application.routes.draw do
     get 'home/verifsent'
     post 'home/verifsent'
     get 'home/maithu'
+    get 'payment/generate_pdf', as: :generate_pdf
+
   #   devise_scope :user do
   #   root to: "devise/sessions#new"
   # end/
