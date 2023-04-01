@@ -53,6 +53,8 @@ class MicroEdmsController < ApplicationController
 
     respond_to do |format|
       if @micro_edm.update(micro_edm_params)
+        if @micro_edm.status!= 'completed'
+        end
         format.html { redirect_to slotbooker_microedm_path, notice: "Micro edm was successfully updated." }
         format.json { render :show, status: :ok, location: @micro_edm }
       else
