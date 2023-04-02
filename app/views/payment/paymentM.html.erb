@@ -23,34 +23,17 @@
             <ul class="sidelinks-model-list">
                 <%# below are code to get items on the navigation pane %>
                 <li class="nav-item">
-                 <%= link_to 'All Payments',payment_payment_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                        <%= link_to 'Department Operating Cost',payment_paymentD_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'CPDA Fund',payment_paymentC_path,class:"nav-link active sidelink-wrap" %>
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
                 <li class="nav-item">
-                    <%= link_to 'Student Contingency',payment_paymentS_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-
-                <li class="nav-item">
-                    <%= link_to 'Project Fund',payment_paymentP_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-
-                <!-- <li class="nav-item">
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li> -->
+                </li>
 
                 <li class="nav-item">
-
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to 'Performa Generated',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
-                </li>
+                
             </ul>
         </div>
     </div>
@@ -111,7 +94,7 @@
                 </div>
             </div>
 
-              <%= form.hidden_field :dummy, value: 'done' %>
+              <%= form.hidden_field :dummy, value: 'generated' %>
               <%= form.hidden_field :role, value: 'student' %>
 
               <div class="actions">
