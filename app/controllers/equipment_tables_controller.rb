@@ -159,11 +159,20 @@ class EquipmentTablesController < ApplicationController
             end
             FeedbackMailer.with(userid:current_user.id).Mail.deliver_later
       end
-      
         if @equipment_table.role == "student"
-        format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
-        format.json { render :show, status: :ok, location: @equipment_table }
-      else
+          if @equipment_table.dummy == "generated"
+          format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
+          if @equipment_table.dummy == "done"
+          format.html { redirect_to payment_proforma_confirmation_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
+          if @equipment_table.dummy == "payment_completed"
+          format.html { redirect_to payment_payment_completed_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
+        else
         format.html { redirect_to payment_paymentExt_path(@equipment_table), notice: "Equipment table was successfully updated." }
         format.json { render :show, status: :ok, location: @equipment_table }
       end
@@ -193,6 +202,6 @@ class EquipmentTablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipment_table_params
-      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no)
+      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no, :view)
     end
 end

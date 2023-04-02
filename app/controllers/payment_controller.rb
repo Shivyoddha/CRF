@@ -88,4 +88,19 @@ class PaymentController < ApplicationController
       @equipment = EquipmentTable.all
       @equipment = EquipmentTable.order(updated_at: :desc)
   end
+
+  def generate_pdf
+  @equipment_table = EquipmentTable.find(params[:id])
+
+  respond_to do |format|
+    format.pdf do
+      render pdf: "file_name",
+             template: "payment/payment_pdf.html.erb",
+             layout: "pdf.html",
+             show_as_html: params.key?('debug'),
+            locals:{ equipment_table: @equipment_table }
+    end
+  end
+end
+
 end

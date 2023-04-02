@@ -68,25 +68,23 @@
                                     <th scope="row"><%=equipment.app_no %>	</th>
                                     <td> <%= equipment.username%> </td>
                                     <td> #TO BE UNDERSTOOD </td>
-                                    <td> View </td>
+                                    <td><%= link_to "View", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
 
                                     <td>  <%= form_with(model: equipment,local:true) do |form| %>
-                                    <%= form.hidden_field :dummy, value: 'payment_completed' %>
+                                    <%= form.hidden_field :dummy, value: 'done' %>
                                     <div class="actions">
-                                    <%= form.submit "Send", class:"btn btn-primary", id:"sbt" %>
+                                    <%= form.submit "Send", class:"btn btn-danger"%>
                                     </div>
                                     <% end %>
                                     </td>
+
                                     <td>  <%= form_with(model: equipment,local:true) do |form| %>
                                      <%= form.hidden_field :dummy, value: 'alloted' %>
                                     <div class="actions">
-                                      <%= form.submit "Clear", class:"btn btn-primary", id:"sbt" %>
+                                      <%= form.submit "Clear", class:"btn btn-light" %>
                                    </div>
                                   <% end %>
                                  </td>
-
-
-
 
                                  </tr>
                           <%end%>
@@ -101,27 +99,3 @@
 
 
                           </div>
-                          <script>
-                          // Get the modals and buttons
-                          var modal1 = document.getElementByClass("modal");
-                          var btn1 = document.getElementById("ani");
-
-                          // Add event listeners to the buttons
-                          btn1.addEventListener("click", function() {
-                          modal1.style.display = "block";
-                          });
-
-                          btn2.addEventListener("click", function() {
-                          modal2.style.display = "block";
-                          });
-
-                          // Close the modal when the user clicks anywhere outside of it
-                          window.addEventListener("click", function(event) {
-                          if (event.target == modal1) {
-                          modal1.style.display = "none";
-                          }
-                          if (event.target == modal2) {
-                          modal2.style.display = "none";
-                          }
-                          });
-                          </script>
