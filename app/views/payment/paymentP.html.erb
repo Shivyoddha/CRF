@@ -70,44 +70,23 @@
                           <th scope="row"><%=equipment.app_no %>	</th>
                           <td> <%= equipment.username%> </td>
                           <td> #TO BE UNDERSTOOD </td>
-                          <td> View </td>
-                          <td id="assign-btn">
-                              <!-- Button trigger modal -->
-                               <%= button_tag "generate", type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equipment.app_no}" }, id: "ani" %>
-                               <div id="<%= equipment.app_no%>" class="modal">
+                          <td><%= link_to "Download PDF", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
 
-                          <div class="modal-dialog">
-                          <div class="modal-content">
-                             <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm your action</h1>
-                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                             </div>
-                             <div class="modal-body">
-                                  <%= form_with(model: equipment,local:true) do |form| %>
-                                  <%= form.hidden_field :dummy, value: 'done' %>
-                                 <div class="actions">
-                                   <%= form.submit "Send", class:"btn btn-primary", id:"sbt" %>
-                                </div>
-                               <% end %>
-                             </div>
+                          <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                          <%= form.hidden_field :dummy, value: 'done' %>
+                          <div class="actions">
+                          <%= form.submit "Send", class:"btn btn-danger"%>
                           </div>
-                          </div>
-
-                          </div>
-
-                                     </td>
-                                    <td>  <%= form_with(model: equipment,local:true) do |form| %>
-                                     <%= form.hidden_field :dummy, value: 'alloted' %>
-                                    <div class="actions">
-                                      <%= form.submit "Clear", class:"btn btn-primary", id:"sbt" %>
-                                   </div>
-                                  <% end %>
-                                 </td>
-
-
-
-
-                                 </tr>
+                          <% end %>
+                          </td>
+                          <td>  <%= form_with(model: equipment,local:true) do |form| %>
+                           <%= form.hidden_field :dummy, value: 'alloted' %>
+                          <div class="actions">
+                            <%= form.submit "Clear", class:"btn btn-light" %>
+                         </div>
+                        <% end %>
+                       </td>
+                       </tr>
                           <%end%>
                              </tbody>
                           </table>
