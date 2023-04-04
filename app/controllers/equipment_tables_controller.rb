@@ -89,7 +89,7 @@ class EquipmentTablesController < ApplicationController
               PaymentGlowMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
             if @equipment_table.equipname == "grind"
-              PaymentCellImagingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+              PaymentGrindMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
             if @equipment_table.equipname == "high"
               PaymentHighTempVaccumMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
@@ -159,6 +159,124 @@ class EquipmentTablesController < ApplicationController
             end
             FeedbackMailer.with(userid:current_user.id).Mail.deliver_later
       end
+
+      if @equipment_table.dummy == 'payment_completed'
+          if @equipment_table.equipname == "xrd"
+            SlotbookerXrd.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "amr"
+            SlotbookerAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "atomic"
+           SlotbookerAtomicForceMicroscopMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "ball"
+          SlotbookerBallMailingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "bet"
+            SlotbookerBetMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "cell"
+            SlotbookerCellImagingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "electro"
+            SlotbookerElectroChemicalMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "fesemc"
+            SlotbookerHrFesemCMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "fesemj"
+            SlotbookerHrFesemJMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "five"
+            SlotbookerFiveAxiMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "fric"
+            SlotbookerFrictionMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "gait"
+            SlotbookerGaitMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "sesning"
+            SlotbookerGasSensingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "glove"
+            SlotbookerGloveBoxMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "glow"
+            SlotbookerGlowMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "grind"
+            SlotbookerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "high"
+            SlotbookerHighTempVaccumMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "icp"
+            SlotbookerIcpMMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "imped"
+            SlotbookerImpedanceAnalyzerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "integrated"
+            SlotbookerIntegratedMultiRoleTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "ionc"
+            SlotbookerIonChromotographyMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "laser"
+            SlotbookerAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "lcms"
+            SlotbookerHrLcmMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "low"
+            SlotbookerLowFatigueMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "milli"
+            SlotbookerMilliQMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "multi"
+            SlotbookerMultiImpactTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "nitrigen"
+            SlotbookerLiquidNitrogenMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "probe"
+            SlotbookerProbeSonicatorMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "raman"
+            SlotbookerRamanMicroscopeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "scratch"
+            SlotbookerScratchIndentatioMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "spark"
+            SlotbookerSparkOMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "spectro"
+            SlotbookerSpectroRadioMeterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "tga"
+           SlotbookerTgaFttrMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "threed"
+            SlotbookerThreeDNonContactMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "threes"
+            SlotbookerThreeDScannerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "trib"
+            SlotbookerTribometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "uv"
+            SlotbookerUvVisNirMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+          if @equipment_table.equipname == "zeta"
+            SlotbookerZetaPotentialSizeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          end
+
+    end
         if @equipment_table.role == "student"
           if @equipment_table.dummy == "generated"
           format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
