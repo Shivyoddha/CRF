@@ -141,7 +141,7 @@
 
                                        <%=form.fields_for :equipment_table do |f| %>
                                            <%= f.hidden_field :app_no, value:"CRF/centrifuge/#{centrifuge.id}"%>
-                                          <%= f.hidden_field :username, value:"#{centrifuge.user.name}"%>
+                                          <%= f.hidden_field :username, value:"#{centrifuge.user.firstname}"%>
                                           <%= f.hidden_field :dummy, value:"alloted"%>
                                          <%= f.hidden_field :debit_head, value:"#{centrifuge.debit}" %>
                                        <%= f.hidden_field :dept, value:"#{centrifuge.user.department}" %>

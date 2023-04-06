@@ -163,7 +163,7 @@
                                  <%=form.fields_for :equipment_table do |f| %>
 
                                      <%= f.hidden_field :app_no, value:"CRF/lcms/#{lcms.id}"%>
-                                    <%= f.hidden_field :username, value:"#{lcms.user.name}"%>
+                                    <%= f.hidden_field :username, value:"#{lcms.user.firstname}"%>
                                      <%= f.hidden_field :dummy, value:"#{lcms.status}"%>
                                      <%= f.hidden_field :debit_head, value:"#{lcms.debit}" %>
                                  <%end%>

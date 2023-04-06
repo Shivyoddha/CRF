@@ -151,7 +151,7 @@
 
 
                                    <%= f.hidden_field :app_no, value:"CRF/AMR/#{amr.id}"%>
-                                   <%= f.hidden_field :username, value:"#{amr.user.name}"%>
+                                   <%= f.hidden_field :username, value:"#{amr.user.firstname}"%>
                                    <%= f.hidden_field :dummy, value:"#{amr.status}"%>
                                    <%= f.hidden_field :debit_head, value:"#{amr.debit}" %>
                                  <%end%>

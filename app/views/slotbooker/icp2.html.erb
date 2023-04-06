@@ -154,7 +154,7 @@
                                <%=form.fields_for :equipment_table do |f| %>
 
                                    <%= f.hidden_field :app_no, value:"CRF/ICP/#{icp.id}"%>
-                                   <%= f.hidden_field :username, value:"#{icp.user.name}"%>
+                                   <%= f.hidden_field :username, value:"#{icp.user.firstname}"%>
                                     <%= f.hidden_field :dummy, value:"#{icp.status}"%>
                                     <%= f.hidden_field :debit_head, value:"#{icp.debit}" %>
                                <%end%>

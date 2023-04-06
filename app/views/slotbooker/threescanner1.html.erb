@@ -134,7 +134,7 @@
 
                                        <%=form.fields_for :equipment_table do |f| %>
                                        <%= f.hidden_field :app_no, value:"CRF/XRD/#{three.id}"%>
-                                       <%= f.hidden_field :username, value:"#{three.user.name}"%>
+                                       <%= f.hidden_field :username, value:"#{three.user.firstname}"%>
                                        <%= f.hidden_field :dummy, value:"alloted"%>
                                        <%= f.hidden_field :debit_head, value:"#{three.debit}" %>
                                        <%= f.hidden_field :dept, value:"#{three.user.department}" %>

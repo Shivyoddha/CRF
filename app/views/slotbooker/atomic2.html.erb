@@ -147,7 +147,7 @@
 
                                <%=form.fields_for :equipment_table do |f| %>
                                   <%= f.hidden_field :app_no, value:"CRF/ATOMIC/#{atomic.id}"%>
-                                  <%= f.hidden_field :username, value:"#{atomic.user.name}"%>
+                                  <%= f.hidden_field :username, value:"#{atomic.user.firstname}"%>
                                   <%= f.hidden_field :dummy, value:"#{atomic.status}"%>
                                   <%= f.hidden_field :debit_head, value:"#{atomic.debit}" %>
                                <%end%>
