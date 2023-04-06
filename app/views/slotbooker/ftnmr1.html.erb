@@ -136,82 +136,97 @@
                   <% else %>
                     <td>NA</td>
                   <% end %>
-                   <td id="assign-btn">
-                       <!-- Button trigger modal -->
-                        <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{ftnmr.id}" }, id: "ani" %>
-                        <div id="<%= ftnmr.id%>" class="modal">
+                  <td id="assign-btn">
+                <!-- Button trigger modal -->
+                 <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{ftnmr.id}" }, id: "ani" %>
+                 <div id="<%= ftnmr.id%>" class="modal">
 
-<div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= ftnmr.user.firstname %></b></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= form_with(model: ftnmr,local:true) do |form| %>
+                 <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= ftnmr.user.firstname %></b></h1>
+                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                             <div class="modal-body">
+                               <%= form_with(model: ftnmr,local:true) do |form| %>
 
-              <div class="input-group mb-3">
-                <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
-              </div>
+                               <div class="input-group mb-3">
+                                 <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                 <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                               </div>
 
-              <div class="input-group mb-3">
-              <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-              <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-            </div>
-               <%=ftnmr.id%>
+                               <div class="input-group mb-3">
+                               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                               <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                             </div>
 
-                <div class="actions">
-                  <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-
-                </div>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Cancel Slot</button>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-                    </td>
-
-                </tr>
-<%end%>
-            </tbody>
-        </table>
-
-    </div>
-    </div>
+                                <%=form.fields_for :equipment_table do |f| %>
+                                    <%= f.hidden_field :app_no, value:"CRF/ftnmr/#{ftnmr.id}"%>
+                                   <%= f.hidden_field :username, value:"#{ftnmr.user.firstname}"%>
+                                   <%= f.hidden_field :dummy, value:"alloted"%>
+                                  <%= f.hidden_field :debit_head, value:"#{ftnmr.debit}" %>
+                                  <%= f.hidden_field :dept, value:"#{ftnmr.user.department}" %>
+                                 <%= f.hidden_field :email, value:"#{ftnmr.user.email}" %>
+                                 <%= f.hidden_field :equipname, value:"ftnmr" %>
+                                 <%= f.hidden_field :role, value:"#{ftnmr.user.role}" %>
+                                <%= f.hidden_field :org, value:"#{ftnmr.user.orgaddress}" %>
+                                <%= f.hidden_field :profesion, value:"#{ftnmr.user.profession}" %>
+                                <%= f.hidden_field :orgname, value:"#{ftnmr.user.orgname}" %>
 
 
-</div>
+                                <%end%>
 
 
-</div>
-<script>
-// Get the modals and buttons
-var modal1 = document.getElementByClass("modal");
-var btn1 = document.getElementById("ani");
+                                 <div class="actions">
+                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                 </div>
+                               <% end %>
 
-// Add event listeners to the buttons
-btn1.addEventListener("click", function() {
-modal1.style.display = "block";
-});
 
-btn2.addEventListener("click", function() {
-modal2.style.display = "block";
-});
 
-// Close the modal when the user clicks anywhere outside of it
-window.addEventListener("click", function(event) {
-if (event.target == modal1) {
-  modal1.style.display = "none";
-}
-if (event.target == modal2) {
-  modal2.style.display = "none";
-}
-});
-</script>
+                             </div>
+                         </div>
+                     </div>
+
+               </div>
+
+                                     </td>
+
+                                 </tr>
+               <%end%>
+
+                             </tbody>
+                         </table>
+
+                     </div>
+                     </div>
+
+
+                 </div>
+
+
+               </div>
+               <script>
+               // Get the modals and buttons
+               var modal1 = document.getElementByClass("modal");
+               var btn1 = document.getElementById("ani");
+
+               // Add event listeners to the buttons
+               btn1.addEventListener("click", function() {
+                 modal1.style.display = "block";
+               });
+
+               btn2.addEventListener("click", function() {
+                 modal2.style.display = "block";
+               });
+
+               // Close the modal when the user clicks anywhere outside of it
+               window.addEventListener("click", function(event) {
+                 if (event.target == modal1) {
+                   modal1.style.display = "none";
+                 }
+                 if (event.target == modal2) {
+                   modal2.style.display = "none";
+                 }
+               });
+               </script>

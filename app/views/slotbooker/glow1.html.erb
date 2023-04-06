@@ -140,7 +140,7 @@
 
                                       <%=form.fields_for :equipment_table do |f| %>
                                           <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
-                                         <%= f.hidden_field :username, value:"#{glow.user.name}"%>
+                                         <%= f.hidden_field :username, value:"#{glow.user.firstname}"%>
                                          <%= f.hidden_field :dummy, value:"alloted"%>
                                         <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
                                         <%= f.hidden_field :dept, value:"#{glow.user.department}" %>

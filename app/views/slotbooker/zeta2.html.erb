@@ -158,7 +158,7 @@
                                    <%=form.fields_for :equipment_table do |f| %>
 
                                        <%= f.hidden_field :app_no, value:"CRF/ZETA/#{zeta.id}"%>
-                                      <%= f.hidden_field :username, value:"#{zeta.user.name}"%>
+                                      <%= f.hidden_field :username, value:"#{zeta.user.firstname}"%>
                                       <%= f.hidden_field :dummy, value:"#{zeta.status}"%>
                                       <%= f.hidden_field :debit_head, value:"#{zeta.debit}" %>
 

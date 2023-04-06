@@ -155,34 +155,24 @@
                                            </div>
 
                                             <%=form.fields_for :equipment_table do |f| %>
-                                             <div class="input-group mb-3">
+
                                                 <%= f.hidden_field :app_no, value:"CRF/MULTI/#{multi.id}"%>
-                                              </div>
 
-                                             <div class="input-group mb-3">
-                                               <%= f.hidden_field :username, value:"#{multi.user.name}"%>
-                                            </div>
+                                               <%= f.hidden_field :username, value:"#{multi.user.firstname}"%>
 
-
-                                             <div class="input-group mb-3">
                                                <%= f.hidden_field :dummy, value:"alloted"%>
-                                             </div>
 
-                                            <div class="input-group mb-3">
                                               <%= f.hidden_field :debit_head, value:"#{multi.debit}" %>
-                                           </div>
 
-                                           <div class="input-group mb-3">
                                               <%= f.hidden_field :dept, value:"#{multi.user.department}" %>
-                                           </div>
 
-                                           <div class="input-group mb-3">
                                              <%= f.hidden_field :email, value:"#{multi.user.email}" %>
-                                          </div>
 
-                                           <div class="input-group mb-3">
+                                             <%= f.hidden_field :org, value:"#{multi.user.orgaddress}" %>
+                                             <%= f.hidden_field :profesion, value:"#{multi.user.profession}" %>
+                                             <%= f.hidden_field :orgname, value:"#{multi.user.orgname}" %>
                                              <%= f.hidden_field :equipname, value:"multi" %>
-                                          </div>
+
 
                                             <%end%>
 

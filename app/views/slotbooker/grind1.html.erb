@@ -143,7 +143,7 @@
                                       <%=form.fields_for :equipment_table do |f| %>
                                        <div class="input-group mb-3">
                                           <%= f.hidden_field :app_no, value:"CRF/GRIND/#{grind.id}"%>
-                                         <%= f.hidden_field :username, value:"#{grind.user.name}"%>
+                                         <%= f.hidden_field :username, value:"#{grind.user.firstname}"%>
                                          <%= f.hidden_field :dummy, value:"alloted"%>
                                         <%= f.hidden_field :debit_head, value:"#{grind.debit}" %>
                                         <%= f.hidden_field :dept, value:"#{grind.user.department}" %>

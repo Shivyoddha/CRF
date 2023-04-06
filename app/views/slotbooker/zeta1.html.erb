@@ -155,34 +155,23 @@
                                            </div>
 
                                             <%=form.fields_for :equipment_table do |f| %>
-                                             <div class="input-group mb-3">
+
                                                 <%= f.hidden_field :app_no, value:"CRF/ZETA/#{zeta.id}"%>
-                                              </div>
 
-                                             <div class="input-group mb-3">
                                                <%= f.hidden_field :username, value:"#{zeta.user.name}"%>
-                                            </div>
 
-
-                                             <div class="input-group mb-3">
                                                <%= f.hidden_field :dummy, value:"alloted"%>
-                                             </div>
 
-                                            <div class="input-group mb-3">
                                               <%= f.hidden_field :debit_head, value:"#{zeta.debit}" %>
-                                           </div>
 
-                                           <div class="input-group mb-3">
                                              <%= f.hidden_field :dept, value:"#{zeta.user.department}" %>
-                                          </div>
 
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :email, value:"#{zeta.user.email}" %>
-                                         </div>
+                                            <%= f.hidden_field :org, value:"#{zeta.user.orgaddress}" %>
+                                            <%= f.hidden_field :profesion, value:"#{zeta.user.profession}" %>
+                                            <%= f.hidden_field :orgname, value:"#{zeta.user.orgname}" %>
 
-                                          <div class="input-group mb-3">
                                             <%= f.hidden_field :equipname, value:"zeta" %>
-                                         </div>
 
                                             <%end%>
 
