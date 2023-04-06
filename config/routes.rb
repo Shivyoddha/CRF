@@ -152,6 +152,60 @@ Rails.application.routes.draw do
     get 'feedbacks/index'
 
 
+   get 'slot_mailer/xrd'
+   get 'slot_mailer/advance_molecular_rheometer'
+   get 'slot_mailer/bet'
+   get 'slot_mailer/ball_mailing'
+   get 'slot_mailer/cell_imaging'
+   get 'slot_mailer/electro_chemical'
+   get 'slot_mailer/five_axi'
+   get 'slot_mailer/friction'
+   get 'slot_mailer/ftnmr'
+   get 'slot_mailer/gait'
+   get 'slot_mailer/gas_sensing'
+   get 'slot_mailer/glove_box'
+   get 'slot_mailer/glow'
+   get 'slot_mailer/grinding'
+   get 'slot_mailer/high_temp_vaccum'
+   get 'slot_mailer/hr_fesem_c'
+   get 'slot_mailer/hr_fesem_j'
+   get 'slot_mailer/icp_m'
+   get 'slot_mailer/hr_lcm'
+   get 'slot_mailer/impedence_analyzer'
+   get 'slot_mailer/integrated_multi_role_tester'
+   get 'slot_mailer/ion_chromatography'
+   get 'slot_mailer/liquid_nitrogen'
+   get 'slot_mailer/low_fatigue'
+   get 'slot_mailer/laser'
+   get 'slot_mailer/micro_edm'
+   get 'slot_mailer/milli_q'
+   get 'slot_mailer/multi_impact_tester'
+   get 'slot_mailer/probe_sonicator'
+   get 'slot_mailer/raman_microscope'
+   get 'slot_mailer/scratch_indentation'
+   get 'slot_mailer/spark_o'
+   get 'slot_mailer/spectro_radio_meter'
+   get 'slot_mailer/tga_fttr'
+   get 'slot_mailer/three_d_non_contact'
+   get 'slot_mailer/three_d_scanner'
+   get 'slot_mailer/tribometer'
+   get 'slot_mailer/ultra_centrifuge'
+   get 'slot_mailer/uv_vis_nir'
+   get 'slot_mailer/zeta_potential_size'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
