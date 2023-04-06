@@ -140,77 +140,93 @@
                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{micro.id}" }, id: "ani" %>
                            <div id="<%= micro.id%>" class="modal">
 
- <div class="modal-dialog">
-           <div class="modal-content">
-               <div class="modal-header">
-                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= micro.user.firstname %></b></h1>
-                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
-                 <%= form_with(model: micro,local:true) do |form| %>
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Generate Performa<b><%= micro.user.firstname %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                       <div class="modal-body">
+                                         <%= form_with(model: micro,local:true) do |form| %>
 
-                     <div class="input-group mb-3">
-                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                     <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                   </div>
+                                             <div class="input-group mb-3">
+                                             <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                             <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                           </div>
 
-                   <div class="input-group mb-3">
-                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                 </div>
-                  <%=micro.id%>
+                                           <div class="input-group mb-3">
+                                           <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                           <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                         </div>
 
-                   <div class="actions">
-                     <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                          <%=form.fields_for :equipment_table do |f| %>
 
-                   </div>
-                 <% end %>
-               </div>
-               <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                   <button type="button" class="btn btn-primary">Cancel Slot</button>
-               </div>
-           </div>
-       </div>
-
-</div>
-
-                       </td>
-
-                   </tr>
-<%end%>
-               </tbody>
-           </table>
-
-       </div>
-       </div>
+                                        <%= f.hidden_field :app_no, value:"CRF/MICRO/#{micro.id}"%>
+                                        <%= f.hidden_field :username, value:"#{micro.user.firstname}"%>
+                                        <%= f.hidden_field :dummy, value:"alloted"%>
+                                        <%= f.hidden_field :debit_head, value:"#{micro.debit}" %>
+                                        <%= f.hidden_field :dept, value:"#{micro.user.department}" %>
+                                       <%= f.hidden_field :email, value:"#{micro.user.email}" %>
+                                       <%= f.hidden_field :role, value:"#{micro.user.role}" %>
+                                      <%= f.hidden_field :org, value:"#{micro.user.orgaddress}" %>
+                                      <%= f.hidden_field :profesion, value:"#{micro.user.profession}" %>
+                                      <%= f.hidden_field :orgname, value:"#{micro.user.orgname}" %>
+                                       <%= f.hidden_field :equipname, value:"low" %>
 
 
-   </div>
+
+                                          <%end%>
+
+                                           <div class="actions">
+                                             <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                           </div>
+                                         <% end %>
 
 
-</div>
-<script>
- // Get the modals and buttons
- var modal1 = document.getElementByClass("modal");
- var btn1 = document.getElementById("ani");
 
- // Add event listeners to the buttons
- btn1.addEventListener("click", function() {
-   modal1.style.display = "block";
- });
+                                       </div>
+                                   </div>
+                               </div>
 
- btn2.addEventListener("click", function() {
-   modal2.style.display = "block";
- });
+                         </div>
 
- // Close the modal when the user clicks anywhere outside of it
- window.addEventListener("click", function(event) {
-   if (event.target == modal1) {
-     modal1.style.display = "none";
-   }
-   if (event.target == modal2) {
-     modal2.style.display = "none";
-   }
- });
-</script>
+                                               </td>
+
+                                           </tr>
+                         <%end%>
+
+                                       </tbody>
+                                   </table>
+
+                               </div>
+                               </div>
+
+
+                           </div>
+
+
+                         </div>
+                         <script>
+                         // Get the modals and buttons
+                         var modal1 = document.getElementByClass("modal");
+                         var btn1 = document.getElementById("ani");
+
+                         // Add event listeners to the buttons
+                         btn1.addEventListener("click", function() {
+                           modal1.style.display = "block";
+                         });
+
+                         btn2.addEventListener("click", function() {
+                           modal2.style.display = "block";
+                         });
+
+                         // Close the modal when the user clicks anywhere outside of it
+                         window.addEventListener("click", function(event) {
+                           if (event.target == modal1) {
+                             modal1.style.display = "none";
+                           }
+                           if (event.target == modal2) {
+                             modal2.style.display = "none";
+                           }
+                         });
+                         </script>

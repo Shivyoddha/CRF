@@ -142,7 +142,7 @@
                                             <%=form.fields_for :equipment_table do |f| %>
 
                                                 <%= f.hidden_field :app_no, value:"CRF/TRIB/#{trib.id}"%>
-                                               <%= f.hidden_field :username, value:"#{trib.user.name}"%>
+                                               <%= f.hidden_field :username, value:"#{trib.user.firstname}"%>
                                                <%= f.hidden_field :dummy, value:"alloted"%>
                                               <%= f.hidden_field :debit_head, value:"#{trib.debit}" %>
                                              <%= f.hidden_field :dept, value:"#{trib.user.department}" %>

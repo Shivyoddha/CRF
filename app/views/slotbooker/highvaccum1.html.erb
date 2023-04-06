@@ -136,7 +136,7 @@
                            <div class="modal-dialog">
                                  <div class="modal-content">
                                      <div class="modal-header">
-                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= high.user.name %></b></h1>
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= high.user.firstname %></b></h1>
                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                       </div>
                                        <div class="modal-body">
@@ -155,7 +155,7 @@
                                           <%=form.fields_for :equipment_table do |f| %>
                                            <div class="input-group mb-3">
                                               <%= f.hidden_field :app_no, value:"CRF/high/#{high.id}"%>
-                                             <%= f.hidden_field :username, value:"#{high.user.name}"%>
+                                             <%= f.hidden_field :username, value:"#{high.user.firstname}"%>
                                              <%= f.hidden_field :dummy, value:"alloted"%>
                                             <%= f.hidden_field :debit_head, value:"#{high.debit}" %>
                                             <%= f.hidden_field :dept, value:"#{high.user.department}" %>

@@ -160,21 +160,15 @@
                          </div>
 
                          <%=form.fields_for :equipment_table do |f| %>
-                          <div class="input-group mb-3">
+
                              <%= f.hidden_field :app_no, value:"CRF/icp/#{low2.id}"%>
-                           </div>
 
-                          <div class="input-group mb-3">
-                            <%= f.hidden_field :username, value:"#{low2.user.name}"%>
-                         </div>
+                            <%= f.hidden_field :username, value:"#{low2.user.firstname}"%>
 
-                         <div class="input-group mb-3">
                            <%= f.hidden_field :dummy, value:"#{low2.status}"%>
-                        </div>
 
-                         <div class="input-group mb-3">
                            <%= f.hidden_field :debit_head, value:"#{low2.debit}" %>
-                        </div>
+
                          <%end%>
                            <div class="actions">
                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
