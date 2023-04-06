@@ -148,10 +148,10 @@
                                           <%=form.fields_for :equipment_table do |f| %>
 
                                               <%= f.hidden_field :app_no, value:"CRF/IMP/#{imped.id}"%>
-                                              <%= f.hidden_field :username, value:"#{imped.user.name}"%>
+                                              <%= f.hidden_field :username, value:"#{imped.user.firstname}"%>
                                               <%= f.hidden_field :dummy, value:"#{imped.status}"%>
                                               <%= f.hidden_field :debit_head, value:"#{imped.debit}" %>
-                                        
+
                                           <%end%>
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

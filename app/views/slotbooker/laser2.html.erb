@@ -141,7 +141,7 @@
                          <%=form.fields_for :equipment_table do |f| %>
 
                              <%= f.hidden_field :app_no, value:"CRF/ICP/#{laser.id}"%>
-                             <%= f.hidden_field :username, value:"#{laser.user.name}"%>
+                             <%= f.hidden_field :username, value:"#{laser.user.firstname}"%>
                              <%= f.hidden_field :dummy, value:"#{laser.status}"%>
                               <%= f.hidden_field :debit_head, value:"#{laser.debit}" %>
                          <%end%>
