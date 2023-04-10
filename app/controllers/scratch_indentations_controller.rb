@@ -51,13 +51,9 @@ class ScratchIndentationsController < ApplicationController
 
     respond_to do |format|
       if @scratch_indentation.update(scratch_indentation_params)
-        if @scratch_indentation.amount == nil
           if @scratch_indentation.status!= 'completed'
             ScratchIndentationAllotedMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
           end
-      else
-        PaymentScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).Mail.deliver_later
-      end
         format.html { redirect_to slotbooker_scratch_path(@scratch_indentation), notice: "Scratch indentation was successfully updated." }
         format.json { render :show, status: :ok, location: @scratch_indentation }
       else

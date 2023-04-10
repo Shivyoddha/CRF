@@ -4,16 +4,46 @@
 <%=render "partials/loginHeading" %>
 <h1 class="myslots-heading">My Slots</h1>
 
-<div class="mscard"> 
+<% @user.xrds.each do |user_xrd| %>
+<div class="mscard">
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span><span>HR_FESEM[CZ]</span>
-      
+      <span class="equip-heading">Equipment:</span>
+      <span>XRD</span>
       <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/XRD/<%=user_xrd.id %>	</span>
     </div>
     <div class="msmiddle-child">
       <h4>Booked On</h4>
+      <%=user_xrd.status %>
       <h4>Assigned On</h4>
+      <%=user_xrd.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_xrd_path(format: :pdf,anish:user_xrd.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<%@user.ansies.each do |user_ansy| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Ansys</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/ANSY/<%=user_ansy.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=user_ansy.status %>
+      <h4>Assigned On</h4>
+      <%=user_ansy.slotdate %>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -23,9 +53,1058 @@
           </div>
       </div>
     </div>
-
-  
-  </div> 
+  </div>
 </div>
+<% end %>
+<% @user.bets.each do |user_bet| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>BET</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/BET/<%=user_bet.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=user_bet.status %>
+      <h4>Assigned On</h4>
+      <%=user_bet.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_bet_path(format: :pdf,anish:user_bet.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% @user.atomic_force_microscope.each do |atomic_force_microscope| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Atomic Force Microscope</span>
+      <h4 class="appl-no-heading">Application No</h4>\
+      <span>CRF/ATOMIC/<%=atomic_force_microscope.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=atomic_force_microscope.status %>
+      <h4>Assigned On</h4>
+      <%=atomic_force_microscope.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= button_to 'View',home_developer_path,id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% @user.ball_mailings.each do |ball_mailing| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Ball Milling </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/BALL/<%=ball_mailing.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=ball_mailing.status %>
+      <h4>Assigned On</h4>
+      <%=ball_mailing.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_ball_mailing_path(format: :pdf,anish:ball_mailing.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.cell_imaging.each do |cell_imaging| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Cell Imaging </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/CELL/<%=cell_imaging.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=cell_imaging.status %>
+      <h4>Assigned On</h4>
+      <%=cell_imaging.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_cell_imaging_path(format: :pdf,anish:cell_imaging.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.electro_chemical.each do |electro_chemical| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Electro Chemical Polishing</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/ELECTRO/<%=electro_chemical.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=electro_chemical.status %>
+      <h4>Assigned On</h4>
+      <%=electro_chemical.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_electro_chemical_path(format: :pdf,anish:electro_chemical.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.five_axi.each do |five_axi| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>5-Axes CNC</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/Five Axis/<%=five_axi.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=five_axi.status %>
+      <h4>Assigned On</h4>
+      <%=five_axi.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_five_axi_path(format: :pdf,anish:five_axi.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.frictions.each do |friction| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Friction</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/FRIC/<%=friction.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=friction.status %>
+      <h4>Assigned On</h4>
+      <%=friction.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_friction_path(format: :pdf,anish:friction.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.ft_nms.each do |ft_nm| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>FT-NMR</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/ftnmr/<%=ft_nm.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=ft_nm.status %>
+      <h4>Assigned On</h4>
+      <%=ft_nm.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_ftnmr_path(format: :pdf,anish:ft_nm.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.gaits.each do |gait| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Gait</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/GAIT/<%=gait.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=gait.status %>
+      <h4>Assigned On</h4>
+      <%=gait.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_gait_path(format: :pdf,anish:gait.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.gas_sensing.each do |gas_sensing| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Gas Sensing</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/GAS/<%=gas_sensing.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=gas_sensing.status %>
+      <h4>Assigned On</h4>
+      <%=gas_sensing.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_gas_sensing_path(format: :pdf,anish:gas_sensing.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.glove_box.each do |glove_box| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Glove Box</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/GLOVE/<%=glove_box.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=glove_box.status %>
+      <h4>Assigned On</h4>
+      <%=glove_box.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_glove_box_path(format: :pdf,anish:glove_box.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.glows.each do |glow| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Glow</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/GLOW/<%=glow.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=glow.status %>
+      <h4>Assigned On</h4>
+      <%=glow.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_glow_path(format: :pdf,anish:glow.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.grindings.each do |grinding| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>Grindings</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/GRIND/<%=grinding.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=grinding.status %>
+      <h4>Assigned On</h4>
+      <%=grinding.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_grinding_path(format: :pdf,anish:grinding.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.high_temp_vaccum.each do |high_temp_vaccum| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>High Temp Vaccum</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/HIGHVACCUM/<%=high_temp_vaccum.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=high_temp_vaccum.status %>
+      <h4>Assigned On</h4>
+      <%=high_temp_vaccum.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_high_temp_vaccum_path(format: :pdf,anish:high_temp_vaccum.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.hr_fesem_cs.each do |hr_fesem_c| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>HR FESEM C</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/fesemc/<%=hr_fesem_c.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=hr_fesem_c.status %>
+      <h4>Assigned On</h4>
+      <%=hr_fesem_c.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_hr_fesem_c_path(format: :pdf,anish:hr_fesem_c.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.hr_fesem_js.each do |hr_fesem_j| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>HR FESEM J </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/FESEMJ/<%=hr_fesem_j.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=hr_fesem_j.status %>
+      <h4>Assigned On</h4>
+      <%=hr_fesem_j.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_hr_fesem_j_path(format: :pdf,anish:hr_fesem_j.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.hrlcms.each do |hrlcms| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>HR LCMS </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/LCMS/<%=hrlcms.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=hrlcms.status %>
+      <h4>Assigned On</h4>
+      <%=hrlcms.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_hr_lcm_path(format: :pdf,anish:hrlcms.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.icp_ms.each do |icp_ms| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>ICP MS </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/ICP/<%=icp_ms.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=icp_ms.status %>
+      <h4>Assigned On</h4>
+      <%=icp_ms.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_icp_m_path(format: :pdf,anish:icp_ms.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.impedance_analy.each do |impedence_analy| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>IMPEDENCDE ANALYSER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/IMPED/<%=impedence_analy.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=impedence_analy.status %>
+      <h4>Assigned On</h4>
+      <%=impedence_analy.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_impedence_analyzer_path(format: :pdf,anish:impedence_analy.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.integrated_multi_role_tester.each do |integrated_multi_role_tester| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>INTEGRATED MULTI ROLE TESTER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+        <span>CRF/INTEGRATED/<%=integrated_multi_role_tester.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=integrated_multi_role_tester.status %>
+      <h4>Assigned On</h4>
+      <%=integrated_multi_role_tester.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_integrated_multi_role_tester_path(format: :pdf,anish:integrated_multi_role_tester.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.ion_chromotography.each do |ion_chromotography| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>ION CHROMATOGRAPHY </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/IONC/<%=ion_chromotography.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=ion_chromotography.status %>
+      <h4>Assigned On</h4>
+      <%=ion_chromotography.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_ion_chromatography_path(format: :pdf,anish:ion_chromotography.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.laser.each do |laser| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>LASER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/LASER/<%=laser.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=laser.status %>
+      <h4>Assigned On</h4>
+      <%=laser.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_laser_path(format: :pdf,anish:laser.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.liquid_nitrogen.each do |liquid_nitrogen| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>LIQUID NITROGEN </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/NITROGEN/<%=liquid_nitrogen.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=liquid_nitrogen.status %>
+      <h4>Assigned On</h4>
+      <%=liquid_nitrogen.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_liquid_nitrogen_path(format: :pdf,anish:liquid_nitrogen.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.low_fatigues.each do |low_fatigue| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>LOW FATIGUE</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/LOW/<%=low_fatigue.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=low_fatigue.status %>
+      <h4>Assigned On</h4>
+      <%=low_fatigue.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_low_fatigue_path(format: :pdf,anish:low_fatigue.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.micro_edms.each do |micro_edm| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>MICRO EDM </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/micro/<%=micro_edm.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=micro_edm.status %>
+      <h4>Assigned On</h4>
+      <%=micro_edm.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_micro_edm_path(format: :pdf,anish:micro_edm.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.milli_q.each do |milli_q| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>MILLI Q </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span> CRF/MILLI/<%=milli_q.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=milli_q.status %>
+      <h4>Assigned On</h4>
+      <%=milli_q.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_micro_edm_path(format: :pdf,anish:milli_q.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.multi_impact_testers.each do |multi_impact_tester| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>MULTI IMPACT TESTER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/multi/<%=multi_impact_tester.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=multi_impact_tester.status %>
+      <h4>Assigned On</h4>
+      <%=multi_impact_tester.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_multi_impact_tester_path(format: :pdf,anish:multi_impact_tester.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.probe_sonicator.each do |probe_sonicator| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>PROBE SONICATOR </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/PROBE/<%=probe_sonicator.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=probe_sonicator.status %>
+      <h4>Assigned On</h4>
+      <%=probe_sonicator.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_probe_sonicator_path(format: :pdf,anish:probe_sonicator.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.raman_microscope.each do |raman_microscope| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>RAMAN MICROSCOPE</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/RAMAN/<%=raman_microscope.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=raman_microscope.status %>
+      <h4>Assigned On</h4>
+      <%=raman_microscope.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_raman_microscope_path(format: :pdf,anish:raman_microscope.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.scratch_indentations.each do |scratch_indentation| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>SCRATCH INDENTATION</span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/SCRATCH/<%=scratch_indentation.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=scratch_indentation.status %>
+      <h4>Assigned On</h4>
+      <%=scratch_indentation.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_scratch_indentation_path(format: :pdf,anish:scratch_indentation.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.spark_o.each do |spark_o| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>SPARK OS </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/SPARK/<%=spark_o.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=spark_o.status %>
+      <h4>Assigned On</h4>
+      <%=spark_o.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_spark_o_path(format: :pdf,anish:spark_o.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.spectro_radio_meter.each do |spectro_radio_meter| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>SPECTRO RADIO METER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/SPECTRO/<%=spectro_radio_meter.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=spectro_radio_meter.status %>
+      <h4>Assigned On</h4>
+      <%=spectro_radio_meter.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_spectro_radio_meter_path(format: :pdf,anish:spectro_radio_meter.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.tga_fttr.each do |tga_fttr| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>TGA-FTTR </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/TGAFTIR/<%=tga_fttr.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=tga_fttr.status %>
+      <h4>Assigned On</h4>
+      <%=tga_fttr.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_tga_fttr_path(format: :pdf,anish:tga_fttr.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.three_d_non_contacts.each do |three_d_non_contact| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>3D NON-CONTACT PROFILOMETER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/THREESCAN/<%=three_d_non_contact.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=three_d_non_contact.status %>
+      <h4>Assigned On</h4>
+      <%=three_d_non_contact.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_three_d_non_contact_path(format: :pdf,anish:three_d_non_contact.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.three_d_scanner.each do |three_d_scanner| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>3D SCANNER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/THREESCAN/<%=three_d_scanner.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=three_d_scanner.status %>
+      <h4>Assigned On</h4>
+      <%=three_d_scanner.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_three_d_scanner_path(format: :pdf,anish:three_d_scanner.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.tribometers.each do |tribometer| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>TRIBOMETER </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/trib/<%=tribometer.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=tribometer.status %>
+      <h4>Assigned On</h4>
+      <%=tribometer.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_tribometer_path(format: :pdf,anish:tribometer.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.ultra_centrifuge.each do |ultracentrifuge| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>ULTRA CENTRIFUGE </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/CENTRIFUGE/<%=ultracentrifuge.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=ultracentrifuge.status %>
+      <h4>Assigned On</h4>
+      <%=ultracentrifuge.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_ultra_centrifuge_path(format: :pdf,anish:ultracentrifuge.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.uv_vis_nir.each do |uv_vis_nir| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>UV VIS NIR </span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/UV/<%=uv_vis_nir.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=uv_vis_nir.status %>
+      <h4>Assigned On</h4>
+      <%=uv_vis_nir.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_uv_vis_nir_path(format: :pdf,anish:uv_vis_nir.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% @user.zeta_potential_size.each do |zeta_potential_size| %>
+<div class="mscard">
+  <div class="mscontainer">
+    <div class="msleft-child">
+      <span class="equip-heading">Equipment:</span>
+      <span>ZETA POTENTIAL <%=zeta_potential_size.id %></span>
+      <h4 class="appl-no-heading">Application No</h4>
+      <span>CRF/Zeta Potential Sizes/<%=zeta_potential_size.id %></span>
+    </div>
+    <div class="msmiddle-child">
+      <h4>Booked On</h4>
+      <%=zeta_potential_size.status %>
+      <h4>Assigned On</h4>
+      <%=zeta_potential_size.slotdate %>
+    </div>
+    <div class="msright-child">
+      <h4>PAYMENT</h4>
+      <div class="wrapper3">
+          <div class="link-wrapper3">
+            <%= link_to "Download", slot_mailer_zeta_potential_size_path(format: :pdf,anish:zeta_potential_size.id , maithu:@user.id),id:"button2"%>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <%=render "partials/footer" %>
