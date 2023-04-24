@@ -77,7 +77,7 @@
                           <th scope="row"><%=equipment.app_no %>	</th>
                           <td> <%= equipment.username%> </td>
                           <td> #TO BE UNDERSTOOD </td>
-                          <td><%= link_to "Download PDF", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
+                          <td><%= link_to "View", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
 
                           <td>  <%= form_with(model: equipment,local:true) do |form| %>
                           <%= form.hidden_field :dummy, value: 'done' %>

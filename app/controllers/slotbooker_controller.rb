@@ -648,4 +648,22 @@ end
    @low4 = LowFatigue.all
  end
 
+ def microedm
+   @micro = MicroEdm.all
+ end
+ def microedm1
+   @micro1 =MicroEdm.all
+ end
+ def microedm2
+   @micro2 = MicroEdm.all
+ end
+ def microedm3
+   @micro3 = MicroEdm.all
+ end
+ def microedm4
+   @micro4 = MicroEdm.all
+ end
+
+
+
 end

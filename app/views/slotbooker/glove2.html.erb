@@ -142,7 +142,7 @@
                                <%=form.fields_for :equipment_table do |f| %>
 
                                    <%= f.hidden_field :app_no, value:"CRF/GLOVE/#{glove.id}"%>
-                                   <%= f.hidden_field :username, value:"#{glove.user.name}"%>
+                                   <%= f.hidden_field :username, value:"#{glove.user.firstname}"%>
                                    <%= f.hidden_field :dummy, value:"#{glove.status}"%>
                                    <%= f.hidden_field :debit_head, value:"#{glove.debit}" %>
                                <%end%>

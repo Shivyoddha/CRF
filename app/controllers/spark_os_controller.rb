@@ -50,11 +50,9 @@ class SparkOsController < ApplicationController
 
     respond_to do |format|
       if @spark_o.update(spark_o_params)
-        if @spark_o.amount == nil
-        SparkOAllotedMailer.with(id:@spark_o.id, userid:current_user.id).Mail.deliver_later
-      else
-        PaymentSparkOMailer.with(id:@spark_o.id, userid:current_user.id).Mail.deliver_later
-      end
+        if @spark_o.status!= 'completed'
+          SparkOAllotedMailer.with(id:@spark_o.id, userid:current_user.id).Mail.deliver_later
+        end
         format.html { redirect_to slotbooker_spark_path(@spark_o), notice: "Spark o was successfully updated." }
         format.json { render :show, status: :ok, location: @spark_o }
       else

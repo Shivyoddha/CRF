@@ -14,6 +14,10 @@ class HomeController < ApplicationController
     @user=User.find(params[:id])
   end
 
+  def myslots
+    @user = User.find(params[:id])
+  end
+
   def index
 
       @user=User.find(current_user.id)
@@ -78,4 +82,6 @@ class HomeController < ApplicationController
 
 
   end
+
+
 end

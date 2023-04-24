@@ -90,6 +90,7 @@
                       <th scope="col" id="slot-time">Slot Time</th>
                       <th scope="col">Status</th>
                       <th scope="col" id="reference-paper">Reference Paper</th>
+                      <th scope="col" id="reassign-col">Reassign</th>
                         <th scope="col" id="cancel-col">Cancel Slot</th>
                         <th scope="col" id="cancel-col">Complete</th>
                     </tr>
@@ -137,143 +138,148 @@
                     <td>NA</td>
                   <% end %>
                   <td id="assign-btn">
-                      <!-- Button trigger modal -->
-                       <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{micro.id}" }, id: "ani" %>
-                       <div id="<%= micro.id%>" class="modal">
+                <!-- Button trigger modal -->
+                 <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{micro.id}" }, id: "ani" %>
+                 <div id="<%= micro.id%>" class="modal">
 
-                     <div class="modal-dialog">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= micro.user.firstname %></b></h1>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                       </div>
+                       <div class="modal-body">
+                         <%= form_with(model: micro,local:true) do |form| %>
+
+                             <div class="input-group mb-3">
+                             <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                             <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                           </div>
+
+                           <div class="input-group mb-3">
+                           <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                           <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                         </div>
+
+                         <%=form.fields_for :equipment_table do |f| %>
+
+                             <%= f.hidden_field :app_no, value:"CRF/MICRO/#{micro.id}"%>
+
+                            <%= f.hidden_field :username, value:"#{micro.user.firstname}"%>
+
+                           <%= f.hidden_field :dummy, value:"#{micro.status}"%>
+
+                           <%= f.hidden_field :debit_head, value:"#{micro.debit}" %>
+
+                         <%end%>
+                           <div class="actions">
+                             <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                           </div>
+                         <% end %>
+                       </div>
+                   </div>
+               </div>
+           </div>
+             </td>
+
+
+             <td id="cancel-btn">
+                <!-- Button trigger modal -->
+                  <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{micro.id}" }, id: "anish" %>
+
+                 <!-- Modal -->
+                  <div id="ani<%= micro.id%>" class="modal">
+                   <div class="modal-dialog">
                          <div class="modal-content">
                              <div class="modal-header">
-                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= micro.user.firstname %></b></h1>
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= micro.user.firstname %></b></h1>
                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                              </div>
                              <div class="modal-body">
-                               <%= form_with(model: micro,local:true) do |form| %>
+                               <%= form_for micro do |f| %>
+                                 <p> Are you sure you want to cancel the slot ?</p>
+                                 <%= f.hidden_field :status, value: 'cancelled' %>
+                             <div class="actions">
 
-                                   <div class="input-group mb-3">
-                                   <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
-                                   <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
-                                 </div>
 
-                                 <div class="input-group mb-3">
-                                 <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
-                                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
-                               </div>
-                                <%=micro.id%>
-
-                                 <div class="actions">
-                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
-
-                                 </div>
-                               <% end %>
                              </div>
+
+                              </div>
                              <div class="modal-footer">
-                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                 <button type="button" class="btn btn-primary">Cancel Slot</button>
+                                   <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
                              </div>
+                             <% end %>
                          </div>
                      </div>
                  </div>
-                   </td>
+             </td>
+             <td id="complete-btn">
+                <!-- Button trigger modal -->
+                  <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{micro.id}" }, id: "anish" %>
+
+                 <!-- Modal -->
+                  <div id="mai<%= micro.id%>" class="modal">
+                   <div class="modal-dialog">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= micro.user.firstname %></b></h1>
+                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                             </div>
+                             <div class="modal-body">
+                               <%= form_for micro do |f| %>
+                                 <p> Are you sure you want to complete the slot ?</p>
+                                 <%= f.hidden_field :status, value: 'completed' %>
+                             <div class="actions">
 
 
-                   <td id="cancel-btn">
-                      <!-- Button trigger modal -->
-                        <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{micro.id}" }, id: "anish" %>
+                             </div>
 
-                       <!-- Modal -->
-                        <div id="ani<%= micro.id%>" class="modal">
-                         <div class="modal-dialog">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot <b><%= micro.user.name %></b></h1>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                   </div>
-                                   <div class="modal-body">
-                                     <%= form_for micro do |f| %>
-                                       <p> Are you sure you want to cancel the slot ?</p>
-                                       <%= f.hidden_field :status, value: 'cancelled' %>
-                                   <div class="actions">
+                              </div>
+                             <div class="modal-footer">
+                                   <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                             </div>
+                             <% end %>
+                         </div>
+                     </div>
+                 </div>
+             </td>
 
+  <%end%>
+        </tr>
 
-                                   </div>
-
-                                    </div>
-                                   <div class="modal-footer">
-                                         <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
-                                   </div>
-                                   <% end %>
-                               </div>
-                           </div>
-                       </div>
-                   </td>
-                   <td id="complete-btn">
-                      <!-- Button trigger modal -->
-                        <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{micro.id}" }, id: "anish" %>
-
-                       <!-- Modal -->
-                        <div id="mai<%= micro.id%>" class="modal">
-                         <div class="modal-dialog">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= micro.user.name %></b></h1>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                   </div>
-                                   <div class="modal-body">
-                                     <%= form_for micro do |f| %>
-                                       <p> Are you sure you want to complete the slot ?</p>
-                                       <%= f.hidden_field :status, value: 'completed' %>
-                                   <div class="actions">
-
-
-                                   </div>
-
-                                    </div>
-                                   <div class="modal-footer">
-                                         <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
-                                   </div>
-                                   <% end %>
-                               </div>
-                           </div>
-                       </div>
-                   </td>
-
-<%end%>
-              </tr>
-
-          </tbody>
-      </table>
+    </tbody>
+  </table>
 
   </div>
   </div>
 
 
-</div>
+  </div>
 
 
-</div>
-<script>
-// Get the modals and buttons
-var modal1 = document.getElementByClass("modal");
-var btn1 = document.getElementById("ani");
-var modal2 = document.getElementByClass("modal2");
-var btn2 = document.getElementById("anish");
-// Add event listeners to the buttons
-btn1.addEventListener("click", function() {
-modal1.style.display = "block";
-});
+  </div>
+  <script>
+  // Get the modals and buttons
+  var modal1 = document.getElementByClass("modal");
+  var btn1 = document.getElementById("ani");
+  var modal2 = document.getElementByClass("modal2");
+  var btn2 = document.getElementById("anish");
+  // Add event listeners to the buttons
+  btn1.addEventListener("click", function() {
+  modal1.style.display = "block";
+  });
 
-btn2.addEventListener("click", function() {
-modal2.style.display = "block";
-});
+  btn2.addEventListener("click", function() {
+  modal2.style.display = "block";
+  });
 
-// Close the modal when the user clicks anywhere outside of it
-window.addEventListener("click", function(event) {
-if (event.target == modal1) {
-modal1.style.display = "none";
-}
-if (event.target == modal2) {
-modal2.style.display = "none";
-}
-});
-</script>
+  // Close the modal when the user clicks anywhere outside of it
+  window.addEventListener("click", function(event) {
+  if (event.target == modal1) {
+  modal1.style.display = "none";
+  }
+  if (event.target == modal2) {
+  modal2.style.display = "none";
+  }
+  });
+  </script>

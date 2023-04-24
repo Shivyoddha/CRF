@@ -158,7 +158,7 @@
                                       <%=form.fields_for :equipment_table do |f| %>
 
                                           <%= f.hidden_field :app_no, value:"CRF/HIGH/#{high.id}"%>
-                                          <%= f.hidden_field :username, value:"#{high.user.name}"%>
+                                          <%= f.hidden_field :username, value:"#{high.user.firstname}"%>
                                           <%= f.hidden_field :dummy, value:"#{high.status}"%>
                                           <%= f.hidden_field :debit_head, value:"#{high.debit}" %>
                                       <%end%>

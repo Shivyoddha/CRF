@@ -58,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                          <% @equipment.where(dummy:'alloted').each do |equipment|%>
+                          <% @equipment.where(dummy:'alloted', role:'external').each do |equipment|%>
                         <tr>
                           <th scope="row"><%= equipment.app_no%></th>
                           <td> <%= equipment.username%> </td>

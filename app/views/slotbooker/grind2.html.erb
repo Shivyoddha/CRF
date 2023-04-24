@@ -145,7 +145,7 @@
                            <%=form.fields_for :equipment_table do |f| %>
 
                                <%= f.hidden_field :app_no, value:"CRF/GRIND/#{grind.id}"%>
-                               <%= f.hidden_field :username, value:"#{grind.user.name}"%>
+                               <%= f.hidden_field :username, value:"#{grind.user.firstname}"%>
                                <%= f.hidden_field :dummy, value:"#{grind.status}"%>
                                <%= f.hidden_field :debit_head, value:"#{grind.debit}" %>
 

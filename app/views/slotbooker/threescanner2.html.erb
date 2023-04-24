@@ -143,12 +143,12 @@
                                    <%=form.fields_for :equipment_table do |f| %>
 
                                        <%= f.hidden_field :app_no, value:"CRF/THREE/#{three.id}"%>
-                                       <%= f.hidden_field :username, value:"#{three.user.name}"%>
+                                       <%= f.hidden_field :username, value:"#{three.user.firstname}"%>
                                        <%= f.hidden_field :dummy, value:"#{three.status}"%>
                                        <%= f.hidden_field :debit_head, value:"#{three.debit}" %>
 
                                    <%end%>
-                                    
+
 
                                      <div class="actions">
                                        <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
