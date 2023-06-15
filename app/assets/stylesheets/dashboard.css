@@ -144,6 +144,24 @@ h5 {
 
 }
 
+
+#thiscodeis_haunted {
+  font-size: small;
+  white-space: nowrap;
+  padding: 0 6px;
+
+}
+.modal-body{
+  display:flex;
+  flex-direction:column;
+}
+.modal-body span{
+  margin: 0.7em 0 0 1em;
+}
+.modal-body p{
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
 @keyframes stretch-active {
   0% {
     background-color: #0c5805;
@@ -182,6 +200,7 @@ h5 {
 .card-footer-express {
   width: 100%;
 }
+
 
 .badge.badge-outlined.badge-success {
   border-color: #64DD17;

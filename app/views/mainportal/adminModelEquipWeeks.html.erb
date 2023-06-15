@@ -1,0 +1,141 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <%= link_to "Dashboard", mainportal_admindashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                            <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-btn main-elements" id="active-tab">Models</a>
+                            </li>
+                            <div id="model-list-active">
+                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element", id:'active-tab-1' %>
+                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipment Week Status", mainportal_adminModelEquipWeeks_path ,class:"nav-link active nav-btn model-element" %>
+
+                            </div>
+                        </ul>
+
+                </div>
+                    <div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="admin-mail">
+                            <a class="nav-link" href="#">admin@mail</a>
+                        </li>
+                        <li class="nav-item" id="logout">
+                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+
+        </nav>
+
+
+<div class="container">
+
+
+ <div id="slots">
+        <div id="current-tab">
+            <h2 class="fw-bold" id="tab-name">Equipment Weekly Status</h2>
+        </div>
+
+
+        <div id="slot-details">
+
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-light">
+                        <th scope="col" id="application-no">Equipment ID</th>
+                        <th scope="col" id="name">Equipment Name</th>
+                        <th scope="col" id="institute">Month</th>
+                        <th scope="col" id="week_1">Week 1</th>
+                        <th scope="col" id="week_2">Week 2</th>
+                        <th scope="col" id="week_3">Week 3</th>
+                        <th scope="col" id="week_4">Week 4</th>
+                        <th scope="col" id="week_5">Week 5</th>
+                        <th scope="col" id="update">Update</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% @equiplist.each do |equip|%>
+                    <tr>
+                        <th scope="row"><%=equip.id%></th>
+                        <td><%= equip.name%>
+                        </td>
+                        <td>
+                          <%= form_with model: equip do |form|%>
+                          <%= form.select(:month, ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "weekly-status",:required => true}) %>
+
+                          </td>
+
+                           <td>
+                             <%= form.select(:week_1, {"Available" => "active" ,"Busy" => "unavailable","Not Available" =>"undermaintainance"}, {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "week_1",:required => true}) %>
+                           </td>
+                           <td>
+                             <%= form.select(:week_2, {"Available" => "active" ,"Busy" => "unavailable","Not Available" =>"undermaintainance"}, {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "week_2",:required => true}) %>
+                           </td>
+                           <td>
+                             <%= form.select(:week_3, {"Available" => "active" ,"Busy" => "unavailable","Not Available" =>"undermaintainance"}, {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "week_3",:required => true}) %>
+                           </td>
+                           <td>
+                             <%= form.select(:week_4, {"Available" => "active" ,"Busy" => "unavailable","Not Available" =>"undermaintainance"}, {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "week_4",:required => true}) %>
+                           </td>
+                           <td>
+                             <%= form.select(:week_5, {"Available" => "active" ,"Busy" => "unavailable","Not Available" =>"undermaintainance"}, {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "week_5",:required => true}) %>
+
+                             <%# <%if (!equip.week_5.nil?)%>
+                             <%# <%= form.color_field :week_5, value: equip.week_5%>
+                             <%# <%else%>
+                             <%# <%= form.color_field :week_5, value:"#00ff00"%>
+                             <%# <%end%>
+                           </td>
+                           <td>
+                           <%= form.submit "Update", class:"btn btn-primary", id:"sbt" %>
+                           </td>
+                           <%end%>
+
+                    </tr>
+                    <%end%>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal1");
+var btn1 = document.getElementById("ani");
+
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+  modal1.style.display = "block";
+});
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+});
+</script>

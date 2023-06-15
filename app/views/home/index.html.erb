@@ -31,8 +31,8 @@
               <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Media Team's Announce", announcements_path ,class:"dropdown-item" %></li>
               <li><%= link_to "Fill a feedback", new_feedback_path(id:current_user.id) ,class:"dropdown-item" %></li>
-              <li><%= link_to "View feedbacks as admin", feedbacks_path(id:current_user.id),class:"dropdown-item" %></li>
-              <li><%= link_to "My Slots", home_myslots_path(id:current_user.id),class:"dropdown-item" %></li>
+              <%# <li><%= link_to "View feedbacks as admin", feedbacks_path,class:"dropdown-item" %></li>
+              <li><a class="dropdown-item" href="#">My Slots</a></li>
               <% link_to "Download", home_index_path(format: :pdf)%>
 
               <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
@@ -116,10 +116,69 @@
                 </div>
             </div>
             <div class="card-footer">
+
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <div class="badge badge-warning badge-outlined">Not Available</div>
                 </div>
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                Availabilty
+                </button> -->
+                <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip1.id}" }, id: "thiscodeis_haunted" %>
+                <div id="<%= @equip1.id%>" class="modal">
+
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip1.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip1.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip1.week_1%>"></td>
+                                <td class="status-<%=@equip1.week_2%>"></td>
+                                <td class="status-<%=@equip1.week_3%>"></td>
+                                <td class="status-<%=@equip1.week_4%>"></td>
+                                <td class="status-<%=@equip1.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip1.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
             </div>
         </div>
     </div>
@@ -191,11 +250,66 @@
               </div>
           </div>
           <div class="card-footer">
-          <div class="card-footer-express">
-              <small class="text-muted card-footer-express">Express Slot:</small>
-              <div class="badge badge-warning badge-outlined">Not Available</div>
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                </div>
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                Availabilty
+                </button> -->
+                <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip2.id}" }, id: "thiscodeis_haunted" %>
+                <div id="<%= @equip2.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                <div class="modal-dialog" id="<%= @equip2.id%>">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><%=@equip2.month%></p>
+                        <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                        <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                        <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                        <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                        <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                        <table class="table table-hover">
+                          <th style="text-align: center">Week1</th>
+                          <th style="text-align: center">Week2</th>
+                          <th style="text-align: center">Week3</th>
+                          <th style="text-align: center">Week4</th>
+                          <th style="text-align: center">Week5</th>
+                          <tr>
+                            <td class="status-<%=@equip2.week_1%>"></td>
+                            <td class="status-<%=@equip2.week_2%>"></td>
+                            <td class="status-<%=@equip2.week_3%>"></td>
+                            <td class="status-<%=@equip2.week_4%>"></td>
+                            <td class="status-<%=@equip2.week_5%>"></td>
+                          </tr>
+                          </table>
+                          Available-
+                          <br/>
+                          Busy-
+                          <br/>
+                          Not Available-
+                          <br/>
+
+                          <%# <%= @equip2.id%>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
-         </div>
         </div>
       </div>
 
@@ -271,6 +385,62 @@
                     <div class="badge badge-warning badge-outlined">Not Available</div>
 
                 </div>
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                Availabilty
+                </button> -->
+                <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip3.id}" }, id: "thiscodeis_haunted" %>
+                <div id="<%= @equip3.id%>" class="modal">
+
+                  <!-- Modal -->
+                  <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                      <div class="modal-dialog" id="<%= @equip3.id%>">
+                          <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <p><%=@equip3.month%></p>
+                              <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                              <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                              <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                              <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                              <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                              <table class="table table-hover">
+                                <th style="text-align: center">Week1</th>
+                                <th style="text-align: center">Week2</th>
+                                <th style="text-align: center">Week3</th>
+                                <th style="text-align: center">Week4</th>
+                                <th style="text-align: center">Week5</th>
+                                <tr>
+                                  <td class="status-<%=@equip3.week_1%>"></td>
+                                  <td class="status-<%=@equip3.week_2%>"></td>
+                                  <td class="status-<%=@equip3.week_3%>"></td>
+                                  <td class="status-<%=@equip3.week_4%>"></td>
+                                  <td class="status-<%=@equip3.week_5%>"></td>
+                                </tr>
+                                </table>
+
+                                Available-
+                                <br/>
+                                Busy-
+                                <br/>
+                                Not Available-
+                                <br/>
+
+                                <%# <%= @equip1.id%>
+
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                          </div>
+                          </div>
+                      </div>
+                </div>
             </div>
         </div>
         </div>
@@ -318,7 +488,7 @@
                     <span class="badge rounded-pill status-undermaintainance"><%=@equip4.status%></span>
 
                     <% else %>
-                    <span class="badge rounded-pill status-unavailable"><%=@equip4.status%></span>
+<span class="badge rounded-pill status-unavailable"><%=@equip4.status%></span>
                     <% end %>
 
                     <!--Put conditions such that one of the classes gets added to the class list of the above span tag:
@@ -350,6 +520,62 @@
                     <div class="badge badge-warning badge-outlined">Not Available</div>
 
                 </div>
+
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                Availabilty
+                </button> -->
+                <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip4.id}" }, id: "thiscodeis_haunted" %>
+                <div id="<%= @equip4.id%>" class="modal">
+
+                  <!-- Modal -->
+                  <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                      <div class="modal-dialog" id="<%= @equip4.id%>">
+                          <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <p><%=@equip4.month%></p>
+                              <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                              <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                              <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                              <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                              <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                              <table class="table table-hover">
+                                <th style="text-align: center">Week1</th>
+                                <th style="text-align: center">Week2</th>
+                                <th style="text-align: center">Week3</th>
+                                <th style="text-align: center">Week4</th>
+                                <th style="text-align: center">Week5</th>
+                                <tr>
+                                  <td class="status-<%=@equip4.week_1%>"></td>
+                                  <td class="status-<%=@equip4.week_2%>"></td>
+                                  <td class="status-<%=@equip4.week_3%>"></td>
+                                  <td class="status-<%=@equip4.week_4%>"></td>
+                                  <td class="status-<%=@equip4.week_5%>"></td>
+                                </tr>
+                                </table>
+
+                                Available-
+                                <br/>
+                                Busy-
+                                <br/>
+                                Not Available-
+                                <br/>
+
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                          </div>
+                          </div>
+                      </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -420,6 +646,63 @@
                   <div class="badge badge-warning badge-outlined">Not Available</div>
 
               </div>
+
+              <!-- Button trigger modal -->
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+              Availabilty
+              </button> -->
+              <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip5.id}" }, id: "thiscodeis_haunted" %>
+              <div id="<%= @equip5.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip5.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip5.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip5.week_1%>"></td>
+                                <td class="status-<%=@equip5.week_2%>"></td>
+                                <td class="status-<%=@equip5.week_3%>"></td>
+                                <td class="status-<%=@equip5.week_4%>"></td>
+                                <td class="status-<%=@equip5.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip5.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
           </div>
       </div>
     </div>
@@ -495,6 +778,63 @@
                   <small class="text-muted card-footer-express">Express Slot:</small>
                   <div class="badge badge-warning badge-outlined">Not Available</div>
               </div>
+
+              <!-- Button trigger modal -->
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+              Availabilty
+              </button> -->
+              <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip6.id}" }, id: "thiscodeis_haunted" %>
+              <div id="<%= @equip6.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip6.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip6.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip6.week_1%>"></td>
+                                <td class="status-<%=@equip6.week_2%>"></td>
+                                <td class="status-<%=@equip6.week_3%>"></td>
+                                <td class="status-<%=@equip6.week_4%>"></td>
+                                <td class="status-<%=@equip6.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip6.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
           </div>
       </div>
       </div>
@@ -559,6 +899,63 @@
                      <small class="text-muted card-footer-express">Express Slot:</small>
                      <div class="badge badge-warning badge-outlined">Not Available</div>
                  </div>
+
+                 <!-- Button trigger modal -->
+                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                 Availabilty
+                 </button> -->
+                 <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip7.id}" }, id: "thiscodeis_haunted" %>
+                 <div id="<%= @equip7.id%>" class="modal">
+
+                   <!-- Modal -->
+                   <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                       <div class="modal-dialog" id="<%= @equip7.id%>">
+                           <div class="modal-content">
+                           <div class="modal-header">
+                               <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                               <p><%=@equip7.month%></p>
+                               <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                               <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                               <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                               <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                               <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                               <table class="table table-hover">
+                                 <th style="text-align: center">Week1</th>
+                                 <th style="text-align: center">Week2</th>
+                                 <th style="text-align: center">Week3</th>
+                                 <th style="text-align: center">Week4</th>
+                                 <th style="text-align: center">Week5</th>
+                                 <tr>
+                                   <td class="status-<%=@equip7.week_1%>"></td>
+                                   <td class="status-<%=@equip7.week_2%>"></td>
+                                   <td class="status-<%=@equip7.week_3%>"></td>
+                                   <td class="status-<%=@equip7.week_4%>"></td>
+                                   <td class="status-<%=@equip7.week_5%>"></td>
+                                 </tr>
+                                 </table>
+
+                                 Available-
+                                 <br/>
+                                 Busy-
+                                 <br/>
+                                 Not Available-
+                                 <br/>
+
+                                 <%# <%= @equip7.id%>
+
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                           </div>
+                           </div>
+                       </div>
+                </div>
              </div>
          </div>
       </div>
@@ -623,6 +1020,63 @@
                 </div>
             </div>
             <div class="card-footer">
+
+              <!-- Button trigger modal -->
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+              Availabilty
+              </button> -->
+              <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip8.id}" }, id: "thiscodeis_haunted" %>
+              <div id="<%= @equip8.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip8.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip8.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip8.week_1%>"></td>
+                                <td class="status-<%=@equip8.week_2%>"></td>
+                                <td class="status-<%=@equip8.week_3%>"></td>
+                                <td class="status-<%=@equip8.week_4%>"></td>
+                                <td class="status-<%=@equip8.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip8.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -690,6 +1144,63 @@
            </div>
            <div class="card-footer">
 
+             <!-- Button trigger modal -->
+             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+             Availabilty
+             </button> -->
+             <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip9.id}" }, id: "thiscodeis_haunted" %>
+             <div id="<%= @equip9.id%>" class="modal">
+
+               <!-- Modal -->
+               <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                   <div class="modal-dialog" id="<%= @equip9.id%>">
+                       <div class="modal-content">
+                       <div class="modal-header">
+                           <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                       </div>
+                       <div class="modal-body">
+                           <p><%=@equip9.month%></p>
+                           <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                           <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                           <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                           <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                           <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                           <table class="table table-hover">
+                             <th style="text-align: center">Week1</th>
+                             <th style="text-align: center">Week2</th>
+                             <th style="text-align: center">Week3</th>
+                             <th style="text-align: center">Week4</th>
+                             <th style="text-align: center">Week5</th>
+                             <tr>
+                               <td class="status-<%=@equip9.week_1%>"></td>
+                               <td class="status-<%=@equip9.week_2%>"></td>
+                               <td class="status-<%=@equip9.week_3%>"></td>
+                               <td class="status-<%=@equip9.week_4%>"></td>
+                               <td class="status-<%=@equip9.week_5%>"></td>
+                             </tr>
+                             </table>
+
+                             Available-
+                             <br/>
+                             Busy-
+                             <br/>
+                             Not Available-
+                             <br/>
+
+                             <%# <%= @equip9.id%>
+
+                       </div>
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                       </div>
+                       </div>
+                   </div>
+                </div>
+
            </div>
        </div>
    </div>
@@ -749,6 +1260,63 @@
               </div>
           </div>
           <div class="card-footer">
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+            Availabilty
+            </button> -->
+            <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip10.id}" }, id: "thiscodeis_haunted" %>
+            <div id="<%= @equip10.id%>" class="modal">
+
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                  <div class="modal-dialog" id="<%= @equip10.id%>">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p><%=@equip10.month%></p>
+                          <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                          <table class="table table-hover">
+                            <th style="text-align: center">Week1</th>
+                            <th style="text-align: center">Week2</th>
+                            <th style="text-align: center">Week3</th>
+                            <th style="text-align: center">Week4</th>
+                            <th style="text-align: center">Week5</th>
+                            <tr>
+                              <td class="status-<%=@equip10.week_1%>"></td>
+                              <td class="status-<%=@equip10.week_2%>"></td>
+                              <td class="status-<%=@equip10.week_3%>"></td>
+                              <td class="status-<%=@equip10.week_4%>"></td>
+                              <td class="status-<%=@equip10.week_5%>"></td>
+                            </tr>
+                            </table>
+
+                            Available-
+                            <br/>
+                            Busy-
+                            <br/>
+                            Not Available-
+                            <br/>
+
+                            <%# <%= @equip10.id%>
+
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                      </div>
+                      </div>
+                  </div>
+                </div>
 
           </div>
       </div>
@@ -811,6 +1379,63 @@
                    </div>
                </div>
                <div class="card-footer">
+
+                 <!-- Button trigger modal -->
+                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                 Availabilty
+                 </button> -->
+                 <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip11.id}" }, id: "thiscodeis_haunted" %>
+                 <div id="<%= @equip11.id%>" class="modal">
+
+                   <!-- Modal -->
+                   <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                       <div class="modal-dialog" id="<%= @equip11.id%>">
+                           <div class="modal-content">
+                           <div class="modal-header">
+                               <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                               <p><%=@equip11.month%></p>
+                               <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                               <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                               <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                               <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                               <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                               <table class="table table-hover">
+                                 <th style="text-align: center">Week1</th>
+                                 <th style="text-align: center">Week2</th>
+                                 <th style="text-align: center">Week3</th>
+                                 <th style="text-align: center">Week4</th>
+                                 <th style="text-align: center">Week5</th>
+                                 <tr>
+                                   <td class="status-<%=@equip11.week_1%>"></td>
+                                   <td class="status-<%=@equip11.week_2%>"></td>
+                                   <td class="status-<%=@equip11.week_3%>"></td>
+                                   <td class="status-<%=@equip11.week_4%>"></td>
+                                   <td class="status-<%=@equip11.week_5%>"></td>
+                                 </tr>
+                                 </table>
+
+                                 Available-
+                                 <br/>
+                                 Busy-
+                                 <br/>
+                                 Not Available-
+                                 <br/>
+
+                                 <%# <%= @equip11.id%>
+
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                           </div>
+                           </div>
+                       </div>
+                </div>
 
                </div>
 
@@ -879,6 +1504,63 @@
             </div>
             <div class="card-footer">
 
+              <!-- Button trigger modal -->
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+              Availabilty
+              </button> -->
+              <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip12.id}" }, id: "thiscodeis_haunted" %>
+              <div id="<%= @equip12.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip12.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip12.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip12.week_1%>"></td>
+                                <td class="status-<%=@equip12.week_2%>"></td>
+                                <td class="status-<%=@equip12.week_3%>"></td>
+                                <td class="status-<%=@equip12.week_4%>"></td>
+                                <td class="status-<%=@equip12.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip12.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -942,6 +1624,63 @@
                 </div>
             </div>
             <div class="card-footer">
+
+              <!-- Button trigger modal -->
+              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+              Availabilty
+              </button> -->
+              <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip13.id}" }, id: "thiscodeis_haunted" %>
+              <div id="<%= @equip13.id%>" class="modal">
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                    <div class="modal-dialog" id="<%= @equip13.id%>">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><%=@equip13.month%></p>
+                            <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                            <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                            <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                            <table class="table table-hover">
+                              <th style="text-align: center">Week1</th>
+                              <th style="text-align: center">Week2</th>
+                              <th style="text-align: center">Week3</th>
+                              <th style="text-align: center">Week4</th>
+                              <th style="text-align: center">Week5</th>
+                              <tr>
+                                <td class="status-<%=@equip13.week_1%>"></td>
+                                <td class="status-<%=@equip13.week_2%>"></td>
+                                <td class="status-<%=@equip13.week_3%>"></td>
+                                <td class="status-<%=@equip13.week_4%>"></td>
+                                <td class="status-<%=@equip13.week_5%>"></td>
+                              </tr>
+                              </table>
+
+                              Available-
+                              <br/>
+                              Busy-
+                              <br/>
+                              Not Available-
+                              <br/>
+
+                              <%# <%= @equip13.id%>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -1008,6 +1747,63 @@
           </div>
           <div class="card-footer">
 
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+            Availabilty
+            </button> -->
+            <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip14.id}" }, id: "thiscodeis_haunted" %>
+            <div id="<%= @equip14.id%>" class="modal">
+
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                  <div class="modal-dialog" id="<%= @equip14.id%>">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p><%=@equip14.month%></p>
+                          <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                          <table class="table table-hover">
+                            <th style="text-align: center">Week1</th>
+                            <th style="text-align: center">Week2</th>
+                            <th style="text-align: center">Week3</th>
+                            <th style="text-align: center">Week4</th>
+                            <th style="text-align: center">Week5</th>
+                            <tr>
+                              <td class="status-<%=@equip14.week_1%>"></td>
+                              <td class="status-<%=@equip14.week_2%>"></td>
+                              <td class="status-<%=@equip14.week_3%>"></td>
+                              <td class="status-<%=@equip14.week_4%>"></td>
+                              <td class="status-<%=@equip14.week_5%>"></td>
+                            </tr>
+                            </table>
+
+                            Available-
+                            <br/>
+                            Busy-
+                            <br/>
+                            Not Available-
+                            <br/>
+
+                            <%# <%= @equip14.id%>
+
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                      </div>
+                      </div>
+                  </div>
+                </div>
+
           </div>
       </div>
   </div>
@@ -1066,6 +1862,63 @@
               </div>
           </div>
           <div class="card-footer">
+
+            <!-- Button trigger modal -->
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+            Availabilty
+            </button> -->
+            <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip15.id}" }, id: "thiscodeis_haunted" %>
+            <div id="<%= @equip15.id%>" class="modal">
+
+              <!-- Modal -->
+              <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                  <div class="modal-dialog" id="<%= @equip15.id%>">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p><%=@equip15.month%></p>
+                          <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                          <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                          <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                          <table class="table table-hover">
+                            <th style="text-align: center">Week1</th>
+                            <th style="text-align: center">Week2</th>
+                            <th style="text-align: center">Week3</th>
+                            <th style="text-align: center">Week4</th>
+                            <th style="text-align: center">Week5</th>
+                            <tr>
+                              <td class="status-<%=@equip15.week_1%>"></td>
+                              <td class="status-<%=@equip15.week_2%>"></td>
+                              <td class="status-<%=@equip15.week_3%>"></td>
+                              <td class="status-<%=@equip15.week_4%>"></td>
+                              <td class="status-<%=@equip15.week_5%>"></td>
+                            </tr>
+                            </table>
+
+                            Available-
+                            <br/>
+                            Busy-
+                            <br/>
+                            Not Available-
+                            <br/>
+
+                            <%# <%= @equip15.id%>
+
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                      </div>
+                      </div>
+                  </div>
+                </div>
 
           </div>
       </div>
@@ -1126,6 +1979,63 @@
             </div>
         </div>
         <div class="card-footer">
+
+          <!-- Button trigger modal -->
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+          Availabilty
+          </button> -->
+          <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip16.id}" }, id: "thiscodeis_haunted" %>
+          <div id="<%= @equip16.id%>" class="modal">
+
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                <div class="modal-dialog" id="<%= @equip16.id%>">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><%=@equip16.month%></p>
+                        <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                        <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                        <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                        <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                        <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                        <table class="table table-hover">
+                          <th style="text-align: center">Week1</th>
+                          <th style="text-align: center">Week2</th>
+                          <th style="text-align: center">Week3</th>
+                          <th style="text-align: center">Week4</th>
+                          <th style="text-align: center">Week5</th>
+                          <tr>
+                            <td class="status-<%=@equip16.week_1%>"></td>
+                            <td class="status-<%=@equip16.week_2%>"></td>
+                            <td class="status-<%=@equip16.week_3%>"></td>
+                            <td class="status-<%=@equip16.week_4%>"></td>
+                            <td class="status-<%=@equip16.week_5%>"></td>
+                          </tr>
+                          </table>
+
+                          Available-
+                          <br/>
+                          Busy-
+                          <br/>
+                          Not Available-
+                          <br/>
+
+                          <%# <%= @equip16.id%>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                    </div>
+                </div>
+                </div>
 
         </div>
     </div>
@@ -1191,6 +2101,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip17.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip17.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip17.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip17.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip17.week_1%>"></td>
+                                          <td class="status-<%=@equip17.week_2%>"></td>
+                                          <td class="status-<%=@equip17.week_3%>"></td>
+                                          <td class="status-<%=@equip17.week_4%>"></td>
+                                          <td class="status-<%=@equip17.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip17.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1255,6 +2223,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip18.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip18.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip18.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip18.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip18.week_1%>"></td>
+                                          <td class="status-<%=@equip18.week_2%>"></td>
+                                          <td class="status-<%=@equip18.week_3%>"></td>
+                                          <td class="status-<%=@equip18.week_4%>"></td>
+                                          <td class="status-<%=@equip18.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip18.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1279,7 +2305,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                 </div>
-            </div>
+</div>
          </div>
             <div class="card-body">
                 <div id="more">
@@ -1313,6 +2339,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip19.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip19.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip19.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip19.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip19.week_1%>"></td>
+                                          <td class="status-<%=@equip19.week_2%>"></td>
+                                          <td class="status-<%=@equip19.week_3%>"></td>
+                                          <td class="status-<%=@equip19.week_4%>"></td>
+                                          <td class="status-<%=@equip19.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip19.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -1373,6 +2457,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip20.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip20.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip20.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip20.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip20.week_1%>"></td>
+                                          <td class="status-<%=@equip20.week_2%>"></td>
+                                          <td class="status-<%=@equip20.week_3%>"></td>
+                                          <td class="status-<%=@equip20.week_4%>"></td>
+                                          <td class="status-<%=@equip20.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip20.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1432,6 +2574,63 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip21.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip21.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip21.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip21.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip21.week_1%>"></td>
+                                          <td class="status-<%=@equip21.week_2%>"></td>
+                                          <td class="status-<%=@equip21.week_3%>"></td>
+                                          <td class="status-<%=@equip21.week_4%>"></td>
+                                          <td class="status-<%=@equip21.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip21.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
 
             </div>
         </div>
@@ -1495,6 +2694,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip22.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip22.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip22.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip22.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip22.week_1%>"></td>
+                                          <td class="status-<%=@equip22.week_2%>"></td>
+                                          <td class="status-<%=@equip22.week_3%>"></td>
+                                          <td class="status-<%=@equip22.week_4%>"></td>
+                                          <td class="status-<%=@equip22.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip22.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1556,6 +2813,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip23.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip23.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip23.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip23.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip23.week_1%>"></td>
+                                          <td class="status-<%=@equip23.week_2%>"></td>
+                                          <td class="status-<%=@equip23.week_3%>"></td>
+                                          <td class="status-<%=@equip23.week_4%>"></td>
+                                          <td class="status-<%=@equip23.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip23.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -1622,6 +2937,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip24.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip24.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip24.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip24.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip24.week_1%>"></td>
+                                          <td class="status-<%=@equip24.week_2%>"></td>
+                                          <td class="status-<%=@equip24.week_3%>"></td>
+                                          <td class="status-<%=@equip24.week_4%>"></td>
+                                          <td class="status-<%=@equip24.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip24.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1680,6 +3053,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip25.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip25.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip25.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip25.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip25.week_1%>"></td>
+                                          <td class="status-<%=@equip25.week_2%>"></td>
+                                          <td class="status-<%=@equip25.week_3%>"></td>
+                                          <td class="status-<%=@equip25.week_4%>"></td>
+                                          <td class="status-<%=@equip25.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip25.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -1740,6 +3171,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip16.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip16.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip16.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip16.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip26.week_1%>"></td>
+                                          <td class="status-<%=@equip26.week_2%>"></td>
+                                          <td class="status-<%=@equip26.week_3%>"></td>
+                                          <td class="status-<%=@equip26.week_4%>"></td>
+                                          <td class="status-<%=@equip26.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip26.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -1799,6 +3288,63 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip27.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip27.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip27.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip27.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip27.week_1%>"></td>
+                                          <td class="status-<%=@equip27.week_2%>"></td>
+                                          <td class="status-<%=@equip27.week_3%>"></td>
+                                          <td class="status-<%=@equip27.week_4%>"></td>
+                                          <td class="status-<%=@equip27.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip27.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
             </div>
         </div>
     </div>
@@ -1857,6 +3403,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip28.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip28.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip28.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip28.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip28.week_1%>"></td>
+                                          <td class="status-<%=@equip28.week_2%>"></td>
+                                          <td class="status-<%=@equip28.week_3%>"></td>
+                                          <td class="status-<%=@equip28.week_4%>"></td>
+                                          <td class="status-<%=@equip28.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip28.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -1922,6 +3526,62 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip29.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip29.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip29.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip29.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip29.week_1%>"></td>
+                                          <td class="status-<%=@equip29.week_2%>"></td>
+                                          <td class="status-<%=@equip29.week_3%>"></td>
+                                          <td class="status-<%=@equip29.week_4%>"></td>
+                                          <td class="status-<%=@equip29.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip29.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
 
 
             </div>
@@ -1979,7 +3639,7 @@
                     <div class="dropdown book">
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
-                        </button>
+</button>
 
                         <ul class="dropdown-menu">
                           <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
@@ -1988,6 +3648,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip30.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip30.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip30.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip30.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip30.week_1%>"></td>
+                                          <td class="status-<%=@equip30.week_2%>"></td>
+                                          <td class="status-<%=@equip30.week_3%>"></td>
+                                          <td class="status-<%=@equip30.week_4%>"></td>
+                                          <td class="status-<%=@equip30.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip30.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -2051,6 +3769,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip31.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip31.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip31.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip31.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip31.week_1%>"></td>
+                                          <td class="status-<%=@equip31.week_2%>"></td>
+                                          <td class="status-<%=@equip31.week_3%>"></td>
+                                          <td class="status-<%=@equip31.week_4%>"></td>
+                                          <td class="status-<%=@equip31.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip31.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -2110,6 +3886,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip32.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip32.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip32.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip32.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip32.week_1%>"></td>
+                                          <td class="status-<%=@equip32.week_2%>"></td>
+                                          <td class="status-<%=@equip32.week_3%>"></td>
+                                          <td class="status-<%=@equip32.week_4%>"></td>
+                                          <td class="status-<%=@equip32.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip32.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
           </div>
@@ -2173,6 +4007,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip33.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip33.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip33.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip33.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip33.week_1%>"></td>
+                                          <td class="status-<%=@equip33.week_2%>"></td>
+                                          <td class="status-<%=@equip33.week_3%>"></td>
+                                          <td class="status-<%=@equip33.week_4%>"></td>
+                                          <td class="status-<%=@equip33.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip33.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -2231,6 +4123,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip34.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip34.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip34.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip34.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip34.week_1%>"></td>
+                                          <td class="status-<%=@equip34.week_2%>"></td>
+                                          <td class="status-<%=@equip34.week_3%>"></td>
+                                          <td class="status-<%=@equip34.week_4%>"></td>
+                                          <td class="status-<%=@equip34.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip34.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -2291,6 +4241,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip35.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip35.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip35.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip35.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip35.week_1%>"></td>
+                                          <td class="status-<%=@equip35.week_2%>"></td>
+                                          <td class="status-<%=@equip35.week_3%>"></td>
+                                          <td class="status-<%=@equip35.week_4%>"></td>
+                                          <td class="status-<%=@equip35.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip35.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -2350,6 +4358,63 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip36.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip36.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip36.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip36.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip36.week_1%>"></td>
+                                          <td class="status-<%=@equip36.week_2%>"></td>
+                                          <td class="status-<%=@equip36.week_3%>"></td>
+                                          <td class="status-<%=@equip36.week_4%>"></td>
+                                          <td class="status-<%=@equip36.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip36.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
             </div>
         </div>
     </div>
@@ -2408,6 +4473,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip37.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip37.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip37.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip37.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip37.week_1%>"></td>
+                                          <td class="status-<%=@equip37.week_2%>"></td>
+                                          <td class="status-<%=@equip37.week_3%>"></td>
+                                          <td class="status-<%=@equip37.week_4%>"></td>
+                                          <td class="status-<%=@equip37.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip37.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -2470,6 +4593,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip38.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip38.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip38.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip38.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip38.week_1%>"></td>
+                                          <td class="status-<%=@equip38.week_2%>"></td>
+                                          <td class="status-<%=@equip38.week_3%>"></td>
+                                          <td class="status-<%=@equip38.week_4%>"></td>
+                                          <td class="status-<%=@equip38.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip38.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -2535,6 +4716,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip39.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip39.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip39.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip39.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip39.week_1%>"></td>
+                                          <td class="status-<%=@equip39.week_2%>"></td>
+                                          <td class="status-<%=@equip39.week_3%>"></td>
+                                          <td class="status-<%=@equip39.week_4%>"></td>
+                                          <td class="status-<%=@equip39.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip39.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -2593,6 +4832,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip40.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip40.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip40.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip40.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip40.week_1%>"></td>
+                                          <td class="status-<%=@equip40.week_2%>"></td>
+                                          <td class="status-<%=@equip40.week_3%>"></td>
+                                          <td class="status-<%=@equip40.week_4%>"></td>
+                                          <td class="status-<%=@equip40.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip40.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
@@ -2661,6 +4958,64 @@
             </div>
             <div class="card-footer">
 
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip41.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip41.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip41.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip41.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip41.week_1%>"></td>
+                                          <td class="status-<%=@equip41.week_2%>"></td>
+                                          <td class="status-<%=@equip41.week_3%>"></td>
+                                          <td class="status-<%=@equip41.week_4%>"></td>
+                                          <td class="status-<%=@equip41.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip41.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
+
             </div>
         </div>
     </div>
@@ -2725,6 +5080,64 @@
                 </div>
             </div>
             <div class="card-footer">
+
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
+                        Availabilty
+                        </button> -->
+                        <%= button_tag "Availabilty", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{@equip42.id}" }, id: "thiscodeis_haunted" %>
+                        <div id="<%= @equip42.id%>" class="modal">
+
+                          <!-- Modal -->
+                          <!-- <div class="modal fade" id="hrfesem-avail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+                              <div class="modal-dialog" id="<%= @equip42.id%>">
+                                  <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Equipment Availability</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <p><%=@equip42.month%></p>
+                                      <!-- <span>Week 1: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 2: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 3: <button type="button" class="btn btn-warning" style="background-color:</button></span>
+                                      <span>Week 4: <button type="button" class="btn btn-success" style="background-color:</button></span>
+                                      <span>Week 5: <button type="button" class="btn btn-success" style="background-color:</button></span> -->
+
+
+                                      <table class="table table-hover">
+                                        <th style="text-align: center">Week1</th>
+                                        <th style="text-align: center">Week2</th>
+                                        <th style="text-align: center">Week3</th>
+                                        <th style="text-align: center">Week4</th>
+                                        <th style="text-align: center">Week5</th>
+                                        <tr>
+                                          <td class="status-<%=@equip42.week_1%>"></td>
+                                          <td class="status-<%=@equip42.week_2%>"></td>
+                                          <td class="status-<%=@equip42.week_3%>"></td>
+                                          <td class="status-<%=@equip42.week_4%>"></td>
+                                          <td class="status-<%=@equip42.week_5%>"></td>
+                                        </tr>
+                                        </table>
+
+                                        Available-
+                                        <br/>
+                                        Busy-
+                                        <br/>
+                                        Not Available-
+                                        <br/>
+
+                                        <%# <%= @equip42.id%>
+
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
+
 
             </div>
         </div>
