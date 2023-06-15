@@ -1,6 +1,5 @@
 class FeedbacksController < ApplicationController
-  before_action :set_feedback, only: %i[ show edit update destroy ]
-
+   before_action :set_feedback, only: %i[ show edit update destroy ]
   # GET /feedbacks or /feedbacks.json
   def index
     @feedbacks = Feedback.all
@@ -61,11 +60,11 @@ class FeedbacksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_feedback
-      @feedback = Feedback.find(params[:id])
+       @feedback = Feedback.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def feedback_params
-      params.require(:feedback).permit(:username, :email, :feedback, :date, :user_id)
-    end
+     def feedback_params
+       params.require(:feedback).permit(:username, :email, :feedback, :date, :user_id)
+     end
 end

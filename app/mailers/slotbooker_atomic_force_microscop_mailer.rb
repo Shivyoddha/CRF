@@ -19,3 +19,4 @@ class SlotbookerAtomicForceMicroscopMailer < ApplicationMailer
             )
     end
     end
+  end
