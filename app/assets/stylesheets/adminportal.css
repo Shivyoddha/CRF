@@ -1,4 +1,4 @@
-/*Can't create, edit, or upload … Not enough storage. Get more now, or remove files from Drive, Google Photos, or Gmail.*/
+/*Can't create, edit, or upload … Not enough storage. Get more now, or remove titlefiles from Drive, Google Photos, or Gmail.*/
 * {
     margin: 0%;
     padding: 0%;
@@ -10,11 +10,15 @@
 
 .font-quicksand {
     font-family: "Quicksand", "sans-serif";
+    font-size: 14px;
 }
 
 #title {
     padding: 0 0 0 1em;
     font-family: "unbounded", "sans-serif";
+    font-size: 16px;
+    text-wrap: wrap;
+    width: 25%;
 }
 
 #tab-name, #stats {
@@ -58,12 +62,34 @@
     border-bottom: 4px solid rgb(19, 18, 18);
 }
 
+.activated {
+    background-color: #3f5ac9!important;
+    border: 1px solid white!important;
+}
+.activated-text {
+    color: white!important;
+}
+
 .navbar-nav {
     align-items: start;
 }
 
 .nav-item {
     display: flex;
+}
+.tab{
+ justify-content: space-evenly;
+}
+#tab-div {
+    display: none;
+}
+
+.nav-item-tab {
+    display: flex;
+    margin: 0 1em;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 14px;
 }
 
 .model-element:hover {
@@ -87,6 +113,18 @@
     display: grid;
     grid-template-columns: 0.5fr 2fr;
     grid-template-rows: 1fr;
+}
+
+.container-slot-booker-new {
+    max-width: 100%;
+    margin: auto;
+    padding: 0%;
+}
+
+.table>thead {
+    vertical-align: bottom;
+    position: sticky;
+    top: 0px;
 }
 
 /* NAvigation pane organized and styled */
@@ -262,7 +300,9 @@ ul {
 #slots {
     background-color: #ddf1fb;
     overflow-y: auto;
-    overflow-x: auto;
+    height: 92vh;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 
 .table-head {
@@ -414,7 +454,72 @@ ul {
 }
 
 /* Styling of chart ends */
+#scroll-left {
+    position: absolute;
+    left: 3em;
+    bottom: 4em;
+}
+#scroll-right {
+    position: absolute;
+    right: 3em;
+    bottom: 4em;
+}
 
+.cssbuttons-io-button {
+    background: #3f5ac9;
+    color: white;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+  }
+  
+  .cssbuttons-io-button .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.7em;
+    right: 0.3em;
+    transition: all 0.3s;
+  }
+  
+  .cssbuttons-io-button:hover .icon {
+    width: calc(100% - 0.6em);
+  }
+  
+  .cssbuttons-io-button .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #7b52b9;
+  }
+  
+  .cssbuttons-io-button:hover .icon svg {
+    transform: translateX(0.1em);
+  }
+  
+  .cssbuttons-io-button:active .icon {
+    transform: scale(0.95);
+  }
+
+  #scroll-left .icon {
+    transform: rotate(180deg);
+  }
+  
 
 
 
@@ -475,5 +580,12 @@ ul {
 
     #arrow {
         display: none;
+    }
+
+    #tab-div {
+        display: flex;
+        width: 50%;
+        padding: 0 1em 0 0;
+        justify-content: flex-end;
     }
 }
