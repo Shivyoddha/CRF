@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
 
 has_one_attached :file
-has_many :xrds
+has_many :xrds,  :dependent => :destroy
 has_many :hr_fesem_cs
 has_many :hr_fesem_js
 has_many :icp_ms

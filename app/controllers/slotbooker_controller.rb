@@ -9,8 +9,6 @@ def xrd
 def xrd1
 @xrd=Xrd.all
 EquipmentTable.new
-
-
 end
 
 def xrd2

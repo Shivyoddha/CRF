@@ -27,6 +27,16 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.user=current_user
     @electro_chemical.status="pending"
     @electro_chemical.build_equipment_table
+    @electro_chemical.equipment_table.dummy = "alloted"
+    @electro_chemical.equipment_table.username = @electro_chemical.user.name
+    @electro_chemical.equipment_table.equipname = "Electro Chemical Polishing"
+    @electro_chemical.equipment_table.app_no = @electro_chemical.id
+    @electro_chemical.equipment_table.debit_head = @electro_chemical.debit
+    @electro_chemical.equipment_table.role = @electro_chemical.user.role
+    @electro_chemical.equipment_table.email = @electro_chemical.user.email
+    @electro_chemical.equipment_table.dept = @electro_chemical.user.department
+    @electro_chemical.equipment_table.profesion = @electro_chemical.user.profession
+    @electro_chemical.equipment_table.orgname = @electro_chemical.user.orgname
     respond_to do |format|
       if @electro_chemical.save
         if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'

@@ -27,6 +27,16 @@ class HrlcmsController < ApplicationController
     @hrlcm.user=current_user
     @hrlcm.status="pending"
     @hrlcm.build_equipment_table
+    @hrlcm.equipment_table.dummy = "alloted"
+    @hrlcm.equipment_table.username = @hrlcm.user.name
+    @hrlcm.equipment_table.equipname = "HR-LCMS"
+    @hrlcm.equipment_table.app_no = @hrlcm.id
+    @hrlcm.equipment_table.debit_head = @hrlcm.debit
+    @hrlcm.equipment_table.role = @hrlcm.user.role
+    @hrlcm.equipment_table.email = @hrlcm.user.email
+    @hrlcm.equipment_table.dept = @hrlcm.user.department
+    @hrlcm.equipment_table.profesion = @hrlcm.user.profession
+    @hrlcm.equipment_table.orgname = @hrlcm.user.orgname
     respond_to do |format|
       if @hrlcm.save
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'

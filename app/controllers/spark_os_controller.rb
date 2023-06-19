@@ -26,6 +26,16 @@ class SparkOsController < ApplicationController
     @spark_o.user=current_user
     @spark_o.status="pending"
     @spark_o.build_equipment_table
+    @spark_o.equipment_table.dummy = "alloted"
+    @spark_o.equipment_table.username = @spark_o.user.name
+    @spark_o.equipment_table.equipname = "Spark-OES"
+    @spark_o.equipment_table.app_no = @spark_o.id
+    @spark_o.equipment_table.debit_head = @spark_o.debit
+    @spark_o.equipment_table.role = @spark_o.user.role
+    @spark_o.equipment_table.email = @spark_o.user.email
+    @spark_o.equipment_table.dept = @spark_o.user.department
+    @spark_o.equipment_table.profesion = @spark_o.user.profession
+    @spark_o.equipment_table.orgname = @spark_o.user.orgname
 
     respond_to do |format|
       if @spark_o.save

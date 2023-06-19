@@ -28,6 +28,16 @@ class GrindingsController < ApplicationController
     @grinding.user=current_user
     @grinding.status="pending"
     @grinding.build_equipment_table
+    @grinding.equipment_table.dummy = "alloted"
+    @grinding.equipment_table.username = @grinding.user.name
+    @grinding.equipment_table.equipname = "Automatic MultiSpecimen Polisher"
+    @grinding.equipment_table.app_no = @grinding.id
+    @grinding.equipment_table.debit_head = @grinding.debit
+    @grinding.equipment_table.role = @grinding.user.role
+    @grinding.equipment_table.email = @grinding.user.email
+    @grinding.equipment_table.dept = @grinding.user.department
+    @grinding.equipment_table.profesion = @grinding.user.profession
+    @grinding.equipment_table.orgname = @grinding.user.orgname
 
     respond_to do |format|
       if @grinding.save

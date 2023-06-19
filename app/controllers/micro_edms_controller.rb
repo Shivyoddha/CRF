@@ -28,6 +28,16 @@ class MicroEdmsController < ApplicationController
     @micro_edm.user=current_user
     @micro_edm.status="pending"
     @micro_edm.build_equipment_table
+    @micro_edm.equipment_table.dummy = "alloted"
+    @micro_edm.equipment_table.username = @micro_edm.user.name
+    @micro_edm.equipment_table.equipname = "micro_edm"
+    @micro_edm.equipment_table.app_no = @micro_edm.id
+    @micro_edm.equipment_table.debit_head = @micro_edm.debit
+    @micro_edm.equipment_table.role = @micro_edm.user.role
+    @micro_edm.equipment_table.email = @micro_edm.user.email
+    @micro_edm.equipment_table.dept = @micro_edm.user.department
+    @micro_edm.equipment_table.profesion = @micro_edm.user.profession
+    @micro_edm.equipment_table.orgname = @micro_edm.user.orgname
 
     respond_to do |format|
       if @micro_edm.save

@@ -98,14 +98,14 @@
                         <td> <%= xrds.more%> </td>
                         <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
                         <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
-  <td> <%= xrds.status %></td>
-  <%if xrds.references.attached? %>
-<td><%xrds.references.each do |file|%>
-   <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
-     <% end %></td>
-<% else %>
-  <td>NA</td>
-<% end %>
+                        <td> <%= xrds.status %></td>
+                        <%if xrds.references.attached? %>
+                        <td><%xrds.references.each do |file|%>
+                        <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                        <% end %></td>
+                        <% else %>
+                        <td>NA</td>
+                        <% end %>
                     </tr>
                       <%end%>
                 </tbody>

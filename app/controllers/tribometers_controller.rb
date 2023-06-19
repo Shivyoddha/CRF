@@ -28,6 +28,16 @@ class TribometersController < ApplicationController
     @tribometer.user=current_user
     @tribometer.status="pending"
     @tribometer.build_equipment_table
+    @tribometer.equipment_table.dummy = "alloted"
+    @tribometer.equipment_table.username = @tribometer.user.name
+    @tribometer.equipment_table.equipname = "Tribometer"
+    @tribometer.equipment_table.app_no = @tribometer.id
+    @tribometer.equipment_table.debit_head = @tribometer.debit
+    @tribometer.equipment_table.role = @tribometer.user.role
+    @tribometer.equipment_table.email = @tribometer.user.email
+    @tribometer.equipment_table.dept = @tribometer.user.department
+    @tribometer.equipment_table.profesion = @tribometer.user.profession
+    @tribometer.equipment_table.orgname = @tribometer.user.orgname
 
     respond_to do |format|
       if @tribometer.save

@@ -27,6 +27,16 @@ class LasersController < ApplicationController
     @laser.user=current_user
     @laser.status="pending"
     @laser.build_equipment_table
+    @laser.equipment_table.dummy = "alloted"
+    @laser.equipment_table.username = @laser.user.name
+    @laser.equipment_table.equipname = "Laser Flash Analyser"
+    @laser.equipment_table.app_no = @laser.id
+    @laser.equipment_table.debit_head = @laser.debit
+    @laser.equipment_table.role = @laser.user.role
+    @laser.equipment_table.email = @laser.user.email
+    @laser.equipment_table.dept = @laser.user.department
+    @laser.equipment_table.profesion = @laser.user.profession
+    @laser.equipment_table.orgname = @laser.user.orgname
 
     respond_to do |format|
       if @laser.save

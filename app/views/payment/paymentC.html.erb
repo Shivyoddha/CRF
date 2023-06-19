@@ -70,7 +70,7 @@
                             <td><%= link_to "View", generate_pdf_path( id:equipment.id,format: :pdf), class:"btn btn-warning" %> </td>
 
                             <td>  <%= form_with(model: equipment,local:true) do |form| %>
-                            <%= form.hidden_field :dummy, value: 'done' %>
+                            <%= form.hidden_field :dummy, value: 'performa_confirmed' %>
                             <div class="actions">
                             <%= form.submit "Send", class:"btn btn-danger"%>
                             </div>

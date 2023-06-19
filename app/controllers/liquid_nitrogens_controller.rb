@@ -27,6 +27,16 @@ class LiquidNitrogensController < ApplicationController
     @liquid_nitrogen.user = current_user
     @liquid_nitrogen.status="pending"
     @liquid_nitrogen.build_equipment_table
+    @liquid_nitrogen.equipment_table.dummy = "alloted"
+    @liquid_nitrogen.equipment_table.username = @liquid_nitrogen.user.name
+    @liquid_nitrogen.equipment_table.equipname = "Liquid Nitrogen"
+    @liquid_nitrogen.equipment_table.app_no = @liquid_nitrogen.id
+    @liquid_nitrogen.equipment_table.debit_head = @liquid_nitrogen.debit
+    @liquid_nitrogen.equipment_table.role = @liquid_nitrogen.user.role
+    @liquid_nitrogen.equipment_table.email = @liquid_nitrogen.user.email
+    @liquid_nitrogen.equipment_table.dept = @liquid_nitrogen.user.department
+    @liquid_nitrogen.equipment_table.profesion = @liquid_nitrogen.user.profession
+    @liquid_nitrogen.equipment_table.orgname = @liquid_nitrogen.user.orgname
 
     if @liquid_nitrogen.user.role=='student'||@liquid_nitrogen.user.role=='Faculty'
          @liquid_nitrogen.amount = (60.0)*@liquid_nitrogen.quantity

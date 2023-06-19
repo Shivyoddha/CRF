@@ -491,6 +491,7 @@ Rails.application.routes.draw do
     get 'payment/payment_completed'
     get 'payment/proforma_confirmation'
     post 'payment/paymentU'
+    post 'payment/paymentM'
     post 'payment/paymentExtU'
     post 'payment/paymentExtM'
     get 'home/faculty_verif'

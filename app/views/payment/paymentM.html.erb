@@ -26,7 +26,7 @@
                 <li class="nav-item">
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-                
+
             </ul>
         </div>
     </div>
@@ -39,37 +39,48 @@
         </div>
 
         <div id="wrap">
-          <%= form_with(model: @equipment,local:true) do |form| %>
-            <div class="mb-3">
-                <div class="input-group">
-                  <%= form.label :app_no, "Apllication No.", class:"input-group-text", id:"app"%>
-                  <%= form.text_field :app_no, class:"form-control", id:"app"%>
-                </div>
+
+
+          <%= form_with url: payment_paymentM_path do |form| %>
+          <% options = options_from_collection_for_select(Equiplist.all,'id','name')%>
+        <div class="input-group mb-3">
+          <%= form.label :entry ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+          <%= form.select(:entry ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
+          <%= form.submit "Find", class:"btn btn-primary", id:"sbt" %>
+        </div>
+            <%end%>
+
+
+
+            <%= form_with(model: @equipment,local:true) do |form| %>
+
+              <% if @entry == "XRD"%>
+              <% application_no = Xrd.last.id%>
+              <div class="input-group mb-3">
+                <%= form.label :app_no, "Apllication No.", class:"input-group-text", for:"app"%>
+                <%= form.text_field :app_no, class:"form-control",placeholder:"#{application_no+1}", id:"app"%>
+              </div>
+              <%end%>
+
+
+            <% options = options_from_collection_for_select(User.all,'id' ,'name')%>
+          <div class="input-group mb-3">
+            <%= form.label :username ,"User name" ,for:"user", class:"input-group-text "%>
+            <%= form.select(:username ,User.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "user" , :required => true})%>
+          </div>
+
+            <div class="input-group mb-3">
+              <%= form.label :reg_no, "Reg ID", class:"input-group-text", for:"reg"%>
+              <%= form.text_field :reg_no, class:"form-control", id:"reg",placeholder:"Optional"%>
             </div>
 
-              <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
             <div class="input-group mb-3">
-              <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
-              <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
+              <%= form.label :dept ,"Department" ,for:"dept", class:"input-group-text "%>
+               <%= form.select(:dept, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "dept",:required => false }) %>
             </div>
 
             <div class="input-group mb-3">
-              <%= form.label :username, "User Name", class:"input-group-text", id:"user_name"%>
-              <%= form.text_field :username, class:"form-control", id:"user_name"%>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :reg_no, "Reg ID", class:"input-group-text", id:"user_name"%>
-              <%= form.text_field :reg_no, class:"form-control", id:"user_name",placeholder:"Optional"%>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :dept ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
-               <%= form.select(:dept, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :guide, "Guide", class:"input-group-text", id:"guide"%>
+              <%= form.label :guide, "Guide", class:"input-group-text", for:"guide"%>
               <%= form.text_field :guide, class:"form-control", id:"guide",placeholder:"Optional"%>
             </div>
 
@@ -81,14 +92,15 @@
 
             <div class="mb-3">
                 <div class="input-group mb-3">
-                  <%= form.label :pay, "Amount", class:"input-group-text", id:"amount"%>
-                  <%= form.label :pay, "₹", class:"input-group-text", id:"amount"%>
+                  <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
+                  <%= form.label :pay, "₹", class:"input-group-text", for:"amount"%>
                     <%= form.text_field :pay, class:"form-control", id:"amount"%>
                 </div>
             </div>
 
               <%= form.hidden_field :dummy, value: 'generated' %>
               <%= form.hidden_field :role, value: 'student' %>
+              <%= form.hidden_field :equipname, value: "#{@entry}" %>
 
               <div class="actions">
                 <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>

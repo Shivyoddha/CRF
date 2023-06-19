@@ -26,6 +26,16 @@ class CellImagingsController < ApplicationController
     @cell_imaging.user=current_user
     @cell_imaging.status="pending"
     @cell_imaging.build_equipment_table
+    @cell_imaging.equipment_table.dummy = "alloted"
+    @cell_imaging.equipment_table.username = @cell_imaging.user.name
+    @cell_imaging.equipment_table.equipname = "Cell-Imaging MultiMode Reader"
+    @cell_imaging.equipment_table.app_no = @cell_imaging.id
+    @cell_imaging.equipment_table.debit_head = @cell_imaging.debit
+    @cell_imaging.equipment_table.role = @cell_imaging.user.role
+    @cell_imaging.equipment_table.email = @cell_imaging.user.email
+    @cell_imaging.equipment_table.dept = @cell_imaging.user.department
+    @cell_imaging.equipment_table.profesion = @cell_imaging.user.profession
+    @cell_imaging.equipment_table.orgname = @cell_imaging.user.orgname
     respond_to do |format|
       if @cell_imaging.save
         if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'

@@ -27,6 +27,16 @@ class MilliQsController < ApplicationController
     @milli_q.user=current_user
     @milli_q.status="pending"
     @milli_q.build_equipment_table
+    @milli_q.equipment_table.dummy = "alloted"
+    @milli_q.equipment_table.username = @milli_q.user.name
+    @milli_q.equipment_table.equipname = "Milli-Q water"
+    @milli_q.equipment_table.app_no = @milli_q.id
+    @milli_q.equipment_table.debit_head = @milli_q.debit
+    @milli_q.equipment_table.role = @milli_q.user.role
+    @milli_q.equipment_table.email = @milli_q.user.email
+    @milli_q.equipment_table.dept = @milli_q.user.department
+    @milli_q.equipment_table.profesion = @milli_q.user.profession
+    @milli_q.equipment_table.orgname = @milli_q.user.orgname
 
      # @milli_q.amount1=0
      # @milli_q.amount2=0

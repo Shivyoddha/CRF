@@ -64,7 +64,7 @@
                 </thead>
                 <tbody>
 
-                <% @equipment.where(debit_head:'Project Fund', dummy:'done',role:'student').each do |equipment|%>
+                <% @equipment.where(debit_head:'Project Fund', dummy:'performa_confirmed',role:'student').each do |equipment|%>
                 <tr>
                   <th scope="row"><%=equipment.app_no %>	</th>
                   <td> <%= equipment.username%> </td>

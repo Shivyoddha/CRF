@@ -27,6 +27,17 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact.user=current_user
     @three_d_non_contact.status="pending"
     @three_d_non_contact.build_equipment_table
+    @three_d_non_contact.equipment_table.dummy = "alloted"
+    @three_d_non_contact.equipment_table.username = @three_d_non_contact.user.name
+    @three_d_non_contact.equipment_table.equipname = "3-D Non Contact Profilometer"
+    @three_d_non_contact.equipment_table.app_no = @three_d_non_contact.id
+    @three_d_non_contact.equipment_table.debit_head = @three_d_non_contact.debit
+    @three_d_non_contact.equipment_table.role = @three_d_non_contact.user.role
+    @three_d_non_contact.equipment_table.email = @three_d_non_contact.user.email
+    @three_d_non_contact.equipment_table.dept = @three_d_non_contact.user.department
+    @three_d_non_contact.equipment_table.profesion = @three_d_non_contact.user.profession
+    @three_d_non_contact.equipment_table.orgname = @three_d_non_contact.user.orgname
+
     respond_to do |format|
       if @three_d_non_contact.save
         if @three_d_non_contact.user.role=='student'||@three_d_non_contact.user.role=='faculty'

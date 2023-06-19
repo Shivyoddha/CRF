@@ -28,6 +28,16 @@ class RamanMicroscopesController < ApplicationController
     @raman_microscope.user=current_user
     @raman_microscope.status="pending"
     @raman_microscope.build_equipment_table
+    @raman_microscope.equipment_table.dummy = "alloted"
+    @raman_microscope.equipment_table.username = @raman_microscope.user.name
+    @raman_microscope.equipment_table.equipname = "Raman Spectrometer with PL"
+    @raman_microscope.equipment_table.app_no = @raman_microscope.id
+    @raman_microscope.equipment_table.debit_head = @raman_microscope.debit
+    @raman_microscope.equipment_table.role = @raman_microscope.user.role
+    @raman_microscope.equipment_table.email = @raman_microscope.user.email
+    @raman_microscope.equipment_table.dept = @raman_microscope.user.department
+    @raman_microscope.equipment_table.profesion = @raman_microscope.user.profession
+    @raman_microscope.equipment_table.orgname = @raman_microscope.user.orgname
 
     respond_to do |format|
       if @raman_microscope.save

@@ -15,6 +15,7 @@ class AdvanceMolecularRheometersController < ApplicationController
     @user=User.find(params[:id])
     @advance_molecular_rheometer = AdvanceMolecularRheometer.new
     @advance_molecular_rheometer.build_equipment_table
+
   end
 
   # GET /advance_molecular_rheometers/1/edit
@@ -27,6 +28,16 @@ class AdvanceMolecularRheometersController < ApplicationController
     @advance_molecular_rheometer.user=current_user
     @advance_molecular_rheometer.status="pending"
     @advance_molecular_rheometer.build_equipment_table
+    @advance_molecular_rheometer.equipment_table.dummy = "alloted"
+    @advance_molecular_rheometer.equipment_table.username = @advance_molecular_rheometer.user.name
+    @advance_molecular_rheometer.equipment_table.equipname = "Advance Modular Rheometer"
+    @advance_molecular_rheometer.equipment_table.app_no = @advance_molecular_rheometer.id
+    @advance_molecular_rheometer.equipment_table.debit_head = @advance_molecular_rheometer.debit
+    @advance_molecular_rheometer.equipment_table.role = @advance_molecular_rheometer.user.role
+    @advance_molecular_rheometer.equipment_table.email = @advance_molecular_rheometer.user.email
+    @advance_molecular_rheometer.equipment_table.dept = @advance_molecular_rheometer.user.department
+    @advance_molecular_rheometer.equipment_table.profesion = @advance_molecular_rheometer.user.profession
+    @advance_molecular_rheometer.equipment_table.orgname = @advance_molecular_rheometer.user.orgname
 
     respond_to do |format|
 

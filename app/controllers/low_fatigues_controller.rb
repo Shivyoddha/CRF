@@ -28,6 +28,16 @@ class LowFatiguesController < ApplicationController
     @low_fatigue.user=current_user
     @low_fatigue.status="pending"
     @low_fatigue.build_equipment_table
+    @low_fatigue.equipment_table.dummy = "alloted"
+    @low_fatigue.equipment_table.username = @low_fatigue.user.name
+    @low_fatigue.equipment_table.equipname = "Low Force Fatigue with DMA"
+    @low_fatigue.equipment_table.app_no = @low_fatigue.id
+    @low_fatigue.equipment_table.debit_head = @low_fatigue.debit
+    @low_fatigue.equipment_table.role = @low_fatigue.user.role
+    @low_fatigue.equipment_table.email = @low_fatigue.user.email
+    @low_fatigue.equipment_table.dept = @low_fatigue.user.department
+    @low_fatigue.equipment_table.profesion = @low_fatigue.user.profession
+    @low_fatigue.equipment_table.orgname = @low_fatigue.user.orgname
 
     respond_to do |format|
       if @low_fatigue.save

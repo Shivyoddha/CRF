@@ -28,6 +28,16 @@ class GlowsController < ApplicationController
     @glow.user=current_user
     @glow.status="pending"
     @glow.build_equipment_table
+    @glow.equipment_table.dummy = "alloted"
+    @glow.equipment_table.username = @glow.user.name
+    @glow.equipment_table.equipname = "Glow"
+    @glow.equipment_table.app_no = @glow.id
+    @glow.equipment_table.debit_head = @glow.debit
+    @glow.equipment_table.role = @glow.user.role
+    @glow.equipment_table.email = @glow.user.email
+    @glow.equipment_table.dept = @glow.user.department
+    @glow.equipment_table.profesion = @glow.user.profession
+    @glow.equipment_table.orgname = @glow.user.orgname
 
 
     respond_to do |format|

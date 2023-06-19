@@ -27,6 +27,16 @@ class ScratchIndentationsController < ApplicationController
     @scratch_indentation.user=current_user
     @scratch_indentation.status="pending"
     @scratch_indentation.build_equipment_table
+    @scratch_indentation.equipment_table.dummy = "alloted"
+    @scratch_indentation.equipment_table.username = @scratch_indentation.user.name
+    @scratch_indentation.equipment_table.equipname = "Scratch/Indentation Tester"
+    @scratch_indentation.equipment_table.app_no = @scratch_indentation.id
+    @scratch_indentation.equipment_table.debit_head = @scratch_indentation.debit
+    @scratch_indentation.equipment_table.role = @scratch_indentation.user.role
+    @scratch_indentation.equipment_table.email = @scratch_indentation.user.email
+    @scratch_indentation.equipment_table.dept = @scratch_indentation.user.department
+    @scratch_indentation.equipment_table.profesion = @scratch_indentation.user.profession
+    @scratch_indentation.equipment_table.orgname = @scratch_indentation.user.orgname
 
     respond_to do |format|
       if @scratch_indentation.save
