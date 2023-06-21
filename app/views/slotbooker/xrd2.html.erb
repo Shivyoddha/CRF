@@ -6,14 +6,14 @@
 
         <div id="tab-div">
           <div class="btn-group btn-profile dropstart">
-            <%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"btn btn-outline-warning profile-dropdown" %>
+            <%= link_to 'Alloted Slots',slotbooker_xrd1_path,class:"btn btn-outline-warning profile-dropdown" %>
             <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu font-quicksand">
               <li><%= link_to 'All Slots',slotbooker_xrd_path,class:"dropdown-item " %></li>
-              <li><%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"dropdown-item active"%></li>
-              <li><%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Pending Slots',slotbooker_xrd1_path,class:"dropdown-item"%></li>
+              <li><%= link_to 'Alloted Slots',slotbooker_xrd2_path,class:"dropdown-item active" %></li>
               <li><%= link_to 'Completed Slots',slotbooker_xrd3_path,class:"dropdown-item" %></li>
               <li><%= link_to 'Cancelled Slots',slotbooker_xrd4_path,class:"dropdown-item" %></li>
 
