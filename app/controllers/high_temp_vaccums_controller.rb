@@ -27,6 +27,16 @@ class HighTempVaccumsController < ApplicationController
     @high_temp_vaccum.user=current_user
     @high_temp_vaccum.status="pending"
     @high_temp_vaccum.build_equipment_table
+    @high_temp_vaccum.equipment_table.dummy = "alloted"
+    @high_temp_vaccum.equipment_table.username = @high_temp_vaccum.user.name
+    @high_temp_vaccum.equipment_table.equipname = "High Temp Vacuum Furnace"
+    @high_temp_vaccum.equipment_table.app_no = @high_temp_vaccum.id
+    @high_temp_vaccum.equipment_table.debit_head = @high_temp_vaccum.debit
+    @high_temp_vaccum.equipment_table.role = @high_temp_vaccum.user.role
+    @high_temp_vaccum.equipment_table.email = @high_temp_vaccum.user.email
+    @high_temp_vaccum.equipment_table.dept = @high_temp_vaccum.user.department
+    @high_temp_vaccum.equipment_table.profesion = @high_temp_vaccum.user.profession
+    @high_temp_vaccum.equipment_table.orgname = @high_temp_vaccum.user.orgname
     respond_to do |format|
       if @high_temp_vaccum.save
         if @high_temp_vaccum.user.role=='student'||@high_temp_vaccum.user.role=='faculty'

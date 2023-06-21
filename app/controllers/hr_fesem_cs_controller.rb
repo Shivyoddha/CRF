@@ -27,6 +27,16 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.user=current_user
     @hr_fesem_c.status="pending"
     @hr_fesem_c.build_equipment_table
+    @hr_fesem_c.equipment_table.dummy = "alloted"
+    @hr_fesem_c.equipment_table.username = @hr_fesem_c.user.name
+    @hr_fesem_c.equipment_table.equipname = "HR-FESEM [Carl Zeiss]"
+    @hr_fesem_c.equipment_table.app_no = @hr_fesem_c.id
+    @hr_fesem_c.equipment_table.debit_head = @hr_fesem_c.debit
+    @hr_fesem_c.equipment_table.role = @hr_fesem_c.user.role
+    @hr_fesem_c.equipment_table.email = @hr_fesem_c.user.email
+    @hr_fesem_c.equipment_table.dept = @hr_fesem_c.user.department
+    @hr_fesem_c.equipment_table.profesion = @hr_fesem_c.user.profession
+    @hr_fesem_c.equipment_table.orgname = @hr_fesem_c.user.orgname
     respond_to do |format|
       if @hr_fesem_c.save
         if @hr_fesem_c.user.role=='student'||@hr_fesem_c.user.role=='faculty'

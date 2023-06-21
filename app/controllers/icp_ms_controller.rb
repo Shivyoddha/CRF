@@ -28,6 +28,15 @@ class IcpMsController < ApplicationController
     @icp_m.user=current_user
     @icp_m.status="pending"
     @icp_m.build_equipment_table
+    @icp_m.equipment_table.dummy = "alloted"
+    @icp_m.equipment_table.username = @icp_m.user.name
+    @icp_m.equipment_table.equipname = "ICP-MS"
+    @icp_m.equipment_table.debit_head = @icp_m.debit
+    @icp_m.equipment_table.role = @icp_m.user.role
+    @icp_m.equipment_table.email = @icp_m.user.email
+    @icp_m.equipment_table.dept = @icp_m.user.department
+    @icp_m.equipment_table.profesion = @icp_m.user.profession
+    @icp_m.equipment_table.orgname = @icp_m.user.orgname
 
 
     respond_to do |format|

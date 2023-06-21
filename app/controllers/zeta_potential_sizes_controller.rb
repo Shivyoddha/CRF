@@ -27,6 +27,15 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.user=current_user
     @zeta_potential_size.status="pending"
     @zeta_potential_size.build_equipment_table
+    @zeta_potential_size.equipment_table.dummy = "alloted"
+    @zeta_potential_size.equipment_table.username = @zeta_potential_size.user.name
+    @zeta_potential_size.equipment_table.equipname = "Zeta Potential/Particle Sizer"
+    @zeta_potential_size.equipment_table.debit_head = @zeta_potential_size.debit
+    @zeta_potential_size.equipment_table.role = @zeta_potential_size.user.role
+    @zeta_potential_size.equipment_table.email = @zeta_potential_size.user.email
+    @zeta_potential_size.equipment_table.dept = @zeta_potential_size.user.department
+    @zeta_potential_size.equipment_table.profesion = @zeta_potential_size.user.profession
+    @zeta_potential_size.equipment_table.orgname = @zeta_potential_size.user.orgname
 
     respond_to do |format|
       if @zeta_potential_size.save

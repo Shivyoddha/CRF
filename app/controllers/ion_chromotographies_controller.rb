@@ -28,6 +28,16 @@ class IonChromotographiesController < ApplicationController
     @ion_chromotography.user=current_user
     @ion_chromotography.status="pending"
     @ion_chromotography.build_equipment_table
+    @ion_chromotography.equipment_table.dummy = "alloted"
+    @ion_chromotography.equipment_table.username = @ion_chromotography.user.name
+    @ion_chromotography.equipment_table.equipname = "ion_chromotography"
+    @ion_chromotography.equipment_table.app_no ="CRF/IC/#{@ion_chromotography.id}"
+    @ion_chromotography.equipment_table.debit_head = @ion_chromotography.debit
+    @ion_chromotography.equipment_table.role = @ion_chromotography.user.role
+    @ion_chromotography.equipment_table.email = @ion_chromotography.user.email
+    @ion_chromotography.equipment_table.dept = @ion_chromotography.user.department
+    @ion_chromotography.equipment_table.profesion = @ion_chromotography.user.profession
+    @ion_chromotography.equipment_table.orgname = @ion_chromotography.user.orgname
 
     respond_to do |format|
       if @ion_chromotography.save

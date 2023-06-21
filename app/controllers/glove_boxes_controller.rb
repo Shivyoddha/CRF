@@ -27,6 +27,16 @@ class GloveBoxesController < ApplicationController
     @glove_box.user=current_user
     @glove_box.status="pending"
     @glove_box.build_equipment_table
+    @glove_box.equipment_table.dummy = "alloted"
+    @glove_box.equipment_table.username = @glove_box.user.name
+    @glove_box.equipment_table.equipname = "glove_box"
+    @glove_box.equipment_table.app_no = @glove_box.id
+    @glove_box.equipment_table.debit_head = @glove_box.debit
+    @glove_box.equipment_table.role = @glove_box.user.role
+    @glove_box.equipment_table.email = @glove_box.user.email
+    @glove_box.equipment_table.dept = @glove_box.user.department
+    @glove_box.equipment_table.profesion = @glove_box.user.profession
+    @glove_box.equipment_table.orgname = @glove_box.user.orgname
 
     respond_to do |format|
       if @glove_box.save

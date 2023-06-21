@@ -27,6 +27,15 @@ class GasSensingsController < ApplicationController
     @gas_sensing.user=current_user
     @gas_sensing.status="pending"
     @gas_sensing.build_equipment_table
+    @gas_sensing.equipment_table.dummy = "alloted"
+    @gas_sensing.equipment_table.username = @gas_sensing.user.name
+    @gas_sensing.equipment_table.equipname = "Glove Box"
+    @gas_sensing.equipment_table.debit_head = @gas_sensing.debit
+    @gas_sensing.equipment_table.role = @gas_sensing.user.role
+    @gas_sensing.equipment_table.email = @gas_sensing.user.email
+    @gas_sensing.equipment_table.dept = @gas_sensing.user.department
+    @gas_sensing.equipment_table.profesion = @gas_sensing.user.profession
+    @gas_sensing.equipment_table.orgname = @gas_sensing.user.orgname
 
     respond_to do |format|
       if @gas_sensing.save

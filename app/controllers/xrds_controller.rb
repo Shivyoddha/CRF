@@ -25,12 +25,24 @@ class XrdsController < ApplicationController
   # POST /xrds or /xrds.json
   def create
     @xrd = Xrd.new(xrd_params)
+    xrd_id = @xrd.id
     @xrd.user=current_user
     @xrd.status="pending"
     @xrd.build_equipment_table
+    @xrd.equipment_table.dummy = "alloted"
+    @xrd.equipment_table.username = @xrd.user.name
+    @xrd.equipment_table.equipname = "XRD"
+    @xrd.equipment_table.app_no = @xrd.id
+    @xrd.equipment_table.debit_head = @xrd.debit
+    @xrd.equipment_table.role = @xrd.user.role
+    @xrd.equipment_table.email = @xrd.user.email
+    @xrd.equipment_table.dept = @xrd.user.department
+    @xrd.equipment_table.profesion = @xrd.user.profession
+    @xrd.equipment_table.orgname = @xrd.user.orgname
 
     respond_to do |format|
       if @xrd.save
+
         if @xrd.user.role=='student'||@xrd.user.role=='faculty'
           XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -45,10 +57,13 @@ class XrdsController < ApplicationController
     end
   end
 
+
+
+
   # PATCH/PUT /xrds/1 or /xrds/1.json
   def update
      @xrd.status="alloted"
-    @xrd.build_equipment_table
+     @xrd.build_equipment_table
 
     respond_to do |format|
       if @xrd.update(xrd_params)

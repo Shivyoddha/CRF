@@ -68,7 +68,7 @@
                           <% @equipment.where(dummy:'alloted', role:'student').each do |equipment|%>
                         <tr>
                           <th scope="row"><%= equipment.app_no%></th>
-                          <td> <%= equipment.email%> </td>
+                          <td> <%= equipment.username%> </td>
                           <td> <%= equipment.debit_head%> </td>
                           <td id="assign-btn">
                               <!-- Button trigger modal -->

@@ -28,6 +28,17 @@ class AtomicForceMicroscopesController < ApplicationController
     @atomic_force_microscope.user=current_user
     @atomic_force_microscope.status="pending"
     @atomic_force_microscope.build_equipment_table
+    @atomic_force_microscope.equipment_table.dummy = "alloted"
+    @atomic_force_microscope.equipment_table.username = @atomic_force_microscope.user.name
+    @atomic_force_microscope.equipment_table.equipname = "Atomic Force Microscope"
+    @atomic_force_microscope.equipment_table.app_no = @atomic_force_microscope.id
+    @atomic_force_microscope.equipment_table.debit_head = @atomic_force_microscope.debit
+    @atomic_force_microscope.equipment_table.role = @atomic_force_microscope.user.role
+    @atomic_force_microscope.equipment_table.email = @atomic_force_microscope.user.email
+    @atomic_force_microscope.equipment_table.dept = @atomic_force_microscope.user.department
+    @atomic_force_microscope.equipment_table.profesion = @atomic_force_microscope.user.profession
+    @atomic_force_microscope.equipment_table.orgname = @atomic_force_microscope.user.orgname
+
     respond_to do |format|
       if @atomic_force_microscope.save
         if @atomic_force_microscope.user.role=='student'||@atomic_force_microscope.user.role=='faculty'

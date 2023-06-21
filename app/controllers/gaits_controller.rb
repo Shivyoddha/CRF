@@ -15,6 +15,15 @@ class GaitsController < ApplicationController
     @gait = Gait.new
     @user=User.find(params[:id])
     @gait.build_equipment_table
+    @gait.equipment_table.dummy = "alloted"
+    @gait.equipment_table.username = @gait.user.name
+    @gait.equipment_table.equipname = "GAIT Analysis"
+    @gait.equipment_table.debit_head = @gait.debit
+    @gait.equipment_table.role = @gait.user.role
+    @gait.equipment_table.email = @gait.user.email
+    @gait.equipment_table.dept = @gait.user.department
+    @gait.equipment_table.profesion = @gait.user.profession
+    @gait.equipment_table.orgname = @gait.user.orgname
 
   end
 

@@ -26,6 +26,16 @@ class FiveAxisController < ApplicationController
     @five_axi.user=current_user
     @five_axi.status="pending"
     @five_axi.build_equipment_table
+    @five_axi.equipment_table.dummy = "alloted"
+    @five_axi.equipment_table.username = @five_axi.user.name
+    @five_axi.equipment_table.equipname = "5-Axes CNC"
+    @five_axi.equipment_table.app_no = @five_axi.id
+    @five_axi.equipment_table.debit_head = @five_axi.debit
+    @five_axi.equipment_table.role = @five_axi.user.role
+    @five_axi.equipment_table.email = @five_axi.user.email
+    @five_axi.equipment_table.dept = @five_axi.user.department
+    @five_axi.equipment_table.profesion = @five_axi.user.profession
+    @five_axi.equipment_table.orgname = @five_axi.user.orgname
     respond_to do |format|
       if @five_axi.save
         if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'

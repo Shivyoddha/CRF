@@ -28,6 +28,16 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.user=current_user
     @uv_vis_nir.status="pending"
     @uv_vis_nir.build_equipment_table
+    @uv_vis_nir.equipment_table.dummy = "alloted"
+    @uv_vis_nir.equipment_table.username = @uv_vis_nir.user.name
+    @uv_vis_nir.equipment_table.equipname = "UV-Vis-NIR"
+    @uv_vis_nir.equipment_table.app_no = @uv_vis_nir.id
+    @uv_vis_nir.equipment_table.debit_head = @uv_vis_nir.debit
+    @uv_vis_nir.equipment_table.role = @uv_vis_nir.user.role
+    @uv_vis_nir.equipment_table.email = @uv_vis_nir.user.email
+    @uv_vis_nir.equipment_table.dept = @uv_vis_nir.user.department
+    @uv_vis_nir.equipment_table.profesion = @uv_vis_nir.user.profession
+    @uv_vis_nir.equipment_table.orgname = @uv_vis_nir.user.orgname
 
     respond_to do |format|
       if @uv_vis_nir.save

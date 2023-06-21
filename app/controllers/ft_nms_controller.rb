@@ -24,6 +24,16 @@ class FtNmsController < ApplicationController
     @ft_nm = FtNm.new(ft_nm_params)
     @ft_nm.user=current_user
     @ft_nm.status="pending"
+    @ft_nm.equipment_table.dummy = "alloted"
+    @ft_nm.equipment_table.username = @ft_nm.user.name
+    @ft_nm.equipment_table.equipname = "ft_nm"
+    @ft_nm.equipment_table.app_no = @ft_nm.id
+    @ft_nm.equipment_table.debit_head = @ft_nm.debit
+    @ft_nm.equipment_table.role = @ft_nm.user.role
+    @ft_nm.equipment_table.email = @ft_nm.user.email
+    @ft_nm.equipment_table.dept = @ft_nm.user.department
+    @ft_nm.equipment_table.profesion = @ft_nm.user.profession
+    @ft_nm.equipment_table.orgname = @ft_nm.user.orgname
     respond_to do |format|
       if @ft_nm.save
         if @ft_nm.user.role=='student'||@ft_nm.user.role=='faculty'

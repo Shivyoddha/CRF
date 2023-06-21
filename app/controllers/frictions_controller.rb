@@ -28,7 +28,15 @@ class FrictionsController < ApplicationController
     @friction.user=current_user
     @friction.status="pending"
     @friction.build_equipment_table
-
+    @friction.equipment_table.dummy = "alloted"
+    @friction.equipment_table.username = @friction.user.name
+    @friction.equipment_table.equipname = "Friction Stir Welding/Surfacing(FSW)"
+    @friction.equipment_table.debit_head = @friction.debit
+    @friction.equipment_table.role = @friction.user.role
+    @friction.equipment_table.email = @friction.user.email
+    @friction.equipment_table.dept = @friction.user.department
+    @friction.equipment_table.profesion = @friction.user.profession
+    @friction.equipment_table.orgname = @friction.user.orgname
 
     respond_to do |format|
       if @friction.save

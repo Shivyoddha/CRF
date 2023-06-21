@@ -42,247 +42,250 @@ class EquipmentTablesController < ApplicationController
   def update
     respond_to do |format|
       if @equipment_table.update(equipment_table_params)
-        if @equipment_table.dummy == 'done'
-            if @equipment_table.equipname == "xrd"
+        if @equipment_table.dummy == 'performa_confirmed'
+            if @equipment_table.equipname == "XRD"
               PaymentXrdMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "amr"
+            if @equipment_table.equipname == "Advance Modular Rheometer"
               PaymentAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "atomic"
+            if @equipment_table.equipname == "Atomic Force Microscope"
               PaymentAtomicForceMicroscopeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "ball"
+            if @equipment_table.equipname == "Ball Milling Unit"
               PaymentBallMailingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "bet"
+            if @equipment_table.equipname == "BET Surface Area Analyzer"
               PaymentBetMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "cell"
+            if @equipment_table.equipname == "Cell-Imaging MultiMode Reader"
               PaymentCellImagingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "electro"
+            if @equipment_table.equipname == "Electro Chemical Polishing"
               PaymentElectroChemicalMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "fesemc"
+            if @equipment_table.equipname == "HR-FESEM [Carl Zeiss]"
               PaymentHrFesemCMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "fesemj"
+            if @equipment_table.equipname == "HR-FESEM [Jeol]"
               PaymentHrFesemJMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "five"
+            if @equipment_table.equipname == "5-Axes CNC"
               PaymentFiveAxiMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "fric"
+            if @equipment_table.equipname == "Friction Stir Welding/Surfacing(FSW)"
               PaymentFrictionMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "gait"
+            if @equipment_table.equipname == "GAIT Analysis"
               PaymentGaitMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "sesning"
+            if @equipment_table.equipname == "Gas Sensing"
               PaymentGasSensingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "glove"
+            if @equipment_table.equipname == "Glove Box"
               PaymentGloveBoxMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "glow"
+            if @equipment_table.equipname == "Glow"
               PaymentGlowMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "grind"
+            if @equipment_table.equipname == "Automatic MultiSpecimen Polisher"
               PaymentGrindMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "high"
+            if @equipment_table.equipname == "High Temp Vacuum Furnace"
               PaymentHighTempVaccumMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "icp"
+            if @equipment_table.equipname == "ICP-MS"
               PaymentIcpMMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "imped"
+            if @equipment_table.equipname == "Impedance Analyzer"
               PaymentImpedanceAnalyzerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "integrated"
+            if @equipment_table.equipname == "Intergrated MultiRole Tester"
               PaymentIntegratedMultiRoleTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "ionc"
+            if @equipment_table.equipname == "Ion Chromatography"
               PaymentIonChromotographyMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "laser"
+            if @equipment_table.equipname == "Laser Flash Analyser"
               PaymentAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "lcms"
+            if @equipment_table.equipname == "HR-LCMS"
               PaymentHrLcmMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "low"
+            if @equipment_table.equipname == "Low Force Fatigue with DMA"
               PaymentLowFatigueMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "milli"
+            if @equipment_table.equipname == "Milli-Q water"
               PaymentMilliQMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "multi"
+            if @equipment_table.equipname == "Multi Purpose Impact Testing (SHPB)"
               PaymentMultiImpactTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "nitrigen"
+            if @equipment_table.equipname == "Liquid Nitrogen"
               PaymentLiquidNitrogenMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "probe"
+            if @equipment_table.equipname == "Probe Sonicator"
               PaymentProbeSonicatorMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "raman"
+            if @equipment_table.equipname == "Raman Spectrometer with PL"
               PaymentRamanMicroscopeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "scratch"
+            if @equipment_table.equipname == "Scratch/Indentation Tester"
               PaymentScratchIndentationMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "spark"
+            if @equipment_table.equipname == "Spark-OES"
               PaymentSparkOMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "spectro"
+            if @equipment_table.equipname == "Spectro-Radiometer"
               PaymentSpectroRadioMeterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "tga"
+            if @equipment_table.equipname == "TGA-FTIR"
               PaymentTgaFttrMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "threed"
+            if @equipment_table.equipname == "3-D Non Contact Profilometer"
               PaymentThreeDNonContactMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "threes"
+            if @equipment_table.equipname == "3D-Scanner"
               PaymentThreeDScannerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "trib"
+            if @equipment_table.equipname == "Tribometer"
               PaymentTribometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "uv"
+            if @equipment_table.equipname == "UV-Vis-NIR"
               PaymentUvVisNirMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
-            if @equipment_table.equipname == "zeta"
+            if @equipment_table.equipname == "Zeta Potential/Particle Sizer"
               PaymentZetaPotentialSizeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
             FeedbackMailer.with(userid:current_user.id).Mail.deliver_later
       end
 
       if @equipment_table.dummy == 'payment_completed'
-          if @equipment_table.equipname == "xrd"
-            SlotbookerXrd.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
+          if @equipment_table.equipname == "XRD"
+            SlotbookerXrdMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "amr"
+          if @equipment_table.equipname == "Advance Modular Rheometer"
             SlotbookerAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "atomic"
+          if @equipment_table.equipname == "Atomic Force Microscope"
            SlotbookerAtomicForceMicroscopMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "ball"
+          if @equipment_table.equipname == "Ball Milling Unit"
           SlotbookerBallMailingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "bet"
+          if @equipment_table.equipname == "BET Surface Area Analyzer"
             SlotbookerBetMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "cell"
+          if @equipment_table.equipname == "Cell-Imaging MultiMode Reader"
             SlotbookerCellImagingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "electro"
+          if @equipment_table.equipname == "Electro Chemical Polishing"
             SlotbookerElectroChemicalMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "fesemc"
+          if @equipment_table.equipname == "HR-FESEM [Carl Zeiss]"
             SlotbookerHrFesemCMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "fesemj"
+          if @equipment_table.equipname == "HR-FESEM [Jeol]"
             SlotbookerHrFesemJMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "five"
+          if @equipment_table.equipname == "5-Axes CNC"
             SlotbookerFiveAxiMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "fric"
+          if @equipment_table.equipname == "Friction Stir Welding/Surfacing(FSW)"
             SlotbookerFrictionMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "gait"
+          if @equipment_table.equipname == "GAIT Analysis"
             SlotbookerGaitMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
           if @equipment_table.equipname == "sesning"
             SlotbookerGasSensingMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "glove"
+          if @equipment_table.equipname == "Glove Box"
             SlotbookerGloveBoxMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "glow"
+          if @equipment_table.equipname == "Glow"
             SlotbookerGlowMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "grind"
+          if @equipment_table.equipname == "Automatic MultiSpecimen Polisher"
             SlotbookerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "high"
+          if @equipment_table.equipname == "High Temp Vacuum Furnace"
             SlotbookerHighTempVaccumMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "icp"
+          if @equipment_table.equipname == "ICP-MS"
             SlotbookerIcpMMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "imped"
+          if @equipment_table.equipname == "Impedance Analyzer"
             SlotbookerImpedanceAnalyzerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "integrated"
+          if @equipment_table.equipname == "Intergrated MultiRole Tester"
             SlotbookerIntegratedMultiRoleTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "ionc"
+          if @equipment_table.equipname == "Ion Chromatography"
             SlotbookerIonChromotographyMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "laser"
+          if @equipment_table.equipname == "Laser Flash Analyser"
             SlotbookerAdvanceMolecularRheometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "lcms"
+          if @equipment_table.equipname == "HR-LCMS"
             SlotbookerHrLcmMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "low"
+          if @equipment_table.equipname == "Low Force Fatigue with DMA"
             SlotbookerLowFatigueMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "milli"
+          if @equipment_table.equipname == "Milli-Q water"
             SlotbookerMilliQMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "multi"
+          if @equipment_table.equipname == "Multi Purpose Impact Testing (SHPB)"
             SlotbookerMultiImpactTesterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "nitrigen"
+          if @equipment_table.equipname == "Liquid Nitrogen"
             SlotbookerLiquidNitrogenMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "probe"
+          if @equipment_table.equipname == "Probe Sonicator"
             SlotbookerProbeSonicatorMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "raman"
+          if @equipment_table.equipname == "Raman Spectrometer with PL"
             SlotbookerRamanMicroscopeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "scratch"
+          if @equipment_table.equipname == "Scratch/Indentation Tester"
             SlotbookerScratchIndentatioMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "spark"
+          if @equipment_table.equipname == "Spark-OES"
             SlotbookerSparkOMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "spectro"
+          if @equipment_table.equipname == "Spectro-Radiometer"
             SlotbookerSpectroRadioMeterMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "tga"
+          if @equipment_table.equipname == "TGA-FTIR"
            SlotbookerTgaFttrMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "threed"
+          if @equipment_table.equipname == "3-D Non Contact Profilometer"
             SlotbookerThreeDNonContactMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "threes"
+          if @equipment_table.equipname == "3D-Scanner"
             SlotbookerThreeDScannerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "trib"
+          if @equipment_table.equipname == "Tribometer"
             SlotbookerTribometerMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "uv"
+          if @equipment_table.equipname == "UV-Vis-NIR"
             SlotbookerUvVisNirMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-          if @equipment_table.equipname == "zeta"
+          if @equipment_table.equipname == "Zeta Potential/Particle Sizer"
             SlotbookerZetaPotentialSizeMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
           end
-
     end
         if @equipment_table.role == "student"
+          if @equipment_table.dummy == "alloted"
+          format.html { redirect_to payment_proforma_confirmation_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
           if @equipment_table.dummy == "generated"
           format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end
-          if @equipment_table.dummy == "done"
+          if @equipment_table.dummy == "performa_confirmed"
           format.html { redirect_to payment_proforma_confirmation_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end

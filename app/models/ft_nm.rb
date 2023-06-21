@@ -7,4 +7,9 @@ class FtNm < ApplicationRecord
   serialize :measurement4
   serialize :measurement5
   serialize :hazardmethod
+  after_create :update_equipment
+  def update_equipment
+    equipment_table = self.equipment_table # Find the specific AnotherTable record
+    equipment_table.update(app_no: "CRF/FTNMR/#{self.id}") 
+  end
 end
