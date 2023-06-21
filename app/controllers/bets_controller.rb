@@ -26,6 +26,16 @@ class BetsController < ApplicationController
     @bet.user=current_user
     @bet.status="pending"
     @bet.build_equipment_table
+    @bet.equipment_table.dummy = "alloted"
+    @bet.equipment_table.username = @bet.user.name
+    @bet.equipment_table.equipname = "BET Surface Area Analyzer"
+    @bet.equipment_table.app_no = @bet.id
+    @bet.equipment_table.debit_head = @bet.debit
+    @bet.equipment_table.role = @bet.user.role
+    @bet.equipment_table.email = @bet.user.email
+    @bet.equipment_table.dept = @bet.user.department
+    @bet.equipment_table.profesion = @bet.user.profession
+    @bet.equipment_table.orgname = @bet.user.orgname
 
     respond_to do |format|
       if @bet.save

@@ -26,6 +26,16 @@ class BallMailingsController < ApplicationController
     @ball_mailing.user=current_user
     @ball_mailing.status="pending"
     @ball_mailing.build_equipment_table
+    @ball_mailing.equipment_table.dummy = "alloted"
+    @ball_mailing.equipment_table.username = @ball_mailing.user.name
+    @ball_mailing.equipment_table.equipname = "Ball Milling Unit"
+    @ball_mailing.equipment_table.app_no = @ball_mailing.id
+    @ball_mailing.equipment_table.debit_head = @ball_mailing.debit
+    @ball_mailing.equipment_table.role = @ball_mailing.user.role
+    @ball_mailing.equipment_table.email = @ball_mailing.user.email
+    @ball_mailing.equipment_table.dept = @ball_mailing.user.department
+    @ball_mailing.equipment_table.profesion = @ball_mailing.user.profession
+    @ball_mailing.equipment_table.orgname = @ball_mailing.user.orgname
 
 
     respond_to do |format|

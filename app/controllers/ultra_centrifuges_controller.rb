@@ -27,6 +27,16 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.user=current_user
     @ultra_centrifuge.status="pending"
     @ultra_centrifuge.build_equipment_table
+    @ultra_centrifuge.equipment_table.dummy = "alloted"
+    @ultra_centrifuge.equipment_table.username = @ultra_centrifuge.user.name
+    @ultra_centrifuge.equipment_table.equipname = "Ultra-Centrifuge"
+    @ultra_centrifuge.equipment_table.app_no = @ultra_centrifuge.id
+    @ultra_centrifuge.equipment_table.debit_head = @ultra_centrifuge.debit
+    @ultra_centrifuge.equipment_table.role = @ultra_centrifuge.user.role
+    @ultra_centrifuge.equipment_table.email = @ultra_centrifuge.user.email
+    @ultra_centrifuge.equipment_table.dept = @ultra_centrifuge.user.department
+    @ultra_centrifuge.equipment_table.profesion = @ultra_centrifuge.user.profession
+    @ultra_centrifuge.equipment_table.orgname = @ultra_centrifuge.user.orgname
 
     respond_to do |format|
       if @ultra_centrifuge.save

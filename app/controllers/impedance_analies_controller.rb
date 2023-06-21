@@ -27,6 +27,15 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.user=current_user
     @impedance_analy.status="pending"
     @impedance_analy.build_equipment_table
+    @impedance_analy.equipment_table.dummy = "alloted"
+    @impedance_analy.equipment_table.username = @impedance_analy.user.name
+    @impedance_analy.equipment_table.equipname = "Impedance Analyzer"
+    @impedance_analy.equipment_table.debit_head = @impedance_analy.debit
+    @impedance_analy.equipment_table.role = @impedance_analy.user.role
+    @impedance_analy.equipment_table.email = @impedance_analy.user.email
+    @impedance_analy.equipment_table.dept = @impedance_analy.user.department
+    @impedance_analy.equipment_table.profesion = @impedance_analy.user.profession
+    @impedance_analy.equipment_table.orgname = @impedance_analy.user.orgname
 
     respond_to do |format|
       if @impedance_analy.save

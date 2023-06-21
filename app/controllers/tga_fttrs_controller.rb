@@ -26,6 +26,16 @@ class TgaFttrsController < ApplicationController
     @tga_fttr.user=current_user
     @tga_fttr.status="pending"
     @tga_fttr.build_equipment_table
+    @tga_fttr.equipment_table.dummy = "alloted"
+    @tga_fttr.equipment_table.username = @tga_fttr.user.name
+    @tga_fttr.equipment_table.equipname = "TGA-FTIR"
+    @tga_fttr.equipment_table.app_no = @tga_fttr.id
+    @tga_fttr.equipment_table.debit_head = @tga_fttr.debit
+    @tga_fttr.equipment_table.role = @tga_fttr.user.role
+    @tga_fttr.equipment_table.email = @tga_fttr.user.email
+    @tga_fttr.equipment_table.dept = @tga_fttr.user.department
+    @tga_fttr.equipment_table.profesion = @tga_fttr.user.profession
+    @tga_fttr.equipment_table.orgname = @tga_fttr.user.orgname
     respond_to do |format|
       if @tga_fttr.save
         if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'

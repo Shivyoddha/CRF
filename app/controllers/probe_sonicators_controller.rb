@@ -26,6 +26,16 @@ class ProbeSonicatorsController < ApplicationController
     @probe_sonicator.user=current_user
     @probe_sonicator.status="pending"
     @probe_sonicator.build_equipment_table
+    @probe_sonicator.equipment_table.dummy = "alloted"
+    @probe_sonicator.equipment_table.username = @probe_sonicator.user.name
+    @probe_sonicator.equipment_table.equipname = "Probe Sonicator"
+    @probe_sonicator.equipment_table.app_no = @probe_sonicator.id
+    @probe_sonicator.equipment_table.debit_head = @probe_sonicator.debit
+    @probe_sonicator.equipment_table.role = @probe_sonicator.user.role
+    @probe_sonicator.equipment_table.email = @probe_sonicator.user.email
+    @probe_sonicator.equipment_table.dept = @probe_sonicator.user.department
+    @probe_sonicator.equipment_table.profesion = @probe_sonicator.user.profession
+    @probe_sonicator.equipment_table.orgname = @probe_sonicator.user.orgname
 
     respond_to do |format|
       if @probe_sonicator.save

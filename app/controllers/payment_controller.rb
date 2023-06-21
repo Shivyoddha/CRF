@@ -46,6 +46,7 @@ class PaymentController < ApplicationController
   end
 
   def paymentM
+      @entry = params[:entry]
       @equipment = EquipmentTable.new
   end
 

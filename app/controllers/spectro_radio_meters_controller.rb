@@ -27,6 +27,16 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter.user=current_user
     @spectro_radio_meter.status="pending"
     @spectro_radio_meter.build_equipment_table
+    @spectro_radio_meter.equipment_table.dummy = "alloted"
+    @spectro_radio_meter.equipment_table.username = @spectro_radio_meter.user.name
+    @spectro_radio_meter.equipment_table.equipname = "Spectro-Radiometer"
+    @spectro_radio_meter.equipment_table.app_no = @spectro_radio_meter.id
+    @spectro_radio_meter.equipment_table.debit_head = @spectro_radio_meter.debit
+    @spectro_radio_meter.equipment_table.role = @spectro_radio_meter.user.role
+    @spectro_radio_meter.equipment_table.email = @spectro_radio_meter.user.email
+    @spectro_radio_meter.equipment_table.dept = @spectro_radio_meter.user.department
+    @spectro_radio_meter.equipment_table.profesion = @spectro_radio_meter.user.profession
+    @spectro_radio_meter.equipment_table.orgname = @spectro_radio_meter.user.orgname
 
     respond_to do |format|
       if @spectro_radio_meter.save

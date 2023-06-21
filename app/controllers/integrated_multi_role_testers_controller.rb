@@ -28,6 +28,16 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester.user=current_user
     @integrated_multi_role_tester.status="pending"
     @integrated_multi_role_tester.build_equipment_table
+    @integrated_multi_role_tester.equipment_table.dummy = "alloted"
+    @integrated_multi_role_tester.equipment_table.username = @integrated_multi_role_tester.user.name
+    @integrated_multi_role_tester.equipment_table.equipname = "integrated_multi_role_tester"
+    @integrated_multi_role_tester.equipment_table.app_no = @integrated_multi_role_tester.id
+    @integrated_multi_role_tester.equipment_table.debit_head = @integrated_multi_role_tester.debit
+    @integrated_multi_role_tester.equipment_table.role = @integrated_multi_role_tester.user.role
+    @integrated_multi_role_tester.equipment_table.email = @integrated_multi_role_tester.user.email
+    @integrated_multi_role_tester.equipment_table.dept = @integrated_multi_role_tester.user.department
+    @integrated_multi_role_tester.equipment_table.profesion = @integrated_multi_role_tester.user.profession
+    @integrated_multi_role_tester.equipment_table.orgname = @integrated_multi_role_tester.user.orgname
 
     respond_to do |format|
       if @integrated_multi_role_tester.save

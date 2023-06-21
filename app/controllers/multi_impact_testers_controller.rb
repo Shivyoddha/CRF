@@ -28,6 +28,17 @@ class MultiImpactTestersController < ApplicationController
     @multi_impact_tester.user=current_user
     @multi_impact_tester.status="pending"
     @multi_impact_tester.build_equipment_table
+    @multi_impact_tester.equipment_table.dummy = "alloted"
+    @multi_impact_tester.equipment_table.username = @multi_impact_tester.user.name
+    @multi_impact_tester.equipment_table.equipname = "Multi Purpose Impact Testing (SHPB)"
+    @multi_impact_tester.equipment_table.app_no = @multi_impact_tester.id
+    @multi_impact_tester.equipment_table.debit_head = @multi_impact_tester.debit
+    @multi_impact_tester.equipment_table.role = @multi_impact_tester.user.role
+    @multi_impact_tester.equipment_table.email = @multi_impact_tester.user.email
+    @multi_impact_tester.equipment_table.dept = @multi_impact_tester.user.department
+    @multi_impact_tester.equipment_table.profesion = @multi_impact_tester.user.profession
+    @multi_impact_tester.equipment_table.orgname = @multi_impact_tester.user.orgname
+
     respond_to do |format|
       if @multi_impact_tester.save
         if @multi_impact_tester.user.role=='student'||@multi_impact_tester.user.role=='faculty'

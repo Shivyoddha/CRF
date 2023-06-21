@@ -27,6 +27,16 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.user=current_user
     @three_d_scanner.status="pending"
     @three_d_scanner.build_equipment_table
+    @three_d_scanner.equipment_table.dummy = "alloted"
+    @three_d_scanner.equipment_table.username = @three_d_scanner.user.name
+    @three_d_scanner.equipment_table.equipname = "3D-Scanner"
+    @three_d_scanner.equipment_table.app_no = @three_d_scanner.id
+    @three_d_scanner.equipment_table.debit_head = @three_d_scanner.debit
+    @three_d_scanner.equipment_table.role = @three_d_scanner.user.role
+    @three_d_scanner.equipment_table.email = @three_d_scanner.user.email
+    @three_d_scanner.equipment_table.dept = @three_d_scanner.user.department
+    @three_d_scanner.equipment_table.profesion = @three_d_scanner.user.profession
+    @three_d_scanner.equipment_table.orgname = @three_d_scanner.user.orgname
 
     respond_to do |format|
       if @three_d_scanner.save

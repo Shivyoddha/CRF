@@ -27,6 +27,16 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.user=current_user
     @hr_fesem_j.status="pending"
     @hr_fesem_j.build_equipment_table
+    @hr_fesem_j.equipment_table.dummy = "alloted"
+    @hr_fesem_j.equipment_table.username = @hr_fesem_j.user.name
+    @hr_fesem_j.equipment_table.equipname = "HR-FESEM [Jeol]"
+    @hr_fesem_j.equipment_table.app_no = @hr_fesem_j.id
+    @hr_fesem_j.equipment_table.debit_head = @hr_fesem_j.debit
+    @hr_fesem_j.equipment_table.role = @hr_fesem_j.user.role
+    @hr_fesem_j.equipment_table.email = @hr_fesem_j.user.email
+    @hr_fesem_j.equipment_table.dept = @hr_fesem_j.user.department
+    @hr_fesem_j.equipment_table.profesion = @hr_fesem_j.user.profession
+    @hr_fesem_j.equipment_table.orgname = @hr_fesem_j.user.orgname
 
     respond_to do |format|
      if @hr_fesem_j.save
