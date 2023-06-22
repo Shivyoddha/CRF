@@ -2,13 +2,14 @@
 
   #switcher-div {
     display: flex;
-    width: 60%;
+    width: 95%;
     margin: 1em auto;
     border: 2px solid;
     border-radius: 1em;
     padding: 0.5em;
     background-color: #fff;
     margin-bottom: 5em;
+    font-size: 10px;
 }
   
   #char {
