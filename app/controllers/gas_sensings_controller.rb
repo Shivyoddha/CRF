@@ -27,6 +27,16 @@ class GasSensingsController < ApplicationController
     @gas_sensing.user=current_user
     @gas_sensing.status="pending"
     @gas_sensing.build_equipment_table
+    if(@gas_sensing.entry_type== "manual")
+      @gas_sensing.equipment_table.dummy = "proforma_confirmed"
+      @gas_sensing.equipment_table.equipname = @gas_sensing.dummy1
+      @gas_sensing.equipment_table.pay = @gas_sensing.amount
+      @gas_sensing.equipment_table.username = @gas_sensing.dummy2
+      @gas_sensing.equipment_table.debit_head = @gas_sensing.debit
+      @gas_sensing.equipment_table.role = @gas_sensing.dummy3
+      @gas_sensing.dummy2 = nil
+      @gas_sensing.dummy3 = nil
+    else
     @gas_sensing.equipment_table.dummy = "alloted"
     @gas_sensing.equipment_table.username = @gas_sensing.user.name
     @gas_sensing.equipment_table.equipname = "Glove Box"
@@ -36,6 +46,7 @@ class GasSensingsController < ApplicationController
     @gas_sensing.equipment_table.dept = @gas_sensing.user.department
     @gas_sensing.equipment_table.profesion = @gas_sensing.user.profession
     @gas_sensing.equipment_table.orgname = @gas_sensing.user.orgname
+  end
 
     respond_to do |format|
       if @gas_sensing.save
@@ -44,8 +55,13 @@ class GasSensingsController < ApplicationController
         else
           GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @gas_sensing.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "gas_sensing was successfully created." }
+            format.json { render :show, status: :created, location: @gas_sensing }
+        else
         format.html { redirect_to home_index_path, notice: "Gas sensing was successfully created." }
         format.json { render :show, status: :created, location: @gas_sensing }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @gas_sensing.errors, status: :unprocessable_entity }
@@ -89,6 +105,6 @@ class GasSensingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gas_sensing_params
-      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

@@ -28,6 +28,16 @@ class GrindingsController < ApplicationController
     @grinding.user=current_user
     @grinding.status="pending"
     @grinding.build_equipment_table
+    if(@grinding.entry_type== "manual")
+      @grinding.equipment_table.dummy = "proforma_confirmed"
+      @grinding.equipment_table.equipname = @grinding.dummy1
+      @grinding.equipment_table.pay = @grinding.amount
+      @grinding.equipment_table.username = @grinding.dummy2
+      @grinding.equipment_table.debit_head = @grinding.debit
+      @grinding.equipment_table.role = @grinding.dummy3
+      @grinding.dummy2 = nil
+      @grinding.dummy3 = nil
+    else
     @grinding.equipment_table.dummy = "alloted"
     @grinding.equipment_table.username = @grinding.user.name
     @grinding.equipment_table.equipname = "Automatic MultiSpecimen Polisher"
@@ -38,6 +48,7 @@ class GrindingsController < ApplicationController
     @grinding.equipment_table.dept = @grinding.user.department
     @grinding.equipment_table.profesion = @grinding.user.profession
     @grinding.equipment_table.orgname = @grinding.user.orgname
+  end
 
     respond_to do |format|
       if @grinding.save
@@ -46,8 +57,13 @@ class GrindingsController < ApplicationController
         else
           GrindingMailer.with(id:@grinding.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @grinding.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "grinding was successfully created." }
+            format.json { render :show, status: :created, location: @grinding }
+        else
         format.html { redirect_to home_index_path, notice: "Grinding was successfully created." }
         format.json { render :show, status: :created, location: @grinding }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @grinding.errors, status: :unprocessable_entity }
@@ -91,6 +107,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,grit: [],diamond: [],suspension: [], references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,grit: [],diamond: [],suspension: [], references: [])
     end
 end

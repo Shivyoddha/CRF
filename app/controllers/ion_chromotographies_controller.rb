@@ -28,6 +28,16 @@ class IonChromotographiesController < ApplicationController
     @ion_chromotography.user=current_user
     @ion_chromotography.status="pending"
     @ion_chromotography.build_equipment_table
+    if(@ion_chromotography.entry_type== "manual")
+      @ion_chromotography.equipment_table.dummy = "proforma_confirmed"
+      @ion_chromotography.equipment_table.equipname = @ion_chromotography.dummy1
+      @ion_chromotography.equipment_table.pay = @ion_chromotography.amount
+      @ion_chromotography.equipment_table.username = @ion_chromotography.dummy2
+      @ion_chromotography.equipment_table.debit_head = @ion_chromotography.debit
+      @ion_chromotography.equipment_table.role = @ion_chromotography.dummy3
+      @ion_chromotography.dummy2 = nil
+      @ion_chromotography.dummy3 = nil
+    else
     @ion_chromotography.equipment_table.dummy = "alloted"
     @ion_chromotography.equipment_table.username = @ion_chromotography.user.name
     @ion_chromotography.equipment_table.equipname = "ion_chromotography"
@@ -38,6 +48,7 @@ class IonChromotographiesController < ApplicationController
     @ion_chromotography.equipment_table.dept = @ion_chromotography.user.department
     @ion_chromotography.equipment_table.profesion = @ion_chromotography.user.profession
     @ion_chromotography.equipment_table.orgname = @ion_chromotography.user.orgname
+  end
 
     respond_to do |format|
       if @ion_chromotography.save
@@ -46,8 +57,13 @@ class IonChromotographiesController < ApplicationController
         else
           IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @ion_chromotography.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "ion_chromotography was successfully created." }
+          format.json { render :show, status: :created, location: @ion_chromotography }
+      else
         format.html { redirect_to home_index_path, notice: "Ion chromotography was successfully created." }
         format.json { render :show, status: :created, location: @ion_chromotography }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ion_chromotography.errors, status: :unprocessable_entity }
@@ -92,6 +108,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],hazard_method: [], references: [])
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],hazard_method: [], references: [])
     end
 end

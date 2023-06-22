@@ -26,6 +26,16 @@ class FiveAxisController < ApplicationController
     @five_axi.user=current_user
     @five_axi.status="pending"
     @five_axi.build_equipment_table
+    if(@five_axi.entry_type== "manual")
+      @five_axi.equipment_table.dummy = "proforma_confirmed"
+      @five_axi.equipment_table.equipname = @five_axi.dummy1
+      @five_axi.equipment_table.pay = @five_axi.amount
+      @five_axi.equipment_table.username = @five_axi.dummy2
+      @five_axi.equipment_table.debit_head = @five_axi.debit
+      @five_axi.equipment_table.role = @five_axi.dummy3
+      @five_axi.dummy2 = nil
+      @five_axi.dummy3 = nil
+    else
     @five_axi.equipment_table.dummy = "alloted"
     @five_axi.equipment_table.username = @five_axi.user.name
     @five_axi.equipment_table.equipname = "5-Axes CNC"
@@ -36,6 +46,7 @@ class FiveAxisController < ApplicationController
     @five_axi.equipment_table.dept = @five_axi.user.department
     @five_axi.equipment_table.profesion = @five_axi.user.profession
     @five_axi.equipment_table.orgname = @five_axi.user.orgname
+  end
     respond_to do |format|
       if @five_axi.save
         if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'
@@ -43,8 +54,13 @@ class FiveAxisController < ApplicationController
         else
           FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @five_axi.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "five_axi was successfully created." }
+            format.json { render :show, status: :created, location: @five_axi }
+        else
         format.html { redirect_to home_index_path, notice: "Five axi was successfully created." }
         format.json { render :show, status: :created, location: @five_axi }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @five_axi.errors, status: :unprocessable_entity }
@@ -87,6 +103,6 @@ class FiveAxisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def five_axi_params
-      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

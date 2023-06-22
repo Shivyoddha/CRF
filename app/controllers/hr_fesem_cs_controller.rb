@@ -27,6 +27,16 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.user=current_user
     @hr_fesem_c.status="pending"
     @hr_fesem_c.build_equipment_table
+    if(@hr_fesem_c.entry_type== "manual")
+      @hr_fesem_c.equipment_table.dummy = "proforma_confirmed"
+      @hr_fesem_c.equipment_table.equipname = @hr_fesem_c.dummy1
+      @hr_fesem_c.equipment_table.pay = @hr_fesem_c.amount
+      @hr_fesem_c.equipment_table.username = @hr_fesem_c.dummy2
+      @hr_fesem_c.equipment_table.debit_head = @hr_fesem_c.debit
+      @hr_fesem_c.equipment_table.role = @hr_fesem_c.dummy3
+      @hr_fesem_c.dummy2 = nil
+      @hr_fesem_c.dummy3 = nil
+    else
     @hr_fesem_c.equipment_table.dummy = "alloted"
     @hr_fesem_c.equipment_table.username = @hr_fesem_c.user.name
     @hr_fesem_c.equipment_table.equipname = "HR-FESEM [Carl Zeiss]"
@@ -37,6 +47,9 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.equipment_table.dept = @hr_fesem_c.user.department
     @hr_fesem_c.equipment_table.profesion = @hr_fesem_c.user.profession
     @hr_fesem_c.equipment_table.orgname = @hr_fesem_c.user.orgname
+  end
+
+
     respond_to do |format|
       if @hr_fesem_c.save
         if @hr_fesem_c.user.role=='student'||@hr_fesem_c.user.role=='faculty'
@@ -44,8 +57,13 @@ class HrFesemCsController < ApplicationController
         else
           HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).ExternalMail.deliver_later
         end
-        format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
-        format.json { render :show, status: :created, location: @hr_fesem_c }
+        if @hr_fesem_c.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "hr_fesem_c was successfully created." }
+            format.json { render :show, status: :created, location: @hr_fesem_c }
+        else
+            format.html { redirect_to home_index_path, notice: "Hr fesem c was successfully created." }
+            format.json { render :show, status: :created, location: @hr_fesem_c }
+      end
         else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @hr_fesem_c.errors, status: :unprocessable_entity }
@@ -87,6 +105,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :eds,:measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,measuring: [], references: [])
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :eds,:measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,measuring: [], references: [])
     end
 end

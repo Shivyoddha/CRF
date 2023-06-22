@@ -27,6 +27,16 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.user=current_user
     @impedance_analy.status="pending"
     @impedance_analy.build_equipment_table
+    if(@impedance_analy.entry_type== "manual")
+      @impedance_analy.equipment_table.dummy = "proforma_confirmed"
+      @impedance_analy.equipment_table.equipname = @impedance_analy.dummy1
+      @impedance_analy.equipment_table.pay = @impedance_analy.amount
+      @impedance_analy.equipment_table.username = @impedance_analy.dummy2
+      @impedance_analy.equipment_table.debit_head = @impedance_analy.debit
+      @impedance_analy.equipment_table.role = @impedance_analy.dummy3
+      @impedance_analy.dummy2 = nil
+      @impedance_analy.dummy3 = nil
+    else
     @impedance_analy.equipment_table.dummy = "alloted"
     @impedance_analy.equipment_table.username = @impedance_analy.user.name
     @impedance_analy.equipment_table.equipname = "Impedance Analyzer"
@@ -36,6 +46,7 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.equipment_table.dept = @impedance_analy.user.department
     @impedance_analy.equipment_table.profesion = @impedance_analy.user.profession
     @impedance_analy.equipment_table.orgname = @impedance_analy.user.orgname
+  end
 
     respond_to do |format|
       if @impedance_analy.save
@@ -44,8 +55,13 @@ class ImpedanceAnaliesController < ApplicationController
         else
           ImpedanceAnalyzerMailer.with(id:@impedance_analy.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @impedance_analy.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "impedance_analy was successfully created." }
+          format.json { render :show, status: :created, location: @impedance_analy }
+      else
         format.html { redirect_to home_index_path, notice: "Impedance analy was successfully created." }
         format.json { render :show, status: :created, location: @impedance_analy }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @impedance_analy.errors, status: :unprocessable_entity }
@@ -90,6 +106,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , measurement: [],references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , measurement: [],references: [])
     end
 end

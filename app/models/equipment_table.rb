@@ -39,6 +39,7 @@ class EquipmentTable < ApplicationRecord
   belongs_to :ultra_centrifuge, optional: true
   belongs_to :uv_vis_nir, optional: true
   belongs_to :zeta_potential_size, optional: true
+  belongs_to :ft_nm, optional: true
   belongs_to :equiplist, optional: true
-  has_one_attached :view 
+  has_one_attached :view
 end

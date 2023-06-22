@@ -15,15 +15,6 @@ class GaitsController < ApplicationController
     @gait = Gait.new
     @user=User.find(params[:id])
     @gait.build_equipment_table
-    @gait.equipment_table.dummy = "alloted"
-    @gait.equipment_table.username = @gait.user.name
-    @gait.equipment_table.equipname = "GAIT Analysis"
-    @gait.equipment_table.debit_head = @gait.debit
-    @gait.equipment_table.role = @gait.user.role
-    @gait.equipment_table.email = @gait.user.email
-    @gait.equipment_table.dept = @gait.user.department
-    @gait.equipment_table.profesion = @gait.user.profession
-    @gait.equipment_table.orgname = @gait.user.orgname
 
   end
 
@@ -37,6 +28,26 @@ class GaitsController < ApplicationController
     @gait.user=current_user
     @gait.status="pending"
     @gait.build_equipment_table
+    if(@gait.entry_type== "manual")
+      @gait.equipment_table.dummy = "proforma_confirmed"
+      @gait.equipment_table.equipname = @gait.dummy1
+      @gait.equipment_table.pay = @gait.amount
+      @gait.equipment_table.username = @gait.dummy2
+      @gait.equipment_table.debit_head = @gait.debit
+      @gait.equipment_table.role = @gait.dummy3
+      @gait.dummy2 = nil
+      @gait.dummy3 = nil
+    else
+    @gait.equipment_table.dummy = "alloted"
+    @gait.equipment_table.username = @gait.user.name
+    @gait.equipment_table.equipname = "GAIT Analysis"
+    @gait.equipment_table.debit_head = @gait.debit
+    @gait.equipment_table.role = @gait.user.role
+    @gait.equipment_table.email = @gait.user.email
+    @gait.equipment_table.dept = @gait.user.department
+    @gait.equipment_table.profesion = @gait.user.profession
+    @gait.equipment_table.orgname = @gait.user.orgname
+  end
 
 
     respond_to do |format|
@@ -46,8 +57,13 @@ class GaitsController < ApplicationController
         else
           GaitMailer.with(id:@gait.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @gait.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "gait was successfully created." }
+            format.json { render :show, status: :created, location: @gait }
+        else
         format.html { redirect_to home_index_path, notice: "Gait was successfully created." }
         format.json { render :show, status: :created, location: @gait }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @gait.errors, status: :unprocessable_entity }
@@ -91,6 +107,6 @@ class GaitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gait_params
-      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,ethicals: [], prescrptions: [],clinicals: [],output_format: [], references: [])
+      params.require(:gait).permit(:subject, :measurement, :trials, :force_plate, :clinical_trial, :physician, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,ethicals: [], prescrptions: [],clinicals: [],output_format: [], references: [])
     end
 end

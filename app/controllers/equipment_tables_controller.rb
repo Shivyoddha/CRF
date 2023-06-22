@@ -42,7 +42,7 @@ class EquipmentTablesController < ApplicationController
   def update
     respond_to do |format|
       if @equipment_table.update(equipment_table_params)
-        if @equipment_table.dummy == 'performa_confirmed'
+        if @equipment_table.dummy == 'proforma_confirmed'
             if @equipment_table.equipname == "XRD"
               PaymentXrdMailer.with(id:@equipment_table.id, userid:current_user.id).Mail.deliver_later
             end
@@ -277,15 +277,15 @@ class EquipmentTablesController < ApplicationController
           end
     end
         if @equipment_table.role == "student"
-          if @equipment_table.dummy == "alloted"
+          if @equipment_table.dummy == "generated"
           format.html { redirect_to payment_proforma_confirmation_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end
-          if @equipment_table.dummy == "generated"
+          if @equipment_table.dummy == "alloted"
           format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end
-          if @equipment_table.dummy == "performa_confirmed"
+          if @equipment_table.dummy == "proforma_confirmed"
           format.html { redirect_to payment_proforma_confirmation_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end

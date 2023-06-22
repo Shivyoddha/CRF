@@ -27,6 +27,16 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.user=current_user
     @ultra_centrifuge.status="pending"
     @ultra_centrifuge.build_equipment_table
+    if(@ultra_centrifuge.entry_type== "manual")
+    @ultra_centrifuge.equipment_table.dummy = "proforma_confirmed"
+    @ultra_centrifuge.equipment_table.equipname = @ultra_centrifuge.dummy1
+    @ultra_centrifuge.equipment_table.pay = @ultra_centrifuge.amount
+    @ultra_centrifuge.equipment_table.username = @ultra_centrifuge.dummy2
+    @ultra_centrifuge.equipment_table.debit_head = @ultra_centrifuge.debit
+    @ultra_centrifuge.equipment_table.role = @ultra_centrifuge.dummy3
+    @ultra_centrifuge.dummy2 = nil
+    @ultra_centrifuge.dummy3 = nil
+  else
     @ultra_centrifuge.equipment_table.dummy = "alloted"
     @ultra_centrifuge.equipment_table.username = @ultra_centrifuge.user.name
     @ultra_centrifuge.equipment_table.equipname = "Ultra-Centrifuge"
@@ -37,7 +47,7 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.equipment_table.dept = @ultra_centrifuge.user.department
     @ultra_centrifuge.equipment_table.profesion = @ultra_centrifuge.user.profession
     @ultra_centrifuge.equipment_table.orgname = @ultra_centrifuge.user.orgname
-
+  end
     respond_to do |format|
       if @ultra_centrifuge.save
         if @ultra_centrifuge.user.role=='student'||@ultra_centrifuge.user.role=='faculty'
@@ -45,8 +55,13 @@ class UltraCentrifugesController < ApplicationController
         else
           UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @ultra_centrifuge.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "ultra_centrifuge was successfully created." }
+            format.json { render :show, status: :created, location: @ultra_centrifuge }
+        else
         format.html { redirect_to home_index_path, notice: "Ultra centrifuge was successfully created." }
         format.json { render :show, status: :created, location: @ultra_centrifuge }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ultra_centrifuge.errors, status: :unprocessable_entity }
@@ -91,6 +106,6 @@ class UltraCentrifugesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ultra_centrifuge_params
-      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

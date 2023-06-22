@@ -1,35 +1,52 @@
 <%= stylesheet_link_tag "paymentportal" %>
-<%=render "partials/paymentNav" %>
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <%= link_to 'CRF Payments', payment_payment_path, class:'navbar-brand', id:'title' %>
 
 
-<div class="container-payments">
+        <div class="collapse navbar-collapse tab" id="btn-head">
+            <ul class="navbar-nav">
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
-
-        <div class="sidelinks">
-
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                <li class="nav-item-tab">
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap"%>
+                </li>
+                <li class="nav-item-tab">
+                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item-tab">
+                    <%= link_to 'Payment Confirmation',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+
+                <li class="nav-item-tab">
+                    <%= link_to 'Payment Completed',payment_payment_completed_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item-tab">
                     <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item-tab">
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
                 </li>
-
             </ul>
         </div>
-    </div>
+
+
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item" id="admin">
+              <%= link_to 'Admin', mainportal_admindashboard_path,class:"btn btn-outline-primary" %>
+              </li>
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <%# the content section is coded here %>
     <div id="hero">
@@ -43,27 +60,27 @@
 
             <div class="mb-3">
               <%= form_with url: payment_paymentU_path do |form| %>
-                <div class="input-group">
-                  <%= form.label :entry, "ApplNo/Ref. No", class:"input-group-text", id:"app-no-label", for:"app-no"%>
-                  <%= form.text_field :entry, class:"form-control", id:"app-no", placeholder:"CRF/XXX/$$$"%>
-                </div>
+              <div class="input-group form-container" style="max-width: 1000px;">
+              <%= form.label :entry, "ApplNo/Ref. No", class:"input-group-text", id:"app-no-label", for:"app-no"%>
+              <%= form.text_field :entry, class:"form-control", id:"app-no", placeholder:"CRF/XXX/$$$"%>
+              <%= form.submit "Check", class:"btn btn-outline-success", id:"app-no" %>
+              </div>
 
-                <div class="actions">
-                  <%= form.submit "Check", class:"btn btn-outline-success", id:"sbt-check" %>
-                </div>
+
                 <%end%>
 
                 <% @equipment.where(dummy:'generated', role:'student').each do |equipment|%>
                <% if @entry == equipment.app_no %>
-               <%= equipment.app_no %>
-               <br>
+               <%= content_tag :h5, "Alter the amount below:", class: "text-center",style: "color: grey;" %>
+
                <%= form_with(model:equipment ,local:true) do |form| %>
-                 <div class="input-group">
-                   <%= form.label :pay, "Amount", class:"input-group-text", for:"amount"%>
-                   <%= form.text_field :pay, class:"form-control", id:"amount", placeholder:"#{equipment.pay}"%>
+                 <div class="input-group" style="max-width: 1000px;">
+                   <%= form.label :pay, "Amount", class:"input-group-text", for:"amount_up"%>
+                   <%= form.text_field :pay, class:"form-control form-sm", id:"amount_up", placeholder:"#{equipment.pay}"%>
+                   <%= form.submit "Edit Fund", class:"btn btn-success", id:"amount_up" %>
                  </div>
                  <div class="actions mb-3">
-                   <%= form.submit "Edit Fund", class:"btn btn-success", id:"sbt" %>
+
                  </div>
                  <%end%>
                <%end%>
