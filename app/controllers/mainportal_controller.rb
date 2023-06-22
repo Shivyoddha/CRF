@@ -1,10 +1,18 @@
 class MainportalController < ApplicationController
   load_and_authorize_resource :class => false
+  # before_action :authenticate_admin!
+
   def admindashboard
 
  end
  def adminModelEquip
    @equiplist=Equiplist.all
+  end
+
+  def authenticate_admin!
+    unless current_user&.admin_role?
+      redirect_to home_index_path, alert: "You are not authorized to access this page."
+    end
   end
 
   def adminModelEquipWeeks

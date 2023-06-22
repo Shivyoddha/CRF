@@ -36,7 +36,7 @@ Rails.application.routes.draw do
    resources :glows
    resources :tribometers
    resources :low_fatigues
-   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+ mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
    default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
     resources :scratch_indentations
@@ -56,6 +56,9 @@ Rails.application.routes.draw do
     resources :hr_fesem_js
     resources :hr_fesem_cs
     resources :xrds
+   #  constraints AdminConstraint.new do
+   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+   # end
 
 
     devise_for :users

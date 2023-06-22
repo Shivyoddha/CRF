@@ -19,14 +19,12 @@ class HomeController < ApplicationController
   end
 
   def index
-
       @user=User.find(current_user.id)
 
     if @user.status==nil
       @user.update(status:'Inactive')
       redirect_to home_faculty_verif_path(id:current_user.id)
     end
-
     if @user.slotbooker == 'xrd'
     redirect_to slotbooker_xrd_path(current_user.id)
     end
@@ -63,10 +61,13 @@ class HomeController < ApplicationController
     if @user.slotbooker == 'lcms'
     redirect_to slotbooker_lcms_path(current_user.id)
     end
+    # if @user.slotbooker == 'media'
+    #   redirect_to announcements_path(current_user.id)
+    # end
 
-   if @user.admin_role == true
-    redirect_to rails_admin_path
-   end
+     # if @user.admin_role == true
+     #  redirect_to mainportal_admindashboard_path
+     # end
 
 
    respond_to do |format|

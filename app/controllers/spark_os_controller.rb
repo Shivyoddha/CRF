@@ -26,6 +26,16 @@ class SparkOsController < ApplicationController
     @spark_o.user=current_user
     @spark_o.status="pending"
     @spark_o.build_equipment_table
+    if(@spark_o.entry_type== "manual")
+  @spark_o.equipment_table.dummy = "proforma_confirmed"
+  @spark_o.equipment_table.equipname = @spark_o.dummy1
+  @spark_o.equipment_table.pay = @spark_o.amount
+  @spark_o.equipment_table.username = @spark_o.dummy2
+  @spark_o.equipment_table.debit_head = @spark_o.debit
+  @spark_o.equipment_table.role = @spark_o.dummy3
+  @spark_o.dummy2 = nil
+  @spark_o.dummy3 = nil
+else
     @spark_o.equipment_table.dummy = "alloted"
     @spark_o.equipment_table.username = @spark_o.user.name
     @spark_o.equipment_table.equipname = "Spark-OES"
@@ -36,6 +46,7 @@ class SparkOsController < ApplicationController
     @spark_o.equipment_table.dept = @spark_o.user.department
     @spark_o.equipment_table.profesion = @spark_o.user.profession
     @spark_o.equipment_table.orgname = @spark_o.user.orgname
+  end
 
     respond_to do |format|
       if @spark_o.save
@@ -44,8 +55,13 @@ class SparkOsController < ApplicationController
         else
           SparkOMailer.with(id:@spark_o.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @spark_o.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "spark_o was successfully created." }
+            format.json { render :show, status: :created, location: @spark_o }
+        else
         format.html { redirect_to home_index_path, notice: "Spark o was successfully created." }
         format.json { render :show, status: :created, location: @spark_o }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @spark_o.errors, status: :unprocessable_entity }
@@ -90,6 +106,6 @@ class SparkOsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spark_o_params
-      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

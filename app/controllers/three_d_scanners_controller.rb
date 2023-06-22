@@ -27,6 +27,16 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.user=current_user
     @three_d_scanner.status="pending"
     @three_d_scanner.build_equipment_table
+    if(@three_d_scanner.entry_type== "manual")
+    @three_d_scanner.equipment_table.dummy = "proforma_confirmed"
+    @three_d_scanner.equipment_table.equipname = @three_d_scanner.dummy1
+    @three_d_scanner.equipment_table.pay = @three_d_scanner.amount
+    @three_d_scanner.equipment_table.username = @three_d_scanner.dummy2
+    @three_d_scanner.equipment_table.debit_head = @three_d_scanner.debit
+    @three_d_scanner.equipment_table.role = @three_d_scanner.dummy3
+    @three_d_scanner.dummy2 = nil
+    @three_d_scanner.dummy3 = nil
+  else
     @three_d_scanner.equipment_table.dummy = "alloted"
     @three_d_scanner.equipment_table.username = @three_d_scanner.user.name
     @three_d_scanner.equipment_table.equipname = "3D-Scanner"
@@ -37,6 +47,7 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.equipment_table.dept = @three_d_scanner.user.department
     @three_d_scanner.equipment_table.profesion = @three_d_scanner.user.profession
     @three_d_scanner.equipment_table.orgname = @three_d_scanner.user.orgname
+  end
 
     respond_to do |format|
       if @three_d_scanner.save
@@ -45,8 +56,13 @@ class ThreeDScannersController < ApplicationController
         else
           ThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @three_d_scanner.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "three_d_scanner was successfully created." }
+            format.json { render :show, status: :created, location: @three_d_scanner }
+        else
         format.html { redirect_to home_index_path, notice: "Three d scanner was successfully created." }
         format.json { render :show, status: :created, location: @three_d_scanner }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @three_d_scanner.errors, status: :unprocessable_entity }
@@ -90,6 +106,6 @@ class ThreeDScannersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_scanner_params
-      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],output_format: [], references: [])
+      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,:dummy1,:dummy2,:dummy3,:entry_type,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],output_format: [], references: [])
     end
 end

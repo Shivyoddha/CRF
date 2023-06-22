@@ -28,6 +28,16 @@ class MultiImpactTestersController < ApplicationController
     @multi_impact_tester.user=current_user
     @multi_impact_tester.status="pending"
     @multi_impact_tester.build_equipment_table
+    if(@multi_impact_tester.entry_type== "manual")
+      @multi_impact_tester.equipment_table.dummy = "proforma_confirmed"
+      @multi_impact_tester.equipment_table.equipname = @multi_impact_tester.dummy1
+      @multi_impact_tester.equipment_table.pay = @multi_impact_tester.amount
+      @multi_impact_tester.equipment_table.username = @multi_impact_tester.dummy2
+      @multi_impact_tester.equipment_table.debit_head = @multi_impact_tester.debit
+      @multi_impact_tester.equipment_table.role = @multi_impact_tester.dummy3
+      @multi_impact_tester.dummy2 = nil
+      @multi_impact_tester.dummy3 = nil
+    else
     @multi_impact_tester.equipment_table.dummy = "alloted"
     @multi_impact_tester.equipment_table.username = @multi_impact_tester.user.name
     @multi_impact_tester.equipment_table.equipname = "Multi Purpose Impact Testing (SHPB)"
@@ -38,6 +48,7 @@ class MultiImpactTestersController < ApplicationController
     @multi_impact_tester.equipment_table.dept = @multi_impact_tester.user.department
     @multi_impact_tester.equipment_table.profesion = @multi_impact_tester.user.profession
     @multi_impact_tester.equipment_table.orgname = @multi_impact_tester.user.orgname
+  end
 
     respond_to do |format|
       if @multi_impact_tester.save
@@ -46,8 +57,13 @@ class MultiImpactTestersController < ApplicationController
         else
           MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @multi_impact_tester.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "multi_impact_tester was successfully created." }
+            format.json { render :show, status: :created, location: @multi_impact_tester }
+        else
         format.html { redirect_to home_index_path, notice: "Multi impact tester was successfully created." }
         format.json { render :show, status: :created, location: @multi_impact_tester }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @multi_impact_tester.errors, status: :unprocessable_entity }
@@ -92,6 +108,6 @@ class MultiImpactTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def multi_impact_tester_params
-      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

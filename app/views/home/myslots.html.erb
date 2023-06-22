@@ -20,10 +20,10 @@
       <%=user_xrd.slotdate %>
     </div>
     <div class="msright-child">
-      <h4>PAYMENT</h4>
+      <h4>Slot details</h4>
       <div class="wrapper3">
           <div class="link-wrapper3">
-            <%= link_to "Download", slot_mailer_xrd_path(format: :pdf,anish:user_xrd.id , maithu:@user.id),id:"button2"%>
+            <%= link_to "Download", slot_mailer_xrd_path(format: :pdf,anish:user_xrd.id , maithu:@user.id),id:"button2", class:"btn btn-info"%>
           </div>
       </div>
     </div>

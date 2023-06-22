@@ -27,6 +27,16 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.user=current_user
     @electro_chemical.status="pending"
     @electro_chemical.build_equipment_table
+    if(@electro_chemical.entry_type== "manual")
+      @electro_chemical.equipment_table.dummy = "proforma_confirmed"
+      @electro_chemical.equipment_table.equipname = @electro_chemical.dummy1
+      @electro_chemical.equipment_table.pay = @electro_chemical.amount
+      @electro_chemical.equipment_table.username = @electro_chemical.dummy2
+      @electro_chemical.equipment_table.debit_head = @electro_chemical.debit
+      @electro_chemical.equipment_table.role = @electro_chemical.dummy3
+      @electro_chemical.dummy2 = nil
+      @electro_chemical.dummy3 = nil
+    else
     @electro_chemical.equipment_table.dummy = "alloted"
     @electro_chemical.equipment_table.username = @electro_chemical.user.name
     @electro_chemical.equipment_table.equipname = "Electro Chemical Polishing"
@@ -37,6 +47,8 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.equipment_table.dept = @electro_chemical.user.department
     @electro_chemical.equipment_table.profesion = @electro_chemical.user.profession
     @electro_chemical.equipment_table.orgname = @electro_chemical.user.orgname
+  end
+
     respond_to do |format|
       if @electro_chemical.save
         if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
@@ -44,8 +56,13 @@ class ElectroChemicalsController < ApplicationController
         else
           ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @electro_chemical.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "electro_chemical was successfully created." }
+            format.json { render :show, status: :created, location: @electro_chemical }
+        else
         format.html { redirect_to home_index_path, notice: "Electro chemical was successfully created." }
         format.json { render :show, status: :created, location: @electro_chemical }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @electro_chemical.errors, status: :unprocessable_entity }
@@ -89,6 +106,6 @@ class ElectroChemicalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def electro_chemical_params
-      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

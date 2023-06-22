@@ -210,6 +210,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def ansy_params
-      params.require(:ansy).permit(:sysno, :slotdate,:startdate,:enddate,:customstart,:customend, :purpose, :amount, :debit,:user_id)
+      params.require(:ansy).permit(:sysno, :slotdate,:startdate,:enddate,:customstart,:customend, :purpose, :amount,:entry_type, :debit,:user_id)
     end
 end
