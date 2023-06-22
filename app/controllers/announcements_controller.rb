@@ -1,5 +1,6 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: %i[ show edit update destroy ]
+   # before_action :authenticate_admin!
 
   # GET /announcements or /announcements.json
   def index
@@ -8,6 +9,12 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/1 or /announcements/1.json
   def show
+  end
+
+  def authenticate_admin!
+    unless current_user&.slotbooker == 'media'
+      redirect_to home_index_path, alert: "You are not authorized to access this page."
+    end
   end
 
   # GET /announcements/new

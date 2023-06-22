@@ -27,6 +27,16 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.user=current_user
     @hr_fesem_j.status="pending"
     @hr_fesem_j.build_equipment_table
+    if(@hr_fesem_j.entry_type== "manual")
+      @hr_fesem_j.equipment_table.dummy = "proforma_confirmed"
+      @hr_fesem_j.equipment_table.equipname = @hr_fesem_j.dummy1
+      @hr_fesem_j.equipment_table.pay = @hr_fesem_j.amount
+      @hr_fesem_j.equipment_table.username = @hr_fesem_j.dummy2
+      @hr_fesem_j.equipment_table.debit_head = @hr_fesem_j.debit
+      @hr_fesem_j.equipment_table.role = @hr_fesem_j.dummy3
+      @hr_fesem_j.dummy2 = nil
+      @hr_fesem_j.dummy3 = nil
+    else
     @hr_fesem_j.equipment_table.dummy = "alloted"
     @hr_fesem_j.equipment_table.username = @hr_fesem_j.user.name
     @hr_fesem_j.equipment_table.equipname = "HR-FESEM [Jeol]"
@@ -37,6 +47,7 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.equipment_table.dept = @hr_fesem_j.user.department
     @hr_fesem_j.equipment_table.profesion = @hr_fesem_j.user.profession
     @hr_fesem_j.equipment_table.orgname = @hr_fesem_j.user.orgname
+  end
 
     respond_to do |format|
      if @hr_fesem_j.save
@@ -45,10 +56,14 @@ class HrFesemJsController < ApplicationController
 
        else
          HrFesemJMailer.with(id:@hr_fesem_j.id, userid:current_user.id).ExternalMail.deliver_later
-
        end
+       if @hr_fesem_j.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "hr_fesem_j was successfully created." }
+            format.json { render :show, status: :created, location: @hr_fesem_j }
+        else
        format.html { redirect_to home_index_path, notice: "Hr fesem j was successfully created." }
        format.json { render :show, status: :created, location: @hr_fesem_j }
+     end
      else
        format.html { render :new, status: :unprocessable_entity }
        format.json { render json: @hr_fesem_j.errors, status: :unprocessable_entity }
@@ -93,6 +108,6 @@ class HrFesemJsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_j_params
-      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
+      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
     end
 end

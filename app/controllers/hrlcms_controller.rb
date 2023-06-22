@@ -27,6 +27,16 @@ class HrlcmsController < ApplicationController
     @hrlcm.user=current_user
     @hrlcm.status="pending"
     @hrlcm.build_equipment_table
+    if(@hrlcm.entry_type== "manual")
+      @hrlcm.equipment_table.dummy = "proforma_confirmed"
+      @hrlcm.equipment_table.equipname = @hrlcm.dummy1
+      @hrlcm.equipment_table.pay = @hrlcm.amount
+      @hrlcm.equipment_table.username = @hrlcm.dummy2
+      @hrlcm.equipment_table.debit_head = @hrlcm.debit
+      @hrlcm.equipment_table.role = @hrlcm.dummy3
+      @hrlcm.dummy2 = nil
+      @hrlcm.dummy3 = nil
+    else
     @hrlcm.equipment_table.dummy = "alloted"
     @hrlcm.equipment_table.username = @hrlcm.user.name
     @hrlcm.equipment_table.equipname = "HR-LCMS"
@@ -37,6 +47,7 @@ class HrlcmsController < ApplicationController
     @hrlcm.equipment_table.dept = @hrlcm.user.department
     @hrlcm.equipment_table.profesion = @hrlcm.user.profession
     @hrlcm.equipment_table.orgname = @hrlcm.user.orgname
+  end
     respond_to do |format|
       if @hrlcm.save
         if @hrlcm.user.role=='student'||@hrlcm.user.role=='faculty'
@@ -44,8 +55,13 @@ class HrlcmsController < ApplicationController
         else
           HrLcmMailer.with(id:@hrlcm.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @hrlcm.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "hrlcm was successfully created." }
+            format.json { render :show, status: :created, location: @hrlcm }
+        else
         format.html { redirect_to  home_index_path, notice: "Hrlcm was successfully created." }
         format.json { render :show, status: :created, location: @hrlcm }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @hrlcm.errors, status: :unprocessable_entity }
@@ -90,6 +106,6 @@ class HrlcmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hrlcm_params
-      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity,:health,  :disposal, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,] ,hazard_method: [], testing_required: [], references: [])
+      params.require(:hrlcm).permit(:sample, :nature_sample, :category, :sample_type, :solvent, :analysis, :sample_volume, :sample_concentration, :sample_salts, :sample_contains, :storage , :incompatible, :toxicity,:health,  :disposal, :more, :testing_required, :status, :slotdate, :slottime, :debit,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,] ,hazard_method: [], testing_required: [], references: [])
     end
 end
