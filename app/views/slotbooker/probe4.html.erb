@@ -2,10 +2,47 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <%= link_to 'Probe Sonicator Slotbooker',slotbooker_probe_path,class:"navbar-brand",id:"title" %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#btn-head">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+        <%= link_to 'Probe Sonicator Slotbooker', slotbooker_probe_path, class:'navbar-brand', id:'title' %>
+        <div id="tab-div">
+          <div class="btn-group btn-profile dropstart">
+            <%= link_to 'Cancelled Slots',slotbooker_probe4_path,class:"btn btn-outline-warning profile-dropdown" %>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu font-quicksand">
+              <li><%= link_to 'All Slots',slotbooker_probe_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Pending Slots',slotbooker_probe1_path,class:"dropdown-item"%></li>
+              <li><%= link_to 'Alloted Slots',slotbooker_probe2_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Completed Slots',slotbooker_probe3_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Cancelled Slots',slotbooker_probe4_path,class:"dropdown-item active" %></li>
+
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="collapse navbar-collapse tab" id="btn-head">
+            <ul class="navbar-nav">
+                <li class="nav-item-tab">
+                    <%= link_to 'All Slots',slotbooker_probe_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Pending Slots',slotbooker_probe1_path,class:"nav-link active dropdown-item"%>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Alloted Slots',slotbooker_probe2_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab ">
+                    <%= link_to 'Completed Slots',slotbooker_probe3_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab activated">
+                    <%= link_to 'Canceled Slots',slotbooker_probe4_path,class:"nav-link active activated-text dropdown-item" %>
+                </li>
+            </ul>
+        </div>
+
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item" id="admin-mail">
@@ -16,46 +53,18 @@
                 </li>
             </ul>
         </div>
+
     </nav>
 </div>
 
-<div class="container-slot-booker">
+<div class="container-slot-booker-new">
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
 
-        <div class="sidelinks">
-
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                        <%= link_to 'All Slots',slotbooker_probe_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                        <%= link_to 'Pending Slots',slotbooker_probe1_path,class:"nav-link active sidelink-wrap"%>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Alloted Slots',slotbooker_probe2_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                        <%= link_to 'Completed Slots',slotbooker_probe3_path,class:"nav-link active sidelink-wrap" %>
-                        </li>
-                <li class="nav-item">
-                      <%= link_to 'Cancelled Slots',slotbooker_probe4_path,class:"nav-link active sidelink-wrap" ,id:"active-tab"%>
-                </li>
-            </ul>
-        </div>
-    </div>
+    
 
 <%# the content section is coded here %>
     <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Probe Sonicator: Cancelled Slots</h2>
-        </div>
+       
 
 
         <div id="slot-details">
@@ -124,3 +133,29 @@
 
 
 </div>
+<button class="cssbuttons-io-button" id="scroll-left"> Left
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+        </div>
+    </button>
+
+    <button class="cssbuttons-io-button" id="scroll-right"> Right
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+        </div>
+    </button>
+
+
+<script>
+    let left = document.getElementById('scroll-left');
+    let right = document.getElementById('scroll-right');
+    let slots = document.getElementById('slots');
+    left.addEventListener("click", () => {
+        console.log("hello")
+        slots.scrollLeft -= 300;
+    });
+    right.addEventListener("click", () => {
+        console.log("hello2")
+        slots.scrollLeft += 300;
+    });
+</script>
