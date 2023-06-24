@@ -41,7 +41,7 @@ config.action_controller.perform_caching = true
   config.action_mailer.default_options = {from: 'crfnitk@gmail.com'}
  config.action_mailer.smtp_settings = {
  address:              'smtp.gmail.com',
- port:                 '587',
+ port:                 587,
  :domain =>            'nitk.ac.in',
  user_name:            'crfnitk@gmail.com',
  password:            'hcgzyqpdxgcnxwha',
