@@ -31,11 +31,7 @@ end
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-config.authorize_with do
-unless current_user && current_user.admin?
-redirect_to main_app.root_path
-end
-end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

@@ -78,3 +78,7 @@ group :test do
   gem "webdrivers"
 end
 gem "sassc-rails"
+
+gem "chartkick", "~> 5.0"
+
+gem "groupdate", "~> 6.2"
