@@ -28,6 +28,27 @@ class TribometersController < ApplicationController
     @tribometer.user=current_user
     @tribometer.status="pending"
     @tribometer.build_equipment_table
+    if(@tribometer.entry_type== "manual")
+    @tribometer.equipment_table.dummy = "proforma_confirmed"
+    @tribometer.equipment_table.equipname = @tribometer.dummy1
+    @tribometer.equipment_table.pay = @tribometer.amount
+    @tribometer.equipment_table.username = @tribometer.dummy2
+    @tribometer.equipment_table.debit_head = @tribometer.debit
+    @tribometer.equipment_table.role = @tribometer.dummy3
+    @tribometer.dummy2 = nil
+    @tribometer.dummy3 = nil
+  else
+    @tribometer.equipment_table.dummy = "alloted"
+    @tribometer.equipment_table.username = @tribometer.user.name
+    @tribometer.equipment_table.equipname = "Tribometer"
+    @tribometer.equipment_table.app_no = @tribometer.id
+    @tribometer.equipment_table.debit_head = @tribometer.debit
+    @tribometer.equipment_table.role = @tribometer.user.role
+    @tribometer.equipment_table.email = @tribometer.user.email
+    @tribometer.equipment_table.dept = @tribometer.user.department
+    @tribometer.equipment_table.profesion = @tribometer.user.profession
+    @tribometer.equipment_table.orgname = @tribometer.user.orgname
+  end
 
     respond_to do |format|
       if @tribometer.save
@@ -36,8 +57,13 @@ class TribometersController < ApplicationController
         else
           TribometerMailer.with(id:@tribometer.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @tribometer.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "tribometer was successfully created." }
+            format.json { render :show, status: :created, location: @tribometer }
+        else
         format.html { redirect_to home_index_path, notice: "Tribometer was successfully created." }
         format.json { render :show, status: :created, location: @tribometer }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tribometer.errors, status: :unprocessable_entity }
@@ -83,6 +109,6 @@ class TribometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tribometer_params
-      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,:entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

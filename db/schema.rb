@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_15_065457) do
+ActiveRecord::Schema.define(version: 2023_06_22_112251) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.date "slotdate"
     t.string "stype"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
@@ -101,6 +106,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.text "technique", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
 
@@ -124,6 +134,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_ball_mailings_on_user_id"
   end
 
@@ -143,6 +158,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "analysiscustom"
     t.string "analysisstandard"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
@@ -166,6 +186,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.time "slottime"
     t.date "slotdate"
     t.string "debit"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
@@ -182,6 +207,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_electro_chemicals_on_user_id"
   end
 
@@ -197,6 +227,8 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "week_3"
     t.string "week_4"
     t.string "week_5"
+    t.string "entry_type"
+    t.float "amount"
   end
 
   create_table "equipment_tables", force: :cascade do |t|
@@ -272,6 +304,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "role"
     t.string "orgname"
     t.integer "contact_no"
+    t.integer "ft_nm_id"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
@@ -281,6 +314,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.index ["equiplist_id"], name: "index_equipment_tables_on_equiplist_id"
     t.index ["five_axi_id"], name: "index_equipment_tables_on_five_axi_id"
     t.index ["friction_id"], name: "index_equipment_tables_on_friction_id"
+    t.index ["ft_nm_id"], name: "index_equipment_tables_on_ft_nm_id"
     t.index ["gait_id"], name: "index_equipment_tables_on_gait_id"
     t.index ["gas_sensing_id"], name: "index_equipment_tables_on_gas_sensing_id"
     t.index ["glove_box_id"], name: "index_equipment_tables_on_glove_box_id"
@@ -350,6 +384,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_five_axis_on_user_id"
   end
 
@@ -375,6 +414,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "temp"
     t.integer "user_id"
     t.text "material", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_frictions_on_user_id"
   end
 
@@ -404,6 +448,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.text "measurement4", default: "--- []\n"
     t.text "measurement5", default: "--- []\n"
     t.text "hazardmethod", default: "--- []\n"
+    t.string "entry_type"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
+    t.float "amount"
     t.index ["user_id"], name: "index_ft_nms_on_user_id"
   end
 
@@ -423,6 +472,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.text "output_format", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_gaits_on_user_id"
   end
 
@@ -440,6 +494,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_gas_sensings_on_user_id"
   end
 
@@ -457,6 +516,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_glove_boxes_on_user_id"
   end
 
@@ -475,6 +539,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_glows_on_user_id"
   end
 
@@ -494,6 +563,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.text "grit", default: "--- []\n"
     t.text "diamond", default: "--- []\n"
     t.text "suspension", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_grindings_on_user_id"
   end
 
@@ -525,6 +599,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_high_temp_vaccums_on_user_id"
   end
 
@@ -547,6 +626,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.integer "user_id"
     t.string "eds"
     t.text "measuring", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_hr_fesem_cs_on_user_id"
   end
 
@@ -567,6 +651,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.time "slottime"
     t.date "slotdate"
     t.string "debit"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_hr_fesem_js_on_user_id"
   end
 
@@ -596,6 +685,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.text "testing_required", default: "--- []\n"
     t.text "hazard_method", default: "--- []\n"
     t.string "health"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_hrlcms_on_user_id"
   end
 
@@ -620,6 +714,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "storage_condition"
     t.string "temp"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_icp_ms_on_user_id"
   end
 
@@ -639,6 +738,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "losstangent"
     t.integer "user_id"
     t.text "measurement", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_impedance_analies_on_user_id"
   end
 
@@ -658,6 +762,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "indentation"
     t.string "stype"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_integrated_multi_role_testers_on_user_id"
   end
 
@@ -687,6 +796,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "disposal_yes"
     t.integer "user_id"
     t.text "hazard_method", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_ion_chromotographies_on_user_id"
   end
 
@@ -705,6 +819,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_lasers_on_user_id"
   end
 
@@ -720,6 +839,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.float "amount"
+    t.string "entry_type"
     t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
@@ -758,6 +878,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_low_fatigues_on_user_id"
   end
 
@@ -786,6 +911,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "edgfeed"
     t.integer "user_id"
     t.text "measuerment", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_micro_edms_on_user_id"
   end
 
@@ -805,6 +935,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.float "amount1"
     t.float "amount2"
     t.float "amounttotal"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_milli_qs_on_user_id"
   end
 
@@ -831,6 +966,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
@@ -848,6 +988,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_probe_sonicators_on_user_id"
   end
 
@@ -868,6 +1013,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "debit"
     t.string "laser"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_raman_microscopes_on_user_id"
   end
 
@@ -890,6 +1040,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "debit"
     t.string "stype"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_scratch_indentations_on_user_id"
   end
 
@@ -913,6 +1068,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_spark_os_on_user_id"
   end
 
@@ -929,6 +1089,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_spectro_radio_meters_on_user_id"
   end
 
@@ -957,6 +1122,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "kbr"
     t.string "yordinate"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_tga_fttrs_on_user_id"
   end
 
@@ -976,6 +1146,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.float "xrange"
     t.float "yrange"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
   end
 
@@ -992,6 +1167,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.text "output_format", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_three_d_scanners_on_user_id"
   end
 
@@ -1011,6 +1191,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.time "slottime"
     t.date "slotdate"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_tribometers_on_user_id"
   end
 
@@ -1030,6 +1215,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_ultra_centrifuges_on_user_id"
   end
 
@@ -1058,6 +1248,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "firstname"
     t.integer "faculty_id"
     t.string "status"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -1079,6 +1270,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.string "debit"
     t.integer "user_id"
     t.text "measurement", default: "--- []\n"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
@@ -1099,6 +1295,10 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.time "slottime"
     t.date "slotdate"
     t.float "amount"
+    t.string "entry_type"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
@@ -1126,6 +1326,11 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
     t.float "refindex"
     t.string "abscoefficent"
     t.integer "user_id"
+    t.string "entry_type"
+    t.float "amount"
+    t.string "dummy1"
+    t.string "dummy2"
+    t.string "dummy3"
     t.index ["user_id"], name: "index_zeta_potential_sizes_on_user_id"
   end
 
@@ -1147,6 +1352,7 @@ ActiveRecord::Schema.define(version: 2023_06_15_065457) do
   add_foreign_key "equipment_tables", "equiplists"
   add_foreign_key "equipment_tables", "five_axis"
   add_foreign_key "equipment_tables", "frictions"
+  add_foreign_key "equipment_tables", "ft_nms"
   add_foreign_key "equipment_tables", "gaits"
   add_foreign_key "equipment_tables", "gas_sensings"
   add_foreign_key "equipment_tables", "glove_boxes"

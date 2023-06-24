@@ -18,11 +18,17 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1 or /feedbacks/1.json
   def show
   end
+  def authenticate_admin!
+    unless current_user&.admin_role?
+      redirect_to home_index_path, alert: "You are not authorized to access this page."
+    end
+  end
 
   # GET /feedbacks/new
   def new
     @user=User.find(params[:id])
     @feedback = Feedback.new
+    @current_date = Date.today
   end
 
   # GET /feedbacks/1/edit

@@ -26,6 +26,27 @@ class ProbeSonicatorsController < ApplicationController
     @probe_sonicator.user=current_user
     @probe_sonicator.status="pending"
     @probe_sonicator.build_equipment_table
+    if(@probe_sonicator.entry_type== "manual")
+      @probe_sonicator.equipment_table.dummy = "proforma_confirmed"
+      @probe_sonicator.equipment_table.equipname = @probe_sonicator.dummy1
+      @probe_sonicator.equipment_table.pay = @probe_sonicator.amount
+      @probe_sonicator.equipment_table.username = @probe_sonicator.dummy2
+      @probe_sonicator.equipment_table.debit_head = @probe_sonicator.debit
+      @probe_sonicator.equipment_table.role = @probe_sonicator.dummy3
+      @probe_sonicator.dummy2 = nil
+      @probe_sonicator.dummy3 = nil
+    else
+    @probe_sonicator.equipment_table.dummy = "alloted"
+    @probe_sonicator.equipment_table.username = @probe_sonicator.user.name
+    @probe_sonicator.equipment_table.equipname = "Probe Sonicator"
+    @probe_sonicator.equipment_table.app_no = @probe_sonicator.id
+    @probe_sonicator.equipment_table.debit_head = @probe_sonicator.debit
+    @probe_sonicator.equipment_table.role = @probe_sonicator.user.role
+    @probe_sonicator.equipment_table.email = @probe_sonicator.user.email
+    @probe_sonicator.equipment_table.dept = @probe_sonicator.user.department
+    @probe_sonicator.equipment_table.profesion = @probe_sonicator.user.profession
+    @probe_sonicator.equipment_table.orgname = @probe_sonicator.user.orgname
+    end
 
     respond_to do |format|
       if @probe_sonicator.save
@@ -34,8 +55,13 @@ class ProbeSonicatorsController < ApplicationController
         else
           ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @probe_sonicator.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "probe_sonicator was successfully created." }
+            format.json { render :show, status: :created, location: @probe_sonicator }
+        else
         format.html { redirect_to home_index_path, notice: "Probe sonicator was successfully created." }
         format.json { render :show, status: :created, location: @probe_sonicator }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @probe_sonicator.errors, status: :unprocessable_entity }
@@ -80,6 +106,6 @@ class ProbeSonicatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def probe_sonicator_params
-      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

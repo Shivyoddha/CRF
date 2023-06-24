@@ -35,6 +35,7 @@ config.action_controller.perform_caching = true
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  config.hosts << "affc-2401-4900-4e72-f269-29a8-552d-eec8-2cd5.ngrok-free.app"
 
    # Don't care if the mailer can't send.
    config.action_mailer.raise_delivery_errors = true

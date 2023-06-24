@@ -26,6 +26,27 @@ class BetsController < ApplicationController
     @bet.user=current_user
     @bet.status="pending"
     @bet.build_equipment_table
+    if(@bet.entry_type== "manual")
+      @bet.equipment_table.dummy = "proforma_confirmed"
+      @bet.equipment_table.equipname = @bet.dummy1
+      @bet.equipment_table.pay = @bet.amount
+      @bet.equipment_table.username = @bet.dummy2
+      @bet.equipment_table.debit_head = @bet.debit
+      @bet.equipment_table.role = @bet.dummy3
+      @bet.dummy2 = nil
+      @bet.dummy3 = nil
+    else
+    @bet.equipment_table.dummy = "alloted"
+    @bet.equipment_table.username = @bet.user.name
+    @bet.equipment_table.equipname = "BET Surface Area Analyzer"
+    @bet.equipment_table.app_no = @bet.id
+    @bet.equipment_table.debit_head = @bet.debit
+    @bet.equipment_table.role = @bet.user.role
+    @bet.equipment_table.email = @bet.user.email
+    @bet.equipment_table.dept = @bet.user.department
+    @bet.equipment_table.profesion = @bet.user.profession
+    @bet.equipment_table.orgname = @bet.user.orgname
+  end
 
     respond_to do |format|
       if @bet.save
@@ -34,8 +55,13 @@ class BetsController < ApplicationController
         else
           BetMailer.with(id:@bet.id, userid:current_user.id).ExternalMail.deliver_later
       end
+      if @bet.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "bet was successfully created." }
+            format.json { render :show, status: :created, location: @bet }
+        else
       format.html { redirect_to home_index_path, notice: "Bet was successfully created." }
       format.json { render :show, status: :created, location: @bet }
+    end
     else
       format.html { render :new, status: :unprocessable_entity }
       format.json { render json: @bet.errors, status: :unprocessable_entity }
@@ -80,6 +106,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

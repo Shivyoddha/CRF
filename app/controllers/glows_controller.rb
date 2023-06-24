@@ -28,6 +28,27 @@ class GlowsController < ApplicationController
     @glow.user=current_user
     @glow.status="pending"
     @glow.build_equipment_table
+    if(@glow.entry_type== "manual")
+      @glow.equipment_table.dummy = "proforma_confirmed"
+      @glow.equipment_table.equipname = @glow.dummy1
+      @glow.equipment_table.pay = @glow.amount
+      @glow.equipment_table.username = @glow.dummy2
+      @glow.equipment_table.debit_head = @glow.debit
+      @glow.equipment_table.role = @glow.dummy3
+      @glow.dummy2 = nil
+      @glow.dummy3 = nil
+    else
+    @glow.equipment_table.dummy = "alloted"
+    @glow.equipment_table.username = @glow.user.name
+    @glow.equipment_table.equipname = "Glow"
+    @glow.equipment_table.app_no = @glow.id
+    @glow.equipment_table.debit_head = @glow.debit
+    @glow.equipment_table.role = @glow.user.role
+    @glow.equipment_table.email = @glow.user.email
+    @glow.equipment_table.dept = @glow.user.department
+    @glow.equipment_table.profesion = @glow.user.profession
+    @glow.equipment_table.orgname = @glow.user.orgname
+  end
 
 
     respond_to do |format|
@@ -37,8 +58,13 @@ class GlowsController < ApplicationController
         else
           GlowMailer.with(id:@glow.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @glow.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "glow was successfully created." }
+            format.json { render :show, status: :created, location: @glow }
+        else
         format.html { redirect_to home_index_path, notice: "Glow was successfully created." }
         format.json { render :show, status: :created, location: @glow }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @glow.errors, status: :unprocessable_entity }
@@ -83,6 +109,6 @@ class GlowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glow_params
-      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [])
+      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [])
     end
 end

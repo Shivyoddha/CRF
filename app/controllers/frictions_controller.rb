@@ -28,7 +28,26 @@ class FrictionsController < ApplicationController
     @friction.user=current_user
     @friction.status="pending"
     @friction.build_equipment_table
-
+    if(@friction.entry_type== "manual")
+      @friction.equipment_table.dummy = "proforma_confirmed"
+      @friction.equipment_table.equipname = @friction.dummy1
+      @friction.equipment_table.pay = @friction.amount
+      @friction.equipment_table.username = @friction.dummy2
+      @friction.equipment_table.debit_head = @Friction.debit
+      @friction.equipment_table.role = @friction.dummy3
+      @friction.dummy2 = nil
+      @friction.dummy3 = nil
+    else
+    @friction.equipment_table.dummy = "alloted"
+    @friction.equipment_table.username = @friction.user.name
+    @friction.equipment_table.equipname = "Friction Stir Welding/Surfacing(FSW)"
+    @friction.equipment_table.debit_head = @friction.debit
+    @friction.equipment_table.role = @friction.user.role
+    @friction.equipment_table.email = @friction.user.email
+    @friction.equipment_table.dept = @friction.user.department
+    @friction.equipment_table.profesion = @friction.user.profession
+    @friction.equipment_table.orgname = @friction.user.orgname
+  end
 
     respond_to do |format|
       if @friction.save
@@ -37,8 +56,13 @@ class FrictionsController < ApplicationController
         else
           FrictionMailer.with(id:@friction.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @friction.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "friction was successfully created." }
+            format.json { render :show, status: :created, location: @friction }
+        else
         format.html { redirect_to home_index_path, notice: "Friction was successfully created." }
         format.json { render :show, status: :created, location: @friction }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @friction.errors, status: :unprocessable_entity }
@@ -82,6 +106,6 @@ class FrictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friction_params
-      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,material: [], references: [])
+      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,material: [], references: [])
     end
 end

@@ -28,6 +28,27 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester.user=current_user
     @integrated_multi_role_tester.status="pending"
     @integrated_multi_role_tester.build_equipment_table
+    if(@integrated_multi_role_tester.entry_type== "manual")
+      @integrated_multi_role_tester.equipment_table.dummy = "proforma_confirmed"
+      @integrated_multi_role_tester.equipment_table.equipname = @integrated_multi_role_tester.dummy1
+      @integrated_multi_role_tester.equipment_table.pay = @integrated_multi_role_tester.amount
+      @integrated_multi_role_tester.equipment_table.username = @integrated_multi_role_tester.dummy2
+      @integrated_multi_role_tester.equipment_table.debit_head = @integrated_multi_role_tester.debit
+      @integrated_multi_role_tester.equipment_table.role = @integrated_multi_role_tester.dummy3
+      @integrated_multi_role_tester.dummy2 = nil
+      @integrated_multi_role_tester.dummy3 = nil
+    else
+    @integrated_multi_role_tester.equipment_table.dummy = "alloted"
+    @integrated_multi_role_tester.equipment_table.username = @integrated_multi_role_tester.user.name
+    @integrated_multi_role_tester.equipment_table.equipname = "integrated_multi_role_tester"
+    @integrated_multi_role_tester.equipment_table.app_no = @integrated_multi_role_tester.id
+    @integrated_multi_role_tester.equipment_table.debit_head = @integrated_multi_role_tester.debit
+    @integrated_multi_role_tester.equipment_table.role = @integrated_multi_role_tester.user.role
+    @integrated_multi_role_tester.equipment_table.email = @integrated_multi_role_tester.user.email
+    @integrated_multi_role_tester.equipment_table.dept = @integrated_multi_role_tester.user.department
+    @integrated_multi_role_tester.equipment_table.profesion = @integrated_multi_role_tester.user.profession
+    @integrated_multi_role_tester.equipment_table.orgname = @integrated_multi_role_tester.user.orgname
+  end
 
     respond_to do |format|
       if @integrated_multi_role_tester.save
@@ -36,8 +57,13 @@ class IntegratedMultiRoleTestersController < ApplicationController
         else
           IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @integrated_multi_role_tester.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "integrated_multi_role_tester was successfully created." }
+          format.json { render :show, status: :created, location: @integrated_multi_role_tester }
+      else
         format.html { redirect_to home_index_path, notice: "Integrated multi role tester was successfully created." }
         format.json { render :show, status: :created, location: @integrated_multi_role_tester }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @integrated_multi_role_tester.errors, status: :unprocessable_entity }
@@ -82,6 +108,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def integrated_multi_role_tester_params
-      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

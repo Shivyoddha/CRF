@@ -28,6 +28,26 @@ class IcpMsController < ApplicationController
     @icp_m.user=current_user
     @icp_m.status="pending"
     @icp_m.build_equipment_table
+    if(@icp_m.entry_type== "manual")
+      @icp_m.equipment_table.dummy = "proforma_confirmed"
+      @icp_m.equipment_table.equipname = @icp_m.dummy1
+      @icp_m.equipment_table.pay = @icp_m.amount
+      @icp_m.equipment_table.username = @icp_m.dummy2
+      @icp_m.equipment_table.debit_head = @icp_m.debit
+      @icp_m.equipment_table.role = @icp_m.dummy3
+      @icp_m.dummy2 = nil
+      @icp_m.dummy3 = nil
+    else
+    @icp_m.equipment_table.dummy = "alloted"
+    @icp_m.equipment_table.username = @icp_m.user.name
+    @icp_m.equipment_table.equipname = "ICP-MS"
+    @icp_m.equipment_table.debit_head = @icp_m.debit
+    @icp_m.equipment_table.role = @icp_m.user.role
+    @icp_m.equipment_table.email = @icp_m.user.email
+    @icp_m.equipment_table.dept = @icp_m.user.department
+    @icp_m.equipment_table.profesion = @icp_m.user.profession
+    @icp_m.equipment_table.orgname = @icp_m.user.orgname
+  end
 
 
     respond_to do |format|
@@ -37,8 +57,13 @@ class IcpMsController < ApplicationController
         else
           IcpMMailer.with(id:@icp_m.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @icp_m.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "icp_m was successfully created." }
+            format.json { render :show, status: :created, location: @icp_m }
+        else
         format.html { redirect_to home_index_path, notice: "Icp m was successfully created." }
         format.json { render :show, status: :created, location: @icp_m }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @icp_m.errors, status: :unprocessable_entity }
@@ -83,6 +108,6 @@ class IcpMsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def icp_m_params
-      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
+      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
     end
 end

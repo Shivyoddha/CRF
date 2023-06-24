@@ -1,36 +1,52 @@
 <%= stylesheet_link_tag "paymentportal" %>
-<%=render "partials/paymentNav" %>
 
-<div class="container-payments">
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <%= link_to 'CRF Payments', payment_payment_path, class:'navbar-brand', id:'title' %>
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
 
-        <div class="sidelinks">
+        <div class="collapse navbar-collapse tab" id="btn-head">
+            <ul class="navbar-nav">
 
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap" %>
+                <li class="nav-item-tab">
+                 <%= link_to 'Internal Proforma',payment_payment_path,class:"nav-link active sidelink-wrap"%>
+                </li>
+                <li class="nav-item-tab">
+                        <%= link_to 'Proforma Confirmation',payment_proforma_confirmation_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                <li class="nav-item-tab">
+                    <%= link_to 'Payment Confirmation',payment_paymentA_path,class:"nav-link active sidelink-wrap" %>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item-tab">
+                    <%= link_to 'Payment Completed',payment_payment_completed_path,class:"nav-link active sidelink-wrap" %>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Manual Entry',payment_paymentM_path,class:"nav-link active sidelink-wrap", id:"active-tab"  %>
+                </li>
+                <li class="nav-item-tab">
                     <%= link_to 'Update',payment_paymentU_path,class:"nav-link active sidelink-wrap" %>
                 </li>
-                
             </ul>
         </div>
-    </div>
 
+
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item" id="admin">
+              <%= link_to 'Admin', mainportal_admindashboard_path,class:"btn btn-outline-primary" %>
+              </li>
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
     <div id="hero">
 
@@ -39,67 +55,191 @@
         </div>
 
         <div id="wrap">
-          <%= form_with(model: @equipment,local:true) do |form| %>
-            <div class="mb-3">
-                <div class="input-group">
-                  <%= form.label :app_no, "Apllication No.", class:"input-group-text", id:"app"%>
-                  <%= form.text_field :app_no, class:"form-control", id:"app"%>
-                </div>
-            </div>
 
-              <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
-            <div class="input-group mb-3">
-              <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
-              <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name, f.id] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :username, "User Name", class:"input-group-text", id:"user_name"%>
-              <%= form.text_field :username, class:"form-control", id:"user_name"%>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :reg_no, "Reg ID", class:"input-group-text", id:"user_name"%>
-              <%= form.text_field :reg_no, class:"form-control", id:"user_name",placeholder:"Optional"%>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :dept ,"Department" ,for:"exampleInputEmail1", class:"input-group-text "%>
-               <%= form.select(:dept, ['Chemical Engineering', 'Chemistry','Civil Engineering','Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering','Physics','Water Resources & Ocean Engineering'], {:include_blank => 'Choose...'}, { :class => 'form-select',:id => "u-type",:required => false }) %>
-            </div>
-
-            <div class="input-group mb-3">
-              <%= form.label :guide, "Guide", class:"input-group-text", id:"guide"%>
-              <%= form.text_field :guide, class:"form-control", id:"guide",placeholder:"Optional"%>
-            </div>
-
-
-            <div class="input-group mb-3">
-              <%= form.label :course ,"Course" ,for:"course", class:"input-group-text "%>
-              <%= form.select(:course , ['Btech','Mtech','PHD'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "course"}) %>
-            </div>
-
-            <div class="mb-3">
-                <div class="input-group mb-3">
-                  <%= form.label :pay, "Amount", class:"input-group-text", id:"amount"%>
-                  <%= form.label :pay, "₹", class:"input-group-text", id:"amount"%>
-                    <%= form.text_field :pay, class:"form-control", id:"amount"%>
-                </div>
-            </div>
-
-              <%= form.hidden_field :dummy, value: 'generated' %>
-              <%= form.hidden_field :role, value: 'student' %>
-
-              <div class="actions">
-                <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
-
+          <!-- to select the equipment and according to this we display the respective form -->
+          <%= form_with url: payment_paymentM_path do |form| %>
+                <% options = options_from_collection_for_select(Equiplist.all,'id','name')%>
+              <div class="input-group mb-3">
+                <%= form.label :entry ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+                <%= form.select(:entry ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, {:class => 'form-select',:id => "Equip" , :required => true})%>
+                <%= form.submit "Form", class:"btn btn-primary", id:"Equip" %>
               </div>
             <%end%>
+
+
+            <% if @entry == 'XRD'%>
+            <% @equip = @xrd %>
+            <%end%>
+            <% if @entry == 'HR-FESEM [Carl Zeiss]'%>
+            <% @equip = @hr_fesem_c %>
+            <%end%>
+            <% if @entry == 'HR-FESEM [Jeol]'%>
+            <% @equip = @hr_fesem_j %>
+            <%end%>
+            <% if @entry == '3-D Non Contact Profilometer'%>
+            <% @equip = @three_d_non_contact %>
+            <%end%>
+            <% if @entry == 'Raman Spectrometer with PL'%>
+            <% @equip = @raman_microscope %>
+            <%end%>
+            <% if @entry == 'TGA-FTIR'%>
+            <% @equip = @tga_fttr %>
+            <%end%>
+            <% if @entry == 'BET Surface Area Analyzer'%>
+            <% @equip = @bet %>
+            <%end%>
+            <% if @entry == 'HR-LCMS'%>
+            <% @equip = @hrlcm %>
+            <%end%>
+            <% if @entry == 'UV-Vis-NIR'%>
+            <% @equip = @uv_vis_nir %>
+            <%end%>
+            <% if @entry == 'Laser Flash Analyser'%>
+            <% @equip = @laser %>
+            <%end%>
+            <% if @entry == 'Cell-Imaging MultiMode Reader'%>
+            <% @equip = @cell_imaging %>
+            <%end%>
+            <% if @entry == 'Atomic Force Microscope'%>
+            <% @equip = @atomic_force_microscope %>
+            <%end%>
+            <% if @entry == 'FT-NMR'%>
+            <% @equip = @ft_nm %>
+            <%end%>
+            <% if @entry == 'ICP-MS'%>
+            <% @equip = @icp_m %>
+            <%end%>
+            <% if @entry == 'Advance Modular Rheometer'%>
+            <% @equip = @advance_molecular_rheometer %>
+            <%end%>
+            <% if @entry == 'Ion Chromatography'%>
+            <% @equip = @ion_chromotography %>
+            <%end%>
+            <% if @entry == 'Intergrated MultiRole Tester'%>
+            <% @equip = @integrated_multi_role_tester %>
+            <%end%>
+            <% if @entry == 'Scratch/Indentation Tester'%>
+            <% @equip = @scratch_indentation %>
+            <%end%>
+            <% if @entry == 'Zeta Potential/Particle Sizer'%>
+            <% @equip = @zeta_potential_size %>
+            <%end%>
+            <% if @entry == 'High Temp Vacuum Furnace'%>
+            <% @equip = @high_temp_vaccum %>
+            <%end%>
+            <% if @entry == 'Impedance Analyzer'%>
+            <% @equip = @impedance_analy %>
+            <%end%>
+            <% if @entry == 'Tribometer'%>
+            <% @equip = @tribometer %>
+            <%end%>
+            <% if @entry == '3D-Scanner'%>
+            <% @equip = @three_d_scanner %>
+            <%end%>
+            <% if @entry == 'GAIT Analysis'%>
+            <% @equip = @gait %>
+            <%end%>
+            <% if @entry == 'Spectro-Radiometer'%>
+            <% @equip = @spectro_radio_meter %>
+            <%end%>
+            <% if @entry == 'Spark-OES'%>
+            <% @equip = @spark_o %>
+            <%end%>
+            <% if @entry == 'Glow Discharges-OES'%>
+            <% @equip = @glow %>
+            <%end%>
+            <% if @entry == 'Ball Milling Unit'%>
+            <% @equip = @ball_mailing %>
+            <%end%>
+            <% if @entry == 'Low Force Fatigue with DMA'%>
+            <% @equip = @low_fatigue %>
+            <%end%>
+            <% if @entry == 'Micro-EDM'%>
+            <% @equip = @micro_edm %>
+            <%end%>
+            <% if @entry == '5-Axes CNC'%>
+            <% @equip = @five_axi %>
+            <%end%>
+            <% if @entry == 'Multi Purpose Impact Testing (SHPB)'%>
+            <% @equip = @multi_impact_tester %>
+            <%end%>
+            <% if @entry == 'Friction Stir Welding/Surfacing(FSW)'%>
+            <% @equip = @friction %>
+            <%end%>
+            <% if @entry == 'Electro Chemical Polishing'%>
+            <% @equip = @electro_chemical %>
+            <%end%>
+            <% if @entry == 'Milli-Q water'%>
+            <% @equip = @milli_q %>
+            <%end%>
+            <% if @entry == 'Glove Box'%>
+            <% @equip = @glove_box %>
+            <%end%>
+            <% if @entry == 'Probe Sonicator'%>
+            <% @equip = @probe_sonicator %>
+            <%end%>
+            <% if @entry == 'Ultra-Centrifuge'%>
+            <% @equip = @ultra_centrifuge %>
+            <%end%>
+            <% if @entry == 'Gas Sensing'%>
+            <% @equip = @gas_sensing %>
+            <%end%>
+            <% if @entry == 'Liquid Nitrogen'%>
+            <% @equip = @liquid_nitrogen %>
+            <%end%>
+            <% if @entry == 'Ansys System Lab'%>
+            <%end%>
+            <% if @entry == 'Automatic MultiSpecimen Polisher'%>
+            <% @equip = @grinding %>
+            <%end%>
+
+   <%if @equip != nil %>
+     <div class="card">
+    <%= form_with(model: @equip,local:true) do |form| %>
+           <div class="card-header">
+          <%= "Enter manually for #{@entry} slot"%>
+          </div>
+          <div class="card-body">
+          <div class="input-group mb-3">
+            <%= form.label :amount, "Amount", class:"input-group-text", for:"amount"%>
+            <%= form.label :amount, "₹", class:"input-group-text", for:"amount"%>
+              <%= form.text_field :amount, class:"form-control", id:"amount",:required => true%>
+          </div>
+
+          <div class="input-group mb-3">
+            <%= form.label :dummy2, "Name", class:"input-group-text", for:"name"%>
+              <%= form.text_field :dummy2, class:"form-control", id:"name"%>
+          </div>
+
+
+          <div class="input-group mb-3">
+            <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+            <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+        </div>
+
+
+
+            <%= form.hidden_field :entry_type, value: "manual" %>
+            <%= form.hidden_field :dummy1, value: @entry %>
+            <%= form.hidden_field :dummy3, value: "student" %>
+
+          <div class="actions">
+            <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
+            <% @entry=nil%>
+          </div>
+      <%end%>
+      <%end%>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
 
         </div>
 
     </div>
-
-
-
-</div>

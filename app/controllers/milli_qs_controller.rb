@@ -27,6 +27,27 @@ class MilliQsController < ApplicationController
     @milli_q.user=current_user
     @milli_q.status="pending"
     @milli_q.build_equipment_table
+    if(@milli_q.entry_type== "manual")
+      @milli_q.equipment_table.dummy = "proforma_confirmed"
+      @milli_q.equipment_table.equipname = @milli_q.dummy1
+      @milli_q.equipment_table.pay = @milli_q.amount
+      @milli_q.equipment_table.username = @milli_q.dummy2
+      @milli_q.equipment_table.debit_head = @milli_q.debit
+      @milli_q.equipment_table.role = @milli_q.dummy3
+      @milli_q.dummy2 = nil
+      @milli_q.dummy3 = nil
+    else
+    @milli_q.equipment_table.dummy = "alloted"
+    @milli_q.equipment_table.username = @milli_q.user.name
+    @milli_q.equipment_table.equipname = "Milli-Q water"
+    @milli_q.equipment_table.app_no = @milli_q.id
+    @milli_q.equipment_table.debit_head = @milli_q.debit
+    @milli_q.equipment_table.role = @milli_q.user.role
+    @milli_q.equipment_table.email = @milli_q.user.email
+    @milli_q.equipment_table.dept = @milli_q.user.department
+    @milli_q.equipment_table.profesion = @milli_q.user.profession
+    @milli_q.equipment_table.orgname = @milli_q.user.orgname
+  end
 
      # @milli_q.amount1=0
      # @milli_q.amount2=0
@@ -76,8 +97,13 @@ class MilliQsController < ApplicationController
         else
           MilliQMailer.with(id:@milli_q.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @milli_q.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "milli_q was successfully created." }
+          format.json { render :show, status: :created, location: @milli_q }
+        else
         format.html { redirect_to home_index_path, notice: "Milli q was successfully created." }
         format.json { render :show, status: :created, location: @milli_q }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @milli_q.errors, status: :unprocessable_entity }
@@ -123,6 +149,6 @@ class MilliQsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def milli_q_params
-      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:milli_q).permit(:typewater, :volumeone, :volumetwo, :more, :debit, :slotdate, :slottime, :status,:amount1,:amount2,:amounttotal,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

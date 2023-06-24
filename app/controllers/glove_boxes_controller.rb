@@ -27,6 +27,27 @@ class GloveBoxesController < ApplicationController
     @glove_box.user=current_user
     @glove_box.status="pending"
     @glove_box.build_equipment_table
+    if(@glove_box.entry_type== "manual")
+      @glove_box.equipment_table.dummy = "proforma_confirmed"
+      @glove_box.equipment_table.equipname = @glove_box.dummy1
+      @glove_box.equipment_table.pay = @glove_box.amount
+      @glove_box.equipment_table.username = @glove_box.dummy2
+      @glove_box.equipment_table.debit_head = @glove_box.debit
+      @glove_box.equipment_table.role = @glove_box.dummy3
+      @glove_box.dummy2 = nil
+      @glove_box.dummy3 = nil
+    else
+    @glove_box.equipment_table.dummy = "alloted"
+    @glove_box.equipment_table.username = @glove_box.user.name
+    @glove_box.equipment_table.equipname = "glove_box"
+    @glove_box.equipment_table.app_no = @glove_box.id
+    @glove_box.equipment_table.debit_head = @glove_box.debit
+    @glove_box.equipment_table.role = @glove_box.user.role
+    @glove_box.equipment_table.email = @glove_box.user.email
+    @glove_box.equipment_table.dept = @glove_box.user.department
+    @glove_box.equipment_table.profesion = @glove_box.user.profession
+    @glove_box.equipment_table.orgname = @glove_box.user.orgname
+  end
 
     respond_to do |format|
       if @glove_box.save
@@ -35,8 +56,13 @@ class GloveBoxesController < ApplicationController
         else
           GloveBoxMailer.with(id:@glove_box.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @glove_box.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "glove_box was successfully created." }
+            format.json { render :show, status: :created, location: @glove_box }
+        else
         format.html { redirect_to home_index_path, notice: "Glove box was successfully created." }
         format.json { render :show, status: :created, location: @glove_box }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @glove_box.errors, status: :unprocessable_entity }
@@ -81,6 +107,6 @@ class GloveBoxesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glove_box_params
-      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:glove_box).permit(:weight, :days, :toxicity, :carcinogenic, :incompatible, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

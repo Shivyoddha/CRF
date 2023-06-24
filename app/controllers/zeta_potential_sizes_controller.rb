@@ -27,7 +27,26 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.user=current_user
     @zeta_potential_size.status="pending"
     @zeta_potential_size.build_equipment_table
-
+    if(@zeta_potential_size.entry_type== "manual")
+      @zeta_potential_size.equipment_table.dummy = "proforma_confirmed"
+      @zeta_potential_size.equipment_table.equipname = @zeta_potential_size.dummy1
+      @zeta_potential_size.equipment_table.pay = @zeta_potential_size.amount
+      @zeta_potential_size.equipment_table.username = @zeta_potential_size.dummy2
+      # @zeta_potential_size.equipment_table.reg_no = @zeta_potential_size.more
+      @zeta_potential_size.equipment_table.role = @zeta_potential_size.dummy3
+      @zeta_potential_size.dummy2 = nil
+      @zeta_potential_size.dummy3 = nil
+    else
+    @zeta_potential_size.equipment_table.dummy = "alloted"
+    @zeta_potential_size.equipment_table.username = @zeta_potential_size.user.name
+    @zeta_potential_size.equipment_table.equipname = "Zeta Potential/Particle Sizer"
+    @zeta_potential_size.equipment_table.debit_head = @zeta_potential_size.debit
+    @zeta_potential_size.equipment_table.role = @zeta_potential_size.user.role
+    @zeta_potential_size.equipment_table.email = @zeta_potential_size.user.email
+    @zeta_potential_size.equipment_table.dept = @zeta_potential_size.user.department
+    @zeta_potential_size.equipment_table.profesion = @zeta_potential_size.user.profession
+    @zeta_potential_size.equipment_table.orgname = @zeta_potential_size.user.orgname
+  end
     respond_to do |format|
       if @zeta_potential_size.save
         if @zeta_potential_size.user.role=='student'||@zeta_potential_size.user.role=='faculty'
@@ -35,8 +54,13 @@ class ZetaPotentialSizesController < ApplicationController
         else
           ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @zeta_potential_size.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "zeta_potential_size was successfully created." }
+            format.json { render :show, status: :created, location: @zeta_potential_size }
+        else
         format.html { redirect_to home_index_path, notice: "Zeta potential size was successfully created." }
         format.json { render :show, status: :created, location: @zeta_potential_size }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @zeta_potential_size.errors, status: :unprocessable_entity }
@@ -82,6 +106,6 @@ class ZetaPotentialSizesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def zeta_potential_size_params
-      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [])
+      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [])
     end
 end

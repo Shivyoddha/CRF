@@ -28,6 +28,27 @@ class MicroEdmsController < ApplicationController
     @micro_edm.user=current_user
     @micro_edm.status="pending"
     @micro_edm.build_equipment_table
+    if(@micro_edm.entry_type== "manual")
+      @micro_edm.equipment_table.dummy = "proforma_confirmed"
+      @micro_edm.equipment_table.equipname = @micro_edm.dummy1
+      @micro_edm.equipment_table.pay = @micro_edm.amount
+      @micro_edm.equipment_table.username = @micro_edm.dummy2
+      @micro_edm.equipment_table.debit_head = @micro_edm.debit
+      @micro_edm.equipment_table.role = @micro_edm.dummy3
+      @micro_edm.dummy2 = nil
+      @micro_edm.dummy3 = nil
+    else
+    @micro_edm.equipment_table.dummy = "alloted"
+    @micro_edm.equipment_table.username = @micro_edm.user.name
+    @micro_edm.equipment_table.equipname = "micro_edm"
+    @micro_edm.equipment_table.app_no = @micro_edm.id
+    @micro_edm.equipment_table.debit_head = @micro_edm.debit
+    @micro_edm.equipment_table.role = @micro_edm.user.role
+    @micro_edm.equipment_table.email = @micro_edm.user.email
+    @micro_edm.equipment_table.dept = @micro_edm.user.department
+    @micro_edm.equipment_table.profesion = @micro_edm.user.profession
+    @micro_edm.equipment_table.orgname = @micro_edm.user.orgname
+  end
 
     respond_to do |format|
       if @micro_edm.save
@@ -36,8 +57,13 @@ class MicroEdmsController < ApplicationController
         else
           MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @micro_edm.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "micro_edm was successfully created." }
+          format.json { render :show, status: :created, location: @micro_edm }
+      else
         format.html { redirect_to home_index_path, notice: "Micro edm was successfully created." }
         format.json { render :show, status: :created, location: @micro_edm }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @micro_edm.errors, status: :unprocessable_entity }
@@ -82,6 +108,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress,:orgname],references: [],measuerment: [] )
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress,:orgname],references: [],measuerment: [] )
     end
 end

@@ -28,6 +28,27 @@ class LowFatiguesController < ApplicationController
     @low_fatigue.user=current_user
     @low_fatigue.status="pending"
     @low_fatigue.build_equipment_table
+    if(@low_fatigue.entry_type== "manual")
+      @low_fatigue.equipment_table.dummy = "proforma_confirmed"
+      @low_fatigue.equipment_table.equipname = @low_fatigue.dummy1
+      @low_fatigue.equipment_table.pay = @low_fatigue.amount
+      @low_fatigue.equipment_table.username = @low_fatigue.dummy2
+      @low_fatigue.equipment_table.debit_head = @low_fatigue.debit
+      @low_fatigue.equipment_table.role = @low_fatigue.dummy3
+      @low_fatigue.dummy2 = nil
+      @low_fatigue.dummy3 = nil
+    else
+    @low_fatigue.equipment_table.dummy = "alloted"
+    @low_fatigue.equipment_table.username = @low_fatigue.user.name
+    @low_fatigue.equipment_table.equipname = "Low Force Fatigue with DMA"
+    @low_fatigue.equipment_table.app_no = @low_fatigue.id
+    @low_fatigue.equipment_table.debit_head = @low_fatigue.debit
+    @low_fatigue.equipment_table.role = @low_fatigue.user.role
+    @low_fatigue.equipment_table.email = @low_fatigue.user.email
+    @low_fatigue.equipment_table.dept = @low_fatigue.user.department
+    @low_fatigue.equipment_table.profesion = @low_fatigue.user.profession
+    @low_fatigue.equipment_table.orgname = @low_fatigue.user.orgname
+  end
 
     respond_to do |format|
       if @low_fatigue.save
@@ -36,8 +57,13 @@ class LowFatiguesController < ApplicationController
         else
           LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @low_fatigue.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "low_fatigue was successfully created." }
+          format.json { render :show, status: :created, location: @low_fatigue }
+      else
         format.html { redirect_to home_index_path, notice: "Low fatigue was successfully created." }
         format.json { render :show, status: :created, location: @low_fatigue }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @low_fatigue.errors, status: :unprocessable_entity }
@@ -82,6 +108,6 @@ class LowFatiguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def low_fatigue_params
-      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

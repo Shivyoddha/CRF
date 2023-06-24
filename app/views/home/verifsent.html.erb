@@ -1,2 +1,23 @@
-<h1>Your verification request has been sent</h1>
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "miscellaneousPages"%>
+
+<%=render "partials/loginHeading"%>
+
+<div id="container">
+    <div id="wrap" class="container">
+        <div id="text">
+            <h1>Your verification request has been sent</h1>
+            <p>You will be rediredted to the dashboard as soon as your faculty approves your Email ID</p>
+        </div>
+
+        <div id="verifimg-div" style="width: 30%;">
+            <%=image_tag 'icons/approval' , class:"",id:'verifimg', alt:"..." %>
+        </div>
+        
+    
+    </div>
+</div>
+
+<%=render "partials/footer"%>
+
 

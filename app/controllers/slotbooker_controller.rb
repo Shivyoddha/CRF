@@ -1,6 +1,12 @@
 class SlotbookerController < ApplicationController
 load_and_authorize_resource :class => false
-
+# before_action :authenticate_admin!
+#
+# def authenticate_admin!
+# if current_user&.slotbooker.blank? && current_user&.admin_role != true && current_user&.chairman_role != true
+#     redirect_to home_index_path, alert: "You are not authorized to access this page."
+# end
+# end
 def xrd
   @xrd=Xrd.all
 
@@ -9,8 +15,6 @@ def xrd
 def xrd1
 @xrd=Xrd.all
 EquipmentTable.new
-
-
 end
 
 def xrd2

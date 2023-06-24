@@ -26,6 +26,27 @@ class CellImagingsController < ApplicationController
     @cell_imaging.user=current_user
     @cell_imaging.status="pending"
     @cell_imaging.build_equipment_table
+    if(@cell_imaging.entry_type== "manual")
+      @cell_imaging.equipment_table.dummy = "proforma_confirmed"
+      @cell_imaging.equipment_table.equipname = @cell_imaging.dummy1
+      @cell_imaging.equipment_table.pay = @cell_imaging.amount
+      @cell_imaging.equipment_table.username = @cell_imaging.dummy2
+      @cell_imaging.equipment_table.debit_head = @cell_imaging.debit
+      @cell_imaging.equipment_table.role = @cell_imaging.dummy3
+      @cell_imaging.dummy2 = nil
+      @cell_imaging.dummy3 = nil
+    else
+    @cell_imaging.equipment_table.dummy = "alloted"
+    @cell_imaging.equipment_table.username = @cell_imaging.user.name
+    @cell_imaging.equipment_table.equipname = "Cell-Imaging MultiMode Reader"
+    @cell_imaging.equipment_table.app_no = @cell_imaging.id
+    @cell_imaging.equipment_table.debit_head = @cell_imaging.debit
+    @cell_imaging.equipment_table.role = @cell_imaging.user.role
+    @cell_imaging.equipment_table.email = @cell_imaging.user.email
+    @cell_imaging.equipment_table.dept = @cell_imaging.user.department
+    @cell_imaging.equipment_table.profesion = @cell_imaging.user.profession
+    @cell_imaging.equipment_table.orgname = @cell_imaging.user.orgname
+  end
     respond_to do |format|
       if @cell_imaging.save
         if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
@@ -33,8 +54,13 @@ class CellImagingsController < ApplicationController
         else
           CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @cell_imaging.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "cell_imaging was successfully created." }
+            format.json { render :show, status: :created, location: @cell_imaging }
+        else
         format.html { redirect_to home_index_path, notice: "Cell imaging was successfully created." }
         format.json { render :show, status: :created, location: @cell_imaging }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @cell_imaging.errors, status: :unprocessable_entity }
@@ -78,6 +104,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [] )
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type, :amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [] )
     end
 end

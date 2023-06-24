@@ -36,7 +36,7 @@ Rails.application.routes.draw do
    resources :glows
    resources :tribometers
    resources :low_fatigues
-   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+ mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
    default_url_options :host => "localhost:3000"
     resources :zeta_potential_sizes
     resources :scratch_indentations
@@ -491,6 +491,7 @@ Rails.application.routes.draw do
     get 'payment/payment_completed'
     get 'payment/proforma_confirmation'
     post 'payment/paymentU'
+    post 'payment/paymentM'
     post 'payment/paymentExtU'
     post 'payment/paymentExtM'
     get 'home/faculty_verif'

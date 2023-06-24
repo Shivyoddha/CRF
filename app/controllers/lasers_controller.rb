@@ -27,6 +27,27 @@ class LasersController < ApplicationController
     @laser.user=current_user
     @laser.status="pending"
     @laser.build_equipment_table
+    if(@laser.entry_type== "manual")
+      @laser.equipment_table.dummy = "proforma_confirmed"
+      @laser.equipment_table.equipname = @laser.dummy1
+      @laser.equipment_table.pay = @laser.amount
+      @laser.equipment_table.username = @laser.dummy2
+      @laser.equipment_table.debit_head = @laser.debit
+      @laser.equipment_table.role = @laser.dummy3
+      @laser.dummy2 = nil
+      @laser.dummy3 = nil
+    else
+    @laser.equipment_table.dummy = "alloted"
+    @laser.equipment_table.username = @laser.user.name
+    @laser.equipment_table.equipname = "Laser Flash Analyser"
+    @laser.equipment_table.app_no = @laser.id
+    @laser.equipment_table.debit_head = @laser.debit
+    @laser.equipment_table.role = @laser.user.role
+    @laser.equipment_table.email = @laser.user.email
+    @laser.equipment_table.dept = @laser.user.department
+    @laser.equipment_table.profesion = @laser.user.profession
+    @laser.equipment_table.orgname = @laser.user.orgname
+  end
 
     respond_to do |format|
       if @laser.save
@@ -35,8 +56,13 @@ class LasersController < ApplicationController
         else
           LaserMailer.with(id:@laser.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @laser.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "laser was successfully created." }
+          format.json { render :show, status: :created, location: @laser }
+      else
         format.html { redirect_to home_index_path, notice: "Laser was successfully created." }
         format.json { render :show, status: :created, location: @laser }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @laser.errors, status: :unprocessable_entity }
@@ -81,6 +107,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

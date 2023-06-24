@@ -27,6 +27,27 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter.user=current_user
     @spectro_radio_meter.status="pending"
     @spectro_radio_meter.build_equipment_table
+    if(@spectro_radio_meter.entry_type== "manual")
+      @spectro_radio_meter.equipment_table.dummy = "proforma_confirmed"
+      @spectro_radio_meter.equipment_table.equipname = @spectro_radio_meter.dummy1
+      @spectro_radio_meter.equipment_table.pay = @spectro_radio_meter.amount
+      @spectro_radio_meter.equipment_table.username = @spectro_radio_meter.dummy2
+      @spectro_radio_meter.equipment_table.debit_head = @spectro_radio_meter.debit
+      @spectro_radio_meter.equipment_table.role = @spectro_radio_meter.dummy3
+      @spectro_radio_meter.dummy2 = nil
+      @spectro_radio_meter.dummy3 = nil
+    else
+    @spectro_radio_meter.equipment_table.dummy = "alloted"
+    @spectro_radio_meter.equipment_table.username = @spectro_radio_meter.user.name
+    @spectro_radio_meter.equipment_table.equipname = "Spectro-Radiometer"
+    @spectro_radio_meter.equipment_table.app_no = @spectro_radio_meter.id
+    @spectro_radio_meter.equipment_table.debit_head = @spectro_radio_meter.debit
+    @spectro_radio_meter.equipment_table.role = @spectro_radio_meter.user.role
+    @spectro_radio_meter.equipment_table.email = @spectro_radio_meter.user.email
+    @spectro_radio_meter.equipment_table.dept = @spectro_radio_meter.user.department
+    @spectro_radio_meter.equipment_table.profesion = @spectro_radio_meter.user.profession
+    @spectro_radio_meter.equipment_table.orgname = @spectro_radio_meter.user.orgname
+  end
 
     respond_to do |format|
       if @spectro_radio_meter.save
@@ -35,8 +56,13 @@ class SpectroRadioMetersController < ApplicationController
         else
           SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @spectro_radio_meter.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "spectro_radio_meter was successfully created." }
+          format.json { render :show, status: :created, location: @spectro_radio_meter }
+      else
         format.html { redirect_to home_index_path, notice: "Spectro radio meter was successfully created." }
         format.json { render :show, status: :created, location: @spectro_radio_meter }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @spectro_radio_meter.errors, status: :unprocessable_entity }
@@ -81,6 +107,6 @@ class SpectroRadioMetersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spectro_radio_meter_params
-      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

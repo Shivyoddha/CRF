@@ -26,6 +26,27 @@ class BallMailingsController < ApplicationController
     @ball_mailing.user=current_user
     @ball_mailing.status="pending"
     @ball_mailing.build_equipment_table
+    if(@ball_mailing.entry_type== "manual")
+      @ball_mailing.equipment_table.dummy = "proforma_confirmed"
+      @ball_mailing.equipment_table.equipname = @ball_mailing.dummy1
+      @ball_mailing.equipment_table.pay = @ball_mailing.amount
+      @ball_mailing.equipment_table.username = @ball_mailing.dummy2
+      @ball_mailing.equipment_table.debit_head = @ball_mailing.debit
+      @ball_mailing.equipment_table.role = @ball_mailing.dummy3
+      @ball_mailing.dummy2 = nil
+      @ball_mailing.dummy3 = nil
+    else
+    @ball_mailing.equipment_table.dummy = "alloted"
+    @ball_mailing.equipment_table.username = @ball_mailing.user.name
+    @ball_mailing.equipment_table.equipname = "Ball Milling Unit"
+    @ball_mailing.equipment_table.app_no = @ball_mailing.id
+    @ball_mailing.equipment_table.debit_head = @ball_mailing.debit
+    @ball_mailing.equipment_table.role = @ball_mailing.user.role
+    @ball_mailing.equipment_table.email = @ball_mailing.user.email
+    @ball_mailing.equipment_table.dept = @ball_mailing.user.department
+    @ball_mailing.equipment_table.profesion = @ball_mailing.user.profession
+    @ball_mailing.equipment_table.orgname = @ball_mailing.user.orgname
+  end
 
 
     respond_to do |format|
@@ -35,8 +56,13 @@ class BallMailingsController < ApplicationController
         else
           BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @ball_mailing.entry_type=="manual"
+            format.html { redirect_to payment_paymentM_path, notice: "ball_mailing was successfully created." }
+            format.json { render :show, status: :created, location: @ball_mailing }
+        else
         format.html { redirect_to home_index_path, notice: "Ball mailing was successfully created." }
         format.json { render :show, status: :created, location: @ball_mailing }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ball_mailing.errors, status: :unprocessable_entity }
@@ -80,6 +106,6 @@ class BallMailingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ball_mailing_params
-      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

@@ -26,6 +26,28 @@ class TgaFttrsController < ApplicationController
     @tga_fttr.user=current_user
     @tga_fttr.status="pending"
     @tga_fttr.build_equipment_table
+    if(@tga_fttr.entry_type== "manual")
+  @tga_fttr.equipment_table.dummy = "proforma_confirmed"
+  @tga_fttr.equipment_table.equipname = @tga_fttr.dummy1
+  @tga_fttr.equipment_table.pay = @tga_fttr.amount
+  @tga_fttr.equipment_table.username = @tga_fttr.dummy2
+  @tga_fttr.equipment_table.debit_head = @tga_fttr.debit
+  @tga_fttr.equipment_table.role = @tga_fttr.dummy3
+  @tga_fttr.dummy2 = nil
+  @tga_fttr.dummy3 = nil
+else
+    @tga_fttr.equipment_table.dummy = "alloted"
+    @tga_fttr.equipment_table.username = @tga_fttr.user.name
+    @tga_fttr.equipment_table.equipname = "TGA-FTIR"
+    @tga_fttr.equipment_table.app_no = @tga_fttr.id
+    @tga_fttr.equipment_table.debit_head = @tga_fttr.debit
+    @tga_fttr.equipment_table.role = @tga_fttr.user.role
+    @tga_fttr.equipment_table.email = @tga_fttr.user.email
+    @tga_fttr.equipment_table.dept = @tga_fttr.user.department
+    @tga_fttr.equipment_table.profesion = @tga_fttr.user.profession
+    @tga_fttr.equipment_table.orgname = @tga_fttr.user.orgname
+    end
+
     respond_to do |format|
       if @tga_fttr.save
         if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'
@@ -33,8 +55,13 @@ class TgaFttrsController < ApplicationController
         else
           TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @tga_fttr.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "tga_fttr was successfully created." }
+          format.json { render :show, status: :created, location: @tga_fttr }
+      else
         format.html { redirect_to home_index_path, notice: "Tga fttr was successfully created." }
         format.json { render :show, status: :created, location: @tga_fttr }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @tga_fttr.errors, status: :unprocessable_entity }
@@ -78,6 +105,6 @@ class TgaFttrsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,:entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

@@ -28,7 +28,27 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.user=current_user
     @uv_vis_nir.status="pending"
     @uv_vis_nir.build_equipment_table
-
+    if(@uv_vis_nir.entry_type== "manual")
+    @uv_vis_nir.equipment_table.dummy = "proforma_confirmed"
+    @uv_vis_nir.equipment_table.equipname = @uv_vis_nir.dummy1
+    @uv_vis_nir.equipment_table.pay = @uv_vis_nir.amount
+    @uv_vis_nir.equipment_table.username = @uv_vis_nir.dummy2
+    @xrd.equipment_table.debit_head = @xrd.debit
+    @uv_vis_nir.equipment_table.role = @uv_vis_nir.dummy3
+    @uv_vis_nir.dummy2 = nil
+    @uv_vis_nir.dummy3 = nil
+  else
+    @uv_vis_nir.equipment_table.dummy = "alloted"
+    @uv_vis_nir.equipment_table.username = @uv_vis_nir.user.name
+    @uv_vis_nir.equipment_table.equipname = "UV-Vis-NIR"
+    @uv_vis_nir.equipment_table.app_no = @uv_vis_nir.id
+    @uv_vis_nir.equipment_table.debit_head = @uv_vis_nir.debit
+    @uv_vis_nir.equipment_table.role = @uv_vis_nir.user.role
+    @uv_vis_nir.equipment_table.email = @uv_vis_nir.user.email
+    @uv_vis_nir.equipment_table.dept = @uv_vis_nir.user.department
+    @uv_vis_nir.equipment_table.profesion = @uv_vis_nir.user.profession
+    @uv_vis_nir.equipment_table.orgname = @uv_vis_nir.user.orgname
+  end
     respond_to do |format|
       if @uv_vis_nir.save
         if @uv_vis_nir.user.role=='student'||@uv_vis_nir.user.role=='faculty'
@@ -36,8 +56,13 @@ class UvVisNirsController < ApplicationController
         else
           UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).ExternalMail.deliver_later
         end
+        if @uv_vis_nir.entry_type=="manual"
+          format.html { redirect_to payment_paymentM_path, notice: "uv_vis_nir was successfully created." }
+          format.json { render :show, status: :created, location: @uv_vis_nir }
+      else
         format.html { redirect_to home_index_path, notice: "Uv vis nir was successfully created." }
         format.json { render :show, status: :created, location: @uv_vis_nir }
+      end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @uv_vis_nir.errors, status: :unprocessable_entity }
@@ -83,6 +108,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
     end
 end
