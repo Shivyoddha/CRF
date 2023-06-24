@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'equips/create'
   get 'equips/destroy'
   post 'mainportal/adminModelEquip'
+  post 'mainportal/adminModelUsers'
   root 'mainpage#landing'
   resources :ft_nms
   resources :ansies

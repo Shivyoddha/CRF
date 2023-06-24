@@ -15,6 +15,36 @@ class MainportalController < ApplicationController
     end
   end
 
+
+  def adminModelUsers
+    @user = User.all
+    if @user.update(user_params)
+      redirect_to mainportal_adminModelUsers_pathuser_path, notice: 'Column was successfully updated.'
+    end
+  end
+  def adminModelUsers
+      @user = User.all
+      @entry = params[:entry]
+  end
+
+  def adminStats
+      @internal = User.where(role: ['student','faculty']).count(:email)
+      @external = User.where(role: 'external').count(:email)
+      @ai_engineering = User.where(department: 'AI Engineering').count(:email)
+      @chemical_engineering = User.where(department: 'Chemical Engineering').count(:email)
+      @chemistry = User.where(department: 'Chemistry').count(:email)
+      @civil_engineering = User.where(department: 'Civil Engineering').count(:email)
+      @cs_engineering = User.where(department: 'CS Engineering').count(:email)
+      @ee_engineering = User.where(department: 'EE Engineering').count(:email)
+      @ec_engineering = User.where(department: 'EC Engineering').count(:email)
+      @it_engineering = User.where(department: 'IT Engineering').count(:email)
+      @mechanical_engineering = User.where(department: 'Mechanical Engineering').count(:email)
+      @mining_engineering = User.where(department: 'Mining Engineering').count(:email)
+      @metallurgical_engineering = User.where(department: 'Metallurgical Engineering').count(:email)
+      @physics = User.where(department: 'Physics').count(:email)
+      @water_resources_ocean_engineering = User.where(department: 'Water Resources & Ocean Engineering').count(:email)
+
+  end
   def adminModelEquipWeeks
     Equiplist.where(week_1: nil).update_all(week_1: 'active')
     Equiplist.where(week_2: nil).update_all(week_2: 'active')

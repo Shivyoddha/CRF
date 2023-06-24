@@ -27,8 +27,8 @@
 }
 
 .navbar-nav {
-    display: flex;
-   justify-content: center;
+    display: space-evenly;
+    justify-content: space-around;
 
 }
 
@@ -267,6 +267,10 @@ ul {
     color: azure;
 }
 
+
+#btn-head {
+  justify-content: space-evenly
+}
 #slot-details {
     text-align: center;
 }

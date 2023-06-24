@@ -23,7 +23,9 @@
                             <div id="model-list-active">
                                 <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element", id:'active-tab-1' %>
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+
                             </div>
                         </ul>
 
@@ -48,33 +50,54 @@
 
  <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold" id="tab-name">Maintainers</h2>
+            <h2 class="fw-bold" id="tab-name">Users</h2>
         </div>
 
-
         <div id="slot-details">
-
             <table class="table table-hover">
                 <thead>
                     <tr class="bg-light">
-                        <th scope="col" id="application-no">User Name</th>
-                        <th scope="col" id="name">12-3-2023</th>
-
-
+                        <th scope="col" id="name">User Name</th>
+                        <th scope="col" id="email">Email</th>
+                        <th scope="col" id="contact">Contact</th>
+                        <th scope="col" id="guide">Guide</th>
+                        <th scope="col" id="course">Course</th>
+                        <th scope="col" id="dept">Department</th>
+                        <th scope="col" id="reg">Registered On</th>
+                        <th scope="col" id="change">Change</th>
+                        <th scope="col" id="status">Status</th>
                     </tr>
                 </thead>
                 <tbody>
+                      <% @user.each do |user|%>
                     <tr>
-                        <th scope="row">1	</th>
-                        <td>XRD</td>
+                        <% @entry = user.status%>
+                        <td><%=user.firstname%></td>
+                        <td><%=user.email%></td>
+                        <td><%=user.contact%></td>
+                        <td><%="guide"%></td>
+                        <td><%=user.course%></td>
+                        <td><%=user.department%></td>
+                        <td><%=user.created_at%></td>
+                        <%= form_with url: mainportal_adminModelUsers_path do |form| %>
+                        <% if user.status == "Active"%>
+                        <%= form.hidden_field :entry , value:"Inactive" %>
+                        <%end%>
+                        <% if user.status == "Inactive"%>
+                        <%= form.hidden_field :entry , value:"Active" %>
+                        <%end%>
+                        <% user.status = @entry %>
+                        <td><%= form.submit "Update", class:"btn btn-outline-secondary", id:"update" %></td>
+                        <td><%=user.status%></td>
+                        <%end%>
+                        <%end%>
+
+
                     </tr>
                 </tbody>
             </table>
-
         </div>
 
-
-    </div>
 
 <script>
 
