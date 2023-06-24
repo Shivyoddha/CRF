@@ -56,10 +56,7 @@ Rails.application.routes.draw do
     resources :hr_fesem_js
     resources :hr_fesem_cs
     resources :xrds
-   #  constraints AdminConstraint.new do
-   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-   # end
-
+    resources :faculties, controller: 'faculties'
 
     devise_for :users
 
@@ -504,6 +501,8 @@ Rails.application.routes.draw do
     get 'home/maithu'
     get 'payment/generate_pdf', as: :generate_pdf
 
+    get 'mainportal/importfile'
+
   #   devise_scope :user do
   #   root to: "devise/sessions#new"
   # end/
@@ -513,6 +512,39 @@ Rails.application.routes.draw do
     post :import
   end
 end
+
+resources :announcements do
+collection do
+  post :import
+end
+end
+
+resources :feedbacks do
+collection do
+  post :import
+end
+end
+
+resources :faculties do
+collection do
+  post :import
+end
+end
+
+resources :xrds do
+collection do
+  post :import
+end
+end
+
+resources :hr_fesem_cs do
+collection do
+  post :import
+end
+end
+
+post 'import_users', to: 'application#import_users'
+
 
   devise_scope :user do
      get '/users/sign_out' => 'devise/sessions#destroy'
