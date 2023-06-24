@@ -1,5 +1,13 @@
 class XrdsController < ApplicationController
   before_action :set_xrd, only: %i[ show edit update destroy ]
+  def import
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    CsvImportService.new.call_xrd(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
 
   # GET /xrds or /xrds.json
   def index

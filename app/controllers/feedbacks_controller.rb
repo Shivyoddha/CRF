@@ -1,5 +1,15 @@
 class FeedbacksController < ApplicationController
    before_action :set_feedback, only: %i[ show edit update destroy ]
+
+   def import
+     return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+     return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+     CsvImportService.new.call_feedback(params[:file])
+
+     redirect_to request.referer, notice: 'Import started...'
+   end
+
   # GET /feedbacks or /feedbacks.json
   def index
     @feedbacks = Feedback.all

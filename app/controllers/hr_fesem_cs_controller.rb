@@ -1,5 +1,13 @@
 class HrFesemCsController < ApplicationController
   before_action :set_hr_fesem_c, only: %i[ show edit update destroy ]
+  def import
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    CsvImportService.new.call_fesemc(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
 
   # GET /hr_fesem_cs or /hr_fesem_cs.json
   def index

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # rescue_from StandardError, with: :render_error
   skip_before_action :verify_authenticity_token
 
-  
+
 
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
@@ -65,6 +65,16 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  def import_users
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    CsvImportService.new.call_user(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
+
   private
 
   def storable_location?

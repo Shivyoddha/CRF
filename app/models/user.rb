@@ -55,4 +55,10 @@ def set_default_parameters
     self.orgname = "NITK" if orgname.blank?
   end
 end
+
+protected
+def confirmation_required?
+    # Disable email confirmation for initial user creation
+    !new_record?
+  end
 end
