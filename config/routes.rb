@@ -65,6 +65,8 @@ Rails.application.routes.draw do
     get 'mainportal/admindashboard'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
+    get 'mainportal/adminExpress'
+    get 'mainportal/adminExpSlot'
     get 'mainportal/adminModelEquipWeeks'
     get 'mainportal/adminModelPayment'
     get 'mainportal/adminStats'
