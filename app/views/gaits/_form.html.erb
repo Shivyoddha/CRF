@@ -27,7 +27,21 @@
           </div>
         <% end %>
     <h6 class="text-danger">(*Ethical Clearance mandatory to upload)</h6>
-
+    <% if @slot_type=="regular"%>
+    <div class="input-group mb-3">
+      <%= form.label :trials,"No of Trails", class:"input-group-text", for:"trail_no"%>
+      <%= form.select(:trials, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "trail_no",:required => true}) %>
+    </div>
+   <%else%>
+   <div id="instruct">
+       <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
+       <p class="text-danger"></p>
+   </div>
+   <div class="input-group mb-3">
+     <%= form.label :expresssample,"No of Express Trials", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+     <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available trials", class:"form-select" %>
+   </div>
+   <%end%>
     <div class="input-group mb-3">
       <%= form.label :subject,"Subjects are:", class:"input-group-text", for:"subject"%>
       <%= form.select(:subject, ["Healthy","Patient"], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id =>"subject",:required => true}) %>

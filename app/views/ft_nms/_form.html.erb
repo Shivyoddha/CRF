@@ -27,10 +27,22 @@
         <% end %>
     <h6 class="text-danger">Note: Currently <sup>1</sup>H and <sup>13</sup>C based analysis are only available in liquid mode</h6>
     <hr>
+    <% if @slot_type=="regular"%>
     <div class="input-group mb-3">
     <%= form.label :sample, class:"input-group-text", for:"no-of-sample-ft-nmr"%>
     <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample-ft-nmr",:required => true}) %>
     </div>
+   <%else%>
+   <div id="instruct">
+       <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
+       <p class="text-danger"></p>
+   </div>
+   <div class="input-group mb-3">
+     <%= form.label :expresssample,"No of Samples Express", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+     <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available samples", class:"form-select" %>
+   </div>
+   <%end%>
+
 
     <div class="mb-3">
           <%= form.label :nature, "Sample Nature",class:"form-check-label fw-bold", for:"flexRadioDefault2" %>
