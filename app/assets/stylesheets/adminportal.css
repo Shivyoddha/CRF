@@ -355,6 +355,14 @@ ul {
     width: 100%;
 }
 
+.btn-outline-warning {
+    --bs-btn-color: #3f5ac9;
+    --bs-btn-border-color: #3f5ac9;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #3f5ac9;
+    --bs-btn-hover-border-color: #3f5ac9;
+}
+
 /*Styling of the view all button in  statistics section of admindashboard */
     #btn-announcement-wrap {
         display: flex;
@@ -520,9 +528,6 @@ ul {
     transform: rotate(180deg);
   }
   label {
-    background-color: #0b5ed7;
-    color: white;
-    padding: 0.5rem;
     font-family: sans-serif;
     border-radius: 0.4rem;
     cursor: pointer;
@@ -538,6 +543,36 @@ ul {
 
   }
 
+  .fs-15 {
+    font-size: 15px;
+  }
+
+  .container-exp-release {
+    max-width: 60%;
+    margin: 4em auto;
+    padding: 1% 4%;
+    height: auto;
+    border: 2px solid grey;
+    border-radius: 2em;
+  }
+
+  .font-unbounded {
+    font-family: "Unbounded", "sans-serif";
+  }
+
+  .actions-exp {
+    display: flex;
+    justify-content: end;
+  }
+
+.input-group-text {
+    text-wrap: wrap;
+    text-align: justify;
+}
+
+.exp-slot-entry {
+    background-color: #f9eb73a3;
+}
 
 
 

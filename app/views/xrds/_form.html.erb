@@ -34,11 +34,12 @@
 
         <%else%>
         <div id="instruct">
-            <p class="text-danger">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></p>
+            <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
+            <p class="text-danger"></p>
         </div>
         <div class="input-group mb-3">
           <%= form.label :expresssample,"No of Samples Express", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
-          <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "Select No of express sample", class: "form-control" %>
+          <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available samples", class:"form-select" %>
         </div>
         <%end%>
 

@@ -92,6 +92,8 @@
 
                       <% @xrd.where(status:'pending').each do |xrds|%>
 
+                      <% if xrds.expresssample == nil %>
+
                       <tr>
                         <th scope="row">CRF/XRD/<%=xrds.id%></th>
 
@@ -165,7 +167,84 @@
 
                                                 </td>
 
-                                            </tr>
+                        </tr>
+
+                      <% else %>
+                      <tr class = "exp-slot-entry">
+                        <th scope="row">CRF/XRD/<%=xrds.id%></th>
+
+                        <td> <%= xrds.user.name%><nobr><%= xrds.user.lastname%></td>
+                        <td> <%= xrds.user.orgname%> </td>
+                        <td> <%= xrds.user.department%> </td>
+                        <td> <%= xrds.user.contact%> </td>
+                        <td> <%= xrds.sample%> </td>
+                        <td> <%= xrds.measurement%> </td>
+                        <td> <%= xrds.composition%> </td>
+                        <td> <%= xrds.stype%> </td>
+                        <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                        <td> <%= xrds.more%> </td>
+                        <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
+                        <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
+                          <td><%= xrds.status%></td>
+                        <%if xrds.references.attached? %>
+                      <td><%xrds.references.each do |file|%>
+                         <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                           <% end %></td>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                       <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
+                            <div id="<%= xrds.id%>" class="modal">
+
+                            <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= xrds.user.name %></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                        <div class="modal-body">
+                                          <%= form_with(model: xrds,local:true) do |form| %>
+
+                                              <div class="input-group mb-3">
+                                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                              <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                            <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                            <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                          </div>
+
+                                           <%=form.fields_for :equipment_table do |f| %>
+                                                <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
+                                                <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
+                                                <%= f.hidden_field :dummy, value:"alloted"%>
+                                                <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
+                                                <%= f.hidden_field :dept, value:"#{xrds.user.department}" %>
+                                                <%= f.hidden_field :email, value:"#{xrds.user.email}" %>
+                                                <%= f.hidden_field :role, value:"#{xrds.user.role}" %>
+                                                <%= f.hidden_field :org, value:"#{xrds.user.orgaddress}" %>
+                                                <%= f.hidden_field :profesion, value:"#{xrds.user.profession}" %>
+                                                <%= f.hidden_field :orgname, value:"#{xrds.user.orgname}" %>
+                                                <%= f.hidden_field :equipname, value:"xrd" %>
+                                           <%end%>
+
+                                            <div class="actions">
+                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                            </div>
+                                          <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                          </div>
+
+                                                </td>
+
+                        </tr>
+                          <%end%>
                           <%end%>
 
                                         </tbody>
