@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_24_104339) do
+ActiveRecord::Schema.define(version: 2023_06_25_054708) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -229,6 +229,9 @@ ActiveRecord::Schema.define(version: 2023_06_24_104339) do
     t.string "week_5"
     t.string "entry_type"
     t.float "amount"
+    t.date "expressstart"
+    t.date "expressend"
+    t.integer "expressslot"
   end
 
   create_table "equipment_tables", force: :cascade do |t|
@@ -1300,6 +1303,8 @@ ActiveRecord::Schema.define(version: 2023_06_24_104339) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
