@@ -26,7 +26,9 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/new
   def new
+    if params[:id].present?
     @user=User.find(params[:id])
+  end
     @feedback = Feedback.new
     @current_date = Date.today
   end
