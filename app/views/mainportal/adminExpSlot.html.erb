@@ -1,0 +1,44 @@
+<h1>equiplist ID: <%= @equipment_id %></h1>
+<div class="container">
+    <div id="equiplist-name">
+      <h1><%= @equipment.name %></h1>
+      <h1>HI <%= @equipment.expressslot %></h1>
+    </div>
+    <div class='hero'>
+
+      <%= form_with(model: @equiplist.find_or_initialize_by(name: @equipment.name)) do |form| %>
+        <% if @equiplist.first.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(@equiplist.errors.count, "error") %> prohibited this equiplist from being saved:</h2>
+
+            <ul>
+              <% @equiplist.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+
+        <div class="input-group mb-3">
+          <%= form.label :expressslot,"No of Samples Express", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+          <%= form.text_field :expressslot, class:"form-control", id:"composition"%>
+        </div>
+        <div class="input-group mb-3">
+          <%= form.label :expressstart,"Starting Date", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+          <%= form.date_field :expressstart, class:"form-control", id:"composition"%>
+        </div>
+        <div class="input-group mb-3">
+          <%= form.label :expressend,"End Date", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+          <%= form.date_field :expressend, class:"form-control", id:"composition"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+  </div>
+</div>

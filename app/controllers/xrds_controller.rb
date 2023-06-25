@@ -24,6 +24,11 @@ class XrdsController < ApplicationController
     @user=User.find(params[:id])
     @xrd = Xrd.new()
     @xrd.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "XRD").pluck(:expressstart).first.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "XRD").pluck(:expressend).first.strftime("%d/%m/%Y")
   end
 
   # GET /xrds/1/edit
@@ -57,9 +62,15 @@ class XrdsController < ApplicationController
     @xrd.equipment_table.profesion = @xrd.user.profession
     @xrd.equipment_table.orgname = @xrd.user.orgname
     end
-
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
     respond_to do |format|
       if @xrd.save
+        if  @xrd.expresssample.present?
+         equiplist = Equiplist.where(name: "XRD").first
+         equiplist.expressslot =equiplist.expressslot- @xrd.expresssample
+         equiplist.save
+        end
         if @xrd.user.role=='student'||@xrd.user.role=='faculty'
           XRayDiffractionMailer.with(id:@xrd.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -119,6 +130,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname, :reg_no] ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname, :reg_no] ,references: [])
     end
 end

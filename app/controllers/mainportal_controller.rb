@@ -14,7 +14,28 @@ class MainportalController < ApplicationController
 #      redirect_to home_index_path, alert: "You are not authorized to access this page."
 #    end
 #  end
+def adminExpress
+  @equiplist=Equiplist.all
+end
+def adminExpSlot
+  @equiplist=Equiplist.all
+  @equipment_id = params[:equipment_id]
+  @equipment = Equiplist.find_by(id: @equipment_id)
+  if request.post?
+    @equiplist_entry = Equiplist.find_or_initialize_by(name: @equipment.name)
+    @equiplist_entry.expressslot = params[:equiplist][:expressslot]
+    @equiplist_entry.expressstart = params[:equiplist][:expressstart]
+    @equiplist_entry.expressend = params[:equiplist][:expressend]
 
+    if @equiplist_entry.save
+      redirect_to mainportal_adminExpress_path
+    else
+      @errors = @equiplist_entry.errors.full_messages
+    end
+  else
+    render 'adminExpSlot'
+  end
+end
 
   def adminModelUsers
     @user = User.all
@@ -53,4 +74,10 @@ class MainportalController < ApplicationController
     Equiplist.where(week_5: nil).update_all(week_5: 'active')
     @equiplist=Equiplist.all
    end
+
+private
+
+def equiplist_params
+params.require(:equiplist).permit(:expressslot, :expressstart, :expressend)
+end
 end
