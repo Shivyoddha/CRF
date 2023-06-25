@@ -252,11 +252,21 @@
                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
-
                       <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item" %> </li>
-                            <li> <%= link_to "Express Slot",  new_hr_fesem_c_path(id:current_user.id), class:"book-dropdown dropdown-item disabled" %> </li>
-                      </ul>
+                           <li> <%= link_to "Regular Slot", new_xrd_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                           <% @equiplist = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").first %>
+                            <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                            <% if @equiplist_expressslot != 0 && @equiplist.present? && @equiplist.expressstart.present? && @equiplist.expressend.present? %>
+                              <% express_start_date = @equiplist.expressstart.to_date %>
+                              <% express_end_date = @equiplist.expressend.to_date %>
+                              <% if Date.today >= express_start_date && Date.today <= express_end_date %>
+                                <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                              <% else %>
+                                <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                              <% end %>
+                              <%end%>
+                     </ul>
                   </div>
               </div>
           </div>
