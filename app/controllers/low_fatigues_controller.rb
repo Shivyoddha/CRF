@@ -15,6 +15,11 @@ class LowFatiguesController < ApplicationController
     @user=User.find(params[:id])
     @low_fatigue = LowFatigue.new
     @low_fatigue.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Low Force Fatigue with DMA").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Low Force Fatigue with DMA").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Low Force Fatigue with DMA").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,9 +54,16 @@ class LowFatiguesController < ApplicationController
     @low_fatigue.equipment_table.profesion = @low_fatigue.user.profession
     @low_fatigue.equipment_table.orgname = @low_fatigue.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Low Force Fatigue with DMA").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @low_fatigue.save
+        if  @low_fatigue.expresssample.present?
+         equiplist = Equiplist.where(name: "Low Force Fatigue with DMA").first
+         equiplist.expressslot =equiplist.expressslot- @low_fatigue.expresssample
+         equiplist.save
+        end
         if @low_fatigue.user.role=='student'||@low_fatigue.user.role=='faculty'
           LowFatigueMailer.with(id:@low_fatigue.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +120,6 @@ class LowFatiguesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def low_fatigue_params
-      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:low_fatigue).permit(:sample, :sc1, :st1, :tt1, :tf1, :sc2, :st2, :tt2, :tf2, :sc3, :st3, :tt3, :tf3, :sc4, :st4, :tt4, :tf4, :sc5, :st5, :tt5, :tf5, :more, :slottime, :slotdate, :status, :debit, :m1, :m2, :m3, :m4, :m5, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, :slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

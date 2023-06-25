@@ -14,6 +14,11 @@ class HighTempVaccumsController < ApplicationController
   def new
     @high_temp_vaccum = HighTempVaccum.new
     @high_temp_vaccum.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "High Temp Vacuum Furnace").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "High Temp Vacuum Furnace").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "High Temp Vacuum Furnace").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,8 +53,16 @@ class HighTempVaccumsController < ApplicationController
     @high_temp_vaccum.equipment_table.profesion = @high_temp_vaccum.user.profession
     @high_temp_vaccum.equipment_table.orgname = @high_temp_vaccum.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "High Temp Vacuum Furnace").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @high_temp_vaccum.save
+        if  @high_temp_vaccum.expresssample.present?
+         equiplist = Equiplist.where(name: "High Temp Vacuum Furnace").first
+         equiplist.expressslot =equiplist.expressslot- @high_temp_vaccum.expresssample
+         equiplist.save
+        end
         if @high_temp_vaccum.user.role=='student'||@high_temp_vaccum.user.role=='faculty'
           HighTempVaccumMailer.with(id:@high_temp_vaccum.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -105,6 +118,6 @@ class HighTempVaccumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def high_temp_vaccum_params
-      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:high_temp_vaccum).permit(:sample, :composition, :toxicity, :req_atoms, :gas, :starttemp, :endtemp, :samplemelting, :no_steps, :temp1, :min1, :temp2, :min2, :temp3, :min3, :temp4, :min4, :temp5, :min5, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

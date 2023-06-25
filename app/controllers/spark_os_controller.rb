@@ -14,6 +14,11 @@ class SparkOsController < ApplicationController
   def new
     @spark_o = SparkO.new
     @spark_o.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Spark-OES").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Spark-OES").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Spark-OES").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /spark_os/1/edit
@@ -47,9 +52,16 @@ else
     @spark_o.equipment_table.profesion = @spark_o.user.profession
     @spark_o.equipment_table.orgname = @spark_o.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Spark-OES").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @spark_o.save
+        if  @spark_o.expresssample.present?
+         equiplist = Equiplist.where(name: "Spark-OES").first
+         equiplist.expressslot =equiplist.expressslot- @spark_o.expresssample
+         equiplist.save
+        end
         if @spark_o.user.role=='student'||@spark_o.user.role=='faculty'
           SparkOMailer.with(id:@spark_o.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +118,6 @@ else
 
     # Only allow a list of trusted parameters through.
     def spark_o_params
-      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:spark_o).permit(:sample, :composition, :samplefe, :sampleni, :samplezn, :samplesn, :samplecu, :sampleti, :sampleal, :samplepb, :samplemg, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

@@ -14,7 +14,11 @@ class ScratchIndentationsController < ApplicationController
   def new
     @scratch_indentation = ScratchIndentation.new
     @scratch_indentation.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Scratch/Indentation Tester").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Scratch/Indentation Tester").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Scratch/Indentation Tester").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /scratch_indentations/1/edit
@@ -48,9 +52,16 @@ class ScratchIndentationsController < ApplicationController
     @scratch_indentation.equipment_table.profesion = @scratch_indentation.user.profession
     @scratch_indentation.equipment_table.orgname = @scratch_indentation.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Scratch/Indentation Tester").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @scratch_indentation.save
+        if  @scratch_indentation.expresssample.present?
+         equiplist = Equiplist.where(name: "Scratch/Indentation Tester").first
+         equiplist.expressslot =equiplist.expressslot- @scratch_indentation.expresssample
+         equiplist.save
+        end
         if @scratch_indentation.user.role=='student'||@scratch_indentation.user.role=='faculty'
           ScratchIndentationMailer.with(id:@scratch_indentation.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -107,6 +118,6 @@ class ScratchIndentationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def scratch_indentation_params
-      params.require(:scratch_indentation).permit(:sample, :stype, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:orgname], references: [])
+      params.require(:scratch_indentation).permit(:sample, :stype, :measurement, :stroke, :number_indentation, :constant_load, :increment_load, :progressive_load, :temperature, :analysis, :more,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:orgname], references: [])
     end
 end

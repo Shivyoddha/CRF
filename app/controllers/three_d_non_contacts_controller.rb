@@ -15,6 +15,11 @@ class ThreeDNonContactsController < ApplicationController
     @three_d_non_contact = ThreeDNonContact.new
     @user=User.find(params[:id])
     @three_d_non_contact.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "3-D Non Contact Profilometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "3-D Non Contact Profilometer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "3-D Non Contact Profilometer").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /three_d_non_contacts/1/edit
@@ -48,9 +53,16 @@ else
     @three_d_non_contact.equipment_table.profesion = @three_d_non_contact.user.profession
     @three_d_non_contact.equipment_table.orgname = @three_d_non_contact.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "3-D Non Contact Profilometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @three_d_non_contact.save
+        if  @three_d_non_contact.expresssample.present?
+        equiplist = Equiplist.where(name: "3-D Non Contact Profilometer").first
+        equiplist.expressslot =equiplist.expressslot- @three_d_non_contact.expresssample
+        equiplist.save
+       end
         if @three_d_non_contact.user.role=='student'||@three_d_non_contact.user.role=='faculty'
           ThreeDNonContactMailer.with(id:@three_d_non_contact.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -107,6 +119,6 @@ else
 
     # Only allow a list of trusted parameters through.
     def three_d_non_contact_params
-      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate, :entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:three_d_non_contact).permit(:sample, :scant, :range, :stepinterval, :incompatible, :toxicity, :more, :debit, :xrange, :yrange,:user_id, :slottime, :slotdate, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

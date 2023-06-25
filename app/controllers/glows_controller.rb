@@ -15,6 +15,11 @@ class GlowsController < ApplicationController
     @glow = Glow.new
     @user=User.find(params[:id])
     @glow.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Glow Discharges-OES").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Glow Discharges-OES").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Glow Discharges-OES").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,10 +54,18 @@ class GlowsController < ApplicationController
     @glow.equipment_table.profesion = @glow.user.profession
     @glow.equipment_table.orgname = @glow.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Glow Discharges-OES").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
 
     respond_to do |format|
       if @glow.save
+        if  @glow.expresssample.present?
+         equiplist = Equiplist.where(name: "Glow Discharges-OES").first
+         equiplist.expressslot =equiplist.expressslot- @glow.expresssample
+         equiplist.save
+        end
+
         if @glow.user.role=='student'||@glow.user.role=='faculty'
           GlowMailer.with(id:@glow.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -109,6 +122,6 @@ class GlowsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def glow_params
-      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [])
+      params.require(:glow).permit(:sample, :elemental, :coated, :coated_ele, :substarte, :specification, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [])
     end
 end

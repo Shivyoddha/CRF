@@ -14,7 +14,11 @@ class SpectroRadioMetersController < ApplicationController
   def new
     @spectro_radio_meter = SpectroRadioMeter.new
     @spectro_radio_meter.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Spectro-Radiometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Spectro-Radiometer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Spectro-Radiometer").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /spectro_radio_meters/1/edit
@@ -48,9 +52,16 @@ class SpectroRadioMetersController < ApplicationController
     @spectro_radio_meter.equipment_table.profesion = @spectro_radio_meter.user.profession
     @spectro_radio_meter.equipment_table.orgname = @spectro_radio_meter.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Spectro-Radiometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @spectro_radio_meter.save
+        if  @spectro_radio_meter.expresssample.present?
+         equiplist = Equiplist.where(name: "Spectro-Radiometer").first
+         equiplist.expressslot =equiplist.expressslot- @spectro_radio_meter.expresssample
+         equiplist.save
+        end
         if @spectro_radio_meter.user.role=='student'||@spectro_radio_meter.user.role=='faculty'
           SpectroRadioMeterMailer.with(id:@spectro_radio_meter.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -107,6 +118,6 @@ class SpectroRadioMetersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spectro_radio_meter_params
-      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:spectro_radio_meter).permit(:sample, :nature, :application, :stype, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

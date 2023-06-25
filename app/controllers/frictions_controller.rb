@@ -15,6 +15,11 @@ class FrictionsController < ApplicationController
     @friction = Friction.new
     @user=User.find(params[:id])
     @friction.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,9 +53,16 @@ class FrictionsController < ApplicationController
     @friction.equipment_table.profesion = @friction.user.profession
     @friction.equipment_table.orgname = @friction.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @friction.save
+        if  @friction.expresssample.present?
+         equiplist = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").first
+         equiplist.expressslot =equiplist.expressslot- @friction.expresssample
+         equiplist.save
+        end
         if @friction.user.role=='student'||@friction.user.role=='faculty'
           FrictionMailer.with(id:@friction.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +118,6 @@ class FrictionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friction_params
-      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,material: [], references: [])
+      params.require(:friction).permit(:sample, :material, :pstype, :tool, :toolnom, :rspeed, :wspeed, :otforce, :wtemp,:temp, :measurement, :depth, :ptforce, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,material: [], references: [])
     end
 end

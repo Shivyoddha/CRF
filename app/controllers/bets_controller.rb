@@ -14,6 +14,13 @@ class BetsController < ApplicationController
   def new
     @bet = Bet.new
     @bet.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "BET Surface Area Analyzer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "BET Surface Area Analyzer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "BET Surface Area Analyzer").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
+
   end
 
   # GET /bets/1/edit
@@ -47,9 +54,16 @@ class BetsController < ApplicationController
     @bet.equipment_table.profesion = @bet.user.profession
     @bet.equipment_table.orgname = @bet.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "BET Surface Area Analyzer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @bet.save
+        if  @bet.expresssample.present?
+        equiplist = Equiplist.where(name: "BET Surface Area Analyzer").first
+        equiplist.expressslot =equiplist.expressslot- @bet.expresssample
+        equiplist.save
+       end
         if @bet.user.role=='student'||@bet.user.role=='faculty'
           BetMailer.with(id:@bet.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +120,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def bet_params
-      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:bet).permit(:sample, :degassing, :incompatibe, :toxicity, :disposal, :more,:analysiscustom,:analysisstandard,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end
