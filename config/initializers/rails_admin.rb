@@ -2,9 +2,9 @@ RailsAdmin.config do |config|
   config.asset_source = :sprockets
   # config.authorize_with :cancancan
   config.main_app_name = ["CRF Admin", ""]
-  config.authenticate_with do
-  warden.authenticate! scope: :user
-end
+  # config.authenticate_with do
+  # warden.authenticate! scope: :user
+# end
 
 
 
@@ -31,7 +31,6 @@ end
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
-
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
