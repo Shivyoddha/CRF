@@ -254,21 +254,23 @@
                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
-                      <ul class="dropdown-menu">
-                           <li> <%= link_to "Regular Slot", new_xrd_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
-                           <% @equiplist = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").first %>
-                            <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+                       <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_hr_fesem_c_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                            <% if @equiplist_expressslot != 0 && @equiplist.present? && @equiplist.expressstart.present? && @equiplist.expressend.present? %>
-                              <% express_start_date = @equiplist.expressstart.to_date %>
-                              <% express_end_date = @equiplist.expressend.to_date %>
-                              <% if Date.today >= express_start_date && Date.today <= express_end_date %>
-                                <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
-                              <% else %>
-                                <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
-                              <% end %>
-                              <%end%>
-                     </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_hr_fesem_c_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                   </div>
               </div>
           </div>
@@ -394,11 +396,23 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                            <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_hr_fesem_j_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "HR-FESEM [Jeol]").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item" %> </li>
-                              <li> <%= link_to "Express Slot", new_hr_fesem_j_path, class:"book-dropdown dropdown-item disabled" %> </li>
-                        </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_hr_fesem_j_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_hr_fesem_j_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_hr_fesem_j_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                     </div>
                 </div>
             </div>
@@ -1240,9 +1254,22 @@
                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                            Book Slot
                        </button>
+                        <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_uv_vis_nir_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "UV-Vis-NIR").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                       <ul class="dropdown-menu">
-                             <li> <%= link_to "Regular Slot", new_uv_vis_nir_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_uv_vis_nir_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_uv_vis_nir_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_uv_vis_nir_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                        </ul>
                    </div>
                </div>
@@ -1357,10 +1384,23 @@
                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
+                        <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_laser_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Laser Flash Analyser").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                      <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_laser_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_laser_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_laser_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_laser_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                   </div>
               </div>
           </div>
@@ -1476,10 +1516,23 @@
                            <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                Book Slot
                            </button>
+                            <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_cell_imaging_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Cell-Imaging MultiMode Reader").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                           <ul class="dropdown-menu">
-                                 <li> <%= link_to "Regular Slot", new_cell_imaging_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                           </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_cell_imaging_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_cell_imaging_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_cell_imaging_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                        </div>
                    </div>
                </div>
@@ -1600,10 +1653,23 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                         <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Atomic Force Microscope").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_atomic_force_microscope_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_atomic_force_microscope_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_atomic_force_microscope_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_atomic_force_microscope_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                     </div>
                 </div>
             </div>
@@ -1721,10 +1787,23 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                         <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_ft_nm_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "FT-NMR").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                              <li> <%= link_to "Regular Slot", new_ft_nm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                        </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_ft_nm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_ft_nm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_ft_nm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                     </div>
                 </div>
             </div>
@@ -1843,10 +1922,23 @@
                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
+                        <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "ICP-MS").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                      <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_icp_m_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_icp_m_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_icp_m_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_icp_m_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                       </ul>
                   </div>
               </div>
           </div>
@@ -1959,10 +2051,23 @@
                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
+                          <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Advance Modular Rheometer").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                      <ul class="dropdown-menu">
-                            <li> <%= link_to "Regular Slot", new_advance_molecular_rheometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                      </ul>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_advance_molecular_rheometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_advance_molecular_rheometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_advance_molecular_rheometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                        </ul>
                   </div>
               </div>
           </div>
@@ -2076,10 +2181,23 @@
                     <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Book Slot
                     </button>
-
                     <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
-                    </ul>
+                             <li> <%= link_to "Regular Slot", new_ion_chromotography_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Ion Chromatography").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_ion_chromotography_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_ion_chromotography_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_ion_chromotography_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                        </ul>
                 </div>
             </div>
         </div>
@@ -2197,9 +2315,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_integrated_multi_role_tester_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Intergrated MultiRole Tester").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_integrated_multi_role_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_integrated_multi_role_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_integrated_multi_role_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -2319,9 +2450,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot",  new_scratch_indentation_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_scratch_indentation_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Scratch/Indentation Tester").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_scratch_indentation_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_scratch_indentation_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_scratch_indentation_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -2436,9 +2580,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_zeta_potential_size_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Zeta Potential/Particle Sizer").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_zeta_potential_size_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_zeta_potential_size_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_zeta_potential_size_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -2553,9 +2710,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_high_temp_vaccum_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "High Temp Vacuum Furnace").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_high_temp_vaccum_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_high_temp_vaccum_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_high_temp_vaccum_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -2671,9 +2841,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot",  new_impedance_analy_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_impedance_analy_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Impedance Analyzer").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_impedance_analy_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_impedance_analy_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_impedance_analy_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -2791,9 +2974,24 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_tribometer_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_tribometer_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Tribometer").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_tribometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_tribometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_tribometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
+                        </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -2910,9 +3108,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_three_d_scanner_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "3D-Scanner").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_three_d_scanner_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_three_d_scanner_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_three_d_scanner_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3033,9 +3244,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                         <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_gait_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "GAIT Analysis").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_gait_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3150,9 +3374,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_spectro_radio_meter_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Spectro-Radiometer").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_spectro_radio_meter_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_spectro_radio_meter_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_spectro_radio_meter_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3267,9 +3504,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                         <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_spark_o_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Spark-OES").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_spark_o_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_spark_o_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_spark_o_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_spark_o_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3384,9 +3634,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                           <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_glow_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Glow Discharges-OES").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_glow_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_glow_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_glow_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_glow_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3500,9 +3763,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
+                         <ul class="dropdown-menu">
+                             <li> <%= link_to "Regular Slot", new_ball_mailing_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Ball Milling Unit").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
 
-                        <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_ball_mailing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_ball_mailing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_ball_mailing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_ball_mailing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3622,9 +3898,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user), class:"book-dropdown dropdown-item" %>
+                             <li> <%= link_to "Regular Slot", new_low_fatigue_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Low Force Fatigue with DMA").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_low_fatigue_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_low_fatigue_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_low_fatigue_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3745,9 +4034,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
 </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_micro_edm_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Micro-EDM").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_micro_edm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_micro_edm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_micro_edm_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3865,9 +4167,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_five_axi_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "5-Axes CNC").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_five_axi_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_five_axi_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_five_axi_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -3983,9 +4298,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_multi_impact_tester_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_multi_impact_tester_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_multi_impact_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_multi_impact_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_multi_impact_tester_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4103,9 +4431,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_friction_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_friction_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Friction Stir Welding/Surfacing(FSW)").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_friction_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_friction_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_friction_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4220,9 +4561,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_electro_chemical_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Electro Chemical Polishing").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_electro_chemical_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_electro_chemical_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_electro_chemical_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4454,9 +4808,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_glove_box_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Glove Box").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_glove_box_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_glove_box_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_glove_box_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4570,9 +4937,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_probe_sonicator_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_probe_sonicator_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Probe Sonicator").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_probe_sonicator_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_probe_sonicator_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_probe_sonicator_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4690,9 +5070,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_ultra_centrifuge_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Ultra-Centrifuge").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_ultra_centrifuge_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_ultra_centrifuge_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_ultra_centrifuge_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -4812,9 +5205,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_gas_sensing_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Gas Sensing").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_gas_sensing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_gas_sensing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_gas_sensing_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
@@ -5177,9 +5583,22 @@
                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
-
                         <ul class="dropdown-menu">
-                          <li> <%= link_to "Regular Slot", new_grinding_path(id:current_user), class:"book-dropdown dropdown-item" %> </li>
+                             <li> <%= link_to "Regular Slot", new_grinding_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
+                             <% @equiplist = Equiplist.where(name: "Automatic MultiSpecimen Polisher").first %>
+                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+
+                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
+                                <% express_start_date = @equiplist.expressstart.to_date %>
+                                <% express_end_date = @equiplist.expressend.to_date %>
+                                <% if  Date.today <= express_end_date %>
+                                  <li><%= link_to "Express Slot", new_grinding_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
+                                <% else %>
+                                  <li><%= link_to "Express Slot", new_grinding_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <% end %>
+                                <%else%>
+                                    <li><%= link_to "Express Slot", new_grinding_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
+                                <%end%>
                         </ul>
                     </div>
                 </div>
