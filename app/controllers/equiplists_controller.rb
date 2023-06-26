@@ -25,7 +25,13 @@ class EquiplistsController < ApplicationController
   # GET /equiplists/1/edit
   def edit
   end
-
+  def save_equiplist(equiplist)
+    if equiplist.save
+      redirect_to equiplist_url(equiplist), notice: "Equiplist was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
   # POST /equiplists or /equiplists.json
   def create
     @equiplist = Equiplist.new(equiplist_params)
@@ -72,6 +78,6 @@ class EquiplistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equiplist_params
-      params.require(:equiplist).permit(:name, :status, :calibrate, :month, :week_1, :week_2, :week_3, :week_4, :week_5)
+      params.require(:equiplist).permit(:name, :status, :calibrate, :month, :week_1, :week_2, :week_3, :week_4, :week_5,:expressslot,:expressstart,:expressend)
     end
 end

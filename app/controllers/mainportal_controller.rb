@@ -1,6 +1,5 @@
 class MainportalController < ApplicationController
-  # load_and_authorize_resource
-
+#  load_and_authorize_resource :class => false
   # before_action :authenticate_admin!
 
   def admindashboard
@@ -24,12 +23,33 @@ class MainportalController < ApplicationController
    @equiplist=Equiplist.all
   end
 
-  def authenticate_admin!
-    unless current_user&.admin_role?
-      redirect_to home_index_path, alert: "You are not authorized to access this page."
-    end
-  end
+#  def authenticate_admin!
+#    unless current_user&.admin_role?
+#      redirect_to home_index_path, alert: "You are not authorized to access this page."
+#    end
+#  end
+def adminExpress
+  @equiplist=Equiplist.all
+end
+def adminExpSlot
+  @equiplist=Equiplist.all
+  @equipment_id = params[:equipment_id]
+  @equipment = Equiplist.find_by(id: @equipment_id)
+  if request.post?
+    @equiplist_entry = Equiplist.find_or_initialize_by(name: @equipment.name)
+    @equiplist_entry.expressslot = params[:equiplist][:expressslot]
+    @equiplist_entry.expressstart = params[:equiplist][:expressstart]
+    @equiplist_entry.expressend = params[:equiplist][:expressend]
 
+    if @equiplist_entry.save
+      redirect_to mainportal_adminExpress_path
+    else
+      @errors = @equiplist_entry.errors.full_messages
+    end
+  else
+    render 'adminExpSlot'
+  end
+end
 
   def adminModelUsers
     @user = User.all

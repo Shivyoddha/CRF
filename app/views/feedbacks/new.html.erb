@@ -1,16 +1,13 @@
 <%= stylesheet_link_tag "loginFeatures"%> <!--imported for the purpose of partial, has to be removed while code optimization -->
-<%= stylesheet_link_tag "feedback"%> 
+<%= stylesheet_link_tag "feedback"%>
 
 <%=render "partials/loginHeading"%>
+<% if current_user%>
 <%=render "partials/formsBackbtn"%>
+<%end%>
 
 <h1 class="text-center font-unbounded" id="head-new">New Feedback</h1>
 <div id="container-ann">
-    <%= render 'form', feedback: @feedback %>   
+    <%= render 'form', feedback: @feedback %>
 </div>
 <%=render "partials/footer" %>
-
-
-
-
-

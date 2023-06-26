@@ -14,39 +14,76 @@ html {
     font-family:"Unbounded";
 
 }
-.equip-heading,appl-no-heading{
-    font-size: 2em;
+
+span{
+    font-size: 1.3em;
+    text-align:center;
+    
+}
+.details{ 
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom:0.5em;
+    text-align:center;
+
+}
+.card-cont{
+    display:flex;
+    flex-direction:column;
+    
+    
 }
 .mscard{
     
-    margin: 0 2em 0 2em;
+    margin: 2em 2em 2em 2em;
     border-radius: 30px;
+    border-width: 0.2em;
     background: whitesmoke;
+    align-self:center;
+    align-items:center;
+    width: 90%;
 }
+.container1{
+    display:flex;
+    flex-direction:column;
+    
+    height:4vh;
+}
+
+#badge2{
+    align-self:flex-end;
+    margin-top:0.4em;
+    margin-right:1em;
+    border-radius: 50px;
+    
+
+}
+
 .mscontainer{
-    margin: 1em 2em 1em 2em;
-    height:29vh;
+    margin: -1em 2em 0em 2em;
+    height:33vh;
     display:flex;
     flex-direction:row;
     justify-content:flex-start;
     align-items: center;
 
 }
+
+
 .msleft-child{
     font-family: "Quicksand";
-    width:33%;
+    flex:1;
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items:center;
-    text-decoration: underline;
     font-size: 1em;
     
 
 }
 .msmiddle-child{
     font-family: "Quicksand";
-    width:33%;
+    flex:1;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -55,7 +92,7 @@ html {
 .msright-child{
     font-family: "Quicksand";
     font-weight:bold;
-    width:33%;
+    flex:1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -63,25 +100,119 @@ html {
     padding: 1em;
 
 }
+h4{
+   margin-bottom:1.5rem;
+}
 
 #button2{
     width: 10em;;
-    height: 3em;
+    height: 5em;
     font-weight: bold;
     text-decoration: none;
     background: #3f5ac9;
     text-align: center;
-    color: #fbfdfe;
+    color: whitesmoke;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 3px solid #fbfdfe;
+    
     border-radius: 10em;
-  }
+    padding: 0.8em;
+    margin-top: 0.em;
+}
  
-  #button2:hover{
+#button2:hover{
     
     border: 3px solid #3f5ac9;
     background-color: #f6f7f8;
     color: #3f5ac9;
-  }
+}
+@media only screen and (min-width:800px) {
+
+}
+@media only screen and (min-width:500px) and (max-width:800px){
+    .card-cont{
+        display:flex;
+        flex-direction:column;
+        
+        
+    }
+    .mscard{
+        border-radius: 30px;
+        border-width: 0.2em;
+        background: whitesmoke;
+        width: 60vw;
+        align-items:center;
+    }
+    .mscontainer{
+        margin: -0.5em 2em 1em 2em;
+        height:60vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: center;
+    
+    }
+    .msleft-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    .msmiddle-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    .msright-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    span{
+        align-self:center;
+    }
+    h4{
+        margin-left:0.8em;
+    }
+
+    
+}
+@media only screen and (max-width:450px){
+    .card-cont{
+        display:flex;
+        flex-direction:column;   
+    }
+    .mscard{
+        border-radius: 30px;
+        border-width: 0.2em;
+        background: whitesmoke;
+        width: 90vw;
+        align-items:center;
+        
+    }
+    .mscontainer{
+        margin: -0.4em 2em 0.5em 2em;
+        height:57vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items: center;
+    
+    }
+    .msleft-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    .msmiddle-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    .msright-child{
+        justify-content:center;
+        align-items:flex-start;
+    }
+    span{
+        align-self:center;
+    }
+    h4{
+        margin-left:0.9em;
+    }
+
+}
   

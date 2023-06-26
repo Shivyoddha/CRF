@@ -66,8 +66,8 @@ class CsvImportService
       user_hash = {}
 
       user_hash[:email] = row['Email']
-      # user_hash[:password] = row['Password']
-      user_hash[:password_confirmation] = row['Password Confirmation']
+      user_hash[:password] = '123456'
+      user_hash[:password_confirmation] = '123456'
       user_hash[:reset_password_token] = row['Reset password token']
       user_hash[:reset_password_sent_at] = row['Reset Password Sent At']
       user_hash[:remember_created_at] = row['Remember Created At']
@@ -89,29 +89,13 @@ class CsvImportService
       user_hash[:firstname] = row['Firstname']
       user_hash[:faculty_id] = row['Faculty Id']
       user_hash[:status] = row['Status']
-
-      # Set a temporary password for the imported user
-      # t.string "encrypted_password", default: "", null: false
-      # t.string "reset_password_token"
-      #User.find_or_create_by!(user_hash)
-      #user = User.create(user_hash)
-    #  user = User.find_or_create_by!(email: user_hash[:email], encrypted_password: user_hash[:password])
+      # user_hash[:reset_password] = true
 
       user = User.find_or_initialize_by(email: user_hash[:email])
         user.password = user_hash[:password]
+        user.password_confirmation = user_hash[:password_confirmation]
         # Assign any other attributes from user_hash if necessary
         user.save!
-      # if user.new_record?
-      #   user.password = user_hash[:password]
-      #   user.save!
-      # end
-      #   user.assign_attributes(user_hash)
-        # user.password = user_hash[:password]
-        # user.password_confirmation = user_hash[:password]
-        # user.save
-
-      # for performance, you could create a separate job to import each user
-      # CsvImportJob.perform_later(user_hash)
     end
   end
 

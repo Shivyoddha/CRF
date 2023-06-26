@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_advance_molecular_rheometers_on_user_id"
   end
 
@@ -88,6 +90,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.date "enddate"
     t.date "customstart"
     t.date "customend"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_ansies_on_user_id"
   end
 
@@ -111,6 +115,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_atomic_force_microscopes_on_user_id"
   end
 
@@ -139,6 +145,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_ball_mailings_on_user_id"
   end
 
@@ -163,6 +171,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
@@ -191,6 +201,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_cell_imagings_on_user_id"
   end
 
@@ -212,6 +224,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_electro_chemicals_on_user_id"
   end
 
@@ -229,6 +243,9 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "week_5"
     t.string "entry_type"
     t.float "amount"
+    t.date "expressstart"
+    t.date "expressend"
+    t.integer "expressslot", default: 0
   end
 
   create_table "equipment_tables", force: :cascade do |t|
@@ -390,6 +407,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_five_axis_on_user_id"
   end
 
@@ -420,6 +439,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_frictions_on_user_id"
   end
 
@@ -454,6 +475,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy2"
     t.string "dummy3"
     t.float "amount"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_ft_nms_on_user_id"
   end
 
@@ -478,6 +501,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_gaits_on_user_id"
   end
 
@@ -500,6 +525,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_gas_sensings_on_user_id"
   end
 
@@ -522,6 +549,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_glove_boxes_on_user_id"
   end
 
@@ -545,6 +574,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_glows_on_user_id"
   end
 
@@ -569,6 +600,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_grindings_on_user_id"
   end
 
@@ -605,6 +638,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_high_temp_vaccums_on_user_id"
   end
 
@@ -632,6 +667,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_hr_fesem_cs_on_user_id"
   end
 
@@ -657,6 +694,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_hr_fesem_js_on_user_id"
   end
 
@@ -691,6 +730,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_hrlcms_on_user_id"
   end
 
@@ -720,6 +761,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_icp_ms_on_user_id"
   end
 
@@ -744,6 +787,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_impedance_analies_on_user_id"
   end
 
@@ -768,6 +813,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_integrated_multi_role_testers_on_user_id"
   end
 
@@ -802,6 +849,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_ion_chromotographies_on_user_id"
   end
 
@@ -825,6 +874,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_lasers_on_user_id"
   end
 
@@ -841,6 +892,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.integer "user_id"
     t.float "amount"
     t.string "entry_type"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_liquid_nitrogens_on_user_id"
   end
 
@@ -884,6 +937,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_low_fatigues_on_user_id"
   end
 
@@ -917,6 +972,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_micro_edms_on_user_id"
   end
 
@@ -941,6 +998,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_milli_qs_on_user_id"
   end
 
@@ -972,6 +1031,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_multi_impact_testers_on_user_id"
   end
 
@@ -994,6 +1055,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_probe_sonicators_on_user_id"
   end
 
@@ -1019,6 +1082,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_raman_microscopes_on_user_id"
   end
 
@@ -1046,6 +1111,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_scratch_indentations_on_user_id"
   end
 
@@ -1074,6 +1141,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_spark_os_on_user_id"
   end
 
@@ -1095,6 +1164,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_spectro_radio_meters_on_user_id"
   end
 
@@ -1128,6 +1199,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_tga_fttrs_on_user_id"
   end
 
@@ -1152,6 +1225,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_three_d_non_contacts_on_user_id"
   end
 
@@ -1173,6 +1248,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_three_d_scanners_on_user_id"
   end
 
@@ -1197,6 +1274,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_tribometers_on_user_id"
   end
 
@@ -1221,6 +1300,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_ultra_centrifuges_on_user_id"
   end
 
@@ -1277,6 +1358,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_uv_vis_nirs_on_user_id"
   end
 
@@ -1301,6 +1384,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_xrds_on_user_id"
   end
 
@@ -1333,6 +1418,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_180800) do
     t.string "dummy1"
     t.string "dummy2"
     t.string "dummy3"
+    t.string "slottype"
+    t.integer "expresssample"
     t.index ["user_id"], name: "index_zeta_potential_sizes_on_user_id"
   end
 

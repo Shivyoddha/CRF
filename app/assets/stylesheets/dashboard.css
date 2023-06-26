@@ -48,6 +48,9 @@ hr {
   font-family: "Quicksand", "sans-serif";
 }
 
+.card-footer {
+  justify-content: flex-end;
+}
 
 .equipments-container {
   display: grid;

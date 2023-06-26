@@ -13,7 +13,10 @@
                                 <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
                             </li>
                             <li class="nav-item">
-                            <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
+                                
+                            </li>
+                            <li class="nav-item">
+                            <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
@@ -23,6 +26,7 @@
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
 

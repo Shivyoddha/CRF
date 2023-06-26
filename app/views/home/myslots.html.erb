@@ -1,82 +1,112 @@
 <%= stylesheet_link_tag "myslots"%>
 <%= stylesheet_link_tag "loginFeatures"%>
 
+<!-- if slot completed
+  <span class="badge rounded-pill text-bg-secondary" id="badge2">Completed</span>
+-->
+<!-- if slot pending
+  <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+-->
+<!-- if slot cancelled
+  <span class="badge rounded-pill text-bg-danger" id="badge2">Cancelled</span>
+-->
+<!-- if slot allotted
+  <span class="badge rounded-pill text-bg-success" id="badge2">Allotted</span>
+-->
+
+<!--assigning border color to card based on slot booking status-->
+
 <%=render "partials/loginHeading" %>
 <h1 class="myslots-heading">My Slots</h1>
 
 <% @user.xrds.each do |user_xrd| %>
-<div class="mscard">
-  <div class="mscontainer">
-    <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>XRD</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/XRD/<%=user_xrd.id %>	</span>
+<div class="card-cont">
+  <div class="mscard">
+    <div class=container1>
+      <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
     </div>
-    <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=user_xrd.status %>
-      <h4>Assigned On</h4>
-      <%=user_xrd.slotdate %>
-    </div>
-    <div class="msright-child">
-      <h4>Slot details</h4>
-      <div class="wrapper3">
-          <div class="link-wrapper3">
-            <%= link_to "Download", slot_mailer_xrd_path(format: :pdf,anish:user_xrd.id , maithu:@user.id),id:"button2", class:"btn btn-info"%>
+    <div class="mscontainer">
+        <div class="msleft-child">
+          <span>Equipment</span>
+          <span class="details">XRD</span>
+          <span>Application No</span>
+          <span class="details">CRF/XRD/<%=user_xrd.id %>	</span>
+        </div>
+        <div class="msmiddle-child">
+          <span>Booking Status</span>
+          <span class="details"><%=user_xrd.status %></span>
+          <span>Assigned On</span>
+          <span class="details"><%=user_xrd.slotdate %></span>
+        </div>
+        <div class="msright-child">
+          <h4>PAYMENT</h4>
+          <div class="wrapper3">
+              <div class="link-wrapper3">
+  
+                <%= link_to "Download", slot_mailer_xrd_path(format: :pdf,anish:user_xrd.id , maithu:@user.id),id:"button2"%>
+              </div>
           </div>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 <% end %>
 <%@user.ansies.each do |user_ansy| %>
-<div class="mscard">
-  <div class="mscontainer">
-    <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Ansys</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/ANSY/<%=user_ansy.id %></span>
-    </div>
-    <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=user_ansy.status %>
-      <h4>Assigned On</h4>
-      <%=user_ansy.slotdate %>
-    </div>
-    <div class="msright-child">
-      <h4>PAYMENT</h4>
-      <div class="wrapper3">
-          <div class="link-wrapper3">
-            <%= button_to 'View',home_developer_path,id:"button2"%>
-          </div>
+  <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+    <div class="mscontainer">
+      <div class="msleft-child">
+        <span>Equipment</span>
+        <span class="details">Ansys</span>
+        <span>Application No</span>
+        <span class="details">CRF/ANSY/<%=user_ansy.id %></span>
+      </div>
+      <div class="msmiddle-child">
+        <span>Booking Status</span>
+        <span class="details"><%=user_ansy.status %></span>
+        <span>Assigned On</span>
+        <span class="details"><%=user_ansy.slotdate %></span>
+      </div>
+      <div class="msright-child">
+        <h4>PAYMENT</h4>
+        <div class="wrapper3">
+            <div class="link-wrapper3">
+              <%= button_to 'View',home_developer_path,id:"button2"%>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <% end %>
 <% @user.bets.each do |user_bet| %>
-<div class="mscard">
-  <div class="mscontainer">
-    <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>BET</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/BET/<%=user_bet.id %></span>
+<div class="card-cont">
+  <div class="mscard">
+    <div class=container1>
+      <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
     </div>
-    <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=user_bet.status %>
-      <h4>Assigned On</h4>
-      <%=user_bet.slotdate %>
-    </div>
-    <div class="msright-child">
-      <h4>PAYMENT</h4>
-      <div class="wrapper3">
-          <div class="link-wrapper3">
-            <%= link_to "Download", slot_mailer_bet_path(format: :pdf,anish:user_bet.id , maithu:@user.id),id:"button2"%>
-          </div>
+    <div class="mscontainer">
+      <div class="msleft-child">
+        <span >Equipment</span>
+        <span class="details">BET</span>
+        <span>Application No</span>
+        <span class="details">CRF/BET/<%=user_bet.id %></span>
+      </div>
+      <div class="msmiddle-child">
+        <span>Booked On</span>
+        <span class="details"><%=user_bet.status %></span>
+        <span>Assigned On</span>
+        <span class="details"><%=user_bet.slotdate %></span>
+      </div>
+      <div class="msright-child">
+        <h4>PAYMENT</h4>
+        <div class="wrapper3">
+            <div class="link-wrapper3">
+              <%= link_to "Download", slot_mailer_bet_path(format: :pdf,anish:user_bet.id , maithu:@user.id),id:"button2"%>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -84,18 +114,21 @@
 <% end %>
 <% @user.atomic_force_microscope.each do |atomic_force_microscope| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Atomic Force Microscope</span>
-      <h4 class="appl-no-heading">Application No</h4>\
-      <span>CRF/ATOMIC/<%=atomic_force_microscope.id %></span>
+      <span>Equipment</span>
+      <span class="details">Atomic Force Microscope</span>
+      <span>Application No</span>\
+      <span class="details">CRF/ATOMIC/<%=atomic_force_microscope.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=atomic_force_microscope.status %>
-      <h4>Assigned On</h4>
-      <%=atomic_force_microscope.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=atomic_force_microscope.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=atomic_force_microscope.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -110,18 +143,21 @@
 <% end %>
 <% @user.ball_mailings.each do |ball_mailing| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Ball Milling </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/BALL/<%=ball_mailing.id %></span>
+      <span>Equipment</span>
+      <span class="details">Ball Milling </span>
+      <span>Application No</span>
+      <span class="details">CRF/BALL/<%=ball_mailing.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=ball_mailing.status %>
-      <h4>Assigned On</h4>
-      <%=ball_mailing.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=ball_mailing.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=ball_mailing.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -137,18 +173,21 @@
 
 <% @user.cell_imaging.each do |cell_imaging| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Cell Imaging </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/CELL/<%=cell_imaging.id %></span>
+      <span>Equipment</span>
+      <span class="details">Cell Imaging </span>
+      <span >Application No</span>
+      <span class="details">CRF/CELL/<%=cell_imaging.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=cell_imaging.status %>
-      <h4>Assigned On</h4>
-      <%=cell_imaging.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=cell_imaging.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=cell_imaging.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -164,18 +203,21 @@
 
 <% @user.electro_chemical.each do |electro_chemical| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Electro Chemical Polishing</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/ELECTRO/<%=electro_chemical.id %></span>
+      <span>Equipment</span>
+      <span class="details">Electro Chemical Polishing</span>
+      <span>Application No</span>
+      <span class="details">CRF/ELECTRO/<%=electro_chemical.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=electro_chemical.status %>
-      <h4>Assigned On</h4>
-      <%=electro_chemical.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=electro_chemical.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=electro_chemical.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -191,18 +233,21 @@
 
 <% @user.five_axi.each do |five_axi| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>5-Axes CNC</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/Five Axis/<%=five_axi.id %></span>
+      <span>Equipment</span>
+      <span class="details">5-Axes CNC</span>
+      <span>Application No</span>
+      <span class="details">CRF/Five Axis/<%=five_axi.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=five_axi.status %>
-      <h4>Assigned On</h4>
-      <%=five_axi.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=five_axi.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=five_axi.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -218,18 +263,21 @@
 
 <% @user.frictions.each do |friction| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Friction</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/FRIC/<%=friction.id %></span>
+      <span>Equipment</span>
+      <span class="details">Friction</span>
+      <span>Application No</span>
+      <span class="details">CRF/FRIC/<%=friction.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=friction.status %>
-      <h4>Assigned On</h4>
-      <%=friction.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=friction.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=friction.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -245,18 +293,21 @@
 
 <% @user.ft_nms.each do |ft_nm| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>FT-NMR</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/ftnmr/<%=ft_nm.id %></span>
+      <span>Equipment</span>
+      <span class="details">FT-NMR</span>
+      <span>Application No</span>
+      <span class="details">CRF/ftnmr/<%=ft_nm.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=ft_nm.status %>
-      <h4>Assigned On</h4>
-      <%=ft_nm.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=ft_nm.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=ft_nm.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -272,18 +323,21 @@
 
 <% @user.gaits.each do |gait| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Gait</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/GAIT/<%=gait.id %></span>
+      <span>Equipment</span>
+      <span class="details">Gait</span>
+      <span>Application No</span>
+      <span class="details">CRF/GAIT/<%=gait.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=gait.status %>
-      <h4>Assigned On</h4>
-      <%=gait.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=gait.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=gait.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -299,18 +353,21 @@
 
 <% @user.gas_sensing.each do |gas_sensing| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Gas Sensing</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/GAS/<%=gas_sensing.id %></span>
+      <span>Equipment</span>
+      <span class="details">Gas Sensing</span>
+      <span>Application No</span>
+      <span class="details">CRF/GAS/<%=gas_sensing.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=gas_sensing.status %>
-      <h4>Assigned On</h4>
-      <%=gas_sensing.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=gas_sensing.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=gas_sensing.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -326,18 +383,21 @@
 
 <% @user.glove_box.each do |glove_box| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Glove Box</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/GLOVE/<%=glove_box.id %></span>
+      <span>Equipment</span>
+      <span class="details">Glove Box</span>
+      <span >Application No</span>
+      <span class="details">CRF/GLOVE/<%=glove_box.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=glove_box.status %>
-      <h4>Assigned On</h4>
-      <%=glove_box.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=glove_box.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=glove_box.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -353,18 +413,21 @@
 
 <% @user.glows.each do |glow| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Glow</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/GLOW/<%=glow.id %></span>
+      <span>Equipment</span>
+      <span class="details">Glow</span>
+      <span>Application No</span>
+      <span class="details">CRF/GLOW/<%=glow.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=glow.status %>
-      <h4>Assigned On</h4>
-      <%=glow.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=glow.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=glow.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -380,18 +443,21 @@
 
 <% @user.grindings.each do |grinding| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>Grindings</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/GRIND/<%=grinding.id %></span>
+      <span>Equipment</span>
+      <span class="details">Grindings</span>
+      <span>Application No</span>
+      <span class="details">CRF/GRIND/<%=grinding.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=grinding.status %>
-      <h4>Assigned On</h4>
-      <%=grinding.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=grinding.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=grinding.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -407,18 +473,21 @@
 
 <% @user.high_temp_vaccum.each do |high_temp_vaccum| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>High Temp Vaccum</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/HIGHVACCUM/<%=high_temp_vaccum.id %></span>
+      <span>Equipment:</span>
+      <span class="details">High Temp Vaccum</span>
+      <span>Application No</span>
+      <span class="details">CRF/HIGHVACCUM/<%=high_temp_vaccum.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=high_temp_vaccum.status %>
-      <h4>Assigned On</h4>
-      <%=high_temp_vaccum.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=high_temp_vaccum.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=high_temp_vaccum.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -434,18 +503,21 @@
 
 <% @user.hr_fesem_cs.each do |hr_fesem_c| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>HR FESEM C</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/fesemc/<%=hr_fesem_c.id %></span>
+      <span>Equipment</span>
+      <span class="details">HR FESEM C</span>
+      <span>Application No</span>
+      <span class="details">CRF/fesemc/<%=hr_fesem_c.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=hr_fesem_c.status %>
-      <h4>Assigned On</h4>
-      <%=hr_fesem_c.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=hr_fesem_c.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=hr_fesem_c.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -461,18 +533,22 @@
 
 <% @user.hr_fesem_js.each do |hr_fesem_j| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>HR FESEM J </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/FESEMJ/<%=hr_fesem_j.id %></span>
+      <span>Equipment:</span>
+      <span class="details">HR FESEM J </span>
+      <span>Application No</span>
+      <span class="details">CRF/FESEMJ/<%=hr_fesem_j.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=hr_fesem_j.status %>
-      <h4>Assigned On</h4>
-      <%=hr_fesem_j.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=hr_fesem_j.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=hr_fesem_j.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -488,18 +564,22 @@
 
 <% @user.hrlcms.each do |hrlcms| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>HR LCMS </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/LCMS/<%=hrlcms.id %></span>
+      <span>Equipment:</span>
+      <span class="details">HR LCMS </span>
+      <span>Application No</span>
+      <span class="details">CRF/LCMS/<%=hrlcms.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=hrlcms.status %>
-      <h4>Assigned On</h4>
-      <%=hrlcms.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=hrlcms.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=hrlcms.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -515,18 +595,21 @@
 
 <% @user.icp_ms.each do |icp_ms| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>ICP MS </span>
-      <h4 class="appl-no-heading">Application No</h4>
+      <span class="equip-heading">Equipment</span>
+      <span>ICP MS</span>
+      <span>Application No</span>
       <span>CRF/ICP/<%=icp_ms.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=icp_ms.status %>
-      <h4>Assigned On</h4>
-      <%=icp_ms.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=icp_ms.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=icp_ms.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -542,18 +625,22 @@
 
 <% @user.impedance_analy.each do |impedence_analy| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>IMPEDENCDE ANALYSER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/IMPED/<%=impedence_analy.id %></span>
+      <span>Equipment</span>
+      <span class="details">IMPEDENCDE ANALYSER </span>
+      <span>Application No</>
+      <span class="details">CRF/IMPED/<%=impedence_analy.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=impedence_analy.status %>
-      <h4>Assigned On</h4>
-      <%=impedence_analy.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=impedence_analy.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=impedence_analy.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -569,21 +656,25 @@
 
 <% @user.integrated_multi_role_tester.each do |integrated_multi_role_tester| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>INTEGRATED MULTI ROLE TESTER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-        <span>CRF/INTEGRATED/<%=integrated_multi_role_tester.id %></span>
+      <span>Equipment</span>
+      <span class="details">INTEGRATED MULTI ROLE TESTER</span>
+      <span>Application No</span>
+      <span class="details">CRF/INTEGRATED/<%=integrated_multi_role_tester.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=integrated_multi_role_tester.status %>
-      <h4>Assigned On</h4>
-      <%=integrated_multi_role_tester.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=integrated_multi_role_tester.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=integrated_multi_role_tester.slotdate %></span>
     </div>
     <div class="msright-child">
-      <h4>PAYMENT</h4>
+      <span>PAYMENT</span>
       <div class="wrapper3">
           <div class="link-wrapper3">
             <%= link_to "Download", slot_mailer_integrated_multi_role_tester_path(format: :pdf,anish:integrated_multi_role_tester.id , maithu:@user.id),id:"button2"%>
@@ -596,18 +687,22 @@
 
 <% @user.ion_chromotography.each do |ion_chromotography| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>ION CHROMATOGRAPHY </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/IONC/<%=ion_chromotography.id %></span>
+      <span>Equipment</span>
+      <span class="details">ION CHROMATOGRAPHY </span>
+      <span>Application No</span>
+      <span class="details">CRF/IONC/<%=ion_chromotography.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=ion_chromotography.status %>
-      <h4>Assigned On</h4>
-      <%=ion_chromotography.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=ion_chromotography.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=ion_chromotography.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -623,18 +718,22 @@
 
 <% @user.laser.each do |laser| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>LASER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/LASER/<%=laser.id %></span>
+      <span>Equipment</span>
+      <span class="details">LASER </span>
+      <span>Application No</span>
+      <span class="details">CRF/LASER/<%=laser.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=laser.status %>
-      <h4>Assigned On</h4>
-      <%=laser.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=laser.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=laser.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -650,18 +749,22 @@
 
 <% @user.liquid_nitrogen.each do |liquid_nitrogen| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>LIQUID NITROGEN </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/NITROGEN/<%=liquid_nitrogen.id %></span>
+      <span>Equipment</span>
+      <span class="details">LIQUID NITROGEN </span>
+      <span>Application No</span>
+      <span class="details">CRF/NITROGEN/<%=liquid_nitrogen.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=liquid_nitrogen.status %>
-      <h4>Assigned On</h4>
-      <%=liquid_nitrogen.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=liquid_nitrogen.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=liquid_nitrogen.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -677,18 +780,22 @@
 
 <% @user.low_fatigues.each do |low_fatigue| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>LOW FATIGUE</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/LOW/<%=low_fatigue.id %></span>
+      <span>Equipment</span>
+      <span class="details">LOW FATIGUE</span>
+      <span>Application No</span>
+      <span class="details">CRF/LOW/<%=low_fatigue.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=low_fatigue.status %>
-      <h4>Assigned On</h4>
-      <%=low_fatigue.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=low_fatigue.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=low_fatigue.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -704,18 +811,21 @@
 
 <% @user.micro_edms.each do |micro_edm| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>MICRO EDM </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/micro/<%=micro_edm.id %></span>
+      <span>Equipment</span>
+      <span class="details">MICRO EDM </span>
+      <span>Application No</span>
+      <span class="details">CRF/micro/<%=micro_edm.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=micro_edm.status %>
-      <h4>Assigned On</h4>
-      <%=micro_edm.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=micro_edm.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=micro_edm.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -731,18 +841,21 @@
 
 <% @user.milli_q.each do |milli_q| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>MILLI Q </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span> CRF/MILLI/<%=milli_q.id %></span>
+      <span>Equipment</span>
+      <span class="details">MILLI Q </span>
+      <span>Application No</span>
+      <span class="details">CRF/MILLI/<%=milli_q.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=milli_q.status %>
-      <h4>Assigned On</h4>
-      <%=milli_q.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=milli_q.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=milli_q.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -758,18 +871,21 @@
 
 <% @user.multi_impact_testers.each do |multi_impact_tester| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
+      <span>Equipment</span>
       <span>MULTI IMPACT TESTER </span>
-      <h4 class="appl-no-heading">Application No</h4>
+      <span>Application No</span>
       <span>CRF/multi/<%=multi_impact_tester.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=multi_impact_tester.status %>
-      <h4>Assigned On</h4>
-      <%=multi_impact_tester.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=multi_impact_tester.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=multi_impact_tester.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -785,18 +901,22 @@
 
 <% @user.probe_sonicator.each do |probe_sonicator| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>PROBE SONICATOR </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/PROBE/<%=probe_sonicator.id %></span>
+      <span>Equipment</span>
+      <span class="details">PROBE SONICATOR </span>
+      <span>Application No</span>
+      <span class="details">CRF/PROBE/<%=probe_sonicator.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=probe_sonicator.status %>
-      <h4>Assigned On</h4>
-      <%=probe_sonicator.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=probe_sonicator.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=probe_sonicator.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -812,18 +932,22 @@
 
 <% @user.raman_microscope.each do |raman_microscope| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
       <span class="equip-heading">Equipment:</span>
-      <span>RAMAN MICROSCOPE</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/RAMAN/<%=raman_microscope.id %></span>
+      <span class="details">RAMAN MICROSCOPE</span>
+      <span>Application No</span>
+      <span class="details">CRF/RAMAN/<%=raman_microscope.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=raman_microscope.status %>
-      <h4>Assigned On</h4>
-      <%=raman_microscope.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=raman_microscope.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=raman_microscope.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -839,18 +963,22 @@
 
 <% @user.scratch_indentations.each do |scratch_indentation| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>SCRATCH INDENTATION</span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/SCRATCH/<%=scratch_indentation.id %></span>
+      <span>Equipment</span>
+      <span class="details">SCRATCH INDENTATION</span>
+      <span>Application No</span>
+      <span class="details">CRF/SCRATCH/<%=scratch_indentation.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=scratch_indentation.status %>
-      <h4>Assigned On</h4>
-      <%=scratch_indentation.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=scratch_indentation.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=scratch_indentation.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -866,18 +994,21 @@
 
 <% @user.spark_o.each do |spark_o| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>SPARK OS </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/SPARK/<%=spark_o.id %></span>
+      <span>Equipment</span>
+      <span class="details">SPARK OS </span>
+      <span>Application No</span>
+      <span class="details">CRF/SPARK/<%=spark_o.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=spark_o.status %>
-      <h4>Assigned On</h4>
-      <%=spark_o.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=spark_o.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=spark_o.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -893,18 +1024,22 @@
 
 <% @user.spectro_radio_meter.each do |spectro_radio_meter| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>SPECTRO RADIO METER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/SPECTRO/<%=spectro_radio_meter.id %></span>
+      <span>Equipment</span>
+      <span class="details">SPECTRO RADIO METER </span>
+      <span>Application No</span>
+      <span class="details">CRF/SPECTRO/<%=spectro_radio_meter.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=spectro_radio_meter.status %>
-      <h4>Assigned On</h4>
-      <%=spectro_radio_meter.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=spectro_radio_meter.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=spectro_radio_meter.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -920,18 +1055,22 @@
 
 <% @user.tga_fttr.each do |tga_fttr| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>TGA-FTTR </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/TGAFTIR/<%=tga_fttr.id %></span>
+      <span>Equipment</span>
+      <span class="details">TGA-FTTR </span>
+      <span>Application No</span>
+      <span class="details">CRF/TGAFTIR/<%=tga_fttr.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=tga_fttr.status %>
-      <h4>Assigned On</h4>
-      <%=tga_fttr.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=tga_fttr.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=tga_fttr.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -947,18 +1086,22 @@
 
 <% @user.three_d_non_contacts.each do |three_d_non_contact| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>3D NON-CONTACT PROFILOMETER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/THREESCAN/<%=three_d_non_contact.id %></span>
+      <span class="equip-heading">Equipment</span>
+      <span class="details">3D NON-CONTACT PROFILOMETER </span>
+      <span>Application No</span>
+      <span class="details">CRF/THREESCAN/<%=three_d_non_contact.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=three_d_non_contact.status %>
-      <h4>Assigned On</h4>
-      <%=three_d_non_contact.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=three_d_non_contact.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=three_d_non_contact.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -974,18 +1117,22 @@
 
 <% @user.three_d_scanner.each do |three_d_scanner| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
+  
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>3D SCANNER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/THREESCAN/<%=three_d_scanner.id %></span>
+      <span>Equipment</span>
+      <span class="details">3D SCANNER </span>
+      <span>Application No</span>
+      <span class="details">CRF/THREESCAN/<%=three_d_scanner.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=three_d_scanner.status %>
-      <h4>Assigned On</h4>
-      <%=three_d_scanner.slotdate %>
+      <span>Booked On</h4>
+      <span class="details"><%=three_d_scanner.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=three_d_scanner.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -1001,18 +1148,21 @@
 
 <% @user.tribometers.each do |tribometer| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>TRIBOMETER </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/trib/<%=tribometer.id %></span>
+      <span>Equipment</span>
+      <span class="details">TRIBOMETER </span>
+      <span>Application No</span>
+      <span class="details">CRF/trib/<%=tribometer.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=tribometer.status %>
-      <h4>Assigned On</h4>
-      <%=tribometer.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=tribometer.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=tribometer.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -1028,18 +1178,21 @@
 
 <% @user.ultra_centrifuge.each do |ultracentrifuge| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>ULTRA CENTRIFUGE </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/CENTRIFUGE/<%=ultracentrifuge.id %></span>
+      <span>Equipment</span>
+      <span class="details">ULTRA CENTRIFUGE</span>
+      <span>Application No</span>
+      <span class="details">CRF/CENTRIFUGE/<%=ultracentrifuge.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=ultracentrifuge.status %>
-      <h4>Assigned On</h4>
-      <%=ultracentrifuge.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=ultracentrifuge.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=ultracentrifuge.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -1055,18 +1208,21 @@
 
 <% @user.uv_vis_nir.each do |uv_vis_nir| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>UV VIS NIR </span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/UV/<%=uv_vis_nir.id %></span>
+      <span>Equipment</span>
+      <span class="details">UV VIS NIR </span>
+      <span>Application No</span>
+      <span class="details">CRF/UV/<%=uv_vis_nir.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=uv_vis_nir.status %>
-      <h4>Assigned On</h4>
-      <%=uv_vis_nir.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=uv_vis_nir.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=uv_vis_nir.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>
@@ -1082,18 +1238,21 @@
 
 <% @user.zeta_potential_size.each do |zeta_potential_size| %>
 <div class="mscard">
+  <div class=container1>
+    <span class="badge rounded-pill text-bg-warning" id="badge2">Pending</span>
+  </div>
   <div class="mscontainer">
     <div class="msleft-child">
-      <span class="equip-heading">Equipment:</span>
-      <span>ZETA POTENTIAL <%=zeta_potential_size.id %></span>
-      <h4 class="appl-no-heading">Application No</h4>
-      <span>CRF/Zeta Potential Sizes/<%=zeta_potential_size.id %></span>
+      <span>Equipment</span>
+      <span class="details">ZETA POTENTIAL <%=zeta_potential_size.id %></span>
+      <span>Application No</span>
+      <span class="details">CRF/Zeta Potential Sizes/<%=zeta_potential_size.id %></span>
     </div>
     <div class="msmiddle-child">
-      <h4>Booked On</h4>
-      <%=zeta_potential_size.status %>
-      <h4>Assigned On</h4>
-      <%=zeta_potential_size.slotdate %>
+      <span>Booked On</span>
+      <span class="details"><%=zeta_potential_size.status %></span>
+      <span>Assigned On</span>
+      <span class="details"><%=zeta_potential_size.slotdate %></span>
     </div>
     <div class="msright-child">
       <h4>PAYMENT</h4>

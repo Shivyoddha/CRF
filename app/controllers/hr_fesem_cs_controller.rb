@@ -23,6 +23,10 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c = HrFesemC.new
     @user=User.find(params[:id])
     @hr_fesem_c.build_equipment_table
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressstart).first.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressend).first.strftime("%d/%m/%Y")
   end
 
   # GET /hr_fesem_cs/1/edit
@@ -56,10 +60,17 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c.equipment_table.profesion = @hr_fesem_c.user.profession
     @hr_fesem_c.equipment_table.orgname = @hr_fesem_c.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
 
     respond_to do |format|
       if @hr_fesem_c.save
+        if  @hr_fesem_c.expresssample.present?
+         equiplist = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").first
+         equiplist.expressslot =equiplist.expressslot- @hr_fesem_c.expresssample
+         equiplist.save
+        end
         if @hr_fesem_c.user.role=='student'||@hr_fesem_c.user.role=='faculty'
           HrFesemCMailer.with(id:@hr_fesem_c.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -113,6 +124,6 @@ class HrFesemCsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_c_params
-      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :eds,:measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,measuring: [], references: [])
+      params.require(:hr_fesem_c).permit(:sample, :composition, :stype, :sphase, :eds,:measurement, :eds_required, :toxic, :conducting, :more, :debit, :slotdate, :slottime, :user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,measuring: [], references: [])
     end
 end
