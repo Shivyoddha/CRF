@@ -14,7 +14,11 @@ class FtNmsController < ApplicationController
   def new
     @ft_nm = FtNm.new
     @user=User.find(params[:id])
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "FT-NMR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "FT-NMR").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "FT-NMR").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /ft_nms/1/edit
@@ -48,8 +52,15 @@ class FtNmsController < ApplicationController
     @ft_nm.equipment_table.profesion = @ft_nm.user.profession
     @ft_nm.equipment_table.orgname = @ft_nm.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "FT-NMR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
     respond_to do |format|
       if @ft_nm.save
+        if  @ft_nm.expresssample.present?
+         equiplist = Equiplist.where(name: "FT-NMR").first
+         equiplist.expressslot =equiplist.expressslot- @ft_nm.expresssample
+         equiplist.save
+        end
         if @ft_nm.user.role=='student'||@ft_nm.user.role=='faculty'
           FtNmrMailer.with(id:@ft_nm.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -105,6 +116,6 @@ class FtNmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ft_nm_params
-      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [],hazardmethod: [],measurement1: [],measurement2: [],measurement3: [],measurement4: [],measurement5: [])
+      params.require(:ft_nm).permit(:sample, :nature, :phase, :solvent1,  :solvent2,  :solvent3,  :solvent4, :solvent5,:temp, :toxicity, :health, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [],hazardmethod: [],measurement1: [],measurement2: [],measurement3: [],measurement4: [],measurement5: [])
     end
 end

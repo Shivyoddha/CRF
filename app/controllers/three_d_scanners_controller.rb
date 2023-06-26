@@ -14,7 +14,11 @@ class ThreeDScannersController < ApplicationController
   def new
     @three_d_scanner = ThreeDScanner.new
     @three_d_scanner.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "3D-Scanner").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "3D-Scanner").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "3D-Scanner").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /three_d_scanners/1/edit
@@ -48,9 +52,16 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.equipment_table.profesion = @three_d_scanner.user.profession
     @three_d_scanner.equipment_table.orgname = @three_d_scanner.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "3D-Scanner").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @three_d_scanner.save
+        if  @three_d_scanner.expresssample.present?
+         equiplist = Equiplist.where(name: "3D-Scanner").first
+         equiplist.expressslot =equiplist.expressslot- @three_d_scanner.expresssample
+         equiplist.save
+        end
         if @three_d_scanner.user.role=='student'||@three_d_scanner.user.role=='faculty'
           ThreeDScannerMailer.with(id:@three_d_scanner.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +117,6 @@ class ThreeDScannersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def three_d_scanner_params
-      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,:dummy1,:dummy2,:dummy3,:entry_type,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],output_format: [], references: [])
+      params.require(:three_d_scanner).permit(:sample, :size, :texture, :more, :debit, :slotdate, :slottime, :status,:user_id,:amount,:dummy1,:dummy2,:dummy3,:entry_type,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],output_format: [], references: [])
     end
 end

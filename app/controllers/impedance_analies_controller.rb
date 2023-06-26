@@ -14,7 +14,10 @@ class ImpedanceAnaliesController < ApplicationController
   def new
     @impedance_analy = ImpedanceAnaly.new
     @impedance_analy.build_equipment_table
-
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Impedance Analyzer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Impedance Analyzer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Impedance Analyzer").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /impedance_analies/1/edit
@@ -47,9 +50,16 @@ class ImpedanceAnaliesController < ApplicationController
     @impedance_analy.equipment_table.profesion = @impedance_analy.user.profession
     @impedance_analy.equipment_table.orgname = @impedance_analy.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Impedance Analyzer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @impedance_analy.save
+        if  @impedance_analy.expresssample.present?
+           equiplist = Equiplist.where(name: "Impedance Analyzer").first
+           equiplist.expressslot =equiplist.expressslot- @impedance_analy.expresssample
+           equiplist.save
+        end
         if @impedance_analy.user.role=='student'||@impedance_analy.user.role=='faculty'
           ImpedanceAnalyzerMailer.with(id:@impedance_analy.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +116,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def impedance_analy_params
-      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , measurement: [],references: [])
+      params.require(:impedance_analy).permit(:sample, :composition, :capacitance, :dielectric, :iv, :freqrange, :currentrange, :voltagerange, :impedance, :more, :debit, :slotdate, :slottime, :status,:losstangent,:user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , measurement: [],references: [])
     end
 end

@@ -14,6 +14,11 @@ class ZetaPotentialSizesController < ApplicationController
   def new
     @zeta_potential_size = ZetaPotentialSize.new
     @zeta_potential_size.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Zeta Potential/Particle Sizer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Zeta Potential/Particle Sizer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Zeta Potential/Particle Sizer").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -47,8 +52,17 @@ class ZetaPotentialSizesController < ApplicationController
     @zeta_potential_size.equipment_table.profesion = @zeta_potential_size.user.profession
     @zeta_potential_size.equipment_table.orgname = @zeta_potential_size.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Zeta Potential/Particle Sizer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @zeta_potential_size.save
+        if  @zeta_potential_size.expresssample.present?
+        equiplist = Equiplist.where(name: "Zeta Potential/Particle Sizer").first
+        equiplist.expressslot =equiplist.expressslot- @zeta_potential_size.expresssample
+        equiplist.save
+       end
+
         if @zeta_potential_size.user.role=='student'||@zeta_potential_size.user.role=='faculty'
           ZetaPotentialSizeMailer.with(id:@zeta_potential_size.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +120,6 @@ class ZetaPotentialSizesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def zeta_potential_size_params
-      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [])
+      params.require(:zeta_potential_size).permit(:sample, :stype, :toxicity, :element, :solvent, :refractive_index, :viscositypoise,:viscositytemp,:angle, :analysis_type, :analysis_temperature, :more,:soluteknown,:solutename,:refindex,:abscoefficent,:debit,:slotdate,:slottime,:status,:user_id ,:entry_type,:dummy1,:dummy2,:dummy3, :amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],references: [])
     end
 end

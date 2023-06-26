@@ -14,6 +14,12 @@ class TgaFttrsController < ApplicationController
   def new
     @tga_fttr = TgaFttr.new
     @tga_fttr.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "TGA-FTIR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "TGA-FTIR").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "TGA-FTIR").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
   end
 
   # GET /tga_fttrs/1/edit
@@ -47,9 +53,16 @@ else
     @tga_fttr.equipment_table.profesion = @tga_fttr.user.profession
     @tga_fttr.equipment_table.orgname = @tga_fttr.user.orgname
     end
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "TGA-FTIR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @tga_fttr.save
+        if  @tga_fttr.expresssample.present?
+         equiplist = Equiplist.where(name: "TGA-FTIR").first
+         equiplist.expressslot =equiplist.expressslot- @tga_fttr.expresssample
+         equiplist.save
+        end
         if @tga_fttr.user.role=='student'||@tga_fttr.user.role=='faculty'
           TgaFttrMailer.with(id:@tga_fttr.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -105,6 +118,6 @@ else
 
     # Only allow a list of trusted parameters through.
     def tga_fttr_params
-      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,:entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:tga_fttr).permit(:sample, :measurement, :stype, :description, :nature, :min_temp, :max_temp, :scan_rate, :atmosphere, :hazard, :compatability, :carcinogenic, :explosive, :more,:yordinate,:kbr,:atr,:debit,:slotdate,:slottime,:user_id,:entry_type,:dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

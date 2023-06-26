@@ -7,7 +7,7 @@
 
 <div class="container">
     <div id="equipment-name">
-      <h1>HR-FESEM [CARL ZEISS]</h1>
+      <h1>HR-FESEM [CARL ZEISS] </h1>
     </div>
     <div class='hero'>
       <%= form_with(model: hr_fesem_c) do |form| %>
@@ -22,7 +22,6 @@
             </ul>
           </div>
         <% end %>
-
         <% if @slot_type=="regular"%>
         <div class="input-group mb-3">
             <%= form.label :sample, "No of Samples", class:"input-group-text", for:"inputGroupSelect01"%>

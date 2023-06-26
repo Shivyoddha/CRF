@@ -15,6 +15,11 @@ class GrindingsController < ApplicationController
     @grinding = Grinding.new
     @user=User.find(params[:id])
     @grinding.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Automatic MultiSpecimen Polisher").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Automatic MultiSpecimen Polisher").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Automatic MultiSpecimen Polisher").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,9 +54,16 @@ class GrindingsController < ApplicationController
     @grinding.equipment_table.profesion = @grinding.user.profession
     @grinding.equipment_table.orgname = @grinding.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Automatic MultiSpecimen Polisher").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @grinding.save
+        if  @grinding.expresssample.present?
+        equiplist = Equiplist.where(name: "Automatic MultiSpecimen Polisher").first
+        equiplist.expressslot =equiplist.expressslot- @grinding.expresssample
+        equiplist.save
+       end
         if @grinding.user.role=='student'||@grinding.user.role=='faculty'
           GrindingMailer.with(id:@grinding.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -107,6 +119,6 @@ class GrindingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def grinding_params
-      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,grit: [],diamond: [],suspension: [], references: [])
+      params.require(:grinding).permit(:sample, :diameter, :mould, :lapping, :more, :status, :slotdate, :slottime, :debit,:user_id,:entry_type, :dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,grit: [],diamond: [],suspension: [], references: [])
     end
 end

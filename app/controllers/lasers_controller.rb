@@ -14,6 +14,11 @@ class LasersController < ApplicationController
   def new
     @laser = Laser.new
     @laser.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Laser Flash Analyser").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Laser Flash Analyser").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Laser Flash Analyser").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,9 +53,16 @@ class LasersController < ApplicationController
     @laser.equipment_table.profesion = @laser.user.profession
     @laser.equipment_table.orgname = @laser.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Laser Flash Analyser").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @laser.save
+        if  @laser.expresssample.present?
+         equiplist = Equiplist.where(name: "Laser Flash Analyser").first
+         equiplist.expressslot =equiplist.expressslot- @laser.expresssample
+         equiplist.save
+        end
         if @laser.user.role=='student'||@laser.user.role=='faculty'
           LaserMailer.with(id:@laser.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -107,6 +119,6 @@ class LasersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def laser_params
-      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,  equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:laser).permit(:sample, :composition, :stype, :temp_points, :toxicity, :compatibility, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, :slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

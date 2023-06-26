@@ -15,7 +15,11 @@ class RamanMicroscopesController < ApplicationController
     @user=User.find(params[:id])
     @raman_microscope = RamanMicroscope.new
     @raman_microscope.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Raman Spectrometer with PL").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Raman Spectrometer with PL").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Raman Spectrometer with PL").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /raman_microscopes/1/edit
@@ -49,9 +53,16 @@ class RamanMicroscopesController < ApplicationController
     @raman_microscope.equipment_table.profesion = @raman_microscope.user.profession
     @raman_microscope.equipment_table.orgname = @raman_microscope.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Raman Spectrometer with PL").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @raman_microscope.save
+        if  @raman_microscope.expresssample.present?
+        equiplist = Equiplist.where(name: "Raman Spectrometer with PL").first
+        equiplist.expressslot =equiplist.expressslot- @raman_microscope.expresssample
+        equiplist.save
+       end
         if @raman_microscope.user.role=='student'||@raman_microscope.user.role=='faculty'
           RamanMicroscopeMailer.with(id:@raman_microscope.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +119,6 @@ class RamanMicroscopesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def raman_microscope_params
-      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more,:laser,:debit, :slotdate, :slottime, :status,:user_id ,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:raman_microscope).permit(:sample, :measurement, :stype, :description, :toxicity, :Compatability, :carcinogenic, :more,:laser,:debit, :slotdate, :slottime, :status,:user_id ,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

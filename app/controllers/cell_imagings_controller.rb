@@ -14,6 +14,13 @@ class CellImagingsController < ApplicationController
   def new
     @cell_imaging = CellImaging.new
     @cell_imaging.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Cell-Imaging MultiMode Reader").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Cell-Imaging MultiMode Reader").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Cell-Imaging MultiMode Reader").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
+
   end
 
   # GET /cell_imagings/1/edit
@@ -47,8 +54,17 @@ class CellImagingsController < ApplicationController
     @cell_imaging.equipment_table.profesion = @cell_imaging.user.profession
     @cell_imaging.equipment_table.orgname = @cell_imaging.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Cell-Imaging MultiMode Reader").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @cell_imaging.save
+        if  @cell_imaging.expresssample.present?
+         equiplist = Equiplist.where(name: "Cell-Imaging MultiMode Reader").first
+         equiplist.expressslot =equiplist.expressslot- @cell_imaging.expresssample
+         equiplist.save
+        end
+
         if @cell_imaging.user.role=='student'||@cell_imaging.user.role=='faculty'
           CellImagingMailer.with(id:@cell_imaging.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -104,6 +120,6 @@ class CellImagingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cell_imaging_params
-      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type, :amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [] )
+      params.require(:cell_imaging).permit(:sample, :stype, :plate, :expected_wavelenght, :assay_type, :detection, :image_filter, :image_mode, :toxicity, :compatibility, :hazard, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type, :amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] ,references: [] )
     end
 end
