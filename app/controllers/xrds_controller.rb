@@ -27,8 +27,8 @@ class XrdsController < ApplicationController
     @slot_type = params[:slot_type]
     @equiplist = Equiplist.all
     @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
-    @equiplist_expressstart = Equiplist.where(name: "XRD").pluck(:expressstart).first.strftime("%d/%m/%Y")
-    @equiplist_expressend = Equiplist.where(name: "XRD").pluck(:expressend).first.strftime("%d/%m/%Y")
+    @equiplist_expressstart = Equiplist.where(name: "XRD").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "XRD").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /xrds/1/edit

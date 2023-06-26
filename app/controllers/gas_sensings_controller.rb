@@ -14,6 +14,12 @@ class GasSensingsController < ApplicationController
   def new
     @gas_sensing = GasSensing.new
     @gas_sensing.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Gas Sensing").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Gas Sensing").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Gas Sensing").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
 
   end
 
@@ -47,9 +53,15 @@ class GasSensingsController < ApplicationController
     @gas_sensing.equipment_table.profesion = @gas_sensing.user.profession
     @gas_sensing.equipment_table.orgname = @gas_sensing.user.orgname
   end
-
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Gas Sensing").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
     respond_to do |format|
       if @gas_sensing.save
+        if  @gas_sensing.expresssample.present?
+        equiplist = Equiplist.where(name: "Gas Sensing").first
+        equiplist.expressslot =equiplist.expressslot- @gas_sensing.expresssample
+        equiplist.save
+       end
         if @gas_sensing.user.role=='student'||@gas_sensing.user.role=='faculty'
           GasSensingMailer.with(id:@gas_sensing.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -105,6 +117,6 @@ class GasSensingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gas_sensing_params
-      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:gas_sensing).permit(:sample, :gas, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

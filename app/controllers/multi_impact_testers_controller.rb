@@ -15,7 +15,11 @@ class MultiImpactTestersController < ApplicationController
     @user=User.find(params[:id])
     @multi_impact_tester = MultiImpactTester.new
     @multi_impact_tester.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /multi_impact_testers/1/edit
@@ -49,9 +53,16 @@ class MultiImpactTestersController < ApplicationController
     @multi_impact_tester.equipment_table.profesion = @multi_impact_tester.user.profession
     @multi_impact_tester.equipment_table.orgname = @multi_impact_tester.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @multi_impact_tester.save
+        if  @multi_impact_tester.expresssample.present?
+         equiplist = Equiplist.where(name: "Multi Purpose Impact Testing (SHPB)").first
+         equiplist.expressslot =equiplist.expressslot- @multi_impact_tester.expresssample
+         equiplist.save
+        end
         if @multi_impact_tester.user.role=='student'||@multi_impact_tester.user.role=='faculty'
           MultiImpactTesterMailer.with(id:@multi_impact_tester.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +119,6 @@ class MultiImpactTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def multi_impact_tester_params
-      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:multi_impact_tester).permit(:sample, :stype, :size, :measuerment, :drop_range, :drop_velocity, :drop_temp, :drop_shape, :shpb_lenght, :shpb_temp, :bullet_velocity, :bullet_shape, :bird_velocity, :bird_shape, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

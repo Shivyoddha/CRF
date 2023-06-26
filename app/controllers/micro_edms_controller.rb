@@ -15,6 +15,12 @@ class MicroEdmsController < ApplicationController
     @user=User.find(params[:id])
     @micro_edm = MicroEdm.new
     @micro_edm.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Micro-EDM").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Micro-EDM").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Micro-EDM").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
 
   end
 
@@ -49,9 +55,16 @@ class MicroEdmsController < ApplicationController
     @micro_edm.equipment_table.profesion = @micro_edm.user.profession
     @micro_edm.equipment_table.orgname = @micro_edm.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Micro-EDM").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @micro_edm.save
+        if  @micro_edm.expresssample.present?
+        equiplist = Equiplist.where(name: "Micro-EDM").first
+        equiplist.expressslot =equiplist.expressslot- @micro_edm.expresssample
+        equiplist.save
+       end
         if @micro_edm.user.role=='student'||@micro_edm.user.role=='faculty'
           MicroEdmMailer.with(id:@micro_edm.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +121,6 @@ class MicroEdmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def micro_edm_params
-      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress,:orgname],references: [],measuerment: [] )
+      params.require(:micro_edm).permit(:sample, :composition, :toolelectrode, :toolmaterial, :millingfeed, :millingspeed,:turningfeed,:turningspeed,:drillingdepth,:drillingspeed,:edmvoltage,:edmcapacitance,:edgpolarity,:edgwire,:edgfeed, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:role, :profesion, :orgaddress,:orgname],references: [],measuerment: [] )
     end
 end

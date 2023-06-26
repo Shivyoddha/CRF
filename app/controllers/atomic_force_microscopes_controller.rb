@@ -15,6 +15,11 @@ class AtomicForceMicroscopesController < ApplicationController
     @user=User.find(params[:id])
     @atomic_force_microscope = AtomicForceMicroscope.new
     @atomic_force_microscope.build_equipment_table
+    @slot_type = params[:slot_type]
+   @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Atomic Force Microscope").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Atomic Force Microscope").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Atomic Force Microscope").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,9 +54,16 @@ else
     @atomic_force_microscope.equipment_table.profesion = @atomic_force_microscope.user.profession
     @atomic_force_microscope.equipment_table.orgname = @atomic_force_microscope.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Atomic Force Microscope").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @atomic_force_microscope.save
+        if  @atomic_force_microscope.expresssample.present?
+        equiplist = Equiplist.where(name: "Atomic Force Microscope").first
+        equiplist.expressslot =equiplist.expressslot- @atomic_force_microscope.expresssample
+        equiplist.save
+       end
         if @atomic_force_microscope.user.role=='student'||@atomic_force_microscope.user.role=='faculty'
           AtomicForceMicroscopeMailer.with(id:@atomic_force_microscope.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +118,6 @@ else
 
     # Only allow a list of trusted parameters through.
     def atomic_force_microscope_params
-      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :slotdate, :slottime, :status,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],technique: [],references: [])
+      params.require(:atomic_force_microscope).permit(:sample, :stype, :technique, :scan_rate, :x, :y, :description, :toxicity, :compatability, :carcinogenic, :more, :slotdate, :slottime, :status,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname],technique: [],references: [])
     end
 end

@@ -15,6 +15,11 @@ class UvVisNirsController < ApplicationController
     @user=User.find(params[:id])
     @uv_vis_nir = UvVisNir.new
     @uv_vis_nir.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "UV-Vis-NIR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "UV-Vis-NIR").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "UV-Vis-NIR").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,8 +54,17 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.equipment_table.profesion = @uv_vis_nir.user.profession
     @uv_vis_nir.equipment_table.orgname = @uv_vis_nir.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "UV-Vis-NIR").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @uv_vis_nir.save
+        if  @uv_vis_nir.expresssample.present?
+        equiplist = Equiplist.where(name: "UV-Vis-NIR").first
+        equiplist.expressslot =equiplist.expressslot- @uv_vis_nir.expresssample
+        equiplist.save
+       end
+
         if @uv_vis_nir.user.role=='student'||@uv_vis_nir.user.role=='faculty'
           UvVisNirMailer.with(id:@uv_vis_nir.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +122,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def uv_vis_nir_params
-      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
+      params.require(:uv_vis_nir).permit(:sample, :srange, :erange,  :composition, :toxicity, :sampletype, :more,:debit, :slotdate, :slottime, :status,:user_id, :entry_type,:dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],measurement: [],references: [])
     end
 end

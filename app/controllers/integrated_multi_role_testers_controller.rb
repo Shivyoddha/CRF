@@ -15,6 +15,11 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @user=User.find(params[:id])
     @integrated_multi_role_tester = IntegratedMultiRoleTester.new
     @integrated_multi_role_tester.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Intergrated MultiRole Tester").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Intergrated MultiRole Tester").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Intergrated MultiRole Tester").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,9 +54,16 @@ class IntegratedMultiRoleTestersController < ApplicationController
     @integrated_multi_role_tester.equipment_table.profesion = @integrated_multi_role_tester.user.profession
     @integrated_multi_role_tester.equipment_table.orgname = @integrated_multi_role_tester.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Intergrated MultiRole Tester").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @integrated_multi_role_tester.save
+        if  @integrated_multi_role_tester.expresssample.present?
+        equiplist = Equiplist.where(name: "Intergrated MultiRole Tester").first
+        equiplist.expressslot =equiplist.expressslot- @integrated_multi_role_tester.expresssample
+        equiplist.save
+        end
         if @integrated_multi_role_tester.user.role=='student'||@integrated_multi_role_tester.user.role=='faculty'
           IntegratedMultiRoleTesterMailer.with(id:@integrated_multi_role_tester.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +120,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def integrated_multi_role_tester_params
-      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
+      params.require(:integrated_multi_role_tester).permit(:sample, :measurement, :stype, :loading, :temperature, :analysis, :more,:indentation,:debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] , references: [])
     end
 end

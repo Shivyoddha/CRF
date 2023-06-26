@@ -14,6 +14,12 @@ class BallMailingsController < ApplicationController
   def new
     @ball_mailing = BallMailing.new
     @ball_mailing.build_equipment_table
+    @slot_type = params[:slot_type]
+   @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Ball Milling Unit").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Ball Milling Unit").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Ball Milling Unit").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
   end
 
   # GET /ball_mailings/1/edit
@@ -47,10 +53,17 @@ class BallMailingsController < ApplicationController
     @ball_mailing.equipment_table.profesion = @ball_mailing.user.profession
     @ball_mailing.equipment_table.orgname = @ball_mailing.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Ball Milling Unit").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
 
     respond_to do |format|
       if @ball_mailing.save
+        if  @ball_mailing.expresssample.present?
+         equiplist = Equiplist.where(name: "Ball Milling Unit").first
+         equiplist.expressslot =equiplist.expressslot- @ball_mailing.expresssample
+         equiplist.save
+        end
         if @ball_mailing.user.role=='student'||@ball_mailing.user.role=='faculty'
           BallMailingMailer.with(id:@ball_mailing.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +119,6 @@ class BallMailingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ball_mailing_params
-      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:ball_mailing).permit(:sample, :feed, :btype, :grind, :specify, :size, :grinding, :speed, :hardness, :toxicity, :compatibility, :more, :status, :slotdate, :slottime, :debit, :user_id,:entry_type, :amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

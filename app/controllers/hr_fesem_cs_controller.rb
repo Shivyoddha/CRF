@@ -23,10 +23,11 @@ class HrFesemCsController < ApplicationController
     @hr_fesem_c = HrFesemC.new
     @user=User.find(params[:id])
     @hr_fesem_c.build_equipment_table
+    @slot_type = params[:slot_type]
     @equiplist = Equiplist.all
     @equiplist_expressslot = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
-    @equiplist_expressstart = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressstart).first.strftime("%d/%m/%Y")
-    @equiplist_expressend = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressend).first.strftime("%d/%m/%Y")
+    @equiplist_expressstart = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "HR-FESEM [Carl Zeiss]").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /hr_fesem_cs/1/edit

@@ -14,6 +14,12 @@ class FiveAxisController < ApplicationController
   def new
     @five_axi = FiveAxi.new()
     @five_axi.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "5-Axes CNC").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "5-Axes CNC").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "5-Axes CNC").pluck(:expressend).first&.strftime("%d/%m/%Y")
+
   end
 
   # GET /five_axis/1/edit
@@ -47,8 +53,16 @@ class FiveAxisController < ApplicationController
     @five_axi.equipment_table.profesion = @five_axi.user.profession
     @five_axi.equipment_table.orgname = @five_axi.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "5-Axes CNC").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @five_axi.save
+        if  @five_axi.expresssample.present?
+        equiplist = Equiplist.where(name: "5-Axes CNC").first
+        equiplist.expressslot =equiplist.expressslot- @five_axi.expresssample
+        equiplist.save
+       end
         if @five_axi.user.role=='student'||@five_axi.user.role=='faculty'
           FiveAxiMailer.with(id:@five_axi.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -103,6 +117,6 @@ class FiveAxisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def five_axi_params
-      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:five_axi).permit(:sample, :material, :depth, :operation, :tool, :specimentolerance, :cncprogram, :rotationalspeed, :feedrate, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

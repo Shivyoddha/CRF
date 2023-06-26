@@ -14,6 +14,11 @@ class UltraCentrifugesController < ApplicationController
   def new
     @ultra_centrifuge = UltraCentrifuge.new
     @ultra_centrifuge.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Ultra-Centrifuge").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Ultra-Centrifuge").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Ultra-Centrifuge").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,8 +53,17 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.equipment_table.profesion = @ultra_centrifuge.user.profession
     @ultra_centrifuge.equipment_table.orgname = @ultra_centrifuge.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Ultra-Centrifuge").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+
     respond_to do |format|
       if @ultra_centrifuge.save
+        if  @ultra_centrifuge.expresssample.present?
+        equiplist = Equiplist.where(name: "Ultra-Centrifuge").first
+        equiplist.expressslot =equiplist.expressslot- @ultra_centrifuge.expresssample
+        equiplist.save
+       end
+
         if @ultra_centrifuge.user.role=='student'||@ultra_centrifuge.user.role=='faculty'
           UltraCentrifugeMailer.with(id:@ultra_centrifuge.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +120,6 @@ class UltraCentrifugesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ultra_centrifuge_params
-      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:ultra_centrifuge).permit(:sample, :volume, :speed, :temperature, :toxicity, :compatibility, :carcinogenic, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:dummy1,:dummy2,:dummy3, :amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end

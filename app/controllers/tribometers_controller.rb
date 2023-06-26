@@ -15,6 +15,11 @@ class TribometersController < ApplicationController
     @user=User.find(params[:id])
     @tribometer = Tribometer.new
     @tribometer.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Tribometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Tribometer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Tribometer").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -49,9 +54,15 @@ class TribometersController < ApplicationController
     @tribometer.equipment_table.profesion = @tribometer.user.profession
     @tribometer.equipment_table.orgname = @tribometer.user.orgname
   end
-
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Tribometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
     respond_to do |format|
       if @tribometer.save
+        if  @tribometer.expresssample.present?
+         equiplist = Equiplist.where(name: "Tribometer").first
+         equiplist.expressslot =equiplist.expressslot- @tribometer.expresssample
+         equiplist.save
+        end
         if @tribometer.user.role=='student'||@tribometer.user.role=='faculty'
           TribometerMailer.with(id:@tribometer.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -109,6 +120,6 @@ class TribometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tribometer_params
-      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,:entry_type,:dummy1,:dummy2,:dummy3,:amount,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
+      params.require(:tribometer).permit(:sample, :measurement, :stype, :temp_req, :loading, :indenter, :stroke, :more,:user_id,:status,:slotdate,:slottime,:debit,:entry_type,:dummy1,:dummy2,:dummy3,:amount,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],references: [])
     end
 end
