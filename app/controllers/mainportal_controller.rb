@@ -116,8 +116,8 @@ end
         @external_count = EquipmentTable.where('DATE(created_at) = ?', @today ).where(role: 'external').count
         @internal_revenue_day =  EquipmentTable.where('DATE(created_at) = ?', @today ).where(role: ['student', 'faculty']).all
         @external_revenue_day = EquipmentTable.where('DATE(created_at) = ?', @today ).where(role: 'external').all
-        @sum_internal = @internal_revenue_day.sum(:pay)
-        @sum_external = @external_revenue_day.sum(:pay)
+        @sum_internal_day = @internal_revenue_day.sum(:pay)
+        @sum_external_day = @external_revenue_day.sum(:pay)
         @internal_user = User.where(role: ['student','faculty']).count(:email)
         @external_user = User.where(role: 'external').count(:email)
         @internal_revenue =  EquipmentTable.where(role: ['student', 'faculty']).all
