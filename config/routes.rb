@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   post 'mainportal/adminModelEquip'
   post 'mainportal/adminModelUsers'
   root 'mainpage#landing'
+  post 'mainportal/chairmanStats'
+  post 'mainportal/chairmanStatsPayment'
+  post 'mainportal/chairmanStatsSamples'
+
+
+
+
   resources :ft_nms
   resources :ansies
   resources :equipment_tables
@@ -73,6 +80,8 @@ Rails.application.routes.draw do
     get 'mainportal/chairmanEquip'
     get 'mainportal/chairmanPayment'
     get 'mainportal/chairmanUsers'
+    get 'mainportal/chairmanStatsPayment'
+    get 'mainportal/chairmanStatsSamples'
     get 'mainpage/landing'
     get 'home/index'
     get 'home/myslots'

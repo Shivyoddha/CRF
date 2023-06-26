@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_24_104339) do
+ActiveRecord::Schema.define(version: 2023_06_25_180800) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -294,9 +294,9 @@ ActiveRecord::Schema.define(version: 2023_06_24_104339) do
     t.string "invoice_address"
     t.string "invoice_gst"
     t.float "amount_paid"
-    t.float "gst_applied"
-    t.float "testing"
-    t.float "consulting"
+    t.integer "gst_applied"
+    t.integer "testing"
+    t.integer "consulting"
     t.float "gst"
     t.string "state"
     t.date "date_of_depo"
@@ -305,6 +305,7 @@ ActiveRecord::Schema.define(version: 2023_06_24_104339) do
     t.string "orgname"
     t.integer "contact_no"
     t.integer "ft_nm_id"
+    t.float "consultancy_rate"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
