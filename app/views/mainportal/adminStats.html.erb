@@ -80,19 +80,45 @@
 
                     <!--Script tag to fetch data to the chart-->
                     <script type="text/javascript">
-                        var chemical_engineering =<%@chemical_engineering%>;
+                      var ai_engineering = <%= @ai_engineering %>;
+                      var chemical_engineering = <%= @chemical_engineering %>;
+                      var chemistry = <%= @chemistry %>;
+                      var civil_engineering = <%= @civil_engineering %>;
+                      var cs_engineering = <%= @cs_engineering %>;
+                      var ee_engineering = <%= @ee_engineering %>;
+                      var ec_engineering = <%= @ec_engineering %>;
+                      var it_engineering = <%= @it_engineering %>;
+                      var mechanical_engineering = <%= @mechanical_engineering %>;
+                      var mining_engineering = <%= @mining_engineering %>;
+                      var metallurgical_engineering = <%= @metallurgical_engineering %>;
+                      var physics = <%= @physics %>;
+                      var water_resources_ocean_engineering = <%= @water_resources_ocean_engineering %>;
+
                         google.charts.load('current', {'packages':['corechart']});
                         google.charts.setOnLoadCallback(drawChart);
 
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
                                 ['Internal', 'Hours per Day'],
-                                ['NITK', internal],
-                                ['External', external]
+                                ['AI Engineering', ai_engineering],
+                                ['Chemical Engineering', chemical_engineering],
+                                ['Chemistry', chemistry],
+                                ['Civil Engineering', civil_engineering],
+                                ['CS Engineering', cs_engineering],
+                                ['EE Engineering', ee_engineering],
+                                ['EC Engineering', ec_engineering],
+                                ['IT Engineering', it_engineering],
+                                ['Mechanical Engineering', mechanical_engineering],
+                                ['Mining Engineering', mining_engineering],
+                                ['Metallurgical Engineering', metallurgical_engineering],
+                                ['Physics', physics],
+                                ['Water Resources & Ocean Engineering', water_resources_ocean_engineering]
+
+
                             ]);
 
                             var options = {
-                                title: 'Nitk v/s External'
+                                title: 'Department-vise division'
                             };
 
                             var chart = new google.visualization.PieChart(document.getElementById('piechart2'));

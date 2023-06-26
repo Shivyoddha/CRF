@@ -1,6 +1,8 @@
 class AnnouncementsController < ApplicationController
-  before_action :set_announcement, only: %i[ show edit update destroy ]
-   # before_action :authenticate_admin!
+  # before_action :authenticate_admin!
+  # load_and_authorize_resource class: Announcement
+  # before_action :set_announcement, only: %i[ show edit update destroy ]
+
 
   def import
     return redirect_to request.referer, notice: 'No file added' if params[:file].nil?

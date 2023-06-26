@@ -2,7 +2,7 @@
 
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <a class="navbar-brand font-unbounded" href="#">CRF CHAIRMAN</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -15,13 +15,14 @@
                             <li class="nav-item">
                             <a class="nav-link active nav-btn main-elements" id='active-tab'>Statistics</a>
                             </li>
+
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
                                 <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
 
@@ -38,71 +39,151 @@
                     </ul>
                     </div>
                 </div>
-
-
         </nav>
 
-<div class="container">
+        <style>
+        .container {
+          display: flex;
+          justify-content: center;
+        }
 
-        <div id="chart" class="mt-5 mb-3">
-            <div id="stats">
-                <h2 class="fw-bold">Statistics</h2>
+        #mini-cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          max-width: 600px; /* Adjust the width as needed */
+        }
+
+        .card-body {
+          text-align: center;
+        }
+        </style>
+
+        <div class="container">
+          <div id="mini-cards">
+            <div class="card-body">
+              <h5 class="card-title">User Stats</h5>
+              <%= link_to mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'users', class: "mini-card-icon" %>
+              <% end %>
             </div>
-                <canvas id="myChart" class="">  </canvas>
 
-                <script>
-                    function myFunction() {
-                        var array=[]
-                        for(let i=1; i<2; i++){
-                            "<%@equipment=EquipmentTable.all.each do |equip|%> "
-                            "<%end%>"
+            <div class="card-body">
+              <h5 class="card-title">Sample Stats</h5>
+              <%= link_to mainportal_chairmanStatsSamples_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'samples', class: "mini-card-icon" %>
+              <% end %>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Payment Stats</h5>
+              <%= link_to mainportal_chairmanStatsPayment_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'payment_', class: "mini-card-icon" %>
+              <% end %>
+            </div>
+
+            </div>
+          </div>
+
+
+
+<br>
+
+<div id="stats">
+    <h2 class="fw-bold">User Registration</h2>
+</div>
+
+    <div style="display: flex;">
+            <div style="flex: 1;">
+
+                <div id="chart-1" class="mt-5 mb-3">
+
+                    <!--Script tag to fetch data to the chart-->
+                    <script type="text/javascript">
+                        var internal = <%= @internal%>;
+                        var external = <%= @external %>;
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Internal', 'Hours per Day'],
+                                ['NITK', internal],
+                                ['External', external]
+                            ]);
+
+                            var options = {
+                                title: 'Nitk v/s External'
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                            chart.draw(data, options);
                         }
-                    return array;
-                    }
-                    var xValues = myFunction();
-                    var yValues = [55, 49, 44, 70, 65];
-                    var barColors = [
-                    "#b91d47",
-                    "#00aba9",
-                    "#2b5797",
-                    "#e8c3b9",
-                    "#1e7145"
-                    ];
+                    </script>
 
-                    new Chart("myChart", {
-                    type: "pie",
-                    data: {
-                        labels: xValues,
-                        datasets: [{
-                        backgroundColor: barColors,
-                        data: yValues
-                        }]
-                    },
-                        options: {
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                </div>
+                </div>
 
-                            title: {
-                            display: true,
-                            text: "World Wide Wine Production 2018",
-                            plugins: {
-                                legend: {
-                                    labels: {
-                                        // This more specific font property overrides the global property
-                                        font: {
-                                            size: 16
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                <div style="flex: 1;">
+                <div id="chart-2" class="mt-5 mb-3">
+
+                    <!--Script tag to fetch data to the chart-->
+                    <script type="text/javascript">
+                      var ai_engineering = <%= @ai_engineering %>;
+                      var chemical_engineering = <%= @chemical_engineering %>;
+                      var chemistry = <%= @chemistry %>;
+                      var civil_engineering = <%= @civil_engineering %>;
+                      var cs_engineering = <%= @cs_engineering %>;
+                      var ee_engineering = <%= @ee_engineering %>;
+                      var ec_engineering = <%= @ec_engineering %>;
+                      var it_engineering = <%= @it_engineering %>;
+                      var mechanical_engineering = <%= @mechanical_engineering %>;
+                      var mining_engineering = <%= @mining_engineering %>;
+                      var metallurgical_engineering = <%= @metallurgical_engineering %>;
+                      var physics = <%= @physics %>;
+                      var water_resources_ocean_engineering = <%= @water_resources_ocean_engineering %>;
+
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Internal', 'Hours per Day'],
+                                ['AI Engineering', ai_engineering],
+                                ['Chemical Engineering', chemical_engineering],
+                                ['Chemistry', chemistry],
+                                ['Civil Engineering', civil_engineering],
+                                ['CS Engineering', cs_engineering],
+                                ['EE Engineering', ee_engineering],
+                                ['EC Engineering', ec_engineering],
+                                ['IT Engineering', it_engineering],
+                                ['Mechanical Engineering', mechanical_engineering],
+                                ['Mining Engineering', mining_engineering],
+                                ['Metallurgical Engineering', metallurgical_engineering],
+                                ['Physics', physics],
+                                ['Water Resources & Ocean Engineering', water_resources_ocean_engineering]
+
+
+                            ]);
+
+                            var options = {
+                                title: 'Department-vise division'
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+                            chart.draw(data, options);
                         }
-                    });
-                </script>
+                    </script>
+
+                    <div id="piechart2" style="width: 900px; height: 500px;"></div>
+                </div>
+            </div>
         </div>
 
-    </div>
 
 
-</div>
 
 
 <script>

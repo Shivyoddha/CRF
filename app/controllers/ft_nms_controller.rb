@@ -39,7 +39,7 @@ class FtNmsController < ApplicationController
     else
     @ft_nm.equipment_table.dummy = "alloted"
     @ft_nm.equipment_table.username = @ft_nm.user.name
-    @ft_nm.equipment_table.equipname = "ft_nm"
+    @ft_nm.equipment_table.equipname = "FT-NMR"
     @ft_nm.equipment_table.app_no = @ft_nm.id
     @ft_nm.equipment_table.debit_head = @ft_nm.debit
     @ft_nm.equipment_table.role = @ft_nm.user.role

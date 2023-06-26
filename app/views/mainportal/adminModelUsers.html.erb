@@ -71,7 +71,6 @@
                 <tbody>
                       <% @user.each do |user|%>
                     <tr>
-                        <% @entry = user.status%>
                         <td><%=user.firstname%></td>
                         <td><%=user.email%></td>
                         <td><%=user.contact%></td>
@@ -79,14 +78,13 @@
                         <td><%=user.course%></td>
                         <td><%=user.department%></td>
                         <td><%=user.created_at%></td>
-                        <%= form_with url: mainportal_adminModelUsers_path do |form| %>
+                        <%= form_with model: user, url: registration_path(user) do |form| %>
                         <% if user.status == "Active"%>
-                        <%= form.hidden_field :entry , value:"Inactive" %>
+                        <%= form.hidden_field :status , value:"Inactive" %>
+                        <% elsif user.status == "Inactive"%>
+                        <%= form.hidden_field :status , value:"Active" %>
+                        <%= form.hidden_field :slotbooker , value:"Active" %>
                         <%end%>
-                        <% if user.status == "Inactive"%>
-                        <%= form.hidden_field :entry , value:"Active" %>
-                        <%end%>
-                        <% user.status = @entry %>
                         <td><%= form.submit "Update", class:"btn btn-outline-secondary", id:"update" %></td>
                         <td><%=user.status%></td>
                         <%end%>

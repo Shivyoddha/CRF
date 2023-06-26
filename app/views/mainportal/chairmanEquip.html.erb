@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <a class="navbar-brand font-unbounded" href="#">CRF CHAIRMAN</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
@@ -21,7 +21,7 @@
                             <div id="model-list-active">
                                 <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element", id:'active-tab-1' %>
-                                <%= link_to "Payment", mainportal_chairmanPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                             </div>
                         </ul>
 
@@ -41,6 +41,7 @@
 
 
         </nav>
+
 
 
 <div class="container">
@@ -68,23 +69,97 @@
                     </tr>
                 </thead>
                 <tbody>
+                  <% @equiplist.each do |equip|%>
                     <tr>
-                        <th scope="row">1	</th>
-                        <td>XRD</td>
-                        <td><!-- Button trigger modal -->
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Under Maintainance
-                            </button>
+                        <th scope="row"><%=equip.id%></th>
+                        <td><%= equip.name%>
                         </td>
+                        <td id="assign-btn">
+                            <!-- Button trigger modal -->
+                             <%= button_tag equip.status, type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{equip.id}" }, id: "ani" %>
+
+                             <div id="<%= equip.id%>" class="modal">
+                             <div class="modal-dialog">
+                                   <div class="modal-content">
+                                     <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Change the Status of the <%= equip.name%></h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                 </div>
+                                 <div class="modal-body">
+
+                                  <%= form_with model: equip do |f|%>
+  <div class="form-group">
+    <%# <%= f.label :status %>
+    <%# <%= f.select :status, options_for_select([['Active', 'Active'], ['Under Maintenance', 'Under Maintenance'], ['Unavailable', 'Unavailable']]), {}, { class: 'form-control' } %>
+ <div class="form-check">
+    <%= f.radio_button :status,'Active',class:"form-check-input text-warning", type:"radio",id:"status-a" %>
+    <%= f.label :status, 'Active',:value=>'Active', class:"form-check-label", for:"status-u" %>
+    </div>
+     <div class="form-check">
+    <%= f.radio_button :status,'Under Maintenance',class:"form-check-input text-warning", type:"radio", id:"status-u" %>
+    <%= f.label :status, 'Under Maintenance',:value=>'Under Maintenance', class:"form-check-label", for:"status-u" %>
+</div>
+     <div class="form-check text-secondary">
+    <%= f.radio_button :status,'Unavailable',class:"form-check-input text-warning", type:"radio",id:"status-n" %>
+    <%= f.label :status, 'Unavailable',:value=>'Unavailable', class:"form-check-label", for:"status-u" %>
+</div>
+
+                                          </div>
+                                 <div class="modal-footer">
+                                     <!-- <button type="button" class="btn btn-primary">Update</button> -->
+
+                                   <%= f.submit 'Update', class: 'btn btn-primary' %>
+                                 <% end %>
+                                    </div>
+                                 </div>
+                                     </div>
+                                 </div>
+
+                           </div>
                         <td>90582655154</td>
                         <td><!-- Button trigger modal -->
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             Calibrated
                             </button>
-                        </td>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Change the Status of the XRD</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="status" id="status-a" value="option1" checked>
+                                            <label class="form-check-label text-success" for="status-a">
+                                                Active
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                        <input class="form-check-input text-warning" type="radio" name="status" id="status-u" value="option2">
+                                        <label class="form-check-label" for="status-u">
+                                            Undermaintainance
+                                        </label>
+                                        </div>
+                                        <div class="form-check text-secondary">
+                                        <input class="form-check-input" type="radio" name="status" id="status-n" value="option3">
+                                        <label class="form-check-label" for="status-n">
+                                            Unavailable
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Update</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                                    </td>
                         <td>90582655154</td>
                     </tr>
+                    <%end%>
                 </tbody>
             </table>
 
@@ -95,3 +170,21 @@
 
 
 </div>
+
+
+<script>
+// Get the modals and buttons
+var modal1 = document.getElementByClass("modal1");
+var btn1 = document.getElementById("ani");
+
+// Add event listeners to the buttons
+btn1.addEventListener("click", function() {
+  modal1.style.display = "block";
+});
+// Close the modal when the user clicks anywhere outside of it
+window.addEventListener("click", function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+  }
+});
+</script>

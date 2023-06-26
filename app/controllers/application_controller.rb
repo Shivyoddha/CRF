@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
 
 
+  #
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden }
@@ -93,6 +94,7 @@ class ApplicationController < ActionController::Base
   #  end
   protected
 
+  
   def configure_permitted_parameters
     attributes = [:firstname, :lastname, :rollno, :orgname, :orgaddress, :contact, :profession,
                   :collegeid, :department, :role,:course, :name, :file,:slotbooker,:admin,:faculty_id, :developer]
