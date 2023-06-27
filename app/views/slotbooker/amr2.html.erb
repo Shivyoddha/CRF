@@ -68,6 +68,7 @@
                     <th scope="col" id="institute">Institute</th>
                     <th scope="col" id="department">Department</th>
                     <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col">Slot Type</th>
                     <th scope="col" id="sample-no">No of Samples</th>
                     <th scope="col" id="sample-type">Sample Type</th>
                     <th scope="col" id="sample-type">Sample Size</th>
@@ -93,14 +94,15 @@
             <tbody>
 
                     <% @amr2.where(status:'alloted').each do |amr|%>
-                  <tr>
+                  <tr class="<%if amr.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/AMR/<%=amr.id %>	</th>
                     <td> <%= amr.user.firstname%><nobr> <%=amr.user.lastname%> </td>
                     <td> <%= amr.user.orgname%> </td>
                     <td> <%= amr.user.department%> </td>
                     <td> <%= amr.user.contact%> </td>
-                    <td> <%= amr.sample%> </td>
+                    <td> <%if amr.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if amr.sample == nil %> <%= amr.expresssample%> <%else%> <%= amr.sample%> </td> <%end%>
                     <td> <%= amr.stype%> </td>
                     <td> <%= amr.size%> </td>
                     <td> <%= amr.nature%> </td>

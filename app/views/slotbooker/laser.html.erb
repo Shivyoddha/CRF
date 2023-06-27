@@ -68,6 +68,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="composition">Sample Type</th>
@@ -85,14 +86,15 @@
                 <tbody>
 
                       <% @laser.all.each do |laser|%>
-                      <tr>
+                      <tr class="<%if laser.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/LASER/<%=laser.id %>	</th>
                         <td> <%= laser.user.firstname%><nobr> <%= laser.user.lastname%></td>
                         <td> <%= laser.user.orgname%> </td>
                         <td> <%= laser.user.department%> </td>
                         <td> <%= laser.user.contact%> </td>
-                        <td> <%= laser.sample%> </td>
+                        <td> <%if laser.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if laser.sample == nil %> <%= laser.expresssample%> <%else%> <%= laser.sample%> </td> <%end%>
                         <td> <%= laser.composition%> </td>
                         <td> <%= laser.stype%> </td>
                         <td> <%= laser.temp_points%> </td>

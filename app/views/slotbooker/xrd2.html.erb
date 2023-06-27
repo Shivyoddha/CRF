@@ -76,6 +76,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="sample-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
@@ -94,7 +95,7 @@
                 <tbody>
 
                   <% @xrd2.where(status:'alloted').each do |xrds|%>
-
+                  <%if xrds.expresssample == nil %>
                   <tr>
                     <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
 
@@ -102,6 +103,7 @@
                     <td> <%= xrds.user.orgname%> </td>
                     <td> <%= xrds.user.department%> </td>
                     <td> <%= xrds.user.contact%> </td>
+                    <td><%if xrds.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                     <td> <%= xrds.sample%> </td>
                     <td> <%= xrds.measurement%> </td>
                     <td> <%= xrds.composition%> </td>
@@ -225,8 +227,142 @@
                              </div>
                          </td>
 
-<%end%>
                     </tr>
+                    <%else%>
+                  <tr class = "exp-slot-entry">
+                    <th scope="row">CRF/XRD/<%=xrds.id %>	</th>
+
+                    <td> <%= xrds.user.firstname%><nobr> <%= xrds.user.lastname%></td>
+                    <td> <%= xrds.user.orgname%> </td>
+                    <td> <%= xrds.user.department%> </td>
+                    <td> <%= xrds.user.contact%> </td>
+                    <td><%if xrds.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                    <td> <%= xrds.sample%> </td>
+                    <td> <%= xrds.measurement%> </td>
+                    <td> <%= xrds.composition%> </td>
+                    <td> <%= xrds.stype%> </td>
+                    <td> <%= xrds.mind%>° to <%= xrds.maxd%>°</td>
+                    <td> <%= xrds.more%> </td>
+                    <td><span style="white-space: nowrap;"><%= xrds.slotdate.strftime('%d-%m-%Y')if xrds.slotdate.present? %></td>
+                    <td><%= xrds.slottime.strftime('%H:%M:%S') if xrds.slottime.present? %></td>
+                      <td><%= xrds.status%></td>
+                    <%if xrds.references.attached? %>
+                    <%xrds.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
+                        <td id="assign-btn">
+                            <!-- Button trigger modal -->
+                             <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{xrds.id}" }, id: "ani" %>
+                             <div id="<%= xrds.id%>" class="modal">
+
+                           <div class="modal-dialog">
+                               <div class="modal-content">
+                                   <div class="modal-header">
+                                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= xrds.user.firstname %></b></h1>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                   </div>
+                                   <div class="modal-body">
+                                     <%= form_with(model: xrds,local:true) do |form| %>
+
+                                     <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                   </div>
+
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+
+                                     <%=form.fields_for :equipment_table do |f| %>
+                                         <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
+                                        <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
+                                       <%= f.hidden_field :dummy, value:"#{xrds.status}"%>
+                                       <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
+                                     <%end%>
+
+
+                                       <div class="actions">
+                                         <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                       </div>
+                                     <% end %>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                         </td>
+
+
+                         <td id="cancel-btn">
+                            <!-- Button trigger modal -->
+                              <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{xrds.id}" }, id: "anish" %>
+
+                             <!-- Modal -->
+                              <div id="ani<%= xrds.id%>" class="modal">
+                               <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= xrds.user.firstname %></b></h1>
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                         </div>
+                                         <div class="modal-body">
+                                           <%= form_for xrds do |f| %>
+                                             <p> Are you sure you want to cancel the slot ?</p>
+                                             <%= f.hidden_field :status, value: 'cancelled' %>
+                                         <div class="actions">
+
+
+                                         </div>
+
+                                          </div>
+                                         <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                               <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                         </div>
+                                         <% end %>
+                                     </div>
+                                 </div>
+                             </div>
+                         </td>
+                         <td id="complete-btn">
+                            <!-- Button trigger modal -->
+                              <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{xrds.id}" }, id: "anish" %>
+
+                             <!-- Modal -->
+                              <div id="mai<%= xrds.id%>" class="modal">
+                               <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= xrds.user.firstname %></b></h1>
+                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                         </div>
+                                         <div class="modal-body">
+                                           <%= form_for xrds do |f| %>
+                                             <p> Are you sure you want to complete the slot ?</p>
+                                             <%= f.hidden_field :status, value: 'completed' %>
+                                         <div class="actions">
+
+
+                                         </div>
+
+                                          </div>
+                                         <div class="modal-footer">
+                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                               <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                                         </div>
+                                         <% end %>
+                                     </div>
+                                 </div>
+                             </div>
+                         </td>
+
+                    </tr>
+<%end%>
+                    <%end%>
 
                 </tbody>
             </table>

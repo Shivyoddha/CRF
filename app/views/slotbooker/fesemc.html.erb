@@ -76,6 +76,7 @@
                         <th scope="col">Institute</th>
                         <th scope="col">Department</th>
                         <th scope="col">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col">No of Samples</th>
                         <th scope="col">Sample Type</th>
                         <th scope="co">Composition</th>
@@ -95,14 +96,16 @@
                 <tbody>
                     <tr>
                     <% @fesemc.each do |fesemc|%>
-                        <tr>
+                    
+                        <tr class="<%if fesemc.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                           <th scope="row">CRF/fesemc/<%=fesemc.id %>	</th>
 
                           <td> <%=fesemc.user.firstname%><nobr> <%=fesemc.user.lastname%> </td>
                           <td> <%=fesemc.user.orgname%> </td>
                           <td> <%=fesemc.user.department%> </td>
                           <td> <%=fesemc.user.contact%> </td>
-                          <td> <%=fesemc.sample%> </td>
+                          <td> <%if fesemc.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                          <td><% if fesemc.expresssample == nil %> <%= fesemc.sample%> <%else%> <%= fesemc.expresssample%> </td> <%end%>
                           <td> <%= fesemc.stype%> </td>
                           <td> <%= fesemc.composition%> </td>
                           <td> <%= fesemc.sphase%> </td>
@@ -122,8 +125,9 @@
                       <% else %>
                         <td>NA</td>
                           <%end%>
-  <%end%>
                     </tr>
+                    
+                <%end%>
                 </tbody>
             </table>
 

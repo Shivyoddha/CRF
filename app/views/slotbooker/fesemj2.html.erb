@@ -74,6 +74,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No of Samples</th>
                       <th scope="col">Sample Type</th>
                       <th scope="co">Composition</th>
@@ -96,13 +97,14 @@
                 <tbody>
 
                       <% @fesemj2.where(status:'alloted').each do |fesemj2|%>
-                      <tr>
+                      <tr class="<%if fesemj2.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/FESEMJ/<%=fesemj2.id %>	</th>
                       <td> <%=fesemj2.user.firstname%><nobr> <%=fesemj2.user.lastname%> </td>
                       <td> <%= fesemj2.user.orgname%> </td>
                       <td> <%= fesemj2.user.department%> </td>
                       <td> <%= fesemj2.user.contact%> </td>
-                      <td> <%= fesemj2.sample%> </td>
+                      <td> <%if fesemj2.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                      <td><% if fesemj2.sample == nil %> <%= fesemj2.expresssample%> <%else%> <%= fesemj2.sample%> </td> <%end%>
                       <td> <%= fesemj2.stype%> </td>
                       <td> <%= fesemj2.composition%> </td>
                       <td> <%= fesemj2.sphase%> </td>
@@ -199,7 +201,7 @@
                        </td>
                        <td id="complete-btn">
                           <!-- Button trigger modal -->
-                            <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{fesemj2.id}" }, id: "anish" %>
+                            <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{fesemj2.id}" }, id: "anish" %>
 
                            <!-- Modal -->
                             <div id="ani<%= fesemj2.id%>" class="modal">

@@ -68,6 +68,7 @@
                     <th scope="col">Institute</th>
                     <th scope="col">Department</th>
                     <th scope="col">Contact No:</th>
+                    <th scope="col">Slot Type</th>
                     <th scope="col">No of Samples</th>
                     <th scope="col">Temperature</th>
                     <th scope="co">Standard Analysis</th>
@@ -89,14 +90,15 @@
             </thead>
             <tbody>
                 <% @bet2.where(status:'alloted').each do |bet|%>
-                  <tr>
+                  <tr class="<%if bet.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/BET/<%=bet.id %>	</th>
                     <td> <%= bet.user.firstname%><nobr> <%= bet.user.lastname%></td>
                     <td> <%= bet.user.orgname%> </td>
                     <td> <%= bet.user.department%> </td>
                     <td> <%= bet.user.contact%> </td>
-                    <td> <%= bet.sample%> </td>
+                    <td> <%if bet.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                    <td><% if bet.sample == nil %> <%= bet.expresssample%> <%else%> <%= bet.sample%> </td> <%end%>
                     <td> <%= bet.degassing%> </td>
                     <td> <%= bet.analysiscustom%> </td>
                     <td> <%= bet.analysisstandard%> </td>

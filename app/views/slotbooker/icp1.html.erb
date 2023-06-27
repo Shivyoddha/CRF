@@ -68,6 +68,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="composition">Sample Phase</th>
@@ -91,14 +92,15 @@
                 <tbody>
 
                         <% @icp1.where(status:'pending').each do |icp|%>
-                      <tr>
+                      <tr class="<%if icp.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ICP/<%=icp.id %>	</th>
                         <td> <%= icp.user.firstname%><nobr> <%= icp.user.lastname%></td>
                         <td> <%= icp.user.orgname%> </td>
                         <td> <%= icp.user.department%> </td>
                         <td> <%= icp.user.contact%> </td>
-                        <td> <%= icp.sample%> </td>
+                        <td> <%if icp.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if icp.sample == nil %> <%= icp.expresssample%> <%else%> <%= icp.sample%> </td> <%end%>
                         <td> <%= icp.composition%> </td>
                         <td> <%= icp.sample_phase%> </td>
                         <td> <%= icp.nature%> </td>

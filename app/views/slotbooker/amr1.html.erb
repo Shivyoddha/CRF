@@ -68,6 +68,7 @@
                   <th scope="col" id="institute">Institute</th>
                   <th scope="col" id="department">Department</th>
                   <th scope="col" id="contact-no">Contact No:</th>
+                  <th scope="col">Slot Type</th>
                   <th scope="col" id="sample-no">No of Samples</th>
                   <th scope="col" id="sample-type">Sample Type</th>
                   <th scope="col" id="sample-type">Sample Size</th>
@@ -91,7 +92,7 @@
             <tbody>
 
                   <% @amr1.where(status:'pending').each do |amr1|%>
-                  <tr>
+                  <tr class="<%if amr1.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                     <!-- Button trigger modal -->
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/amr1/<%=amr1.id %>	</th>
@@ -99,7 +100,8 @@
                       <td> <%= amr1.user.orgname%> </td>
                       <td> <%= amr1.user.department%> </td>
                       <td> <%= amr1.user.contact%> </td>
-                      <td> <%= amr1.sample%> </td>
+                      <td> <%if amr1.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                      <td><% if amr1.sample == nil %> <%= amr1.expresssample%> <%else%> <%= amr1.sample%> </td> <%end%>
                       <td> <%= amr1.stype%> </td>
                       <td> <%= amr1.size%> </td>
                       <td> <%= amr1.nature%> </td>
