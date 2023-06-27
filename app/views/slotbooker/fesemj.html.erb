@@ -73,6 +73,7 @@
                         <th scope="col">Institute</th>
                         <th scope="col">Department</th>
                         <th scope="col">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col">No of Samples</th>
                         <th scope="col">Sample Type</th>
                         <th scope="co">Composition</th>
@@ -92,13 +93,14 @@
                 <tbody>
                     <tr>
                         <% @fesemj.each do |fesemjs|%>
-                          <tr>
+                          <tr class="<%if fesemjs.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/FESEMJ/<%= fesemjs.id%>	</th>
                           <td> <%=fesemjs.user.firstname%><nobr> <%=fesemjs.user.lastname%> </td>
                           <td> <%= fesemjs.user.orgname%> </td>
                           <td> <%=fesemjs.user.department%> </td>
                           <td> <%= fesemjs.user.contact%> </td>
-                          <td> <%= fesemjs.sample%> </td>
+                          <td> <%if fesemjs.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                          <td><% if fesemjs.sample == nil %> <%= fesemjs.expresssample%> <%else%> <%= fesemjs.sample%> </td> <%end%>
                           <td> <%= fesemjs.stype%> </td>
                           <td> <%= fesemjs.composition%> </td>
                           <td> <%=fesemjs.sphase%> </td>
@@ -121,6 +123,7 @@
                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
 
 <%end%>
+  <%end%>
   <%end%>
                     </tr>
                 </tbody>

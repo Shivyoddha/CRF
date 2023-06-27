@@ -132,7 +132,12 @@
 
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% if @equip1.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip1.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
                 </div>
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -277,7 +282,12 @@
           <div class="card-footer">
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% if @equip2.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip2.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
                 </div>
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -419,8 +429,12 @@
             <div class="card-footer">
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-
+                    <% if @equip3.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip3.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
                 </div>
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -571,10 +585,14 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="card-footer-express">
+               <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
-                    <div class="badge badge-warning badge-outlined">Not Available</div>
-
+                    <% if @equip4.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip4.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
                 </div>
 
                 <!-- Button trigger modal -->
@@ -715,10 +733,14 @@
           </div>
           <div class="card-footer">
               <div class="card-footer-express">
-                  <small class="text-muted card-footer-express">Express Slot:</small>
-                  <div class="badge badge-warning badge-outlined">Not Available</div>
-
-              </div>
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip5.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip5.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
 
               <!-- Button trigger modal -->
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -865,9 +887,14 @@
           </div>
           <div class="card-footer">
               <div class="card-footer-express">
-                  <small class="text-muted card-footer-express">Express Slot:</small>
-                  <div class="badge badge-warning badge-outlined">Not Available</div>
-              </div>
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip6.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip6.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
 
               <!-- Button trigger modal -->
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -1002,9 +1029,14 @@
              </div>
              <div class="card-footer">
                  <div class="card-footer-express">
-                     <small class="text-muted card-footer-express">Express Slot:</small>
-                     <div class="badge badge-warning badge-outlined">Not Available</div>
-                 </div>
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip7.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip7.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
 
                  <!-- Button trigger modal -->
                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -1139,6 +1171,16 @@
                 </div>
             </div>
             <div class="card-footer">
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip8.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip8.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
+
 
               <!-- Button trigger modal -->
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -1275,7 +1317,15 @@
                </div>
            </div>
            <div class="card-footer">
-
+            <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip9.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip9.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
              <!-- Button trigger modal -->
              <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
              Availabilty
@@ -1405,7 +1455,15 @@
               </div>
           </div>
           <div class="card-footer">
-
+            <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip10.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip10.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
             <!-- Button trigger modal -->
             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
             Availabilty
@@ -1537,7 +1595,15 @@
                    </div>
                </div>
                <div class="card-footer">
-
+                <div class="card-footer-express">
+                    <small class="text-muted card-footer-express">Express Slot:</small>
+                    <% if @equip11.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% else %>
+                        <span class="badge text-bg-secondary"><%= @equip11.expressslot %></span>
+                        <div class="badge badge-success badge-outlined">Available</div>
+                    <%end%>
+                </div>
                  <!-- Button trigger modal -->
                  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
                  Availabilty
@@ -2991,7 +3057,7 @@
                                     <li><%= link_to "Express Slot", new_tribometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
                                 <%end%>
                         </ul>
-
+                        
                     </div>
                 </div>
             </div>

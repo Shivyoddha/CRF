@@ -75,6 +75,7 @@
                         <th scope="col">Institute</th>
                         <th scope="col">Department</th>
                         <th scope="col">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col">No of Samples</th>
                         <th scope="col">Scan Type</th>
                         <th scope="co">X Range</th>
@@ -93,14 +94,15 @@
                 </thead>
                 <tbody>
                 <% @three.each do |threes|%>
-                    <tr>
+                   <tr class="<%if threes.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/THREESCAN/<%=threes.id %>	</th>
                       <td> <%= threes.user.firstname%><nobr> <%= threes.user.lastname%> </td>
                       <td> <%= threes.user.orgname%> </td>
                       <td> <%= threes.user.department%> </td>
                       <td> <%= threes.user.contact%> </td>
-                      <td> <%= threes.sample%> </td>
+                      <td> <%if threes.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if threes.sample == nil %> <%= threes.expresssample%> <%else%> <%= threes.sample%> </td> <%end%>
                       <td> <%= threes.scant%> </td>
                       <td> <%= threes.xrange%> </td>
                       <td> <%= threes.yrange%> </td>
