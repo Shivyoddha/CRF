@@ -65,6 +65,7 @@ class XrdsController < ApplicationController
       @xrd.equipment_table.orgname = "NITK"
     else
     @xrd.equipment_table.orgname = @xrd.user.orgname
+  end
     end
     @equiplist = Equiplist.all
     @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
