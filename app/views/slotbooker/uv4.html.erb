@@ -68,6 +68,7 @@
                         <th scope="col">Institute</th>
                         <th scope="col">Department</th>
                         <th scope="col">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col">No of Samples</th>
                         <th scope="col">Sample Composition</th>
                         <th scope="col">Sample Type</th>
@@ -85,13 +86,14 @@
                 <tbody>
 
                       <% @uv4.where(status:'cancelled').each do |uv|%>
-                      <tr>
+                      <tr class="<%if uv.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                           <th scope="row">CRF/UV/<%=uv.id %>	</th>
                         <td> <%= uv.user.firstname%><nobr> <%= uv.user.lastname%></td>
                         <td> <%= uv.user.orgname%> </td>
                         <td> <%= uv.user.department%> </td>
                         <td> <%= uv.user.contact%> </td>
-                        <td> <%= uv.sample%> </td>
+                        <td> <%if uv.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if uv.sample == nil %> <%= uv.expresssample%> <%else%> <%= uv.sample%> </td> <%end%>
                         <td> <%= uv.composition%> </td>
                         <td> <%= uv.sampletype%> </td>
                         <td> <%= uv.srange%>nm-<%= uv.erange%>nm</td>

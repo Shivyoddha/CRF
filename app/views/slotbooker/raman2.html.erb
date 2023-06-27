@@ -68,6 +68,7 @@
                   <th scope="col">Institute</th>
                   <th scope="col">Department</th>
                   <th scope="col">Contact No:</th>
+                  <th scope="col">Slot Type</th>
                   <th scope="col">No of Samples</th>
                   <th scope="col">Measurement</th>
                   <th scope="co">Laser To be Used</th>
@@ -90,14 +91,15 @@
           </thead>
           <tbody>
           <% @raman2.where(status:'alloted').each do |raman|%>
-              <tr>
+              <tr class="<%if raman.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                 <!-- Button trigger modal -->
                 <th scope="row">CRF/RAMAN/<%=raman.id %>	</th>
                 <td> <%= raman.user.firstname%><nobr> <%= raman.user.lastname%></td>
                 <td> <%= raman.user.orgname%> </td>
                 <td> <%= raman.user.department%> </td>
                 <td> <%= raman.user.contact%> </td>
-                <td> <%= raman.sample%> </td>
+                <td> <%if raman.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                    <td><% if raman.sample == nil %> <%= raman.expresssample%> <%else%> <%= raman.sample%> </td> <%end%>
                 <td> <%= raman.measurement%> </td>
                 <td> <%= raman.laser%> </td>
                 <td> <%= raman.stype%> </td>

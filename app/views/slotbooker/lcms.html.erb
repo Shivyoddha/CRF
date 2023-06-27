@@ -78,6 +78,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Sample Nature</th>
                         <th scope="col" id="composition">Category</th>
@@ -106,14 +107,15 @@
                 <tbody>
 
                       <% @lcms.all.each do |lcms|%>
-                      <tr>
+                      <tr class="<%if lcms.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/LCMS/<%=lcms.id %>	</th>
                         <td> <%= lcms.user.firstname%><nobr> <%= lcms.user.lastname%> </td>
                         <td> <%= lcms.user.orgname%> </td>
                         <td> <%= lcms.user.department%> </td>
                         <td> <%= lcms.user.contact%> </td>
-                        <td> <%= lcms.sample%> </td>
+                        <td> <%if lcms.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if lcms.sample == nil %> <%= lcms.expresssample%> <%else%> <%= lcms.sample%> </td> <%end%>
                         <td> <%= lcms.nature_sample%> </td>
                         <td> <%= lcms.category%> </td>
                         <td> <%= lcms.sample_type%> </td>

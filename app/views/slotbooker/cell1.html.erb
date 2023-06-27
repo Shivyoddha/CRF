@@ -68,6 +68,7 @@
                     <th scope="col">Institute</th>
                     <th scope="col">Department</th>
                     <th scope="col">Contact No:</th>
+                    <th scope="col">Slot Type</th>
                     <th scope="col">No of Samples</th>
                     <th scope="co">Type of Sample</th>
                     <th scope="co">Plate Format</th>
@@ -92,14 +93,15 @@
             <tbody>
                 <tr>
                   <% @cell1.where(status:'pending').each do |cell|%>
-                    <tr>
+                    <tr class="<%if cell.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/CELL/<%=cell.id %>	</th>
                       <td> <%= cell.user.firstname%><nobr>  <%= cell.user.lastname%></td>
                       <td> <%= cell.user.orgname%> </td>
                       <td> <%= cell.user.department%> </td>
                       <td> <%= cell.user.contact%> </td>
-                      <td> <%= cell.sample%> </td>
+                      <td> <%if cell.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                      <td><% if cell.sample == nil %> <%= cell.expresssample%> <%else%> <%= cell.sample%> </td> <%end%>
                       <td> <%= cell.stype%> </td>
                       <td> <%= cell.plate%> </td>
                       <td> <%= cell.expected_wavelenght%> </td>
@@ -169,10 +171,6 @@
 
 
 
-                                      </div>
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Cancel Slot</button>
                                       </div>
                                   </div>
                               </div>

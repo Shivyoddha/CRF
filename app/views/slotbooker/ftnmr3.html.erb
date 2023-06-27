@@ -68,6 +68,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No of Samples</th>
                       <th scope="col">Nature of Sample</th>
                       <th scope="col">Sample Phase</th>
@@ -96,14 +97,15 @@
                 <tbody>
 
                       <% @ft3.where(status:'completed').each do |ftnmr|%>
-                      <tr>
+                      <tr class="<%if ftnmr.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/ftnmr/<%=ftnmr.id %>	</th>
                         <td> <%= ftnmr.user.firstname%><nobr> <%= ftnmr.user.lastname%></td>
                         <td> <%= ftnmr.user.orgname%> </td>
                         <td> <%= ftnmr.user.department%> </td>
                         <td> <%= ftnmr.user.contact%> </td>
-                        <td> <%= ftnmr.sample%> </td>
+                         <td> <%if ftnmr.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                      <td><% if ftnmr.sample == nil %> <%= ftnmr.expresssample%> <%else%> <%= ftnmr.sample%> </td> <%end%>
                         <td> <%= ftnmr.nature%> </td>
                         <td> <%= ftnmr.phase%> </td>
                         <td> <%= ftnmr.solvent1%> </td>
