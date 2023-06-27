@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'mainportal/chairmanStats'
   post 'mainportal/chairmanStatsPayment'
   post 'mainportal/chairmanStatsSamples'
+  post 'mainportal/adminAllSlots'
+
 
 
 
@@ -70,6 +72,7 @@ Rails.application.routes.draw do
 
     post 'home/developer'
     get 'mainportal/admindashboard'
+    get 'mainportal/adminAllSlots'
     get 'mainportal/adminModelUsers'
     get 'mainportal/adminModelEquip'
     get 'mainportal/adminExpress'

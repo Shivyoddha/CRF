@@ -25,6 +25,8 @@
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
 
                             </div>
                         </ul>
@@ -50,9 +52,19 @@
 
  <div id="slots">
         <div id="current-tab">
-            <h2 class="fw-bold" id="tab-name">Users</h2>
+                 <div id="current-tab">
+                   <%= form_with url: mainportal_adminModelUsers_path do |form| %>
+                   <div class="input-group mb-3">
+                     <%= form.label :entry,'Type of user',for:"user", class:"input-group-text"%>
+                     <%= form.select(:entry, ['NITK','External'], {:include_blank => 'Select the type of user'},{ :class => 'form-select' ,:id => "user",:required => true}) %>
+                     <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+                   </div>
+                     <%end%>
+            <h2 class="fw-bold" id="tab-name"><%= @entry%> Users</h2>
         </div>
 
+
+<%if @entry == 'NITK' %>
         <div id="slot-details">
             <table class="table table-hover">
                 <thead>
@@ -69,7 +81,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                      <% @user.each do |user|%>
+                      <% @user.where(role: ['student', 'faculty']).each do |user|%>
                     <tr>
                         <td><%=user.firstname%></td>
                         <td><%=user.email%></td>
@@ -95,7 +107,47 @@
                 </tbody>
             </table>
         </div>
+  <%end%>
 
+
+
+
+  <%if @entry == 'External' %>
+          <div id="slot-details">
+              <table class="table table-hover">
+                  <thead>
+                      <tr class="bg-light">
+                          <th scope="col" id="name">User Name</th>
+                          <th scope="col" id="email">Email</th>
+                          <th scope="col" id="contact">Contact</th>
+                          <th scope="col" id="guide">Guide</th>
+                          <th scope="col" id="course">Course</th>
+                          <th scope="col" id="dept">Department</th>
+                          <th scope="col" id="reg">Registered On</th>
+                          <th scope="col" id="change">Change</th>
+                          <th scope="col" id="status">Status</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                        <% @user.where(role: 'external').each do |user|%>
+                      <tr>
+                          <td><%=user.firstname%></td>
+                          <td><%=user.email%></td>
+                          <td><%=user.contact%></td>
+                          <td><%=user.orgname%></td>
+                          <td><%=user.orgaddress%></td>
+                          <td><%=user.course%></td>
+                          <td><%=user.department%></td>
+                          <td><%=user.created_at%></td>
+                          <td><%=user.status%></td>
+                          <%end%>
+
+
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    <%end%>
 
 <script>
 

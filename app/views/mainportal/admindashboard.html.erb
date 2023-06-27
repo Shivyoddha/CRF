@@ -12,11 +12,12 @@
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
                             </li>
+
                             <li class="nav-item">
-                                
+                              <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
-                            <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn main-elements" %>
+                              <%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
@@ -27,6 +28,7 @@
                                 <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
                             </div>
                         </ul>
 
@@ -35,7 +37,7 @@
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" id="admin-mail">
-                            <a class="nav-link" href="#">admin@mail</a>
+                            <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item" id="logout">
                             <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
@@ -110,7 +112,7 @@
 
         <div id="chart" class="mt-5 mb-3">
             <div id="stats">
-                <h2 class="fw-bold">Bookings for the day</h2>
+                <h2 class="fw-bold">Bookings of the day</h2>
             </div>
                 <!--Script tag to fetch data to the chart-->
                 <script type="text/javascript">

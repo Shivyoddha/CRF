@@ -141,15 +141,15 @@
             }
 
             function drawBarChart() {
-              var sum_internal = <%= @sum_internal%>;
-              var sum_external = <%= @sum_external %>;
+              var sum_internal_day = <%= @sum_internal_day%>;
+              var sum_external_day = <%= @sum_external_day %>;
 
               var data = new google.visualization.DataTable();
               data.addColumn('string', 'User');
               data.addColumn('number', 'revenue');
               data.addRows([
-                ['NITK', sum_internal],
-                ['External', sum_external]
+                ['NITK', sum_internal_day],
+                ['External', sum_external_day]
               ]);
 
               var options = {
@@ -176,6 +176,9 @@
           </div>
 
         </div>
+
+
+
 
 
 <script>

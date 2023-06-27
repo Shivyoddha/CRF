@@ -183,6 +183,58 @@
         </div>
 
 
+        <!DOCTYPE html>
+<html>
+<head>
+  <title>Chart.js Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+
+  <script>
+    var ai_engineering = <%= @ai_engineering %>;
+    var chemical_engineering = <%= @chemical_engineering %>;
+    var chemistry = <%= @chemistry %>;
+    var civil_engineering = <%= @civil_engineering %>;
+    var cs_engineering = <%= @cs_engineering %>;
+    var ee_engineering = <%= @ee_engineering %>;
+    var ec_engineering = <%= @ec_engineering %>;
+    var it_engineering = <%= @it_engineering %>;
+    var mechanical_engineering = <%= @mechanical_engineering %>;
+    var mining_engineering = <%= @mining_engineering %>;
+    var metallurgical_engineering = <%= @metallurgical_engineering %>;
+    var physics = <%= @physics %>;
+    var water_resources_ocean_engineering = <%= @water_resources_ocean_engineering %>;
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['AI Engineering', 'Chemical Engineering', 'Chemistry', 'Civil Engineering', 'CS Engineering', 'EE Engineering', 'EC Engineering', 'IT Engineering', 'Mechanical Engineering', 'Mining Engineering', 'Metallurgical Engineering', 'Physics', 'Water Resources & Ocean Engineering'],
+        datasets: [{
+          label: 'Users',
+          data: [ai_engineering, chemical_engineering, chemistry, civil_engineering, cs_engineering, ee_engineering, ec_engineering, it_engineering, mechanical_engineering, mining_engineering, metallurgical_engineering, physics, water_resources_ocean_engineering],
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+          title: 'Department-vise division'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
 
 
 

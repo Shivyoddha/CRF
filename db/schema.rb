@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_25_181936) do
+ActiveRecord::Schema.define(version: 2023_06_27_055324) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -323,6 +323,8 @@ ActiveRecord::Schema.define(version: 2023_06_25_181936) do
     t.integer "contact_no"
     t.integer "ft_nm_id"
     t.float "consultancy_rate"
+    t.integer "sample"
+    t.string "file_name"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
