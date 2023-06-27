@@ -61,7 +61,7 @@ class AdvanceMolecularRheometersController < ApplicationController
       if @advance_molecular_rheometer.save
         if  @advance_molecular_rheometer.expresssample.present?
          equiplist = Equiplist.where(name: "Advance Modular Rheometer").first
-         equiplist.expressslot =equiplist.expressslot- @@advance_molecular_rheometer.expresssample
+         equiplist.expressslot =equiplist.expressslot- @advance_molecular_rheometer.expresssample
          equiplist.save
         end
         if @advance_molecular_rheometer.user.role=='student'||@advance_molecular_rheometer.user.role=='faculty'
