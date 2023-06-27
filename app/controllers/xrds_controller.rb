@@ -52,6 +52,7 @@ class XrdsController < ApplicationController
       @xrd.dummy2 = nil
       @xrd.dummy3 = nil
     else
+    @xrd.equipment_table.sample = @xrd.sample
     @xrd.equipment_table.dummy = "alloted"
     @xrd.equipment_table.username = @xrd.user.name
     @xrd.equipment_table.equipname = "XRD"
@@ -60,6 +61,9 @@ class XrdsController < ApplicationController
     @xrd.equipment_table.email = @xrd.user.email
     @xrd.equipment_table.dept = @xrd.user.department
     @xrd.equipment_table.profesion = @xrd.user.profession
+    if @xrd.user.role == 'student' || 'faculty'
+      @xrd.equipment_table.orgname = "NITK"
+    else
     @xrd.equipment_table.orgname = @xrd.user.orgname
     end
     @equiplist = Equiplist.all

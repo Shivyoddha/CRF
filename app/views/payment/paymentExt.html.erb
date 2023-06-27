@@ -226,7 +226,7 @@
       const gstRate = parseFloat(gstRateField.value);
 
       const gstAmount = (amount * gstRate) / (100 + gstRate);
-      const consultancyAmount = (amount * consultancyRate) / 100;
+      var consultancyAmount = ((amount - gstAmount) * consultancyRate) / 100;
       let remainingAmount;
 
       if (isNaN(consultancyAmount)) {

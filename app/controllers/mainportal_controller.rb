@@ -23,6 +23,12 @@ class MainportalController < ApplicationController
    @equiplist=Equiplist.all
   end
 
+
+  def adminAllSlots
+    @slots = EquipmentTable.all
+    @entry= params[:entry]
+   end
+
 #  def authenticate_admin!
 #    unless current_user&.admin_role?
 #      redirect_to home_index_path, alert: "You are not authorized to access this page."

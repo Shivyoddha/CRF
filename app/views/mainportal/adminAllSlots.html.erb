@@ -1,0 +1,222 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <%= link_to "Dashboard", mainportal_admindashboard_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                            <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Slots", mainportal_adminStats_path, id:'active-tab',class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-btn main-elements" id="model">Models</a>
+                            </li>
+                            <div id="model-list" class="vis">
+                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
+                            </div>
+                        </ul>
+
+
+                </div>
+                    <div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="admin-mail">
+                            <a class="nav-link" href="#">admin@mail</a>
+                        </li>
+                        <li class="nav-item" id="logout">
+                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+
+        </nav>
+<div class="container">
+
+
+
+ <div id="slots">
+        <div id="current-tab">
+          <%= form_with url: mainportal_adminAllSlots_path do |form| %>
+          <div class="input-group mb-3">
+            <%= form.label :entry,'Type of user',for:"user", class:"input-group-text"%>
+            <%= form.select(:entry, ['All','Internal','External'], {:include_blank => 'Select the type of user'},{ :class => 'form-select' ,:id => "user",:required => true}) %>
+            <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+          </div>
+            <%end%>
+            <h2 class="fw-bold" id="tab-name"> <%= @entry%> Slots</h2>
+        </div>
+
+<%if @entry == 'All' %>
+        <div id="slot-details">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-light">
+                        <th scope="col" id="name">App No.</th>
+                        <th scope="col" id="email">Equipment</th>
+                        <th scope="col" id="contact">Name</th>
+                        <th scope="col" id="guide">Institue</th>
+                        <th scope="col" id="course">Contact  No.</th>
+                        <th scope="col" id="dept">Samples</th>
+                        <th scope="col" id="reg">Guide</th>
+                        <th scope="col" id="change">Booked on</th>
+                        <th scope="col" id="status">Slots date</th>
+                        <th scope="col" id="status">File Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+
+
+
+
+                      <% @slots.each do |slots|%>
+                    <tr>
+                      <td><%=slots.app_no%></td>
+                        <td><%=slots.equipname%></td>
+                        <td><%=slots.username%></td>
+                        <td><%=slots.orgname%></td>
+                        <td><%=slots.contact_no%></td>
+                        <td><%=slots.sample%></td>
+                        <td><%=slots.guide%></td>
+                        <td><%slots.created_at%></td>
+                        <td><%=slots.slotd%></td>
+                        <td>file name</td>
+                        <%end%>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+          <%end%>
+
+
+<%if @entry == 'Internal' %>
+        <div id="slot-details">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="bg-light">
+                        <th scope="col" id="name">App No.</th>
+                        <th scope="col" id="email">Equipment</th>
+                        <th scope="col" id="contact">Name</th>
+                        <th scope="col" id="course">Contact  No.</th>
+                        <th scope="col" id="dept">Samples</th>
+                        <th scope="col" id="reg">Guide</th>
+                        <th scope="col" id="change">Booked on</th>
+                        <th scope="col" id="status">Slots date</th>
+                        <th scope="col" id="status">File Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+
+
+
+
+                      <% @slots.where(role: ['student', 'faculty']).each do |slots|%>
+                    <tr>
+                      <td><%=slots.app_no%></td>
+                        <td><%=slots.equipname%></td>
+                        <td><%=slots.username%></td>
+                        <td><%=slots.contact_no%></td>
+                        <td><%=slots.sample%></td>
+                        <td><%=slots.guide%></td>
+                        <td><%slots.created_at%></td>
+                        <td><%=slots.slotd%></td>
+                        <td>file name</td>
+                        <%end%>
+
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <%end%>
+
+
+
+
+    <%if @entry == 'External' %>
+            <div id="slot-details">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="bg-light">
+                            <th scope="col" id="name">App No.</th>
+                            <th scope="col" id="email">Equipment</th>
+                            <th scope="col" id="contact">Name</th>
+                            <th scope="col" id="guide">Institue</th>
+                            <th scope="col" id="course">Contact  No.</th>
+                            <th scope="col" id="dept">Samples</th>
+                            <th scope="col" id="change">Booked on</th>
+                            <th scope="col" id="status">Slots date</th>
+                            <th scope="col" id="status">File Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+
+
+
+                          <% @slots.where(role: 'external').each do |slots|%>
+                        <tr>
+                          <td><%=slots.app_no%></td>
+                            <td><%=slots.equipname%></td>
+                            <td><%=slots.username%></td>
+                            <td><%=slots.orgname%></td>
+                            <td><%=slots.contact_no%></td>
+                            <td><%=slots.sample%></td>
+                            <td><%slots.created_at%></td>
+                            <td><%=slots.slotd%></td>
+                            <td>file name</td>
+                            <%end%>
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        <%end%>
+
+
+<script>
+
+    let model = document.getElementById('model');
+    let modellist = document.getElementById('model-list');
+
+    model.addEventListener('click', ()=> {
+        modellist.classList.toggle('vis');
+        modellist.classList.toggle('flex');
+        model.classList.toggle('model-black');
+
+    })
+</script>
