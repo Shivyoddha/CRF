@@ -76,6 +76,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Nature</th>
                         <th scope="col" id="composition">Solvent</th>
@@ -104,14 +105,15 @@
                 <tbody>
 
                         <% @ionc1.where(status:'pending').each do |ionc|%>
-                      <tr>
+                       <tr class="<%if ionc.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/IONC/<%=ionc.id %>	</th>
                         <td> <%= ionc.user.firstname%><nobr> <%= ionc.user.lastname%></td>
                         <td> <%= ionc.user.orgname%> </td>
                         <td> <%= ionc.user.department%> </td>
                         <td> <%= ionc.user.contact%> </td>
-                        <td> <%= ionc.sample%> </td>
+                        <td> <%if ionc.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if ionc.expresssample == nil %> <%= ionc.sample%> <%else%> <%= ionc.expresssample%> </td> <%end%>
                         <td> <%= ionc.nature%> </td>
                         <td> <%= ionc.solvent%> </td>
                         <td> <%= ionc.volume%> </td>

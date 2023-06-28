@@ -76,6 +76,7 @@
                     <th scope="col" id="institute">Institute</th>
                     <th scope="col" id="department">Department</th>
                     <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col">Slot Type</th>
                     <th scope="col" id="sample-no">No of Samples</th>
                     <th scope="col" id="sample type">Sample Type</th>
                     <th scope="col" id="Measurement">Measurement</th>
@@ -100,14 +101,15 @@
             <tbody>
 
                   <% @scratch2.where(status:'alloted').each do |scratch|%>
-                  <tr>
+                   <tr class="<%if scratch.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/SCRATCH/<%=scratch.id %>	</th>
                     <td> <%= scratch.user.firstname%><nobr> <%= scratch.user.lastname%></td>
                     <td> <%= scratch.user.orgname%> </td>
                     <td> <%= scratch.user.department%> </td>
                     <td> <%= scratch.user.contact%> </td>
-                    <td> <%= scratch.sample%> </td>
+                    <td> <%if scratch.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                    <td><% if scratch.expresssample == nil %> <%= scratch.sample%> <%else%> <%= scratch.expresssample%> </td> <%end%>
                     <td> <%= scratch.stype%> </td>
                     <td> <%= scratch.measurement%> </td>
                     <td> <%= scratch.stroke%> </td>

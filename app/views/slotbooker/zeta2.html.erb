@@ -75,6 +75,7 @@
                       <th scope="col" id="name">Name</th>
                       <th scope="col" id="institute">Institute</th>
                       <th scope="col" id="department">Department</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col" id="contact-no">Contact No:</th>
                       <th scope="col" id="sample-no">No of Samples</th>
                       <th scope="col" id="composition">Sample Type</th>
@@ -105,14 +106,15 @@
                 <tbody>
 
                       <% @zeta2.where(status:'alloted').each do |zeta|%>
-                      <tr>
+                      <tr class="<%if zeta.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/Zeta Potential Sizes/<%=zeta.id %>	</th>
 
                         <td> <%= zeta.user.firstname%><nobr> <%= zeta.user.lastname%> </td>
                         <td> <%= zeta.user.orgname%> </td>
                         <td> <%= zeta.user.department%> </td>
                         <td> <%= zeta.user.contact%> </td>
-                        <td> <%= zeta.sample%> </td>
+                        <td> <%if zeta.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if zeta.expresssample == nil %> <%= zeta.sample%> <%else%> <%= zeta.expresssample%> </td> <%end%>
                         <td> <%= zeta.stype%> </td>
                         <td> <%= zeta.toxicity%> </td>
                         <td> <%= zeta.element%> </td>
