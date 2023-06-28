@@ -46,7 +46,9 @@
 }
 
 
-
+.nav-link {
+    cursor: pointer!important;
+}
 .nav-btn {
     color: #222227;
     border-radius: 8px;
@@ -125,6 +127,7 @@
     vertical-align: bottom;
     position: sticky;
     top: 0px;
+    z-index: 1;
 }
 
 /* NAvigation pane organized and styled */

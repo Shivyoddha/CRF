@@ -11,7 +11,7 @@
                 <div class="flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
+                        <%= link_to "Dashboard", mainportal_admindashboard_path, class:"nav-link active nav-btn main-elements", id:'active-tab' %>
                     </li>
                 </ul>
 
@@ -51,6 +51,7 @@
                         <tr class="bg-light">
                             <th scope="col" id="application-no">Equipment ID</th>
                             <th scope="col" id="name">Equipment Name</th>
+                            <th scope="col" id="name">Duration</th>
                             <th scope="col" id="institute">Slot Releaser</th>
                         </tr>
                     </thead>
@@ -64,6 +65,10 @@
 
                                 <td>
                                     <%= equip.name%>
+                                </td>
+                                
+                                <td>
+                                    <%= equip.expressstart %> <b>to</b> <%= equip.expressend%>
                                 </td>
 
                                 <td id="assign-btn">
