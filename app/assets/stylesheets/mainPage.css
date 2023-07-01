@@ -553,6 +553,19 @@ footer{
 margin-left: 5%;
 text-align: left;
 }
+.address{
+  font-size: 0.8rem;
+}
+#address1{
+  font-size: 0.8rem;
+}
+.fw-bold{
+  font-size: 1rem;
+}
+.footer-middle{
+  position:relative;
+  left:20%;
+}
 
 .footer-2{
 
@@ -565,8 +578,14 @@ word-spacing: 1%;
 
 .fa{
 padding: 2%;
-font-size: 25px;
+font-size: 20px;
 }
+.l-sec> .text-center{
+  font-size: 0.7em;
+  padding-right: 1em;
+}
+
+
 
 
 /* footer */
@@ -887,6 +906,51 @@ a:hover {
 
 
 /* footer media queries  starts*/
+@media screen and (min-width:691px){
+  .l-sec{
+    display:flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-right: 0.5em;
+  }
+
+}
+
+@media screen and (max-width:690px) and (min-width:620px){
+  .l-sec{
+    display:flex;
+    flex-direction:column;
+  }
+  .l-sec>p{
+    justify-content:center;
+
+  }
+  #button{
+    position:relative;
+    left:38%;
+  }
+
+}
+@media screen and (max-width:600px){
+  
+  #button{
+    position:relative;
+    left:29%;
+  }
+
+
+}
+@media screen and (max-width:300px){
+  #button{
+    position:relative;
+    left:20%;
+  }
+}
+
+
+
+
+
 
 @media screen and (max-width:990px) {
 
@@ -919,7 +983,11 @@ a:hover {
   }
 
   .footer-middle{
+    
     margin: 2%;
+    margin-left:-38%;
+
+    
   }
 
   .footer-right{
