@@ -15,7 +15,11 @@ class IonChromotographiesController < ApplicationController
     @user=User.find(params[:id])
     @ion_chromotography = IonChromotography.new
     @ion_chromotography.build_equipment_table
-
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Ion Chromatography").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Ion Chromatography").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Ion Chromatography").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /ion_chromotographies/1/edit
@@ -49,9 +53,16 @@ class IonChromotographiesController < ApplicationController
     @ion_chromotography.equipment_table.profesion = @ion_chromotography.user.profession
     @ion_chromotography.equipment_table.orgname = @ion_chromotography.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Ion Chromatography").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @ion_chromotography.save
+        if  @ion_chromotography.expresssample.present?
+         equiplist = Equiplist.where(name: "Ion Chromatography").first
+         equiplist.expressslot =equiplist.expressslot- @ion_chromotography.expresssample
+         equiplist.save
+        end
         if @ion_chromotography.user.role=='student'||@ion_chromotography.user.role=='faculty'
           IonChromotographyMailer.with(id:@ion_chromotography.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +119,6 @@ class IonChromotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ion_chromotography_params
-      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],hazard_method: [], references: [])
+      params.require(:ion_chromotography).permit(:sample, :nature, :solvent, :volume, :concentration, :eluent, :analysis, :elements, :column, :flow_rate, :temperature, :detector, :toxicity, :hazards, :disposal, :more,:status,:slotdate,:slottime,:debit,:hazard_yes,:disposal_yes,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname],hazard_method: [], references: [])
     end
 end

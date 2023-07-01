@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
 
 
+  #
   rescue_from CanCan::AccessDenied do |exception|
       respond_to do |format|
         format.json { head :forbidden }
@@ -65,6 +66,16 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  def import_users
+    return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+    return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+    CsvImportService.new.call_user(params[:file])
+
+    redirect_to request.referer, notice: 'Import started...'
+  end
+
   private
 
   def storable_location?
@@ -83,9 +94,10 @@ class ApplicationController < ActionController::Base
   #  end
   protected
 
+  
   def configure_permitted_parameters
     attributes = [:firstname, :lastname, :rollno, :orgname, :orgaddress, :contact, :profession,
-                  :collegeid, :department, :role,:course, :name, :file,:slotbooker,:admin,:faculty_id]
+                  :collegeid, :department, :role,:course, :name, :file,:slotbooker,:admin,:faculty_id, :developer]
     devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
     devise_parameter_sanitizer.permit(:account_update, keys: attributes)
   end

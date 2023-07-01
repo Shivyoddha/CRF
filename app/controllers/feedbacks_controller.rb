@@ -1,6 +1,15 @@
 class FeedbacksController < ApplicationController
    before_action :set_feedback, only: %i[ show edit update destroy ]
-   # before_action :authenticate_admin!, except: %i[new]
+
+   def import
+     return redirect_to request.referer, notice: 'No file added' if params[:file].nil?
+     return redirect_to request.referer, notice: 'Only CSV files allowed' unless params[:file].content_type == 'text/csv'
+
+     CsvImportService.new.call_feedback(params[:file])
+
+     redirect_to request.referer, notice: 'Import started...'
+   end
+
   # GET /feedbacks or /feedbacks.json
   def index
     @feedbacks = Feedback.all
@@ -17,7 +26,9 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/new
   def new
+    if params[:id].present?
     @user=User.find(params[:id])
+  end
     @feedback = Feedback.new
     @current_date = Date.today
   end

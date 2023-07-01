@@ -73,6 +73,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="composition">Toxicity</th>
@@ -95,14 +96,15 @@
                 <tbody>
 
                         <% @high1.where(status:'pending').each do |high|%>
-                      <tr>
+                      <tr class="<%if high.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/HIGHVACCUM/<%=high.id %>	</th>
                         <td> <%= high.user.firstname%><nobr> <%= high.user.lastname%></td>
                         <td> <%= high.user.orgname%> </td>
                         <td> <%= high.user.department%> </td>
                         <td> <%= high.user.contact%> </td>
-                        <td> <%= high.sample%> </td>
+                        <td> <%if high.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if high.expresssample == nil %> <%= high.sample%> <%else%> <%= high.expresssample%> </td> <%end%>
                         <td> <%= high.composition%> </td>
                         <td> <%= high.toxicity%> </td>
                         <td> <%= high.req_atoms%> </td>
@@ -170,7 +172,7 @@
                                            <%= f.hidden_field :role, value:"#{high.user.role}" %>
                                             <%= f.hidden_field :org, value:"#{high.user.orgaddress}" %>
                                             <%= f.hidden_field :profesion, value:"#{high.user.profession}" %>
-                                            <%= f.hidden_field :orgname, value:"#{high.user.orgname}" %>s
+                                            <%= f.hidden_field :orgname, value:"#{high.user.orgname}" %>
                                           <%end%>
 
                                            <div class="actions">

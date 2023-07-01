@@ -1,0 +1,111 @@
+<%= stylesheet_link_tag "announcement"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "loginFeatures"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "adminportal"%> <!-- this has to be removed during code optimization-->
+
+<%=render "partials/importfileNav"%>
+<div class="container">
+    <div id="current-tab">
+        <h2 class="fw-bold" id="tab-name">Import Files</h2>
+    </div>
+    <div id="slot-details">
+        <table class="table table-hover">
+            <thead>
+                <tr class="bg-light">
+                    <th scope="col" id="application-no">Model Name</th>
+                    <th scope="col" id="name">File</th>
+                    <th scope="col" id="update">Import</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">Equipment</th>
+                        <td>
+                          <!-- <input type="file" name="file" id="file" accept=".csv" hidden/>
+                          <label for="file">Choose File</label> -->
+                          <%= form_tag import_equiplists_path, method: :post, multipart: true do %>
+                              <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+
+                        </td>
+
+                        <td>
+                          <!-- <input type="submit" name="commit" id="importbtn" value="⚙️ Import" data-disable-with="⚙️ Import "> -->
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                          <% end %>
+                        </td>
+                    </tr>
+                    <tr><th scope="row">Faculties</th>
+                        <td> <%= form_tag import_faculties_path, method: :post, multipart: true do %>
+                            <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+                        </td>
+
+                        <td>
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                              <% end %>
+                            </td>
+                    </tr>
+                    <tr><th scope="row">Users</th>
+                        <td>
+                           <!-- <input type="file" name="file" id="file" accept=".csv" hidden/> -->
+                          <%= form_tag import_users_path, method: :post, multipart: true do %>
+                              <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+                             <!-- <label for="file">Choose File</label> -->
+                        </td>
+
+                        <td>
+                          <!-- <input type="submit" name="commit" id="importbtn" value="⚙️ Import" data-disable-with="⚙️ Import "> -->
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                              <% end %>
+                      </td>
+                    </tr>
+
+                    <tr><th scope="row">Announcements</th>
+                        <td>
+                           <!-- <input type="file" name="file" id="file" accept=".csv" hidden/> -->
+                          <%= form_tag import_announcements_path, method: :post, multipart: true do %>
+                              <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+                             <!-- <label for="file">Choose File</label> -->
+                        </td>
+
+                        <td>
+                          <!-- <input type="submit" name="commit" id="importbtn" value="⚙️ Import" data-disable-with="⚙️ Import "> -->
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                              <% end %>
+                      </td>
+                    </tr>
+
+                    <tr><th scope="row">Feedbacks</th>
+                        <td>
+                           <!-- <input type="file" name="file" id="file" accept=".csv" hidden/> -->
+                          <%= form_tag import_feedbacks_path, method: :post, multipart: true do %>
+                              <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+                             <!-- <label for="file">Choose File</label> -->
+                        </td>
+
+                        <td>
+                          <!-- <input type="submit" name="commit" id="importbtn" value="⚙️ Import" data-disable-with="⚙️ Import "> -->
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                              <% end %>
+                      </td>
+                    </tr>
+
+                    <tr><th scope="row">XRD</th>
+                        <td>
+                           <!-- <input type="file" name="file" id="file" accept=".csv" hidden/> -->
+                          <%= form_tag import_xrds_path, method: :post, multipart: true do %>
+                              <%= file_field_tag :file, accept: ".csv", name:"file", id:"file"  %>
+                             <!-- <label for="file">Choose File</label> -->
+                        </td>
+
+                        <td>
+                          <!-- <input type="submit" name="commit" id="importbtn" value="⚙️ Import" data-disable-with="⚙️ Import "> -->
+                          <%= submit_tag '⚙️ Import', name:"commit", id:"importbtn" %>
+                              <% end %>
+                      </td>
+                    </tr>
+    
+                </tbody>
+          </div>
+
+        </div>

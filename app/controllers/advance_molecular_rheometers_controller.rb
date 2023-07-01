@@ -15,7 +15,11 @@ class AdvanceMolecularRheometersController < ApplicationController
     @user=User.find(params[:id])
     @advance_molecular_rheometer = AdvanceMolecularRheometer.new
     @advance_molecular_rheometer.build_equipment_table
-
+    @slot_type = params[:slot_type]
+   @equiplist = Equiplist.all
+   @equiplist_expressslot = Equiplist.where(name: "Advance Modular Rheometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+   @equiplist_expressstart = Equiplist.where(name: "Advance Modular Rheometer").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+   @equiplist_expressend = Equiplist.where(name: "Advance Modular Rheometer").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /advance_molecular_rheometers/1/edit
@@ -49,10 +53,17 @@ class AdvanceMolecularRheometersController < ApplicationController
     @advance_molecular_rheometer.equipment_table.profesion = @advance_molecular_rheometer.user.profession
     @advance_molecular_rheometer.equipment_table.orgname = @advance_molecular_rheometer.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Advance Modular Rheometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
 
       if @advance_molecular_rheometer.save
+        if  @advance_molecular_rheometer.expresssample.present?
+         equiplist = Equiplist.where(name: "Advance Modular Rheometer").first
+         equiplist.expressslot =equiplist.expressslot- @advance_molecular_rheometer.expresssample
+         equiplist.save
+        end
         if @advance_molecular_rheometer.user.role=='student'||@advance_molecular_rheometer.user.role=='faculty'
           AdvanceMolecularRheometerMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +117,6 @@ class AdvanceMolecularRheometersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def advance_molecular_rheometer_params
-      params.require(:advance_molecular_rheometer).permit(:sample, :stype, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more,:status,:debit,:slotdate, :slottime,:user_id,:entry_type,:amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname], references: [])
+      params.require(:advance_molecular_rheometer).permit(:sample, :stype, :size, :nature, :temperature, :current, :shear_type, :shear_rate, :sweeps, :analysis, :toxicity, :more,:status,:debit,:slotdate, :slottime,:user_id,:entry_type,:amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname], references: [])
     end
 end

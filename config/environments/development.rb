@@ -7,7 +7,7 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-config.hosts << "a331-2401-4900-3767-639f-8c02-1884-9d66-1e32.in.ngrok.io"
+config.hosts << "crfbeta.nitk.ac.in"
   config.active_storage.service = :local
   # Do not eager load code on boot.
   config.eager_load = false
@@ -27,27 +27,22 @@ config.hosts << "a331-2401-4900-3767-639f-8c02-1884-9d66-1e32.in.ngrok.io"
     }
   else
     config.action_mailer.perform_deliveries = true
-    config.action_mailer.default_url_options = { :host => "localhost:3000" }
 config.action_controller.perform_caching = true
     config.cache_store = :null_store
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
-
-  config.hosts << "affc-2401-4900-4e72-f269-29a8-552d-eec8-2cd5.ngrok-free.app"
-
    # Don't care if the mailer can't send.
    config.action_mailer.raise_delivery_errors = true
-   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-   config.action_mailer.perform_caching = false
+   config.action_mailer.default_url_options = { :host => "https://crfbeta.nitk.ac.in"  }
    config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_options = {from: 'crfnitk@gmail.com'}
  config.action_mailer.smtp_settings = {
  address:              'smtp.gmail.com',
- port:                 '587',
- domain:               'gmail.com',
+ port:                 25,
+ :domain =>            'nitk.ac.in',
  user_name:            'crfnitk@gmail.com',
  password:            'hcgzyqpdxgcnxwha',
  authentication:       :plain,

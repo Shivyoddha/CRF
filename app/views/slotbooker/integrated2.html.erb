@@ -77,6 +77,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="measurement">Measurement</th>
                         <th scope="col" id="Indentation">Indentation</th>
@@ -98,14 +99,15 @@
                 <tbody>
 
                         <% @integrated2.where(status:'alloted').each do |integrated|%>
-                      <tr>
+                      <tr class="<%if integrated.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/INTEGRATED/<%=integrated.id %>	</th>
                         <td> <%= integrated.user.name%> </td>
                         <td> <%= integrated.user.orgname%> </td>
                         <td> <%= integrated.user.department%> </td>
                         <td> <%= integrated.user.contact%> </td>
-                        <td> <%= integrated.sample%> </td>
+                        <td> <%if integrated.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if integrated.expresssample == nil %> <%= integrated.sample%> <%else%> <%= integrated.expresssample%> </td> <%end%>
                         <td> <%= integrated.measurement%> </td>
                         <td> <%= integrated.indentation%> </td>
                         <td> <%= integrated.stype%> </td>

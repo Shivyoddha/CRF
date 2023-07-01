@@ -323,6 +323,6 @@ class EquipmentTablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipment_table_params
-      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no, :view)
+      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:consultancy_rate,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no,:sample,:file_name, :view)
     end
 end

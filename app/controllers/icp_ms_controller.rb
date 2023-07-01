@@ -15,6 +15,11 @@ class IcpMsController < ApplicationController
     @user=User.find(params[:id])
     @icp_m = IcpM.new()
     @icp_m.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "ICP-MS").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "ICP-MS").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "ICP-MS").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,10 +53,17 @@ class IcpMsController < ApplicationController
     @icp_m.equipment_table.profesion = @icp_m.user.profession
     @icp_m.equipment_table.orgname = @icp_m.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "ICP-MS").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
 
     respond_to do |format|
       if @icp_m.save
+        if  @icp_m.expresssample.present?
+         equiplist = Equiplist.where(name: "ICP-MS").first
+         equiplist.expressslot =equiplist.expressslot- @icp_m.expresssample
+         equiplist.save
+        end
         if @icp_m.user.role=='student'||@icp_m.user.role=='faculty'
           IcpMMailer.with(id:@icp_m.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -108,6 +120,6 @@ class IcpMsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def icp_m_params
-      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
+      params.require(:icp_m).permit(:sample, :composition, :sample_phase, :nature, :concentration, :testing, :temp, :toxicity, :compatibility, :hazard, :more, :debit, :status, :acid, :storage_condition, :slotdate, :slottime,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
     end
 end

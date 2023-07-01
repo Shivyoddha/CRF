@@ -2,30 +2,22 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
     user ||= User.new # guest user (not logged in)
-    can :manage, :all
-    can :access, :rails_admin
-    # if user.admin_role?
-
-
-      # if user && user.admin_role?
-            can :manage, MainportalController
-            can :manage, :rails_admin
-            can :manage, :all
-          # end
-    # end
- # allow access to dashboard
-# if user.slotbooker != nil
-  can :manage, SlotbookerController
-# end
- # can :access, :rails_admin  # only admin can access Rails Admin
- # can :manage, :dashboard
-    if user.chairman_role?
-     can :access, :rails_admin
-      can :read, :all
+    if user && user.developer?
+      can :access, :rails_admin       # only allow admin users to access Rails Admin
+      can :manage, :all                 # allow everyone to read everything
     end
-    if user.slotbooker = 'media'
-      can :access, AnnouncementsController
+
+    if user && user.admin_role?
+      can :access, MainportalController
+      can :manage, :all
+    end
+
+    if user && user.slotbooker == "media"
+     can :access, Announcement
+   else
+     cannot :access, Announcement
     end
   end
 end

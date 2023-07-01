@@ -14,6 +14,11 @@ class ProbeSonicatorsController < ApplicationController
   def new
     @probe_sonicator = ProbeSonicator.new
     @probe_sonicator.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Probe Sonicator").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Probe Sonicator").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Probe Sonicator").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /probe_sonicators/1/edit
@@ -47,9 +52,16 @@ class ProbeSonicatorsController < ApplicationController
     @probe_sonicator.equipment_table.profesion = @probe_sonicator.user.profession
     @probe_sonicator.equipment_table.orgname = @probe_sonicator.user.orgname
     end
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Probe Sonicator").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @probe_sonicator.save
+        if  @probe_sonicator.expresssample.present?
+        equiplist = Equiplist.where(name: "Probe Sonicator").first
+        equiplist.expressslot =equiplist.expressslot- @probe_sonicator.expresssample
+        equiplist.save
+       end
         if @probe_sonicator.user.role=='student'||@probe_sonicator.user.role=='faculty'
           ProbeSonicatorMailer.with(id:@probe_sonicator.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +118,6 @@ class ProbeSonicatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def probe_sonicator_params
-      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
+      params.require(:probe_sonicator).permit(:sample, :size, :amplitude, :volume, :viscosity, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname], references: [])
     end
 end

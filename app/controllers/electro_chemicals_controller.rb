@@ -14,6 +14,11 @@ class ElectroChemicalsController < ApplicationController
   def new
     @electro_chemical = ElectroChemical.new
     @electro_chemical.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "Electro Chemical Polishing").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "Electro Chemical Polishing").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "Electro Chemical Polishing").pluck(:expressend).first&.strftime("%d/%m/%Y")
 
   end
 
@@ -48,9 +53,16 @@ class ElectroChemicalsController < ApplicationController
     @electro_chemical.equipment_table.profesion = @electro_chemical.user.profession
     @electro_chemical.equipment_table.orgname = @electro_chemical.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "Electro Chemical Polishing").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
       if @electro_chemical.save
+        if  @electro_chemical.expresssample.present?
+        equiplist = Equiplist.where(name: "Electro Chemical Polishing").first
+        equiplist.expressslot =equiplist.expressslot- @electro_chemical.expresssample
+        equiplist.save
+       end
         if @electro_chemical.user.role=='student'||@electro_chemical.user.role=='faculty'
           ElectroChemicalMailer.with(id:@electro_chemical.id, userid:current_user.id).InternalMail.deliver_later
         else
@@ -106,6 +118,6 @@ class ElectroChemicalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def electro_chemical_params
-      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
+      params.require(:electro_chemical).permit(:sample, :composition, :electrolyte, :application, :more, :debit, :slotdate, :slottime, :status,:user_id,:entry_type, :amount, :dummy1,:dummy2,:dummy3,:slottype,:expresssample,equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress, :orgname] , references: [])
     end
 end

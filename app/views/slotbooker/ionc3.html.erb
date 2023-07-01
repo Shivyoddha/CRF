@@ -2,19 +2,19 @@
 
 <div id="header">
     <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
-        <%= link_to 'Ion Chromatography Slotbooker', slotbooker_fesemc_path, class:'navbar-brand', id:'title' %>
+        <%= link_to 'Ion Chromatography Slotbooker', slotbooker_ionc_path, class:'navbar-brand', id:'title' %>
         <div id="tab-div">
           <div class="btn-group btn-profile dropstart">
-            <%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"btn btn-outline-warning profile-dropdown" %>
+            <%= link_to 'Completed Slots',slotbooker_ionc3_path,class:"btn btn-outline-warning profile-dropdown" %>
             <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
               <span class="visually-hidden">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu font-quicksand">
-              <li><%= link_to 'All Slots',slotbooker_fesemc_path,class:"dropdown-item" %></li>
-              <li><%= link_to 'Pending Slots',slotbooker_fesemc1_path,class:"dropdown-item"%></li>
-              <li><%= link_to 'Alloted Slots',slotbooker_fesemc2_path,class:"dropdown-item" %></li>
-              <li><%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"dropdown-item active" %></li>
-              <li><%= link_to 'Cancelled Slots',slotbooker_fesemc4_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'All Slots',slotbooker_ionc_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Pending Slots',slotbooker_ionc1_path,class:"dropdown-item"%></li>
+              <li><%= link_to 'Alloted Slots',slotbooker_ionc2_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Completed Slots',slotbooker_ionc3_path,class:"dropdown-item active" %></li>
+              <li><%= link_to 'Cancelled Slots',slotbooker_ionc4_path,class:"dropdown-item" %></li>
 
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
@@ -26,19 +26,19 @@
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
-                    <%= link_to 'All Slots',slotbooker_fesemc_path,class:"nav-link active dropdown-item" %>
+                    <%= link_to 'All Slots',slotbooker_ionc_path,class:"nav-link active dropdown-item" %>
                 </li>
                 <li class="nav-item-tab">
-                    <%= link_to 'Pending Slots',slotbooker_fesemc1_path,class:"nav-link active dropdown-item"%>
+                    <%= link_to 'Pending Slots',slotbooker_ionc1_path,class:"nav-link active dropdown-item"%>
                 </li>
                 <li class="nav-item-tab">
-                    <%= link_to 'Alloted Slots',slotbooker_fesemc2_path,class:"nav-link active dropdown-item" %>
+                    <%= link_to 'Alloted Slots',slotbooker_ionc2_path,class:"nav-link active dropdown-item" %>
                 </li>
                 <li class="nav-item-tab activated">
-                    <%= link_to 'Completed Slots',slotbooker_fesemc3_path,class:"nav-link active activated-text dropdown-item" %>
+                    <%= link_to 'Completed Slots',slotbooker_ionc3_path,class:"nav-link active activated-text dropdown-item" %>
                 </li>
                 <li class="nav-item-tab">
-                    <%= link_to 'Canceled Slots',slotbooker_fesemc4_path,class:"nav-link active dropdown-item" %>
+                    <%= link_to 'Canceled Slots',slotbooker_ionc4_path,class:"nav-link active dropdown-item" %>
                 </li>
             </ul>
         </div>
@@ -76,6 +76,7 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
                         <th scope="col" id="composition">Nature</th>
                         <th scope="col" id="composition">Solvent</th>
@@ -103,14 +104,15 @@
                 <tbody>
 
                     <% @ionc3.where(status:'completed').each do |ionc|%>
-                      <tr>
+                       <tr class="<%if ionc.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/IONC/<%=ionc.id %>	</th>
                         <td> <%= ionc.user.firstname%><nobr> <%= ionc.user.lastname%></td>
                         <td> <%= ionc.user.orgname%> </td>
                         <td> <%= ionc.user.department%> </td>
                         <td> <%= ionc.user.contact%> </td>
-                        <td> <%= ionc.sample%> </td>
+                        <td> <%if ionc.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if ionc.expresssample == nil %> <%= ionc.sample%> <%else%> <%= ionc.expresssample%> </td> <%end%>
                         <td> <%= ionc.nature%> </td>
                         <td> <%= ionc.solvent%> </td>
                         <td> <%= ionc.volume%> </td>

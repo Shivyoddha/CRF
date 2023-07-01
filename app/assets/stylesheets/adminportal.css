@@ -46,7 +46,9 @@
 }
 
 
-
+.nav-link {
+    cursor: pointer!important;
+}
 .nav-btn {
     color: #222227;
     border-radius: 8px;
@@ -125,6 +127,7 @@
     vertical-align: bottom;
     position: sticky;
     top: 0px;
+    z-index: 1;
 }
 
 /* NAvigation pane organized and styled */
@@ -355,6 +358,14 @@ ul {
     width: 100%;
 }
 
+.btn-outline-warning {
+    --bs-btn-color: #3f5ac9;
+    --bs-btn-border-color: #3f5ac9;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: #3f5ac9;
+    --bs-btn-hover-border-color: #3f5ac9;
+}
+
 /*Styling of the view all button in  statistics section of admindashboard */
     #btn-announcement-wrap {
         display: flex;
@@ -483,7 +494,7 @@ ul {
     height: 2.8em;
     padding-right: 3.3em;
   }
-  
+
   .cssbuttons-io-button .icon {
     background: white;
     margin-left: 1em;
@@ -497,21 +508,21 @@ ul {
     right: 0.3em;
     transition: all 0.3s;
   }
-  
+
   .cssbuttons-io-button:hover .icon {
     width: calc(100% - 0.6em);
   }
-  
+
   .cssbuttons-io-button .icon svg {
     width: 1.1em;
     transition: transform 0.3s;
     color: #7b52b9;
   }
-  
+
   .cssbuttons-io-button:hover .icon svg {
     transform: translateX(0.1em);
   }
-  
+
   .cssbuttons-io-button:active .icon {
     transform: scale(0.95);
   }
@@ -519,8 +530,52 @@ ul {
   #scroll-left .icon {
     transform: rotate(180deg);
   }
-  
+  label {
+    font-family: sans-serif;
+    border-radius: 0.4rem;
+    cursor: pointer;
 
+  }
+  #importbtn{
+    background-color: #7de4f0;
+    color: black;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.4rem;
+    cursor: pointer;
+
+  }
+
+  .fs-15 {
+    font-size: 15px;
+  }
+
+  .container-exp-release {
+    max-width: 60%;
+    margin: 4em auto;
+    padding: 1% 4%;
+    height: auto;
+    border: 2px solid grey;
+    border-radius: 2em;
+  }
+
+  .font-unbounded {
+    font-family: "Unbounded", "sans-serif";
+  }
+
+  .actions-exp {
+    display: flex;
+    justify-content: end;
+  }
+
+.input-group-text {
+    text-wrap: wrap;
+    text-align: justify;
+}
+
+.exp-slot-entry {
+    background-color: #f9eb73a3;
+}
 
 
 

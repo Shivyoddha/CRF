@@ -75,6 +75,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No of Samples</th>
                       <th scope="col">Sample Type</th>
                       <th scope="co">Composition</th>
@@ -94,13 +95,14 @@
                 <tbody>
 
                       <% @fesemj4.where(status:'cancelled').each do |fesemj4|%>
-                      <tr>
+                     <tr class="<%if fesemj4.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/XRD/<%=fesemj4.id %>	</th>
                           <td> <%=fesemj4.user.firstname%><nobr> <%=fesemj4.user.lastname%> </td>
                         <td> <%= fesemj4.user.orgname%> </td>
                         <td> <%=fesemj4.user.department%> </td>
                         <td> <%= fesemj4.user.contact%> </td>
-                        <td> <%= fesemj4.sample%> </td>
+                        <td> <%if fesemj4.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if fesemj4.sample == nil %> <%= fesemj4.expresssample%> <%else%> <%= fesemj4.sample%> </td> <%end%>
                         <td> <%= fesemj4.stype%> </td>
                         <td> <%= fesemj4.composition%> </td>
                         <td> <%=fesemj4.sphase%> </td>

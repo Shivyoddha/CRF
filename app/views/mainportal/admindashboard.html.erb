@@ -12,17 +12,23 @@
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id='active-tab'>Dashboard</a>
                             </li>
+
                             <li class="nav-item">
-                            <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
+                              <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
-                                <%= link_to "Users", mainportal_admindashboard_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
                             </div>
                         </ul>
 
@@ -31,7 +37,7 @@
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" id="admin-mail">
-                            <a class="nav-link" href="#">admin@mail</a>
+                            <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item" id="logout">
                             <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
@@ -52,53 +58,53 @@
         </div>
         <%# the mini-cards coded here %>
         <div id="mini-cards">
-            <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <div id="icon-content">
-                        <%=image_tag 'approval', class:"mini-card-icon" %>
-                    </div>
-                </div>
-            </div>
             <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                    <h5 class="card-title">Users</h5>
+                    <div class="container">
+                      <h6>Total Users: <%= @internal_user + @external_user%> </h6>
+                      <h6>Internal Users: <%= @internal_user%></h6>
+                      <h6>External Users: <%= @external_user%></h6>
+                    </div>
+
                 </div>
             </div>
             <div class="card text-bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                    <h5 class="card-title">Revenue</h5>
+                    <div class="container">
+                      <h6>Total Revenue: <%= @sum_internal + @sum_external%> </h6>
+                      <h6>Internal Revenue: <%= @sum_internal%></h6>
+                      <h6>External Revenue: <%= @sum_external%></h6>
+                    </div>
                 </div>
             </div>
-            <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
-                </div>
-            </div>
+
             <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                    <h5 class="card-title">Bookings</h5>
+                    <div class="container">
+                      <h6>Total Bookings: <%= @internal_booking_count + @external_booking_count%> </h6>
+                      <h6>Internal User Bookings: <%= @internal_booking_count%></h6>
+                      <h6>External User Bookings: <%= @external_booking_count%></h6>
+                    </div>
                 </div>
             </div>
-            <div class="card text-bg-info mb-3" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
-                </div>
-            </div>
+
             <div class="card text-bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
-                    <%=image_tag 'approval', class:"mini-card-icon" %>
+                    <h5 class="card-title">Equipments</h5>
+                    <div class="container">
+                      <h6>Total Equipments: <%= @active_equipments + @under_maintenance + @unavailable%></h6>
+                      <h6>Active:  <%= @active_equipments%></h6>
+                      <h6>Under Maintenance: <%= @under_maintenance%></h6>
+                      <h6>Unavailable Maintenance: <%= @unavailable%></h6>
+                    </div>
                 </div>
             </div>
             <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Primary card title</h5>
+                    <h5 class="card-title">Express slots</h5>
                     <%=image_tag 'approval', class:"mini-card-icon" %>
                 </div>
             </div>
@@ -106,44 +112,43 @@
 
         <div id="chart" class="mt-5 mb-3">
             <div id="stats">
-                <h2 class="fw-bold">Statistics</h2>
+                <h2 class="fw-bold">Bookings of the day</h2>
             </div>
                 <!--Script tag to fetch data to the chart-->
                 <script type="text/javascript">
+                    var internal = <%= @internal_count%>;
+                    var external = <%= @external_count %>;
+
                     google.charts.load('current', {'packages':['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
+                    google.charts.setOnLoadCallback(drawCharts);
 
-                    function drawChart() {
+                    function drawCharts() {
+                      drawPieChart();
+                      drawBarChart();
+                    }
 
-                        var data = google.visualization.arrayToDataTable([
-                        ['Task', 'Hours per Day'],
-                        ['Work',     11],
-                        ['Eat',      2],
-                        ['Commute',  2],
-                        ['Watch TV', 2],
-                        ['Sleep',    7]
-                        ]);
+                    function drawPieChart() {
+                      var data = google.visualization.arrayToDataTable([
+                        ['Internal', 'Number of bookings'],
+                        ['NITK', internal],
+                        ['External', external]
+                      ]);
 
-                        var options = {
-                        title: 'Shares of equipments',
+                      var options = {
+                        title: 'NITK v/s External',
                         is3D: true,
                         pieStartAngle: 100
-                        };
+                      };
 
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                        chart.draw(data, options);
+                      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                      chart.draw(data, options);
                     }
                 </script>
 
                 <div id="piechart" style="width: 1200px; height: 900px;"></div>
         </div>
 
-        <div id="btn-announcement-wrap">
-                <button id="btn-announcement">
-                    <%= link_to 'View  All', mainportal_adminStats_path %>
-                </button>
-        </div>
+
 
     </div>
 

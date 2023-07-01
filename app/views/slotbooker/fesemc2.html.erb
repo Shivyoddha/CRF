@@ -73,6 +73,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No of Samples</th>
                       <th scope="col">Sample Type</th>
                       <th scope="co">Composition</th>
@@ -95,13 +96,14 @@
                 <tbody>
 
                       <% @fesemc2.where(status:'alloted').each do |fesemc2|%>
-                      <tr>
+                      <tr class="<%if fesemc2.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/fesemc/<%=fesemc2.id %>	</th>
                           <td> <%=fesemc2.user.firstname%><nobr> <%=fesemc2.user.lastname%> </td>
                       <td> <%= fesemc2.user.orgname%> </td>
                       <td> <%= fesemc2.user.department%> </td>
                       <td> <%= fesemc2.user.contact%> </td>
-                      <td> <%= fesemc2.sample%> </td>
+                      <td> <%if fesemc2.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                      <td><% if fesemc2.sample == nil %> <%= fesemc2.expresssample%> <%else%> <%= fesemc2.sample%> </td> <%end%>
                       <td> <%= fesemc2.stype%> </td>
                       <td> <%= fesemc2.composition%> </td>
                       <td> <%= fesemc2.sphase%> </td>

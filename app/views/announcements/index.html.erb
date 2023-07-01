@@ -5,8 +5,8 @@
 
 <%=render "partials/announceNav"%>
 
-<div id="container-ann">
-  <table class="table">
+<!-- <div id="container-ann">
+ <table class="table">
   <thead id="thead">
     <tr class="table-head font-unbounded">
       <th scope="col">ID</th>
@@ -27,11 +27,11 @@
           <td><%= announcement.text %></td>
           <td><%= announcement.created_on %></td>
           <td><%= link_to 'Show', announcement, class:"btn btn-primary" %>
-            
+
           </td>
           <td><%= link_to 'Edit', edit_announcement_path(announcement), class:"btn btn-success" %>
-                
-          
+
+
             </td>
           <td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
           </td>
@@ -40,7 +40,161 @@
     </tbody>
   </tbody>
 </table>
-  
-  
-</div>
+
   <%= link_to 'New Announcement', new_announcement_path, id:"new"%>
+
+
+</div> -->
+
+
+<div class="container1">
+       <div class="announce-lists" id="item1">
+           <h3 class="text-center fw-bold ">ANNOUNCEMENTS</h3>
+           <div class="card" id="c1" >
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Announcement 1</h5>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: 1425</h6>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: 12-05-2003</h6>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                 lorem</p>
+                 <a href="#1" id="view-btn" class="btn btn-danger">View</a>
+               </div>
+           </div>
+
+           <div class="card" id="c2" >
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Announcement 1</h5>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: 1425</h6>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: 12-05-2003</h6>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                 <a href="#2" class="btn btn-danger">View</a>
+               </div>
+           </div>
+
+           <div class="card" id="c3" >
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Announcement 1</h5>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: 1425</h6>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: 12-05-2003</h6>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                 <a href="#3" class="btn btn-danger">View</a>
+               </div>
+           </div>
+
+           <div class="card" id="c4" >
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Announcement 1</h5>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: 1425</h6>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: 12-05-2003</h6>
+                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                 <a href="#4" class="btn btn-danger">View</a>
+               </div>
+           </div>
+
+
+
+       </div>
+       <div class="announce-description" id="item2">
+         <h3 class="text-center fw-bold">Announcement Description</h3>
+
+         <div class="descriptions">
+           <div class="card" id="1">
+                <h5 class="card-header fw-bold">Announcement ID </h5>
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">Announcement Heading </h5>
+                  <p class="date">Created On:</p>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <!-- add correct view path -->
+                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-danger">Delete</a>
+
+                </div>
+          </div>
+
+          <div class="card" id="2" >
+               <h5 class="card-header fw-bold">Announcement ID 1</h5>
+               <div class="card-body">
+                 <h5 class="card-title fw-bold">Announcement Heading </h5>
+                 <p class="date">Created On:</p>
+                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                 <!-- add correct view path -->
+                 <a href="#" class="btn btn-primary">Edit</a>
+                 <a href="#" class="btn btn-danger">Delete</a>
+
+               </div>
+         </div>
+
+         <div class="card" id="3">
+              <h5 class="card-header fw-bold">Announcement ID:2 </h5>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Announcement Heading </h5>
+                <p class="date">Created On:</p>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            lorem</p>
+                <!-- add correct view path -->
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+
+              </div>
+        </div>
+
+        <div class="card" id="4">
+             <h5 class="card-header fw-bold">Announcement ID:3 </h5>
+             <div class="card-body">
+               <h5 class="card-title fw-bold">Announcement Heading </h5>
+               <p class="date">Created On:</p>
+               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+               <!-- add correct view path -->
+               <a href="#" class="btn btn-primary">Edit</a>
+               <a href="#" class="btn btn-danger">Delete</a>
+
+             </div>
+       </div>
+
+       <div class="card" id="5">
+            <h5 class="card-header fw-bold">Announcement ID 4</h5>
+            <div class="card-body">
+              <h5 class="card-title fw-bold">Announcement Heading </h5>
+              <p class="date">Created On:</p>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <!-- add correct view path -->
+              <a href="#" class="btn btn-primary">Edit</a>
+              <a href="#" class="btn btn-danger">Delete</a>
+
+            </div>
+      </div>
+
+      <div class="card" id="6">
+           <h5 class="card-header fw-bold">Announcement ID 5</h5>
+           <div class="card-body">
+             <h5 class="card-title fw-bold">Announcement Heading </h5>
+             <p class="date">Created On:</p>
+             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+             <!-- add correct view path -->
+             <a href="#" class="btn btn-primary">Edit</a>
+             <a href="#" class="btn btn-danger">Delete</a>
+
+           </div>
+     </div>
+         </div>
+
+
+       </div>
+   </div>
+
+
+   <!-- <script>
+     function fetchContent(cardId) {
+       var contentContainer = document.getElementById('contentContainer');
+       contentContainer.innerHTML = ''; // Clear previous content
+
+       // Fetch content based on cardId and update the content container
+       if (cardId === 1) {
+         contentContainer.innerHTML = '<h5>Content for Card 1</h5><p>Additional content for Card 1</p>';
+       } else if (cardId === 2) {
+         contentContainer.innerHTML = '<h5>Content for Card 2</h5><p>Additional content for Card 2</p>';
+       }
+     }
+   </script> -->

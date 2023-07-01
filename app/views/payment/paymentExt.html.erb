@@ -101,25 +101,38 @@
                                </div>
 
                                  <div class="input-group mb-3">
-                                 <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
-                                 <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
+                                 <%= form.label :pay, "Amount Paid", class:"input-group-text", for:'amount-field'%>
+                                 <%= form.text_field :pay, class:"form-control", id: 'amount-field'%>
+                                 </div>
 
-                                 <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
-                                 <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
-                               </div>
+                                  <div class="input-group mb-3">
+                                 <%= form.label :gst_rate, "Gst (%)", class:"input-group-text"%>
+                                 <%= form.select(:sample, [18, 16, 0], {:include_blank => 'Choose...'},{ :class => 'form-select' ,id: 'gst-rate-field'}) %>
+
+
+                                  <%= form.label :consultancy_rate, "Consultancy(%):", class:"input-group-text"%>
+                                  <%= form.text_field :consultancy_rate, class:"form-control", id: 'consultancy-rate-field'%>
+                                  </div>
 
                                <div class="input-group mb-3">
                                <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
                                 <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
-                               <%= form.text_field :testing, class:"form-control", id:"testing"%>
-
-                             <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
-                              <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
-                             <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
-
-                               <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
-                               <%= form.text_field :gst, class:"form-control", id:"consulting"%>
+                               <%= form.text_field :testing, class:"form-control", id: 'remaining-amount-field', readonly: true%>
                              </div>
+
+                                <div class="input-group mb-3">
+                                  <%= form.label :gst_applied, "GST", class:"input-group-text", for:"testing"%>
+                                   <%= form.label :gst_applied, "₹", class:"input-group-text", for:"testing"%>
+                                  <%= form.text_field :gst_applied, class:"form-control",  id: 'gst-amount-field', readonly: true %>
+
+                                  <%= form.label :consulting, "Consultancy", class:"input-group-text", for:"testing"%>
+                                   <%= form.label :consulting, "₹", class:"input-group-text", for:"testing"%>
+                                  <%= form.text_field :consulting, class:"form-control", id: 'consultancy-amount-field', readonly: true %>
+
+                                   </div>
+
+
+                           </div>
 
                              <div class="input-group mb-3">
                                <%= form.label :state,'State',for:"state", class:"input-group-text"%>
@@ -143,7 +156,7 @@
 
 
 
-                     <%= form.hidden_field :dummy, value: 'Performa confirmed' %>
+                     <%= form.hidden_field :dummy, value: 'Proforma confirmed' %>
 
 
                        <div class="actions">
@@ -168,10 +181,11 @@
            </div>
 
 
+
+
        </div>
 
 
-   </div>
    <script>
      // Get the modals and buttons
      var modal1 = document.getElementByClass("modal");
@@ -196,3 +210,41 @@
        }
      });
    </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const amountField = document.getElementById('amount-field');
+    const consultancyRateField = document.getElementById('consultancy-rate-field');
+    const gstRateField = document.getElementById('gst-rate-field');
+    const gstAmountField = document.getElementById('gst-amount-field');
+    const consultancyAmountField = document.getElementById('consultancy-amount-field');
+    const remainingAmountField = document.getElementById('remaining-amount-field');
+
+    const calculateAmounts = () => {
+      const amount = parseFloat(amountField.value);
+      const consultancyRate = parseFloat(consultancyRateField.value);
+      const gstRate = parseFloat(gstRateField.value);
+
+      const gstAmount = (amount * gstRate) / (100 + gstRate);
+      var consultancyAmount = ((amount - gstAmount) * consultancyRate) / 100;
+      let remainingAmount;
+
+      if (isNaN(consultancyAmount)) {
+        remainingAmount = amount - gstAmount;
+      } else if (isNaN(gstAmount)) {
+        remainingAmount = amount - consultancyAmount;
+      } else {
+        remainingAmount = amount - gstAmount - consultancyAmount;
+      }
+
+      gstAmountField.value = gstAmount.toFixed(2);
+      consultancyAmountField.value = consultancyAmount.toFixed(2);
+      remainingAmountField.value = remainingAmount.toFixed(2);
+    };
+
+    amountField.addEventListener('input', calculateAmounts);
+    consultancyRateField.addEventListener('input', calculateAmounts);
+    gstRateField.addEventListener('input', calculateAmounts);
+  });
+
+</script>

@@ -1,0 +1,99 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <%= link_to "Go Back", :back ,class:"nav-link active nav-btn main-elements", id:'active-tab' %>
+                    </li>
+                </ul>
+
+        </div>
+            <div>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                    <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+
+</nav>
+
+
+<div class="container-exp-release">
+  <div id="edit-page-heading">
+    <h1 class="font-unbounded text-center">Slot Releaser</h1>
+  </div>
+  <div class="hero">
+
+
+      <div class="row g-3">
+        <div class="mb-3 col-md-4">
+          <span class="input-group-text" id="basic-addon1">Equipment ID : <%= @equipment_id %></span>
+        </div>
+        <div class="mb-3 col-md-4">
+          <span class="input-group-text" id="basic-addon1">Equipment : <%= @equipment.name %> </span>
+        </div>
+        <div class="mb-3 col-md-4">
+          <span class="input-group-text" id="basic-addon2">Slots available as of now: <%= @equipment.expressslot %></span>
+        </div>
+      </div>
+
+    <!-- <h1>equiplist ID: <%= @equipment_id %></h1>
+        <div id="equiplist-name">
+          <h1><%= @equipment.name %></h1>
+          <h1>HI <%= @equipment.expressslot %></h1>
+        </div> -->
+        <div class='hero'>
+  
+          <%= form_with(model: @equiplist.find_or_initialize_by(name: @equipment.name)) do |form| %>
+            <% if @equiplist.first.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(@equiplist.errors.count, "error") %> prohibited this equiplist from being saved:</h2>
+  
+                <ul>
+                  <% @equiplist.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+  
+  
+  
+            <div class="input-group mb-3 col-md-3">
+              <%= form.label :expressslot,"Release More Express Slots", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+              <%= form.text_field :expressslot, class:"form-control", id:"composition"%>
+            </div>
+            <div class="row g-3">
+              <div class="mb-3 col-md-6">
+                <%= form.label :expressstart,"Starting Date", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+                <%= form.date_field :expressstart, class:"form-control", id:"composition"%>
+              </div>
+              <div class="mb-3 col-md-6">
+                <%= form.label :expressend,"End Date", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
+                <%= form.date_field :expressend, class:"form-control", id:"composition"%>
+              </div>
+            </div>
+  
+            <div class="actions-exp">
+              <%= form.submit "Release Slots", class:"btn btn-primary", id:"sbt" %>
+            </div>
+          <% end %>
+  
+  
+      </div>
+  </div>
+</div>

@@ -16,13 +16,19 @@
                             <a class="nav-link active nav-btn main-elements" id='active-tab'>Statistics</a>
                             </li>
                             <li class="nav-item">
+                              <%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements" %>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
                                 <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", mainportal_adminModelPayment_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Feedbacks", feedbacks_index_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
+
                             </div>
                         </ul>
 
@@ -42,84 +48,96 @@
 
 
         </nav>
+        <div class="container">
+            <div id="stats">
+                <h2 class="fw-bold">User Registration</h2>
+            </div>
 
-<div class="container">
+            <div>
+                <div id="chart-1" class="mt-5 mb-3">
 
-        <div id="stats">
-            <h2 class="fw-bold">All Statistics</h2>
-        </div>
-        <div id="chart-1" class="mt-5 mb-3">
-                <div>
-                    <h2>Equipment vs Revenue</h2>
+                    <!--Script tag to fetch data to the chart-->
+                    <script type="text/javascript">
+                        var internal = <%= @internal%>;
+                        var external = <%= @external %>;
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Internal', 'Hours per Day'],
+                                ['NITK', internal],
+                                ['External', external]
+                            ]);
+
+                            var options = {
+                                title: 'Nitk v/s External'
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
                 </div>
-                <!--Script tag to fetch data to the chart-->
-                <script type="text/javascript">
-                    google.charts.load('current', {'packages':['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
 
-                    function drawChart() {
+                <div id="chart-2" class="mt-5 mb-3">
 
-                        var data = google.visualization.arrayToDataTable([
-                        ['Task', 'Hours per Day'],
-                        ['Work',     11],
-                        ['Eat',      2],
-                        ['Commute',  2],
-                        ['Watch TV', 2],
-                        ['Sleep',    7]
-                        ]);
+                    <!--Script tag to fetch data to the chart-->
+                    <script type="text/javascript">
+                      var ai_engineering = <%= @ai_engineering %>;
+                      var chemical_engineering = <%= @chemical_engineering %>;
+                      var chemistry = <%= @chemistry %>;
+                      var civil_engineering = <%= @civil_engineering %>;
+                      var cs_engineering = <%= @cs_engineering %>;
+                      var ee_engineering = <%= @ee_engineering %>;
+                      var ec_engineering = <%= @ec_engineering %>;
+                      var it_engineering = <%= @it_engineering %>;
+                      var mechanical_engineering = <%= @mechanical_engineering %>;
+                      var mining_engineering = <%= @mining_engineering %>;
+                      var metallurgical_engineering = <%= @metallurgical_engineering %>;
+                      var physics = <%= @physics %>;
+                      var water_resources_ocean_engineering = <%= @water_resources_ocean_engineering %>;
 
-                        var options = {
-                        title: 'My Daily Activities'
-                        };
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
 
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                        function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Internal', 'Hours per Day'],
+                                ['AI Engineering', ai_engineering],
+                                ['Chemical Engineering', chemical_engineering],
+                                ['Chemistry', chemistry],
+                                ['Civil Engineering', civil_engineering],
+                                ['CS Engineering', cs_engineering],
+                                ['EE Engineering', ee_engineering],
+                                ['EC Engineering', ec_engineering],
+                                ['IT Engineering', it_engineering],
+                                ['Mechanical Engineering', mechanical_engineering],
+                                ['Mining Engineering', mining_engineering],
+                                ['Metallurgical Engineering', metallurgical_engineering],
+                                ['Physics', physics],
+                                ['Water Resources & Ocean Engineering', water_resources_ocean_engineering]
 
-                        chart.draw(data, options);
-                    }
-                </script>
 
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
+                            ]);
 
-        </div>
+                            var options = {
+                                title: 'Department-vise division'
+                            };
 
-        <div id="chart-2" class="mt-5 mb-3">
-                <div>
-                    <h2>All States</h2>
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="piechart2" style="width: 900px; height: 500px;"></div>
                 </div>
-                <!--Script tag to fetch data to the chart-->
-                <script type="text/javascript">
-                    google.charts.load('current', {'packages':['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
-
-                    function drawChart() {
-
-                        var data = google.visualization.arrayToDataTable([
-                        ['Task', 'Hours per Day'],
-                        ['Work',     11],
-                        ['Eat',      2],
-                        ['Commute',  2],
-                        ['Watch TV', 2],
-                        ['Sleep',    7]
-                        ]);
-
-                        var options = {
-                        title: 'My Daily Activities'
-                        };
-
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                        chart.draw(data, options);
-                    }
-                </script>
-
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
-
+            </div>
         </div>
 
-    </div>
 
-
-</div>
 
 
 

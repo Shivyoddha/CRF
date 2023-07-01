@@ -1,0 +1,546 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand font-unbounded" href="#">CRF CHAIRMAN</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                               <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-element" %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Statistics", mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element", id:'active-tab' %>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active nav-btn main-elements" id="model">Models</a>
+                            </li>
+                            <div id="model-list" class="vis">
+                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
+                            </div>
+                        </ul>
+
+                </div>
+                    <div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" id="admin-mail">
+                            <a class="nav-link" href="#">admin@mail</a>
+                        </li>
+                        <li class="nav-item" id="logout">
+                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+        </nav>
+
+        <style>
+        .container {
+          display: flex;
+          justify-content: center;
+        }
+
+        #mini-cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          max-width: 600px; /* Adjust the width as needed */
+        }
+
+        .card-body {
+          text-align: center;
+        }
+        </style>
+
+        <div class="container">
+          <div id="mini-cards">
+            <div class="card-body">
+              <h5 class="card-title">User Stats</h5>
+              <%= link_to mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'users', class: "mini-card-icon" %>
+              <% end %>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Sample Stats</h5>
+              <%= link_to mainportal_chairmanStatsSamples_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'samples', class: "mini-card-icon" %>
+              <% end %>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Payment Stats</h5>
+              <%= link_to mainportal_chairmanStatsPayment_path, class: "nav-link active nav-btn main-element" do %>
+              <%= image_tag 'payment_', class: "mini-card-icon" %>
+              <% end %>
+            </div>
+
+            </div>
+          </div>
+
+
+
+<br>
+
+
+
+<div class="container">
+
+        <div id="chart" class="mt-5 mb-3">
+            <div id="stats">
+                <h2 class="fw-bold">Sample Statistics</h2>
+            </div>
+
+
+            <%= form_with url: mainportal_chairmanStatsSamples_path do |form| %>
+                  <% options = options_from_collection_for_select(Equiplist.all,'id','name')%>
+                <div class="input-group mb-3">
+                  <%= form.label :entry ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+                  <%= form.select(:entry ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, {:class => 'form-select',:id => "Equip" , :required => true})%>
+                  <%= form.submit "Stats", class:"btn btn-primary", id:"sbt" %>
+                </div>
+              <%end%>
+
+
+
+
+<!-- Department wise division -->
+                <% departments = [
+                 'AI Engineering',
+                 'Chemical Engineering',
+                 'Chemistry',
+                 'Civil Engineering',
+                 'CS Engineering',
+                 'EE Engineering',
+                 'EC Engineering',
+                 'IT Engineering',
+                 'Mechanical Engineering',
+                 'Mining Engineering',
+                 'Metallurgical Engineering',
+                 'Physics',
+                 'Water Resources & Ocean Engineering'
+               ] %>
+
+
+              <% @total = {} %>
+          <% departments.each do |department| %>
+
+                <% @sam = [] %>
+
+            <% User.all.where(department: department).each do |user| %>
+              <% if @entry == 'XRD'%>
+                <% @s = user.xrds.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'HR-FESEM [Carl Zeiss]' %>
+                <% @s = user.hr_fesem_cs.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'HR-FESEM [Jeol]' %>
+                <% @s = user.hr_fesem_js.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == '3-D Non Contact Profilometer' %>
+                <% @s = user.three_d_non_contacts.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Raman Spectrometer with PL' %>
+                <% @s = user.raman_microscope.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'TGA-FTIR' %>
+                <% @s = user.tga_fttr.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'BET Surface Area Analyzer' %>
+                <% @s = user.bets.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'HR-LCMS' %>
+                <% @s = user.hrlcms.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'UV-Vis-NIR' %>
+                <% @s = user.uv_vis_nir.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Laser Flash Analyser' %>
+                <% @s = user.laser.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Cell-Imaging MultiMode Reader' %>
+                <% @s = user.cell_imaging.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Atomic Force Microscope' %>
+                <% @s = user.atomic_force_microscope.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'FT-NMR' %>
+                <% @s = user.ft_nms.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'ICP-MS' %>
+                <% @s = user.icp_ms.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Advance Modular Rheometer' %>
+                <% @s = user.advance_molecular_rheometers.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Ion Chromatography' %>
+                <% @s = user.ion_chromotography.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Intergrated MultiRole Tester' %>
+                <% @s = user.integrated_multi_role_tester.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Scratch/Indentation Tester' %>
+                <% @s = user.scratch_indentations.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Zeta Potential/Particle Sizer' %>
+                <% @s = user.zeta_potential_size.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'High Temp Vacuum Furnace' %>
+                <% @s = user.high_temp_vaccum.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Impedance Analyzer' %>
+                <% @s = user.impedance_analy.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Tribometer' %>
+                <% @s = user.tribometers.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == '3D-Scanner' %>
+                <% @s = user.three_d_scanner.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'GAIT Analysis' %>
+                <%@entry = nil%>
+              <% elsif @entry == 'Spectro-Radiometer' %>
+                <% @s = user.spectro_radio_meter.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Spark-OES' %>
+                <% @s = user.spark_o.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Glow Discharges-OES' %>
+                <% @s = user.glows.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Ball Milling Unit' %>
+                <% @s = user.ball_mailings.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Low Force Fatigue with DMA' %>
+                <% @s = user.low_fatigues.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Micro-EDM' %>
+                <% @s = user.micro_edms.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == '5-Axes CNC' %>
+                <% @s = user.five_axi.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Multi Purpose Impact Testing (SHPB)' %>
+                <% @s = user.multi_impact_testers.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Friction Stir Welding/Surfacing(FSW)' %>
+                <% @s = user.frictions.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Electro Chemical Polishing' %>
+                <% @s = user.electro_chemical.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Milli-Q water' %>
+                <%@entry = nil%>
+              <% elsif @entry == 'Glove Box' %>
+                <%@entry = nil%>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Probe Sonicator' %>
+                <% @s = user.probe_sonicator.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Ultra-Centrifuge' %>
+                <% @s = user.ultra_centrifuge.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Gas Sensing' %>
+                <% @s = user.gas_sensing.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Liquid Nitrogen' %>
+                <% @entry = nil %>
+                <% @sam.push(@s) %>
+              <% elsif @entry == 'Ansys System Lab' %>
+              <%@entry = nil%>
+              <% elsif @entry == 'Automatic MultiSpecimen Polisher' %>
+                <% @s = user.grindings.sum(:sample) %>
+                <% @sam.push(@s) %>
+              <% end %>
+
+                 <% end %>
+                    <% if @entry != nil%>
+                          <% @total[department] = @sam.sum %>
+                    <%end%>
+              <% end %>
+
+
+
+
+<% civil_engineering = @total['Civil Engineering'] %>
+<% ai_engineering = @total['AI Engineering'] %>
+<% chemical_engineering = @total['Chemical Engineering'] %>
+<% chemistry = @total['Chemistry'] %>
+<% cs_engineering = @total['CS Engineering'] %>
+<% ee_engineering = @total['EE Engineering'] %>
+<% ec_engineering = @total['EC Engineering'] %>
+<% it_engineering = @total['IT Engineering'] %>
+<% mechanical_engineering = @total['Mechanical Engineering'] %>
+<% mining_engineering = @total['Mining Engineering'] %>
+<% metallurgical_engineering = @total['Metallurgical Engineering'] %>
+<% physics = @total['Physics'] %>
+<% water_resources_ocean_engineering = @total['Water Resources & Ocean Engineering'] %>
+
+<div id="stats">
+    <h5 class="fw-bold"><%="Branch-wise #{@entry} sample distribution"%></h5>
+</div>
+
+  <div id="chart-3" class="mt-5 mb-3">
+                <!--Script tag to fetch data to the chart-->
+                <script type="text/javascript">
+                  var ai_engineering = <%= ai_engineering %>;
+                  var chemical_engineering = <%= chemical_engineering %>;
+                  var chemistry = <%= chemistry %>;
+                  var civil_engineering = <%= civil_engineering %>;
+                  var cs_engineering = <%= cs_engineering %>;
+                  var ee_engineering = <%= ee_engineering %>;
+                  var ec_engineering = <%= ec_engineering %>;
+                  var it_engineering = <%= it_engineering %>;
+                  var mechanical_engineering = <%= mechanical_engineering %>;
+                  var mining_engineering = <%= mining_engineering %>;
+                  var metallurgical_engineering = <%= metallurgical_engineering %>;
+                  var physics = <%= physics %>;
+                  var water_resources_ocean_engineering = <%= water_resources_ocean_engineering %>;
+
+
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Internal', 'Hours per Day'],
+                            ['AI Engineering', ai_engineering],
+                            ['Chemical Engineering', chemical_engineering],
+                            ['Chemistry', chemistry],
+                            ['Civil Engineering', civil_engineering],
+                            ['CS Engineering', cs_engineering],
+                            ['EE Engineering', ee_engineering],
+                            ['EC Engineering', ec_engineering],
+                            ['IT Engineering', it_engineering],
+                            ['Mechanical Engineering', mechanical_engineering],
+                            ['Mining Engineering', mining_engineering],
+                            ['Metallurgical Engineering', metallurgical_engineering],
+                            ['Physics', physics],
+                            ['Water Resources & Ocean Engineering', water_resources_ocean_engineering]
+                        ]);
+
+                        var options = {
+                            title: 'Department-wise division'
+                        };
+
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+                        chart.draw(data, options);
+                    }
+                </script>
+
+
+                <div id="piechart3" style="width: 900px; height: 500px;"></div>
+            </div>
+
+<!-- Nitk v/s External -->
+<% users = [
+ 'student',
+ 'faculty',
+ 'external'
+] %>
+
+<% student =0 %>
+<% faculty =0 %>
+<% @total = {} %>
+<% users.each do |user| %>
+
+<% @sam = [] %>
+
+<% User.all.where(role: user).each do |user| %>
+<% if @entry == 'XRD'%>
+<% @s = user.xrds.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'HR-FESEM [Carl Zeiss]' %>
+<% @s = user.hr_fesem_cs.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'HR-FESEM [Jeol]' %>
+<% @s = user.hr_fesem_js.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == '3-D Non Contact Profilometer' %>
+<% @s = user.three_d_non_contacts.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Raman Spectrometer with PL' %>
+<% @s = user.raman_microscope.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'TGA-FTIR' %>
+<% @s = user.tga_fttr.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'BET Surface Area Analyzer' %>
+<% @s = user.bets.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'HR-LCMS' %>
+<% @s = user.hrlcms.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'UV-Vis-NIR' %>
+<% @s = user.uv_vis_nir.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Laser Flash Analyser' %>
+<% @s = user.laser.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Cell-Imaging MultiMode Reader' %>
+<% @s = user.cell_imaging.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Atomic Force Microscope' %>
+<% @s = user.atomic_force_microscope.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'FT-NMR' %>
+<% @s = user.ft_nms.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'ICP-MS' %>
+<% @s = user.icp_ms.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Advance Modular Rheometer' %>
+<% @s = user.advance_molecular_rheometers.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Ion Chromatography' %>
+<% @s = user.ion_chromotography.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Intergrated MultiRole Tester' %>
+<% @s = user.integrated_multi_role_tester.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Scratch/Indentation Tester' %>
+<% @s = user.scratch_indentations.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Zeta Potential/Particle Sizer' %>
+<% @s = user.zeta_potential_size.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'High Temp Vacuum Furnace' %>
+<% @s = user.high_temp_vaccum.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Impedance Analyzer' %>
+<% @s = user.impedance_analy.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Tribometer' %>
+<% @s = user.tribometers.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == '3D-Scanner' %>
+<% @s = user.three_d_scanner.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'GAIT Analysis' %>
+<%@entry = nil%>
+<% elsif @entry == 'Spectro-Radiometer' %>
+<% @s = user.spectro_radio_meter.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Spark-OES' %>
+<% @s = user.spark_o.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Glow Discharges-OES' %>
+<% @s = user.glows.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Ball Milling Unit' %>
+<% @s = user.ball_mailings.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Low Force Fatigue with DMA' %>
+<% @s = user.low_fatigues.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Micro-EDM' %>
+<% @s = user.micro_edms.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == '5-Axes CNC' %>
+<% @s = user.five_axi.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Multi Purpose Impact Testing (SHPB)' %>
+<% @s = user.multi_impact_testers.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Friction Stir Welding/Surfacing(FSW)' %>
+<% @s = user.frictions.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Electro Chemical Polishing' %>
+<% @s = user.electro_chemical.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Milli-Q water' %>
+<%@entry = nil%>
+<% elsif @entry == 'Glove Box' %>
+<%@entry = nil%>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Probe Sonicator' %>
+<% @s = user.probe_sonicator.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Ultra-Centrifuge' %>
+<% @s = user.ultra_centrifuge.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Gas Sensing' %>
+<% @s = user.gas_sensing.sum(:sample) %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Liquid Nitrogen' %>
+<% @entry = nil %>
+<% @sam.push(@s) %>
+<% elsif @entry == 'Ansys System Lab' %>
+<%@entry = nil%>
+<% elsif @entry == 'Automatic MultiSpecimen Polisher' %>
+<% @s = user.grindings.sum(:sample) %>
+<% @sam.push(@s) %>
+<% end %>
+
+ <% end %>
+    <% if @entry != nil%>
+          <% @total[user] = @sam.sum %>
+    <%end%>
+<% end %>
+
+
+
+<% if @entry != nil%>
+<% student = @total['student'] %>
+<% faculty = @total['faculty'] %>
+<% external = @total['external'] %>
+<% nitk= student + faculty%>
+<% end %>
+
+
+
+<div id="stats">
+    <h5 class="fw-bold"><%=" User-wise #{@entry} sample distribution"%></h5>
+</div>
+
+
+<div id="chart-4" class="mt-5 mb-3">
+              <!--Script tag to fetch data to the chart-->
+              <script type="text/javascript">
+                var nitk = <%= nitk %>;
+                var external = <%= external %>;
+
+                  google.charts.load('current', {'packages':['corechart']});
+                  google.charts.setOnLoadCallback(drawChart);
+
+                  function drawChart() {
+                      var data = google.visualization.arrayToDataTable([
+                          ['Internal', 'Hours per Day'],
+                          ['Nitk', nitk],
+                          ['External', external]
+                      ]);
+
+                      var options = {
+                          title: 'User-wise division'
+                      };
+
+                      var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+                      chart.draw(data, options);
+                  }
+              </script>
+
+
+              <div id="piechart4" style="width: 900px; height: 500px;"></div>
+          </div>
+
+
+
+<script>
+
+    let model = document.getElementById('model');
+    let modellist = document.getElementById('model-list');
+
+    model.addEventListener('click', ()=> {
+        modellist.classList.toggle('vis');
+        modellist.classList.toggle('flex');
+        model.classList.toggle('model-black');
+
+    })
+</script>

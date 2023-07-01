@@ -25,11 +25,21 @@
 
 
     <div class='hero'>
-        <div class="input-group mb-3">
-          <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
-          <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
-        </div>
-
+      <% if @slot_type=="regular"%>
+      <div class="input-group mb-3">
+        <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
+        <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
+      </div>
+     <%else%>
+     <div id="instruct">
+         <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
+         <p class="text-danger"></p>
+     </div>
+     <div class="input-group mb-3">
+       <%= form.label :expresssample,"No of Samples Express", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+       <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available samples", class:"form-select" %>
+     </div>
+     <%end%>
         <div class="input-group mb-3">
           <%= form.label :composition, "Sample Composition", class:"input-group-text", for:"composition" %>
           <%= form.text_field :composition, type:"text", class:"form-control", id:"composition", placeholder:"Possible Elements" %>
@@ -101,6 +111,7 @@
           <div class="input-group mb-3">
               <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
           </div>
+
 
           <div class="actions">
             <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>

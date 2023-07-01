@@ -68,6 +68,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No. of Samples</th>
                       <th scope="col">Sample Type</th>
                       <th scope="col">Sample Description</th>
@@ -92,14 +93,15 @@
               </thead>
               <tbody>
                 <% @tga1.where(status:'pending').each do |tga|%>
-                  <tr>
+                  <tr class="<%if tga.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/TGAFTIR/<%=tga.id %>	</th>
                     <td> <%= tga.user.firstname%><nobr> <%= tga.user.lastname%></td>
                     <td> <%= tga.user.orgname%> </td>
                     <td> <%= tga.user.department%> </td>
                     <td> <%= tga.user.contact%> </td>
-                    <td> <%= tga.sample%> </td>
+                    <td> <%if tga.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                    <td><% if tga.sample == nil %> <%= tga.expresssample%> <%else%> <%= tga.sample%> </td> <%end%>
                     <td> <%= tga.stype%> </td>
                     <td> <%= tga.description%> </td>
                     <td> <%= tga.nature%> </td>
@@ -180,7 +182,6 @@
                                          </td>
 
                                      </tr>
-                   <%end%>
                    <%end%>
 
                                  </tbody>

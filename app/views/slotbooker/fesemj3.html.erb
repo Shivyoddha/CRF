@@ -73,6 +73,7 @@
                       <th scope="col">Institute</th>
                       <th scope="col">Department</th>
                       <th scope="col">Contact No:</th>
+                      <th scope="col">Slot Type</th>
                       <th scope="col">No of Samples</th>
                       <th scope="col">Sample Type</th>
                       <th scope="co">Composition</th>
@@ -92,14 +93,15 @@
                 <tbody>
 
                       <% @fesemj3.where(status:'completed').each do |fesemj3|%>
-                      <tr>
+                      <tr class="<%if fesemj3.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                         <th scope="row">CRF/FESEMJ/<%=fesemj3.id %>	</th>
 
                           <td> <%=fesemj3.user.firstname%><nobr> <%=fesemj3.user.lastname%> </td>
                         <td> <%= fesemj3.user.orgname%> </td>
                         <td> <%=fesemj3.user.department%> </td>
                         <td> <%= fesemj3.user.contact%> </td>
-                        <td> <%= fesemj3.sample%> </td>
+                        <td> <%if fesemj3.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
+                        <td><% if fesemj3.sample == nil %> <%= fesemj3.expresssample%> <%else%> <%= fesemj3.sample%> </td> <%end%>
                         <td> <%= fesemj3.stype%> </td>
                         <td> <%= fesemj3.composition%> </td>
                         <td> <%=fesemj3.sphase%> </td>

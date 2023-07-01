@@ -15,10 +15,18 @@
 
   <div id="form">
     <div class="field" >
-    <%= form.hidden_field :username, value:"#{@user.name} #{@user.lastname}"%>
+    <%if @user!=nil%>
+    <%= form.hidden_field :username, value:"#{@user.firstname} #{@user.lastname}"%>
+    <%else%>
+    <%= form.hidden_field :username, value:'anonymous'%>
+    <%end%>
     </div>
     <div class="field">
+      <%if @user!=nil%>
       <%= form.hidden_field :email, value:@user.email%>
+      <%else%>
+      <%= form.hidden_field :email, value:'anonymous@gmail.com'%>
+      <%end%>
     </div>
 
     <div  class="input-group mb-3 mt-3" id="text-box">

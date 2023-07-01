@@ -15,6 +15,11 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j = HrFesemJ.new
     @user=current_user
     @hr_fesem_j.build_equipment_table
+    @slot_type = params[:slot_type]
+    @equiplist = Equiplist.all
+    @equiplist_expressslot = Equiplist.where(name: "HR-FESEM [Jeol]").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
+    @equiplist_expressstart = Equiplist.where(name: "HR-FESEM [Jeol]").pluck(:expressstart).first&.strftime("%d/%m/%Y")
+    @equiplist_expressend = Equiplist.where(name: "HR-FESEM [Jeol]").pluck(:expressend).first&.strftime("%d/%m/%Y")
   end
 
   # GET /hr_fesem_js/1/edit
@@ -48,9 +53,16 @@ class HrFesemJsController < ApplicationController
     @hr_fesem_j.equipment_table.profesion = @hr_fesem_j.user.profession
     @hr_fesem_j.equipment_table.orgname = @hr_fesem_j.user.orgname
   end
+  @equiplist = Equiplist.all
+  @equiplist_expressslot = Equiplist.where(name: "HR-FESEM [Jeol]").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
 
     respond_to do |format|
      if @hr_fesem_j.save
+       if  @hr_fesem_j.expresssample.present?
+        equiplist = Equiplist.where(name: "HR-FESEM [Jeol]").first
+        equiplist.expressslot =equiplist.expressslot- @hr_fesem_j.expresssample
+        equiplist.save
+       end
        if @hr_fesem_j.user.role=='student'||@hr_fesem_j.user.role=='faculty'
          HrFesemJMailer.with(id:@hr_fesem_j.id, userid:current_user.id).InternalMail.deliver_later
 
@@ -108,6 +120,6 @@ class HrFesemJsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hr_fesem_j_params
-      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more,:entry_type,:amount,:dummy1,:dummy2,:dummy3, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
+      params.require(:hr_fesem_j).permit(:sample, :composition, :stype, :sphase, :measurement, :eds_required,:status, :user_id, :slottime, :slotdate, :toxic, :conducting, :more,:entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname] ,references: [])
     end
 end

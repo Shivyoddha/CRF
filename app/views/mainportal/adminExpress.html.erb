@@ -1,0 +1,98 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand font-unbounded" href="#">CRF ADMIN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <%= link_to "Dashboard", mainportal_admindashboard_path, class:"nav-link active nav-btn main-elements", id:'active-tab' %>
+                    </li>
+                </ul>
+
+        </div>
+            <div>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                    <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+            </div>
+        </div>
+
+
+</nav>
+
+
+
+
+    <div class="container">
+
+
+        <div id="slots">
+            <div id="current-tab">
+                <h2 class="fw-bold" id="tab-name">Release express slots for the equipments</h2>
+            </div>
+
+
+            <div id="slot-details">
+
+                <table class="table table-hover">
+                    <thead class="font-unbounded">
+                        <tr class="bg-light">
+                            <th scope="col" id="application-no">Equipment ID</th>
+                            <th scope="col" id="name">Equipment Name</th>
+                            <th scope="col" id="name">Duration</th>
+                            <th scope="col" id="institute">Slot Releaser</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-quicksand fs-15">
+                        <% @equiplist.each do |equip|%>
+                            <tr>
+
+                                <th scope="row">
+                                    <%=equip.id%>
+                                </th>
+
+                                <td>
+                                    <%= equip.name%>
+                                </td>
+                                
+                                <td>
+                                    <%= equip.expressstart %> <b>to</b> <%= equip.expressend%>
+                                </td>
+
+                                <td id="assign-btn">
+
+                                    
+                                    <button type="button" class="btn btn-primary">
+                                    <%= link_to "Release Slots" , mainportal_adminExpSlot_path(equipment_id: equip.id), class: "btn btn-primary" %> <span class="badge text-bg-secondary"><%= equip.expressslot %></span>
+                                    </button>
+                                    
+                                </td>
+
+
+                            </tr>
+
+
+
+                            <%end%>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
