@@ -289,7 +289,7 @@
     let grind_feed_type = document.getElementById('grind_feed_type');
     let solvent_type_div = document.getElementById('solvent-type-div');
 
-    sample_no.addEventListener('click', () => {
+    sample_no.addEventListener('change', () => {
         step1.classList.add('vis');
         step2.classList.add('vis');
         step3.classList.add('vis');
@@ -325,7 +325,7 @@
 
     })
 
-    grind_feed_type.addEventListener('click', ()=> {
+    grind_feed_type.addEventListener('change', ()=> {
       solvent_type_div.classList.add('vis')
 
       if (grind_feed_type.value == "Wet") {

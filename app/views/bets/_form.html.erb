@@ -178,7 +178,7 @@
     let any_disposal_method = document.getElementById('any-disposal-method');
 
 
-    degrassingTemp.addEventListener('click', () => {
+    degrassingTemp.addEventListener('change', () => {
         customDegrassingTemp.classList.add('vis');
 
 
@@ -187,7 +187,7 @@
       }
     })
 
-    analysisRequired.addEventListener('click', () => {
+    analysisRequired.addEventListener('change', () => {
         analysisequiredRadio.classList.add('vis');
         mentionAnalysisRequired.classList.add('vis');
 
@@ -200,7 +200,7 @@
       }
     })
 
-    whetherIncompatible.addEventListener('click', () => {
+    whetherIncompatible.addEventListener('change', () => {
         incompatibleMention.classList.add('vis');
 
 
@@ -208,7 +208,7 @@
         incompatibleMention.classList.toggle('vis');
       }
     })
-    any_disposal_method.addEventListener('click', () => {
+    any_disposal_method.addEventListener('change', () => {
         mention_disposal.classList.add('vis');
 
 

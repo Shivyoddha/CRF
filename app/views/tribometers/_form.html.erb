@@ -109,7 +109,7 @@
     let measurement = document.getElementById('measurement');
     let temp = document.getElementById('temp');
 
-    measurement.addEventListener('click', () => {
+    measurement.addEventListener('change', () => {
         temp.setAttribute('placeholder', "");
 
         if(measurement.value == 'THT'){

@@ -234,7 +234,7 @@
     let tag4 = document.getElementById('tag4');
     let tag5 = document.getElementById('tag5');
 
-    sample_no.addEventListener('click', () => {
+    sample_no.addEventListener('change', () => {
         step1.classList.add('vis');
         step2.classList.add('vis');
         step3.classList.add('vis');
@@ -270,35 +270,35 @@
 
     })
 
-    type1.addEventListener('click', () => {
+    type1.addEventListener('change', () => {
         tag1.classList.add('vis')
 
     if (type1.value == 'Others') {
         tag1.classList.toggle('vis')
         }
     })
-    type2.addEventListener('click', () => {
+    type2.addEventListener('change', () => {
         tag2.classList.add('vis')
 
         if (type2.value == 'Others') {
             tag2.classList.toggle('vis')
         }
     })
-    type3.addEventListener('click', () => {
+    type3.addEventListener('change', () => {
         tag3.classList.add('vis')
 
         if (type3.value == 'Others') {
             tag3.classList.toggle('vis')
         }
     })
-    type4.addEventListener('click', () => {
+    type4.addEventListener('change', () => {
         tag4.classList.add('vis')
 
         if (type4.value == 'Others') {
             tag4.classList.toggle('vis')
         }
     })
-    type5.addEventListener('click', () => {
+    type5.addEventListener('change', () => {
         tag5.classList.add('vis')
 
         if (type5.value == 'Others') {
