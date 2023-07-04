@@ -104,7 +104,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_xrd_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip1.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
@@ -133,6 +133,8 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip1.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% elsif Date.today > @equip1.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip1.expressslot %></span>

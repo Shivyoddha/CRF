@@ -154,14 +154,14 @@
     let clinical_trail = document.getElementById('clinical_trail')
     let insuarance = document.getElementById('insurance-input')
 
-    physician.addEventListener('click', ()=> {
+    physician.addEventListener('change', ()=> {
         phy_pres_input.classList.add('vis');
 
         if(physician.value == "Yes") {
             phy_pres_input.classList.toggle('vis')
         }
     })
-    clinical_trail.addEventListener('click', ()=> {
+    clinical_trail.addEventListener('change', ()=> {
         insuarance.classList.add('vis');
 
         if(clinical_trail.value == "Yes") {
