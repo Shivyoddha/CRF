@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab activated">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -74,7 +74,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="composition">_elctrolyte</th>
                         <th scope="col" id="phase">Application</th>
@@ -89,6 +91,7 @@
                 <tbody>
 
                       <% @elctro.all.each do |elctro|%>
+                      <%if elctro.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/_elctro/<%=elctro.id %>	</th>
@@ -96,9 +99,11 @@
                         <td> <%= elctro.user.orgname%> </td>
                         <td> <%= elctro.user.department%> </td>
                         <td> <%= elctro.user.contact%> </td>
+                        <td><%if elctro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= elctro.sample%> </td>
+                        <td> <%= elctro.expresssample%> </td>
                         <td> <%= elctro.composition%> </td>
-                        <td> <%= elctro._elctrolyte%> </td>
+                        <td> <%= elctro.electrolyte%> </td>
                         <td> <%= elctro.application%> </td>
                         <td> <%= elctro.more%> </td>
                         <td>Booked</td>
@@ -113,7 +118,35 @@
                         <td>NA</td>
                         <%end%>
                     </tr>
+                    <%else%>
+                    <tr class="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/_elctro/<%=elctro.id %>	</th>
+                      <td> <%= elctro.user.firstname%><nobr> <%= elctro.user.lastname%></td>
+                      <td> <%= elctro.user.orgname%> </td>
+                      <td> <%= elctro.user.department%> </td>
+                      <td> <%= elctro.user.contact%> </td>
+                      <td><%if elctro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                      <td> <%= elctro.sample%> </td>
+                      <td> <%= elctro.expresssample%> </td>
+                      <td> <%= elctro.composition%> </td>
+                      <td> <%= elctro.electrolyte%> </td>
+                      <td> <%= elctro.application%> </td>
+                      <td> <%= elctro.more%> </td>
+                      <td>Booked</td>
+                      <td><span style="white-space: nowrap;"><%= elctro.slotdate.strftime('%d-%m-%Y')if elctro.slotdate.present? %></td>
+                      <td><%= elctro.slottime.strftime('%H:%M:%S') if elctro.slottime.present? %></td>
+                        <td><%= elctro.status%></td>
+                        <%if elctro.references.attached? %>
+                      <%elctro.references.each do |file|%>
+                      <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                         <% end %>
+                    <% else %>
+                      <td>NA</td>
                       <%end%>
+                  </tr>
+                      <%end%>
+                        <%end%>
                 </tbody>
             </table>
 
