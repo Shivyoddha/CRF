@@ -68,7 +68,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Diameter</th>
                         <th scope="col" id="composition">Mould</th>
                         <th scope="col" id="phase">Grit</th>
@@ -87,6 +89,7 @@
                 <tbody>
 
                         <% @grind1.where(status:'pending').each do |grind|%>
+                          <% if grind.expresssample ==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
@@ -94,7 +97,9 @@
                         <td> <%= grind.user.orgname%> </td>
                         <td> <%= grind.user.department%> </td>
                         <td> <%= grind.user.contact%> </td>
+                        <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= grind.sample%> </td>
+                        <td> <%= grind.expresssample%> </td>
                         <td> <%= grind.diameter%> </td>
                         <td> <%= grind.mould%> </td>
                         <td> <%= Array(grind.grit).join(", ") %> </td>
@@ -171,6 +176,95 @@
                                            </td>
 
                                        </tr>
+                          <%else%>
+                          <tr class="exp-slot-entry">
+                            <!-- Button trigger modal -->
+                            <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
+                            <td> <%= grind.user.firstname%><nobr> <%= grind.user.lastname%> </td>
+                            <td> <%= grind.user.orgname%> </td>
+                            <td> <%= grind.user.department%> </td>
+                            <td> <%= grind.user.contact%> </td>
+                            <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                            <td> <%= grind.sample%> </td>
+                            <td> <%= grind.expresssample%> </td>
+                            <td> <%= grind.diameter%> </td>
+                            <td> <%= grind.mould%> </td>
+                            <td> <%= Array(grind.grit).join(", ") %> </td>
+                            <td> <%= Array(grind.diamond).join(", ") %> </td>
+                            <td> <%= Array(grind.suspension).join(", ") %> </td>
+                            <td> <%= grind.lapping%> </td>
+                            <td> <%= grind.more%> </td>
+                            <td>Booked</td>
+
+                            <td> <%= grind.slotdate %></td>
+
+                            <td> <%= grind.slottime %></td>
+
+                              <td><%= grind.status%></td>
+                              <%if grind.references.attached? %>
+                        <%grind.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                      <td id="assign-btn">
+                          <!-- Button trigger modal -->
+                           <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{grind.id}" }, id: "ani" %>
+                           <div id="<%= grind.id%>" class="modal">
+
+                           <div class="modal-dialog">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= grind.user.firstname %></b></h1>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                       <div class="modal-body">
+                                         <%= form_with(model: grind,local:true) do |form| %>
+
+                                         <div class="input-group mb-3">
+                                           <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                           <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                         </div>
+
+                                         <div class="input-group mb-3">
+                                         <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                         <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                       </div>
+
+                                          <%=form.fields_for :equipment_table do |f| %>
+                                           <div class="input-group mb-3">
+                                              <%= f.hidden_field :app_no, value:"CRF/GRIND/#{grind.id}"%>
+                                             <%= f.hidden_field :username, value:"#{grind.user.firstname}"%>
+                                             <%= f.hidden_field :dummy, value:"alloted"%>
+                                            <%= f.hidden_field :debit_head, value:"#{grind.debit}" %>
+                                            <%= f.hidden_field :dept, value:"#{grind.user.department}" %>
+                                           <%= f.hidden_field :email, value:"#{grind.user.email}" %>
+                                           <%= f.hidden_field :equipname, value:"grind" %>
+                                           <%= f.hidden_field :role, value:"#{grind.user.role}" %>
+                                          <%= f.hidden_field :org, value:"#{grind.user.orgaddress}" %>
+                                          <%= f.hidden_field :profesion, value:"#{grind.user.profession}" %>
+                                          <%= f.hidden_field :orgname, value:"#{grind.user.orgname}" %>
+                                          <%end%>
+
+                                           <div class="actions">
+                                             <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                           </div>
+                                         <% end %>
+
+
+
+                                       </div>
+                                   </div>
+                               </div>
+
+                         </div>
+
+                                               </td>
+
+                                           </tr>
+
+                     <%end%>
                      <%end%>
 
                                    </tbody>

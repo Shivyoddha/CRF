@@ -68,7 +68,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Diameter</th>
                         <th scope="col" id="composition">Mould</th>
                         <th scope="col" id="phase">Grit</th>
@@ -89,6 +91,7 @@
                 <tbody>
 
                         <% @grind2.where(status:'alloted').each do |grind|%>
+                          <% if grind.expresssample ==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
@@ -96,7 +99,9 @@
                         <td> <%= grind.user.orgname%> </td>
                         <td> <%= grind.user.department%> </td>
                         <td> <%= grind.user.contact%> </td>
+                        <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= grind.sample%> </td>
+                        <td> <%= grind.expresssample%> </td>
                         <td> <%= grind.diameter%> </td>
                         <td> <%= grind.mould%> </td>
                         <td> <%= grind.grit%> </td>
@@ -222,9 +227,146 @@
                    </div>
                </td>
 
-<%end%>
           </tr>
+          <%else%>
+          <tr class="exp-slot-entry">
+            <!-- Button trigger modal -->
+            <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
+            <td> <%= grind.user.firstname%><nobr> <%= grind.user.lastname%> </td>
+            <td> <%= grind.user.orgname%> </td>
+            <td> <%= grind.user.department%> </td>
+            <td> <%= grind.user.contact%> </td>
+            <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+            <td> <%= grind.sample%> </td>
+            <td> <%= grind.expresssample%> </td>
+            <td> <%= grind.diameter%> </td>
+            <td> <%= grind.mould%> </td>
+            <td> <%= grind.grit%> </td>
+            <td> <%= grind.diamond%> </td>
+            <td> <%= grind.suspension%> </td>
+            <td> <%= grind.lapping%> </td>
+            <td> <%= grind.more%> </td>
+            <td>Booked</td>
 
+            <td> <%= grind.slotdate %></td>
+
+            <td> <%= grind.slottime %></td>
+
+              <td><%= grind.status%></td>
+              <%if grind.references.attached? %>
+        <%grind.references.each do |file|%>
+        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+           <% end %>
+      <% else %>
+        <td>NA</td>
+      <% end %>
+      <td id="assign-btn">
+      <!-- Button trigger modal -->
+       <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{grind.id}" }, id: "ani" %>
+       <div id="<%= grind.id%>" class="modal">
+
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= grind.user.firstname %></b></h1>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+               <%= form_with(model: grind,local:true) do |form| %>
+
+               <div class="input-group mb-3">
+                 <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                 <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+               </div>
+
+               <div class="input-group mb-3">
+               <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+               <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+             </div>
+
+               <%=form.fields_for :equipment_table do |f| %>
+
+                   <%= f.hidden_field :app_no, value:"CRF/GRIND/#{grind.id}"%>
+                   <%= f.hidden_field :username, value:"#{grind.user.firstname}"%>
+                   <%= f.hidden_field :dummy, value:"#{grind.status}"%>
+                   <%= f.hidden_field :debit_head, value:"#{grind.debit}" %>
+
+               <%end%>
+                 <div class="actions">
+                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                 </div>
+               <% end %>
+             </div>
+         </div>
+     </div>
+ </div>
+   </td>
+
+
+   <td id="cancel-btn">
+      <!-- Button trigger modal -->
+        <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{grind.id}" }, id: "anish" %>
+
+       <!-- Modal -->
+        <div id="ani<%= grind.id%>" class="modal">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= grind.user.firstname %></b></h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                     <%= form_for grind do |f| %>
+                       <p> Are you sure you want to cancel the slot?</p>
+                       <%= f.hidden_field :status, value: 'cancelled' %>
+                   <div class="actions">
+
+
+                   </div>
+
+                    </div>
+                   <div class="modal-footer">
+                         <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                   </div>
+                   <% end %>
+               </div>
+           </div>
+       </div>
+   </td>
+   <td id="complete-btn">
+      <!-- Button trigger modal -->
+        <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{grind.id}" }, id: "anish" %>
+
+       <!-- Modal -->
+        <div id="mai<%= grind.id%>" class="modal">
+         <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= grind.user.firstname %></b></h1>
+                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                   </div>
+                   <div class="modal-body">
+                     <%= form_for grind do |f| %>
+                       <p> Are you sure you want to complete the slot ?</p>
+                       <%= f.hidden_field :status, value: 'completed' %>
+                   <div class="actions">
+
+
+                   </div>
+
+                    </div>
+                   <div class="modal-footer">
+                         <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                   </div>
+                   <% end %>
+               </div>
+           </div>
+       </div>
+   </td>
+
+</tr>
+          <%end%>
+          <%end%>
       </tbody>
   </table>
 

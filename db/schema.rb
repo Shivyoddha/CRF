@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 2023_06_27_055324) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
-    t.integer "expressslot"
+    t.integer "expressslot", default: 0
   end
 
   create_table "equipment_tables", force: :cascade do |t|

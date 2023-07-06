@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -59,11 +59,11 @@
 
 <div class="container-slot-booker-new">
 
-    
+
 
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
         <div id="slot-details">
         <div>
@@ -75,7 +75,9 @@
                       <th scope="col" id="institute">Institute</th>
                       <th scope="col" id="department">Department</th>
                       <th scope="col" id="contact-no">Contact No:</th>
+                      <th scope="col" id="contact-no">Slot Type</th>
                       <th scope="col" id="sample-no">No of Samples</th>
+                      <th scope="col" id="sample-no">No of  Express Samples</th>
                       <th scope="col" id="composition">Nature</th>
                       <th scope="col" id="application">Application</th>
                       <th scope="col" id="phase">Type</th>
@@ -91,6 +93,7 @@
               <tbody>
 
                       <% @spectro1.where(status:'pending').each do |spectro|%>
+                      <%if spectro.expresssample ==nil%>
                     <tr>
                       <!-- Button trigger modal -->
                       <th scope="row">CRF/SPECTRO/<%=spectro.id %>	</th>
@@ -98,7 +101,9 @@
                       <td> <%= spectro.user.orgname%> </td>
                       <td> <%= spectro.user.department%> </td>
                       <td> <%= spectro.user.contact%> </td>
+                      <td><%if spectro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                       <td> <%= spectro.sample%> </td>
+                      <td> <%= spectro.expresssample%> </td>
                       <td> <%= spectro.nature%> </td>
                       <td> <%= spectro.application%> </td>
                       <td> <%= spectro.stype%> </td>
@@ -148,10 +153,10 @@
                                           <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
                                          <%= f.hidden_field :dept, value:"#{spectro.user.department}" %>
                                         <%= f.hidden_field :email, value:"#{spectro.user.email}" %>
-                                        <%= f.hidden_field :role, value:"#{trib.user.role}" %>
-                                        <%= f.hidden_field :org, value:"#{trib.user.orgaddress}" %>
-                                        <%= f.hidden_field :profesion, value:"#{trib.user.profession}" %>
-                                        <%= f.hidden_field :orgname, value:"#{trib.user.orgname}" %>
+                                        <%= f.hidden_field :role, value:"#{spectro.user.role}" %>
+                                        <%= f.hidden_field :org, value:"#{spectro.user.orgaddress}" %>
+                                        <%= f.hidden_field :profesion, value:"#{spectro.user.profession}" %>
+                                        <%= f.hidden_field :orgname, value:"#{spectro.user.orgname}" %>
                                         <%= f.hidden_field :equipname, value:"spectro" %>
 
                                         <%end%>
@@ -169,7 +174,89 @@
                                              </td>
 
                                          </tr>
-                       <%end%>
+                       <%else%>
+                       <tr class="exp-slot-entry">
+                         <!-- Button trigger modal -->
+                         <th scope="row">CRF/SPECTRO/<%=spectro.id %>	</th>
+                         <td> <%= spectro.user.firstname%><nobr> <%= spectro.user.lastname%></td>
+                         <td> <%= spectro.user.orgname%> </td>
+                         <td> <%= spectro.user.department%> </td>
+                         <td> <%= spectro.user.contact%> </td>
+                         <td><%if spectro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                         <td> <%= spectro.sample%> </td>
+                         <td> <%= spectro.expresssample%> </td>
+                         <td> <%= spectro.nature%> </td>
+                         <td> <%= spectro.application%> </td>
+                         <td> <%= spectro.stype%> </td>
+                         <td> <%= spectro.more%> </td>
+                         <td>Booked</td>
+
+                         <td> <%= spectro.slotdate %></td>
+
+                         <td> <%= spectro.slottime %></td>
+
+                           <td><%= spectro.status%></td>
+                           <%if spectro.references.attached? %>
+                           <%spectro.references.each do |file|%>
+                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <%end%>
+                       <% else %>
+                         <td>NA</td>
+                       <% end %>
+                       <td id="assign-btn">
+                           <!-- Button trigger modal -->
+                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{spectro.id}" }, id: "ani" %>
+                            <div id="<%= spectro.id%>" class="modal">
+
+                            <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= spectro.user.firstname %></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                       </div>
+                                        <div class="modal-body">
+                                          <%= form_with(model: spectro,local:true) do |form| %>
+
+                                              <div class="input-group mb-3">
+                                              <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                              <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                            <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                            <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                          </div>
+
+                                           <%=form.fields_for :equipment_table do |f| %>
+                                               <%= f.hidden_field :app_no, value:"CRF/SPECTRO/#{spectro.id}"%>
+                                              <%= f.hidden_field :username, value:"#{spectro.user.firstname}"%>
+                                              <%= f.hidden_field :dummy, value:"alloted"%>
+                                             <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
+                                            <%= f.hidden_field :dept, value:"#{spectro.user.department}" %>
+                                           <%= f.hidden_field :email, value:"#{spectro.user.email}" %>
+                                           <%= f.hidden_field :role, value:"#{spectro.user.role}" %>
+                                           <%= f.hidden_field :org, value:"#{spectro.user.orgaddress}" %>
+                                           <%= f.hidden_field :profesion, value:"#{spectro.user.profession}" %>
+                                           <%= f.hidden_field :orgname, value:"#{spectro.user.orgname}" %>
+                                           <%= f.hidden_field :equipname, value:"spectro" %>
+
+                                           <%end%>
+
+                                            <div class="actions">
+                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                            </div>
+                                          <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                          </div>
+
+                                                </td>
+
+                                            </tr>
+                                            <%end%>
+                                            <%end%>
 
                                      </tbody>
                                  </table>

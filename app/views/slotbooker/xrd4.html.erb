@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -76,6 +76,7 @@
                         <th scope="col" id="contact-no">Contact No:</th>
                         <th scope="col" id="sample-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Measurement</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="phase">Type</th>
@@ -100,6 +101,7 @@
                         <td> <%= xrds.user.contact%> </td>
                         <td><%if xrds.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= xrds.sample%> </td>
+                        <td> <%= xrds.expresssample%> </td>
                         <td> <%= xrds.measurement%> </td>
                         <td> <%= xrds.composition%> </td>
                         <td> <%= xrds.stype%> </td>

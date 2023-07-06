@@ -18,7 +18,6 @@ Rails.application.routes.draw do
 
 
 
-
   resources :ft_nms
   resources :ansies
   resources :equipment_tables
@@ -87,6 +86,8 @@ Rails.application.routes.draw do
     get 'mainportal/chairmanUsers'
     get 'mainportal/chairmanStatsPayment'
     get 'mainportal/chairmanStatsSamples'
+    get 'mainportal/exportfile'
+    post 'download_liquid_nitrogen', to: 'mainportal#download_liquid_nitrogen', format: :csv
     get 'mainpage/landing'
     get 'home/index'
     get 'home/myslots'
