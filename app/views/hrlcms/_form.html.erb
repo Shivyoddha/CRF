@@ -247,7 +247,7 @@
     let healthHazard = document.getElementById('health-hazard');
     let healthHazardRadio = document.getElementById('health-hazard-radio');
 
-    analysisReq.addEventListener('click', () => {
+    analysisReq.addEventListener('change', () => {
         warning.classList.add('vis');
 
 
@@ -255,7 +255,7 @@
         warning.classList.toggle('vis');
       }
      })
-    storageHandling.addEventListener('click', () => {
+    storageHandling.addEventListener('change', () => {
         mentionStorageHandling.classList.add('vis');
 
 
@@ -263,7 +263,7 @@
         mentionStorageHandling.classList.toggle('vis');
       }
      })
-    disposalMethod.addEventListener('click', () => {
+    disposalMethod.addEventListener('change', () => {
         disposalMethodMention.classList.add('vis');
 
 
@@ -271,7 +271,7 @@
         disposalMethodMention.classList.toggle('vis');
       }
      })
-    incompatible.addEventListener('click', () => {
+    incompatible.addEventListener('change', () => {
         incompatibleMention.classList.add('vis');
 
 
@@ -279,7 +279,7 @@
         incompatibleMention.classList.toggle('vis');
       }
      })
-    healthHazard.addEventListener('click', () => {
+    healthHazard.addEventListener('change', () => {
         healthHazardRadio.classList.add('vis');
 
 

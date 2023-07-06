@@ -190,7 +190,7 @@
     let disposalMethod = document.getElementById('disposal-method');
     let specMethodInput = document.getElementById('spec-method-input');
 
-    healthHazard.addEventListener('click', () => {
+    healthHazard.addEventListener('change', () => {
         healthCheck.classList.add('vis');
 
 
@@ -198,7 +198,7 @@
         healthCheck.classList.toggle('vis');
       }
      })
-    disposalMethod.addEventListener('click', () => {
+    disposalMethod.addEventListener('change', () => {
         specMethodInput.classList.add('vis');
 
 

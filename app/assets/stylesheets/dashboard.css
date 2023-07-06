@@ -65,6 +65,14 @@ hr {
   font-family: "Quicksand", "sans-serif";
 }
 
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+  color: #474130;
+  pointer-events: none;
+  background-color: var(--bs-btn-disabled-bg);
+  border-color: #595037;
+  opacity: var(--bs-btn-disabled-opacity);
+}
+
 /* .equipment{
   background: #1c87c9;
 } */
