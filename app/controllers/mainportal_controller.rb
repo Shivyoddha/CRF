@@ -37,6 +37,81 @@ def download_liquid_nitrogen
 
   send_data csv_data, filename: 'liquid_nitrogen.csv', type: 'text/csv'
 end
+def download_xrd
+  xrd_records = Xrd.all
+
+  csv_data = CSV.generate do |csv|
+    csv << Xrd.column_names + ['Download Link'] # Header row with column names and 'Download Link' column
+
+    xrd_records.each do |record|
+      reference_files = record.references
+
+      download_links = reference_files.map do |file|
+        download_link_for_reference(record.id, file.blob.filename.to_s)
+      end
+
+      csv << record.attributes.values + [download_links.join(', ')] # Data row with attribute values and download links
+    end
+  end
+
+  send_data csv_data, filename: 'xrd_data.csv', type: 'text/csv'
+end
+def download_xrd_reference
+  record = Xrd.find(params[:id])
+  files = record.references
+
+  # Process each attached file
+  files.each do |file|
+    send_data file.download, filename: file.filename.to_s, type: file.content_type,disposition: 'attachment'
+  end
+end
+
+
+
+
+
+
+
+
+  # @xrd = Xrd.all
+  #
+  # csv_data = CSV.generate do |csv|
+  #   csv << Xrd.column_names
+  #   @xrd.each do |xrd|
+  #     csv << xrd.attributes.values
+  #   end
+
+  def download_xrd_binary
+  xrd = Xrd.find_by(column_name: 'reference_type')
+  send_data xrd.xrd.download, filename: xrd.xrd.filename.to_s, type: xrd.xrd.content_type
+end
+# def download_xrd
+#   @xrd = Xrd.all
+#
+#   respond_to do |format|
+#     format.csv do
+#       csv_data = CSV.generate do |csv|
+#         csv << Xrd.column_names
+#
+#         @xrd.each do |xrd|
+#           csv << xrd.attributes.values
+#         end
+#       end
+#
+#       send_data csv_data, filename: 'xrd.csv', type: 'text/csv'
+#     end
+#
+#     format.any(:binary, :download) do
+#       @xrd.each do |xrd|
+#         blob = xrd.blob
+#         send_file blob.service.send(:path_for, blob.key), filename: blob.filename.to_s, type: blob.content_type
+#       end
+#     end
+#   end
+# end
+
+
+
 
 
 
@@ -180,5 +255,9 @@ end
     end
 
 
+    private
 
+    def download_link_for_reference(record_id, filename)
+      url_for(controller: 'mainportal', action: 'download_xrd_reference', id: record_id, filename: filename, only_path: false)
+    end
 end
