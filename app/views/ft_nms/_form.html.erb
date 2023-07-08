@@ -257,7 +257,7 @@
     let solvent4 = document.getElementById('solvent-4');
     let solvent5 = document.getElementById('solvent-5');
 
-    sampleNumber.addEventListener('click', () => {
+    sampleNumber.addEventListener('change', () => {
         solvent2.classList.add('vis');
         solvent3.classList.add('vis');
         solvent4.classList.add('vis');
@@ -283,7 +283,7 @@
         }
     })
 
-    healthHazard.addEventListener('click', () => {
+    healthHazard.addEventListener('change', () => {
         healthHazardYes.classList.add('vis');
 
         if(healthHazard.value == 'Yes'){
@@ -291,7 +291,7 @@
         }
     })
 
-    storageHandle.addEventListener('click', () => {
+    storageHandle.addEventListener('change', () => {
         specTemp.classList.add('vis');
 
         if(storageHandle.value == 'spec_temp'){

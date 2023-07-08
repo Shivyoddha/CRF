@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab activated">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -63,10 +63,10 @@
 <div class="container-slot-booker-new">
 
 
-    
+
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
 
         <div id="slot-details">
@@ -79,7 +79,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Volume</th>
                         <th scope="col" id="composition">Speed</th>
                         <th scope="col" id="phase">Temperature</th>
@@ -97,6 +99,7 @@
                 <tbody>
 
                       <% @centrifuge.all.each do |centrifuge|%>
+                      <%if centrifuge.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
@@ -104,7 +107,41 @@
                         <td> <%= centrifuge.user.orgname%> </td>
                         <td> <%= centrifuge.user.department%> </td>
                         <td> <%= centrifuge.user.contact%> </td>
+                        <td><%if centrifuge.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= centrifuge.sample%> </td>
+                        <td> <%= centrifuge.expresssample%> </td>
+                        <td> <%= centrifuge.volume%> </td>
+                        <td> <%= centrifuge.speed%> </td>
+                        <td> <%= centrifuge.temperature%> </td>
+                        <td> <%= centrifuge.toxicity%> </td>
+                        <td> <%= centrifuge.compatibility%> </td>
+                        <td> <%= centrifuge.carcinogenic%> </td>
+                        <td> <%= centrifuge.more%> </td>
+                        <td>Booked</td>
+
+                        <td><span style="white-space: nowrap;"><%= centrifuge.slotdate.strftime('%d-%m-%Y')if centrifuge.slotdate.present? %></td>
+                       <td><%= centrifuge.slottime.strftime('%H:%M:%S') if centrifuge.slottime.present? %></td>
+
+                          <td><%= centrifuge.status%></td>
+                          <%if centrifuge.references.attached? %>
+                        <%centrifuge.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      </tr>
+                       <% end %>
+                      <%else%>
+                      <tr class="exp-slot-entry">
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/CENTRIFUGE/<%=centrifuge.id %>	</th>
+                        <td> <%= centrifuge.user.firstname%><nobr> <%= centrifuge.user.firstname%></td>
+                        <td> <%= centrifuge.user.orgname%> </td>
+                        <td> <%= centrifuge.user.department%> </td>
+                        <td> <%= centrifuge.user.contact%> </td>
+                        <td><%if centrifuge.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                        <td> <%= centrifuge.sample%> </td>
+                        <td> <%= centrifuge.expresssample%> </td>
                         <td> <%= centrifuge.volume%> </td>
                         <td> <%= centrifuge.speed%> </td>
                         <td> <%= centrifuge.temperature%> </td>
@@ -128,6 +165,7 @@
                         <%end%>
                     </tr>
                       <%end%>
+                        <%end%>
                 </tbody>
             </table>
 

@@ -226,35 +226,35 @@
         let drill_div = document.getElementById('drill')
         let edm_div = document.getElementById('edm')
         let edg_div = document.getElementById('edg')
-        mill.addEventListener('click', ()=> {
+        mill.addEventListener('change', ()=> {
             mil_div.classList.add('vis');
 
             if(mill.checked) {          //checks whether checkbox is checked or not
                 mil_div.classList.toggle('vis')
             }
         })
-        turn.addEventListener('click', ()=> {
+        turn.addEventListener('change', ()=> {
             turn_div.classList.add('vis');
 
             if(turn.checked) {
                 turn_div.classList.toggle('vis')
             }
         })
-        drill.addEventListener('click', ()=> {
+        drill.addEventListener('change', ()=> {
             drill_div.classList.add('vis');
 
             if(drill.checked) {
                 drill_div.classList.toggle('vis')
             }
         })
-        edm.addEventListener('click', ()=> {
+        edm.addEventListener('change', ()=> {
             edm_div.classList.add('vis');
 
             if(edm.checked) {
                 edm_div.classList.toggle('vis')
             }
         })
-        edg.addEventListener('click', ()=> {
+        edg.addEventListener('change', ()=> {
             edg_div.classList.add('vis');
 
             if(edg.checked) {

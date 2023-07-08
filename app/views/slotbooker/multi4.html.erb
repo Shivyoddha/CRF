@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -75,7 +75,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Sample Type</th>
                         <th scope="col" id="composition">Size</th>
                         <th scope="col" id="phase">Measurement</th>
@@ -99,7 +101,8 @@
                 </thead>
                 <tbody>
 
-                    <% @multi4.where(status:'cancelled').each do |multi|%>
+                    <% @multi4.where(status:'alloted').each do |multi|%>
+                    <%if multi.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/multi/<%=multi.id %>	</th>
@@ -137,7 +140,46 @@
                           <td>NA</td>
                         <% end %>
                     </tr>
+                    <%else%>
+                    <tr class="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/multi/<%=multi.id %>	</th>
+                      <td> <%= multi.user.firstname%><nobr> <%= multi.user.lastname%></td>
+                      <td> <%= multi.user.orgname%> </td>
+                      <td> <%= multi.user.department%> </td>
+                      <td> <%= multi.user.contact%> </td>
+                      <td> <%= multi.sample%> </td>
+                      <td> <%= multi.stype%> </td>
+                      <td> <%= multi.size%> </td>
+                      <td> <%= multi.measuerment%> </td>
+                      <td> <%= multi.drop_range%> </td>
+                      <td> <%= multi.drop_velocity%> </td>
+                      <td> <%= multi.drop_temp%> </td>
+                      <td> <%= multi.drop_shape%> </td>
+                      <td> <%= multi.shpb_lenght%> </td>
+                      <td> <%= multi.shpb_temp%> </td>
+                      <td> <%= multi.bullet_velocity%> </td>
+                      <td> <%= multi.bullet_shape%> </td>
+                      <td> <%= multi.bird_velocity%> </td>
+                      <td> <%= multi.bird_shape%> </td>
+                      <td> <%= multi.more%> </td>
+                      <td>Booked</td>
+
+                      <td> <%= multi.slotdate %></td>
+
+                      <td> <%= multi.slottime %></td>
+
+                        <td><%= multi.status%></td>
+                        <%if multi.references.attached? %>
+                        <%multi.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                  </tr>
                       <%end%>
+                        <%end%>
                 </tbody>
             </table>
 

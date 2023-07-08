@@ -148,9 +148,9 @@
     let gelInfo = document.getElementById('gel-info');
     let gelType = document.getElementById('sample-type');
 
-    gelType.addEventListener('click', () => {
+    gelType.addEventListener('change', () => {
         gelInfo.classList.add('vis');
-        if(gelType.value == 'gel'){
+        if(gelType.value == 'Gel'){
           gelInfo.classList.toggle('vis')
         }
     })
