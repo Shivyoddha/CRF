@@ -25,9 +25,9 @@ body {
   display: flex;
   gap: 4vmin;
   position: absolute;
-  left: 30%;
+  left: 1%;
   top: 50%;
-  transform: translate(0%, -50%); 
+  transform: translate(0%, -50%);
   user-select: none; /* -- Prevent image highlighting -- */
 }
 .card {
@@ -37,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   border-radius: 7px;
-  
+
 }
 
 .image {
@@ -178,19 +178,19 @@ h2  .char{
 	margin-top: 10px;
 	padding: 15px 0px;
   font-size: 25px;
-  
-	
+
+
 }
 .dev-icons a{
 		display: inline;
 		margin-right: 10px;
-    
+
 }
 .dev-icons a i{
   color:white;
 }
 
-  
+
 .dev-icons a i:hover{
 		transform: scale(1.5);
 		color: #2ab1ce;
