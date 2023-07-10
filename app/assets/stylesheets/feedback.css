@@ -7,6 +7,7 @@
     margin: auto;
     width: 90%;
     padding: 1em;
+    
 }
 #head-new {
     background-color: aliceblue;
@@ -14,6 +15,7 @@
     margin: 0.2em auto ;
     border-radius: 10px 10px 0 0;
 }
+
 
 #form {
     margin: 2em;
