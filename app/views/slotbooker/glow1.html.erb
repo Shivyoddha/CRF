@@ -68,7 +68,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="composition">No of Sample</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
+                        <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Elemental Composition</th>
                        <th scope="col" id="coating-ele">Coating </th>
                        <th scope="col" id="coating-ele">Coated Element</th>
@@ -86,6 +88,7 @@
                 <tbody>
 
                         <% @glow1.where(status:'pending').each do |glow|%>
+                          <% if glow.expresssample ==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
@@ -93,7 +96,9 @@
                         <td> <%= glow.user.orgname%> </td>
                         <td> <%= glow.user.department%> </td>
                         <td> <%= glow.user.contact%> </td>
+                        <td><%if glow.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= glow.sample%> </td>
+                        <td> <%= glow.expresssample%> </td>
                         <td> <%= glow.elemental%> </td>
                         <td> <%= glow.coated%> </td>
                         <td> <%= glow.coated_ele%> </td>
@@ -170,6 +175,94 @@
                                            </td>
 
                                        </tr>
+                                       <%else%>
+                                       <tr class="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
+                      <td> <%= glow.user.firstname%><nobr> <%= glow.user.lastname%></td>
+                      <td> <%= glow.user.orgname%> </td>
+                      <td> <%= glow.user.department%> </td>
+                      <td> <%= glow.user.contact%> </td>
+                      <td><%if glow.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                      <td> <%= glow.sample%> </td>
+                      <td> <%= glow.expresssample%> </td>
+                      <td> <%= glow.elemental%> </td>
+                      <td> <%= glow.coated%> </td>
+                      <td> <%= glow.coated_ele%> </td>
+                      <td> <%= glow.substarte%> </td>
+                      <td> <%= glow.specification%> </td>
+                      <td> <%= glow.more%> </td>
+                      <td>Booked</td>
+
+                      <td> <%= glow.slotdate %></td>
+
+                      <td> <%= glow.slottime %></td>
+
+                        <td><%= glow.status%></td>
+                        <%if glow.references.attached? %>
+                  <%glow.references.each do |file|%>
+                  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <% end %>
+                <% else %>
+                  <td>NA</td>
+                <% end %>
+                <td id="assign-btn">
+                    <!-- Button trigger modal -->
+                     <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{glow.id}" }, id: "ani" %>
+                     <div id="<%= glow.id%>" class="modal">
+
+                     <div class="modal-dialog">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Assignment to <b><%= glow.user.firstname %></b></h1>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                 <div class="modal-body">
+                                   <%= form_with(model: glow,local:true) do |form| %>
+
+                                   <div class="input-group mb-3">
+                                     <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                     <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                   </div>
+
+                                   <div class="input-group mb-3">
+                                   <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                   <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                 </div>
+
+                                    <%=form.fields_for :equipment_table do |f| %>
+                                        <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
+                                       <%= f.hidden_field :username, value:"#{glow.user.firstname}"%>
+                                       <%= f.hidden_field :dummy, value:"alloted"%>
+                                      <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
+                                      <%= f.hidden_field :dept, value:"#{glow.user.department}" %>
+                                     <%= f.hidden_field :email, value:"#{glow.user.email}" %>
+                                     <%= f.hidden_field :equipname, value:"glow" %>
+                                     <%= f.hidden_field :role, value:"#{glow.user.role}" %>
+                                    <%= f.hidden_field :org, value:"#{glow.user.orgaddress}" %>
+                                    <%= f.hidden_field :profesion, value:"#{glow.user.profession}" %>
+                                    <%= f.hidden_field :orgname, value:"#{glow.user.orgname}" %>
+
+
+                                    <%end%>
+
+                                     <div class="actions">
+                                       <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                     </div>
+                                   <% end %>
+
+
+
+                                 </div>
+                             </div>
+                         </div>
+
+                   </div>
+
+                                         </td>
+
+                                     </tr>
+                     <%end%>
                      <%end%>
 
                                    </tbody>

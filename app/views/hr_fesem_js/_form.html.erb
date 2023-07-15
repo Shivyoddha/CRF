@@ -1,9 +1,8 @@
+<%= stylesheet_link_tag "loginFeatures" %>
+<%= stylesheet_link_tag "equipmentQuestion" %>
 
-<%= stylesheet_link_tag "loginFeatures"%>
-<%= stylesheet_link_tag "equipmentQuestion"%>
-
-<%=render "partials/loginHeading"%>
-<%=render "partials/formsBackbtn"%>
+<%= render "partials/loginHeading" %>
+<%= render "partials/formsBackbtn" %>
 
 <div class="container">
   <div id="equipment-name">
@@ -23,47 +22,46 @@
       </div>
     <% end %>
 
+    <div class="hero">
+      <% if @slot_type == "regular" %>
+        <div class="input-group mb-3">
+          <%= form.label :sample, "No of Sample", class: "input-group-text", for: "inputGroupSelect01" %>
+          <%= form.select(:sample, ['1', '2', '3', '4', '5'], { include_blank: 'Choose...' }, { class: 'form-select', id: "no-of-sample", required: true }) %>
+        </div>
+      <% else %>
+        <div id="instruct">
+          <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
+          <p class="text-danger"></p>
+        </div>
+        <div class="input-group mb-3">
+          <%= form.label :expresssample, "No of Samples Express", class: "input-group-text", for: "xrd-select-no-of-equipment" %>
+          <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available samples", class: "form-select" %>
+        </div>
+      <% end %>
 
-    <div class='hero'>
-      <% if @slot_type=="regular"%>
       <div class="input-group mb-3">
-        <%= form.label :sample,"No of Sample", class:"input-group-text", for:"inputGroupSelect01"%>
-        <%= form.select(:sample, ['1', '2','3','4','5'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "no-of-sample",:required => true}) %>
+        <%= form.label :composition, "Sample Composition", class: "input-group-text", for: "composition" %>
+        <%= form.text_field :composition, type: "text", class: "form-control", id: "composition", placeholder: "Possible Elements" %>
       </div>
-     <%else%>
-     <div id="instruct">
-         <span class="input-group-text text-danger" id="basic-addon1">Express slot is available from <%=@equiplist_expressstart%> to <%=@equiplist_expressend%></span>
-         <p class="text-danger"></p>
-     </div>
-     <div class="input-group mb-3">
-       <%= form.label :expresssample,"No of Samples Express", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
-       <%= form.select :expresssample, options_for_select(1..@equiplist_expressslot[0]), prompt: "No. of available samples", class:"form-select" %>
-     </div>
-     <%end%>
-        <div class="input-group mb-3">
-          <%= form.label :composition, "Sample Composition", class:"input-group-text", for:"composition" %>
-          <%= form.text_field :composition, type:"text", class:"form-control", id:"composition", placeholder:"Possible Elements" %>
-        </div>
 
-        <div class="input-group mb-3">
-            <%= form.label :stype, "Sample Type", class:"input-group-text", for:"sample-type" %>
-            <%= form.select(:stype, ['Powder', 'Metal','Ceramic','Polymer'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "sample-type",:required => true}) %>
-        </div>
+      <div class="input-group mb-3">
+        <%= form.label :stype, "Sample Type", class: "input-group-text", for: "sample-type" %>
+        <%= form.select(:stype, ['Powder', 'Metal', 'Ceramic', 'Polymer'], { include_blank: 'Choose...' }, { class: 'form-select', id: "sample-type", required: true }) %>
+      </div>
 
-        <div class="input-group mb-3">
-          <%= form.label :sphase,"Sample Phase", class:"input-group-text", for:"phase" %>
-          <%= form.text_field :sphase, class:"form-control", id:"phase", placeholder:"Solid/ Powder/ Fibre/ Film/ etc.." %>
-        </div>
+      <div class="input-group mb-3">
+        <%= form.label :sphase, "Sample Phase", class: "input-group-text", for: "phase" %>
+        <%= form.text_field :sphase, class: "form-control", id: "phase", placeholder: "Solid/ Powder/ Fibre/ Film/ etc.." %>
+      </div>
 
+      <div>
         <div>
-          <div>
-            <%= form.label :measurement, "Measurement Required", class:"input-group-text" %>
-            <div class="form-check">
-            <%= form.check_box :measurement,{}, true, false%>
-            <%= form.label "SEM", class:"form-check-label" %>
-            </div>
+          <%= form.label :measurement, "Measurement Required", class: "input-group-text" %>
+          <div class="form-check">
+            <%= form.check_box :measurement, {}, true, false %>
+            <%= form.label "SEM", class: "form-check-label" %>
+          </div>
         </div>
-
 
         <div class="input-group mb-3">
           <label class="input-group-text" for="eds-reqd">EDS Required</label>
@@ -74,72 +72,60 @@
           </select>
         </div>
         <div id="eds-radio" class="vis">
-          <%= form.label :eds_required, "EDS:",class:"form-check-label fw-bold text-success", for:"flexRadioDefault2" %>
-            <div class="form-check">
-                <%= form.radio_button :eds_required, ' Mapping Line', class:"form-check-input", type:"radio", id:"map",:checked => true  %> Mapping Line
-            </div>
-            <div class="form-check">
-                  <%= form.radio_button :eds_required, 'Area/Point', class:"form-check-input", type:"area", id:"area"  %> Area/Point
-            </div>
-            <div class="form-check">
-                  <%= form.radio_button :eds_required, 'Both', class:"form-check-input", type:"area", id:"both"  %> Both
-            </div>
-            <div>
-              <p class="text-warning">Max. 3 sample for EDS - Mapping</p>
-            </div>
+          <%= form.label :eds_required, "EDS:", class: "form-check-label fw-bold text-success", for: "flexRadioDefault2" %>
+          <div class="form-check">
+            <%= form.radio_button :eds_required, ' Mapping Line', class: "form-check-input", type: "radio", id: "map", checked: true  %> Mapping Line
+          </div>
+          <div class="form-check">
+            <%= form.radio_button :eds_required, 'Area/Point', class: "form-check-input", type: "area", id: "area"  %> Area/Point
+          </div>
+          <div class="form-check">
+            <%= form.radio_button :eds_required, 'Both', class: "form-check-input", type: "area", id: "both"  %> Both
+          </div>
+          <div>
+            <p class="text-warning">Max. 3 sample for EDS - Mapping</p>
+          </div>
         </div>
 
+        <div class="input-group mb-3">
+          <%= form.label :toxic, "Sample is toxic?", class: "input-group-text", for: "toxic" %>
+          <%= form.select(:toxic, ['Yes', 'No'], { include_blank: 'Choose...' }, { class: 'form-select', id: "toxic", required: true }) %>
+        </div>
 
-          <div class="input-group mb-3">
-              <%= form.label :toxic, "Sample is toxic?",class:"input-group-text", for:"toxic" %>
-              <%= form.select(:toxic, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "toxic",:required => true}) %>
-            </div>
+        <div class="input-group mb-3">
+          <%= form.label :conducting, "Sample is Conducting?", class: "input-group-text", for: "conduct" %>
+          <%= form.select(:conducting, ['Yes', 'No'], { include_blank: 'Choose...' }, { class: 'form-select', id: "conduct", required: true }) %>
+        </div>
 
+        <div class="input-group mb-3" id="ref-file">
+          <%= form.label :references, "Reference Files", for: "ref-file-input", class: "input-group-text" %>
+          <%= form.file_field :references, class: "form-control", id: "ref-file-input", multiple: true %>
+        </div>
 
+        <div class="input-group mb-3">
+          <%= form.text_field :more, class: "form-control", id: "maxdegreeInput", placeholder: "Tell us more about testing requirement" %>
+        </div>
 
-            <div class="input-group mb-3">
-              <%= form.label :conducting, "Sample is Conducting?",class:"input-group-text", for:"conduct" %>
-              <%= form.select(:conducting, ['Yes','No'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "conduct",:required => true}) %>
-            </div>
-
-
-            <div class="input-group mb-3" id="ref-file">
-              <%= form.label :references ,"Reference Files" ,for:"ref-file-input", class:"input-group-text "%>
-              <%= form.file_field :references,class:"form-control ",  id:"ref-file-input",multiple:true  %>
-            </div>
-
-          <div class="input-group mb-3">
-              <%= form.text_field :more, class:"form-control", id:"maxdegreeInput", placeholder:"Tell us more about testing requirement"%>
-          </div>
-
-
-          <div class="actions">
-            <%= form.submit "Book Slot", class:"btn btn-primary", id:"sbt" %>
-          </div>
+        <div class="actions">
+          <%= form.submit "Book Slot", class: "btn btn-primary", id: "sbt" %>
         </div>
       </div>
-
     </div>
+  </div>
 
+  <%= render "partials/footer" %>
 
+<% end %>
 
-  <%=render "partials/footer" %>
+<script>
+  let edsRequired = document.getElementById('eds-reqd');
+  let edsRadio = document.getElementById('eds-radio');
 
-  <% end %>
+  edsRequired.addEventListener('change', () => {
+    edsRadio.classList.add('vis');
 
-
-
-  <script>
-
-    let edsRequired = document.getElementById('eds-reqd');
-    let edsRadio = document.getElementById('eds-radio');
-
-    edsRequired.addEventListener('click', () => {
-        edsRadio.classList.add('vis');
-
-        if(edsRequired.value == 'yes'){
-          edsRadio.classList.toggle('vis')
-        }
-    })
-
+    if (edsRequired.value == 'yes') {
+      edsRadio.classList.toggle('vis');
+    }
+  });
 </script>
