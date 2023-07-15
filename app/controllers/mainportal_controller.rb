@@ -18,7 +18,6 @@ class MainportalController < ApplicationController
     @active_equipments = Equiplist.where(status: 'Active').count
     @under_maintenance = Equiplist.where(status: 'Under Maintenance').count
     @unavailable = Equiplist.where(status: 'Unavailable').count
-
  end
  def adminModelEquip
    @equiplist=Equiplist.all
@@ -116,8 +115,9 @@ end
 
 
   def adminAllSlots
-    @slots = EquipmentTable.all
+
     @entry= params[:entry]
+    @slots = EquipmentTable.order(updated_at: :desc)
    end
 
 #  def authenticate_admin!
@@ -148,11 +148,9 @@ def adminExpSlot
   end
 end
 
+
   def adminModelUsers
-    @user = User.all
-  end
-  def adminModelUsers
-      @user = User.all
+      @user = User.order(updated_at: :desc)
       @entry = params[:entry]
   end
   def adminexport
@@ -231,8 +229,8 @@ end
         @sum_external_day = @external_revenue_day.sum(:pay)
         @internal_user = User.where(role: ['student','faculty']).count(:email)
         @external_user = User.where(role: 'external').count(:email)
-        @internal_revenue =  EquipmentTable.where(role: ['student', 'faculty']).all
-        @external_revenue = EquipmentTable.where(role: 'external').all
+        @internal_revenue =  EquipmentTable.where(role: ['student', 'faculty'], dummy: 'payment_completed').all
+        @external_revenue = EquipmentTable.where(role: 'external', dummy: 'payment_completed').all
         @sum_internal = @internal_revenue.sum(:pay)
         @sum_external = @external_revenue.sum(:pay)
         @internal_booking_count = EquipmentTable.where(role: ['student', 'faculty']).count
@@ -247,7 +245,7 @@ end
    end
 
    def chairmanUsers
-     @user = User.all
+     @user = User.order(updated_at: :desc)
    end
 
    def chairmanEquip

@@ -42,4 +42,5 @@ class EquipmentTable < ApplicationRecord
   belongs_to :ft_nm, optional: true
   belongs_to :equiplist, optional: true
   has_one_attached :view
+  serialize :file_name, Array
 end
