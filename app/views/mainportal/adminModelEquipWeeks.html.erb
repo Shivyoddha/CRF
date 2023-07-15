@@ -31,9 +31,9 @@
                     <div>
                     </div>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item" id="admin-mail">
-                            <a class="nav-link" href="#">admin@mail</a>
-                        </li>
+                      <li class="nav-item" id="Home">
+                        <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
+                      </li>
                         <li class="nav-item" id="logout">
                         <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
                         </li>

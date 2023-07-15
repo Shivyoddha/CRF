@@ -19,9 +19,9 @@
             <div>
             </div>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="admin-mail">
-                    <a class="nav-link" href="#">admin@mail</a>
-                </li>
+              <li class="nav-item" id="Home">
+                <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
+              </li>
                 <li class="nav-item" id="logout">
                     <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
                 </li>
@@ -66,18 +66,18 @@
                                 <td>
                                     <%= equip.name%>
                                 </td>
-                                
+
                                 <td>
                                     <%= equip.expressstart %> <b>to</b> <%= equip.expressend%>
                                 </td>
 
                                 <td id="assign-btn">
 
-                                    
+
                                     <button type="button" class="btn btn-primary">
                                     <%= link_to "Release Slots" , mainportal_adminExpSlot_path(equipment_id: equip.id), class: "btn btn-primary" %> <span class="badge text-bg-secondary"><%= equip.expressslot %></span>
                                     </button>
-                                    
+
                                 </td>
 
 

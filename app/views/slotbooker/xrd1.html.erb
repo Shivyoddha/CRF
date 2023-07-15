@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -143,19 +143,6 @@
                                             <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                           </div>
 
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                                <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                                <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
-                                                <%= f.hidden_field :dummy, value:"alloted"%>
-                                                <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                                <%= f.hidden_field :dept, value:"#{xrds.user.department}" %>
-                                                <%= f.hidden_field :email, value:"#{xrds.user.email}" %>
-                                                <%= f.hidden_field :role, value:"#{xrds.user.role}" %>
-                                                <%= f.hidden_field :org, value:"#{xrds.user.orgaddress}" %>
-                                                <%= f.hidden_field :profesion, value:"#{xrds.user.profession}" %>
-                                                <%= f.hidden_field :orgname, value:"#{xrds.user.orgname}" %>
-                                                <%= f.hidden_field :equipname, value:"xrd" %>
-                                           <%end%>
 
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -219,20 +206,6 @@
                                             <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                             <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                           </div>
-
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                                <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                                <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
-                                                <%= f.hidden_field :dummy, value:"alloted"%>
-                                                <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                                <%= f.hidden_field :dept, value:"#{xrds.user.department}" %>
-                                                <%= f.hidden_field :email, value:"#{xrds.user.email}" %>
-                                                <%= f.hidden_field :role, value:"#{xrds.user.role}" %>
-                                                <%= f.hidden_field :org, value:"#{xrds.user.orgaddress}" %>
-                                                <%= f.hidden_field :profesion, value:"#{xrds.user.profession}" %>
-                                                <%= f.hidden_field :orgname, value:"#{xrds.user.orgname}" %>
-                                                <%= f.hidden_field :equipname, value:"xrd" %>
-                                           <%end%>
 
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
