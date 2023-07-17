@@ -41,6 +41,12 @@ class ProbeSonicatorsController < ApplicationController
       @probe_sonicator.dummy2 = nil
       @probe_sonicator.dummy3 = nil
     else
+      @probe_sonicator.equipment_table.sample = @probe_sonicator.sample
+    @probe_sonicator.equipment_table.contact_no = @probe_sonicator.user.contact
+    uploaded_files = params[:probe_sonicator][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @probe_sonicator.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @probe_sonicator.equipment_table.dummy = "alloted"
     @probe_sonicator.equipment_table.username = @probe_sonicator.user.name
     @probe_sonicator.equipment_table.equipname = "Probe Sonicator"
@@ -84,7 +90,6 @@ class ProbeSonicatorsController < ApplicationController
   # PATCH/PUT /probe_sonicators/1 or /probe_sonicators/1.json
   def update
     @probe_sonicator.status="alloted"
-    @probe_sonicator.build_equipment_table
 
     respond_to do |format|
       if @probe_sonicator.update(probe_sonicator_params)

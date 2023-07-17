@@ -44,6 +44,12 @@ class MicroEdmsController < ApplicationController
       @micro_edm.dummy2 = nil
       @micro_edm.dummy3 = nil
     else
+      @micro_edm.equipment_table.sample = @micro_edm.sample
+    @micro_edm.equipment_table.contact_no = @micro_edm.user.contact
+    uploaded_files = params[:micro_edm][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @micro_edm.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @micro_edm.equipment_table.dummy = "alloted"
     @micro_edm.equipment_table.username = @micro_edm.user.name
     @micro_edm.equipment_table.equipname = "micro_edm"

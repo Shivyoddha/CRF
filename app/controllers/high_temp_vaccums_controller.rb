@@ -42,6 +42,12 @@ class HighTempVaccumsController < ApplicationController
       @high_temp_vaccum.dummy2 = nil
       @high_temp_vaccum.dummy3 = nil
     else
+      @high_temp_vaccum.equipment_table.sample = @high_temp_vaccum.sample
+    @high_temp_vaccum.equipment_table.contact_no = @high_temp_vaccum.user.contact
+    uploaded_files = params[:high_temp_vaccum][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @high_temp_vaccum.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @high_temp_vaccum.equipment_table.dummy = "alloted"
     @high_temp_vaccum.equipment_table.username = @high_temp_vaccum.user.name
     @high_temp_vaccum.equipment_table.equipname = "High Temp Vacuum Furnace"
@@ -85,7 +91,6 @@ class HighTempVaccumsController < ApplicationController
   # PATCH/PUT /high_temp_vaccums/1 or /high_temp_vaccums/1.json
   def update
     @high_temp_vaccum.status="alloted"
-    @high_temp_vaccum.build_equipment_table
     respond_to do |format|
       if @high_temp_vaccum.update(high_temp_vaccum_params)
         if @high_temp_vaccum.status!= 'completed'
