@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_27_055324) do
+ActiveRecord::Schema.define(version: 2023_07_01_153216) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 2023_06_27_055324) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
-    t.integer "expressslot"
+    t.integer "expressslot", default: 0
   end
 
   create_table "equipment_tables", force: :cascade do |t|
@@ -675,7 +675,7 @@ ActiveRecord::Schema.define(version: 2023_06_27_055324) do
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "composition"
     t.string "stype"
     t.string "sphase"

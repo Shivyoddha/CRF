@@ -1,3 +1,4 @@
+require 'csv'
 class MainportalController < ApplicationController
 #  load_and_authorize_resource :class => false
   # before_action :authenticate_admin!
@@ -17,16 +18,106 @@ class MainportalController < ApplicationController
     @active_equipments = Equiplist.where(status: 'Active').count
     @under_maintenance = Equiplist.where(status: 'Under Maintenance').count
     @unavailable = Equiplist.where(status: 'Unavailable').count
-
  end
  def adminModelEquip
    @equiplist=Equiplist.all
   end
 
 
+def download_liquid_nitrogen
+  @liquid_nitrogen = LiquidNitrogen.all
+
+  csv_data = CSV.generate do |csv|
+    csv << LiquidNitrogen.column_names
+    @liquid_nitrogen.each do |liquid_nitrogen|
+      csv << liquid_nitrogen.attributes.values
+    end
+  end
+
+  send_data csv_data, filename: 'liquid_nitrogen.csv', type: 'text/csv'
+end
+def download_xrd
+  xrd_records = Xrd.all
+
+  csv_data = CSV.generate do |csv|
+    csv << Xrd.column_names + ['Download Link'] # Header row with column names and 'Download Link' column
+
+    xrd_records.each do |record|
+      reference_files = record.references
+
+      download_links = reference_files.map do |file|
+        download_link_for_reference(record.id, file.blob.filename.to_s)
+      end
+
+      csv << record.attributes.values + [download_links.join(', ')] # Data row with attribute values and download links
+    end
+  end
+
+  send_data csv_data, filename: 'xrd_data.csv', type: 'text/csv'
+end
+def download_xrd_reference
+  record = Xrd.find(params[:id])
+  files = record.references
+
+  # Process each attached file
+  files.each do |file|
+    send_data file.download, filename: file.filename.to_s, type: file.content_type,disposition: 'attachment'
+  end
+end
+
+
+
+
+
+
+
+
+  # @xrd = Xrd.all
+  #
+  # csv_data = CSV.generate do |csv|
+  #   csv << Xrd.column_names
+  #   @xrd.each do |xrd|
+  #     csv << xrd.attributes.values
+  #   end
+
+  def download_xrd_binary
+  xrd = Xrd.find_by(column_name: 'reference_type')
+  send_data xrd.xrd.download, filename: xrd.xrd.filename.to_s, type: xrd.xrd.content_type
+end
+# def download_xrd
+#   @xrd = Xrd.all
+#
+#   respond_to do |format|
+#     format.csv do
+#       csv_data = CSV.generate do |csv|
+#         csv << Xrd.column_names
+#
+#         @xrd.each do |xrd|
+#           csv << xrd.attributes.values
+#         end
+#       end
+#
+#       send_data csv_data, filename: 'xrd.csv', type: 'text/csv'
+#     end
+#
+#     format.any(:binary, :download) do
+#       @xrd.each do |xrd|
+#         blob = xrd.blob
+#         send_file blob.service.send(:path_for, blob.key), filename: blob.filename.to_s, type: blob.content_type
+#       end
+#     end
+#   end
+# end
+
+
+
+
+
+
   def adminAllSlots
-    @slots = EquipmentTable.all
+
     @entry= params[:entry]
+    @slots = EquipmentTable.order(updated_at: :desc)
    end
 
 #  def authenticate_admin!
@@ -57,13 +148,25 @@ def adminExpSlot
   end
 end
 
+
   def adminModelUsers
-    @user = User.all
-  end
-  def adminModelUsers
-      @user = User.all
+      @user = User.order(updated_at: :desc)
       @entry = params[:entry]
   end
+  def adminexport
+    @user=User.all
+    @nitrogen=LiquidNitrogen.all
+    @products = Product.all
+
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = 'attachment; filename="liquid_nitrogen.csv"'
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+
 
   def adminStats
       @internal = User.where(role: ['student','faculty']).count(:email)
@@ -126,8 +229,8 @@ end
         @sum_external_day = @external_revenue_day.sum(:pay)
         @internal_user = User.where(role: ['student','faculty']).count(:email)
         @external_user = User.where(role: 'external').count(:email)
-        @internal_revenue =  EquipmentTable.where(role: ['student', 'faculty']).all
-        @external_revenue = EquipmentTable.where(role: 'external').all
+        @internal_revenue =  EquipmentTable.where(role: ['student', 'faculty'], dummy: 'payment_completed').all
+        @external_revenue = EquipmentTable.where(role: 'external', dummy: 'payment_completed').all
         @sum_internal = @internal_revenue.sum(:pay)
         @sum_external = @external_revenue.sum(:pay)
         @internal_booking_count = EquipmentTable.where(role: ['student', 'faculty']).count
@@ -142,7 +245,7 @@ end
    end
 
    def chairmanUsers
-     @user = User.all
+     @user = User.order(updated_at: :desc)
    end
 
    def chairmanEquip
@@ -150,5 +253,9 @@ end
     end
 
 
+    private
 
+    def download_link_for_reference(record_id, filename)
+      url_for(controller: 'mainportal', action: 'download_xrd_reference', id: record_id, filename: filename, only_path: false)
+    end
 end

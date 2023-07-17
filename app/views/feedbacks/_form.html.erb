@@ -29,13 +29,17 @@
       <%end%>
     </div>
 
-    <div  class="input-group mb-3 mt-3">
+    <div  class="input-group mb-3 mt-3" id="text-box">
       <%= form.label :feedback, class:'input-group-text', for:"feed" %>
       <%= form.text_area :feedback, class:"form-control", id:"feed"%>
     </div>
+    <div class="input-group mb-3 mt-3">
+      <%= form.label :date, class:'input-group-text' %>
+      <%= form.date_select :date,class:"form-select" %>
+    </div>
 
     <div class="input-group mb-3 mt-3">
-      <%= form.submit "Create Feedback", class:"btn btn-primary", id:'sbt' %>
+      <%= form.submit "Submit", class:"btn btn-primary", id:'sbt' %>
     </div>
   </div>
 <% end %>

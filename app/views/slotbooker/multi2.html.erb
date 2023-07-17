@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -72,7 +72,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Sample Type</th>
                         <th scope="col" id="composition">Size</th>
                         <th scope="col" id="phase">Measurement</th>
@@ -100,6 +102,7 @@
                 <tbody>
 
                         <% @multi2.where(status:'alloted').each do |multi|%>
+                        <%if multi.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/multi/<%=multi.id %>	</th>
@@ -107,7 +110,9 @@
                         <td> <%= multi.user.orgname%> </td>
                         <td> <%= multi.user.department%> </td>
                         <td> <%= multi.user.contact%> </td>
+                        <td><%if multi.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= multi.sample%> </td>
+                        <td> <%= multi.expresssample%> </td>
                         <td> <%= multi.stype%> </td>
                         <td> <%= multi.size%> </td>
                         <td> <%= multi.measuerment%> </td>
@@ -239,9 +244,151 @@
                         </div>
                     </td>
 
- <%end%>
                </tr>
+                  <%else%>
+                  <tr class="exp-slot-entry">
+                    <th scope="row">CRF/multi/<%=multi.id %>	</th>
+                    <td> <%= multi.user.firstname%><nobr> <%= multi.user.lastname%></td>
+                    <td> <%= multi.user.orgname%> </td>
+                    <td> <%= multi.user.department%> </td>
+                    <td> <%= multi.user.contact%> </td>
+                    <td><%if multi.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                    <td> <%= multi.sample%> </td>
+                    <td> <%= multi.expresssample%> </td>
+                    <td> <%= multi.stype%> </td>
+                    <td> <%= multi.size%> </td>
+                    <td> <%= multi.measuerment%> </td>
+                    <td> <%= multi.drop_range%> </td>
+                    <td> <%= multi.drop_velocity%> </td>
+                    <td> <%= multi.drop_temp%> </td>
+                    <td> <%= multi.drop_shape%> </td>
+                    <td> <%= multi.shpb_lenght%> </td>
+                    <td> <%= multi.shpb_temp%> </td>
+                    <td> <%= multi.bullet_velocity%> </td>
+                    <td> <%= multi.bullet_shape%> </td>
+                    <td> <%= multi.bird_velocity%> </td>
+                    <td> <%= multi.bird_shape%> </td>
+                    <td> <%= multi.more%> </td>
+                    <td>Booked</td>
 
+                    <td> <%= multi.slotdate %></td>
+
+                    <td> <%= multi.slottime %></td>
+
+                      <td><%= multi.status%></td>
+                      <%if multi.references.attached? %>
+                     <%multi.references.each do |file|%>
+                     <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                        <% end %>
+                   <% else %>
+                     <td>NA</td>
+                   <% end %>
+                   <td id="assign-btn">
+                   <!-- Button trigger modal -->
+                    <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{multi.id}" }, id: "ani" %>
+                    <div id="<%= multi.id%>" class="modal">
+
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= multi.user.firstname %></b></h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <%= form_with(model: multi,local:true) do |form| %>
+
+                                <div class="input-group mb-3">
+                                <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                              </div>
+
+                              <div class="input-group mb-3">
+                              <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                              <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                            </div>
+
+                            <%=form.fields_for :equipment_table do |f| %>
+
+                                <%= f.hidden_field :app_no, value:"CRF/MULTI/#{multi.id}"%>
+                                <%= f.hidden_field :username, value:"#{multi.user.firstname}"%>
+                                <%= f.hidden_field :dummy, value:"#{multi.status}"%>
+                                <%= f.hidden_field :debit_head, value:"#{multi.debit}" %>
+                            <%end%>
+                              <div class="actions">
+                                <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                              </div>
+                            <% end %>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </td>
+
+
+                <td id="cancel-btn">
+                   <!-- Button trigger modal -->
+                     <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{multi.id}" }, id: "anish" %>
+
+                    <!-- Modal -->
+                     <div id="ani<%= multi.id%>" class="modal">
+                      <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= multi.user.firstname %></b></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <%= form_for multi do |f| %>
+                                    <p> Are you sure you want to cancel the slot ?</p>
+                                    <%= f.hidden_field :status, value: 'cancelled' %>
+                                <div class="actions">
+
+
+                                </div>
+
+                                 </div>
+                                <div class="modal-footer">
+                                      <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td id="complete-btn">
+                   <!-- Button trigger modal -->
+                     <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{multi.id}" }, id: "anish" %>
+
+                    <!-- Modal -->
+                     <div id="mai<%= multi.id%>" class="modal">
+                      <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= multi.user.firstname %></b></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <%= form_for multi do |f| %>
+                                    <p> Are you sure you want to complete the slot ?</p>
+                                    <%= f.hidden_field :status, value: 'completed' %>
+                                <div class="actions">
+
+
+                                </div>
+
+                                 </div>
+                                <div class="modal-footer">
+                                      <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                                </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+<%end%>
+ <%end%>
+           </tr>
            </tbody>
        </table>
 

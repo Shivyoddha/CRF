@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -59,11 +59,11 @@
 
 <div class="container-slot-booker-new">
 
-    
+
 
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
         <div id="slot-details">
         <div>
@@ -75,7 +75,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Gas</th>
                         <th scope="col" id="composition">Toxicity</th>
                         <th scope="col" id="phase">Compatibility</th>
@@ -94,6 +96,7 @@
                 <tbody>
 
                         <% @sensing2.where(status:'alloted').each do |sensing|%>
+                        <%if sensing.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GAS/<%=sensing.id %>	</th>
@@ -101,7 +104,9 @@
                         <td> <%= sensing.user.orgname%> </td>
                         <td> <%= sensing.user.department%> </td>
                         <td> <%= sensing.user.contact%> </td>
+                        <td><%if sensing.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= sensing.sample%> </td>
+                        <td> <%= sensing.expresssample%> </td>
                         <td> <%= sensing.gas%> </td>
                         <td> <%= sensing.toxicity%> </td>
                         <td> <%= sensing.compatibility%> </td>
@@ -222,9 +227,142 @@
                            </div>
                        </td>
 
-    <%end%>
-                  </tr>
 
+                  </tr>
+                     <%else%>
+                     <tr class="exp-slot-entry">
+                       <!-- Button trigger modal -->
+                       <th scope="row">CRF/GAS/<%=sensing.id %>	</th>
+                       <td> <%= sensing.user.firstname%><nobr> <%= sensing.user.lastname%> </td>
+                       <td> <%= sensing.user.orgname%> </td>
+                       <td> <%= sensing.user.department%> </td>
+                       <td> <%= sensing.user.contact%> </td>
+                       <td><%if sensing.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                       <td> <%= sensing.sample%> </td>
+                       <td> <%= sensing.expresssample%> </td>
+                       <td> <%= sensing.gas%> </td>
+                       <td> <%= sensing.toxicity%> </td>
+                       <td> <%= sensing.compatibility%> </td>
+                       <td> <%= sensing.carcinogenic%> </td>
+                       <td> <%= sensing.more%> </td>
+                       <td>Booked</td>
+
+                       <td> <%= sensing.slotdate %></td>
+
+                       <td> <%= sensing.slottime %></td>
+
+                         <td><%= sensing.status%></td>
+                         <%if sensing.references.attached? %>
+                       <%sensing.references.each do |file|%>
+                       <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                          <% end %>
+                     <% else %>
+                       <td>NA</td>
+                     <% end %>
+                     <td id="assign-btn">
+                         <!-- Button trigger modal -->
+                          <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{sensing.id}" }, id: "ani" %>
+                          <div id="<%= sensing.id%>" class="modal">
+
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= sensing.user.firstname %></b></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <%= form_with(model: sensing,local:true) do |form| %>
+
+                                  <div class="input-group mb-3">
+                                    <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                    <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                  </div>
+
+                                  <div class="input-group mb-3">
+                                  <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                </div>
+                                  <%=form.fields_for :equipment_table do |f| %>
+                                      <%= f.hidden_field :app_no, value:"CRF/SENSING/#{sensing.id}"%>
+                                      <%= f.hidden_field :username, value:"#{sensing.user.firstname}"%>
+                                      <%= f.hidden_field :dummy, value:"#{sensing.status}"%>
+                                       <%= f.hidden_field :debit_head, value:"#{sensing.debit}" %>
+                                  <%end%>
+                                    <div class="actions">
+                                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                    </div>
+                                  <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      </td>
+
+
+                      <td id="cancel-btn">
+                         <!-- Button trigger modal -->
+                           <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{sensing.id}" }, id: "anish" %>
+
+                          <!-- Modal -->
+                           <div id="ani<%= sensing.id%>" class="modal">
+                            <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= sensing.user.firstname %></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= form_for sensing do |f| %>
+                                          <p> Are you sure you want to cancel the slot ?</p>
+                                          <%= f.hidden_field :status, value: 'cancelled' %>
+                                      <div class="actions">
+
+
+                                      </div>
+
+                                       </div>
+                                      <div class="modal-footer">
+                                            <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                      </div>
+                                      <% end %>
+                                  </div>
+                              </div>
+                          </div>
+                      </td>
+                      <td id="complete-btn">
+                         <!-- Button trigger modal -->
+                           <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{sensing.id}" }, id: "anish" %>
+
+                          <!-- Modal -->
+                           <div id="mai<%= sensing.id%>" class="modal">
+                            <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= sensing.user.firstname %></b></h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <%= form_for sensing do |f| %>
+                                          <p> Are you sure you want to complete the slot ?</p>
+                                          <%= f.hidden_field :status, value: 'completed' %>
+                                      <div class="actions">
+
+
+                                      </div>
+
+                                       </div>
+                                      <div class="modal-footer">
+                                            <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                                      </div>
+                                      <% end %>
+                                  </div>
+                              </div>
+                          </div>
+                      </td>
+
+   <%end%>
+    <%end%>
+                 </tr>
               </tbody>
           </table>
 

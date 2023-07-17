@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -42,7 +42,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -73,7 +73,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Composition</th>
                         <th scope="col" id="composition">elctrolyte</th>
                         <th scope="col" id="phase">Application</th>
@@ -89,6 +91,7 @@
                 <tbody>
 
                         <% @elctro1.where(status:'pending').each do |elctro|%>
+                        <%if elctro.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/elctro/<%=elctro.id %>	</th>
@@ -96,7 +99,9 @@
                         <td> <%= elctro.user.orgname%> </td>
                         <td> <%= elctro.user.department%> </td>
                         <td> <%= elctro.user.contact%> </td>
+                        <td><%if elctro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= elctro.sample%> </td>
+                        <td> <%= elctro.expresssample%> </td>
                         <td> <%= elctro.composition%> </td>
                         <td> <%= elctro.electrolyte%> </td>
                         <td> <%= elctro.application%> </td>
@@ -167,8 +172,90 @@
                                              </td>
 
                                          </tr>
-                       <%end%>
+                                         <%else%>
+                                         <tr class="exp-slot-entry">
+                                           <!-- Button trigger modal -->
+                                           <th scope="row">CRF/elctro/<%=elctro.id %>	</th>
+                                           <td> <%= elctro.user.firstname%><nobr> <%= elctro.user.lastname%></td>
+                                           <td> <%= elctro.user.orgname%> </td>
+                                           <td> <%= elctro.user.department%> </td>
+                                           <td> <%= elctro.user.contact%> </td>
+                                           <td><%if elctro.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                                           <td> <%= elctro.sample%> </td>
+                                           <td> <%= elctro.expresssample%> </td>
+                                           <td> <%= elctro.composition%> </td>
+                                           <td> <%= elctro.electrolyte%> </td>
+                                           <td> <%= elctro.application%> </td>
+                                           <td> <%= elctro.more%> </td>
+                                           <td>Booked</td>
+                                           <td><span style="white-space: nowrap;"><%= elctro.slotdate.strftime('%d-%m-%Y')if elctro.slotdate.present? %></td>
+                                           <td><%= elctro.slottime.strftime('%H:%M:%S') if elctro.slottime.present? %></td>
+                                             <td><%= elctro.status%></td>
+                                             <%if elctro.references.attached? %>
+                                         <%elctro.references.each do |file|%>
+                                         <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                                            <% end %>
+                                       <% else %>
+                                         <td>NA</td>
+                                       <% end %>
+                                       <td id="assign-btn">
+                                           <!-- Button trigger modal -->
+                                            <%= button_tag "Assign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{elctro.id}" }, id: "ani" %>
+                                            <div id="<%= elctro.id%>" class="modal">
 
+                                            <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= elctro.user.firstname %></b></h1>
+                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                       </div>
+                                                        <div class="modal-body">
+                                                          <%= form_with(model: elctro,local:true) do |form| %>
+
+                                                          <div class="input-group mb-3">
+                                                            <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                                            <%= form.date_field :slotdate,value: Date.today.strftime('%Y-%m-%d'), class:"form-control", id:"composition",min: Date.today.strftime('%Y-%m-%d') %>
+                                                          </div>
+
+                                                          <div class="input-group mb-3">
+                                                          <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                                          <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                                        </div>
+
+                                                           <%=form.fields_for :equipment_table do |f| %>
+                                                               <%= f.hidden_field :app_no, value:"CRF/ELECTRO/#{elctro.id}"%>
+                                                              <%= f.hidden_field :username, value:"#{elctro.user.name}"%>
+                                                              <%= f.hidden_field :dummy, value:"alloted"%>
+                                                             <%= f.hidden_field :debit_head, value:"#{elctro.debit}" %>
+                                                           <%= f.hidden_field :dept, value:"#{elctro.user.department}" %>
+                                                          <%= f.hidden_field :email, value:"#{elctro.user.email}" %>
+                                                          <%= f.hidden_field :equipname, value:"electro" %>
+                                                          <%= f.hidden_field :role, value:"#{elctro.user.role}" %>
+                                                         <%= f.hidden_field :org, value:"#{elctro.user.orgaddress}" %>
+                                                         <%= f.hidden_field :profesion, value:"#{elctro.user.profession}" %>
+                                                         <%= f.hidden_field :orgname, value:"#{elctro.user.orgname}" %>
+
+                                                           <%end%>
+
+                                                            <div class="actions">
+                                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+                                                            </div>
+                                                          <% end %>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                          </div>
+
+                                                                </td>
+
+                                                            </tr>
+
+                       <%end%>
+                        <%end%>
                                      </tbody>
                                  </table>
 

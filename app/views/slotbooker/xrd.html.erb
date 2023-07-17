@@ -93,7 +93,7 @@
                 </thead>
                 <tbody>
 
-                      <% Xrd.all.each do |xrds|%>
+                      <% Xrd.includes(:user, :references_attachments).each do |xrds|%>
                       <%if xrds.expresssample == nil %>
                             <tr>
                                 <!-- Button trigger modal -->
