@@ -42,6 +42,12 @@ class UltraCentrifugesController < ApplicationController
     @ultra_centrifuge.dummy2 = nil
     @ultra_centrifuge.dummy3 = nil
   else
+      @ultra_centrifuge.equipment_table.sample = @ultra_centrifuge.sample
+    @ultra_centrifuge.equipment_table.contact_no = @ultra_centrifuge.user.contact
+    uploaded_files = params[:ultra_centrifuge][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @ultra_centrifuge.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @ultra_centrifuge.equipment_table.dummy = "alloted"
     @ultra_centrifuge.equipment_table.username = @ultra_centrifuge.user.name
     @ultra_centrifuge.equipment_table.equipname = "Ultra-Centrifuge"
@@ -86,7 +92,6 @@ class UltraCentrifugesController < ApplicationController
   # PATCH/PUT /ultra_centrifuges/1 or /ultra_centrifuges/1.json
   def update
       @ultra_centrifuge.status="alloted"
-      @ultra_centrifuge.build_equipment_table
 
     respond_to do |format|
       if @ultra_centrifuge.update(ultra_centrifuge_params)

@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -59,11 +59,11 @@
 
 <div class="container-slot-booker-new">
 
-    
+
 
 <%# the content section is coded here %>
 <div id="slots">
-    
+
 
 
     <div id="slot-details">
@@ -76,7 +76,9 @@
                     <th scope="col" id="institute">Institute</th>
                     <th scope="col" id="department">Department</th>
                     <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col" id="contact-no">Slot Type</th>
                     <th scope="col" id="sample-no">No of Samples</th>
+                    <th scope="col" id="sample-no">No of  Express Samples</th>
                     <th scope="col" id="composition">Sample Size</th>
                     <th scope="col" id="composition">Amplitude</th>
                     <th scope="col" id="phase">Volume</th>
@@ -92,6 +94,7 @@
             <tbody>
 
                 <% @probe3.where(status:'completed').each do |probe|%>
+                  <%if probe.expresssample==nil%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/PROBE/<%=probe.id %>	</th>
@@ -99,7 +102,9 @@
                     <td> <%= probe.user.orgname%> </td>
                     <td> <%= probe.user.department%> </td>
                     <td> <%= probe.user.contact%> </td>
+                    <td><%if probe.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                     <td> <%= probe.sample%> </td>
+                    <td> <%= probe.expresssample%> </td>
                     <td> <%= probe.size%> </td>
                     <td> <%= probe.amplitude%> </td>
                     <td> <%= probe.volume%> </td>
@@ -119,8 +124,42 @@
                       <% else %>
                         <td>NA</td>
                       <% end %>
+                      </tr>
+                      <%else%>
+                      <tr class="exp-slot-entry">
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/PROBE/<%=probe.id %>	</th>
+                        <td> <%= probe.user.firstname%><nobr> <%= probe.user.lastname%></td>
+                        <td> <%= probe.user.orgname%> </td>
+                        <td> <%= probe.user.department%> </td>
+                        <td> <%= probe.user.contact%> </td>
+                        <td><%if probe.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                        <td> <%= probe.sample%> </td>
+                        <td> <%= probe.expresssample%> </td>
+                        <td> <%= probe.size%> </td>
+                        <td> <%= probe.amplitude%> </td>
+                        <td> <%= probe.volume%> </td>
+                        <td> <%= probe.viscosity%> </td>
+                        <td> <%= probe.more%> </td>
+                        <td>Booked</td>
+
+                        <td> <%= probe.slotdate %></td>
+
+                        <td> <%= probe.slottime %></td>
+
+                          <td><%= probe.status%></td>
+                          <%if probe.references.attached? %>
+                        <%probe.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                     <%end%>
+                          <% else %>
+                            <td>NA</td>
+                          <% end %>
+                          </tr>
                 </tbody>
             </table>
+
+<% end %>
 <% end %>
         </div>
         </div>

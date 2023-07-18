@@ -53,20 +53,28 @@ class XrdsController < ApplicationController
       @xrd.dummy3 = nil
     else
     @xrd.equipment_table.sample = @xrd.sample
+    @xrd.equipment_table.contact_no = @xrd.user.contact
+    uploaded_files = params[:xrd][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @xrd.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @xrd.equipment_table.dummy = "alloted"
-    @xrd.equipment_table.username = @xrd.user.name
+    @xrd.equipment_table.username = @xrd.user.firstname
     @xrd.equipment_table.equipname = "XRD"
     @xrd.equipment_table.debit_head = @xrd.debit
     @xrd.equipment_table.role = @xrd.user.role
     @xrd.equipment_table.email = @xrd.user.email
     @xrd.equipment_table.dept = @xrd.user.department
     @xrd.equipment_table.profesion = @xrd.user.profession
+    @xrd.equipment_table.org = @xrd.user.orgaddress
+
     if @xrd.user.role == 'student' || 'faculty'
       @xrd.equipment_table.orgname = "NITK"
     else
     @xrd.equipment_table.orgname = @xrd.user.orgname
   end
     end
+    @entry= params[:entry]
     @equiplist = Equiplist.all
     @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
     respond_to do |format|
@@ -101,7 +109,6 @@ class XrdsController < ApplicationController
   # PATCH/PUT /xrds/1 or /xrds/1.json
   def update
      @xrd.status="alloted"
-     @xrd.build_equipment_table
 
     respond_to do |format|
       if @xrd.update(xrd_params)
@@ -133,8 +140,9 @@ class XrdsController < ApplicationController
       @xrd = Xrd.find(params[:id])
     end
 
+
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :orgaddress,:orgname, :reg_no] ,references: [])
+      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :org,:orgname, :reg_no] ,references: [])
     end
 end

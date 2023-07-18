@@ -42,6 +42,12 @@ class TgaFttrsController < ApplicationController
   @tga_fttr.dummy2 = nil
   @tga_fttr.dummy3 = nil
 else
+      @tga_fttr.equipment_table.sample = @tga_fttr.sample
+    @tga_fttr.equipment_table.contact_no = @tga_fttr.user.contact
+    uploaded_files = params[:tga_fttr][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @tga_fttr.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @tga_fttr.equipment_table.dummy = "alloted"
     @tga_fttr.equipment_table.username = @tga_fttr.user.name
     @tga_fttr.equipment_table.equipname = "TGA-FTIR"

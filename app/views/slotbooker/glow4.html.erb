@@ -68,7 +68,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
-                        <th scope="col" id="composition">No of Sample</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
+                        <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Elemental Composition</th>
                        <th scope="col" id="coating-ele">Coating </th>
                        <th scope="col" id="coating-ele">Coated Element</th>
@@ -85,6 +87,7 @@
                 <tbody>
 
                         <% @glow4.where(status:'cancelled').each do |glow|%>
+                          <% if glow.expresssample ==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
@@ -92,7 +95,9 @@
                         <td> <%= glow.user.orgname%> </td>
                         <td> <%= glow.user.department%> </td>
                         <td> <%= glow.user.contact%> </td>
+                        <td><%if glow.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= glow.sample%> </td>
+                        <td> <%= glow.expresssample%> </td>
                         <td> <%= glow.elemental%> </td>
                         <td> <%= glow.coated%> </td>
                         <td> <%= glow.coated_ele%> </td>
@@ -110,6 +115,35 @@
                       <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
                      <%end%></td>
                     </tr>
+                    <%else%>
+                    <tr class="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/GLOW/<%=glow.id %>	</th>
+                      <td> <%= glow.user.firstname%><nobr> <%= glow.user.lastname%></td>
+                      <td> <%= glow.user.orgname%> </td>
+                      <td> <%= glow.user.department%> </td>
+                      <td> <%= glow.user.contact%> </td>
+                      <td><%if glow.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                      <td> <%= glow.sample%> </td>
+                      <td> <%= glow.expresssample%> </td>
+                      <td> <%= glow.elemental%> </td>
+                      <td> <%= glow.coated%> </td>
+                      <td> <%= glow.coated_ele%> </td>
+                      <td> <%= glow.substarte%> </td>
+                      <td> <%= glow.specification%> </td>
+                      <td> <%= glow.more%> </td>
+                      <td>Booked</td>
+
+                      <td> <%= glow.slotdate %></td>
+
+                      <td> <%= glow.slottime %></td>
+
+                        <td><%= glow.status%></td>
+                       <td><%glow.references.each do |file|%>
+                    <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+                   <%end%></td>
+                  </tr>
+                      <%end%>
                       <%end%>
 
                 </tbody>

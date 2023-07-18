@@ -258,7 +258,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_hr_fesem_carl_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip2.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                        <ul class="dropdown-menu">
@@ -285,6 +285,8 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip2.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% elsif Date.today > @equip2.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip2.expressslot %></span>
@@ -405,7 +407,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_hr_fesem_jeol_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip3.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                             <ul class="dropdown-menu">
@@ -432,6 +434,8 @@
                 <div class="card-footer-express">
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip3.expressslot == 0 %>
+                        <div class="badge badge-warning badge-outlined">Not Available</div>
+                    <% elsif (Date.today > @equip3.expressend) ||  (@equip3.status != "Active") %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip3.expressslot %></span>
@@ -3002,7 +3006,7 @@
                 </div>
             </div>
             <div class="card-footer">
-            
+
                         <!-- Button trigger modal -->
                         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
                         Availabilty
@@ -3131,7 +3135,7 @@
                                     <li><%= link_to "Express Slot", new_tribometer_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
                                 <%end%>
                         </ul>
-                        
+
                     </div>
                 </div>
             </div>
@@ -3402,33 +3406,16 @@
                         </button>
                          <ul class="dropdown-menu">
                              <li> <%= link_to "Regular Slot", new_gait_path(id:current_user.id,slot_type: "regular"), class:"book-dropdown dropdown-item" %> </li>
-                             <% @equiplist = Equiplist.where(name: "GAIT Analysis").first %>
-                              <% @equiplist_expressslot = @equiplist.expressslot if @equiplist.present? %>
+                             <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
 
-                              <% if @equiplist_expressslot != 0 && @equiplist.present?  && @equiplist.expressend.present? %>
-                                <% express_start_date = @equiplist.expressstart.to_date %>
-                                <% express_end_date = @equiplist.expressend.to_date %>
-                                <% if  Date.today <= express_end_date %>
-                                  <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item" %></li>
-                                <% else %>
-                                  <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
-                                <% end %>
-                                <%else%>
-                                    <li><%= link_to "Express Slot", new_gait_path(id: current_user.id, slot_type: "express"), class: "book-dropdown dropdown-item disabled" %></li>
-                                <%end%>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
                          <div class="card-footer-express">
-                            <small class="text-muted card-footer-express">Express Slot:</small>
-                            <% if @equip24.expressslot == 0 %>
+                            <small class="text-muted card-footer-express">Express Slot:</small>    
                                 <div class="badge badge-warning badge-outlined">Not Available</div>
-                            <% else %>
-                                <span class="badge text-bg-secondary"><%= @equip24.expressslot %></span>
-                                <div class="badge badge-success badge-outlined">Available</div>
-                            <%end%>
                         </div>
                         <!-- Button trigger modal -->
                         <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#hrfesem-avail" id="thiscodeis_haunted">
@@ -5950,6 +5937,17 @@
 
 
 <%=render "partials/footer" %>
+
+<script>
+document.title = "Fetching Latest Data";
+window.onload = function() {
+  // Code to be executed when the page finishes loading
+  // You can access and manipulate HTML elements here
+    document.title = "CRF | Home";
+};
+</script>
+
+
 
 <script>
         const ele1="<%= @user.firstname %> "

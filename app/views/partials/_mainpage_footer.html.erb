@@ -1,3 +1,4 @@
+
 <%= stylesheet_link_tag "mainPage" %>
 
 <footer>
@@ -8,24 +9,24 @@
   </div>
   <div class="footer-address">
       <h5 class="fw-bold">NITK CAMPUS</h5>
-      <p>NH 66, Srinivasnagar</p>
-      <p>Surathkal, Mangalore</p>
-      <p>Karnataka - 575025</p>
+      <p class="address">NH 66, Srinivasnagar</p>
+      <p class="address">Surathkal, Mangalore</p>
+      <p class="address">Karnataka - 575025</p>
   </div>
     </div>
     <div class="footer-middle">
   <h5 class="fw-bold">Quick Links</h5>
-  <p><a href="#">Brochure</a></p>
-  <%=link_to 'Instrument List',mainpage_instrument_list_path%>
+  <p><a href="#" class="address">Brochure</a></p>
+  <%=link_to 'Instrument List',mainpage_instrument_list_path ,id:"address1"%>
     </div>
     <div class="footer-right">
   <h5 class="fw-bold">General Links</h5>
-  <p><%= link_to "Feedbacks", new_feedback_path ,class:"nav-link active nav-btn model-element" %></p>
+  <p><a href="#" class="address">Feedback</a></p>
     </div>
     <div class="footer-social">
   <h5 class="fw-bold">Social Links</h5>
   <div class="social-icons">
-      <a href="#"><i class="fa fa-facebook" aria-hidden="true" height="12px"></i></a>
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true" height="5px"></i></a>
       <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
       <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
@@ -33,6 +34,8 @@
     </div>
 </div>
 <hr>
-<p class="text-center">Copyright All Rights Reserved 2023. <%= link_to 'CRF Web Team', home_developer_path, id:"button" %></p>
-
+<div class="l-sec">
+  <p class="text-center">Copyright All Rights Reserved 2023. </p>
+  <%= button_to 'CRF Web Team', home_developer_path, id:"button" %>
+</div>
 </footer>

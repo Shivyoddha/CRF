@@ -68,7 +68,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Diameter</th>
                         <th scope="col" id="composition">Mould</th>
                         <th scope="col" id="phase">Grit</th>
@@ -86,6 +88,7 @@
                 <tbody>
 
                         <% @grind3.where(status:'completed').each do |grind|%>
+                          <% if grind.expresssample ==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
@@ -93,7 +96,9 @@
                         <td> <%= grind.user.orgname%> </td>
                         <td> <%= grind.user.department%> </td>
                         <td> <%= grind.user.contact%> </td>
+                        <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= grind.sample%> </td>
+                        <td> <%= grind.expresssample%> </td>
                         <td> <%= grind.diameter%> </td>
                         <td> <%= grind.mould%> </td>
                         <td> <%= Array(grind.grit).join(", ") %> </td>
@@ -116,6 +121,40 @@
                       <td>NA</td>
                     <% end %>
                     </tr>
+                    <%else%>
+                    <tr class="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/GRIND/<%=grind.id %>	</th>
+                      <td> <%= grind.user.firstname%><nobr> <%= grind.user.lastname%> </td>
+                      <td> <%= grind.user.orgname%> </td>
+                      <td> <%= grind.user.department%> </td>
+                      <td> <%= grind.user.contact%> </td>
+                      <td><%if grind.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                      <td> <%= grind.sample%> </td>
+                      <td> <%= grind.expresssample%> </td>
+                      <td> <%= grind.diameter%> </td>
+                      <td> <%= grind.mould%> </td>
+                      <td> <%= Array(grind.grit).join(", ") %> </td>
+                      <td> <%= Array(grind.diamond).join(", ") %> </td>
+                      <td> <%= Array(grind.suspension).join(", ") %> </td>
+                      <td> <%= grind.lapping%> </td>
+                      <td> <%= grind.more%> </td>
+                      <td>Booked</td>
+
+                      <td> <%= grind.slotdate %></td>
+
+                      <td> <%= grind.slottime %></td>
+
+                        <td><%= grind.status%></td>
+                        <%if grind.references.attached? %>
+                    <%grind.references.each do |file|%>
+                    <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                       <% end %>
+                  <% else %>
+                    <td>NA</td>
+                  <% end %>
+                  </tr>
+                      <%end%>
                       <%end%>
                 </tbody>
             </table>
