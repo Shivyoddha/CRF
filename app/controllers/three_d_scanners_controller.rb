@@ -41,6 +41,12 @@ class ThreeDScannersController < ApplicationController
     @three_d_scanner.dummy2 = nil
     @three_d_scanner.dummy3 = nil
   else
+      @three_d_scanner.equipment_table.sample = @three_d_scanner.sample
+    @three_d_scanner.equipment_table.contact_no = @three_d_scanner.user.contact
+    uploaded_files = params[:three_d_scanner][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @three_d_scanner.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @three_d_scanner.equipment_table.dummy = "alloted"
     @three_d_scanner.equipment_table.username = @three_d_scanner.user.name
     @three_d_scanner.equipment_table.equipname = "3D-Scanner"
@@ -85,7 +91,6 @@ class ThreeDScannersController < ApplicationController
   # PATCH/PUT /three_d_scanners/1 or /three_d_scanners/1.json
   def update
     @three_d_scanner.status="alloted"
-    @three_d_scanner.build_equipment_table
 
     respond_to do |format|
       if @three_d_scanner.update(three_d_scanner_params)

@@ -43,6 +43,12 @@ class IntegratedMultiRoleTestersController < ApplicationController
       @integrated_multi_role_tester.dummy2 = nil
       @integrated_multi_role_tester.dummy3 = nil
     else
+      @integrated_multi_role_tester.equipment_table.sample = @integrated_multi_role_tester.sample
+    @integrated_multi_role_tester.equipment_table.contact_no = @integrated_multi_role_tester.user.contact
+    uploaded_files = params[:integrated_multi_role_tester][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @integrated_multi_role_tester.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @integrated_multi_role_tester.equipment_table.dummy = "alloted"
     @integrated_multi_role_tester.equipment_table.username = @integrated_multi_role_tester.user.name
     @integrated_multi_role_tester.equipment_table.equipname = "integrated_multi_role_tester"
@@ -86,7 +92,6 @@ class IntegratedMultiRoleTestersController < ApplicationController
   # PATCH/PUT /integrated_multi_role_testers/1 or /integrated_multi_role_testers/1.json
   def update
     @integrated_multi_role_tester.status="alloted"
-    @integrated_multi_role_tester.build_equipment_table
 
     respond_to do |format|
       if @integrated_multi_role_tester.update(integrated_multi_role_tester_params)

@@ -43,6 +43,12 @@ class BetsController < ApplicationController
       @bet.dummy2 = nil
       @bet.dummy3 = nil
     else
+      @bet.equipment_table.sample = @bet.sample
+    @bet.equipment_table.contact_no = @bet.user.contact
+    uploaded_files = params[:bet][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @bet.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @bet.equipment_table.dummy = "alloted"
     @bet.equipment_table.username = @bet.user.name
     @bet.equipment_table.equipname = "BET Surface Area Analyzer"
@@ -86,7 +92,6 @@ end
   # PATCH/PUT /bets/1 or /bets/1.json
   def update
     @bet.status="alloted"
-    @bet.build_equipment_table
 
     respond_to do |format|
       if @bet.update(bet_params)

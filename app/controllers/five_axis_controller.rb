@@ -42,6 +42,12 @@ class FiveAxisController < ApplicationController
       @five_axi.dummy2 = nil
       @five_axi.dummy3 = nil
     else
+      @five_axi.equipment_table.sample = @five_axi.sample
+    @five_axi.equipment_table.contact_no = @five_axi.user.contact
+    uploaded_files = params[:five_axi][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @five_axi.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @five_axi.equipment_table.dummy = "alloted"
     @five_axi.equipment_table.username = @five_axi.user.name
     @five_axi.equipment_table.equipname = "5-Axes CNC"
@@ -84,7 +90,6 @@ class FiveAxisController < ApplicationController
   # PATCH/PUT /five_axis/1 or /five_axis/1.json
   def update
       @five_axi.status="alloted"
-      @five_axi.build_equipment_table
     respond_to do |format|
       if @five_axi.update(five_axi_params)
         if @five_axi.status!= 'completed'

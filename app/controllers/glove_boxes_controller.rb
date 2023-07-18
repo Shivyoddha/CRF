@@ -37,6 +37,12 @@ class GloveBoxesController < ApplicationController
       @glove_box.dummy2 = nil
       @glove_box.dummy3 = nil
     else
+      @glove_box.equipment_table.sample = @glove_box.sample
+    @glove_box.equipment_table.contact_no = @glove_box.user.contact
+    uploaded_files = params[:glove_box][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @glove_box.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @glove_box.equipment_table.dummy = "alloted"
     @glove_box.equipment_table.username = @glove_box.user.name
     @glove_box.equipment_table.equipname = "glove_box"
@@ -73,7 +79,6 @@ class GloveBoxesController < ApplicationController
   # PATCH/PUT /glove_boxes/1 or /glove_boxes/1.json
   def update
       @glove_box.status="alloted"
-      @glove_box.build_equipment_table
 
     respond_to do |format|
       if @glove_box.update(glove_box_params)

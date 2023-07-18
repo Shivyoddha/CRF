@@ -43,6 +43,12 @@ class IcpMsController < ApplicationController
       @icp_m.dummy2 = nil
       @icp_m.dummy3 = nil
     else
+      @icp_m.equipment_table.sample = @icp_m.sample
+    @icp_m.equipment_table.contact_no = @icp_m.user.contact
+    uploaded_files = params[:icp_m][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @icp_m.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @icp_m.equipment_table.dummy = "alloted"
     @icp_m.equipment_table.username = @icp_m.user.name
     @icp_m.equipment_table.equipname = "ICP-MS"
@@ -86,7 +92,6 @@ class IcpMsController < ApplicationController
   # PATCH/PUT /icp_ms/1 or /icp_ms/1.json
   def update
     @icp_m.status="alloted"
-    @icp_m.build_equipment_table
     respond_to do |format|
       if @icp_m.update(icp_m_params)
         if @icp_m.status!= 'completed'

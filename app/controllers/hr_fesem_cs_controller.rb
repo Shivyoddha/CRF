@@ -50,6 +50,12 @@ class HrFesemCsController < ApplicationController
       @hr_fesem_c.dummy2 = nil
       @hr_fesem_c.dummy3 = nil
     else
+      @hr_fesem_c.equipment_table.sample = @hr_fesem_c.sample
+    @hr_fesem_c.equipment_table.contact_no = @hr_fesem_c.user.contact
+    uploaded_files = params[:hr_fesem_c][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @hr_fesem_c.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @hr_fesem_c.equipment_table.dummy = "alloted"
     @hr_fesem_c.equipment_table.username = @hr_fesem_c.user.name
     @hr_fesem_c.equipment_table.equipname = "HR-FESEM [Carl Zeiss]"
@@ -94,7 +100,6 @@ class HrFesemCsController < ApplicationController
   # PATCH/PUT /hr_fesem_cs/1 or /hr_fesem_cs/1.json
   def update
     @hr_fesem_c.status="alloted"
-    @hr_fesem_c.build_equipment_table
     respond_to do |format|
       if @hr_fesem_c.update(hr_fesem_c_params)
       HrFesemCAllotedMailer.with(id:@hr_fesem_c.id, userid:current_user.id).Mail.deliver_later
