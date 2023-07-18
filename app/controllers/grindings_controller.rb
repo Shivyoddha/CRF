@@ -43,6 +43,12 @@ class GrindingsController < ApplicationController
       @grinding.dummy2 = nil
       @grinding.dummy3 = nil
     else
+      @grinding.equipment_table.sample = @grinding.sample
+    @grinding.equipment_table.contact_no = @grinding.user.contact
+    uploaded_files = params[:grinding][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @grinding.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @grinding.equipment_table.dummy = "alloted"
     @grinding.equipment_table.username = @grinding.user.name
     @grinding.equipment_table.equipname = "Automatic MultiSpecimen Polisher"
@@ -86,7 +92,6 @@ class GrindingsController < ApplicationController
   # PATCH/PUT /grindings/1 or /grindings/1.json
   def update
       @grinding.status="alloted"
-      @grinding.build_equipment_table
     respond_to do |format|
       if @grinding.update(grinding_params)
         if @grinding.status!= 'completed'

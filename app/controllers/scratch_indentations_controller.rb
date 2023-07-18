@@ -41,6 +41,12 @@ class ScratchIndentationsController < ApplicationController
       @scratch_indentation.dummy2 = nil
       @scratch_indentation.dummy3 = nil
     else
+      @scratch_indentation.equipment_table.sample = @scratch_indentation.sample
+    @scratch_indentation.equipment_table.contact_no = @scratch_indentation.user.contact
+    uploaded_files = params[:scratch_indentation][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @scratch_indentation.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @scratch_indentation.equipment_table.dummy = "alloted"
     @scratch_indentation.equipment_table.username = @scratch_indentation.user.name
     @scratch_indentation.equipment_table.equipname = "Scratch/Indentation Tester"
@@ -84,7 +90,6 @@ class ScratchIndentationsController < ApplicationController
   # PATCH/PUT /scratch_indentations/1 or /scratch_indentations/1.json
   def update
     @scratch_indentation.status="alloted"
-    @scratch_indentation.build_equipment_table
 
     respond_to do |format|
       if @scratch_indentation.update(scratch_indentation_params)

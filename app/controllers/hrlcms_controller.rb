@@ -43,6 +43,12 @@ class HrlcmsController < ApplicationController
       @hrlcm.dummy2 = nil
       @hrlcm.dummy3 = nil
     else
+      @hrlcm.equipment_table.sample = @hrlcm.sample
+    @hrlcm.equipment_table.contact_no = @hrlcm.user.contact
+    uploaded_files = params[:hrlcm][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @hrlcm.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @hrlcm.equipment_table.dummy = "alloted"
     @hrlcm.equipment_table.username = @hrlcm.user.name
     @hrlcm.equipment_table.equipname = "HR-LCMS"
@@ -86,7 +92,6 @@ class HrlcmsController < ApplicationController
   # PATCH/PUT /hrlcms/1 or /hrlcms/1.json
   def update
     @hrlcm.status="alloted"
-    @hrlcm.build_equipment_table
 
     respond_to do |format|
       if @hrlcm.update(hrlcm_params)

@@ -43,6 +43,12 @@ class TribometersController < ApplicationController
     @tribometer.dummy2 = nil
     @tribometer.dummy3 = nil
   else
+      @tribometer.equipment_table.sample = @tribometer.sample
+    @tribometer.equipment_table.contact_no = @tribometer.user.contact
+    uploaded_files = params[:tribometer][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @tribometer.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @tribometer.equipment_table.dummy = "alloted"
     @tribometer.equipment_table.username = @tribometer.user.name
     @tribometer.equipment_table.equipname = "Tribometer"
@@ -86,7 +92,6 @@ class TribometersController < ApplicationController
   # PATCH/PUT /tribometers/1 or /tribometers/1.json
   def update
     @tribometer.status="alloted"
-    @tribometer.build_equipment_table
 
     respond_to do |format|
       if @tribometer.update(tribometer_params)

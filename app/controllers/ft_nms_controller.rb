@@ -41,6 +41,12 @@ class FtNmsController < ApplicationController
       @ft_nm.dummy2 = nil
       @ft_nm.dummy3 = nil
     else
+      @ft_nm.equipment_table.sample = @ft_nm.sample
+    @ft_nm.equipment_table.contact_no = @ft_nm.user.contact
+    uploaded_files = params[:ft_nm][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @ft_nm.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @ft_nm.equipment_table.dummy = "alloted"
     @ft_nm.equipment_table.username = @ft_nm.user.name
     @ft_nm.equipment_table.equipname = "FT-NMR"
@@ -83,7 +89,6 @@ class FtNmsController < ApplicationController
   # PATCH/PUT /ft_nms/1 or /ft_nms/1.json
   def update
       @ft_nm.status="alloted"
-      @ft_nm.build_equipment_table
     respond_to do |format|
       if @ft_nm.update(ft_nm_params)
         if @ft_nm.status!= 'completed'

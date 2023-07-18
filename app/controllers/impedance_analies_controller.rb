@@ -40,6 +40,12 @@ class ImpedanceAnaliesController < ApplicationController
       @impedance_analy.dummy2 = nil
       @impedance_analy.dummy3 = nil
     else
+      @impedance_analy.equipment_table.sample = @impedance_analy.sample
+    @impedance_analy.equipment_table.contact_no = @impedance_analy.user.contact
+    uploaded_files = params[:impedance_analy][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @impedance_analy.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @impedance_analy.equipment_table.dummy = "alloted"
     @impedance_analy.equipment_table.username = @impedance_analy.user.name
     @impedance_analy.equipment_table.equipname = "Impedance Analyzer"
@@ -82,7 +88,6 @@ end
   # PATCH/PUT /impedance_analies/1 or /impedance_analies/1.json
   def update
       @impedance_analy.status="alloted"
-      @impedance_analy.build_equipment_table
 
     respond_to do |format|
       if @impedance_analy.update(impedance_analy_params)

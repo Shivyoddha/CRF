@@ -37,6 +37,12 @@ class MilliQsController < ApplicationController
       @milli_q.dummy2 = nil
       @milli_q.dummy3 = nil
     else
+      @milli_q.equipment_table.sample = @milli_q.sample
+    @milli_q.equipment_table.contact_no = @milli_q.user.contact
+    uploaded_files = params[:milli_q][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @milli_q.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @milli_q.equipment_table.dummy = "alloted"
     @milli_q.equipment_table.username = @milli_q.user.name
     @milli_q.equipment_table.equipname = "Milli-Q water"
@@ -113,7 +119,6 @@ class MilliQsController < ApplicationController
 
   # PATCH/PUT /milli_qs/1 or /milli_qs/1.json
   def update
-    @milli_q.build_equipment_table
       @milli_q.status="alloted"
     respond_to do |format|
       if @milli_q.update(milli_q_params)

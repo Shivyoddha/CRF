@@ -42,6 +42,12 @@ class BallMailingsController < ApplicationController
       @ball_mailing.dummy2 = nil
       @ball_mailing.dummy3 = nil
     else
+      @ball_mailing.equipment_table.sample = @ball_mailing.sample
+    @ball_mailing.equipment_table.contact_no = @ball_mailing.user.contact
+    uploaded_files = params[:ball_mailing][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @ball_mailing.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @ball_mailing.equipment_table.dummy = "alloted"
     @ball_mailing.equipment_table.username = @ball_mailing.user.name
     @ball_mailing.equipment_table.equipname = "Ball Milling Unit"
@@ -86,7 +92,6 @@ class BallMailingsController < ApplicationController
   # PATCH/PUT /ball_mailings/1 or /ball_mailings/1.json
   def update
     @ball_mailing.status="alloted"
-    @ball_mailing.build_equipment_table
     respond_to do |format|
       if @ball_mailing.update(ball_mailing_params)
         if @ball_mailing.status!= 'completed'

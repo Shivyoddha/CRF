@@ -43,6 +43,12 @@ class CellImagingsController < ApplicationController
       @cell_imaging.dummy2 = nil
       @cell_imaging.dummy3 = nil
     else
+      @cell_imaging.equipment_table.sample = @cell_imaging.sample
+    @cell_imaging.equipment_table.contact_no = @cell_imaging.user.contact
+    uploaded_files = params[:cell_imaging][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @cell_imaging.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @cell_imaging.equipment_table.dummy = "alloted"
     @cell_imaging.equipment_table.username = @cell_imaging.user.name
     @cell_imaging.equipment_table.equipname = "Cell-Imaging MultiMode Reader"
@@ -87,7 +93,6 @@ class CellImagingsController < ApplicationController
   # PATCH/PUT /cell_imagings/1 or /cell_imagings/1.json
   def update
       @cell_imaging.status="alloted"
-      @cell_imaging.build_equipment_table
     respond_to do |format|
       if @cell_imaging.update(cell_imaging_params)
         if @cell_imaging.status!= 'completed'
