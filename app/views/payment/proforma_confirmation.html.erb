@@ -97,6 +97,7 @@
                                     <td>  <%= form_with(model: equipment,local:true) do |form| %>
                                     <%= form.hidden_field :dummy, value: 'proforma_confirmed' %>
                                     <div class="actions">
+                                    <%= form.hidden_field :submission_time, value: DateTime.now %>
                                     <%= form.submit "Send", class:"btn btn-danger"%>
                                     </div>
                                     <% end %>

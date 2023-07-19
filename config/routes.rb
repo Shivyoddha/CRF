@@ -94,6 +94,7 @@ Rails.application.routes.draw do
     get 'home/index'
     get 'home/myslots'
     get 'home/anish'
+    get 'home/payment_not_done'
     get 'know/xrd'
     get 'records/record'
 
