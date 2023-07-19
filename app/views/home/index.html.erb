@@ -288,13 +288,9 @@
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip2.expressslot == 0 %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
-<<<<<<< HEAD
                         <% elsif @equip2.expressend.present? && Date.today > @equip2.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                       <% elsif @equip2.expressstart.present? && Date.today < @equip2.expressstart %>
-=======
-                    <% elsif Date.today > @equip2.expressend %>
->>>>>>> 3381fe96d573ebf2a849ef5861479b54ba6add16
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip2.expressslot %></span>
@@ -443,13 +439,9 @@
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip3.expressslot == 0 %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
-<<<<<<< HEAD
                         <% elsif @equip3.expressend.present? && Date.today > @equip3.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                       <% elsif @equip3.expressstart.present? && Date.today < @equip3.expressstart %>
-=======
-                    <% elsif (Date.today > @equip3.expressend) ||  (@equip3.status != "Active") %>
->>>>>>> 3381fe96d573ebf2a849ef5861479b54ba6add16
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip3.expressslot %></span>
