@@ -1,0 +1,96 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "dashboard"%>
+
+<%=render "partials/loginHeading"%>
+
+
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <div id="search-div">
+        <div class="d-flex" role="search">
+          <input class="form-control me-2 font-quicksand" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+          <button class="btn btn-outline-warning" type="submit">Search</button>
+        </div>
+      </div>
+
+      <div id="profile-div">
+          <div class="btn-group btn-profile">
+            <%= link_to "My Profile", edit_user_registration_path ,class:"btn btn-outline-warning profile-dropdown" %>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu font-quicksand">
+              <div>
+
+                <p class="text-muted" id="profile-dropdown-info">Signed in as<p>
+                <%= link_to "#{current_user.firstname} ", edit_user_registration_path ,class:"dropdown-item fw-bold" ,id:"maithili" %>
+              </div>
+
+              <hr>
+              <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Fill a feedback", new_feedback_path(id:current_user.id) ,class:"dropdown-item" %></li>
+              <li><a class="dropdown-item" href="#">My Slots</a></li>
+              <% link_to "Download", home_index_path(format: :pdf)%>
+
+              <!-- <li><%= link_to 'This post in PDF', home_index_path(@anish, format: :pdf) %></li> -->
+
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </nav>
+
+
+
+
+  <h1 style="color: red;">You cannot book any equipment as you have not paid for the below bookings that you have used within 15 days of performa generation or you have been blocked by admin. Kindly contact our team for further assistance.</h1>
+  <div class="table-responsive">
+  <table class="table table-hover font-quicksand">
+    <thead>
+      <tr class="table-head font-unbounded">
+        <th scope="col" id="application-no">Appl No</th>
+        <th scope="col" id="name">Name</th>
+        <th scope="col" id="debit-head">Debit Head</th>
+        <th scope="col" id="amount">Amount</th>
+        <th scope="col" id="proforma-col">Payment Status</th>
+        <th scope="col" id="View">Performa Generated Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @equipment.where(dummy: 'block', role: 'student', email: current_user.email).each do |equipment| %>
+        <tr>
+          <td><%= equipment.app_no %></td>
+          <td><%= equipment.username %></td>
+          <td><%= equipment.debit_head %></td>
+          <td><%= equipment.pay %></td>
+          <td>Payment confirmation not recieved</td>
+          <% if equipment.submission_time %>
+          <td><div>Time: <%= equipment.submission_time.in_time_zone('New Delhi').strftime('%H:%M:%S') %></div>
+          <div>Date:<%= equipment.submission_time.in_time_zone('New Delhi').strftime('%d/%m/%Y') %></div>
+          </td>
+          <%end%>
+        </tr>
+      <% end %>
+      <% @equipment.where("submission_time < ?", 15.days.ago).where(email: current_user.email).where(dummy:'proforma_confirmed').each do |equipment| %>
+        <tr>
+          <td><%= equipment.app_no %></td>
+          <td><%= equipment.username %></td>
+          <td><%= equipment.debit_head %></td>
+          <td><%= equipment.pay %></td>
+          <td>Payment confirmation not recieved </td>
+          <% if equipment.submission_time %>
+          <td><div>Time: <%= equipment.submission_time.in_time_zone('New Delhi').strftime('%H:%M:%S') %></div>
+          <div>Date:<%= equipment.submission_time.in_time_zone('New Delhi').strftime('%d/%m/%Y') %></div>
+          </td>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<h1> contact details<br>
+   phone:9900000234<br>
+   email:crf@nitk.ac.in<h1>

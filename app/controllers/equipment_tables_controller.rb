@@ -293,6 +293,14 @@ class EquipmentTablesController < ApplicationController
           format.html { redirect_to payment_payment_completed_path(@equipment_table), notice: "Equipment table was successfully updated." }
           format.json { render :show, status: :ok, location: @equipment_table }
           end
+          if @equipment_table.dummy == "block"
+          format.html { redirect_to payment_paymentA_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
+          if @equipment_table.dummy == "unblock"
+          format.html { redirect_to payment_paymentA_path(@equipment_table), notice: "Equipment table was successfully updated." }
+          format.json { render :show, status: :ok, location: @equipment_table }
+          end
         else
         format.html { redirect_to payment_paymentExt_path(@equipment_table), notice: "Equipment table was successfully updated." }
         format.json { render :show, status: :ok, location: @equipment_table }
@@ -323,6 +331,6 @@ class EquipmentTablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equipment_table_params
-      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:consultancy_rate,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no,:sample,:file_name, :view)
+      params.require(:equipment_table).permit(:username, :equipname, :app_no, :pay, :debit_head, :slotd, :slott, :dummy, :email, :dept, :entry, :reg_no, :course, :guide, :role ,:org,:profesion,:innvoice_name,:invoice_address,:invoice_gst,:amount_paid,:gst_applied,:testing,:consulting,:consultancy_rate,:gst,:state,:date_of_depo,:dd_no, :orgname,:contact_no,:sample,:file_name, :view,:block_status,:submission_time)
     end
 end
