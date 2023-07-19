@@ -260,7 +260,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_hr_fesem_carl_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip2.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                        <ul class="dropdown-menu">
@@ -288,9 +288,13 @@
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip2.expressslot == 0 %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
+<<<<<<< HEAD
                         <% elsif @equip2.expressend.present? && Date.today > @equip2.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                       <% elsif @equip2.expressstart.present? && Date.today < @equip2.expressstart %>
+=======
+                    <% elsif Date.today > @equip2.expressend %>
+>>>>>>> 3381fe96d573ebf2a849ef5861479b54ba6add16
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip2.expressslot %></span>
@@ -411,7 +415,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_hr_fesem_jeol_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip3.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                             <ul class="dropdown-menu">
@@ -439,9 +443,13 @@
                     <small class="text-muted card-footer-express">Express Slot:</small>
                     <% if @equip3.expressslot == 0 %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
+<<<<<<< HEAD
                         <% elsif @equip3.expressend.present? && Date.today > @equip3.expressend %>
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                       <% elsif @equip3.expressstart.present? && Date.today < @equip3.expressstart %>
+=======
+                    <% elsif (Date.today > @equip3.expressend) ||  (@equip3.status != "Active") %>
+>>>>>>> 3381fe96d573ebf2a849ef5861479b54ba6add16
                         <div class="badge badge-warning badge-outlined">Not Available</div>
                     <% else %>
                         <span class="badge text-bg-secondary"><%= @equip3.expressslot %></span>
@@ -6075,6 +6083,17 @@
 
 
 <%=render "partials/footer" %>
+
+<script>
+document.title = "Fetching Latest Data";
+window.onload = function() {
+  // Code to be executed when the page finishes loading
+  // You can access and manipulate HTML elements here
+    document.title = "CRF | Home";
+};
+</script>
+
+
 
 <script>
         const ele1="<%= @user.firstname %> "

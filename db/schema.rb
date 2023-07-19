@@ -245,9 +245,13 @@ ActiveRecord::Schema.define(version: 2023_07_19_013153) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
+<<<<<<< HEAD
     t.integer "expressslot", default: 0
     t.datetime "calibrate_date"
     t.datetime "status_date"
+=======
+    t.integer "expressslot"
+>>>>>>> 3381fe96d573ebf2a849ef5861479b54ba6add16
   end
 
   create_table "equipment_tables", force: :cascade do |t|
