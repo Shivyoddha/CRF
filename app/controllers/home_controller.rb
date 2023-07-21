@@ -17,11 +17,28 @@ class HomeController < ApplicationController
   def myslots
     @user = User.find(params[:id])
   end
+  def payment_not_done
+    @equipment = EquipmentTable.all
+    @user = User.find_by_id(params[:id])
+  end
 
   def index
       @user=User.find(current_user.id)
       @equipment = EquipmentTable.all
       @equiplist=Equiplist.all
+      @equipment.each do |e|
+        if e.email==current_user.email
+          if e.block_status=="block"
+             redirect_to home_payment_not_done_path and return
+          end
+          if e.block_status=="unblock"
+             if  e.submission_time.present? &&(Time.now - e.submission_time) > 15.days
+                 if e.dummy=="proforma_confirmed"
+                 redirect_to home_payment_not_done_path and return
+                 end
+             end
+            end
+       end
     if @user.status==nil
       @user.update(status:'Inactive')
       redirect_to home_faculty_verif_path(id:current_user.id)
@@ -84,6 +101,6 @@ class HomeController < ApplicationController
 
 
   end
-
+end
 
 end
