@@ -68,7 +68,9 @@
                     <th scope="col" id="institute">Institute</th>
                     <th scope="col" id="department">Department</th>
                     <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col" id="contact-no">Slot Type</th>
                     <th scope="col" id="sample-no">No of Samples</th>
+                    <th scope="col" id="sample-no">No of  Express Samples</th>
                     <th scope="col" id="composition">Composition</th>
                     <th scope="col" id="sample-no Fe">No of Samples of each element</th>
                     <th scope="col" id="request">More info</th>
@@ -82,6 +84,7 @@
             <tbody>
 
                   <% @spark3.where(status:'completed').each do |spark|%>
+                  <% if spark.expresssample==nil%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/SPARK/<%=spark.id %>	</th>
@@ -89,7 +92,9 @@
                     <td> <%= spark.user.orgname%> </td>
                     <td> <%= spark.user.department%> </td>
                     <td> <%= spark.user.contact%> </td>
+                    <td><%if spark.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                     <td> <%= spark.sample%> </td>
+                    <td> <%= spark.expresssample%> </td>
                     <td> <%= spark.composition%> </td>
                     <td> Fe Sample:<nobr><%= spark.samplefe%><br>
                         Ni Sample:<%= spark.sampleni%><br>
@@ -117,6 +122,45 @@
                     <td>NA</td>
                   <% end %>
                     </tr>
+                    <%else%>
+                    <tr class ="exp-slot-entry">
+                      <!-- Button trigger modal -->
+                      <th scope="row">CRF/SPARK/<%=spark.id %>	</th>
+                      <td> <%= spark.user.firstname%><nobr> <%= spark.user.lastname%></td>
+                      <td> <%= spark.user.orgname%> </td>
+                      <td> <%= spark.user.department%> </td>
+                      <td> <%= spark.user.contact%> </td>
+                      <td><%if spark.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                      <td> <%= spark.sample%> </td>
+                      <td> <%= spark.expresssample%> </td>
+                      <td> <%= spark.composition%> </td>
+                      <td> Fe Sample:<nobr><%= spark.samplefe%><br>
+                          Ni Sample:<%= spark.sampleni%><br>
+                           Zn Sample: <%= spark.samplezn%><br>
+                           Sn sample: <%= spark.samplesn%><br>
+                           Cu Sample: <%= spark.samplecu%><br>
+                           Ti Sample: <%= spark.sampleti%><br>
+                           Al Sample: <%= spark.sampleal%><br>
+                           Pb Sample: <%= spark.samplepb%><br>
+                           Mg Sample: <%= spark.samplemg%>
+                       </td>
+                      <td> <%= spark.more%> </td>
+                      <td>Booked</td>
+
+                      <td> <%= spark.slotdate %></td>
+
+                      <td> <%= spark.slottime %></td>
+
+                        <td><%= spark.status%></td>
+                        <%if spark.references.attached? %>
+                        <%spark.references.each do |file|%>
+                  <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                  <%end%>
+                    <% else %>
+                      <td>NA</td>
+                    <% end %>
+                      </tr>
+                      <%end%>
                       <%end%>
                 </tbody>
             </table>

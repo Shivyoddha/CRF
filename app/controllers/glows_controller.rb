@@ -43,6 +43,12 @@ class GlowsController < ApplicationController
       @glow.dummy2 = nil
       @glow.dummy3 = nil
     else
+      @glow.equipment_table.sample = @glow.sample
+    @glow.equipment_table.contact_no = @glow.user.contact
+    uploaded_files = params[:glow][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @glow.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @glow.equipment_table.dummy = "alloted"
     @glow.equipment_table.username = @glow.user.name
     @glow.equipment_table.equipname = "Glow"
@@ -88,7 +94,6 @@ class GlowsController < ApplicationController
   # PATCH/PUT /glows/1 or /glows/1.json
   def update
     @glow.status="alloted"
-    @glow.build_equipment_table
 
     respond_to do |format|
       if @glow.update(glow_params)

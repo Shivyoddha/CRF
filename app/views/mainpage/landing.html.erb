@@ -46,121 +46,111 @@
           <div class="background-main" id="show">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <div class="crf-heading" class="text-uppercase text-white fw-semibold display-1">
-                        <h1 class="font-unbounded">Welcome to CRF NITK</h1>
-                        </div>
-                        <h3>A HEFA financed facility, <span style="color: orange;">dedicated to the service of the nation.</span></h3>
-                        <div data-aos="fade-up" data-aos-delay="50">
-                            <%= link_to "About CRF", mainpage_about_us_path ,class:"btn btn-brand me-2", id:"book" %>
-                            <%=link_to 'Book Slot',new_user_session_path,class:"btn btn-light ms-2"%>
-                        </div>
+                <div class="col-12">
+                    <div class="crf-heading">
+                    <h1 class="font-unbounded">Welcome to CRF NITK</h1>
+                    </div>
+                    <h3>A HEFA financed facility, <span style="color: orange;">dedicated to the service of the nation.</span></h3>
+                    <div data-aos="fade-up" data-aos-delay="50">
+                    <%= link_to "About CRF", mainpage_about_us_path, class:"btn btn-brand me-2", id:"book" %>
+                    <%= link_to "Book Slot", new_user_session_path, class:"btn btn-light ms-2" %>
                     </div>
                 </div>
+                </div>
             </div>
-          </div>
+            <div id="toggle-news">
+                <button id="toggleBtn" type="button" class="btn btn-primary">
+                <span class="btn-text">Toggle News</span>
+                </button>
+            </div>
+            </div>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+  var toggleBtn = document.getElementById("toggleBtn");
+  var wrap = document.getElementById("wrap");
 
-            <% Announcement.all.each do |announce|%>
+  var isWrapVisible = false;
+
+  toggleBtn.addEventListener("mouseover", function() {
+    wrap.style.right = "0";
+    isWrapVisible = true;
+  });
+
+  toggleBtn.addEventListener("mouseout", function() {
+    if (!isWrapVisible) {
+      wrap.style.right = "-100%";
+    }
+  });
+
+  document.addEventListener("click", function(event) {
+    var target = event.target;
+    if (target !== toggleBtn && !wrap.contains(target)) {
+      wrap.style.right = "-100%";
+      isWrapVisible = false;
+    }
+  });
+});
+
+</script>
+
+
+
+
+
+
         <div id = "wrap">
         <div id="announce">
             <div class="spinner-grow text-warning" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
             <div id="ann">
-                <h2 class="font-unbounded">Announcements</h2>
+                <h3 class="font-unbounded">Announcements</h3>
             </div>
-            <div id="btn-ann"><button type="button" class="btn btn-primary">Primary</button></div>
+            <div id="btn-ann"><%=link_to 'View all', announcements_path,  class:"btn btn-primary", type:"button"%></div>
+            <!--This has to be set to correct path-->
         </div>
         <div id = "inner-wrap">
+        <% Announcement.all.each do |announce|%>
           <div class="news-item">
                 <div id="image-new">
                     <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
                 </div>
                 <div id="image-text">
-                    <span>12 May 2023</span>
+                    <span class="news-info"><%= announce.created_on.time%></span>
                     <div class="spinner-grow spinner-grow-sm text-info" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
+                    <span class="news-info">1 min read</span>
+                    <%=link_to announce.heading, mainpage_about_us_path, class:"heading-news" %>
                     <span id = "heading-news-display"></span>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
+                    <%=link_to announce.text,mainpage_about_us_path,  class:"news-text"%>
                 </div>
           </div>
-          <div class="news-item">
-                <div id="image-new">
-                    <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
-                </div>
-                <div id="image-text">
-                    <span>12 May 2023</span>
-                    <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
+
+        <div id="<%= announce.id%>" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Announcement: <%= announce.heading%><b></b></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
-                </div>
-          </div>
-          <div class="news-item">
-                <div id="image-new">
-                    <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
-                </div>
-                <div id="image-text">
-                    <span>12 May 2023</span>
-                    <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                    <div class="modal-body">
+                    <%= announce.text%>
+
                     </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
-                </div>
-          </div>
-          <div class="news-item">
-                <div id="image-new">
-                    <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
-                </div>
-                <div id="image-text">
-                    <span>12 May 2023</span>
-                    <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
                     </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
                 </div>
-          </div>
-          <div class="news-item">
-                <div id="image-new">
-                    <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
-                </div>
-                <div id="image-text">
-                    <span>12 May 2023</span>
-                    <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
-                </div>
-          </div>
-          <div class="news-item">
-                <div id="image-new">
-                    <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
-                </div>
-                <div id="image-text">
-                    <span>12 May 2023</span>
-                    <div class="spinner-grow spinner-grow-sm text-info" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <span>1 min read</span>
-                    <%=link_to 'New Internships', mainpage_about_us_path, class:"heading-news"%>
-                    <%=link_to 'New Internships are to be held this month in CRF. Pay for it and enjoy! We invite you to our facilty and ....',mainpage_about_us_path,  class:"news-text"%>
-                </div>
-          </div>
+            </div>
+        </div>
+        <%end%>
+         
+          
         </div>
       
         </div>
-        <%end%>
 
 
         
@@ -470,6 +460,25 @@ modal1.style.display = "none";
 
 });
 </script>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+  var toggleButton = document.getElementById('toggle-news');
+  var wrap = document.getElementById('wrap');
+  
+  toggleButton.addEventListener('click', function() {
+    wrap.classList.toggle('open');
+  });
+  
+  document.addEventListener('click', function(event) {
+    if (!wrap.contains(event.target) && !toggleButton.contains(event.target)) {
+      wrap.classList.remove('open');
+    }
+  });
+});
+
+</script>
+
 
 
 

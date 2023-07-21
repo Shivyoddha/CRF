@@ -43,6 +43,12 @@ class LowFatiguesController < ApplicationController
       @low_fatigue.dummy2 = nil
       @low_fatigue.dummy3 = nil
     else
+      @low_fatigue.equipment_table.sample = @low_fatigue.sample
+    @low_fatigue.equipment_table.contact_no = @low_fatigue.user.contact
+    uploaded_files = params[:low_fatigue][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @low_fatigue.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @low_fatigue.equipment_table.dummy = "alloted"
     @low_fatigue.equipment_table.username = @low_fatigue.user.name
     @low_fatigue.equipment_table.equipname = "Low Force Fatigue with DMA"
@@ -86,7 +92,6 @@ class LowFatiguesController < ApplicationController
   # PATCH/PUT /low_fatigues/1 or /low_fatigues/1.json
   def update
     @low_fatigue.status="alloted"
-    @low_fatigue.build_equipment_table
 
     respond_to do |format|
       if @low_fatigue.update(low_fatigue_params)

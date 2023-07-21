@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab activated">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -63,10 +63,10 @@
 <div class="container-slot-booker-new">
 
 
-    
+
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
         <div id="slot-details">
         <div>
@@ -78,7 +78,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Size</th>
                         <th scope="col" id="composition">Texture</th>
                         <th scope="col" id="phase">Final Output Required</th>
@@ -93,6 +95,8 @@
                 <tbody>
 
                       <% @threescan.all.each do |three|%>
+                      <%if three.expresssample ==nil%>
+
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
@@ -100,7 +104,9 @@
                         <td> <%= three.user.orgname%> </td>
                         <td> <%= three.user.department%> </td>
                         <td> <%= three.user.contact%> </td>
+                        <td><%if three.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= three.sample%> </td>
+                        <td> <%= three.expresssample%> </td>
                         <td> <%= three.size%> </td>
                         <td> <%= three.texture%></td>
                         <td> <%= Array(three.output_format).join(", ") %> </td>
@@ -120,41 +126,75 @@
                           <td>NA</td>
                         <% end %>
                     </tr>
-                      <%end%>
-                </tbody>
-            </table>
+
+
+        <%else%>
+        <tr class="exp-slot-entry">
+          <!-- Button trigger modal -->
+          <th scope="row">CRF/THREESCAN/<%=three.id %>	</th>
+          <td> <%= three.user.firstname%><nobr> <%= three.user.lastname%></td>
+          <td> <%= three.user.orgname%> </td>
+          <td> <%= three.user.department%> </td>
+          <td> <%= three.user.contact%> </td>
+          <td><%if three.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+          <td> <%= three.sample%> </td>
+          <td> <%= three.expresssample%> </td>
+          <td> <%= three.size%> </td>
+          <td> <%= three.texture%></td>
+          <td> <%= Array(three.output_format).join(", ") %> </td>
+          <td> <%= three.more%> </td>
+          <td>Booked</td>
+
+          <td> <%= three.slotdate %></td>
+
+          <td> <%= three.slottime %></td>
+
+            <td><%= three.status%></td>
+            <%if three.references.attached? %>
+          <td><%three.references.each do |file|%>
+             <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %>
+               <% end %></td>
+          <% else %>
+            <td>NA</td>
+          <% end %>
+        </tr>
+        <%end%>
+        <%end%>
+        </tbody>
+        </table>
 
         </div>
         </div>
 
 
-    </div>
-
-
-</div>
-    <button class="cssbuttons-io-button" id="scroll-left"> Left
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
         </div>
-    </button>
 
-    <button class="cssbuttons-io-button" id="scroll-right"> Right
-        <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+
         </div>
-    </button>
+
+        <button class="cssbuttons-io-button" id="scroll-left"> Left
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+            </div>
+        </button>
+
+        <button class="cssbuttons-io-button" id="scroll-right"> Right
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+            </div>
+        </button>
 
 
-<script>
-    let left = document.getElementById('scroll-left');
-    let right = document.getElementById('scroll-right');
-    let slots = document.getElementById('slots');
-    left.addEventListener("click", () => {
-        console.log("hello")
-        slots.scrollLeft -= 300;
-    });
-    right.addEventListener("click", () => {
-        console.log("hello2")
-        slots.scrollLeft += 300;
-    });
-</script>
+    <script>
+        let left = document.getElementById('scroll-left');
+        let right = document.getElementById('scroll-right');
+        let slots = document.getElementById('slots');
+        left.addEventListener("click", () => {
+            console.log("hello")
+            slots.scrollLeft -= 300;
+        });
+        right.addEventListener("click", () => {
+            console.log("hello2")
+            slots.scrollLeft += 300;
+        });
+    </script>

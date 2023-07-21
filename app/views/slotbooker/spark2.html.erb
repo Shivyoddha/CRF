@@ -68,7 +68,9 @@
                     <th scope="col" id="institute">Institute</th>
                     <th scope="col" id="department">Department</th>
                     <th scope="col" id="contact-no">Contact No:</th>
+                    <th scope="col" id="contact-no">Slot Type</th>
                     <th scope="col" id="sample-no">No of Samples</th>
+                    <th scope="col" id="sample-no">No of  Express Samples</th>
                     <th scope="col" id="composition">Composition</th>
                     <th scope="col" id="sample-no Fe">No of Samples of each element</th>
                     <th scope="col" id="request">More info</th>
@@ -85,6 +87,7 @@
             <tbody>
 
                     <% @spark2.where(status:'alloted').each do |spark|%>
+                    <%if spark.expresssample ==nil%>
                   <tr>
                     <!-- Button trigger modal -->
                     <th scope="row">CRF/SPARK/<%=spark.id %>	</th>
@@ -92,7 +95,9 @@
                     <td> <%= spark.user.orgname%> </td>
                     <td> <%= spark.user.department%> </td>
                     <td> <%= spark.user.contact%> </td>
+                    <td><%if spark.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                     <td> <%= spark.sample%> </td>
+                    <td> <%= spark.expresssample%> </td>
                     <td> <%= spark.composition%> </td>
                     <td> Fe Sample:<nobr><%= spark.samplefe%><br>
                         Ni Sample:<%= spark.sampleni%><br>
@@ -221,6 +226,147 @@
                                          <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
                                    </div>
                                    <% end %>
+                                   <%else%>
+
+                                 <tr class ="exp-slot-entry">
+                                   <!-- Button trigger modal -->
+                                   <th scope="row">CRF/SPARK/<%=spark.id %>	</th>
+                                   <td> <%= spark.user.firstname%><nobr> <%= spark.user.lastname%></td>
+                                   <td> <%= spark.user.orgname%> </td>
+                                   <td> <%= spark.user.department%> </td>
+                                   <td> <%= spark.user.contact%> </td>
+                                   <td><%if spark.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                                   <td> <%= spark.sample%> </td>
+                                   <td> <%= spark.expresssample%> </td>
+                                   <td> <%= spark.composition%> </td>
+                                   <td> Fe Sample:<nobr><%= spark.samplefe%><br>
+                                       Ni Sample:<%= spark.sampleni%><br>
+                                        Zn Sample: <%= spark.samplezn%><br>
+                                        Sn sample: <%= spark.samplesn%><br>
+                                        Cu Sample: <%= spark.samplecu%><br>
+                                        Ti Sample: <%= spark.sampleti%><br>
+                                        Al Sample: <%= spark.sampleal%><br>
+                                        Pb Sample: <%= spark.samplepb%><br>
+                                        Mg Sample: <%= spark.samplemg%>
+                                    </td>
+                                   <td> <%= spark.more%> </td>
+                                   <td>Booked</td>
+
+                                   <td> <%= spark.slotdate %></td>
+
+                                   <td> <%= spark.slottime %></td>
+
+                                     <td><%= spark.status%></td>
+                                     <%if spark.references.attached? %>
+                                     <%spark.references.each do |file|%>
+                               <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                               <%end%>
+                                 <% else %>
+                                   <td>NA</td>
+                                 <% end %>
+                                 <td id="assign-btn">
+                                     <!-- Button trigger modal -->
+                                      <%= button_tag "Reassign", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{spark.id}" }, id: "ani" %>
+                                      <div id="<%= spark.id%>" class="modal">
+
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm the Reassignment to <b><%= spark.user.firstname %></b></h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <%= form_with(model: spark,local:true) do |form| %>
+
+                                                  <div class="input-group mb-3">
+                                                  <%= form.label :slotdate, "Slot Date", class:"input-group-text"%>
+                                                  <%= form.date_field :slotdate, class:"form-control", id:"composition"%>
+                                                </div>
+
+                                                <div class="input-group mb-3">
+                                                <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
+                                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
+                                              </div>
+
+                                              <%=form.fields_for :equipment_table do |f| %>
+
+                                                  <%= f.hidden_field :app_no, value:"CRF/SPARK/#{spark.id}"%>
+                                                  <%= f.hidden_field :username, value:"#{spark.user.firstname}"%>
+                                                  <%= f.hidden_field :dummy, value:"#{spark.status}"%>
+                                                  <%= f.hidden_field :debit_head, value:"#{spark.debit}" %>
+
+                                              <%end%>
+
+
+                                                <div class="actions">
+                                                  <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
+
+                                                </div>
+                                              <% end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  </td>
+
+
+                                  <td id="cancel-btn">
+                                     <!-- Button trigger modal -->
+                                       <%= button_tag "Cancel", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#ani#{spark.id}" }, id: "anish" %>
+
+                                      <!-- Modal -->
+                                       <div id="ani<%= spark.id%>" class="modal">
+                                        <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel the slot assigned to <b><%= spark.user.firstname %></b></h1>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <%= form_for spark do |f| %>
+                                                      <p> Are you sure you want to cancel the slot ?</p>
+                                                      <%= f.hidden_field :status, value: 'cancelled' %>
+                                                  <div class="actions">
+
+
+                                                  </div>
+
+                                                   </div>
+                                                  <div class="modal-footer">
+                                                        <%= f.submit "Cancel", class:"btn btn-primary", id:"sbt" %>
+                                                  </div>
+                                                  <% end %>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td id="complete-btn">
+                                     <!-- Button trigger modal -->
+                                       <%= button_tag "Complete", type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"#mai#{spark.id}" }, id: "anish" %>
+
+                                      <!-- Modal -->
+                                       <div id="mai<%= spark.id%>" class="modal">
+                                        <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h1 class="modal-title fs-5" id="staticBackdropLabel">Complete the slot assigned to <b><%= spark.user.firstname %></b></h1>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <%= form_for spark do |f| %>
+                                                      <p> Are you sure you want to complete the slot ?</p>
+                                                      <%= f.hidden_field :status, value: 'completed' %>
+                                                  <div class="actions">
+
+
+                                                  </div>
+
+                                                   </div>
+                                                  <div class="modal-footer">
+                                                        <%= f.submit "Complete", class:"btn btn-primary", id:"sbt" %>
+                                                  </div>
+                                                  <% end %>
+                                                  <%end%>
                                </div>
                            </div>
                        </div>

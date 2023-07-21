@@ -42,6 +42,12 @@ class MultiImpactTestersController < ApplicationController
       @multi_impact_tester.dummy2 = nil
       @multi_impact_tester.dummy3 = nil
     else
+      @multi_impact_tester.equipment_table.sample = @multi_impact_tester.sample
+    @multi_impact_tester.equipment_table.contact_no = @multi_impact_tester.user.contact
+    uploaded_files = params[:multi_impact_tester][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @multi_impact_tester.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @multi_impact_tester.equipment_table.dummy = "alloted"
     @multi_impact_tester.equipment_table.username = @multi_impact_tester.user.name
     @multi_impact_tester.equipment_table.equipname = "Multi Purpose Impact Testing (SHPB)"
@@ -85,7 +91,6 @@ class MultiImpactTestersController < ApplicationController
   # PATCH/PUT /multi_impact_testers/1 or /multi_impact_testers/1.json
   def update
     @multi_impact_tester.status="alloted"
-    @multi_impact_tester.build_equipment_table
 
     respond_to do |format|
       if @multi_impact_tester.update(multi_impact_tester_params)

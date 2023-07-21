@@ -38,11 +38,17 @@ class UvVisNirsController < ApplicationController
     @uv_vis_nir.equipment_table.equipname = @uv_vis_nir.dummy1
     @uv_vis_nir.equipment_table.pay = @uv_vis_nir.amount
     @uv_vis_nir.equipment_table.username = @uv_vis_nir.dummy2
-    @xrd.equipment_table.debit_head = @xrd.debit
+    @uv_vis_nir.equipment_table.debit_head = @uv_vis_nir.debit
     @uv_vis_nir.equipment_table.role = @uv_vis_nir.dummy3
     @uv_vis_nir.dummy2 = nil
     @uv_vis_nir.dummy3 = nil
   else
+    @uv_vis_nir.equipment_table.sample = @uv_vis_nir.sample
+    @uv_vis_nir.equipment_table.contact_no = @uv_vis_nir.user.contact
+    uploaded_files = params[:uv_vis_nir][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @uv_vis_nir.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @uv_vis_nir.equipment_table.dummy = "alloted"
     @uv_vis_nir.equipment_table.username = @uv_vis_nir.user.name
     @uv_vis_nir.equipment_table.equipname = "UV-Vis-NIR"
@@ -88,7 +94,6 @@ end
   # PATCH/PUT /uv_vis_nirs/1 or /uv_vis_nirs/1.json
   def update
     @uv_vis_nir.status="alloted"
-    @uv_vis_nir.build_equipment_table
 
     respond_to do |format|
       if @uv_vis_nir.update(uv_vis_nir_params)
