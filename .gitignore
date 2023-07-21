@@ -35,3 +35,6 @@
 /config/master.key
 
 /config/credentials/development.key
+
+#igonring wicked_pdf.rb to avoid conflict with path in various env
+config/initializers/wicked_pdf.rb

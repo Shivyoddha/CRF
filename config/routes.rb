@@ -148,6 +148,8 @@ Rails.application.routes.draw do
     get 'mainpage/proton_transfer'
     get 'mainpage/servo_hydraulic'
     get 'mainpage/gait'
+    get 'mainpage/navbar'
+    get 'mainpage/people2'
 
     get 'mainpage/auto_multi_speci_polish'
     get 'mainpage/electro_chem'
