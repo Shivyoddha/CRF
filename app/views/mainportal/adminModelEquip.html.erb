@@ -79,7 +79,13 @@
                         </td>
                         <td id="assign-btn">
                             <!-- Button trigger modal -->
-                             <%= button_tag equip.status, type: "button", class: "btn btn-primary", data: { bs_toggle: "modal", bs_target:"##{equip.id}" }, id: "ani" %>
+                            <% if equip.status == "Under Maintenance"%>
+                            <%= button_tag equip.status, type: "button", class: "btn btn-secondary", data: { bs_toggle: "modal", bs_target:"##{equip.id}" }, id: "ani" %>
+                            <% elsif equip.status == "Unavailable" %>
+                            <%= button_tag equip.status, type: "button", class: "btn btn-danger", data: { bs_toggle: "modal", bs_target:"##{equip.id}" }, id: "ani" %>
+                            <%else%>
+                             <%= button_tag equip.status, type: "button", class: "btn btn-success", data: { bs_toggle: "modal", bs_target:"##{equip.id}" }, id: "ani" %>
+                             <%end%>
 
                              <div id="<%= equip.id%>" class="modal">
                              <div class="modal-dialog">
@@ -94,18 +100,20 @@
   <div class="form-group">
     <%# <%= f.label :status %>
     <%# <%= f.select :status, options_for_select([['Active', 'Active'], ['Under Maintenance', 'Under Maintenance'], ['Unavailable', 'Unavailable']]), {}, { class: 'form-control' } %>
- <div class="form-check">
-    <%= f.radio_button :status,'Active',class:"form-check-input text-warning", type:"radio",id:"status-a" %>
-    <%= f.label :status, 'Active',:value=>'Active', class:"form-check-label", for:"status-u" %>
-    </div>
-     <div class="form-check">
-    <%= f.radio_button :status,'Under Maintenance',class:"form-check-input text-warning", type:"radio", id:"status-u" %>
-    <%= f.label :status, 'Under Maintenance',:value=>'Under Maintenance', class:"form-check-label", for:"status-u" %>
-</div>
-     <div class="form-check text-secondary">
-    <%= f.radio_button :status,'Unavailable',class:"form-check-input text-warning", type:"radio",id:"status-n" %>
-    <%= f.label :status, 'Unavailable',:value=>'Unavailable', class:"form-check-label", for:"status-u" %>
-</div>
+    <div class="form-check">
+    <%= f.radio_button :status, 'Active', class: "form-check-input text-warning", type: "radio", id: "status-a-#{equip.id}" %>
+    <%= f.label :status, 'Active', value: 'Active', class: "form-check-label", for: "status-a-#{equip.id}" %>
+  </div>
+
+  <div class="form-check">
+    <%= f.radio_button :status, 'Under Maintenance', class: "form-check-input text-warning", type: "radio", id: "status-u-#{equip.id}" %>
+    <%= f.label :status, 'Under Maintenance', value: 'Under Maintenance', class: "form-check-label", for: "status-u-#{equip.id}" %>
+  </div>
+
+  <div class="form-check text-secondary">
+    <%= f.radio_button :status, 'Unavailable', class: "form-check-input text-warning", type: "radio", id: "status-n-#{equip.id}" %>
+    <%= f.label :status, 'Unavailable', value: 'Unavailable', class: "form-check-label", for: "status-n-#{equip.id}" %>
+  </div>
 
                                           </div>
                                  <div class="modal-footer">

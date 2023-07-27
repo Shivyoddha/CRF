@@ -1,3 +1,4 @@
+require 'csv'
 class MainportalController < ApplicationController
 #  load_and_authorize_resource :class => false
   # before_action :authenticate_admin!
@@ -24,6 +25,21 @@ class MainportalController < ApplicationController
   end
 
 
+def download_liquid_nitrogen
+  @liquid_nitrogen = LiquidNitrogen.all
+
+  csv_data = CSV.generate do |csv|
+    csv << LiquidNitrogen.column_names
+    @liquid_nitrogen.each do |liquid_nitrogen|
+      csv << liquid_nitrogen.attributes.values
+    end
+  end
+
+  send_data csv_data, filename: 'liquid_nitrogen.csv', type: 'text/csv'
+end
+
+
+
   def adminAllSlots
     @slots = EquipmentTable.all
     @entry= params[:entry]
@@ -36,6 +52,7 @@ class MainportalController < ApplicationController
 #  end
 def adminExpress
   @equiplist=Equiplist.all
+  Equiplist.where(status: nil).update_all(status: 'active')
 end
 def adminExpSlot
   @equiplist=Equiplist.all
@@ -64,6 +81,20 @@ end
       @user = User.all
       @entry = params[:entry]
   end
+  def adminexport
+    @user=User.all
+    @nitrogen=LiquidNitrogen.all
+    @products = Product.all
+
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = 'attachment; filename="liquid_nitrogen.csv"'
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
+
 
   def adminStats
       @internal = User.where(role: ['student','faculty']).count(:email)
