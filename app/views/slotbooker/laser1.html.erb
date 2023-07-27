@@ -138,21 +138,7 @@
                                            <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                          </div>
 
-                                        <%=form.fields_for :equipment_table do |f| %>
-                                        <%= f.hidden_field :app_no, value:"CRF/LASER/#{laser.id}"%>
-                                        <%= f.hidden_field :username, value:"#{laser.user.firstname}"%>
-                                        <%= f.hidden_field :dummy, value:"alloted"%>
-                                        <%= f.hidden_field :debit_head, value:"#{laser.debit}" %>
-                                        <%= f.hidden_field :dept, value:"#{laser.user.department}" %>
-                                        <%= f.hidden_field :email, value:"#{laser.user.email}" %>
-                                        <%= f.hidden_field :equipname, value:"laser" %>
-                                        <%= f.hidden_field :role, value:"#{laser.user.role}" %>
-                                        <%= f.hidden_field :org, value:"#{laser.user.orgaddress}" %>
-                                        <%= f.hidden_field :profesion, value:"#{laser.user.profession}" %>
-                                        <%= f.hidden_field :orgname, value:"#{laser.user.orgname}" %>
-
-
-                                          <%end%>
+                                      
 
                                            <div class="actions">
                                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

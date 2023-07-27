@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -58,11 +58,11 @@
 </div>
 
 <div class="container-slot-booker-new">
-    
+
 
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
 
         <div id="slot-details">
@@ -146,25 +146,7 @@
                                              <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                            </div>
 
-                                            <%=form.fields_for :equipment_table do |f| %>
-
-                                                <%= f.hidden_field :app_no, value:"CRF/TRIB/#{trib.id}"%>
-                                               <%= f.hidden_field :username, value:"#{trib.user.firstname}"%>
-                                               <%= f.hidden_field :dummy, value:"alloted"%>
-                                              <%= f.hidden_field :debit_head, value:"#{trib.debit}" %>
-                                             <%= f.hidden_field :dept, value:"#{trib.user.department}" %>
-                                            <%= f.hidden_field :email, value:"#{trib.user.email}" %>
-                                            <%= f.hidden_field :role, value:"#{trib.user.role}" %>
-                                            <%= f.hidden_field :org, value:"#{trib.user.orgaddress}" %>
-                                            <%= f.hidden_field :profesion, value:"#{trib.user.profession}" %>
-                                            <%= f.hidden_field :orgname, value:"#{trib.user.orgname}" %>
-
-
-
-                                            <%= f.hidden_field :equipname, value:"trib" %>
-
-
-                                            <% end %>
+                                          
                                              <div class="actions">
                                                <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                                              </div>

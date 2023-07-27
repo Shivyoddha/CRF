@@ -151,13 +151,6 @@
                                      <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                    </div>
 
-                                   <%=form.fields_for :equipment_table do |f| %>
-
-                                       <%= f.hidden_field :app_no, value:"CRF/PROBE/#{probe.id}"%>
-                                       <%= f.hidden_field :username, value:"#{probe.user.name}"%>
-                                       <%= f.hidden_field :dummy, value:"#{probe.status}"%>
-                                       <%= f.hidden_field :debit_head, value:"#{probe.debit}" %>
-                                   <%end%>
 
 
                                      <div class="actions">
@@ -289,13 +282,7 @@
                                       <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                     </div>
 
-                                    <%=form.fields_for :equipment_table do |f| %>
-
-                                        <%= f.hidden_field :app_no, value:"CRF/PROBE/#{probe.id}"%>
-                                        <%= f.hidden_field :username, value:"#{probe.user.name}"%>
-                                        <%= f.hidden_field :dummy, value:"#{probe.status}"%>
-                                        <%= f.hidden_field :debit_head, value:"#{probe.debit}" %>
-                                    <%end%>
+                                  
 
 
                                       <div class="actions">

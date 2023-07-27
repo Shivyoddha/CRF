@@ -138,20 +138,6 @@
                                        <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
 
-                                          <%=form.fields_for :equipment_table do |f| %>
-                                              <%= f.hidden_field :app_no, value:"CRF/BET/#{bet.id}"%>
-                                             <%= f.hidden_field :username, value:"#{bet.user.firstname}"%>
-                                             <%= f.hidden_field :dummy, value:"alloted"%>
-                                            <%= f.hidden_field :debit_head, value:"#{bet.debit}" %>
-                                          <%= f.hidden_field :dept, value:"#{bet.user.department}" %>
-                                         <%= f.hidden_field :email, value:"#{bet.user.email}" %>
-                                         <%= f.hidden_field :equipname, value:"bet" %>
-                                         <%= f.hidden_field :role, value:"#{bet.user.role}" %>
-                                        <%= f.hidden_field :org, value:"#{bet.user.orgaddress}" %>
-                                        <%= f.hidden_field :profesion, value:"#{bet.user.profession}" %>
-                                        <%= f.hidden_field :orgname, value:"#{bet.user.orgname}" %>
-
-                                          <%end%>
 
 
                                            <div class="actions">
@@ -162,7 +148,7 @@
 
 
                                        </div>
-                                       
+
                                    </div>
                                </div>
 
