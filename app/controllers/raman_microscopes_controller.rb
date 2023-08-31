@@ -42,6 +42,12 @@ class RamanMicroscopesController < ApplicationController
       @raman_microscope.dummy2 = nil
       @raman_microscope.dummy3 = nil
     else
+      @raman_microscope.equipment_table.sample = @raman_microscope.sample
+    @raman_microscope.equipment_table.contact_no = @raman_microscope.user.contact
+    uploaded_files = params[:raman_microscope][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @raman_microscope.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @raman_microscope.equipment_table.dummy = "alloted"
     @raman_microscope.equipment_table.username = @raman_microscope.user.name
     @raman_microscope.equipment_table.equipname = "Raman Spectrometer with PL"
@@ -85,7 +91,6 @@ class RamanMicroscopesController < ApplicationController
   # PATCH/PUT /raman_microscopes/1 or /raman_microscopes/1.json
   def update
     @raman_microscope.status="alloted"
-    @raman_microscope.build_equipment_table
 
     respond_to do |format|
       if @raman_microscope.update(raman_microscope_params)

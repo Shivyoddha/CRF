@@ -42,6 +42,12 @@ class AdvanceMolecularRheometersController < ApplicationController
       @advance_molecular_rheometer.dummy2 = nil
       @advance_molecular_rheometer.dummy3 = nil
     else
+      @advance_molecular_rheometer.equipment_table.sample = @advance_molecular_rheometer.sample
+      @advance_molecular_rheometer.equipment_table.contact_no = @advance_molecular_rheometer.user.contact
+      uploaded_files = params[:advance_molecular_rheometer][:references] # Assuming the field name is "references" in your form
+      if(uploaded_files != nil)
+      @advance_molecular_rheometer.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+      end
     @advance_molecular_rheometer.equipment_table.dummy = "alloted"
     @advance_molecular_rheometer.equipment_table.username = @advance_molecular_rheometer.user.name
     @advance_molecular_rheometer.equipment_table.equipname = "Advance Modular Rheometer"
@@ -55,7 +61,6 @@ class AdvanceMolecularRheometersController < ApplicationController
   end
   @equiplist = Equiplist.all
   @equiplist_expressslot = Equiplist.where(name: "Advance Modular Rheometer").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
-
     respond_to do |format|
 
       if @advance_molecular_rheometer.save
@@ -86,7 +91,6 @@ class AdvanceMolecularRheometersController < ApplicationController
   # PATCH/PUT /advance_molecular_rheometers/1 or /advance_molecular_rheometers/1.json
   def update
     @advance_molecular_rheometer.status="alloted"
-    @advance_molecular_rheometer.build_equipment_table
     respond_to do |format|
       if @advance_molecular_rheometer.update(advance_molecular_rheometer_params)
          AdvanceMolecularRheometerAllotedMailer.with(id:@advance_molecular_rheometer.id, userid:current_user.id).Mail.deliver_later

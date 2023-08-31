@@ -38,6 +38,12 @@ class GaitsController < ApplicationController
       @gait.dummy2 = nil
       @gait.dummy3 = nil
     else
+      @gait.equipment_table.sample = @gait.sample
+    @gait.equipment_table.contact_no = @gait.user.contact
+    uploaded_files = params[:gait][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @gait.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @gait.equipment_table.dummy = "alloted"
     @gait.equipment_table.username = @gait.user.name
     @gait.equipment_table.equipname = "GAIT Analysis"
@@ -74,7 +80,6 @@ class GaitsController < ApplicationController
   # PATCH/PUT /gaits/1 or /gaits/1.json
   def update
       @gait.status="alloted"
-      @gait.build_equipment_table
     respond_to do |format|
       if @gait.update(gait_params)
         if @gait.status!= 'completed'

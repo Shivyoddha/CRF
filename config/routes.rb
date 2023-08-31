@@ -88,10 +88,13 @@ Rails.application.routes.draw do
     get 'mainportal/chairmanStatsSamples'
     get 'mainportal/exportfile'
     post 'download_liquid_nitrogen', to: 'mainportal#download_liquid_nitrogen', format: :csv
+    post 'download_xrd', to: 'mainportal#download_xrd', defaults: { format: :csv }
+    get 'download_xrd_reference/:id/:filename', to: 'mainportal#download_xrd_reference', as: 'download_xrd_reference'
     get 'mainpage/landing'
     get 'home/index'
     get 'home/myslots'
     get 'home/anish'
+    get 'home/payment_not_done'
     get 'know/xrd'
     get 'records/record'
 

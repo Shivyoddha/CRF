@@ -42,6 +42,12 @@ class LasersController < ApplicationController
       @laser.dummy2 = nil
       @laser.dummy3 = nil
     else
+      @laser.equipment_table.sample = @laser.sample
+    @laser.equipment_table.contact_no = @laser.user.contact
+    uploaded_files = params[:laser][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @laser.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @laser.equipment_table.dummy = "alloted"
     @laser.equipment_table.username = @laser.user.name
     @laser.equipment_table.equipname = "Laser Flash Analyser"
@@ -85,7 +91,6 @@ class LasersController < ApplicationController
   # PATCH/PUT /lasers/1 or /lasers/1.json
   def update
     @laser.status="alloted"
-    @laser.build_equipment_table
 
     respond_to do |format|
       if @laser.update(laser_params)

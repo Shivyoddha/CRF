@@ -42,6 +42,12 @@ class ElectroChemicalsController < ApplicationController
       @electro_chemical.dummy2 = nil
       @electro_chemical.dummy3 = nil
     else
+      @electro_chemical.equipment_table.sample = @electro_chemical.sample
+    @electro_chemical.equipment_table.contact_no = @electro_chemical.user.contact
+    uploaded_files = params[:electro_chemical][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @electro_chemical.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @electro_chemical.equipment_table.dummy = "alloted"
     @electro_chemical.equipment_table.username = @electro_chemical.user.name
     @electro_chemical.equipment_table.equipname = "Electro Chemical Polishing"
@@ -85,7 +91,6 @@ class ElectroChemicalsController < ApplicationController
   # PATCH/PUT /electro_chemicals/1 or /electro_chemicals/1.json
   def update
       @electro_chemical.status="alloted"
-      @electro_chemical.build_equipment_table
     respond_to do |format|
       if @electro_chemical.update(electro_chemical_params)
         if @electro_chemical.status!= 'completed'

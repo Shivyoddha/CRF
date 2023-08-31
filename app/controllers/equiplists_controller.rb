@@ -78,6 +78,6 @@ class EquiplistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def equiplist_params
-      params.require(:equiplist).permit(:name, :status, :calibrate, :month, :week_1, :week_2, :week_3, :week_4, :week_5,:expressslot,:expressstart,:expressend)
+      params.require(:equiplist).permit(:name, :status,:status_date, :calibrate,:calibrate_date, :month, :week_1, :week_2, :week_3, :week_4, :week_5,:expressslot,:expressstart,:expressend)
     end
 end

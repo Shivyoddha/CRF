@@ -42,6 +42,12 @@ class ThreeDNonContactsController < ApplicationController
   @three_d_non_contact.dummy2 = nil
   @three_d_non_contact.dummy3 = nil
 else
+      @three_d_non_contact.equipment_table.sample = @three_d_non_contact.sample
+    @three_d_non_contact.equipment_table.contact_no = @three_d_non_contact.user.contact
+    uploaded_files = params[:three_d_non_contact][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @three_d_non_contact.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @three_d_non_contact.equipment_table.dummy = "alloted"
     @three_d_non_contact.equipment_table.username = @three_d_non_contact.user.name
     @three_d_non_contact.equipment_table.equipname = "3-D Non Contact Profilometer"
@@ -85,7 +91,6 @@ else
   # PATCH/PUT /three_d_non_contacts/1 or /three_d_non_contacts/1.json
   def update
     @three_d_non_contact.status="alloted"
-    @three_d_non_contact.build_equipment_table
 
     respond_to do |format|
       if @three_d_non_contact.update(three_d_non_contact_params)
