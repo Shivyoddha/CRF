@@ -65,7 +65,7 @@
             </div>
             </div>
 <script>
-    
+
     document.addEventListener("DOMContentLoaded", function() {
   var toggleBtn = document.getElementById("toggleBtn");
   var wrap = document.getElementById("wrap");
@@ -117,14 +117,17 @@
                     <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
                 </div>
                 <div id="image-text">
-                    <span class="news-info"><%= announce.created_on.time%></span>
+                    <span class="news-info"><%= announce.created_on.in_time_zone('Asia/Kolkata').strftime("%B %d, %Y %I:%M %p (%Z)") %>
+</span>
                     <div class="spinner-grow spinner-grow-sm text-info" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                     <span class="news-info">1 min read</span>
-                    <%=link_to announce.heading, mainpage_about_us_path, class:"heading-news" %>
+                    <%# <%=link_to announce.heading, mainpage_about_us_path, class:"heading-news" %>
+                    <%= link_to announce.heading, "#", class: "heading-news", data: { bs_toggle: "modal", bs_target: "##{announce.id}" }, id: "thiscodeis_haunted", onclick: "$(this).closest('form').submit();" %>
                     <span id = "heading-news-display"></span>
-                    <%=link_to announce.text,mainpage_about_us_path,  class:"news-text"%>
+                    <%# <%=link_to announce.text,mainpage_about_us_path,  class:"news-text"%>
+                    <span class="news-text"><%= announce.text%></span>
                 </div>
           </div>
 
@@ -146,14 +149,14 @@
             </div>
         </div>
         <%end%>
-         
-          
+
+
         </div>
-      
+
         </div>
 
 
-        
+
 
 
 
@@ -465,11 +468,11 @@ modal1.style.display = "none";
    document.addEventListener('DOMContentLoaded', function() {
   var toggleButton = document.getElementById('toggle-news');
   var wrap = document.getElementById('wrap');
-  
+
   toggleButton.addEventListener('click', function() {
     wrap.classList.toggle('open');
   });
-  
+
   document.addEventListener('click', function(event) {
     if (!wrap.contains(event.target) && !toggleButton.contains(event.target)) {
       wrap.classList.remove('open');
@@ -478,9 +481,3 @@ modal1.style.display = "none";
 });
 
 </script>
-
-
-
-
-
-

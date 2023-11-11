@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_19_013153) do
+ActiveRecord::Schema.define(version: 2023_11_11_141656) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 2023_07_19_013153) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
-    t.integer "expressslot", default: 0
+    t.integer "expressslot"
     t.datetime "calibrate_date"
     t.datetime "status_date"
   end
@@ -1340,6 +1340,7 @@ ActiveRecord::Schema.define(version: 2023_07_19_013153) do
     t.string "status"
     t.boolean "admin"
     t.boolean "developer"
+    t.boolean "announcementadmin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
