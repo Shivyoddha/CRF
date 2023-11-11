@@ -35,18 +35,24 @@ config.action_controller.perform_caching = true
   config.active_storage.service = :local
    # Don't care if the mailer can't send.
    config.action_mailer.raise_delivery_errors = true
-   config.action_mailer.default_url_options = { :host => "https://crfbeta.nitk.ac.in"  }
+  # config.action_mailer.default_url_options = { :host => "https://crfbeta.nitk.ac.in"  }
+  config.action_mailer.default_url_options = { :host => "crfbeta.nitk.ac.in"  }
+  config.read_timeout = 30
+
    config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_options = {from: 'crfnitk@gmail.com'}
  config.action_mailer.smtp_settings = {
  address:              'smtp.gmail.com',
- port:                 25,
- :domain =>            'nitk.ac.in',
+ port:                 '465', #465 older one
+ :domain =>            'crfbeta.nitk.ac.in',
  user_name:            'crfnitk@gmail.com',
  password:            'hcgzyqpdxgcnxwha',
  authentication:       :plain,
- enable_starttls_auto: true}
+ openssl_verify_mode: 'none',
+ enable_starttls_auto: true,
+ssl: true,
+tls: true}
  config.action_mailer.default_url_op
   # Don't care if the mailer can't send.
   # Print deprecation notices to the Rails logger.
