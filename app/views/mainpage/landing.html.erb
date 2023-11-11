@@ -1,44 +1,8 @@
 <%= stylesheet_link_tag "mainPage" %>
+
+<%=render "partials/Navbar/navbar"%>
+
 <%# <%= render "import" %>
-    <div id="navigation">
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
-                <!--this appears after fire of media qyuery at 990px-->
-                <a id="logo-up" class="navbar-brand" href="#">
-                    <%= image_tag 'logoT.png' , height:75 %>
-                </a>
-            <button id="togle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse center" id="navbarSupportedContent">
-              <ul class="navbar-nav ">
-                <!--this disappears after fire of media qyuery at 990px-->
-                <a id="logo-down" class="navbar-brand" href="#">
-                <%= image_tag 'logoT.png' , height:75 %>
-                </a>
-                <li class="nav-item coolBeans spacing">
-                  <a class="nav-link" href="#show">Home</a>
-                </li>
-                <li class="nav-item coolBeans spacing" id="people-li">
-                  <%=link_to 'People', mainpage_people_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Facilities', mainpage_facility_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Users', mainpage_user_type_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Gallery',mainpage_gallery_path,class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing">
-                    <%=link_to 'Book Slot',new_user_session_path,class:"nav-link"%>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
 
 
 
