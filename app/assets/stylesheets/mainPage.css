@@ -493,6 +493,7 @@ transform: translateX(3px);
 
 
 .mission-img{
+ margin-top: 20px;
  display: block;
  margin-left: auto;
  margin-right: auto;
@@ -665,6 +666,43 @@ word-spacing: 1%;
 .fa{
 padding: 2%;
 font-size: 25px;
+}
+
+.l-sec{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+ 
+}
+
+.crf-web-button{
+  display:flex;
+  justify-content:center;
+  
+}
+#button{
+  margin-left:10px;
+}
+.footer-1{
+  display: flex;
+  
+}
+.footer-left{
+  flex:1;
+
+}
+.footer-middle{
+  flex:1;
+
+}
+/*
+.footer-right{
+  flex:1;
+}*/
+.footer-social{
+  flex:1;
+
+
 }
 
 
@@ -873,6 +911,7 @@ a:hover {
 }
 
   .mission{
+  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1028,6 +1067,13 @@ a:hover {
   .footer-social{
     margin: 2%;
     width: 95%;
+  }
+  .l-sec{
+    display:flex;
+    flex-direction:column;
+  }
+  #button{
+    margin-top: 5px;
   }
 
 }
