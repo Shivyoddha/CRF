@@ -1,0 +1,124 @@
+<div class="background font_PT_sans">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example"
+        id="user_present">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hello_2"
+                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="#">
+                <div class="logo-div"><%= image_tag "logoT.png", id:"collapse_logo" %> </div>
+            </a>
+            <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="collapse_login">
+                <div>
+                    <div id="user_link"><%= image_tag "logoT.png", id:"user_img_1" %></div>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse d-lg-flex mt-1" id=hello_2>
+                <a href="#">
+                    <div class="logo-div"><%= image_tag "logoT.png", id:"non_collapse_logo" %>
+                    </div>
+                </a>
+                <div class="navbar-nav col-lg-6 justify-content-lg-center" id="nav_grid_1">
+                    <div class="nav-item">
+                        <%= link_to "Home", mainpage_navbar_path, class:"nav-link" %>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">Facilities</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">People</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#" id="book_slot">Book Slot</a>
+                    </div>
+                </div>
+                <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
+                    <button class="btn btn-primary" id="user_book_slot">Book Slot</button>
+                    <div>
+                        <div id="user_link"><%= image_tag "logoT.png", id:'user_img_2' %></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hello_1"
+                aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="#">
+                <div class="logo-div"><%= image_tag "logoT", id:'collapse_logo' %></div>
+            </a>
+            <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="collapse_login">
+                <button class="btn btn-primary">Login</button>
+            </div>
+            <div class="collapse navbar-collapse d-lg-flex mt-1" id="hello_1">
+                <a href="#">
+                    <div class="logo-div"><%= image_tag "logoT", id:'non_collapse_logo' %></div>
+                </a>
+                <div class="navbar-nav col-lg-6 justify-content-lg-center" id="nav_grid_2">
+                    <div class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">Facilities</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">People</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </div>
+                </div>
+                <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="profile_options">
+        <ul class="options">
+            <li class="option"><a href="#">My Profile</a></li>
+            <li class="option"><a href="#">My Slots</a></li>
+            <li class="option"><a href="#">Log Out</a></li>
+        </ul>
+    </div>
+
+    <script>
+        let user_img_1 = document.getElementById("user_img_1");
+        let user_img_2 = document.getElementById("user_img_2");
+        let profile_options = document.getElementById("profile_options");
+        let count = 0;
+        user_img_1.addEventListener("click",()=> {
+           if (count%2 === 0){ 
+                profile_options.style.display = "none";
+            }
+            else {
+                profile_options.style.display = "flex";
+
+                }
+
+            count++
+        })
+        user_img_2.addEventListener("click",()=> {
+           if (count%2 === 0){ 
+                profile_options.style.display = "none";
+            }
+            else {
+                profile_options.style.display = "flex";
+
+                }
+
+            count++
+        })
+
+    </script>
