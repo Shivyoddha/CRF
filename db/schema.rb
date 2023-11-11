@@ -256,7 +256,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
-    t.integer "expressslot", default: 0
+    t.integer "expressslot"
     t.datetime "calibrate_date"
     t.datetime "status_date"
   end
