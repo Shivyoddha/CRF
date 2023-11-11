@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  type: 
+  start_date: 2023-07-18 21:11:19
+  end_date: 2023-07-18 21:11:19
+  no_of_attendees: 1
+  name_and_guide: MyText
+
+two:
+  title: MyString
+  type: 
+  start_date: 2023-07-18 21:11:19
+  end_date: 2023-07-18 21:11:19
+  no_of_attendees: 1
+  name_and_guide: MyText

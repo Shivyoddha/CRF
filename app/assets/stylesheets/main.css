@@ -1,0 +1,9 @@
+.wrap{
+    background: linear-gradient(rgba(0,0,0,0.597), rgba(0,0,0,0.597)) ,url(https://crf.nitk.ac.in/images/caro_new.png);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+.wrap2{
+    height:100vh;
+}
