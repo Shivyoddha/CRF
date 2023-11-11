@@ -304,9 +304,8 @@ ul {
 /* the slots page element stylings are done below */
 #slots {
     background-color: #ddf1fb;
-    overflow-y: auto;
+    
     height: 92vh;
-    overflow-x: scroll;
     scroll-behavior: smooth;
 }
 
@@ -317,6 +316,7 @@ ul {
 
 #slot-details {
     text-align: center;
+    background-color: #ddf1fb;
 }
 
 #active-tab {

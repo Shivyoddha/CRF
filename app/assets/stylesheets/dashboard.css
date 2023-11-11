@@ -6,6 +6,7 @@
 #search-profile:hover {
     --bs-tertiary-bg-rgb: #554242;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 .font-quicksand {
   font-family: "Quicksand", "sans-serif";
@@ -61,7 +62,7 @@ hr {
   margin: auto;
   max-width: 95%;
   place-items: center;
-  /* font-family: "Unbounded", 'cursive'; */
+  /* font-family: "Jost", 'cursive'; */
   font-family: "Quicksand", "sans-serif";
 }
 

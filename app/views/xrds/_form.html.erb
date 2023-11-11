@@ -25,11 +25,11 @@
           </div>
         <% end %>
         <% if @slot_type=="regular"%>
-          <div class="input-group mb-3">
+        <div class="input-group mb-3">
             <%= form.label :sample,"No of Samples", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
 
             <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
-          </div>
+        </div>
 
         <%else%>
         <div id="instruct">
@@ -45,13 +45,13 @@
 
 
 
-          <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <%= form.label :measurement,"Measurement Required", class:"input-group-text", for:"measurement" %>
           <%= form.select(:measurement, ['Powered XRD', 'Residual Stress','Texture','GIXRD','SAXs WAXs'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "measurement",:required => true}) %>
         </div>
 
 
-          <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <%= form.label :composition, " Sample Composition", class:"input-group-text",for:"composition"%>
           <%= form.text_field :composition, class:"form-control", id:"composition", placeholder:"(Ex: ZnO, GO)"%>
         </div>
@@ -63,7 +63,7 @@
         </div>
 
 
-          <div class="input-group mb-3">
+        <div class="input-group mb-3">
           <%= form.label :mind, "Start Angle(2θ°)", class:"input-group-text", for:"mindegreeInput" %>
           <%= form.text_field :mind, class:"form-control", id:"mindegreeInput", placeholder:"Min 2"  %>
             <%= form.label :mind, "(2θ°)", class:"input-group-text", for:"mindegreeInput" %>
@@ -85,7 +85,7 @@
 
 
 
-        <div class="input-group mb-3">
+      <div class="input-group mb-3">
         <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
         <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
       </div>

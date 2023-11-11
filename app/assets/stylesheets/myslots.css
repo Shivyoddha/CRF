@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 html {
     height: 100%;
-    font-family: "Unbounded";
+    font-family: "Jost";
     font-weight: bold;
       
   }
@@ -11,7 +12,7 @@ html {
 
 .myslots-heading{
     text-align:center;
-    font-family:"Unbounded";
+    font-family: "Jost";
 
 }
 
