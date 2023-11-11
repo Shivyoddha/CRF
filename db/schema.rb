@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 2023_11_11_141656) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "activities", force: :cascade do |t|
+    t.string "title"
+    t.string "activity_type"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "no_of_attendees"
+    t.text "name_and_guide"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "advance_molecular_rheometers", force: :cascade do |t|
     t.integer "sample"
     t.float "size"

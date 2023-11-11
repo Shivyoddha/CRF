@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 .container-11 {
   display: -webkit-box;
   margin: 0 0 2em 0;
@@ -12,7 +13,7 @@ margin: 3px;
 border: 2px dashed grey;
 padding: 15px;
 border-radius: 2px;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Jost', sans-serif;
 
 /* height: 150vh; */
 }

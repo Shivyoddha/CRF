@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 #edit-page-heading {
     display: flex;
     justify-content: center;
     width: 65%;
-    font-family: "Unbounded", "sans-serif";
+    font-family: "Jost", "sans-serif";
     background-color: #f9fdff;
     margin: 0 auto 0.3em auto;
     border-radius: 1em 1em 0 0;
@@ -21,7 +22,7 @@
 #account-delete-heading {
     display: flex;
     justify-content: center;
-    font-family: "Unbounded", "sans-serif";
+    font-family: "Jost", "sans-serif";
     font-size: 2em;
 
 }

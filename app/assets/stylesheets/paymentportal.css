@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 * {
     margin: 0%;
     padding: 0%;
 }
 
 .font-unbounded {
-    font-family: "Unbounded", 'cursive';
+    font-family: "Jost", 'cursive';
 }
 
 .font-quicksand {
@@ -13,7 +14,7 @@
 
 #title {
     padding: 0 0 0 1em;
-    font-family: "unbounded", "sans-serif";
+    font-family: "Jost", "sans-serif";
 }
 
 #tab-name {
@@ -72,7 +73,7 @@
     display: flex;
     justify-content: center;
     width: 65%;
-    font-family: "Unbounded", "sans-serif";
+    font-family: "Jost", "sans-serif";
     background-color: #f9fdff;
     margin: 0 auto 0.3em auto;
     border-radius: 1em 1em 0 0;

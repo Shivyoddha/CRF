@@ -1,0 +1,81 @@
+[
+    {
+      "name": "Mr. Nishanth Kumar, B.Engg",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Kiran, B. Engg",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Vikram Suvarna, Diploma (Mech Engg.)",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Thrithila Shetty, B.Sc",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Pradeep",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Pratheeksha K P, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Yashvanth K S, ITI",
+      "role": "Electrician",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Vikrami, M.Com.",
+      "role": "Office Asst.",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Ms. Rakshitha M S, B.B.M",
+      "role": "Purchase Section",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Ms. Disha A Shetty, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Jithesh Shetty, B.E",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Suraksha S Shetty, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Sanath S, B.Engg (Mech)",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    }
+  ]
+  
