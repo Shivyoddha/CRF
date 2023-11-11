@@ -130,8 +130,8 @@
     maxDelta = window.innerWidth / 2;
     const percentage = (mouseDelta / maxDelta) * -100,
     nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
-    nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -43);
-
+    nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -59);
+                      
     track.dataset.percentage = nextPercentage;
 
     track.animate({

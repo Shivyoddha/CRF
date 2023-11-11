@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   resources :feedbacks
   resources :announcements
   resources :equiplists

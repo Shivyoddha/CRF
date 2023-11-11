@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 * {
   margin: 0%;
   padding: 0%;
@@ -17,11 +17,11 @@ body {
   padding: 15px;
   letter-spacing: 5px;
   text-align: center;
-  font-family: "Unbounded", 'cursive';
+  font-family: "Jost", 'sans-serif';
 }
 
 .font-unbounded {
-  font-family: "Unbounded", 'cursive';
+  font-family: "Jost", 'sans-serif';
 }
 
 .font-quiucksand {
@@ -33,6 +33,12 @@ body {
   text-decoration: none;
   display: flex;
   font-family: "Quicksand", "sans-serif";
+}
+.nav-link{
+  color:black;
+}
+.nav-link:hover{
+  color:black;
 }
 
 .center {
@@ -328,9 +334,7 @@ h2 {
 
 
 @media only screen and (max-width: 890px) {
-  .card{
-    
-  }
+  
   #f-heading{
     font-size: 1.7em;
   }

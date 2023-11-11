@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 body {
   height: 100vh;
   width: 100vw;
@@ -10,17 +11,22 @@ body {
     rgb(11, 15, 11) 100%
   );
 }
+
 .cont{
   display:flex;
   flex-direction:column;
 }
-.dev-head{
+
+.m-head{
   margin-top:0.5em;
   text-align: center;
-  font-size:2.5em;
+  font-size:1.5em;
+  font-weight: 500;
   color: white;
-  font-family: 'Unbounded';
+  font-family:var(--bs-body-font-family);
+  user-select: none;
 }
+
 #image-track {
   display: flex;
   gap: 4vmin;
@@ -45,6 +51,69 @@ body {
   height: 56vmin;
   object-fit: cover;
   object-position: 100% center;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+/*back-button*/
+.bel-head{
+	background-color: red;
+	height: 30em;
+}
+#button3 {
+	display: flex;
+	height: 3em;
+	width: 100px;
+	align-items: center;
+	justify-content: center;
+	background-color: #eeeeee4b;
+	border-radius: 3px;
+	letter-spacing: 1px;
+	transition: all 0.2s linear;
+	cursor: pointer;
+	border: none;
+	background: #fff;
+	margin-left: 1em;
+	position: absolute;
+	left: 1em;
+	
+
+}
+   
+#button3 > svg {
+	margin-right: 5px;
+	margin-left: 5px;
+	font-size: 20px;
+	transition: all 0.4s ease-in;
+}
+   
+#button3:hover > svg {
+	font-size: 1.2em;
+	transform: translateX(-5px);
+}
+   
+#button3:hover {
+	box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+	transform: translateY(-2px);
+}
+/*back-button ends*/
+
+
+
+.card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 40/56;
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
 }
 
 .card > * {
@@ -101,62 +170,11 @@ body {
 .card:focus h2 .char {
   transition-delay: calc(0.1s + var(--char-index) * var(--title-stagger));
 }
+
 .card:hover .image,
 .card:focus .image {
   transform: scale(1.1);
 }
-
-
-
-.text {
-  position: absolute;
-  inset: 20px;
-  top: auto;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-h2 {
-  font-size: 20px;
-  font-size: clamp(20px, 4vw, 40px);
-  font-weight: 500;
-  margin-bottom: 0.2em;
-  color: white;
-}
-.role{
-  font-weight:400;
-  font-family: "Quicksand";
-  font-size: 1.5em;
-  color: white;
-
-}
-
-
-
-h2  .char{
-  color: var(--highlight);
-  display: inline-block;
-  opacity: 0;
-  position: relative;
-  transform: translateY(20px);
-  transition-property: transform, opacity, color;
-  transition-timing-function: var(--text-ease);
-  transition-duration: var(--text-timing), var(--text-timing),
-    calc(var(--text-timing) * 2);
-}
-
-.image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-
-
-
 .card {
   width: 90vw;
   max-width: 300px;
@@ -174,6 +192,44 @@ h2  .char{
 .card:hover .text {
   opacity: 1;
 }
+
+
+
+.text {
+  position: absolute;
+  inset: 20px;
+  top: auto;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+h2 {
+  
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 500;
+  margin-bottom: 0.2em;
+  color: white;
+}
+
+h2  .char{
+  color: var(--highlight);
+  display: inline-block;
+  opacity: 0;
+  position: relative;
+  transform: translateY(20px);
+  transition-property: transform, opacity, color;
+  transition-timing-function: var(--text-ease);
+  transition-duration: var(--text-timing), var(--text-timing),
+    calc(var(--text-timing) * 2);
+}
+.role{
+  font-weight:400;
+  font-family: "Quicksand";
+  font-size: 1.2em;
+  color: white;
+
+}
+
 .dev-icons {
 	margin-top: 10px;
 	padding: 15px 0px;
@@ -194,4 +250,14 @@ h2  .char{
 .dev-icons a i:hover{
 		transform: scale(1.5);
 		color: #2ab1ce;
+}
+
+@media only screen and (max-width: 900px)  {
+  .card {
+    width: 45vw;
+    height: 55vh;
+   
+  }
+
+  
 }
