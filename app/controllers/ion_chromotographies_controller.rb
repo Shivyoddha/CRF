@@ -42,6 +42,12 @@ class IonChromotographiesController < ApplicationController
       @ion_chromotography.dummy2 = nil
       @ion_chromotography.dummy3 = nil
     else
+      @ion_chromotography.equipment_table.sample = @ion_chromotography.sample
+    @ion_chromotography.equipment_table.contact_no = @ion_chromotography.user.contact
+    uploaded_files = params[:ion_chromotography][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @ion_chromotography.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @ion_chromotography.equipment_table.dummy = "alloted"
     @ion_chromotography.equipment_table.username = @ion_chromotography.user.name
     @ion_chromotography.equipment_table.equipname = "ion_chromotography"
@@ -85,7 +91,6 @@ class IonChromotographiesController < ApplicationController
   # PATCH/PUT /ion_chromotographies/1 or /ion_chromotographies/1.json
   def update
     @ion_chromotography.status="alloted"
-    @ion_chromotography.build_equipment_table
 
     respond_to do |format|
       if @ion_chromotography.update(ion_chromotography_params)

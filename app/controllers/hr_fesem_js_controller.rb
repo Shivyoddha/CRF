@@ -42,6 +42,12 @@ class HrFesemJsController < ApplicationController
       @hr_fesem_j.dummy2 = nil
       @hr_fesem_j.dummy3 = nil
     else
+      @hr_fesem_j.equipment_table.sample = @hr_fesem_j.sample
+    @hr_fesem_j.equipment_table.contact_no = @hr_fesem_j.user.contact
+    uploaded_files = params[:hr_fesem_j][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @hr_fesem_j.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @hr_fesem_j.equipment_table.dummy = "alloted"
     @hr_fesem_j.equipment_table.username = @hr_fesem_j.user.name
     @hr_fesem_j.equipment_table.equipname = "HR-FESEM [Jeol]"
@@ -87,7 +93,6 @@ class HrFesemJsController < ApplicationController
   # PATCH/PUT /hr_fesem_js/1 or /hr_fesem_js/1.json
   def update
     @hr_fesem_j.status="alloted"
-    @hr_fesem_j.build_equipment_table
     respond_to do |format|
       if @hr_fesem_j.update(hr_fesem_j_params)
         if @hr_fesem_j.status!= 'completed'

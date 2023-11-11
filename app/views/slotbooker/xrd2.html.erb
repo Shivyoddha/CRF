@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -60,7 +60,7 @@
 
 <div class="container-slot-booker-new">
 
-   
+
 
 <%# the content section is coded here %>
     <div id="slots">
@@ -144,12 +144,6 @@
                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                  </div>
 
-                                     <%=form.fields_for :equipment_table do |f| %>
-                                         <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                        <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
-                                       <%= f.hidden_field :dummy, value:"#{xrds.status}"%>
-                                       <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                     <%end%>
 
 
                                        <div class="actions">
@@ -276,13 +270,6 @@
                                    <%= form.label :slottime, "Slot Time", class:"input-group-text"%>
                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                  </div>
-
-                                     <%=form.fields_for :equipment_table do |f| %>
-                                         <%= f.hidden_field :app_no, value:"CRF/XRD/#{xrds.id}"%>
-                                        <%= f.hidden_field :username, value:"#{xrds.user.firstname}"%>
-                                       <%= f.hidden_field :dummy, value:"#{xrds.status}"%>
-                                       <%= f.hidden_field :debit_head, value:"#{xrds.debit}" %>
-                                     <%end%>
 
 
                                        <div class="actions">

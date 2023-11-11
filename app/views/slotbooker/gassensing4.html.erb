@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -59,11 +59,11 @@
 
 <div class="container-slot-booker-new">
 
-    
+
 
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
 
         <div id="slot-details">
@@ -76,7 +76,9 @@
                         <th scope="col" id="institute">Institute</th>
                         <th scope="col" id="department">Department</th>
                         <th scope="col" id="contact-no">Contact No:</th>
+                        <th scope="col" id="contact-no">Slot Type</th>
                         <th scope="col" id="sample-no">No of Samples</th>
+                        <th scope="col" id="sample-no">No of  Express Samples</th>
                         <th scope="col" id="composition">Gas</th>
                         <th scope="col" id="composition">Toxicity</th>
                         <th scope="col" id="phase">Compatibility</th>
@@ -92,6 +94,7 @@
                 <tbody>
 
                         <% @sensing4.where(status:'cancelled').each do |sensing|%>
+                        <%if sensing.expresssample==nil%>
                       <tr>
                         <!-- Button trigger modal -->
                         <th scope="row">CRF/GAS/<%=sensing.id %>	</th>
@@ -99,7 +102,40 @@
                         <td> <%= sensing.user.orgname%> </td>
                         <td> <%= sensing.user.department%> </td>
                         <td> <%= sensing.user.contact%> </td>
+                        <td><%if sensing.expresssample  != nil %> Express <%else%> Regular <%end%></td>
                         <td> <%= sensing.sample%> </td>
+                        <td> <%= sensing.expresssample%> </td>
+                        <td> <%= sensing.gas%> </td>
+                        <td> <%= sensing.toxicity%> </td>
+                        <td> <%= sensing.compatibility%> </td>
+                        <td> <%= sensing.carcinogenic%> </td>
+                        <td> <%= sensing.more%> </td>
+                        <td>Booked</td>
+
+                        <td> <%= sensing.slotdate %></td>
+
+                        <td> <%= sensing.slottime %></td>
+
+                          <td><%= sensing.status%></td>
+                          <%if sensing.references.attached? %>
+                        <%sensing.references.each do |file|%>
+                        <td> <%= link_to "Download", rails_blob_path(file, disposition: :attachment), class: "btn btn-primary" %></td>
+                           <% end %>
+                      <% else %>
+                        <td>NA</td>
+                      <% end %>
+                    </tr>
+                      <%else%>
+                      <tr class="exp-slot-entry">
+                        <!-- Button trigger modal -->
+                        <th scope="row">CRF/GAS/<%=sensing.id %>	</th>
+                        <td> <%= sensing.user.firstname%><nobr> <%= sensing.user.lastname%> </td>
+                        <td> <%= sensing.user.orgname%> </td>
+                        <td> <%= sensing.user.department%> </td>
+                        <td> <%= sensing.user.contact%> </td>
+                        <td><%if sensing.expresssample  != nil %> Express <%else%> Regular <%end%></td>
+                        <td> <%= sensing.sample%> </td>
+                        <td> <%= sensing.expresssample%> </td>
                         <td> <%= sensing.gas%> </td>
                         <td> <%= sensing.toxicity%> </td>
                         <td> <%= sensing.compatibility%> </td>
@@ -121,6 +157,7 @@
                       <% end %>
                     </tr>
                       <%end%>
+<%end%>
                 </tbody>
             </table>
 

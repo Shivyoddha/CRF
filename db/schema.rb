@@ -243,7 +243,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
   create_table "equiplists", force: :cascade do |t|
     t.string "name"
     t.string "status"
-    t.date "calibrate"
+    t.string "calibrate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "month"
@@ -256,7 +256,9 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
     t.float "amount"
     t.date "expressstart"
     t.date "expressend"
-    t.integer "expressslot"
+    t.integer "expressslot", default: 0
+    t.datetime "calibrate_date"
+    t.datetime "status_date"
   end
 
   create_table "equipment_tables", force: :cascade do |t|
@@ -336,6 +338,9 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
     t.float "consultancy_rate"
     t.integer "sample"
     t.string "file_name"
+    t.datetime "submission_time"
+    t.string "block_status", default: "unblock"
+    t.integer "user_id"
     t.index ["advance_molecular_rheometer_id"], name: "index_equipment_tables_on_advance_molecular_rheometer_id"
     t.index ["atomic_force_microscope_id"], name: "index_equipment_tables_on_atomic_force_microscope_id"
     t.index ["ball_mailing_id"], name: "index_equipment_tables_on_ball_mailing_id"
@@ -375,6 +380,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
     t.index ["three_d_scanner_id"], name: "index_equipment_tables_on_three_d_scanner_id"
     t.index ["tribometer_id"], name: "index_equipment_tables_on_tribometer_id"
     t.index ["ultra_centrifuge_id"], name: "index_equipment_tables_on_ultra_centrifuge_id"
+    t.index ["user_id"], name: "index_equipment_tables_on_user_id"
     t.index ["uv_vis_nir_id"], name: "index_equipment_tables_on_uv_vis_nir_id"
     t.index ["xrd_id"], name: "index_equipment_tables_on_xrd_id"
     t.index ["zeta_potential_size_id"], name: "index_equipment_tables_on_zeta_potential_size_id"
@@ -686,7 +692,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
   end
 
   create_table "hr_fesem_js", force: :cascade do |t|
-    t.string "sample"
+    t.integer "sample"
     t.string "composition"
     t.string "stype"
     t.string "sphase"
@@ -1484,6 +1490,7 @@ ActiveRecord::Schema.define(version: 2023_07_20_070137) do
   add_foreign_key "equipment_tables", "three_d_scanners"
   add_foreign_key "equipment_tables", "tribometers"
   add_foreign_key "equipment_tables", "ultra_centrifuges"
+  add_foreign_key "equipment_tables", "users"
   add_foreign_key "equipment_tables", "uv_vis_nirs"
   add_foreign_key "equipment_tables", "xrds"
   add_foreign_key "equipment_tables", "zeta_potential_sizes"

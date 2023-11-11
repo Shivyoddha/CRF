@@ -18,9 +18,9 @@
             <div>
             </div>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item" id="admin-mail">
-                    <a class="nav-link" href="#">admin@mail</a>
-                </li>
+              <li class="nav-item" id="Home">
+                <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
+              </li>
                 <li class="nav-item" id="logout">
                     <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
                 </li>
@@ -57,12 +57,12 @@
           <h1>HI <%= @equipment.expressslot %></h1>
         </div> -->
         <div class='hero'>
-  
+
           <%= form_with(model: @equiplist.find_or_initialize_by(name: @equipment.name)) do |form| %>
             <% if @equiplist.first.errors.any? %>
               <div style="color: red">
                 <h2><%= pluralize(@equiplist.errors.count, "error") %> prohibited this equiplist from being saved:</h2>
-  
+
                 <ul>
                   <% @equiplist.errors.each do |error| %>
                     <li><%= error.full_message %></li>
@@ -70,9 +70,9 @@
                 </ul>
               </div>
             <% end %>
-  
-  
-  
+
+
+
             <div class="input-group mb-3 col-md-3">
               <%= form.label :expressslot,"Release More Express Slots", class:"input-group-text", for:"equiplist-select-no-of-equiplist"%>
               <%= form.text_field :expressslot, class:"form-control", id:"composition"%>
@@ -87,13 +87,13 @@
                 <%= form.date_field :expressend, class:"form-control", id:"composition"%>
               </div>
             </div>
-  
+
             <div class="actions-exp">
               <%= form.submit "Release Slots", class:"btn btn-primary", id:"sbt" %>
             </div>
           <% end %>
-  
-  
+
+
       </div>
   </div>
 </div>

@@ -37,6 +37,12 @@ class LiquidNitrogensController < ApplicationController
       @liquid_nitrogen.dummy2 = nil
       @liquid_nitrogen.dummy3 = nil
     else
+      @liquid_nitrogen.equipment_table.sample = @liquid_nitrogen.sample
+    @liquid_nitrogen.equipment_table.contact_no = @liquid_nitrogen.user.contact
+    uploaded_files = params[:liquid_nitrogen][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @liquid_nitrogen.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @liquid_nitrogen.equipment_table.dummy = "alloted"
     @liquid_nitrogen.equipment_table.username = @liquid_nitrogen.user.name
     @liquid_nitrogen.equipment_table.equipname = "Liquid Nitrogen"
@@ -79,7 +85,6 @@ class LiquidNitrogensController < ApplicationController
   # PATCH/PUT /liquid_nitrogens/1 or /liquid_nitrogens/1.json
   def update
     @liquid_nitrogen.status="alloted"
-    @liquid_nitrogen.build_equipment_table
 
     respond_to do |format|
       if @liquid_nitrogen.update(liquid_nitrogen_params)

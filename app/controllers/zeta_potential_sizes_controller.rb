@@ -42,6 +42,12 @@ class ZetaPotentialSizesController < ApplicationController
       @zeta_potential_size.dummy2 = nil
       @zeta_potential_size.dummy3 = nil
     else
+      @zeta_potential_size.equipment_table.sample = @zeta_potential_size.sample
+    @zeta_potential_size.equipment_table.contact_no = @zeta_potential_size.user.contact
+    uploaded_files = params[:zeta_potential_size][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @zeta_potential_size.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @zeta_potential_size.equipment_table.dummy = "alloted"
     @zeta_potential_size.equipment_table.username = @zeta_potential_size.user.name
     @zeta_potential_size.equipment_table.equipname = "Zeta Potential/Particle Sizer"
@@ -86,7 +92,6 @@ class ZetaPotentialSizesController < ApplicationController
   # PATCH/PUT /zeta_potential_sizes/1 or /zeta_potential_sizes/1.json
   def update
     @zeta_potential_size.status="alloted"
-    @zeta_potential_size.build_equipment_table
 
     respond_to do |format|
       if @zeta_potential_size.update(zeta_potential_size_params)

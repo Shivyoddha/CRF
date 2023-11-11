@@ -41,6 +41,12 @@ class SpectroRadioMetersController < ApplicationController
       @spectro_radio_meter.dummy2 = nil
       @spectro_radio_meter.dummy3 = nil
     else
+      @spectro_radio_meter.equipment_table.sample = @spectro_radio_meter.sample
+    @spectro_radio_meter.equipment_table.contact_no = @spectro_radio_meter.user.contact
+    uploaded_files = params[:spectro_radio_meter][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @spectro_radio_meter.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @spectro_radio_meter.equipment_table.dummy = "alloted"
     @spectro_radio_meter.equipment_table.username = @spectro_radio_meter.user.name
     @spectro_radio_meter.equipment_table.equipname = "Spectro-Radiometer"
@@ -84,7 +90,6 @@ class SpectroRadioMetersController < ApplicationController
   # PATCH/PUT /spectro_radio_meters/1 or /spectro_radio_meters/1.json
   def update
     @spectro_radio_meter.status="alloted"
-    @spectro_radio_meter.build_equipment_table
 
     respond_to do |format|
       if @spectro_radio_meter.update(spectro_radio_meter_params)

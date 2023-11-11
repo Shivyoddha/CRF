@@ -1,0 +1,52 @@
+<%= stylesheet_link_tag "announcement"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "loginFeatures"%> <!-- this has to be removed during code optimization-->
+<%= stylesheet_link_tag "adminportal"%> <!-- this has to be removed during code optimization-->
+
+<%=render "partials/importfileNav"%>
+<div class="container">
+    <div id="current-tab">
+        <h2 class="fw-bold" id="tab-name">Export Files</h2>
+    </div>
+    <div id="slot-details">
+        <table class="table table-hover">
+            <thead>
+                <tr class="bg-light">
+                    <th scope="col" id="application-no">Model Name</th>
+                    <th scope="col" id="name">File</th>
+                    <th scope="col" id="update">Export</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">Liquid Nitrogen</th>
+                        <td>
+                          <%= button_to 'Export Liquid Nitrogen', download_liquid_nitrogen_path%>
+
+
+
+                        </td>
+
+                        <td>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">XRD</th>
+                        <td>
+                          <%= button_to 'Export XRD', download_xrd_path%>
+
+
+
+                        </td>
+
+                        <td>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+          </div>
+
+        </div>

@@ -43,6 +43,12 @@ class FrictionsController < ApplicationController
       @friction.dummy2 = nil
       @friction.dummy3 = nil
     else
+      @friction.equipment_table.sample = @friction.sample
+    @friction.equipment_table.contact_no = @friction.user.contact
+    uploaded_files = params[:friction][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @friction.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @friction.equipment_table.dummy = "alloted"
     @friction.equipment_table.username = @friction.user.name
     @friction.equipment_table.equipname = "Friction Stir Welding/Surfacing(FSW)"
@@ -85,7 +91,6 @@ class FrictionsController < ApplicationController
   # PATCH/PUT /frictions/1 or /frictions/1.json
   def update
       @friction.status="alloted"
-      @friction.build_equipment_table
     respond_to do |format|
       if @friction.update(friction_params)
         if @friction.status!= 'completed'

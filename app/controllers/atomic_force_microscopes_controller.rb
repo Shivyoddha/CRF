@@ -42,7 +42,13 @@ class AtomicForceMicroscopesController < ApplicationController
       @atomic_force_microscope.equipment_table.role = @atomic_force_microscope.dummy3
       @atomic_force_microscope.dummy2 = nil
       @atomic_force_microscope.dummy3 = nil
-else
+    else
+      @atomic_force_microscope.equipment_table.sample = @atomic_force_microscope.sample
+    @atomic_force_microscope.equipment_table.contact_no = @atomic_force_microscope.user.contact
+    uploaded_files = params[:atomic_force_microscope][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @atomic_force_microscope.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @atomic_force_microscope.equipment_table.dummy = "alloted"
     @atomic_force_microscope.equipment_table.username = @atomic_force_microscope.user.name
     @atomic_force_microscope.equipment_table.equipname = "Atomic Force Microscope"

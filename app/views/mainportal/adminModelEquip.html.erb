@@ -33,9 +33,9 @@
                     <div>
                     </div>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item" id="admin-mail">
-                            <a class="nav-link" href="#">admin@mail</a>
-                        </li>
+                      <li class="nav-item" id="Home">
+                        <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
+                      </li>
                         <li class="nav-item" id="logout">
                         <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
                         </li>
@@ -110,7 +110,7 @@
                                           </div>
                                  <div class="modal-footer">
                                      <!-- <button type="button" class="btn btn-primary">Update</button> -->
-
+                                     <%= f.hidden_field :status_date, value: DateTime.now %>
                                    <%= f.submit 'Update', class: 'btn btn-primary' %>
                                  <% end %>
                                     </div>
@@ -119,11 +119,20 @@
                                  </div>
 
                            </div>
-                        <td>90582655154</td>
+                           <% if equip.status_date %>
+                           <td>
+                           <div>Time: <%= equip.status_date.in_time_zone('New Delhi').strftime('%H:%M:%S') %></div>
+                           <div>Date:<%= equip.status_date.in_time_zone('New Delhi').strftime('%d/%m/%Y') %></div>
+                         </td>
+                         <% else %>
+                           <td>Unavailable</td>
+                         <% end %>
                         <td><!-- Button trigger modal -->
-                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Calibrated
-                            </button>
+                          <%= form_with model: equip do |fo| %>
+                            <%= fo.hidden_field :calibrate_date, value: DateTime.now %>
+                            <%= fo.hidden_field :calibrate, value: "Calibrated" %>
+                             <%= fo.submit 'Calibrate',  class: 'btn btn-warning' %>
+                          <% end %>
 
                             <!-- Modal -->
                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -160,7 +169,14 @@
                             </div>
                             </div>
                                     </td>
-                        <td>90582655154</td>
+                        <% if equip.calibrate_date %>
+                        <td><div>Time: <%= equip.calibrate_date.in_time_zone('New Delhi').strftime('%H:%M:%S') %></div>
+                        <div>Date:<%= equip.calibrate_date.in_time_zone('New Delhi').strftime('%d/%m/%Y') %></div>
+                        </td>
+
+                      <% else %>
+                        <td>Not calibrated</td>
+                      <% end %>
                     </tr>
                     <%end%>
                 </tbody>

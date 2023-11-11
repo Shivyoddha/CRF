@@ -188,7 +188,7 @@
     let storageHandle = document.getElementById('storage-handle');
     let storageInputField = document.getElementById('storage-input-field-div');
 
-    selectNature.addEventListener('click', () => {
+    selectNature.addEventListener('change', () => {
         sampleNatureInput.classList.add('vis');
 
 
@@ -196,7 +196,7 @@
         sampleNatureInput.classList.toggle('vis');
       }
      })
-    mentionAcid.addEventListener('click', () => {
+    mentionAcid.addEventListener('change', () => {
         acidUsedInput.classList.add('vis');
 
 
@@ -204,7 +204,7 @@
         acidUsedInput.classList.toggle('vis');
       }
      })
-    storageHandle.addEventListener('click', () => {
+    storageHandle.addEventListener('change', () => {
         storageInputField.classList.add('vis');
 
 

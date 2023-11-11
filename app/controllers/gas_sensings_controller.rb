@@ -43,6 +43,12 @@ class GasSensingsController < ApplicationController
       @gas_sensing.dummy2 = nil
       @gas_sensing.dummy3 = nil
     else
+      @gas_sensing.equipment_table.sample = @gas_sensing.sample
+    @gas_sensing.equipment_table.contact_no = @gas_sensing.user.contact
+    uploaded_files = params[:gas_sensing][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @gas_sensing.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @gas_sensing.equipment_table.dummy = "alloted"
     @gas_sensing.equipment_table.username = @gas_sensing.user.name
     @gas_sensing.equipment_table.equipname = "Glove Box"
@@ -84,7 +90,6 @@ class GasSensingsController < ApplicationController
   # PATCH/PUT /gas_sensings/1 or /gas_sensings/1.json
   def update
     @gas_sensing.status="alloted"
-    @gas_sensing.build_equipment_table
     respond_to do |format|
       if @gas_sensing.update(gas_sensing_params)
         if @gas_sensing.status!= 'completed'

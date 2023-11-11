@@ -41,6 +41,12 @@ class SparkOsController < ApplicationController
   @spark_o.dummy2 = nil
   @spark_o.dummy3 = nil
 else
+      @spark_o.equipment_table.sample = @spark_o.sample
+    @spark_o.equipment_table.contact_no = @spark_o.user.contact
+    uploaded_files = params[:spark_o][:references] # Assuming the field name is "references" in your form
+    if(uploaded_files != nil)
+    @spark_o.equipment_table.file_name = uploaded_files.map { |file| file.original_filename }
+    end
     @spark_o.equipment_table.dummy = "alloted"
     @spark_o.equipment_table.username = @spark_o.user.name
     @spark_o.equipment_table.equipname = "Spark-OES"
@@ -84,7 +90,6 @@ else
   # PATCH/PUT /spark_os/1 or /spark_os/1.json
   def update
       @spark_o.status="alloted"
-      @spark_o.build_equipment_table
 
     respond_to do |format|
       if @spark_o.update(spark_o_params)
