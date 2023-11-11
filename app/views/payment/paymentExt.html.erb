@@ -1,44 +1,46 @@
-<%= stylesheet_link_tag "paymentportal" %>
-<%=render "partials/paymentNav" %>
 
-<div class="container-payments">
+    <%= stylesheet_link_tag "paymentportal" %>
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+    <div id="header">
+        <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+            <%= link_to 'CRF Payments', payment_payment_path, class:'navbar-brand', id:'title' %>
 
 
-        <div class="sidelinks">
+            <div class="collapse navbar-collapse tab" id="btn-head">
+                <ul class="navbar-nav">
 
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
+                  <li class="nav-item">
+                   <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                  </li>
 
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-            </ul>
-        </div>
+                  <li class="nav-item">
+                      <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                </ul>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="btn-head">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item" id="admin">
+                  <%= link_to 'Admin', mainportal_admindashboard_path,class:"btn btn-outline-primary" %>
+                  </li>
+                    <li class="nav-item" id="admin-mail">
+                        <a class="nav-link" href="#">admin@mail</a>
+                    </li>
+                    <li class="nav-item" id="logout">
+                    <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-
-<%# the content section is coded here %>
-    <div id="slots">
-        <div id="current-tab">
-            <h2 class="fw-bold font-unbounded" id="tab-name">Payment Entry Console</h2>
-        </div>
-
 
         <div id="slot-details">
         <div>
@@ -87,7 +89,7 @@
 
                                    <div class="input-group mb-3">
                                    <%= form.label :innvoice_name, "Invoice Name", class:"input-group-text", for:"In_names"%>
-                                   <%= form.text_field :invoice_name, class:"form-control", id:"In_name", value: equipment.username%>
+                                   <%= form.text_field :innvoice_name, class:"form-control", id:"In_name", value: equipment.username%>
                                  </div>
 
                                  <div class="input-group mb-3">
@@ -156,7 +158,7 @@
 
 
 
-                     <%= form.hidden_field :dummy, value: 'Proforma confirmed' %>
+                     <%= form.hidden_field :dummy, value: 'payment_completed' %>
 
 
                        <div class="actions">
@@ -170,20 +172,11 @@
 
    </div>
 
-                           </td>
 
-                       </tr>
+
    <%end%>
-                   </tbody>
-               </table>
 
            </div>
-           </div>
-
-
-
-
-       </div>
 
 
    <script>

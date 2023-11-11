@@ -23,7 +23,6 @@ class XrdsController < ApplicationController
   def new
     @user=User.find(params[:id])
     @xrd = Xrd.new()
-    @xrd.build_equipment_table
     @slot_type = params[:slot_type]
     @equiplist = Equiplist.all
     @equiplist_expressslot = Equiplist.where(name: "XRD").pluck(:expressslot).map { |slot| slot.nil? ? "nil" : slot.to_i }
@@ -42,7 +41,7 @@ class XrdsController < ApplicationController
     @xrd.user=current_user
     @xrd.status="pending"
     @xrd.build_equipment_table
-    if(@xrd.entry_type== "manual")
+    if(@xrd.entry_type == "manual")
       @xrd.equipment_table.dummy = "proforma_confirmed"
       @xrd.equipment_table.equipname = @xrd.dummy1
       @xrd.equipment_table.pay = @xrd.amount
@@ -92,6 +91,9 @@ class XrdsController < ApplicationController
         if @xrd.entry_type=="manual"
             format.html { redirect_to payment_paymentM_path, notice: "Xrd was successfully created." }
             format.json { render :show, status: :created, location: @xrd }
+        elsif @xrd.entry_type=="manualex"
+          format.html { redirect_to payment_paymentExtM_path, notice: "Xrd was successfully created." }
+          format.json { render :show, status: :created, location: @xrd }
         else
         format.html { redirect_to home_index_path, notice: "Xrd was successfully created." }
         format.json { render :show, status: :created, location: @xrd }
@@ -143,6 +145,6 @@ class XrdsController < ApplicationController
 
    # Only allow a list of trusted parameters through.
     def xrd_params
-      params.require(:xrd).permit(:sample, :measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :org,:orgname, :reg_no] ,references: [])
+      params.require(:xrd).permit(:sample,:measurement, :composition, :stype, :mind, :maxd,:more, :debit, :slotdate, :slottime, :status, :amount,:user_id, :entry_type,:amount,:dummy1,:dummy2,:dummy3,:slottype,:expresssample, equipment_table_attributes: [:username, :app_no, :debit_head, :dummy, :pay, :dept, :equipname, :email,:role, :profesion, :org,:orgname, :reg_no] ,references: [])
     end
 end

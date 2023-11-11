@@ -1,36 +1,45 @@
-<%= stylesheet_link_tag "paymentportal" %>
-<%=render "partials/paymentNav" %>
+
+    <%= stylesheet_link_tag "paymentportal" %>
+
+    <div id="header">
+        <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+            <%= link_to 'CRF Payments', payment_payment_path, class:'navbar-brand', id:'title' %>
 
 
-<div class="container-payments">
+            <div class="collapse navbar-collapse tab" id="btn-head">
+                <ul class="navbar-nav">
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
+                  <li class="nav-item">
+                   <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
 
-        <div class="sidelinks">
+                  <li class="nav-item">
+                      <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                </ul>
+            </div>
 
-            <h2 class="fw-bold text-center">Navigation</h2>
-            <ul class="sidelinks-model-list">
-                <%# below are code to get items on the navigation pane %>
-                <li class="nav-item">
-                 <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
-                </li>
 
-                <li class="nav-item">
-                    <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap", id:"active-tab" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
-                </li>
-            </ul>
-        </div>
+            <div class="collapse navbar-collapse" id="btn-head">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item" id="admin">
+                  <%= link_to 'Admin', mainportal_admindashboard_path,class:"btn btn-outline-primary" %>
+                  </li>
+                    <li class="nav-item" id="admin-mail">
+                        <a class="nav-link" href="#">admin@mail</a>
+                    </li>
+                    <li class="nav-item" id="logout">
+                    <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 
 <%# the content section is coded here %>

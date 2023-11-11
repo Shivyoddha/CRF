@@ -17,9 +17,13 @@
                             <li class="nav-item">
                             <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
-                            <li class="nav-item">
-                              <%= link_to "Slots", mainportal_adminStats_path, id:'active-tab',class:"nav-link active nav-btn main-elements" %>
-                            </li>
+                            <div class="dropdown">
+                            <a class="nav-link active nav-btn main-elements" data-bs-toggle="dropdown" id='active-tab'>Slots</a>
+                            <ul class="dropdown-menu">
+                                <li><%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements"%></li>
+                              <li>  <%= link_to "Express Slot", mainportal_adminExpress_path,class:"nav-link active nav-btn main-elements" %></li>
+                            </ul>
+                            </div>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
@@ -149,9 +153,11 @@
                         <td><%=slots.contact_no%></td>
                         <td><%=slots.sample%></td>
                         <td><%=slots.guide%></td>
-                        <td><%slots.created_at%></td>
+                        <td><%=slots.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
                         <td><%=slots.slotd%></td>
-                        <td>file name</td>
+                        <td><%slots.file_name.each do |file|%>
+                        <%=file%></td>
+                        <%end%>
                         <%end%>
 
 
@@ -197,9 +203,11 @@
                             <td><%=slots.orgname%></td>
                             <td><%=slots.contact_no%></td>
                             <td><%=slots.sample%></td>
-                            <td><%slots.created_at%></td>
+                            <td><%=slots.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
                             <td><%=slots.slotd%></td>
-                            <td>file name</td>
+                            <td><%slots.file_name.each do |file|%>
+                            <%=file%></td>
+                            <%end%>
                             <%end%>
 
 
