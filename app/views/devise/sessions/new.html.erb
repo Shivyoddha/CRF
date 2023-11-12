@@ -19,9 +19,9 @@
     <div id="login">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <h2>Login</h2>
-        <% if notice %>
-          <%=render 'layouts/layoutalerts' %>
-            <% end %>
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
 
                  <!-- a new style of select tab -->
                 <div class="mb-3 field" id="email-input">
