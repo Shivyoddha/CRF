@@ -39,9 +39,50 @@ class PaymentController < ApplicationController
       @equipment = EquipmentTable.order(updated_at: :desc)
   end
 
-  def payementExtM
-      @equipment = EquipmentTable.new
+  def paymentExtM
+      @advance_molecular_rheometer = AdvanceMolecularRheometer.new
+      @atomic_force_microscope = AtomicForceMicroscope.new
+      @ball_mailing = BallMailing.new
+      @bet = Bet.new
+      @cell_imaging = CellImaging.new
+      @electro_chemical = ElectroChemical.new
+      @five_axi = FiveAxi.new
+      @friction = Friction.new
+      @ft_nm = FtNm.new
+      @gait = Gait.new
+      @gas_sensing = GasSensing.new
+      @glove_box = GloveBox.new
+      @glow = Glow.new
+      @grinding = Grinding.new
+      @high_temp_vaccum = HighTempVaccum.new
+      @hr_fesem_c = HrFesemC.new
+      @hr_fesem_j = HrFesemJ.new
+      @hrlcm = Hrlcm.new
+      @icp_m = IcpM.new
+      @impedance_analy = ImpedanceAnaly.new
+      @integrated_multi_role_tester = IntegratedMultiRoleTester.new
+      @ion_chromotography = IonChromotography.new
+      @laser = Laser.new
+      @liquid_nitrogen = LiquidNitrogen.new
+      @low_fatigue = LowFatigue.new
+      @micro_edm = MicroEdm.new
+      @milli_q = MilliQ.new
+      @multi_impact_tester = MultiImpactTester.new
+      @probe_sonicator = ProbeSonicator.new
+      @raman_microscope = RamanMicroscope.new
+      @scratch_indentation = ScratchIndentation.new
+      @spark_o = SparkO.new
+      @spectro_radio_meter = SpectroRadioMeter.new
+      @tga_fttr = TgaFttr.new
+      @three_d_non_contact = ThreeDNonContact.new
+      @three_d_scanner = ThreeDScanner.new
+      @tribometer = Tribometer.new
+      @ultra_centrifuge = UltraCentrifuge.new
+      @uv_vis_nir = UvVisNir.new
       @xrd = Xrd.new
+      @zeta_potential_size = ZetaPotentialSize.new
+      @entry = params[:enter]
+      @equipment = EquipmentTable.new
   end
 
   def paymentExtR

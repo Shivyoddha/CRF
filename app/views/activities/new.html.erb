@@ -1,0 +1,11 @@
+
+<%= stylesheet_link_tag "loginFeatures"%> <!--imported for the purpose of partial, has to be removed while code optimization -->
+<%= stylesheet_link_tag "feedback"%>
+
+
+<%=render "partials/importfileNav"%>
+<h1 style="text-align:center; padding: 10px">New Activity</h1>
+
+<%= render 'form', activity: @activity %>
+
+

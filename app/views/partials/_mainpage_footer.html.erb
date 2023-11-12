@@ -4,38 +4,47 @@
 <footer>
 <div class="footer-1" id="links">
     <div class="footer-left">
-  <div class="footer-img">
-      <%=image_tag 'logoT.png' , height:80 %>
-  </div>
-  <div class="footer-address">
-      <h5 class="fw-bold">NITK CAMPUS</h5>
-      <p class="address">NH 66, Srinivasnagar</p>
-      <p class="address">Surathkal, Mangalore</p>
-      <p class="address">Karnataka - 575025</p>
-  </div>
+      <div class="footer-img">
+          <%=image_tag 'logoT.png' , height:80 %>
+      </div>
+      <div class="footer-address">
+          <h5 class="fw-bold">NITK CAMPUS</h5>
+          <p class="address">NH 66, Srinivasnagar</p>
+          <p class="address">Surathkal, Mangalore</p>
+          <p class="address">Karnataka - 575025</p>
+      </div>
     </div>
     <div class="footer-middle">
-  <h5 class="fw-bold">Quick Links</h5>
-  <p><a href="#" class="address">Brochure</a></p>
-  <%=link_to 'Instrument List',mainpage_instrument_list_path ,id:"address1"%>
+      <h5 class="fw-bold">Quick Links</h5>
+      <p><a href="#" class="address">Brochure</a></p>
+      <%=link_to 'Instrument List',mainpage_instrument_list_path ,id:"address1"%>
     </div>
     <div class="footer-right">
-  <h5 class="fw-bold">General Links</h5>
-  <p><a href="#" class="address">Feedback</a></p>
+      <h5 class="fw-bold">General Links</h5>
+      <p><%= link_to "Feedback", new_feedback_path %></p>
     </div>
     <div class="footer-social">
-  <h5 class="fw-bold">Social Links</h5>
-  <div class="social-icons">
-      <a href="#"><i class="fa fa-facebook" aria-hidden="true" height="5px"></i></a>
-      <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-      <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-  </div>
+      <h5 class="fw-bold">Social Links</h5>
+      <div class="social-icons">
+          <a href="https://www.facebook.com/nitkarnatakaOfficial/posts/launching-of-website-for-the-central-research-facility-crf-nitk-surathkal-the-we/4557827814293809/"><i class="fa fa-facebook" aria-hidden="true" height="5px"></i></a>
+          <a href="https://www.instagram.com/crfnitk/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="http://www.youtube.com/@crfnitk6770"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+          <a href="https://in.linkedin.com/posts/nitk-surathkal-585b3b18a_launching-of-website-for-the-central-research-activity-6876041356243030016-jRrJ?trk=public_profile_like_view"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+      </div>
     </div>
 </div>
 <hr>
 <div class="l-sec">
-  <p class="text-center">Copyright All Rights Reserved 2023. </p>
-  <%= button_to 'CRF Web Team', home_developer_path, id:"button" %>
+  <div class="text-center">Copyright All Rights Reserved 2023. </div>
+  <div class="web-btn">
+    <%= button_to 'CRF Web Team', home_developer_path, id:"button" %>
+  </div>
+  
+</div>
+  
+    
+  
+  
+  
 </div>
 </footer>

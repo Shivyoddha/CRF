@@ -1,0 +1,444 @@
+
+  <%= stylesheet_link_tag "newLand" %>
+  <%= stylesheet_link_tag "newLandResp" %>
+  <%= stylesheet_link_tag "people" %>
+
+<%= render "partials/newNav" %>
+
+
+
+  <div id="meet_the_leaders" class="font_jost">
+    <div class="meet_text">
+      <h1 class="fw-bold fs-50px">Meet the leadership</h1>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem nam dolores non, ut, quisquam corporis,</p>
+    </div>
+    <div id="meet_images">
+      <div class="divdiv"></div>
+    </div>
+  </div>
+
+  <div id="coreCommitee">
+    <h1 class="fw-bold">Core Commitee</h1>
+    <div id="core_div"></div>
+  </div>
+
+  <div id="staff">
+    <h1 class="fw-bold">Working Staff</h1>
+    <div id="staff_div"></div>
+  </div>
+
+  <div id="associated_aculty_in_charge">
+    <h1 class="fw-bold">Associated Faculty In-Charge</h1>
+    <div id="faculty_div"></div>
+  </div>
+
+  
+
+<%= render "partials/newFooter" %>
+
+
+  <script>
+
+   
+
+    let people = [
+    {
+      "name1": "Prof. Prasad Krishna",
+      "role1": "Director, NITK",
+      "photoURL1": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true",
+
+      "name2": "Dr. M. N. Satyanarayan",
+      "role2": "Chairman CRF NITK",
+      "photoURL2": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+    },
+    {
+      "name1": "Prof. Satybodh M. Kulkarni",
+      "role1": "Dean (Research & Consultancy), NITK",
+      "photoURL1": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true",
+
+      "name2": "Prof. K. S. Babu Narayan",
+      "role2": "Dean (Planning & Development), NITK",
+      "photoURL2": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+    },
+    {
+      "name1": "Prof. Vidya Shetty",
+      "role1": "Dean (Academic), NITK",
+      "photoURL1": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true",
+      
+      "name2": "Prof. G. C. Mohan Kumar",
+      "role2": "Dean (Faculty Welfare), NITK",
+      "photoURL2": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+    }
+  
+  ]
+  
+        people.forEach((element, index) => {
+          const div = document.createElement('div');
+          div.innerHTML = `
+                        <div class="meet_image_list">
+                          <div class="meet_image">
+                            <img src="${element.photoURL1}" alt="Director's image">
+                          </div>
+                          <div class="meet_intro">
+                            <p class="meet_name fw-bold">${element.name1}</p>
+                            <p class="meet_role role_color">${element.role1}</p>
+                          </div>
+                        </div>
+                        <div class="meet_image_list">
+                          <div class="meet_image">
+                            <img src="${element.photoURL2}" alt="Director's image">
+                          </div>
+                          <div class="meet_intro">
+                            <p class="meet_name fw-bold">${element.name2}</p>
+                            <p class="meet_role role_color">${element.role2}</p>
+                          </div>
+                        </div>`;
+
+
+          div.setAttribute('class', 'divdiv');
+          document.getElementById('meet_images').appendChild(div);//inject the data to leader div
+        });
+     
+
+
+
+    // Fetch JSON data from the file for core committee
+    let core = [
+        {
+          "name": "Dr. Mohammad Rizwanur Rahman",
+          "role": "Dept of MME",
+          "photoURL": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+        },
+        {
+          "name": "Dr. Keyur Raval",
+          "role": "Dept of Chemical Engg",
+          "photoURL": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+        },
+        {
+          "name": "Dr. Srikanth Bontha",
+          "role": "Dept of Mechanical. Engg.",
+          "photoURL": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+        },
+        {
+          "name": "Dr. Gangamma S",
+          "role": "Dept. of Chemical Engg.",
+          "photoURL": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+        },
+        {
+          "name": "Dr. Udaya Kumar Dalimba",
+          "role": "Department of Chemistry",
+          "photoURL": "https://github.com/Shivyoddha/CRF/blob/main/app/assets/images/faculty/faculty/CPDevatha.jpg?raw=true"
+        }
+  ]
+  
+        // You can access and process each element in the Array
+        core.forEach((element, index) => {
+          const div = document.createElement('div');
+          div.innerHTML = `<div class="core_members">
+                              <div class="core_img_div"><img src="${element.photoURL}" alt=""></div>
+                              <center>
+                                <div class="core_text">
+                                  <p class="core_name fw-bold">${element.name}</p>
+                                  <p class="core_role">${element.role}</p>
+                                </div>
+                              </center>
+                            </div>`;
+
+          document.getElementById('core_div').appendChild(div);//inject the data to core div
+        });
+
+  
+
+
+
+    // Fetch JSON data from the file for staff
+    staff =[
+    {
+      "name": "Mr. Nishanth Kumar, B.Engg",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Kiran, B. Engg",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Vikram Suvarna, Diploma (Mech Engg.)",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Thrithila Shetty, B.Sc",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Pradeep",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Pratheeksha K P, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Yashvanth K S, ITI",
+      "role": "Electrician",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Vikrami, M.Com.",
+      "role": "Office Asst.",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Ms. Rakshitha M S, B.B.M",
+      "role": "Purchase Section",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Ms. Disha A Shetty, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Jithesh Shetty, B.E",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mrs. Suraksha S Shetty, M.Sc.",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Mr. Sanath S, B.Engg (Mech)",
+      "role": "Technical Staff",
+      "department": "CRF NITK",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    }
+  ]
+  
+        staff.forEach((element, index) => {
+          const div = document.createElement('div');
+          div.innerHTML = `<div class="core_members">
+                              <div class="core_img_div"><img src="${element.photoURL}" alt=""></div>
+                              <center>
+                                <div class="core_text">
+                                  <p class="core_name fw-bold">${element.name}</p>
+                                  <p class="core_role">${element.role}</p>
+                                </div>
+                              </center>
+                            </div>`;
+
+          document.getElementById('staff_div').appendChild(div);//inject the data to staff div
+        });
+
+
+
+    // Fetch JSON data from the file for faculty
+    let faculty = [
+    {
+      "name": "Prof. Anandhan Srinivasan",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Arun M. Isloor",
+      "department": "Dept. of Chemistry",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. K.N. Prabhu",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. M.N. Satyanarayan",
+      "department": "Dept. of Physics",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Rajmohan B",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. S.M. Murugendrappa",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Srikantha Rao",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Udaya Bhat",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Veershetty Gumtapure",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Ajay Kumar Yadav",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Arun Kumar Thalla",
+      "department": "Dept. of Civil Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Devatha C.P",
+      "department": "Dept. of Civil Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Gnanasekaran",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Gangamma S",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Hemantha Kumar",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. K.S. Ravishankar",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Keyur Raval",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Navin Karanth",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Parthasarathy P",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Poornesh K",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Preetham Kumar G V",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Pruthviraj U",
+      "department": "Dept. of WROE",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Dr. Ramesh M.R",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Ranjith M",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Rizwanur Rahman",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sharanappa Joladarashi",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Shwetha H. R",
+      "department": "Dept. of WROE",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Somasekhara Rao Todeti",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Srikanth Bontha",
+      "department": "Dept. of Mechanical",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sudhakar Jambagi",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sumanth-Govindarajan",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Udaya Kumar D",
+      "department": "Dept. of Chemistry.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Vasudeva M",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    }
+  ]
+  
+        faculty.forEach((element, index) => {
+          const div = document.createElement('div');
+          div.innerHTML = `<div class="core_members">
+                              <div class="core_img_div"><img src="${element.photoURL}" alt=""></div>
+                              <center>
+                                <div class="core_text">
+                                  <p class="core_name fw-bold">${element.name}</p>
+                                  <p class="core_role">${element.department}</p>
+                                </div>
+                              </center>
+                            </div>`;
+
+          document.getElementById('faculty_div').appendChild(div);//inject the data to faculty div
+        });
+      
+
+
+  </script>
+
+
+
+
+  

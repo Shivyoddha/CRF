@@ -1,0 +1,31 @@
+[
+    {
+      "name1": "Prof. Prasad Krishna",
+      "role1": "Director, NITK",
+      "photoURL1": "/app/assets/images/faculty/faculty/CPDevatha.jpg",
+
+      "name2": "Dr. M. N. Satyanarayan",
+      "role2": "Chairman CRF NITK",
+      "photoURL2": "/app/assets/images/faculty/faculty/CPDevatha.jpg"
+    },
+    {
+      "name1": "Prof. Satybodh M. Kulkarni",
+      "role1": "Dean (Research & Consultancy), NITK",
+      "photoURL1": "/app/assets/images/faculty/faculty/CPDevatha.jpg",
+
+      "name2": "Prof. K. S. Babu Narayan",
+      "role2": "Dean (Planning & Development), NITK",
+      "photoURL2": "/app/assets/images/faculty/faculty/CPDevatha.jpg"
+    },
+    {
+      "name1": "Prof. Vidya Shetty",
+      "role1": "Dean (Academic), NITK",
+      "photoURL1": "/app/assets/images/faculty/faculty/CPDevatha.jpg",
+      
+      "name2": "Prof. G. C. Mohan Kumar",
+      "role2": "Dean (Faculty Welfare), NITK",
+      "photoURL2": "/app/assets/images/faculty/faculty/CPDevatha.jpg"
+    }
+  
+  ]
+  

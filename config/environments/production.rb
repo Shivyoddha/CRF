@@ -1,4 +1,3 @@
-require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -34,7 +33,6 @@ config.hosts << "a331-2401-4900-3767-639f-8c02-1884-9d66-1e32.in.ngrok.io"
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'
 

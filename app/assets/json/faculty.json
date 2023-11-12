@@ -1,0 +1,168 @@
+[
+    {
+      "name": "Prof. Anandhan Srinivasan",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Arun M. Isloor",
+      "department": "Dept. of Chemistry",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. K.N. Prabhu",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. M.N. Satyanarayan",
+      "department": "Dept. of Physics",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Rajmohan B",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. S.M. Murugendrappa",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Srikantha Rao",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Udaya Bhat",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Prof. Veershetty Gumtapure",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Ajay Kumar Yadav",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Arun Kumar Thalla",
+      "department": "Dept. of Civil Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Devatha C.P",
+      "department": "Dept. of Civil Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Gnanasekaran",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Gangamma S",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Hemantha Kumar",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. K.S. Ravishankar",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Keyur Raval",
+      "department": "Dept. of Chemical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Navin Karanth",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Parthasarathy P",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Poornesh K",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Preetham Kumar G V",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Pruthviraj U",
+      "department": "Dept. of WROE",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Dr. Ramesh M.R",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Ranjith M",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Rizwanur Rahman",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sharanappa Joladarashi",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Shwetha H. R",
+      "department": "Dept. of WROE",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Somasekhara Rao Todeti",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Srikanth Bontha",
+      "department": "Dept. of Mechanical",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sudhakar Jambagi",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Sumanth-Govindarajan",
+      "department": "Dept. of MME",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Udaya Kumar D",
+      "department": "Dept. of Chemistry.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    },
+    {
+      "name": "Dr. Vasudeva M",
+      "department": "Dept. of Mechanical Engg.",
+      "photoURL": "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+    }
+  ]
+  

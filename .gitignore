@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-*
 
+# Ignore producation files
+
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -35,3 +38,6 @@
 /config/master.key
 
 /config/credentials/development.key
+
+#igonring wicked_pdf.rb to avoid conflict with path in various env
+config/initializers/wicked_pdf.rb

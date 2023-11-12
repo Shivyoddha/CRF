@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   before_save :set_default_parameters
 
-
 has_one_attached :file
 has_many :xrds,  :dependent => :destroy
 has_many :hr_fesem_cs
@@ -55,6 +54,7 @@ def set_default_parameters
     self.orgname = "NITK" if orgname.blank?
   end
 end
+
 
 protected
 def confirmation_required?
