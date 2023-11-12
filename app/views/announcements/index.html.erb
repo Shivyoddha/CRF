@@ -98,7 +98,9 @@
        </div>
        <div class="announce-description" id="item2">
          <h3 class="text-center fw-bold">Announcement Description</h3>
-
+         <% if current_user && current_user.announcementadmin %>
+         <%= link_to 'New Announcement', new_announcement_path, id:"new" , class: "btn btn-primary"%>
+         <% end %>
          <div class="descriptions">
            <% @announcements.each do |announcement| %>
            <div class="card" id="<%= announcement.id %>">
@@ -109,7 +111,7 @@
                   <p class="card-text"><%= announcement.text %></p>
                   <% if current_user && current_user.announcementadmin %>
                     <%= link_to 'Edit', edit_announcement_path(announcement), class: "btn btn-primary" %>
-                    <%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                    <%= button_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
                   <% end %>
 
                 </div>

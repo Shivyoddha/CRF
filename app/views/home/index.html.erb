@@ -29,7 +29,7 @@
               <hr>
               <li><%= link_to "Edit Profile", edit_user_registration_path ,class:"dropdown-item" %></li>
               <% if current_user.admin_role==true%>
-              <li><%= link_to "Admin", mainportal_admindashboard_path ,class:"dropdown-item" %></li>
+              <li><%= link_to "Admin", mainportal_admindashboard_path(id:current_user.id) ,class:"dropdown-item" %></li>
               <%end%>
               <% if current_user.slotbooker=='media'%>
               <li><%= link_to "Media Team's Announce", announcements_path ,class:"dropdown-item" %></li>

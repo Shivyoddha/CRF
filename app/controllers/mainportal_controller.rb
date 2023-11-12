@@ -4,6 +4,7 @@ class MainportalController < ApplicationController
   # before_action :authenticate_admin!
 
   def admindashboard
+    @user = User.find(params[:id])
     @today = Date.today
     @internal_count = EquipmentTable.where('DATE(created_at) = ?', @today ).where(role: ['student', 'faculty']).count
     @external_count = EquipmentTable.where('DATE(created_at) = ?', @today ).where(role: 'external').count
