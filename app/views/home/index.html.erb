@@ -183,12 +183,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip1.id%>
 
@@ -335,13 +343,20 @@
                             <td class="status-<%=@equip2.week_5%>"></td>
                           </tr>
                           </table>
-                          Available-
-                          <br/>
-                          Busy-
-                          <br/>
-                          Not Available-
-                          <br/>
+                          <div class="status">
+                            <span class="status-text">Available</span>
+                            <div class="status-dot available"></div>
+                          </div>
 
+                          <div class="status">
+                            <span class="status-text">Busy</span>
+                            <div class="status-dot busy"></div>
+                          </div>
+
+                          <div class="status">
+                            <span class="status-text">Not Available</span>
+                            <div class="status-dot not-available"></div>
+                          </div>
                           <%# <%= @equip2.id%>
 
                     </div>
@@ -487,12 +502,20 @@
                                 </tr>
                                 </table>
 
-                                Available-
-                                <br/>
-                                Busy-
-                                <br/>
-                                Not Available-
-                                <br/>
+                                <div class="status">
+                                  <span class="status-text">Available</span>
+                                  <div class="status-dot available"></div>
+                                </div>
+
+                                <div class="status">
+                                  <span class="status-text">Busy</span>
+                                  <div class="status-dot busy"></div>
+                                </div>
+
+                                <div class="status">
+                                  <span class="status-text">Not Available</span>
+                                  <div class="status-dot not-available"></div>
+                                </div>
 
                                 <%# <%= @equip1.id%>
 
@@ -566,7 +589,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_three_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip4.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
@@ -649,13 +672,20 @@
                                   <td class="status-<%=@equip4.week_5%>"></td>
                                 </tr>
                                 </table>
+                                <div class="status">
+                                  <span class="status-text">Available</span>
+                                  <div class="status-dot available"></div>
+                                </div>
 
-                                Available-
-                                <br/>
-                                Busy-
-                                <br/>
-                                Not Available-
-                                <br/>
+                                <div class="status">
+                                  <span class="status-text">Busy</span>
+                                  <div class="status-dot busy"></div>
+                                </div>
+
+                                <div class="status">
+                                  <span class="status-text">Not Available</span>
+                                  <div class="status-dot not-available"></div>
+                                </div>
 
                           </div>
                           <div class="modal-footer">
@@ -719,7 +749,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_raman_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip5.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                         <ul class="dropdown-menu">
@@ -801,12 +831,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip5.id%>
 
@@ -877,7 +915,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_tga_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip6.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                          <ul class="dropdown-menu">
@@ -959,12 +997,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip6.id%>
 
@@ -1024,7 +1070,7 @@
                  <div class="wrap-action">
                      <%= link_to "Know More", know_bet_path ,class:"btn btn-primary know-more"%>
                      <div class="dropdown book">
-                         <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip7.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                              Book Slot
                          </button>
                          <ul class="dropdown-menu">
@@ -1105,12 +1151,20 @@
                                  </tr>
                                  </table>
 
-                                 Available-
-                                 <br/>
-                                 Busy-
-                                 <br/>
-                                 Not Available-
-                                 <br/>
+                                 <div class="status">
+                                   <span class="status-text">Available</span>
+                                   <div class="status-dot available"></div>
+                                 </div>
+
+                                 <div class="status">
+                                   <span class="status-text">Busy</span>
+                                   <div class="status-dot busy"></div>
+                                 </div>
+
+                                 <div class="status">
+                                   <span class="status-text">Not Available</span>
+                                   <div class="status-dot not-available"></div>
+                                 </div>
 
                                  <%# <%= @equip7.id%>
 
@@ -1175,7 +1229,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_hr_lcms_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip8.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -1253,12 +1307,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip8.id%>
 
@@ -1325,7 +1387,7 @@
                <div class="wrap-action">
                    <%= link_to "Know More", know_uv_vis_path ,class:"btn btn-primary know-more"%>
                    <div class="dropdown book">
-                       <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip9.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                            Book Slot
                        </button>
                         <ul class="dropdown-menu">
@@ -1401,12 +1463,20 @@
                              </tr>
                              </table>
 
-                             Available-
-                             <br/>
-                             Busy-
-                             <br/>
-                             Not Available-
-                             <br/>
+                             <div class="status">
+                               <span class="status-text">Available</span>
+                               <div class="status-dot available"></div>
+                             </div>
+
+                             <div class="status">
+                               <span class="status-text">Busy</span>
+                               <div class="status-dot busy"></div>
+                             </div>
+
+                             <div class="status">
+                               <span class="status-text">Not Available</span>
+                               <div class="status-dot not-available"></div>
+                             </div>
 
                              <%# <%= @equip9.id%>
 
@@ -1467,7 +1537,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_laser_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip10.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                         <ul class="dropdown-menu">
@@ -1543,12 +1613,20 @@
                             </tr>
                             </table>
 
-                            Available-
-                            <br/>
-                            Busy-
-                            <br/>
-                            Not Available-
-                            <br/>
+                            <div class="status">
+                              <span class="status-text">Available</span>
+                              <div class="status-dot available"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Busy</span>
+                              <div class="status-dot busy"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Not Available</span>
+                              <div class="status-dot not-available"></div>
+                            </div>
 
                             <%# <%= @equip10.id%>
 
@@ -1611,7 +1689,7 @@
                    <div class="wrap-action">
                        <%= link_to "Know More", know_cell_imaging_path ,class:"btn btn-primary know-more"%>
                        <div class="dropdown book">
-                           <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <button class="btn btn-outline-warning dropdown-toggle <%if @equip11.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                Book Slot
                            </button>
                             <ul class="dropdown-menu">
@@ -1687,12 +1765,20 @@
                                  </tr>
                                  </table>
 
-                                 Available-
-                                 <br/>
-                                 Busy-
-                                 <br/>
-                                 Not Available-
-                                 <br/>
+                                 <div class="status">
+                                   <span class="status-text">Available</span>
+                                   <div class="status-dot available"></div>
+                                 </div>
+
+                                 <div class="status">
+                                   <span class="status-text">Busy</span>
+                                   <div class="status-dot busy"></div>
+                                 </div>
+
+                                 <div class="status">
+                                   <span class="status-text">Not Available</span>
+                                   <div class="status-dot not-available"></div>
+                                 </div>
 
                                  <%# <%= @equip11.id%>
 
@@ -1760,7 +1846,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_atomic_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip12.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                          <ul class="dropdown-menu">
@@ -1836,12 +1922,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip12.id%>
 
@@ -1906,7 +2000,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ft_nmr_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip13.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                          <ul class="dropdown-menu">
@@ -1982,12 +2076,20 @@
                               </tr>
                               </table>
 
-                              Available-
-                              <br/>
-                              Busy-
-                              <br/>
-                              Not Available-
-                              <br/>
+                              <div class="status">
+                                <span class="status-text">Available</span>
+                                <div class="status-dot available"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Busy</span>
+                                <div class="status-dot busy"></div>
+                              </div>
+
+                              <div class="status">
+                                <span class="status-text">Not Available</span>
+                                <div class="status-dot not-available"></div>
+                              </div>
 
                               <%# <%= @equip13.id%>
 
@@ -2053,7 +2155,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_icp_ms_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip14.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                         <ul class="dropdown-menu">
@@ -2129,12 +2231,20 @@
                             </tr>
                             </table>
 
-                            Available-
-                            <br/>
-                            Busy-
-                            <br/>
-                            Not Available-
-                            <br/>
+                            <div class="status">
+                              <span class="status-text">Available</span>
+                              <div class="status-dot available"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Busy</span>
+                              <div class="status-dot busy"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Not Available</span>
+                              <div class="status-dot not-available"></div>
+                            </div>
 
                             <%# <%= @equip14.id%>
 
@@ -2194,7 +2304,7 @@
               <div class="wrap-action">
                   <%= link_to "Know More", know_advance_mod_rheo_path ,class:"btn btn-primary know-more"%>
                   <div class="dropdown book">
-                      <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-outline-warning dropdown-toggle <%if @equip15.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Book Slot
                       </button>
                           <ul class="dropdown-menu">
@@ -2270,12 +2380,20 @@
                             </tr>
                             </table>
 
-                            Available-
-                            <br/>
-                            Busy-
-                            <br/>
-                            Not Available-
-                            <br/>
+                            <div class="status">
+                              <span class="status-text">Available</span>
+                              <div class="status-dot available"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Busy</span>
+                              <div class="status-dot busy"></div>
+                            </div>
+
+                            <div class="status">
+                              <span class="status-text">Not Available</span>
+                              <div class="status-dot not-available"></div>
+                            </div>
 
                             <%# <%= @equip15.id%>
 
@@ -2336,7 +2454,7 @@
             <div class="wrap-action">
                 <%= link_to "Know More", know_ion_chromatography_path ,class:"btn btn-primary know-more"%>
                 <div class="dropdown book">
-                    <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-outline-warning dropdown-toggle <%if @equip16.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Book Slot
                     </button>
                     <ul class="dropdown-menu">
@@ -2412,12 +2530,20 @@
                           </tr>
                           </table>
 
-                          Available-
-                          <br/>
-                          Busy-
-                          <br/>
-                          Not Available-
-                          <br/>
+                          <div class="status">
+                            <span class="status-text">Available</span>
+                            <div class="status-dot available"></div>
+                          </div>
+
+                          <div class="status">
+                            <span class="status-text">Busy</span>
+                            <div class="status-dot busy"></div>
+                          </div>
+
+                          <div class="status">
+                            <span class="status-text">Not Available</span>
+                            <div class="status-dot not-available"></div>
+                          </div>
 
                           <%# <%= @equip16.id%>
 
@@ -2482,7 +2608,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_integ_multirole_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip17.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -2558,12 +2684,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip17.id%>
 
@@ -2629,7 +2763,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scratch_indentation_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip18.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -2705,12 +2839,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip18.id%>
 
@@ -2771,7 +2913,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_zeta_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip19.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -2847,12 +2989,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip19.id%>
 
@@ -2913,7 +3063,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_high_temp_vac_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip20.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -2989,12 +3139,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip20.id%>
 
@@ -3056,7 +3214,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_impedance_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip21.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -3120,12 +3278,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip21.id%>
 
@@ -3189,7 +3355,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_tribometer_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip22.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -3266,12 +3432,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip22.id%>
 
@@ -3335,7 +3509,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_scanner_3d_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip23.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -3411,12 +3585,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip23.id%>
 
@@ -3483,7 +3665,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gait_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip24.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                          <ul class="dropdown-menu">
@@ -3538,12 +3720,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip24.id%>
 
@@ -3604,7 +3794,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spectro_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip25.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -3680,12 +3870,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip25.id%>
 
@@ -3746,7 +3944,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_spark_oes_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip26.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                          <ul class="dropdown-menu">
@@ -3822,12 +4020,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip26.id%>
 
@@ -3888,7 +4094,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glow_discharge_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip27.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                            <ul class="dropdown-menu">
@@ -3964,12 +4170,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip27.id%>
 
@@ -4029,7 +4243,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ball_milling_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip28.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                          <ul class="dropdown-menu">
@@ -4105,12 +4319,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip28.id%>
 
@@ -4176,7 +4398,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_low_force_fatigue_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip29.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -4252,12 +4474,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip29.id%>
 
@@ -4324,7 +4554,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_micro_edm_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip30.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
 </button>
                         <ul class="dropdown-menu">
@@ -4400,12 +4630,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip30.id%>
 
@@ -4469,7 +4707,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More",know_axes_5_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip31.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -4545,12 +4783,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip31.id%>
 
@@ -4612,7 +4858,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_multi_impact_test_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip32.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -4688,12 +4934,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip32.id%>
 
@@ -4757,7 +5011,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More",know_friction_stir_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip33.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -4833,12 +5087,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip33.id%>
 
@@ -4899,7 +5161,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_electro_chem_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip34.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -4975,13 +5237,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
 
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
                                         <%# <%= @equip34.id%>
 
                                   </div>
@@ -5041,7 +5310,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More",know_milli_q_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip35.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
@@ -5092,12 +5361,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip35.id%>
 
@@ -5158,7 +5435,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_glove_box_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip36.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -5223,12 +5500,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip36.id%>
 
@@ -5288,7 +5573,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_probe_sonicator_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip37.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -5365,12 +5650,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip37.id%>
 
@@ -5434,7 +5727,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ultra_centrifuge_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip38.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -5510,12 +5803,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip38.id%>
 
@@ -5581,7 +5882,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_gas_sensing_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip39.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -5657,12 +5958,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip39.id%>
 
@@ -5723,7 +6032,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_liq_nitrogen_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip40.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
@@ -5774,12 +6083,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip40.id%>
 
@@ -5846,7 +6163,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_ansys_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip41.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
 
@@ -5899,13 +6216,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
 
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
                                         <%# <%= @equip41.id%>
 
                                   </div>
@@ -5971,7 +6295,7 @@
                 <div class="wrap-action">
                     <%= link_to "Know More", know_auto_multi_speci_polish_path ,class:"btn btn-primary know-more"%>
                     <div class="dropdown book">
-                        <button class="btn btn-outline-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-outline-warning dropdown-toggle <%if @equip42.status != "Active"%>disabled<%else%><%end%>" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Book Slot
                         </button>
                         <ul class="dropdown-menu">
@@ -6048,12 +6372,20 @@
                                         </tr>
                                         </table>
 
-                                        Available-
-                                        <br/>
-                                        Busy-
-                                        <br/>
-                                        Not Available-
-                                        <br/>
+                                        <div class="status">
+                                          <span class="status-text">Available</span>
+                                          <div class="status-dot available"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Busy</span>
+                                          <div class="status-dot busy"></div>
+                                        </div>
+
+                                        <div class="status">
+                                          <span class="status-text">Not Available</span>
+                                          <div class="status-dot not-available"></div>
+                                        </div>
 
                                         <%# <%= @equip42.id%>
 
