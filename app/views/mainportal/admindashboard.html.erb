@@ -38,7 +38,7 @@
                                   <li><%= link_to "External Payment", payment_paymentExt_path ,class:"nav-link active nav-btn main-elements" %></li>
                                 </ul>
                                 </div>
-                                <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+                                <%= link_to "Feedbacks", feedbacks_path(id:@user.id) ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Export", mainportal_exportfile_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>

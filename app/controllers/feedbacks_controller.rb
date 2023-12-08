@@ -12,11 +12,14 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks or /feedbacks.json
   def index
+    @user=User.find(params[:id])
     @feedbacks = Feedback.all
   end
 
   # GET /feedbacks/1 or /feedbacks/1.json
   def show
+    @user=User.find(params[:id])
+
   end
   def authenticate_admin!
     unless current_user&.admin_role?

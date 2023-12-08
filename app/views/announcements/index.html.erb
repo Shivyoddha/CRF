@@ -50,17 +50,19 @@
 <div class="container1">
        <div class="announce-lists" id="item1">
            <h3 class="text-center fw-bold ">ANNOUNCEMENTS</h3>
+           <% @announcements.each do |announcement| %>
            <div class="card" id="c1" >
                <div class="card-body">
-                 <h5 class="card-title fw-bold">Announcement 1</h5>
-                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: 1425</h6>
-                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: 12-05-2003</h6>
-                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                 lorem</p>
-                 <a href="#1" id="view-btn" class="btn btn-danger">View</a>
+                 <h5 class="card-title fw-bold"><%= announcement.heading %></h5>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">ID: <%= announcement.id %></h6>
+                 <h6 class="card-subtitle mb-2 text-body-secondary">Created On: <%= announcement.created_on.in_time_zone('Asia/Kolkata').strftime("%B %d, %Y %I:%M %p (%Z)") %></h6>
+                 <p class="card-text"><%= announcement.text %></p>
+                 <a href="#<%= announcement.id %>" id="view-btn" class="btn btn-danger">View</a>
+                 <%# <%= link_to 'Show', announcement, class:"btn btn-primary" %>
                </div>
            </div>
-
+          <% end %>
+<!--
            <div class="card" id="c2" >
                <div class="card-body">
                  <h5 class="card-title fw-bold">Announcement 1</h5>
@@ -89,41 +91,46 @@
                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                  <a href="#4" class="btn btn-danger">View</a>
                </div>
-           </div>
+           </div> -->
 
 
 
        </div>
        <div class="announce-description" id="item2">
          <h3 class="text-center fw-bold">Announcement Description</h3>
-
+         <% if current_user && current_user.announcementadmin %>
+         <%= link_to 'New Announcement', new_announcement_path, id:"new" , class: "btn btn-primary"%>
+         <% end %>
          <div class="descriptions">
-           <div class="card" id="1">
-                <h5 class="card-header fw-bold">Announcement ID </h5>
+           <% @announcements.each do |announcement| %>
+           <div class="card" id="<%= announcement.id %>">
+                <h5 class="card-header fw-bold">Announcement ID : <%= announcement.id %></h5>
                 <div class="card-body">
-                  <h5 class="card-title fw-bold">Announcement Heading </h5>
-                  <p class="date">Created On:</p>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <!-- add correct view path -->
-                  <a href="#" class="btn btn-primary">Edit</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
+                  <h5 class="card-title fw-bold"><%= announcement.heading %> </h5>
+                  <p class="date">Created On:  <%= announcement.created_on.in_time_zone('Asia/Kolkata').strftime("%B %d, %Y %I:%M %p (%Z)") %></p>
+                  <p class="card-text"><%= announcement.text %></p>
+                  <% if current_user && current_user.announcementadmin %>
+                    <%= link_to 'Edit', edit_announcement_path(announcement), class: "btn btn-primary" %>
+                    <%= button_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                  <% end %>
 
                 </div>
           </div>
+          <% end %>
 
-          <div class="card" id="2" >
+
+          <!-- <div class="card" id="2" >
                <h5 class="card-header fw-bold">Announcement ID 1</h5>
                <div class="card-body">
                  <h5 class="card-title fw-bold">Announcement Heading </h5>
                  <p class="date">Created On:</p>
                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                 <!-- add correct view path -->
                  <a href="#" class="btn btn-primary">Edit</a>
                  <a href="#" class="btn btn-danger">Delete</a>
 
                </div>
-         </div>
-
+         </div> -->
+<!--
          <div class="card" id="3">
               <h5 class="card-header fw-bold">Announcement ID:2 </h5>
               <div class="card-body">
@@ -133,7 +140,6 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             lorem</p>
-                <!-- add correct view path -->
                 <a href="#" class="btn btn-primary">Edit</a>
                 <a href="#" class="btn btn-danger">Delete</a>
 
@@ -146,7 +152,6 @@
                <h5 class="card-title fw-bold">Announcement Heading </h5>
                <p class="date">Created On:</p>
                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-               <!-- add correct view path -->
                <a href="#" class="btn btn-primary">Edit</a>
                <a href="#" class="btn btn-danger">Delete</a>
 
@@ -159,7 +164,6 @@
               <h5 class="card-title fw-bold">Announcement Heading </h5>
               <p class="date">Created On:</p>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <!-- add correct view path -->
               <a href="#" class="btn btn-primary">Edit</a>
               <a href="#" class="btn btn-danger">Delete</a>
 
@@ -172,12 +176,11 @@
              <h5 class="card-title fw-bold">Announcement Heading </h5>
              <p class="date">Created On:</p>
              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-             <!-- add correct view path -->
-             <a href="#" class="btn btn-primary">Edit</a>
+=             <a href="#" class="btn btn-primary">Edit</a>
              <a href="#" class="btn btn-danger">Delete</a>
 
            </div>
-     </div>
+     </div> -->
          </div>
 
 

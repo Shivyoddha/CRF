@@ -1,7 +1,7 @@
 class AnnouncementsController < ApplicationController
   # before_action :authenticate_admin!
   # load_and_authorize_resource class: Announcement
-  # before_action :set_announcement, only: %i[ show edit update destroy ]
+  before_action :set_announcement, only: %i[ show edit update destroy ]
 
 
   def import
@@ -20,6 +20,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/1 or /announcements/1.json
   def show
+     @announcement = Announcement.find(params[:id])
   end
 
   def authenticate_admin!
@@ -35,6 +36,7 @@ class AnnouncementsController < ApplicationController
 
   # GET /announcements/1/edit
   def edit
+     @announcement = Announcement.find(params[:id])
   end
 
   # POST /announcements or /announcements.json
@@ -54,6 +56,7 @@ class AnnouncementsController < ApplicationController
 
   # PATCH/PUT /announcements/1 or /announcements/1.json
   def update
+
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to announcement_url(@announcement), notice: "Announcement was successfully updated." }
@@ -67,6 +70,7 @@ class AnnouncementsController < ApplicationController
 
   # DELETE /announcements/1 or /announcements/1.json
   def destroy
+    @announcement = Announcement.find(params[:id])
     @announcement.destroy
 
     respond_to do |format|
