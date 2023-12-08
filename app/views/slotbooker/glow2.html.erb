@@ -147,13 +147,7 @@
                               <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                             </div>
 
-                              <%=form.fields_for :equipment_table do |f| %>
 
-                                  <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
-                                 <%= f.hidden_field :username, value:"#{glow.user.firstname}"%>
-                                 <%= f.hidden_field :dummy, value:"#{glow.status}"%>
-                                 <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
-                              <%end%>
                                 <div class="actions">
                                   <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                                 </div>
@@ -285,13 +279,7 @@
                          <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                        </div>
 
-                         <%=form.fields_for :equipment_table do |f| %>
-
-                             <%= f.hidden_field :app_no, value:"CRF/GLOW/#{glow.id}"%>
-                            <%= f.hidden_field :username, value:"#{glow.user.firstname}"%>
-                            <%= f.hidden_field :dummy, value:"#{glow.status}"%>
-                            <%= f.hidden_field :debit_head, value:"#{glow.debit}" %>
-                         <%end%>
+                      
                            <div class="actions">
                              <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                            </div>

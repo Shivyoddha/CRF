@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -43,7 +43,7 @@
                 </li>
             </ul>
         </div>
-        
+
 
         <div class="collapse navbar-collapse" id="btn-head">
             <ul class="navbar-nav ms-auto">
@@ -198,23 +198,7 @@
                                                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                             </div>
 
-                                            <%=form.fields_for :equipment_table do |f| %>
-                                              <%= f.hidden_field :app_no, value:"CRF/FIVE/#{fiveaxis.id}"%>
-                                                <%= f.hidden_field :username, value:"#{fiveaxis.user.firstname}"%>
-                                                  <%= f.hidden_field :dummy, value:"alloted"%>
-                                                    <%= f.hidden_field :debit_head, value:"#{fiveaxis.debit}" %>
-                                                      <%= f.hidden_field :dept, value:"#{fiveaxis.user.department}" %>
-                                                        <%= f.hidden_field :email, value:"#{fiveaxis.user.email}" %>
-                                                          <%= f.hidden_field :equipname, value:"five" %>
-                                                            <%= f.hidden_field :role, value:"#{fiveaxis.user.role}" %>
-                                                              <%= f.hidden_field :org,
-                                                                value:"#{fiveaxis.user.orgaddress}" %>
-                                                                <%= f.hidden_field :profesion,
-                                                                  value:"#{fiveaxis.user.profession}" %>
-                                                                  <%= f.hidden_field :orgname,
-                                                                    value:"#{fiveaxis.user.orgname}" %>
-
-                                                                    <%end%>
+                                          
 
                                                                       <div class="actions">
                                                                         <%= form.submit "Allot" , class:"btn

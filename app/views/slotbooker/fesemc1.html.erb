@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -93,7 +93,7 @@
                 </thead>
                 <tbody>
                       <% @fesemc1.where(status:'pending').each do |fesemc|%>
-                      
+
                         <tr class="<%if fesemc.expresssample != nil %>exp-slot-entry <%else%> <%end%>">
                           <th scope="row">CRF/fesemc/<%=fesemc.id %>	</th>
                           <td> <%=fesemc.user.firstname%><nobr> <%=fesemc.user.lastname%> </td>
@@ -145,24 +145,13 @@
                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
              </div>
 
-                <%=form.fields_for :equipment_table do |f| %>
+
                  <div class="input-group mb-3">
-                    <%= f.hidden_field :app_no, value:"CRF/FESEM/#{fesemc.id}"%>
+
                   </div>
 
                  <div class="input-group mb-3">
-                   <%= f.hidden_field :username, value:"#{fesemc.user.name}"%>
-                   <%= f.hidden_field :dummy, value:"alloted"%>
-                  <%= f.hidden_field :debit_head, value:"#{fesemc.debit}" %>
-                    <%= f.hidden_field :dept, value:"#{fesemc.user.department}" %>
-                   <%= f.hidden_field :email, value:"#{fesemc.user.email}" %>
-                   <%= f.hidden_field :equipname, value:"fesemc" %>
-                   <%= f.hidden_field :role, value:"#{fesemc.user.role}" %>
-                  <%= f.hidden_field :org, value:"#{fesemc.user.orgaddress}" %>
-                  <%= f.hidden_field :profesion, value:"#{fesemc.user.profession}" %>
-                  <%= f.hidden_field :orgname, value:"#{fesemc.user.orgname}" %>
-
-                <%end%>
+                  
 
                 <div class="actions">
 

@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -147,13 +147,7 @@
                                    <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                  </div>
 
-                                   <%=form.fields_for :equipment_table do |f| %>
-
-                                       <%= f.hidden_field :app_no, value:"CRF/FESEM/#{fesemc2.id}"%>
-                                       <%= f.hidden_field :username, value:"#{fesemc2.user.name}"%>
-                                       <%= f.hidden_field :dummy, value:"#{fesemc2.status}"%>
-                                       <%= f.hidden_field :debit_head, value:"#{fesemc2.debit}" %>
-                                   <%end%>
+                                  
 
                                      <div class="actions">
                                        <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -324,4 +318,3 @@ window.addEventListener("click", function(event) {
         slots.scrollLeft += 300;
     });
 </script>
-

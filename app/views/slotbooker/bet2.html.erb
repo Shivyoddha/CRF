@@ -141,12 +141,7 @@
                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                              </div>
 
-                                 <%=form.fields_for :equipment_table do |f| %>
-                                   <%= f.hidden_field :app_no, value:"CRF/BET/#{bet.id}"%>
-                                   <%= f.hidden_field :username, value:"#{bet.user.firstname}"%>
-                                   <%= f.hidden_field :dummy, value:"#{bet.status}"%>
-                                   <%= f.hidden_field :debit_head, value:"#{bet.debit}" %>
-                                 <%end%>
+                                
 
 
                                    <div class="actions">

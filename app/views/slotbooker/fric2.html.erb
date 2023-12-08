@@ -163,13 +163,7 @@
                             <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                           </div>
 
-                            <%=form.fields_for :equipment_table do |f| %>
 
-                                <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
-                                <%= f.hidden_field :username, value:"#{fric.user.firstname}"%>
-                                <%= f.hidden_field :dummy, value:"#{fric.status}"%>
-                                <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
-                            <%end%>
                               <div class="actions">
                                 <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                               </div>
@@ -306,13 +300,7 @@
                  <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                </div>
 
-                 <%=form.fields_for :equipment_table do |f| %>
-
-                     <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
-                     <%= f.hidden_field :username, value:"#{fric.user.firstname}"%>
-                     <%= f.hidden_field :dummy, value:"#{fric.status}"%>
-                     <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
-                 <%end%>
+              
                    <div class="actions">
                      <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
                    </div>

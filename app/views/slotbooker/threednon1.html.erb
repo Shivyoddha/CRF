@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -100,7 +100,7 @@
                         <td> <%= threes.user.department%> </td>
                         <td> <%= threes.user.contact%> </td>
                         <td> <%if threes.expresssample  != nil %> Express <%else%> Regular <%end%> </td>
-                        <td><% if threes.sample == nil %> <%= threes.expresssample%> <%else%> <%= threes.sample%><%end%> </td> 
+                        <td><% if threes.sample == nil %> <%= threes.expresssample%> <%else%> <%= threes.sample%><%end%> </td>
                         <td> <%= threes.scant%> </td>
                         <td> <%= threes.xrange%> </td>
                         <td> <%= threes.yrange%> </td>
@@ -143,20 +143,7 @@
                                      <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                    </div>
 
-                                        <%=form.fields_for :equipment_table do |f| %>
-                                            <%= f.hidden_field :app_no, value:"CRF/XRD/#{threes.id}"%>
-                                           <%= f.hidden_field :username, value:"#{threes.user.firstname}"%>
-                                           <%= f.hidden_field :dummy, value:"alloted"%>
-                                          <%= f.hidden_field :debit_head, value:"#{threes.debit}" %>
-                                         <%= f.hidden_field :dept, value:"#{threes.user.department}" %>
-                                        <%= f.hidden_field :email, value:"#{threes.user.email}" %>
-                                        <%= f.hidden_field :equipname, value:"threed" %>
-                                        <%= f.hidden_field :role, value:"#{threes.user.role}" %>
-                                        <%= f.hidden_field :org, value:"#{threes.user.orgaddress}" %>
-                                        <%= f.hidden_field :profesion, value:"#{threes.user.profession}" %>
-                                        <%= f.hidden_field :orgname, value:"#{threes.user.orgname}" %>
-
-                                        <%end%>
+                                      
 
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

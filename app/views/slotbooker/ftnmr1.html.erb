@@ -162,21 +162,7 @@
                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                              </div>
 
-                                <%=form.fields_for :equipment_table do |f| %>
-                                    <%= f.hidden_field :app_no, value:"CRF/ftnmr/#{ftnmr.id}"%>
-                                   <%= f.hidden_field :username, value:"#{ftnmr.user.firstname}"%>
-                                   <%= f.hidden_field :dummy, value:"alloted"%>
-                                  <%= f.hidden_field :debit_head, value:"#{ftnmr.debit}" %>
-                                  <%= f.hidden_field :dept, value:"#{ftnmr.user.department}" %>
-                                 <%= f.hidden_field :email, value:"#{ftnmr.user.email}" %>
-                                 <%= f.hidden_field :equipname, value:"ftnmr" %>
-                                 <%= f.hidden_field :role, value:"#{ftnmr.user.role}" %>
-                                <%= f.hidden_field :org, value:"#{ftnmr.user.orgaddress}" %>
-                                <%= f.hidden_field :profesion, value:"#{ftnmr.user.profession}" %>
-                                <%= f.hidden_field :orgname, value:"#{ftnmr.user.orgname}" %>
-
-
-                                <%end%>
+                              
 
 
                                  <div class="actions">
