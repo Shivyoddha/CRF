@@ -41,15 +41,9 @@
                     </div>
                         <button class="btn btn-danger" id='log_out_mb'><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></button>
                     </div>
-                <% if current_user.present? %>
-                <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
-                    <button class="btn btn-danger"><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></button>
-                </div>
-                <% else %>
-                <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
-                    <%= link_to "Book Slot", new_user_session_path, class:"btn btn-light ms-2" %>
-                </div>
-                <% end %>
+                    <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
+                        <%= link_to "Book Slot", new_user_session_path, class:"btn btn-light ms-2" %>
+                    </div>
             </div>
         </div>
     </nav>
