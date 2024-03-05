@@ -88,6 +88,7 @@ hr {
 
 #more {
   display: flex;
+  justify-content: space-between;
 }
 
 h5 {
@@ -153,7 +154,7 @@ h5 {
 
 .card-img {
   height: 268.56px;
-
+  object-fit: cover;
 }
 
 
@@ -252,11 +253,9 @@ h5 {
   --bs-btn-hover-border-color: #3f5ac9;
 }
 
-
-
-.btn-profile {
+/* .btn-profile {
   margin: 0 5em 0 0;
-}
+} */
 
 @media only screen and (max-width: 660px) {
   h5 {
@@ -282,7 +281,8 @@ h5 {
   }
 
   .card {
-    width: 21rem;
+    width: 22rem;
+
   }
 
   .equipments-container {

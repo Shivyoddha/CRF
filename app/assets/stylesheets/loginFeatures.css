@@ -6,7 +6,6 @@
 
 body {
   background-color: #ddf1fb;
-
 }
 
 #heading {
@@ -99,9 +98,6 @@ body {
   will-change: transform;
 }
 
-#logo {
-  display: none;
-}
 
 #togle {
   margin-right: 1em;

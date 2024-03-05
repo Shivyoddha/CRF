@@ -1,0 +1,21 @@
+#logo {
+    display: none;
+}
+
+#heading {
+    font-family: "Unbounded", "sans-serif" !important;
+}
+
+@media only screen and (max-width: 992px) {
+    #heading_CRF{
+        display: none
+    }
+
+    #heading {
+        display: none !important;
+    }
+
+    #logo {
+        display: flex;
+    }
+}
