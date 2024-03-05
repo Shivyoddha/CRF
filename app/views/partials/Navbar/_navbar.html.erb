@@ -39,6 +39,17 @@
                     <div class="nav-item">
                         <%= link_to 'Gallery', mainpage_gallery_path, class:"nav-link" %>
                     </div>
+
+                    <div class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Downloads
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/CRF_NITK_Brochure.pdf">Brochure</a></li>
+                            <li><a class="dropdown-item" href="/mainpage/instrument_list">Instrument List</a></li>
+                        </ul>
+                    </div>
+
                         <button class="btn btn-danger" id='log_out_mb'><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></button>
                     </div>
                     <div class="d-lg-flex col-lg-3 justify-content-lg-end" id="non_collapse_login">
