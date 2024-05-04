@@ -48,6 +48,11 @@ has_many:laser
 has_many:micro_edms
 has_many:ft_nms
 has_many:ansies
+has_many :training1s, dependent: :destroy
+has_many :training2s, dependent: :destroy
+has_many :training3s, dependent: :destroy
+has_many :training4s, dependent: :destroy
+
 belongs_to:faculty, optional:true
 def set_default_parameters
   if self.role=='student'||self.role=='faculty'

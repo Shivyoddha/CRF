@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'training_slot/slotbooker'
+  get 'training_slot/pending'
+  get 'training_slot/alloted'
+  get 'training_slot/completed'
+  get 'training_slot/canceled'
+  resources :training4s
+  resources :training3s
+  resources :training2s
+  resources :training1s
+  resources :training_lists
   resources :activities
   resources :feedbacks
   resources :announcements
