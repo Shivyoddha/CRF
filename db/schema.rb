@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_11_11_141656) do
+ActiveRecord::Schema.define(version: 2024_05_04_145204) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_11_11_141656) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -1272,6 +1272,64 @@ ActiveRecord::Schema.define(version: 2023_11_11_141656) do
     t.index ["user_id"], name: "index_three_d_scanners_on_user_id"
   end
 
+  create_table "training1s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "debit"
+    t.string "more"
+    t.integer "user_id"
+    t.integer "sample"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status", default: "pending"
+    t.index ["user_id"], name: "index_training1s_on_user_id"
+  end
+
+  create_table "training2s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sample"
+    t.string "debit"
+    t.string "more"
+    t.integer "user_id"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status", default: "pending"
+    t.index ["user_id"], name: "index_training2s_on_user_id"
+  end
+
+  create_table "training3s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sample"
+    t.string "debit"
+    t.string "more"
+    t.integer "user_id"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status", default: "pending"
+    t.index ["user_id"], name: "index_training3s_on_user_id"
+  end
+
+  create_table "training4s", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sample"
+    t.string "debit"
+    t.string "more"
+    t.integer "user_id"
+    t.time "slottime"
+    t.date "slotdate"
+    t.string "status", default: "pending"
+    t.index ["user_id"], name: "index_training4s_on_user_id"
+  end
+
+  create_table "training_lists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tribometers", force: :cascade do |t|
     t.integer "sample"
     t.string "measurement"
@@ -1352,6 +1410,7 @@ ActiveRecord::Schema.define(version: 2023_11_11_141656) do
     t.boolean "admin"
     t.boolean "developer"
     t.boolean "announcementadmin"
+    t.string "training_slotbooker"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["faculty_id"], name: "index_users_on_faculty_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -1525,6 +1584,10 @@ ActiveRecord::Schema.define(version: 2023_11_11_141656) do
   add_foreign_key "tga_fttrs", "users"
   add_foreign_key "three_d_non_contacts", "users"
   add_foreign_key "three_d_scanners", "users"
+  add_foreign_key "training1s", "users"
+  add_foreign_key "training2s", "users"
+  add_foreign_key "training3s", "users"
+  add_foreign_key "training4s", "users"
   add_foreign_key "tribometers", "users"
   add_foreign_key "ultra_centrifuges", "users"
   add_foreign_key "users", "faculties"

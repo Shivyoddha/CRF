@@ -83,6 +83,11 @@ hr {
   width: 25rem;
 }
 
+.tcard {
+  --bs-border-radius: 5em;
+  background-color: #f9fdff;
+  width: 23rem;
+}
 /* .heading-status{
 } */
 
@@ -243,6 +248,12 @@ h5 {
   text-decoration: none;
   color: #212529;
   padding: 4px 16px;
+}
+
+.book-slot{
+  text-decoration: none;
+  color: #212529;
+  padding: 10px 6px;
 }
 
 .btn-outline-warning {

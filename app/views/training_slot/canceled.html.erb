@@ -1,0 +1,137 @@
+<%= stylesheet_link_tag "adminportal" %>
+
+
+<div id="header">
+    <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+        <%= link_to @slotbooker, training_slot_slotbooker_path, class:'navbar-brand', id:'title' %>
+
+        <div id="tab-div">
+          <div class="btn-group btn-profile dropstart">
+            <%= link_to 'All Slots',training_slot_slotbooker_path,class:"btn btn-outline-warning profile-dropdown" %>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu font-quicksand">
+              <li><%= link_to 'All Slots',training_slot_slotbooker_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Pending Slots',training_slot_pending_path,class:"dropdown-item"%></li>
+              <li><%= link_to 'Alloted Slots',training_slot_alloted_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Completed Slots',training_slot_completed_path,class:"dropdown-item" %></li>
+              <li><%= link_to 'Cancelled Slots',training_slot_canceled_path,class:"dropdown-item active" %></li>
+
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to 'LogOut',destroy_user_session_path,method: :delete, class:"dropdown-item profile-dropdown", id:"log-out" %></li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="collapse navbar-collapse tab" id="btn-head">
+            <ul class="navbar-nav">
+                <li class="nav-item-tab">
+                    <%= link_to 'All Slots',training_slot_slotbooker_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Pending Slots',training_slot_pending_path,class:"nav-link active dropdown-item"%>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Alloted Slots',training_slot_alloted_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab">
+                    <%= link_to 'Completed Slots',training_slot_completed_path,class:"nav-link active dropdown-item" %>
+                </li>
+                <li class="nav-item-tab activated">
+                    <%= link_to 'Canceled Slots',training_slot_canceled_path,class:"nav-link active activated-text dropdown-item" %>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="collapse navbar-collapse" id="btn-head">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" id="admin-mail">
+                    <a class="nav-link" href="#">admin@mail</a>
+                </li>
+                <li class="nav-item" id="logout">
+                <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container-slot-booker-new">
+
+
+<%# the content section is coded here %>
+    <div id="slots">
+
+
+        <div id="slot-details">
+        <div>
+            <table class="table table-hover font-quicksand">
+                <thead>
+                    <tr class="table-head font-unbounded">
+                        <th scope="col" id="application-no">Appl No</th>
+                        <th scope="col" id="name">Name</th>
+                        <th scope="col" id="institute">Institute</th>
+                        <th scope="col" id="department">Department</th>
+                        <th scope="col" id="contact-no">Contact No:</th>
+                        <!-- from here onwards we call all the columns of specific training table -->
+                        <% @trainings.attribute_names.reject{|attr| attr == "id" || attr == "created_at" || attr == "updated_at" || attr == "user_id" || attr == "slottime" || attr == "slotdate" || attr == "status"}.each do |attribute| %>
+                            <th scope="col" id="<%= attribute %>"><%= attribute.titleize %></th>
+                        <% end %>
+                        <th scope="col" id="slot-date">Slot Date</th>
+                        <th scope="col" id="slot-time">Slot Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                      <% @trainings.where(status: "canceled").each do |training|%>
+                            <tr>
+                                <!-- Button trigger modal -->
+                                <td scope="row">CRF/<%="#{}/#{training.id}" %></td>
+                                <td> <%= training.user.firstname%><nobr> <%= training.user.lastname%></td>
+                                <td> <%= training.user.orgname%> </td>
+                                <td> <%= training.user.department%> </td>
+                                <td> <%= training.user.contact%> </td>
+                                <% training.attribute_names.reject{|attr| attr == "id" || attr == "created_at" || attr == "updated_at" || attr == "user_id" || attr == "slottime" || attr == "slotdate" || attr == "status"}.each do |attribute| %>
+                                    <td><%= training.send(attribute) %></td>
+                                <% end %>
+                                <td><span style="white-space: nowrap;"><%= training.slotdate.strftime('%d-%m-%Y')if training.slotdate.present? %></td>
+                                <td><%= training.slottime.strftime('%H:%M:%S') if training.slottime.present? %></td>
+                            </tr>
+                      <%end%>
+                </tbody>
+            </table>
+
+        </div>
+        </div>
+
+
+    <button class="cssbuttons-io-button" id="scroll-left"> Left
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+        </div>
+    </button>
+
+    <button class="cssbuttons-io-button" id="scroll-right"> Right
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+        </div>
+    </button>
+
+
+<script>
+    let left = document.getElementById('scroll-left');
+    let right = document.getElementById('scroll-right');
+    let slots = document.getElementById('slots');
+    left.addEventListener("click", () => {
+        console.log("hello")
+        slots.scrollLeft -= 300;
+    });
+    right.addEventListener("click", () => {
+        console.log("hello2")
+        slots.scrollLeft += 300;
+    });
+</script>
