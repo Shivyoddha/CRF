@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_04_145204) do
+ActiveRecord::Schema.define(version: 2024_05_05_070402) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -1282,6 +1282,8 @@ ActiveRecord::Schema.define(version: 2024_05_04_145204) do
     t.time "slottime"
     t.date "slotdate"
     t.string "status", default: "pending"
+    t.integer "training_list_id"
+    t.index ["training_list_id"], name: "index_training1s_on_training_list_id"
     t.index ["user_id"], name: "index_training1s_on_user_id"
   end
 
@@ -1295,6 +1297,8 @@ ActiveRecord::Schema.define(version: 2024_05_04_145204) do
     t.time "slottime"
     t.date "slotdate"
     t.string "status", default: "pending"
+    t.integer "training_list_id"
+    t.index ["training_list_id"], name: "index_training2s_on_training_list_id"
     t.index ["user_id"], name: "index_training2s_on_user_id"
   end
 
@@ -1308,6 +1312,8 @@ ActiveRecord::Schema.define(version: 2024_05_04_145204) do
     t.time "slottime"
     t.date "slotdate"
     t.string "status", default: "pending"
+    t.integer "training_list_id"
+    t.index ["training_list_id"], name: "index_training3s_on_training_list_id"
     t.index ["user_id"], name: "index_training3s_on_user_id"
   end
 
@@ -1321,6 +1327,8 @@ ActiveRecord::Schema.define(version: 2024_05_04_145204) do
     t.time "slottime"
     t.date "slotdate"
     t.string "status", default: "pending"
+    t.integer "training_list_id"
+    t.index ["training_list_id"], name: "index_training4s_on_training_list_id"
     t.index ["user_id"], name: "index_training4s_on_user_id"
   end
 
@@ -1584,9 +1592,13 @@ ActiveRecord::Schema.define(version: 2024_05_04_145204) do
   add_foreign_key "tga_fttrs", "users"
   add_foreign_key "three_d_non_contacts", "users"
   add_foreign_key "three_d_scanners", "users"
+  add_foreign_key "training1s", "training_lists"
   add_foreign_key "training1s", "users"
+  add_foreign_key "training2s", "training_lists"
   add_foreign_key "training2s", "users"
+  add_foreign_key "training3s", "training_lists"
   add_foreign_key "training3s", "users"
+  add_foreign_key "training4s", "training_lists"
   add_foreign_key "training4s", "users"
   add_foreign_key "tribometers", "users"
   add_foreign_key "ultra_centrifuges", "users"

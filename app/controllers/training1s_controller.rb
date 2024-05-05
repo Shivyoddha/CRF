@@ -23,11 +23,11 @@ class Training1sController < ApplicationController
   # POST /training1s or /training1s.json
   def create
     @training1 = Training1.new(training1_params)
-
     @training1.user_id = current_user.id
     @training1.save
     respond_to do |format|
       if @training1.save
+        TrainingFormMailer.with(training_id: @training1.training_list_id, userid:current_user.id, present_id: @training1.id).form_filled.deliver_later
         format.html { redirect_to training_lists_path(user_id: current_user.id), notice: "Training1 was successfully created." }
         format.json { render :show, status: :created, location: @training1 }
       else
@@ -74,6 +74,6 @@ class Training1sController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training1_params
-      params.require(:training1).permit(:sample, :debit, :more, :user_id, :slotdate, :slottime, :status)
+      params.require(:training1).permit(:sample, :debit, :more, :user_id, :slotdate, :slottime, :status, :training_list_id)
     end
 end
