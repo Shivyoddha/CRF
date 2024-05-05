@@ -27,6 +27,7 @@ class Training3sController < ApplicationController
     @training3.save
     respond_to do |format|
       if @training3.save
+        TrainingFormMailer.with(training_id: @training3.training_list_id, userid:current_user.id, present_id: @training3.id).form_filled.deliver_later
         format.html { redirect_to training_lists_path(user_id: current_user.id), notice: "Training3 was successfully created." }
         format.json { render :show, status: :created, location: @training3 }
       else
@@ -40,7 +41,7 @@ class Training3sController < ApplicationController
   def update
     @training3.status = "alloted"
     respond_to do |format|
-      if @training3.update(training1_params)
+      if @training3.update(training3_params)
         if(@training3.status == "pending")
         format.html { redirect_to training_slot_alloted_path, notice: "Training3 was successfully updated." }
         format.json { render :show, status: :ok, location: @training3 }
@@ -73,6 +74,6 @@ class Training3sController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def training3_params
-      params.require(:training4).permit(:sample, :debit, :more, :user_id, :slotdate, :slottime, :status)
+      params.require(:training4).permit(:sample, :debit, :more, :user_id, :slotdate, :slottime, :status, :training_list_id)
     end
 end
