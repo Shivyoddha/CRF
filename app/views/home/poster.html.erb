@@ -160,7 +160,7 @@
                     <span>Medical</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Gait Analysis Equipment', 'https://crfbeta.nitk.ac.in/xrds/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Gait Analysis Equipment', new_uv_vis_nir_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/xrd.png') %>);" data-text="Structural">
@@ -168,7 +168,7 @@
                     <span>Structural</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'X-Ray Diffractionmeter', 'https://crfbeta.nitk.ac.in/xrds/new?id=6&slot_type=regular' %>
+                    <%= link_to 'X-Ray Diffractionmeter', new_xrd_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/xrd.png') %>);" data-text="Compositional">
@@ -184,7 +184,7 @@
                     <span>Optical</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'UV-VIS NIR Spectrometers', 'https://crfbeta.nitk.ac.in/uv_vis_nirs/new?id=6&slot_type=regular' %>
+                    <%= link_to 'UV-VIS NIR Spectrometers', new_uv_vis_nir_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/servo.png') %>);" data-text="Mechanical Testing">
@@ -192,7 +192,7 @@
                     <span>Mechanical Testing</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to '250KN Servo-Hydraulic Fatigue Testing Unit', 'https://crfbeta.nitk.ac.in/low_fatigues/new?id=6&slot_type=regular' %>
+                    <%= link_to '250KN Servo-Hydraulic Fatigue Testing Unit', new_low_fatigue_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/laser.png') %>);" data-text="Thermal Analysis">
@@ -200,7 +200,7 @@
                     <span>Thermal Analysis</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Laser Flash Analyser', 'https://crfbeta.nitk.ac.in/lasers/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Laser Flash Analyser', new_laser_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/tga.png') %>);" data-text="Infra-Red Absorption">
@@ -216,7 +216,7 @@
                     <span>Nano Systems</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Particle Sizing & Zeta Potential Analyser', 'https://crfbeta.nitk.ac.in/zeta_potential_sizes/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Particle Sizing & Zeta Potential Analyser', new_zeta_potential_size_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box middle">
@@ -229,7 +229,7 @@
                     <span>Surface Characterization</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Atomic Force Microscope', 'https://crfbeta.nitk.ac.in/atomic_force_microscopes/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Atomic Force Microscope', new_atomic_force_microscope_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/glow.png') %>);" data-text="Multilayer Composition">
@@ -237,7 +237,7 @@
                     <span>Multilayer Composition</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Glow Discharge Optical Emission Spectrometer', 'https://crfbeta.nitk.ac.in/ion_chromotographies/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Glow Discharge Optical Emission Spectrometer', new_ion_chromotography_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/icp-ms.png') %>);" data-text="Trace Elements">
@@ -245,7 +245,7 @@
                     <span>Trace Elements</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Inductively Coupled Plasma Mass Spectrometry(ICP-MS)', 'https://crfbeta.nitk.ac.in/icp_ms/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Inductively Coupled Plasma Mass Spectrometry(ICP-MS)', new_icp_ms_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/ion.png') %>);" data-text="Water Treatment">
@@ -253,7 +253,7 @@
                     <span>Water Treatment</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Ion Chromatography', 'https://crfbeta.nitk.ac.in/ion_chromotographies/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Ion Chromatography', new_ion_chromotography_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/ft-nmr.png') %>);" data-text="Chemical Identification">
@@ -261,7 +261,7 @@
                     <span>Chemical Identification</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'Fourier Transform Nuclear Magnetic Resonance Spectrometer', 'https://crfbeta.nitk.ac.in/ft_nms/new?id=6&slot_type=regular' %>
+                    <%= link_to 'Fourier Transform Nuclear Magnetic Resonance Spectrometer', new_ft_nms_path(slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/scanner.png') %>);" data-text="Medical">
@@ -280,7 +280,7 @@
                     <span>Pharmaceutical</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'HR-LCMS System', 'https://crfbeta.nitk.ac.in/hrlcms/new?id=6&slot_type=regular' %>
+                    <%= link_to 'HR-LCMS System', new_hrlcms_path(slot_type: 'regular') %>
                 </div>
             </div>
         </div>
