@@ -168,7 +168,7 @@
                     <span>Structural</span>
                 </div>
                 <div class="dropdown-content">
-                    <%= link_to 'X-Ray Diffractionmeter', new_xrd_path(slot_type: 'regular') %>
+                    <%= link_to 'X-Ray Diffractionmeter', new_xrd_path(id: current_user.id, slot_type: 'regular') %>
                 </div>
             </div>
             <div class="box" style="background-image: url(<%= asset_path('poster/xrd.png') %>);" data-text="Compositional">
