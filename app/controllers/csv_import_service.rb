@@ -21,7 +21,7 @@ class CsvImportService
 
   def call_announce(file)
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';', quote_char: "'" }
+    options = { headers: true, quote_char: "'", col_sep: ';'  }
     CSV.foreach(opened_file, **options) do |row|
 
       # map the CSV columns to your database columns
@@ -40,7 +40,7 @@ class CsvImportService
 
   def call_feedback(file)
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';'}
+    options = { headers: true}
     CSV.foreach(opened_file, **options) do |row|
 
       # map the CSV columns to your database columns
@@ -59,49 +59,58 @@ class CsvImportService
   end
 
   def call_user(file)
+    ##export all fields of user, not foreign key fields..except created at and updated at, with ; as delimeter
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';', quote_char: "'"  }
+    options = { headers: true, quote_char: "'", col_sep: ';' }
+
     CSV.foreach(opened_file, **options) do |row|
-      # map the CSV columns to your database columns
-      user_hash = {}
+      puts "Row: #{row.inspect}"
 
-      user_hash[:email] = row['Email']
-      user_hash[:password] = '123456'
-      user_hash[:password_confirmation] = '123456'
-      user_hash[:reset_password_token] = row['Reset password token']
-      user_hash[:reset_password_sent_at] = row['Reset Password Sent At']
-      user_hash[:remember_created_at] = row['Remember Created At']
-      user_hash[:created_at] = row['Created At']
-      user_hash[:updated_at] = row['Updated At']
-      user_hash[:department] = row['Department']
-      user_hash[:course] = row['Course']
-      user_hash[:orgname] = row['Orgname']
-      user_hash[:orgaddress] = row['Orgaddress']
-      user_hash[:collegeid] = row['Collegeid']
-      user_hash[:profession] = row['Profession']
-      user_hash[:rollno] = row['Rollno']
-      user_hash[:contact] = row['Contact']
-      user_hash[:lastname] = row['Lastname']
-      user_hash[:role] = row['Role']
-      user_hash[:admin_role] = row['Admin Role']
-      user_hash[:chairman_role] = row['Chairman Role']
-      user_hash[:slotbooker] = row['Slotbooker']
-      user_hash[:firstname] = row['Firstname']
-      user_hash[:faculty_id] = row['Faculty Id']
-      user_hash[:status] = row['Status']
-      # user_hash[:reset_password] = true
+      user_hash = {
+        email: row['Email'],
+        password: '123456', # Set a default password here
+        encrypted_password: '', # Devise will handle this
+        reset_password_token: row['Reset Password Token'],
+        reset_password_sent_at: row['Reset Password Sent At'],
+        remember_created_at: row['Remember Created At'],
+        department: row['Department'],
+        course: row['Course'],
+        orgname: row['Orgname'],
+        orgaddress: row['Orgaddress'],
+        profession: row['Profession'],
+        rollno: row['Rollno'],
+        contact: row['Contact'],
+        lastname: row['Lastname'],
+        role: row['Role'],
+        admin_role: row['Admin Role'],
+        chairman_role: row['Chairman Role'],
+        slotbooker: row['Slotbooker'],
+        firstname: row['Firstname'],
+        status: row['Status'],
+        developer: row['Developer'].present? ? row['Developer'] == 'true' : false,
+        announcementadmin: row['Announcementadmin'].present? ? row['Announcementadmin'] == 'true' : false,
+        training_slotbooker: row['Training Slotbooker']
+      }
 
+      puts "User Hash: #{user_hash.inspect}"
+
+      # Find the user by email or initialize a new user
       user = User.find_or_initialize_by(email: user_hash[:email])
-        user.password = user_hash[:password]
-        user.password_confirmation = user_hash[:password_confirmation]
-        # Assign any other attributes from user_hash if necessary
-        user.save!
+
+      # Update user attributes
+      user.assign_attributes(user_hash)
+
+      # Devise will handle password encryption
+      user.encrypted_password = Devise::Encryptor.digest(User, user_hash[:password])
+
+      # Save the user
+      user.save!
     end
   end
 
   def call_faculty(file)
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';'}
+    options = { headers: true, col_sep: ';' }
     CSV.foreach(opened_file, **options) do |row|
       # map the CSV columns to your database columns
 
@@ -122,7 +131,7 @@ class CsvImportService
 
   def call_xrd(file)
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';', quote_char: "'" }
+    options = { headers: true, quote_char: "'" , col_sep: ';' }
     CSV.foreach(opened_file, **options) do |row|
       # map the CSV columns to your database columns
       user_id = row['Id [User]']

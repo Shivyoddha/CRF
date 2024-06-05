@@ -147,20 +147,7 @@
                                         <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                       </div>
 
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                                  <%= f.hidden_field :app_no, value:"CRF/AMR/#{amr1.id}"%>
-                                                 <%= f.hidden_field :username, value:"#{amr1.user.firstname}"%>
-                                                 <%= f.hidden_field :dummy, value:"alloted"%>
-                                                <%= f.hidden_field :debit_head, value:"#{amr1.debit}" %>
-                                                <%= f.hidden_field :dept, value:"#{amr1.user.department}" %>
-                                               <%= f.hidden_field :email, value:"#{amr1.user.email}" %>
-                                               <%= f.hidden_field :equipname, value:"amr" %>
-                                               <%= f.hidden_field :role, value:"#{amr1.user.role}" %>
-                                              <%= f.hidden_field :org, value:"#{amr1.user.orgaddress}" %>
-                                              <%= f.hidden_field :profesion, value:"#{amr1.user.profession}" %>
-                                              <%= f.hidden_field :orgname, value:"#{amr1.user.orgname}" %>
-
-                                              <%end%>
+                                           
 
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

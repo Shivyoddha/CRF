@@ -28,7 +28,7 @@ class EquipmentTablesController < ApplicationController
         format.html { redirect_to payment_payment_path(@equipment_table), notice: "Equipment table was successfully created." }
         format.json { render :show, status: :created, location: @equipment_table }
       else
-        format.html { redirect_to payment_paymentExt_path(@equipment_table), notice: "Equipment table was successfully created." }
+        format.html { redirect_to payment_paymentExtC_path(@equipment_table), notice: "Equipment table was successfully created." }
         format.json { render :show, status: :created, location: @equipment_table }
       end
       else
@@ -302,8 +302,13 @@ class EquipmentTablesController < ApplicationController
           format.json { render :show, status: :ok, location: @equipment_table }
           end
         else
+        if @equipment_table.dummy == "payment_completed"
+        format.html { redirect_to payment_paymentExtC_path(@equipment_table), notice: "Equipment table was successfully updated." }
+        format.json { render :show, status: :ok, location: @equipment_table }
+        else
         format.html { redirect_to payment_paymentExt_path(@equipment_table), notice: "Equipment table was successfully updated." }
         format.json { render :show, status: :ok, location: @equipment_table }
+      end
       end
       else
         format.html { render :edit, status: :unprocessable_entity }

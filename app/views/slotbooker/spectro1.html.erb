@@ -146,20 +146,7 @@
                                          <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                        </div>
 
-                                        <%=form.fields_for :equipment_table do |f| %>
-                                            <%= f.hidden_field :app_no, value:"CRF/SPECTRO/#{spectro.id}"%>
-                                           <%= f.hidden_field :username, value:"#{spectro.user.firstname}"%>
-                                           <%= f.hidden_field :dummy, value:"alloted"%>
-                                          <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
-                                         <%= f.hidden_field :dept, value:"#{spectro.user.department}" %>
-                                        <%= f.hidden_field :email, value:"#{spectro.user.email}" %>
-                                        <%= f.hidden_field :role, value:"#{spectro.user.role}" %>
-                                        <%= f.hidden_field :org, value:"#{spectro.user.orgaddress}" %>
-                                        <%= f.hidden_field :profesion, value:"#{spectro.user.profession}" %>
-                                        <%= f.hidden_field :orgname, value:"#{spectro.user.orgname}" %>
-                                        <%= f.hidden_field :equipname, value:"spectro" %>
 
-                                        <%end%>
 
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -227,20 +214,7 @@
                                             <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                           </div>
 
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                               <%= f.hidden_field :app_no, value:"CRF/SPECTRO/#{spectro.id}"%>
-                                              <%= f.hidden_field :username, value:"#{spectro.user.firstname}"%>
-                                              <%= f.hidden_field :dummy, value:"alloted"%>
-                                             <%= f.hidden_field :debit_head, value:"#{spectro.debit}" %>
-                                            <%= f.hidden_field :dept, value:"#{spectro.user.department}" %>
-                                           <%= f.hidden_field :email, value:"#{spectro.user.email}" %>
-                                           <%= f.hidden_field :role, value:"#{spectro.user.role}" %>
-                                           <%= f.hidden_field :org, value:"#{spectro.user.orgaddress}" %>
-                                           <%= f.hidden_field :profesion, value:"#{spectro.user.profession}" %>
-                                           <%= f.hidden_field :orgname, value:"#{spectro.user.orgname}" %>
-                                           <%= f.hidden_field :equipname, value:"spectro" %>
-
-                                           <%end%>
+                                          
 
                                             <div class="actions">
                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

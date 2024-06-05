@@ -1,0 +1,61 @@
+<%= stylesheet_link_tag "loginFeatures"%>
+<%= stylesheet_link_tag "equipmentQuestion"%>
+
+<%=render "partials/loginHeading"%>
+<%=render "partials/formsBackbtn"%>
+
+
+
+<div class="container">
+    <div id="equipment-name">
+      <h1><%@training.name%></h1>
+    </div>
+    <div class='hero'>
+
+      <%= form_with(model: training1) do |form| %>
+        <% if training1.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(training1.errors.count, "error") %> prohibited this xrd from being saved:</h2>
+
+            <ul>
+              <% training1.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="input-group mb-3">
+            <%= form.label :sample,"No of Samples", class:"input-group-text", for:"xrd-select-no-of-equipment"%>
+
+            <%= form.select(:sample, [1, 2,3,4,5], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "xrd-select-no-of-equipment",:required => true}) %>
+        </div>
+
+
+      <div class="input-group mb-3">
+        <%= form.label :debit,"Choose Debit Head ", class:"input-group-text", for:"debit-head-select" %>
+        <%= form.select(:debit, ['Department Operating Cost', 'Student Contingency','CPDA Fund','Project Fund'], {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "debit-head-select",:required => true}) %>
+      </div>
+
+      <%= form.hidden_field :training_list_id, value: @training.id %>
+
+
+        <div id="instruct">
+            <p class="text-danger">*Please select your Debit head as per your mode of Payment</p>
+        </div>
+
+
+        <div class="input-group mb-3">
+          <%= form.text_area :more, class:"form-control", id:"tell-us-more", placeholder:"Tell us more about testing requirement"%>
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
+        </div>
+      <% end %>
+
+
+  </div>
+</div>
+
+<%=render "partials/footer" %>

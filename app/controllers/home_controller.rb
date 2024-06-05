@@ -1,9 +1,4 @@
 class HomeController < ApplicationController
-  def verifsent
-    @user = User.find(params[:id])
-
-    FacultyVerifMailer.with(id:@user.id).verify.deliver_later
-  end
   def maithu
     @user=User.find(params[:id])
     @user.update(status:'Active')
@@ -12,6 +7,7 @@ class HomeController < ApplicationController
   end
   def faculty_verif
     @user=User.find(params[:id])
+      FacultyVerifMailer.with(id:@user.id).verify.deliver_later
   end
 
   def myslots

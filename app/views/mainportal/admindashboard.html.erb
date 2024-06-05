@@ -16,23 +16,33 @@
                             <li class="nav-item">
                               <%= link_to "Statistics", mainportal_adminStats_path ,class:"nav-link active nav-btn main-elements" %>
                             </li>
-                            <li class="nav-item">
-                              <%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements" %>
-                            </li>
-                            <li class="nav-item">
-                              <%= link_to "Express Slot", mainportal_adminExpress_path,class:"nav-link active nav-btn main-elements" %>
-                            </li>
+
+                            <div class="dropdown">
+                            <a class="nav-link active nav-btn main-elements" id="dropdown" data-bs-toggle="dropdown">Slots</a>
+                            <ul class="dropdown-menu">
+                                <li><%= link_to "Slots", mainportal_adminAllSlots_path ,class:"nav-link active nav-btn main-elements" %></li>
+                              <li>  <%= link_to "Express Slot", mainportal_adminExpress_path,class:"nav-link active nav-btn main-elements" %></li>
+                            </ul>
+                            </div>
                             <li class="nav-item">
                                 <a class="nav-link active nav-btn main-elements" id="model">Models</a>
                             </li>
                             <div id="model-list" class="vis">
                                 <%= link_to "Users", mainportal_adminModelUsers_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Equipments", mainportal_adminModelEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Feedbacks", feedbacks_path ,class:"nav-link active nav-btn model-element" %>
+
+                                <div class="dropdown">
+                                <a class="nav-link active nav-btn model-element" id="dropdown" data-bs-toggle="dropdown">Payment</a>
+                                <ul class="dropdown-menu">
+                                  <li><%= link_to "Internal Payment", payment_payment_path ,class:"nav-link active nav-btn main-elements"%></li>
+                                  <li><%= link_to "External Payment", payment_paymentExt_path ,class:"nav-link active nav-btn main-elements" %></li>
+                                </ul>
+                                </div>
+                                <%= link_to "Feedbacks", feedbacks_path(id:@user.id) ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Import", mainportal_importfile_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Export", mainportal_exportfile_path ,class:"nav-link active nav-btn model-element" %>
                                 <%= link_to "Express Slot", mainportal_adminExpress_path ,class:"nav-link active nav-btn model-element"  %>
+                                <%=link_to "Activities" , activities_path, class:"nav-link active nav-btn model-element"%>
                             </div>
                         </ul>
 
@@ -60,19 +70,23 @@
         <div id="current-tab">
             <h2 class="fw-bold" id="tab-name">Dashboard</h2>
         </div>
+
         <%# the mini-cards coded here %>
         <div id="mini-cards">
-            <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Users</h5>
-                    <div class="container">
-                      <h6>Total Users: <%= @internal_user + @external_user%> </h6>
-                      <h6>Internal Users: <%= @internal_user%></h6>
-                      <h6>External Users: <%= @external_user%></h6>
-                    </div>
-
-                </div>
+    <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background-color: #B0E0E6;">
+                  <div class="card-body">
+              <h5 class="card-title">Users</h5>
+              <div class="container">
+                <h6>Total Users: <%= @internal_user + @external_user %></h6>
+                <h6>Internal Users: <%= @internal_user %></h6>
+                <h6>External Users: <%= @external_user %></h6>
+              </div>
             </div>
+          </div>
+
+
+
+
             <div class="card text-bg-success mb-3" style="max-width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Revenue</h5>

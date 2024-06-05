@@ -6,6 +6,7 @@
 #search-profile:hover {
     --bs-tertiary-bg-rgb: #554242;
 } */
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 .font-quicksand {
   font-family: "Quicksand", "sans-serif";
@@ -61,7 +62,7 @@ hr {
   margin: auto;
   max-width: 95%;
   place-items: center;
-  /* font-family: "Unbounded", 'cursive'; */
+  /* font-family: "Jost", 'cursive'; */
   font-family: "Quicksand", "sans-serif";
 }
 
@@ -82,11 +83,17 @@ hr {
   width: 25rem;
 }
 
+.tcard {
+  --bs-border-radius: 5em;
+  background-color: #f9fdff;
+  width: 23rem;
+}
 /* .heading-status{
 } */
 
 #more {
   display: flex;
+  justify-content: space-between;
 }
 
 h5 {
@@ -152,7 +159,7 @@ h5 {
 
 .card-img {
   height: 268.56px;
-
+  object-fit: cover;
 }
 
 
@@ -243,6 +250,12 @@ h5 {
   padding: 4px 16px;
 }
 
+.book-slot{
+  text-decoration: none;
+  color: #212529;
+  padding: 10px 6px;
+}
+
 .btn-outline-warning {
   --bs-btn-color: #3f5ac9;
   --bs-btn-border-color: #3f5ac9;
@@ -251,11 +264,9 @@ h5 {
   --bs-btn-hover-border-color: #3f5ac9;
 }
 
-
-
-.btn-profile {
+/* .btn-profile {
   margin: 0 5em 0 0;
-}
+} */
 
 @media only screen and (max-width: 660px) {
   h5 {
@@ -281,7 +292,8 @@ h5 {
   }
 
   .card {
-    width: 21rem;
+    width: 22rem;
+
   }
 
   .equipments-container {

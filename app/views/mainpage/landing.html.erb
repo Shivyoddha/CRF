@@ -1,44 +1,8 @@
 <%= stylesheet_link_tag "mainPage" %>
+
+<%=render "partials/Navbar/navbar"%>
+
 <%# <%= render "import" %>
-    <div id="navigation">
-        <nav class="navbar navbar-expand-lg ">
-          <div class="container-fluid">
-                <!--this appears after fire of media qyuery at 990px-->
-                <a id="logo-up" class="navbar-brand" href="#">
-                    <%= image_tag 'logoT.png' , height:75 %>
-                </a>
-            <button id="togle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse center" id="navbarSupportedContent">
-              <ul class="navbar-nav ">
-                <!--this disappears after fire of media qyuery at 990px-->
-                <a id="logo-down" class="navbar-brand" href="#">
-                <%= image_tag 'logoT.png' , height:75 %>
-                </a>
-                <li class="nav-item coolBeans spacing">
-                  <a class="nav-link" href="#show">Home</a>
-                </li>
-                <li class="nav-item coolBeans spacing" id="people-li">
-                  <%=link_to 'People', mainpage_people_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Facilities', mainpage_facility_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Users', mainpage_user_type_path, class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing ">
-                  <%=link_to 'Gallery',mainpage_gallery_path,class:"nav-link"%>
-                </li>
-                <li class="nav-item coolBeans spacing">
-                    <%=link_to 'Book Slot',new_user_session_path,class:"nav-link"%>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
 
 
 
@@ -65,7 +29,7 @@
             </div>
             </div>
 <script>
-    
+
     document.addEventListener("DOMContentLoaded", function() {
   var toggleBtn = document.getElementById("toggleBtn");
   var wrap = document.getElementById("wrap");
@@ -117,14 +81,17 @@
                     <%=image_tag 'icons/megaphone',id:'news-img-tag', alt:"..." %>
                 </div>
                 <div id="image-text">
-                    <span class="news-info"><%= announce.created_on.time%></span>
+                    <span class="news-info"><%= announce.created_on.in_time_zone('Asia/Kolkata').strftime("%B %d, %Y %I:%M %p (%Z)") %>
+</span>
                     <div class="spinner-grow spinner-grow-sm text-info" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
                     <span class="news-info">1 min read</span>
-                    <%=link_to announce.heading, mainpage_about_us_path, class:"heading-news" %>
+                    <%# <%=link_to announce.heading, mainpage_about_us_path, class:"heading-news" %>
+                    <%= link_to announce.heading, "#", class: "heading-news", data: { bs_toggle: "modal", bs_target: "##{announce.id}" }, id: "thiscodeis_haunted", onclick: "$(this).closest('form').submit();" %>
                     <span id = "heading-news-display"></span>
-                    <%=link_to announce.text,mainpage_about_us_path,  class:"news-text"%>
+                    <%# <%=link_to announce.text,mainpage_about_us_path,  class:"news-text"%>
+                    <span class="news-text"><%= announce.text%></span>
                 </div>
           </div>
 
@@ -146,14 +113,14 @@
             </div>
         </div>
         <%end%>
-         
-          
+
+
         </div>
-      
+
         </div>
 
 
-        
+
 
 
 
@@ -465,11 +432,11 @@ modal1.style.display = "none";
    document.addEventListener('DOMContentLoaded', function() {
   var toggleButton = document.getElementById('toggle-news');
   var wrap = document.getElementById('wrap');
-  
+
   toggleButton.addEventListener('click', function() {
     wrap.classList.toggle('open');
   });
-  
+
   document.addEventListener('click', function(event) {
     if (!wrap.contains(event.target) && !toggleButton.contains(event.target)) {
       wrap.classList.remove('open');
@@ -478,9 +445,3 @@ modal1.style.display = "none";
 });
 
 </script>
-
-
-
-
-
-

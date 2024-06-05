@@ -22,7 +22,7 @@
           </div>
         </div>
 
-        
+
         <div class="collapse navbar-collapse tab" id="btn-head">
             <ul class="navbar-nav">
                 <li class="nav-item-tab">
@@ -62,7 +62,7 @@
 
 <%# the content section is coded here %>
     <div id="slots">
-        
+
 
 
         <div id="slot-details">
@@ -149,21 +149,7 @@
                 <%= form.time_field :slottime, class:"form-control", id:"composition"%>
               </div>
 
-                 <%=form.fields_for :equipment_table do |f| %>
-                     <%= f.hidden_field :app_no, value:"CRF/FESMJ/#{fesemjs.id}"%>
-                    <%= f.hidden_field :username, value:"#{fesemjs.user.firstname}"%>
-                    <%= f.hidden_field :dummy, value:"alloted"%>
-                   <%= f.hidden_field :debit_head, value:"#{fesemjs.debit}" %>
-                   <%= f.hidden_field :dept, value:"#{fesemjs.user.department}" %>
-                  <%= f.hidden_field :email, value:"#{fesemjs.user.email}" %>
-                  <%= f.hidden_field :equipname, value:"fesemj" %>
-                  <%= f.hidden_field :role, value:"#{fesemjs.user.role}" %>
-                  <%= f.hidden_field :org, value:"#{fesemjs.user.orgaddress}" %>
-                  <%= f.hidden_field :profesion, value:"#{fesemjs.user.profession}" %>
-                  <%= f.hidden_field :orgname, value:"#{fesemjs.user.orgname}" %>
-
-
-                 <%end%>
+                
 
 
                   <div class="actions">

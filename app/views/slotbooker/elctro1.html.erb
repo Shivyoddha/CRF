@@ -141,20 +141,7 @@
                                        <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                      </div>
 
-                                        <%=form.fields_for :equipment_table do |f| %>
-                                            <%= f.hidden_field :app_no, value:"CRF/ELECTRO/#{elctro.id}"%>
-                                           <%= f.hidden_field :username, value:"#{elctro.user.name}"%>
-                                           <%= f.hidden_field :dummy, value:"alloted"%>
-                                          <%= f.hidden_field :debit_head, value:"#{elctro.debit}" %>
-                                        <%= f.hidden_field :dept, value:"#{elctro.user.department}" %>
-                                       <%= f.hidden_field :email, value:"#{elctro.user.email}" %>
-                                       <%= f.hidden_field :equipname, value:"electro" %>
-                                       <%= f.hidden_field :role, value:"#{elctro.user.role}" %>
-                                      <%= f.hidden_field :org, value:"#{elctro.user.orgaddress}" %>
-                                      <%= f.hidden_field :profesion, value:"#{elctro.user.profession}" %>
-                                      <%= f.hidden_field :orgname, value:"#{elctro.user.orgname}" %>
 
-                                        <%end%>
 
                                          <div class="actions">
                                            <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>
@@ -222,20 +209,7 @@
                                                           <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                                         </div>
 
-                                                           <%=form.fields_for :equipment_table do |f| %>
-                                                               <%= f.hidden_field :app_no, value:"CRF/ELECTRO/#{elctro.id}"%>
-                                                              <%= f.hidden_field :username, value:"#{elctro.user.name}"%>
-                                                              <%= f.hidden_field :dummy, value:"alloted"%>
-                                                             <%= f.hidden_field :debit_head, value:"#{elctro.debit}" %>
-                                                           <%= f.hidden_field :dept, value:"#{elctro.user.department}" %>
-                                                          <%= f.hidden_field :email, value:"#{elctro.user.email}" %>
-                                                          <%= f.hidden_field :equipname, value:"electro" %>
-                                                          <%= f.hidden_field :role, value:"#{elctro.user.role}" %>
-                                                         <%= f.hidden_field :org, value:"#{elctro.user.orgaddress}" %>
-                                                         <%= f.hidden_field :profesion, value:"#{elctro.user.profession}" %>
-                                                         <%= f.hidden_field :orgname, value:"#{elctro.user.orgname}" %>
-
-                                                           <%end%>
+                                                          
 
                                                             <div class="actions">
                                                               <%= form.submit "Allot", class:"btn btn-primary", id:"sbt" %>

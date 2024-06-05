@@ -159,21 +159,7 @@
                                <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                              </div>
 
-                                <%=form.fields_for :equipment_table do |f| %>
-                                    <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
-                                   <%= f.hidden_field :username, value:"#{fric.user.firstname}"%>
-                                   <%= f.hidden_field :dummy, value:"alloted"%>
-                                  <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
-                                  <%= f.hidden_field :dept, value:"#{fric.user.department}" %>
-                                 <%= f.hidden_field :email, value:"#{fric.user.email}" %>
-                                 <%= f.hidden_field :equipname, value:"fric" %>
-                                 <%= f.hidden_field :role, value:"#{fric.user.role}" %>
-                                <%= f.hidden_field :org, value:"#{fric.user.orgaddress}" %>
-                                <%= f.hidden_field :profesion, value:"#{fric.user.profession}" %>
-                                <%= f.hidden_field :orgname, value:"#{fric.user.orgname}" %>
 
-
-                                <%end%>
 
 
                                  <div class="actions">
@@ -252,21 +238,7 @@
                                           <%= form.time_field :slottime, class:"form-control", id:"composition"%>
                                         </div>
 
-                                           <%=form.fields_for :equipment_table do |f| %>
-                                               <%= f.hidden_field :app_no, value:"CRF/FRIC/#{fric.id}"%>
-                                              <%= f.hidden_field :username, value:"#{fric.user.firstname}"%>
-                                              <%= f.hidden_field :dummy, value:"alloted"%>
-                                             <%= f.hidden_field :debit_head, value:"#{fric.debit}" %>
-                                             <%= f.hidden_field :dept, value:"#{fric.user.department}" %>
-                                            <%= f.hidden_field :email, value:"#{fric.user.email}" %>
-                                            <%= f.hidden_field :equipname, value:"fric" %>
-                                            <%= f.hidden_field :role, value:"#{fric.user.role}" %>
-                                           <%= f.hidden_field :org, value:"#{fric.user.orgaddress}" %>
-                                           <%= f.hidden_field :profesion, value:"#{fric.user.profession}" %>
-                                           <%= f.hidden_field :orgname, value:"#{fric.user.orgname}" %>
-
-
-                                           <%end%>
+                                      
 
 
                                             <div class="actions">

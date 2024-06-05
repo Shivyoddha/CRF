@@ -1,0 +1,43 @@
+<%= stylesheet_link_tag "loginFeatures" %>
+<%= stylesheet_link_tag "dashboard" %>
+<%= render "partials/loginHeading" %>
+<%= render "partials/Navbar/searchBar" %>
+
+<div class="trainings-container container mt-3">
+  <div class="row row-cols-1 row-cols-md-3">
+    <% @training_lists.each do |training| %>
+      <div class="col mb-4">
+        <div class="tcard">
+          <div id="training_<%= training.id %>" class="carousel slide">
+            <div class="carousel-inner">
+              <% training.images.each_with_index do |image, index| %>
+                <% if image.blob.present? %>
+                  <div class="carousel-item <%= 'active' if index == 0 %>">
+                    <%= image_tag image, class: "equipment-img-tag d-block w-100 card-img", alt: "Training Image" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#training_<%= training.id %>" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#training_<%= training.id %>" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <div class="card-body">
+              <h5 class="card-title fw-bold"><%= training.name %></h5>
+              <div class="text-center">
+                  <button class="btn btn-outline-warning">
+                      <%= link_to "Book Slot", send("new_training#{training.id}_path", user_id: current_user.id, training_id: training.id), class:"book-slot" %>
+                  </button>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

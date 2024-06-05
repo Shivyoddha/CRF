@@ -1,140 +1,306 @@
-<%= stylesheet_link_tag "paymentportal" %>
-<%=render "partials/paymentNav" %>
+    <%= stylesheet_link_tag "paymentportal" %>
 
-<div class="container-payments">
+    <div id="header">
+        <nav class="navbar bg-dark navbar-expand-lg navbar-dark">
+            <%= link_to 'CRF Payments', payment_payment_path, class:'navbar-brand', id:'title' %>
 
-    <div id="navigation" class="font-quiucksand">
-        <!--below is the button of Nitk CRF logo-->
-        <div id="navigation-logo">
-          <a href="/"> <%=image_tag 'logoT', id:"logopic", class:"btn btn-left" %> </a>
-        </div>
-        <%= link_to "Admin Panel",  mainportal_admindashboard_path, class:"btn btn-outline-warning mt-4 back-btn" %>
 
-        <div class="sidelinks">
+            <div class="collapse navbar-collapse tab" id="btn-head">
+                <ul class="navbar-nav">
 
-          <h2 class="fw-bold text-center">Navigation</h2>
-          <ul class="sidelinks-model-list">
-              <%# below are code to get items on the navigation pane %>
-              <li class="nav-item">
-               <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
-              </li>
+                  <li class="nav-item">
+                   <%= link_to 'All Payments',payment_paymentExt_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
 
-              <li class="nav-item">
-                  <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" %>
-              </li>
-              <li class="nav-item">
-                  <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
-              </li>
-              <li class="nav-item">
-                  <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
-              </li>
-          </ul>
-        </div>
+                  <li class="nav-item">
+                      <%= link_to 'Manual Entry',payment_paymentExtM_path,class:"nav-link active sidelink-wrap" , id:"active-tab" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'Update',payment_paymentExtU_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                  <li class="nav-item">
+                      <%= link_to 'completed',payment_paymentExtC_path,class:"nav-link active sidelink-wrap" %>
+                  </li>
+                </ul>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="btn-head">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item" id="admin">
+                  <%= link_to 'Admin', mainportal_admindashboard_path,class:"btn btn-outline-primary" %>
+                  </li>
+                    <li class="nav-item" id="admin-mail">
+                        <a class="nav-link" href="#">admin@mail</a>
+                    </li>
+                    <li class="nav-item" id="logout">
+                    <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
 
+<div id="hero">
 
-    <div id="hero">
+    <div id="manual-heading">
+        <h1>Manual Entry</h1>
+    </div>
 
-        <div id="manual-heading">
-            <h1>Manual Entry</h1>
+    <div id="wrap">
+
+      <!-- to select the equipment and according to this we display the respective form -->
+      <%= form_with url: payment_paymentExtM_path do |form| %>
+            <% options = options_from_collection_for_select(Equiplist.all,'id','name')%>
+          <div class="input-group mb-3">
+            <%= form.label :enter ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+            <%= form.select(:enter ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, {:class => 'form-select',:id => "Equip" , :required => true})%>
+            <%= form.submit "Form", class:"btn btn-primary", id:"Equip" %>
+          </div>
+        <%end%>
+
+
+        <% if @entry == 'XRD'%>
+        <% @equip = @xrd %>
+        <%end%>
+        <% if @entry == 'HR-FESEM [Carl Zeiss]'%>
+        <% @equip = @hr_fesem_c %>
+        <%end%>
+        <% if @entry == 'HR-FESEM [Jeol]'%>
+        <% @equip = @hr_fesem_j %>
+        <%end%>
+        <% if @entry == '3-D Non Contact Profilometer'%>
+        <% @equip = @three_d_non_contact %>
+        <%end%>
+        <% if @entry == 'Raman Spectrometer with PL'%>
+        <% @equip = @raman_microscope %>
+        <%end%>
+        <% if @entry == 'TGA-FTIR'%>
+        <% @equip = @tga_fttr %>
+        <%end%>
+        <% if @entry == 'BET Surface Area Analyzer'%>
+        <% @equip = @bet %>
+        <%end%>
+        <% if @entry == 'HR-LCMS'%>
+        <% @equip = @hrlcm %>
+        <%end%>
+        <% if @entry == 'UV-Vis-NIR'%>
+        <% @equip = @uv_vis_nir %>
+        <%end%>
+        <% if @entry == 'Laser Flash Analyser'%>
+        <% @equip = @laser %>
+        <%end%>
+        <% if @entry == 'Cell-Imaging MultiMode Reader'%>
+        <% @equip = @cell_imaging %>
+        <%end%>
+        <% if @entry == 'Atomic Force Microscope'%>
+        <% @equip = @atomic_force_microscope %>
+        <%end%>
+        <% if @entry == 'FT-NMR'%>
+        <% @equip = @ft_nm %>
+        <%end%>
+        <% if @entry == 'ICP-MS'%>
+        <% @equip = @icp_m %>
+        <%end%>
+        <% if @entry == 'Advance Modular Rheometer'%>
+        <% @equip = @advance_molecular_rheometer %>
+        <%end%>
+        <% if @entry == 'Ion Chromatography'%>
+        <% @equip = @ion_chromotography %>
+        <%end%>
+        <% if @entry == 'Intergrated MultiRole Tester'%>
+        <% @equip = @integrated_multi_role_tester %>
+        <%end%>
+        <% if @entry == 'Scratch/Indentation Tester'%>
+        <% @equip = @scratch_indentation %>
+        <%end%>
+        <% if @entry == 'Zeta Potential/Particle Sizer'%>
+        <% @equip = @zeta_potential_size %>
+        <%end%>
+        <% if @entry == 'High Temp Vacuum Furnace'%>
+        <% @equip = @high_temp_vaccum %>
+        <%end%>
+        <% if @entry == 'Impedance Analyzer'%>
+        <% @equip = @impedance_analy %>
+        <%end%>
+        <% if @entry == 'Tribometer'%>
+        <% @equip = @tribometer %>
+        <%end%>
+        <% if @entry == '3D-Scanner'%>
+        <% @equip = @three_d_scanner %>
+        <%end%>
+        <% if @entry == 'GAIT Analysis'%>
+        <% @equip = @gait %>
+        <%end%>
+        <% if @entry == 'Spectro-Radiometer'%>
+        <% @equip = @spectro_radio_meter %>
+        <%end%>
+        <% if @entry == 'Spark-OES'%>
+        <% @equip = @spark_o %>
+        <%end%>
+        <% if @entry == 'Glow Discharges-OES'%>
+        <% @equip = @glow %>
+        <%end%>
+        <% if @entry == 'Ball Milling Unit'%>
+        <% @equip = @ball_mailing %>
+        <%end%>
+        <% if @entry == 'Low Force Fatigue with DMA'%>
+        <% @equip = @low_fatigue %>
+        <%end%>
+        <% if @entry == 'Micro-EDM'%>
+        <% @equip = @micro_edm %>
+        <%end%>
+        <% if @entry == '5-Axes CNC'%>
+        <% @equip = @five_axi %>
+        <%end%>
+        <% if @entry == 'Multi Purpose Impact Testing (SHPB)'%>
+        <% @equip = @multi_impact_tester %>
+        <%end%>
+        <% if @entry == 'Friction Stir Welding/Surfacing(FSW)'%>
+        <% @equip = @friction %>
+        <%end%>
+        <% if @entry == 'Electro Chemical Polishing'%>
+        <% @equip = @electro_chemical %>
+        <%end%>
+        <% if @entry == 'Milli-Q water'%>
+        <% @equip = @milli_q %>
+        <%end%>
+        <% if @entry == 'Glove Box'%>
+        <% @equip = @glove_box %>
+        <%end%>
+        <% if @entry == 'Probe Sonicator'%>
+        <% @equip = @probe_sonicator %>
+        <%end%>
+        <% if @entry == 'Ultra-Centrifuge'%>
+        <% @equip = @ultra_centrifuge %>
+        <%end%>
+        <% if @entry == 'Gas Sensing'%>
+        <% @equip = @gas_sensing %>
+        <%end%>
+        <% if @entry == 'Liquid Nitrogen'%>
+        <% @equip = @liquid_nitrogen %>
+        <%end%>
+        <% if @entry == 'Ansys System Lab'%>
+        <%end%>
+        <% if @entry == 'Automatic MultiSpecimen Polisher'%>
+        <% @equip = @grinding %>
+        <%end%>
+
+<%if @equip != nil %>
+ <div class="card">
+<%= form_with(model: EquipmentTable,local:true) do |form| %>
+       <div class="card-header">
+      <%= "Enter manually for #{@entry} slot"%>
+      </div>
+      <div class="card-body">
+        <div class="input-group mb-3">
+        <%= form.label :app_no, "Application No.", class:"input-group-text", for:'app_no'%>
+        <%= form.text_field :app_no, class:"form-control", id: 'app_no'%>
+        </div>
+        <div class="input-group mb-3">
+        <%= form.label :profesion, "Profession", class:"input-group-text", for:'Profession'%>
+        <%= form.select(:profesion,["Academia","Industry","Enterpreneur"],{:include_blank => 'Choose...'},{ :class => 'form-select' ,id: 'Profession'})%>
+
+        <%= form.label :innvoice_name, "Invoice Name", class:"input-group-text", for:'name'%>
+        <%= form.text_field :innvoice_name, class:"form-control", id: 'name'%>
+        <%= form.label :contact_no, "Contact Name", class:"input-group-text", for:'contact'%>
+        <%= form.text_field :contact_no, class:"form-control", id: 'contact'%>
         </div>
 
-        <div id="wrap">
-          <%= form_with(model:EquipmentTable ,local:true) do |form| %>
-             <div class="input-group mb-3">
-               <%= form.label :app_no, "Apllication No.", class:"input-group-text",id:"app"%>
-               <%= form.text_field :app_no, class:"form-control", id:"app"%>
-           </div>
+        <div class="input-group mb-3">
+        <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:'address'%>
+        <%= form.text_field :invoice_gst, class:"form-control", id: 'address'%>
 
+        <%= form.label :invoice_gst, "Invoice GST", class:"input-group-text", for:'inovice_gst'%>
+        <%= form.text_field :invoice_gst, class:"form-control", id: 'inovice_gst'%>
+        </div>
 
-           <% options = options_from_collection_for_select(Equiplist.all,'id' ,'name')%>
+        <div class="input-group mb-3">
+        <%= form.label :pay, "Amount Paid", class:"input-group-text", for:'amount-field'%>
+        <%= form.text_field :pay, class:"form-control", id: 'amount-field'%>
+        </div>
+
          <div class="input-group mb-3">
-           <%= form.label :equipname ,"Equipment" ,for:"Equip", class:"input-group-text "%>
-           <%= form.select(:equipname ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "Equip" , :required => true})%>
+        <%= form.label :gst_rate, "Gst (%)", class:"input-group-text"%>
+        <%= form.select(:gst_rate, [18, 16, 0], {:include_blank => 'Choose...'},{ :class => 'form-select' ,id: 'gst-rate-field'}) %>
+         <%= form.label :consultancy_rate, "Consultancy(%):", class:"input-group-text"%>
+         <%= form.text_field :consultancy_rate, class:"form-control", id: 'consultancy-rate-field'%>
          </div>
 
-         <div class="input-group mb-3" >
-           <%= form.label :profesion ,"Profession" ,for:"profession", class:"input-group-text "%>
-           <%= form.select(:profesion , ['Academia','Industry','Entrepreneur'],{:include_blank => 'Choose...'}, { :class => 'form-select',:id => "profession"})%>
-           </div>
-
-           <div class="input-group mb-3">
-           <%= form.label :invoice_name, "Innvoice Name", class:"input-group-text", for:"In_names"%>
-           <%= form.text_field :invoice_name, class:"form-control", id:"In_name"%>
-         </div>
-
-         <div class="input-group mb-3">
-         <%= form.label :invoice_address, "Invoice Address", class:"input-group-text", for:"In_address"%>
-         <%= form.text_field :invoice_address, class:"form-control", id:"In_address"%>
-       </div>
-
-         <div class="input-group mb-3">
-         <%= form.label :invoice_gst, "Invoice Gst No.", class:"input-group-text", for:"In_gst"%>
-         <%= form.text_field :invoice_gst, class:"form-control", id:"In_gst", placeholder:"In case of firm"%>
-       </div>
-
+        <div class="input-group mb-3">
+        <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
+         <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
+        <%= form.text_field :testing, class:"form-control", id: 'remaining-amount-field', readonly: true%>
+      </div>
 
        <div class="input-group mb-3">
-       <%= form.label :contact_no, "Contact No.", class:"input-group-text", for:"contact"%>
-       <%= form.text_field :contact_no, class:"form-control", id:"contact"%>
-     </div>
+         <%= form.label :gst_applied, "GST", class:"input-group-text", for:"testing"%>
+          <%= form.label :gst_applied, "₹", class:"input-group-text", for:"testing"%>
+         <%= form.text_field :gst_applied, class:"form-control",  id: 'gst-amount-field', readonly: true %>
 
+         <%= form.label :consulting, "Consultancy", class:"input-group-text", for:"testing"%>
+          <%= form.label :consulting, "₹", class:"input-group-text", for:"testing"%>
+         <%= form.text_field :consulting, class:"form-control", id: 'consultancy-amount-field', readonly: true %>
+          </div>
 
-         <div class="input-group mb-3">
-         <%= form.label :amount_paid, "Amount Paid", class:"input-group-text", for:"Amount_paid"%>
-         <%= form.text_field :amount_paid, class:"form-control", id:"Amount_paid"%>
-         <%= form.label :gst_applied, "Gst Applied", class:"input-group-text", for:"Amount_paid"%>
-         <%= form.text_field :gst_applied, class:"form-control", id:"Amount_paid"%>
-       </div>
+          <div class="input-group mb-3">
+          <%= form.label :date_of_depo, "Date of Depo", class:"input-group-text", for:"date_of_depo"%>
+          <%= form.date_field :date_of_depo, class:"form-control", id: 'date_of_depo'%>
 
-       <div class="input-group mb-3">
-       <%= form.label :testing, "Testing", class:"input-group-text", for:"testing"%>
-        <%= form.label :testing, "₹", class:"input-group-text", for:"testing"%>
-       <%= form.text_field :testing, class:"form-control", id:"testing"%>
-     <%= form.label :consulting, "Consulting", class:"input-group-text", for:"consulting"%>
-      <%= form.label :consulting, "₹", class:"input-group-text", for:"consulting"%>
-     <%= form.text_field :consulting, class:"form-control", id:"consulting"%>
-       <%= form.label :gst, "Gst", class:"input-group-text", for:"consulting"%>
-       <%= form.text_field :gst, class:"form-control", id:"consulting"%>
-     </div>
-
-     <div class="input-group mb-3">
-       <%= form.label :state,'State',for:"state", class:"input-group-text"%>
-       <%= form.select(:state, ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka',
-        'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh',
-         'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Lakshadweep', 'Delhi', 'Puducherry', 'Jammu and Kashmir', 'Ladakh'],
-         {:include_blank => 'Choose...'},{ :class => 'form-select' ,:id => "state"}) %>
-     </div>
-
-     <div class="input-group mb-3">
-     <%= form.label :date_of_depo, "Date of Deposit", class:"input-group-text", for:"date_of_depo"%>
-     <%= form.date_field :date_of_depo, class:"form-control", id:"date_of_depo"%>
-    </div>
-
-    <div class="input-group mb-3">
-    <%= form.label :dd_no, "UTR No/CHQ No/DD No:", class:"input-group-text", for:"dd_no"%>
-    <%= form.text_field :dd_no, class:"form-control", id:"dd_no"%>
-    </div>
-
-
-
-
-
-    <%= form.hidden_field :dummy, value: 'done' %>
-    <%= form.hidden_field :role, value:'external' %>
-
-
-    <div class="actions">
-    <%= form.submit "Submit", class:"btn btn-primary", id:"sbt" %>
-
-    </div>
-    <% end %>
-
-
+          <%= form.label :dd_no, "UTR No / CHQ No / DD No:", class:"input-group-text", for:"dd_no"%>
+          <%= form.text_field :dd_no, class:"form-control", id: 'dd_no'%>
         </div>
 
+        <%= form.hidden_field :equipname, value: @entry %>
+        <%= form.hidden_field :role, value: "external" %>
+        <%= form.hidden_field :dummy, value: "payment_completed" %>
+
+      <div class="actions">
+        <%= form.submit "Generate", class:"btn btn-primary", id:"sbt" %>
+        <% @entry=nil%>
+      </div>
+  <%end%>
+  <%end%>
+  </div>
+  </div>
     </div>
-
-
 
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const amountField = document.getElementById('amount-field');
+    const consultancyRateField = document.getElementById('consultancy-rate-field');
+    const gstRateField = document.getElementById('gst-rate-field');
+    const gstAmountField = document.getElementById('gst-amount-field');
+    const consultancyAmountField = document.getElementById('consultancy-amount-field');
+    const remainingAmountField = document.getElementById('remaining-amount-field');
+
+    const calculateAmounts = () => {
+      const amount = parseFloat(amountField.value);
+      const consultancyRate = parseFloat(consultancyRateField.value);
+      const gstRate = parseFloat(gstRateField.value);
+
+      const gstAmount = (amount * gstRate) / (100 + gstRate);
+      var consultancyAmount = ((amount - gstAmount) * consultancyRate) / 100;
+      let remainingAmount;
+
+      if (isNaN(consultancyAmount)) {
+        remainingAmount = amount - gstAmount;
+      } else if (isNaN(gstAmount)) {
+        remainingAmount = amount - consultancyAmount;
+      } else {
+        remainingAmount = amount - gstAmount - consultancyAmount;
+      }
+
+      gstAmountField.value = gstAmount.toFixed(2);
+      consultancyAmountField.value = consultancyAmount.toFixed(2);
+      remainingAmountField.value = remainingAmount.toFixed(2);
+    };
+
+    amountField.addEventListener('input', calculateAmounts);
+    consultancyRateField.addEventListener('input', calculateAmounts);
+    gstRateField.addEventListener('input', calculateAmounts);
+  });
+
+</script>
