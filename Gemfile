@@ -20,6 +20,10 @@ gem 'cancancan'
 # devise gem for login features
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+group :development do
+  gem "rails-erd"
+end
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
