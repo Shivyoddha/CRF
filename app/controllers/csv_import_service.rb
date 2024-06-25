@@ -3,7 +3,7 @@ class CsvImportService
 
   def call(file)
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';' }
+    options = { headers: true , col_sep: ';'}
     CSV.foreach(opened_file, **options) do |row|
 
       # map the CSV columns to your database columns
@@ -21,7 +21,7 @@ class CsvImportService
 
   def call_announce(file)
     opened_file = File.open(file)
-    options = { headers: true, quote_char: "'", col_sep: ';'  }
+    options = { headers: true, quote_char: "'", col_sep: ';' }
     CSV.foreach(opened_file, **options) do |row|
 
       # map the CSV columns to your database columns
@@ -40,7 +40,7 @@ class CsvImportService
 
   def call_feedback(file)
     opened_file = File.open(file)
-    options = { headers: true}
+    options = { headers: true, col_sep: ';'}
     CSV.foreach(opened_file, **options) do |row|
 
       # map the CSV columns to your database columns
@@ -59,12 +59,17 @@ class CsvImportService
   end
 
   def call_user(file)
-    ##export all fields of user, not foreign key fields..except created at and updated at, with ; as delimeter
+    ##export all fields of user, not foreign key fields..except created at and updated at, with default delimeter ie ,
+    ##alt solns , col_sep: ';' in options
     opened_file = File.open(file)
-    options = { headers: true, quote_char: "'", col_sep: ';' }
+    options = { headers: true, col_sep: ';'}
 
     CSV.foreach(opened_file, **options) do |row|
       puts "Row: #{row.inspect}"
+      full_name = row['Firstname'].to_s.strip
+      name_parts = full_name.split(' ')
+      firstname = name_parts.shift
+      lastname = name_parts.join(' ')
 
       user_hash = {
         email: row['Email'],
@@ -80,12 +85,12 @@ class CsvImportService
         profession: row['Profession'],
         rollno: row['Rollno'],
         contact: row['Contact'],
-        lastname: row['Lastname'],
+        lastname: lastname.presence || row['Lastname'], # Use the split lastname or fallback to the column
         role: row['Role'],
         admin_role: row['Admin Role'],
         chairman_role: row['Chairman Role'],
         slotbooker: row['Slotbooker'],
-        firstname: row['Firstname'],
+        firstname: firstname,
         status: row['Status'],
         developer: row['Developer'].present? ? row['Developer'] == 'true' : false,
         announcementadmin: row['Announcementadmin'].present? ? row['Announcementadmin'] == 'true' : false,
@@ -108,9 +113,9 @@ class CsvImportService
     end
   end
 
-  def call_faculty(file)
+  def call_faculty(file, col_sep: ';')
     opened_file = File.open(file)
-    options = { headers: true, col_sep: ';' }
+    options = { headers: true }
     CSV.foreach(opened_file, **options) do |row|
       # map the CSV columns to your database columns
 
@@ -131,7 +136,7 @@ class CsvImportService
 
   def call_xrd(file)
     opened_file = File.open(file)
-    options = { headers: true, quote_char: "'" , col_sep: ';' }
+    options = { headers: true, quote_char: "'" , col_sep: ';'}
     CSV.foreach(opened_file, **options) do |row|
       # map the CSV columns to your database columns
       user_id = row['Id [User]']
