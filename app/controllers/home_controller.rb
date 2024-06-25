@@ -1,4 +1,9 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!
+
+  def poster
+  end
+
   def maithu
     @user=User.find(params[:id])
     @user.update(status:'Active')

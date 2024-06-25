@@ -1,0 +1,287 @@
+<%= stylesheet_link_tag 'poster.css' %>
+<style>
+        body {
+            background-color: #bedfff;
+        }
+
+        .navbar {
+            height: 15vh;
+            font-family: "Nunito", sans-serif;
+            font-weight: 700;
+        }
+
+        .navbar img {
+            max-height: 12vh;
+        }
+
+        .equipments {
+            padding: 2.5em;
+            display: grid;
+            height: 85vh;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 8px;
+            overflow-y: auto;
+        }
+
+        .equipments .box {
+            background-color: hsl(218, 8%, 80%);
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            filter: brightness(110%) contrast(110%) saturate(120%);
+            transition: all 0.3s ease;
+        }
+
+        .equipments .box .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            text-align: center; /* Center align text within the overlay */
+        }
+
+
+        .equipments .box:hover .overlay {
+            opacity: 0;
+            /* Set opacity to 0 on hover to hide the overlay */
+        }
+
+        .equipments .box .dropdown-content {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(124, 122, 122, 0.9);
+            opacity: 0.8;
+            max-height: 100px;
+            overflow-y: auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .equipments .box:hover .dropdown-content {
+            display: block;
+            font-size: 1em;
+        }
+
+        .equipments .box .dropdown-content a {
+            display: block;
+            margin: 5px 0;
+            color: #d2d7db;
+            text-decoration: none;
+        }
+
+        .equipments .box .dropdown-content a:hover {
+            text-decoration: zoom-out;
+            
+        }
+
+        .middle {
+            grid-column: 2 / span 3;
+            grid-row: 2 / span 3;
+        }
+
+        .middle-image {
+            opacity: 1;
+        }
+
+        .middle img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 992px) {
+
+            .navbar {
+                height: 15vh;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .navbar img {
+                max-height: 5vh;
+                width: auto;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+            .equipments {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+            }
+
+            .equipments .box {
+                width: 100%;
+                height: 200px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="navbar d-flex align-items-center justify-content-between">
+            <div>
+                <%= image_tag 'poster/nitk-logo.png', alt: 'Logo 1' %>
+            </div>
+            <h1 class="text-center">Central Research Facility NITK</h1>
+            <div>
+                <%= image_tag 'poster/crf-logo.png', alt: 'Logo 2' %>
+            </div>
+        </div>
+        <div class="equipments">
+            <div class="box" style="background-image: url(<%= asset_path('poster/gait.png') %>);" data-text="Medical">
+                <div class="overlay">
+                    <span>Medical</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Gait Analysis Equipment', new_uv_vis_nir_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/xrd.png') %>);" data-text="Structural">
+                <div class="overlay">
+                    <span>Structural</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'X-Ray Diffractionmeter', new_xrd_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/xrd.png') %>);" data-text="Compositional">
+                <div class="overlay">
+                    <span>Compositional</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Field Emission Gun Scanning Electron Microscope', '#' %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/uv.png') %>);" data-text="Optical">
+                <div class="overlay">
+                    <span>Optical</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'UV-VIS NIR Spectrometers', new_uv_vis_nir_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/servo.png') %>);" data-text="Mechanical Testing">
+                <div class="overlay">
+                    <span>Mechanical Testing</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to '250KN Servo-Hydraulic Fatigue Testing Unit', new_low_fatigue_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/laser.png') %>);" data-text="Thermal Analysis">
+                <div class="overlay">
+                    <span>Thermal Analysis</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Laser Flash Analyser', new_laser_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/tga.png') %>);" data-text="Infra-Red Absorption">
+                <div class="overlay">
+                    <span>Infra-Red Absorption</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Thermal Gravimetric Analysis(TGA) with FTIR', new_tga_fttr_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/particle.png') %>);" data-text="Nano Systems">
+                <div class="overlay">
+                    <span>Nano Systems</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Particle Sizing & Zeta Potential Analyser', new_zeta_potential_size_path(id: current_user.id,slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box middle">
+                <%= image_tag 'poster/detective.png', alt: 'Middle Box Image', class: 'middle-image', style: 'opacity: 1;' %>
+                <div class="overlay">
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/lighthouse.png') %>);" data-text="Surface Characterization">
+                <div class="overlay">
+                    <span>Surface Characterization</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Atomic Force Microscope', new_atomic_force_microscope_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/glow.png') %>);" data-text="Multilayer Composition">
+                <div class="overlay">
+                    <span>Multilayer Composition</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Glow Discharge Optical Emission Spectrometer', new_ion_chromotography_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/icp-ms.png') %>);" data-text="Trace Elements">
+                <div class="overlay">
+                    <span>Trace Elements</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Inductively Coupled Plasma Mass Spectrometry(ICP-MS)', new_icp_m_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/ion.png') %>);" data-text="Water Treatment">
+                <div class="overlay">
+                    <span>Water Treatment</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Ion Chromatography', new_ion_chromotography_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/ft-nmr.png') %>);" data-text="Chemical Identification">
+                <div class="overlay">
+                    <span>Chemical Identification</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Fourier Transform Nuclear Magnetic Resonance Spectrometer', new_ft_nm_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/scanner.png') %>);" data-text="Medical">
+                <%= image_tag 'poster/scanner.png', alt: 'Medical Image', style: 'width: 100%; height: 100%; object-fit: contain;' %>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/ppm.png') %>);" data-text="Soil Quality">
+                <div class="overlay">
+                    <span>Soil Quality</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'Pressure Plate Membrane Apparatus', '#' %>
+                </div>
+            </div>
+            <div class="box" style="background-image: url(<%= asset_path('poster/lcms.png') %>);" data-text="Pharmaceutical">
+                <div class="overlay">
+                    <span>Pharmaceutical</span>
+                </div>
+                <div class="dropdown-content">
+                    <%= link_to 'HR-LCMS System', new_hrlcm_path(id: current_user.id, slot_type: 'regular') %>
+                </div>
+            </div>
+        </div>
+    </div>

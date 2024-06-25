@@ -1,4 +1,5 @@
 class XrdsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_xrd, only: %i[ show edit update destroy ]
   def import
     return redirect_to request.referer, notice: 'No file added' if params[:file].nil?

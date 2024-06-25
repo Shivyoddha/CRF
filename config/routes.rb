@@ -183,6 +183,7 @@ Rails.application.routes.draw do
     get 'mainpage/multirole_mech'
 
     get 'feedbacks/index'
+    get 'poster/poster'
 
 
    get 'slot_mailer/xrd'
