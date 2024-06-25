@@ -1,420 +1,822 @@
 <%= stylesheet_link_tag "adminportal" %>
-
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand font-unbounded" href="#">CRF CHAIRMAN</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="flex">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                               <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-element" %>
-                            </li>
-                            <li class="nav-item">
-                              <%= link_to "Statistics", mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element", id:'active-tab' %>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active nav-btn main-elements" id="model">Models</a>
-                            </li>
-                            <div id="model-list" class="vis">
-                                <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
-                                <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
-                            </div>
-                        </ul>
-
-                </div>
-                    <div>
-                    </div>
-                    <ul class="navbar-nav ms-auto">
-                      <li class="nav-item" id="Home">
-                        <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
-                      </li>
-                        <li class="nav-item" id="logout">
-                        <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-        </nav>
-
-        <style>
-        .container {
-          display: flex;
-          justify-content: center;
-        }
-
-        #mini-cards {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-          max-width: 600px; /* Adjust the width as needed */
-        }
-
-        .card-body {
-          text-align: center;
-        }
-        </style>
-
-        <div class="container">
-          <div id="mini-cards">
-            <div class="card-body">
-              <h5 class="card-title">User Stats</h5>
-              <%= link_to mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element" do %>
-              <%= image_tag 'users', class: "mini-card-icon" %>
-              <% end %>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Sample Stats</h5>
-              <%= link_to mainportal_chairmanStatsSamples_path, class: "nav-link active nav-btn main-element" do %>
-              <%= image_tag 'samples', class: "mini-card-icon" %>
-              <% end %>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Payment Stats</h5>
-              <%= link_to mainportal_chairmanStatsPayment_path, class: "nav-link active nav-btn main-element" do %>
-              <%= image_tag 'payment_', class: "mini-card-icon" %>
-              <% end %>
-            </div>
-
-            </div>
-          </div>
-
-
-
-<br>
-
-        <div id="stats">
-            <h2 class="fw-bold">Payment Statistics</h2>
+<%# NAVBAR %>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand font-unbounded" href="#">CRF CHAIRMAN</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Dashboard", mainportal_chairmanDashboard_path ,class:"nav-link active nav-btn main-element" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Statistics", mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element", id:'active-tab' %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active nav-btn main-elements" id="model">Models</a>
+        </li>
+        <div id="model-list" class="vis">
+          <%= link_to "Users", mainportal_chairmanUsers_path ,class:"nav-link active nav-btn model-element" %>
+          <%= link_to "Equipments", mainportal_chairmanEquip_path ,class:"nav-link active nav-btn model-element" %>
+          <%= link_to "Payment", payment_payment_path ,class:"nav-link active nav-btn model-element" %>
         </div>
+        </ul>
+      </div>
 
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" id="Home">
+          <%= link_to 'Home',home_index_path,class:"btn btn-primary"%>
+        </li>
+        <li class="nav-item" id="logout">
+          <%= link_to 'LogOut',destroy_user_session_path,method: :delete ,class:"btn btn-danger"%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-  <div style="display: flex;">
-    <div style="flex: 1;">
+<%# STYLING %>
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  #mini-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px; /* Adjust the width as needed */
+  }
+  .card-body {
+    text-align: center;
+  }
+</style>
 
+<div class="container">
+  <div id="mini-cards">
+    <div class="card-body">
+      <h5 class="card-title">User Stats</h5>
+      <%= link_to mainportal_chairmanStats_path, class: "nav-link active nav-btn main-element" do %>
+        <%= image_tag 'users', class: "mini-card-icon" %>
+      <% end %>
+    </div>
 
-            <!-- calculating the total revenue user based -->
-            <%@internal = EquipmentTable.where(role: ['student','faculty'], dummy: 'payment_completed').all%>
-            <%@external = EquipmentTable.where(role: 'external', dummy: 'payment_completed').all %>
-            <%@sum_internal = @internal.sum(:pay)%>
-            <%@sum_external = @external.sum(:pay)%>
+    <div class="card-body">
+      <h5 class="card-title">Sample Stats</h5>
+      <%= link_to mainportal_chairmanStatsSamples_path, class: "nav-link active nav-btn main-element" do %>
+        <%= image_tag 'samples', class: "mini-card-icon" %>
+      <% end %>
+    </div>
 
-
-                <div id="chart-1" class="mt-5 mb-3">
-
-                    <!--Script tag to fetch data to the chart-->
-                    <script type="text/javascript">
-                        var internal = <%= @sum_internal%>;
-                        var external = <%= @sum_external %>;
-                        google.charts.load('current', {'packages':['corechart']});
-                        google.charts.setOnLoadCallback(drawChart);
-
-                        function drawChart() {
-                            var data = google.visualization.arrayToDataTable([
-                                ['Internal', 'Hours per Day'],
-                                ['NITK', internal],
-                                ['External', external]
-                            ]);
-
-                            var options = {
-                                title: 'Revenue division for Nitk v/s External (in rs)'
-                            };
-
-                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                            chart.draw(data, options);
-                        }
-                    </script>
-
-                    <div id="piechart" style="width: 900px; height: 500px;"></div>
-                </div>
-              </div>
-
-
-              <div style="flex: 1;">
-
-
-
-                <!-- Now for equipment-wise -->
-
-                <!-- calculating the total revenue user based -->
-                <% @xrd = EquipmentTable.where(equipname: 'XRD', dummy: 'payment_completed').all %>
-                <% @hr_fesem_carl_zeiss = EquipmentTable.where(equipname: 'HR-FESEM [Carl Zeiss]',dummy: 'payment_completed').all %>
-                <% @hr_fesem_jeol = EquipmentTable.where(equipname: 'HR-FESEM [Jeol]',dummy: 'payment_completed').all %>
-                <% @non_contact_profilometer = EquipmentTable.where(equipname: '3-D Non Contact Profilometer',dummy: 'payment_completed').all %>
-                <% @raman_spectrometer = EquipmentTable.where(equipname: 'Raman Spectrometer with PL',dummy: 'payment_completed').all %>
-                <% @tga_ftir = EquipmentTable.where(equipname: 'TGA-FTIR',dummy: 'payment_completed').all %>
-                <% @bet_surface_area_analyzer = EquipmentTable.where(equipname: 'BET Surface Area Analyzer',dummy: 'payment_completed').all %>
-                <% @hr_lcms = EquipmentTable.where(equipname: 'HR-LCMS',dummy: 'payment_completed').all %>
-                <% @uv_vis_nir = EquipmentTable.where(equipname: 'UV-Vis-NIR',dummy: 'payment_completed').all %>
-                <% @laser_flash_analyser = EquipmentTable.where(equipname: 'Laser Flash Analyser',dummy: 'payment_completed').all %>
-                <% @cell_imaging = EquipmentTable.where(equipname: 'Cell-Imaging MultiMode Reader',dummy: 'payment_completed').all %>
-                <% @atomic_force_microscope = EquipmentTable.where(equipname: 'Atomic Force Microscope',dummy: 'payment_completed').all %>
-                <% @ft_nmr = EquipmentTable.where(equipname: 'FT-NMR',dummy: 'payment_completed').all %>
-                <% @icp_ms = EquipmentTable.where(equipname: 'ICP-MS',dummy: 'payment_completed').all %>
-                <% @advance_modular_rheometer = EquipmentTable.where(equipname: 'Advance Modular Rheometer',dummy: 'payment_completed').all %>
-                <% @ion_chromatography = EquipmentTable.where(equipname: 'Ion Chromatography',dummy: 'payment_completed').all %>
-                <% @integrated_multirole_tester = EquipmentTable.where(equipname: 'Intergrated MultiRole Tester',dummy: 'payment_completed').all %>
-                <% @scratch_indentation_tester = EquipmentTable.where(equipname: 'Scratch/Indentation Tester',dummy: 'payment_completed').all %>
-                <% @zeta_potential_particle_sizer = EquipmentTable.where(equipname: 'Zeta Potential/Particle Sizer',dummy: 'payment_completed').all %>
-                <% @high_temp_vacuum_furnace = EquipmentTable.where(equipname: 'High Temp Vacuum Furnace',dummy: 'payment_completed').all %>
-                <% @impedance_analyzer = EquipmentTable.where(equipname: 'Impedance Analyzer',dummy: 'payment_completed').all %>
-                <% @tribometer = EquipmentTable.where(equipname: 'Tribometer',dummy: 'payment_completed').all %>
-                <% @three_d_scanner = EquipmentTable.where(equipname: '3D-Scanner',dummy: 'payment_completed').all %>
-                <% @gait_analysis = EquipmentTable.where(equipname: 'GAIT Analysis',dummy: 'payment_completed').all %>
-                <% @spectro_radiometer = EquipmentTable.where(equipname: 'Spectro-Radiometer',dummy: 'payment_completed').all %>
-                <% @spark_oes = EquipmentTable.where(equipname: 'Spark-OES',dummy: 'payment_completed').all %>
-                <% @glow_discharges_oes = EquipmentTable.where(equipname: 'Glow Discharges-OES',dummy: 'payment_completed').all %>
-                <% @ball_milling_unit = EquipmentTable.where(equipname: 'Ball Milling Unit',dummy: 'payment_completed').all %>
-                <% @low_force_fatigue_dma = EquipmentTable.where(equipname: 'Low Force Fatigue with DMA',dummy: 'payment_completed').all %>
-                <% @micro_edm = EquipmentTable.where(equipname: 'Micro-EDM',dummy: 'payment_completed').all %>
-                <% @five_axes_cnc = EquipmentTable.where(equipname: '5-Axes CNC',dummy: 'payment_completed').all %>
-                <% @multi_purpose_impact_testing = EquipmentTable.where(equipname: 'Multi Purpose Impact Testing (SHPB)',dummy: 'payment_completed').all %>
-                <% @friction_stir_welding_surfacing = EquipmentTable.where(equipname: 'Friction Stir Welding/Surfacing(FSW)',dummy: 'payment_completed').all %>
-                <% @electro_chemical_polishing = EquipmentTable.where(equipname: 'Electro Chemical Polishing',dummy: 'payment_completed').all %>
-                <% @milli_q_water = EquipmentTable.where(equipname: 'Milli-Q water',dummy: 'payment_completed').all %>
-                <% @glove_box = EquipmentTable.where(equipname: 'Glove Box',dummy: 'payment_completed').all %>
-                <% @probe_sonicator = EquipmentTable.where(equipname: 'Probe Sonicator',dummy: 'payment_completed').all %>
-                <% @ultra_centrifuge = EquipmentTable.where(equipname: 'Ultra-Centrifuge',dummy: 'payment_completed').all %>
-                <% @gas_sensing = EquipmentTable.where(equipname: 'Gas Sensing',dummy: 'payment_completed').all %>
-                <% @liquid_nitrogen = EquipmentTable.where(equipname: 'Liquid Nitrogen',dummy: 'payment_completed').all %>
-                <% @ansys_system_lab = EquipmentTable.where(equipname: 'Ansys System Lab',dummy: 'payment_completed').all %>
-                <% @automatic_multispecimen_polisher = EquipmentTable.where(equipname: 'Automatic MultiSpecimen Polisher',dummy: 'payment_completed').all %>
-
-                <!--Summation of equipment revenue -->
-                <% @sum_xrd = @xrd.sum(:pay) %>
-                <% @sum_hr_fesem_carl_zeiss = @hr_fesem_carl_zeiss.sum(:pay) %>
-                <% @sum_hr_fesem_jeol = @hr_fesem_jeol.sum(:pay) %>
-                <% @sum_non_contact_profilometer = @non_contact_profilometer.sum(:pay) %>
-                <% @sum_raman_spectrometer = @raman_spectrometer.sum(:pay) %>
-                <% @sum_tga_ftir = @tga_ftir.sum(:pay) %>
-                <% @sum_bet_surface_area_analyzer = @bet_surface_area_analyzer.sum(:pay) %>
-                <% @sum_hr_lcms = @hr_lcms.sum(:pay) %>
-                <% @sum_uv_vis_nir = @uv_vis_nir.sum(:pay) %>
-                <% @sum_laser_flash_analyser = @laser_flash_analyser.sum(:pay) %>
-                <% @sum_cell_imaging = @cell_imaging.sum(:pay) %>
-                <% @sum_atomic_force_microscope = @atomic_force_microscope.sum(:pay) %>
-                <% @sum_ft_nmr = @ft_nmr.sum(:pay) %>
-                <% @sum_icp_ms = @icp_ms.sum(:pay) %>
-                <% @sum_advance_modular_rheometer = @advance_modular_rheometer.sum(:pay) %>
-                <% @sum_ion_chromatography = @ion_chromatography.sum(:pay) %>
-                <% @sum_integrated_multirole_tester = @integrated_multirole_tester.sum(:pay) %>
-                <% @sum_scratch_indentation_tester = @scratch_indentation_tester.sum(:pay) %>
-                <% @sum_zeta_potential_particle_sizer = @zeta_potential_particle_sizer.sum(:pay) %>
-                <% @sum_high_temp_vacuum_furnace = @high_temp_vacuum_furnace.sum(:pay) %>
-                <% @sum_impedance_analyzer = @impedance_analyzer.sum(:pay) %>
-                <% @sum_tribometer = @tribometer.sum(:pay) %>
-                <% @sum_three_d_scanner = @three_d_scanner.sum(:pay) %>
-                <% @sum_gait_analysis = @gait_analysis.sum(:pay) %>
-                <% @sum_spectro_radiometer = @spectro_radiometer.sum(:pay) %>
-                <% @sum_spark_oes = @spark_oes.sum(:pay) %>
-                <% @sum_glow_discharges_oes = @glow_discharges_oes.sum(:pay) %>
-                <% @sum_ball_milling_unit = @ball_milling_unit.sum(:pay) %>
-                <% @sum_low_force_fatigue_dma = @low_force_fatigue_dma.sum(:pay) %>
-                <% @sum_micro_edm = @micro_edm.sum(:pay) %>
-                <% @sum_five_axes_cnc = @five_axes_cnc.sum(:pay) %>
-                <% @sum_multi_purpose_impact_testing = @multi_purpose_impact_testing.sum(:pay) %>
-                <% @sum_friction_stir_welding_surfacing = @friction_stir_welding_surfacing.sum(:pay) %>
-                <% @sum_electro_chemical_polishing = @electro_chemical_polishing.sum(:pay) %>
-                <% @sum_milli_q_water = @milli_q_water.sum(:pay) %>
-                <% @sum_glove_box = @glove_box.sum(:pay) %>
-                <% @sum_probe_sonicator = @probe_sonicator.sum(:pay) %>
-                <% @sum_ultra_centrifuge = @ultra_centrifuge.sum(:pay) %>
-                <% @sum_gas_sensing = @gas_sensing.sum(:pay) %>
-                <% @sum_liquid_nitrogen = @liquid_nitrogen.sum(:pay) %>
-                <% @sum_ansys_system_lab = @ansys_system_lab.sum(:pay) %>
-                <% @sum_automatic_multispecimen_polisher = @automatic_multispecimen_polisher.sum(:pay) %>
+    <div class="card-body">
+      <h5 class="card-title">Payment Stats</h5>
+      <%= link_to mainportal_chairmanStatsPayment_path, class: "nav-link active nav-btn main-element" do %>
+        <%= image_tag 'payment_', class: "mini-card-icon" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 
-                    <div id="chart-2" class="mt-5 mb-3">
+<div id="chart" class="mt-5 mb-3">
+<div id="stats">
+    <h2 class="fw-bold">Payment Statistics</h2>
+</div>
 
-                        <!--Script tag to fetch data to the chart-->
-                        <script type="text/javascript">
-                            var sum_xrd = <%= @sum_xrd %>;
-                            var sum_hr_fesem_carl_zeiss = <%= @sum_hr_fesem_carl_zeiss %>;
-                            var sum_hr_fesem_jeol = <%= @sum_hr_fesem_jeol %>;
-                            var sum_non_contact_profilometer = <%= @sum_non_contact_profilometer %>;
-                            var sum_raman_spectrometer = <%= @sum_raman_spectrometer %>;
-                            var sum_tga_ftir = <%= @sum_tga_ftir %>;
-                            var sum_bet_surface_area_analyzer = <%= @sum_bet_surface_area_analyzer %>;
-                            var sum_hr_lcms = <%= @sum_hr_lcms %>;
-                            var sum_uv_vis_nir = <%= @sum_uv_vis_nir %>;
-                            var sum_laser_flash_analyser = <%= @sum_laser_flash_analyser %>;
-                            var sum_cell_imaging = <%= @sum_cell_imaging %>;
-                            var sum_atomic_force_microscope = <%= @sum_atomic_force_microscope %>;
-                            var sum_ft_nmr = <%= @sum_ft_nmr %>;
-                            var sum_icp_ms = <%= @sum_icp_ms %>;
-                            var sum_advance_modular_rheometer = <%= @sum_advance_modular_rheometer %>;
-                            var sum_ion_chromatography = <%= @sum_ion_chromatography %>;
-                            var sum_integrated_multirole_tester = <%= @sum_integrated_multirole_tester %>;
-                            var sum_scratch_indentation_tester = <%= @sum_scratch_indentation_tester %>;
-                            var sum_zeta_potential_particle_sizer = <%= @sum_zeta_potential_particle_sizer %>;
-                            var sum_high_temp_vacuum_furnace = <%= @sum_high_temp_vacuum_furnace %>;
-                            var sum_impedance_analyzer = <%= @sum_impedance_analyzer %>;
-                            var sum_tribometer = <%= @sum_tribometer %>;
-                            var sum_three_d_scanner = <%= @sum_three_d_scanner %>;
-                            var sum_gait_analysis = <%= @sum_gait_analysis %>;
-                            var sum_spectro_radiometer = <%= @sum_spectro_radiometer %>;
-                            var sum_spark_oes = <%= @sum_spark_oes %>;
-                            var sum_glow_discharges_oes = <%= @sum_glow_discharges_oes %>;
-                            var sum_ball_milling_unit = <%= @sum_ball_milling_unit %>;
-                            var sum_low_force_fatigue_dma = <%= @sum_low_force_fatigue_dma %>;
-                            var sum_micro_edm = <%= @sum_micro_edm %>;
-                            var sum_five_axes_cnc = <%= @sum_five_axes_cnc %>;
-                            var sum_multi_purpose_impact_testing = <%= @sum_multi_purpose_impact_testing %>;
-                            var sum_friction_stir_welding_surfacing = <%= @sum_friction_stir_welding_surfacing %>;
-                            var sum_electro_chemical_polishing = <%= @sum_electro_chemical_polishing %>;
-                            var sum_milli_q_water = <%= @sum_milli_q_water %>;
-                            var sum_glove_box = <%= @sum_glove_box %>;
-                            var sum_probe_sonicator = <%= @sum_probe_sonicator %>;
-                            var sum_ultra_centrifuge = <%= @sum_ultra_centrifuge %>;
-                            var sum_gas_sensing = <%= @sum_gas_sensing %>;
-                            var sum_liquid_nitrogen = <%= @sum_liquid_nitrogen %>;
-                            var sum_ansys_system_lab = <%= @sum_ansys_system_lab %>;
-                            var sum_automatic_multispecimen_polisher = <%= @sum_automatic_multispecimen_polisher %>;
+<!---------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------DEPARTMENT-WISE REVENUE STATS--------------------------------------------------------------->
 
-                            google.charts.load('current', {'packages':['corechart']});
-                            google.charts.setOnLoadCallback(drawChart);
+<%= form_with url: mainportal_chairmanStatsPayment_path do |form| %>
+  <% options = options_from_collection_for_select(Equiplist.all,'id','name')%>
+  <div class="input-group mb-3">
+    <%= form.label :entry ,"Equipment" ,for:"Equip", class:"input-group-text "%>
+    <%= form.select(:entry ,Equiplist.all.collect { |f| [f.name] } ,{:include_blank => 'Choose...'}, {:class => 'form-select',:id => "Equip" , :required => true})%>
+    <%= form.submit "Stats", class:"btn btn-primary", id:"sbt" %>
+  </div>
+<%end%>
 
-                            function drawChart() {
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Internal', 'Hours per Day'],
-                                    ['XRD', sum_xrd],
-                                    ['HR-FESEM [Carl Zeiss]', sum_hr_fesem_carl_zeiss],
-                                    ['HR-FESEM [Jeol]', sum_hr_fesem_jeol],
-                                    ['3-D Non Contact Profilometer', sum_non_contact_profilometer],
-                                    ['Raman Spectrometer with PL', sum_raman_spectrometer],
-                                    ['TGA-FTIR', sum_tga_ftir],
-                                    ['BET Surface Area Analyzer', sum_bet_surface_area_analyzer],
-                                    ['HR-LCMS', sum_hr_lcms],
-                                    ['UV-Vis-NIR', sum_uv_vis_nir],
-                                    ['Laser Flash Analyser', sum_laser_flash_analyser],
-                                    ['Cell-Imaging MultiMode Reader', sum_cell_imaging],
-                                    ['Atomic Force Microscope', sum_atomic_force_microscope],
-                                    ['FT-NMR', sum_ft_nmr],
-                                    ['ICP-MS', sum_icp_ms],
-                                    ['Advance Modular Rheometer', sum_advance_modular_rheometer],
-                                    ['Ion Chromatography', sum_ion_chromatography],
-                                    ['Intergrated MultiRole Tester', sum_integrated_multirole_tester],
-                                    ['Scratch/Indentation Tester', sum_scratch_indentation_tester],
-                                    ['Zeta Potential/Particle Sizer', sum_zeta_potential_particle_sizer],
-                                    ['High Temp Vacuum Furnace', sum_high_temp_vacuum_furnace],
-                                    ['Impedance Analyzer', sum_impedance_analyzer],
-                                    ['Tribometer', sum_tribometer],
-                                    ['3D-Scanner', sum_three_d_scanner],
-                                    ['GAIT Analysis', sum_gait_analysis],
-                                    ['Spectro-Radiometer', sum_spectro_radiometer],
-                                    ['Spark-OES', sum_spark_oes],
-                                    ['Glow Discharges-OES', sum_glow_discharges_oes],
-                                    ['Ball Milling Unit', sum_ball_milling_unit],
-                                    ['Low Force Fatigue with DMA', sum_low_force_fatigue_dma],
-                                    ['Micro-EDM', sum_micro_edm],
-                                    ['5-Axes CNC', sum_five_axes_cnc],
-                                    ['Multi Purpose Impact Testing (SHPB)', sum_multi_purpose_impact_testing],
-                                    ['Friction Stir Welding/Surfacing(FSW)', sum_friction_stir_welding_surfacing],
-                                    ['Electro Chemical Polishing', sum_electro_chemical_polishing],
-                                    ['Milli-Q water', sum_milli_q_water],
-                                    ['Glove Box', sum_glove_box],
-                                    ['Probe Sonicator', sum_probe_sonicator],
-                                    ['Ultra-Centrifuge', sum_ultra_centrifuge],
-                                    ['Gas Sensing', sum_gas_sensing],
-                                    ['Liquid Nitrogen', sum_liquid_nitrogen],
-                                    ['Ansys System Lab', sum_ansys_system_lab],
-                                    ['Automatic MultiSpecimen Polisher', sum_automatic_multispecimen_polisher]
-                                ]);
+<!-- Department Names in an array -->
+<% departments = [
+  'AI Engineering',
+  'Chemical Engineering',
+  'Chemistry',
+  'Civil Engineering',
+  'CS Engineering',
+  'EE Engineering',
+  'EC Engineering',
+  'IT Engineering',
+  'Mechanical Engineering',
+  'Mining Engineering',
+  'Metallurgical Engineering',
+  'Physics',
+  'Water Resources & Ocean Engineering'
+] %>
 
-                                var options = {
-                                    title: 'Revenue Division Based on Equipments (rs)'
-                                };
+<%# Calculation of Total Revenue for each of the Department %>
+<% @total = {} %> <!--This is a map that would store the dep name with its corresponding revenue--->
+<% departments.each do |department| %>
+  <% @sam = [] %> <!--This array will store the total revenue of a particular department-->
+  <% User.all.where(department: department).each do |user| %>
+  <%@s =0%>
+    <% if @entry == 'XRD' %>
+      <% user.xrds.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'HR-FESEM [Carl Zeiss]' %>
+      <% user.hr_fesem_cs.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'HR-FESEM [Jeol]' %>
+      <% user.hr_fesem_js.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == '3-D Non Contact Profilometer' %>
+      <% user.three_d_non_contacts.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Raman Spectrometer with PL' %>
+      <% user.raman_microscope.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'TGA-FTIR' %>
+      <% user.tga_fttr.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'BET Surface Area Analyzer' %>
+      <% user.bets.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'HR-LCMS' %>
+      <% user.hrlcms.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'UV-Vis-NIR' %>
+      <% user.uv_vis_nir.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Laser Flash Analyser' %>
+      <% user.laser.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Cell-Imaging MultiMode Reader' %>
+      <% user.cell_imaging.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Atomic Force Microscope' %>
+      <% user.atomic_force_microscope.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'FT-NMR' %>
+      <% user.ft_nms.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'ICP-MS' %>
+      <% user.icp_ms.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Advance Modular Rheometer' %>
+      <% user.advance_molecular_rheometers.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Ion Chromatography' %>
+      <% user.ion_chromotography.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Intergrated MultiRole Tester' %>
+      <% user.integrated_multi_role_tester.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Scratch/Indentation Tester' %>
+      <% user.scratch_indentations.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Zeta Potential/Particle Sizer' %>
+      <% user.zeta_potential_size.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'High Temp Vacuum Furnace' %>
+      <% user.high_temp_vaccum.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Impedance Analyzer' %>
+      <% user.impedance_analy.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Tribometer' %>
+      <% user.tribometers.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == '3D-Scanner' %>
+      <% user.three_d_scanner.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'GAIT Analysis' %>
+      <% @entry = nil %>
+    <% elsif @entry == 'Spectro-Radiometer' %>
+      <% user.spectro_radio_meter.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Spark-OES' %>
+      <% user.spark_o.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Glow Discharges-OES' %>
+      <% user.glows.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Ball Milling Unit' %>
+      <% user.ball_mailings.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Low Force Fatigue with DMA' %>
+      <% user.low_fatigues.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Micro-EDM' %>
+      <% user.micro_edms.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == '5-Axes CNC' %>
+      <% user.five_axi.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Multi Purpose Impact Testing (SHPB)' %>
+      <% user.multi_impact_testers.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Friction Stir Welding/Surfacing(FSW)' %>
+      <% user.frictions.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Electro Chemical Polishing' %>
+      <% user.electro_chemical.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Milli-Q water' %>
+      <% @entry = nil %>
+    <% elsif @entry == 'Glove Box' %>
+      <% @entry = nil %>
+    <% elsif @entry == 'Probe Sonicator' %>
+      <% user.probe_sonicator.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Ultra-Centrifuge' %>
+      <% user.ultra_centrifuge.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Gas Sensing' %>
+      <% user.gas_sensing.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Liquid Nitrogen' %>
+      <% @entry = nil %>
+      <% @sam.push(@s) %>
+    <% elsif @entry == 'Ansys System Lab' %>
+      <% @entry = nil %>
+    <% elsif @entry == 'Automatic MultiSpecimen Polisher' %>
+      <% user.grindings.each do |eq| %>
+        <% if eq.equipment_table.dummy == 'payment_completed' %>
+          <% @s = eq.equipment_table.pay + @s %>
+        <% end %>
+      <% end %>
+      <% @sam.push(@s) %>
+    <% end %>
+  <% end %>
+  <%# Assigning the total revenue values to the corresponding department in the map %>
+  <% if @entry != nil%>
+        <% @total[department] = @sam.sum %>
+  <%end%>
+<% end %>
 
-                                var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
-                                chart.draw(data, options);
-                            }
-                        </script>
+<%#  Storing all the revenue values in the department variabbles so as to use it in the charts%>
+<% civil_engineering = @total['Civil Engineering'] %>
+<% ai_engineering = @total['AI Engineering'] %>
+<% chemical_engineering = @total['Chemical Engineering'] %>
+<% chemistry = @total['Chemistry'] %>
+<% cs_engineering = @total['CS Engineering'] %>
+<% ee_engineering = @total['EE Engineering'] %>
+<% ec_engineering = @total['EC Engineering'] %>
+<% it_engineering = @total['IT Engineering'] %>
+<% mechanical_engineering = @total['Mechanical Engineering'] %>
+<% mining_engineering = @total['Mining Engineering'] %>
+<% metallurgical_engineering = @total['Metallurgical Engineering'] %>
+<% physics = @total['Physics'] %>
+<% water_resources_ocean_engineering = @total['Water Resources & Ocean Engineering'] %>
 
-                        <div id="piechart2" style="width: 900px; height: 500px;"></div>
-                    </div>
+<div id="stats">
+    <h5 class="fw-bold"><%="Branch-wise #{@entry} Revenue Distribution"%></h5>
+</div>
 
-                    </div>
-                  </div>
-
-
-                  <%@internal = EquipmentTable.where(role: ['student','faculty'], dummy: 'payment_completed').all%>
-                  <%@external = EquipmentTable.where(role: 'external', dummy: 'payment_completed').all %>
-                  <%@sum_internal = @internal.sum(:pay)%>
-                  <%@sum_external = @external.sum(:pay)%>
-
-                  <!DOCTYPE html>
-                  <html>
-                  <head>
-                    <title></title>
-                    <!-- Include Google Charts library -->
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                    <script type="text/javascript">
-                      var internal = <%= @sum_internal%>;
-                      var external = <%= @sum_external %>;
-                      // Load the Visualization API and the corechart package
-                      google.charts.load('current', {'packages':['corechart']});
-
-                      // Set a callback to run when the Google Visualization API is loaded
-                      google.charts.setOnLoadCallback(drawChart);
-
-                      // Callback function to create and populate the data table
-                      function drawChart() {
-                        // Create the data table
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'User');
-                        data.addColumn('number', 'Value');
-                        data.addRows([
-                            ['NITK', internal],
-                            ['External', external]
-                        ]);
-
-                        // Set chart options
-                        var options = {
-                          title: 'NITK v/s External revenue Bar Graph',
-                          width: 800, // Increased width
-                          height: 600, // Increased height
-                          bar: {groupWidth: '50%'},
-                          legend: {position: 'none'}
-                        };
-
-                        // Instantiate and draw the chart
-                        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-                        chart.draw(data, options);
-                      }
-                    </script>
-                    <style>
-                      /* Center the chart container */
-                      #chart_container {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                      }
-                    </style>
-                  </head>
-                  <body>
-                    <!-- Display the chart -->
-                    <div id="chart_container">
-                      <div id="chart_div"></div>
-                    </div>
-                  </body>
-                  </html>
+<div id="chart-3" class="mt-5 mb-3">
+  <!--Script tag to fetch data to the chart-->
+  <script type="text/javascript">
+    var ai_engineering = <%= ai_engineering %>;
+    var chemical_engineering = <%= chemical_engineering %>;
+    var chemistry = <%= chemistry %>;
+    var civil_engineering = <%= civil_engineering %>;
+    var cs_engineering = <%= cs_engineering %>;
+    var ee_engineering = <%= ee_engineering %>;
+    var ec_engineering = <%= ec_engineering %>;
+    var it_engineering = <%= it_engineering %>;
+    var mechanical_engineering = <%= mechanical_engineering %>;
+    var mining_engineering = <%= mining_engineering %>;
+    var metallurgical_engineering = <%= metallurgical_engineering %>;
+    var physics = <%= physics %>;
+    var water_resources_ocean_engineering = <%= water_resources_ocean_engineering %>;
 
 
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Internal', 'Hours per Day'],
+            ['AI Engineering', ai_engineering],
+            ['Chemical Engineering', chemical_engineering],
+            ['Chemistry', chemistry],
+            ['Civil Engineering', civil_engineering],
+            ['CS Engineering', cs_engineering],
+            ['EE Engineering', ee_engineering],
+            ['EC Engineering', ec_engineering],
+            ['IT Engineering', it_engineering],
+            ['Mechanical Engineering', mechanical_engineering],
+            ['Mining Engineering', mining_engineering],
+            ['Metallurgical Engineering', metallurgical_engineering],
+            ['Physics', physics],
+            ['Water Resources & Ocean Engineering', water_resources_ocean_engineering]
+        ]);
+
+        var options = {
+            title: 'Department-wise division'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart3'));
+        chart.draw(data, options);
+    }
+  </script>
+
+  <div id="piechart3" style="width: 900px; height: 500px;"></div>
+</div>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------NITK VS EXTERNAL REVENUE STATS------------------------------------------------------------------->
+
+<%# User map %>
+<% users = [
+ 'student',
+ 'faculty',
+ 'external'
+] %>
+
+<%# Variables Initialization %>
+<% student =0 %>
+<% faculty =0 %>
+<% @total = {} %>
+<% users.each do |user| %>
+<% @sam = [] %>
+
+<% User.all.where(role: user).each do |user| %>
+  <%@s =0%>
+  <% if @entry == 'XRD' %>
+    <% user.xrds.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'HR-FESEM [Carl Zeiss]' %>
+    <% user.hr_fesem_cs.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'HR-FESEM [Jeol]' %>
+    <% user.hr_fesem_js.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == '3-D Non Contact Profilometer' %>
+    <% user.three_d_non_contacts.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Raman Spectrometer with PL' %>
+    <% user.raman_microscope.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'TGA-FTIR' %>
+    <% user.tga_fttr.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'BET Surface Area Analyzer' %>
+    <% user.bets.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'HR-LCMS' %>
+    <% user.hrlcms.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'UV-Vis-NIR' %>
+    <% user.uv_vis_nir.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Laser Flash Analyser' %>
+    <% user.laser.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Cell-Imaging MultiMode Reader' %>
+    <% user.cell_imaging.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Atomic Force Microscope' %>
+    <% user.atomic_force_microscope.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'FT-NMR' %>
+    <% user.ft_nms.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'ICP-MS' %>
+    <% user.icp_ms.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Advance Modular Rheometer' %>
+    <% user.advance_molecular_rheometers.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Ion Chromatography' %>
+    <% user.ion_chromotography.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Intergrated MultiRole Tester' %>
+    <% user.integrated_multi_role_tester.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Scratch/Indentation Tester' %>
+    <% user.scratch_indentations.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Zeta Potential/Particle Sizer' %>
+    <% user.zeta_potential_size.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'High Temp Vacuum Furnace' %>
+    <% user.high_temp_vaccum.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Impedance Analyzer' %>
+    <% user.impedance_analy.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Tribometer' %>
+    <% user.tribometers.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == '3D-Scanner' %>
+    <% user.three_d_scanner.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'GAIT Analysis' %>
+    <% @entry = nil %>
+  <% elsif @entry == 'Spectro-Radiometer' %>
+    <% user.spectro_radio_meter.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Spark-OES' %>
+    <% user.spark_o.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Glow Discharges-OES' %>
+    <% user.glows.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Ball Milling Unit' %>
+    <% user.ball_mailings.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Low Force Fatigue with DMA' %>
+    <% user.low_fatigues.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Micro-EDM' %>
+    <% user.micro_edms.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == '5-Axes CNC' %>
+    <% user.five_axi.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Multi Purpose Impact Testing (SHPB)' %>
+    <% user.multi_impact_testers.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Friction Stir Welding/Surfacing(FSW)' %>
+    <% user.frictions.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Electro Chemical Polishing' %>
+    <% user.electro_chemical.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Milli-Q water' %>
+    <% @entry = nil %>
+  <% elsif @entry == 'Glove Box' %>
+    <% @entry = nil %>
+  <% elsif @entry == 'Probe Sonicator' %>
+    <% user.probe_sonicator.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Ultra-Centrifuge' %>
+    <% user.ultra_centrifuge.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Gas Sensing' %>
+    <% user.gas_sensing.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Liquid Nitrogen' %>
+    <% @entry = nil %>
+    <% @sam.push(@s) %>
+  <% elsif @entry == 'Ansys System Lab' %>
+    <% @entry = nil %>
+  <% elsif @entry == 'Automatic MultiSpecimen Polisher' %>
+    <% user.grindings.each do |eq| %>
+      <% if eq.equipment_table.dummy == 'payment_completed' %>
+        <% @s = eq.equipment_table.pay + @s %>
+      <% end %>
+    <% end %>
+    <% @sam.push(@s) %>
+  <% end %>
+<% end %>
+
+<% if @entry != nil%>
+      <% @total[user] = @sam.sum %>
+<%end%>
+
+<% end %>
 
 
 
+<% if @entry != nil%>
+<% student = @total['student'] %>
+<% faculty = @total['faculty'] %>
+<% external = @total['external'] %>
+<% nitk= student + faculty%>
+<% end %>
 
+
+<div id="stats">
+    <h5 class="fw-bold"><%=" User-wise #{@entry} Revenue Distribution"%></h5>
+</div>
+
+
+<div id="chart-4" class="mt-5 mb-3">
+  <!--Script tag to fetch data to the chart-->
+  <script type="text/javascript">
+    var nitk = <%= nitk %>;
+    var external = <%= external %>;
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+              ['Internal', 'Hours per Day'],
+              ['Nitk', nitk],
+              ['External', external]
+          ]);
+
+          var options = {
+              title: 'User-wise division'
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart4'));
+          chart.draw(data, options);
+      }
+  </script>
+
+
+  <div id="piechart4" style="width: 900px; height: 500px;"></div>
+</div>
+</div>
 
 <script>
-
     let model = document.getElementById('model');
     let modellist = document.getElementById('model-list');
 
